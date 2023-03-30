@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-zn#le8%kfk9nimu_1r)c^8q-%*=+7@1daz&%7(hv4fy(pon*d_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'esports-vivac.herokuapp.com']
 
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
