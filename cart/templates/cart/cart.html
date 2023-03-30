@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Cesta de la compra{% endblock %}
+
+{% block content%}
+
+<div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
+    <div class="products w-full lg:w-3/4">
+        {% for item in cart %}
+        {% include 'cart/partials/cart_item.html' %}  
+        {% endfor %}
+    </div>
+    <dev class="summary mx-auto w-full md:w-2/3 xl:w-1/4 p-6 bg-gray-100 rounded-xl mt-3">
+        <h3 class="uppercase text-lg mb-5">Summary</h3>
+        <div class="mb-6 flex justify-between">
+            <span class="font-semibold">Total</span>
+            <span 
+                class="font-semibold"
+                hx-get="{% url 'hx_cart_total' %}"
+                hx-trigger="update-menu-cart from:body"
+                hx-swap="innerHTML"
+            >
+            {% include 'cart/partials/cart_total.html' %}    
+            </span>
+        </div>
+
+        <a href="{% url 'checkout' %}" class="inline-block  flex justify-center w-full py-2 bg-green-500 hover:bg-green-700 text-white">Checkout</a>
+    </dev>
+</div>
+{% endblock %}

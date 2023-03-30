@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="es">
+    <head class="h-0">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>{% block title %}{% endblock %} | Esports Vivac</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+        {% include 'core/partials/style_scripts.html' %}
+        
+    </head>
+
+    <body>
+        
+        {% include 'core/partials/swipertop.html' %}
+
+        {% include 'core/partials/menu_movile.html' %}
+
+        <nav class="navbar scroll-up fixed top-0 z-40 max-[1600px]:mt-8 bg-white w-full min-[1600px]:relative sborder-b sshadow-[0_10px_15px_-10px_rgba(0,0,0,0.1)]">
+
+            <div class="max-w-screen-xl mx-auto px-6 mb-2 xl:px-0 flex items-center justify-between">
+
+                {% include 'core/partials/navbarleft-center.html' %} 
+
+                {% include 'core/partials/navbar_right.html' %} 
+    
+            </div>
+        </nav>
+
+        {% include 'core/partials/bottom_navbar.html' %}
+        
+        <main class="max-[1600px]:mt-48 mt-4">
+            {% block content%}
+            {% endblock %}
+        </main>
+
+        <footer class="bg-gray-100">
+            <div class="max-w-6xl mx-auto py-10 px-6 xl:px-0 md:flex justify-between">
+                <div class="footer-left mb-12 md:mb-0 ">
+                    <h2 class="mb-5 uppercase text-lg">Sobre Nosotros</h2>
+                    <p class="text-grey-700">Esports vivac es una tienda espezializada en articulos para deportes de montaña, fundada hace más de 25 años</p>
+                </div>
+                <div class="footer-rigth">
+                    <h2 class="mb-5 uppercase text-lg">Redes Sociales</h2>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-green-500 hover:text-green-800">Instagram</a></li>
+                        <li><a href="#" class="text-green-500 hover:text-green-800">Twitter</a></li>
+                        <li><a href="#" class="text-green-500 hover:text-green-800">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+        {% block scripts %}
+        {% endblock %}
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+        <script>
+            var swiper = new Swiper(".mySwiper", {
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+            });
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<div class="hidden min-[1600px]:block shadow-[0_10px_15px_-10px_rgba(0,0,0,0.1)] py-2">
+                
+    <div class="max-w-screen-xl mx-auto px-6 xl:px-0 flex items-center justify-between">
+        <div class="flex items-center space-x-14 text-sm ">
+            <a href="{% url 'shop' %}" class="text-gray-600 hover:text-black">Tienda</a>
+            <a href="#" class="text-gray-600 hover:text-black"> Ciclismo </a>
+            <a href="#" class="text-gray-600 hover:text-black"> Running </a>
+            <a href="#" class="text-gray-600 hover:text-black"> Outdoor </a>
+            <a href="#" class="text-gray-600 hover:text-black"> Natación </a>
+            <a href="#" class="text-gray-600 hover:text-black"> Esquí </a>
+        </div>
+    </div>
+    
+</div>
+<div class="buscador scroll-up-busca hidden max-[1600px]:block fixed top-0 bg-white shadow-[0_10px_15px_-10px_rgba(0,0,0,0.1)] py-2 w-full">
+    <form class="min-[1600px]:hidden flex justify-items-center mx-4 text-gray-600 text-sm" method="get" action="{% url 'shop' %}">              
+        <input type="text" name="query" class="w-full py-2 px-4 bg-gray-100 rounded-l placeholder:text-gray-500 placeholder:text-sm focus:outline-0" placeholder="Buscar en la tienda...">
+        <button type="button" title="buscador" class="h-9 bg-gray-100 rounded-r px-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>                      
+        </button>
+        
+    </form>
+
+</div>

@@ -1,0 +1,52 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Tienda deportes online{% endblock %}
+
+{% block content%}
+<header class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto">
+    <div class="max-width-3xl max-auto grid place-content-center bg-green-500 h-20">
+        <p class="mb-2 text-3xl lg:text-5xl text-white">Bienvenidos a Esports Vivac</p>
+    </div>
+    <div class="mt-5 max-width-3xl max-auto grid place-content-center bg-green-500 h-96">
+        <p class="mb-10 text-white">Lo que te hace falta para disfrutar de la montaña</p>
+        <a href="{% url 'shop' %}" class="inline-block flex justify-center px-8 py-4 rounded-xl bg-white text-green-500 hover:px-10">Productos</a>
+    </div>
+</header>
+
+<div class="max-w-6xl mx-auto py-5 px-6 xl:px-0 md:flex justify-between">
+    <div class="footer-left mb-12 md:mb-0 ">
+        <h2 class="mb-5 uppercase text-lg">Categorias</h2>
+    </div>
+</div>
+
+<div class="max-w-6xl mx-auto py-2 px-6 xl:px-0">
+    <div class="products flex items-center flex-wrap">
+        {% for category in categories %}
+        <div class="w-full md:w-1/3 xl:w-1/4 p-6">
+            <a href="#">
+                <img title="categoriaimagen" src="{{category.get_imagecategory}}" class="rounded-xl hover:shadow-lg">
+            </a>
+
+            <div class="pt-3 flex items-center justify-between">
+                <a href="#" >{{ category.nombre }}</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="max-w-6xl mx-auto py-5 px-6 xl:px-0 md:flex justify-between">
+    <div class="footer-left mb-12 md:mb-0 ">
+        <h2 class="mb-5 uppercase text-lg">Productos</h2>
+    </div>
+</div>
+
+<div class="max-w-6xl mx-auto py-2 px-6 xl:px-0">
+    <div class="products flex items-center flex-wrap">
+        {% for product in products %}
+            {% include 'product/partials/product_list_item.html' %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

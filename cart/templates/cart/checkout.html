@@ -1,0 +1,178 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Realizar pedido{% endblock %}
+
+{% block content%}
+<div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
+    {% csrf_token %}
+    <div class="products w-full lg:w-3/4">
+        <h1 class="mb-5 text-3xl">Checkout</h1>
+        <div class="w-full pr-6">
+            <div class="mb-6 p-6 bg-gray-100 rounded-xl">
+                <h2 class="mb-5 uppercase text-lg">Envio</h2>
+
+                <div class="flex space-x-6">
+                    <div class="w-1/2 mb-4">
+                        <input name="first_name" type="text" class="w-full p-2" placeholder="Nombre" value="{{request.user.first_name}}">
+                    </div>
+                    <div class="w-1/2 mb-4">
+                        <input name="last_name" type="text" class="w-full p-2" placeholder="Apellidos" value="{{request.user.last_name}}">
+                    </div>
+                </div>
+                <div class="flex space-x-6">
+                    <div class="w-1/2 mb-4">
+                        <input name="address" type="text" class="w-full p-2" placeholder="Dirección">
+                    </div>
+                    <div class="w-1/2 mb-4">
+                        <input name="city" type="text" class="w-full p-2" placeholder="Ciudad">
+                    </div>
+                </div>
+                <div class="flex space-x-6">
+                    <div class="w-1/2 mb-4">
+                        <input name="zipcode" type="text" class="w-full p-2" placeholder="Codigo Postal">
+                    </div>
+                    <div class="w-1/2 mb-4">
+                        <input name="provincia" type="text" class="w-full p-2" placeholder="Provincia">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mb-6 p-6 bg-gray-100 rounded-xl">
+                <h2 class="mb-5 uppercase text-lg">Contacto</h2>
+                <div class="flex space-x-6">
+                    <div class="w-1/2 mb-4">
+                        <input name="email" type="text" class="w-full p-2" placeholder="Email" value="{{request.user.email}}">
+                    </div>
+                    <div class="w-1/2 mb-4">
+                        <input name="phone" type="text" class="w-full p-2" placeholder="Telèfono">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-6 p-6 bg-gray-100 rounded-xl" id="errors">
+            </div>
+
+        </div>
+        
+    </div>
+
+    <dev class="summary mx-auto w-full md:w-2/3 xl:w-1/4 p-6 bg-gray-100 rounded-xl mt-3">
+        <h3 class="uppercase text-lg mb-5">Summary</h3>
+
+        <div class="mb-6 flex justify-between">
+            <span class="font-semibold">Total</span>
+            <span>{{cart.get_total_cost}}€</span>
+
+        </div>
+
+        <button 
+            onclick="buy(event)"
+            class="inline-block  flex justify-center w-full py-2 bg-green-500 hover:bg-green-700 text-white"
+        >
+            Confirmar Checkout
+        </button>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="application/javascript" src="https://js.stripe.com/v3/"></script>
+<script>
+
+    let el = document.querySelector('#errors')
+
+    function validateForm(data) {
+        let errors = []
+        if (data.first_name === ''){
+            errors.push('Nombre está vacio')
+        }
+        if (data.last_name === ''){
+            errors.push('Apellidos está vacio')
+        }
+        if (data.email === ''){
+            errors.push('Email está vacio')
+        }
+        if (data.address === ''){
+            errors.push('Dirección está vacia')
+        }
+        if (data.city === ''){
+            errors.push('Ciudad está vacia')
+        }
+        if (data.zipcode === ''){
+            errors.push('Código Postal está vacio')
+        }
+        if (data.provincia === ''){
+            errors.push('Provincia está vacio')
+        }
+        if (data.phone === ''){
+            errors.push('Tel. está vacio')
+        }
+
+        if (errors.length > 0){
+
+            let html = '<ul>';
+
+            errors.forEach((error) => {
+
+                html += '<li>' + error + '</li>';
+            })
+            el.innerHTML = html + '</ul>';
+
+        } else {
+            el.innerHTML = '';
+        }
+
+        return errors
+    }
+
+    function buy(event) {
+        event.preventDefault()
+        
+        let data = {
+            'first_name': document.querySelector('input[name=first_name]').value,
+            'last_name': document.querySelector('input[name=last_name]').value,
+            'email': document.querySelector('input[name=email]').value,
+            'address': document.querySelector('input[name=address]').value,
+            'city': document.querySelector('input[name=city]').value,
+            'zipcode': document.querySelector('input[name=zipcode]').value,
+            'provincia': document.querySelector('input[name=provincia]').value,
+            'phone': document.querySelector('input[name=phone]').value,
+        }
+
+        let errors = validateForm(data)
+        if (errors.length) {
+            console.log('Errors', errors)
+        }else{
+            var stripe = Stripe('{{ pub_key }}')
+
+            fetch('/order/start_order/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' 
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(data),
+            })
+            .then(function(response) {
+                return response.json()
+            })
+            .then(function(session) {
+                return stripe.redirectToCheckout({ sessionId: session.session.id })
+            })
+            .then(function(result) {
+                
+                if (result.error) {
+                    alert(result.error.message)
+                }
+            })
+            .catch(function(error) {
+                console.log('Errors', error)
+            })
+        }
+
+        return false
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,81 @@
+<style>
+    .navbar {
+        transition: all 200ms ease-in-out;
+    }
+    .scroll-down{
+        margin-top: 0;
+    }
+    .scroll-up{
+        margin-top: 8;
+    }
+    .buscador {
+        transition: all 200ms ease-in-out;
+    }
+    .scroll-down-busca{
+        margin-top: 34px;
+    }
+    .scroll-up-busca{
+        margin-top: 110px;
+    }
+
+    .dropdown-menu div{
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            left: -150px;                         
+            max-height: 500px;
+            visibility: hidden;
+            list-style-type: none;
+            transition: visibility 500ms;
+    }
+    .dropdown-menu:hover div{
+        visibility: visible;
+        transition-delay: 500ms;
+    }
+    /* remove blue outline */
+    * {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+    outline: none !important;
+    }
+</style>
+
+<script>
+    let lastScroll = 0;
+    const nav = document.querySelector('.navbar');
+    const nav2 = document.querySelector('.buscador');
+    nscrollup = 0
+    nscrollupuntil = 60
+
+    window.addEventListener('scroll',() => {
+
+        currentScroll = window.pageYOffset
+
+        if ((currentScroll < lastScroll && nav.classList.contains('scroll-down') && (nscrollup == nscrollupuntil)) || (currentScroll < 170))  {
+            nav.classList.add('scroll-up');
+            nav.classList.remove('scroll-down');
+        }
+
+        if (currentScroll > lastScroll && nav.classList.contains('scroll-up') && (currentScroll > 170) ) {
+            nav.classList.remove('scroll-up');
+            nav.classList.add('scroll-down');
+        }
+
+        if ((currentScroll < lastScroll && nav2.classList.contains('scroll-down-busca') && (nscrollup == nscrollupuntil)) || (currentScroll < 170)) {
+            nav2.classList.add('scroll-up-busca');
+            nav2.classList.remove('scroll-down-busca');
+        }
+
+        if (currentScroll > lastScroll && nav2.classList.contains('scroll-up-busca') && (currentScroll > 170)) {
+            nav2.classList.remove('scroll-up-busca');
+            nav2.classList.add('scroll-down-busca');
+        }
+
+        if(lastScroll > currentScroll && (currentScroll > 170)){
+            nscrollup = nscrollup + 1;
+        }else{
+            nscrollup = 0;
+        }
+        if(nscrollup == nscrollupuntil + 1){nscrollup = 0;}
+
+        lastScroll = currentScroll;
+    
+    })
+</script>

@@ -1,0 +1,92 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{product.nombre}}{% endblock %}
+
+{% block content%}
+<div class="max-w-6xl mx-auto flex flex-wrap py-6 px-6 xl:px-0">
+    <div class="images w-full mb-6 lg:mb-0 lg:w-3/5">
+        <img 
+            class="rounded-xl" 
+            src="{% if product.image %}{{product.image.url}}{% else %}https://via.placeholder.com/240x240.jpg{% endif %}"
+        >
+    </div>
+
+    <div class="information w-full lg:w-2/5 lg:p-6">
+        <h1 class="text-2xl">{{product.nombre}}</h1>
+        <p class="mt-1 text-gray-400">{{product.get_display_precio|floatformat:2}}€</p>
+
+        {% if product.get_rating > 0 %}
+        <p class="mt-1 text-gray-400">{{product.get_rating}}/5</p>
+        {% endif %}
+
+        {% if product.descripcion %}
+        <p class="mt-6 text-gray-700">{{product.descripcion}}</p>
+        {% endif %}
+
+        <a 
+            title="Tothecart"
+            href="#" 
+            class="mt-6 inline-block px-8 py-4 rounded-xl bg-green-500 text-white hover:bg-green-700"
+            hx-get="{% url 'add_to_cart' product.id %}"
+            hx-target = "#menu-cart-button"
+            hx-swap = "outerHTML"
+        >
+            Añadir al carrito
+        </a>
+    </div>
+
+    <div class="w-full mt-6">
+        <h2 class="text-xl">Reseñas</h2>
+
+        {% if request.user.is_authenticated %}
+        <form method="POST" action="" class="mt-6 p-6 bg-gray-100 mb-6">
+            {% csrf_token %}
+
+            <div>
+                <label>Puntuación</label><br>
+
+                <select name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3" selected>3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+
+                </select>
+            </div>
+
+            <div>
+                <label>Titulo</label><br>
+                <textarea name="titulo"></textarea>
+            </div>
+
+            <div>
+                <label>Comentario</label><br>
+                <textarea name="content"></textarea>
+            </div>
+
+            <div>
+                <button>Enviar</button>
+            </div>
+        </form>
+        {% endif %}
+
+        {% for review in product.reviews.all %}
+            <div class="px-4 py-1 bg-gray-100 mb-1">
+
+                <strong>{{ review.titulo }}</strong><br>
+
+                <strong>Puntuación: {{ review.rating }}/5</strong><br>
+
+                <strong>Comentario: {{ review.content }}</strong><br>
+
+                <strong>User: {{ review.created_by }}</strong><br>
+
+                <strong>Date: {{ review.created_at|date:"d-m-Y" }}</strong><br>
+                
+
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
