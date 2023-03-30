@@ -1,2 +1,2 @@
 Hi my project!
-"# Vivac"
+"# Vivac Esports"
