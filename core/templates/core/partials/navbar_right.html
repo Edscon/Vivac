@@ -10,7 +10,7 @@
         {% if request.user.is_authenticated %}
         <span class="text-[11px] hidden md:flex ">{{user.first_name}}</span>
 
-        <div open class="block max-[1600px]:hidden absolute w-[240px] bg-white text-gray-500 text-sm rounded-sm top-[50px]">
+        <div open class="block max-[1300px]:hidden absolute w-[240px] bg-white text-gray-500 text-sm rounded-sm top-[50px]">
             <div class="hidden absolute h-[3px] w-10 bg-green-600 right-[53px] top-[-9px]"></div>
             <a class="block mt-2 px-6 py-3 text-black">Hola {{user.first_name}},</a>
             <hr color="block py-1">
@@ -28,7 +28,7 @@
             
     </div>           
 
-    <div class="relative">
+    <div class="relative hidden min-[300px]:block">
 
         <a href="{% url 'myaccount' %}" title="favorites" class="flex justify-center items-center hover:text-black">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

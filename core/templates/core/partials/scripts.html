@@ -1,0 +1,42 @@
+<script>
+    let lastScroll = 0;
+    const nav = document.querySelector('.navbar');
+    const nav2 = document.querySelector('.buscador');
+    nscrollup = 0
+    nscrollupuntil = 60
+
+    window.addEventListener('scroll',() => {
+
+        currentScroll = window.pageYOffset
+
+        if ((currentScroll < lastScroll && nav.classList.contains('scroll-down') && (nscrollup == nscrollupuntil)) || (currentScroll < 170))  {
+            nav.classList.add('scroll-up');
+            nav.classList.remove('scroll-down');
+        }
+
+        if (currentScroll > lastScroll && nav.classList.contains('scroll-up') && (currentScroll > 170) ) {
+            nav.classList.remove('scroll-up');
+            nav.classList.add('scroll-down');
+        }
+
+        if ((currentScroll < lastScroll && nav2.classList.contains('scroll-down-busca') && (nscrollup == nscrollupuntil)) || (currentScroll < 170)) {
+            nav2.classList.add('scroll-up-busca');
+            nav2.classList.remove('scroll-down-busca');
+        }
+
+        if (currentScroll > lastScroll && nav2.classList.contains('scroll-up-busca') && (currentScroll > 170)) {
+            nav2.classList.remove('scroll-up-busca');
+            nav2.classList.add('scroll-down-busca');
+        }
+
+        if(lastScroll > currentScroll && (currentScroll > 170)){
+            nscrollup = nscrollup + 1;
+        }else{
+            nscrollup = 0;
+        }
+        if(nscrollup == nscrollupuntil + 1){nscrollup = 0;}
+
+        lastScroll = currentScroll;
+    
+    })
+</script>

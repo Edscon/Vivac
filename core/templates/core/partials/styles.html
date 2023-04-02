@@ -1,0 +1,51 @@
+<style>
+    /* remove blue outline */
+    * {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
+    outline: none !important;
+    }
+
+    .navbar {
+        transition: all 200ms ease-in-out;
+    }
+    .scroll-down{
+        margin-top: 0;
+    }
+    .scroll-up{
+        margin-top: 8;
+    }
+    .buscador {
+        transition: all 200ms ease-in-out;
+    }
+    .scroll-down-busca{
+        margin-top: 65px;
+    }
+    .scroll-up-busca{
+        margin-top: 110px;
+    }
+
+    .dropdown-menu div{
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            left: -150px;                         
+            max-height: 500px;
+            visibility: hidden;
+            list-style-type: none;
+            transition: visibility 500ms;
+    }
+    .dropdown-menu:hover div{
+        visibility: visible;
+        transition-delay: 500ms;
+    }
+
+
+    .imagecategory div{
+        bottom: 1rem;
+        transition: bottom 300ms;
+    }
+    .imagecategory:hover div{
+        bottom: 2rem;
+    }
+    .imagecategory a div{
+        transition: all 400ms;
+    }
+</style>

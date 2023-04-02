@@ -5,11 +5,23 @@ from django.core.files import File
 from io import BytesIO
 from PIL import Image
 
+class Marca(models.Model):
+    nombre = models.CharField(max_length=255)
+    slug = models.SlugField()
+    orden = models.IntegerField(default=0)
+    image = models.ImageField(
+        upload_to='uploads/', blank=True, null=True)
+    
+    class Meta:
+        ordering = ['orden']
+    
+    def __str__(self):
+        return self.nombre
 
 class Category(models.Model):
     nombre = models.CharField(max_length=255)
     slug = models.SlugField()
-    imagecategory = models.ImageField(
+    image = models.ImageField(
         upload_to='uploads/', blank=True, null=True)
 
     class Meta:
@@ -19,9 +31,9 @@ class Category(models.Model):
     def __str__(self):
         return self.nombre
 
-    def get_imagecategory(self):
-        if self.imagecategory:
-            return self.imagecategory.url
+    def get_image(self):
+        if self.image:
+            return self.image.url
         else:
             return 'https://via.placeholder.com/240x240.jpg'
 

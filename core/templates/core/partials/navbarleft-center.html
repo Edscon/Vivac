@@ -1,5 +1,5 @@
 {% load static %}
-<div class="menu-resposive hidden max-[1600px]:block absolute text-gray-600 mt-5 left-5">
+<div class="menu-resposive hidden max-[1300px]:block absolute text-gray-600 mt-5 left-5">
     <button type="button" title="menuleft" class="prova1">        
         <svg class="h-6 w-6"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
@@ -8,16 +8,16 @@
 </div>
 
 
-<div class="menu-left flex items-center space-x-6 min-w-max max-[1600px]:ml-10">
+<div class="menu-left flex items-center space-x-6 min-w-max max-[1300px]:ml-10">
     <!---Imagen del logo-->
-    <a href="{% url 'frontpage' %}"><img title="titulo" src="{% static 'img/logo.png' %}" class="h-20 max-[1600px]:h-[70px]"></a>
+    <a href="{% url 'frontpage' %}"><img title="titulo" src="{% static 'img/logo.png' %}" class="h-20 max-[1300px]:h-[70px]"></a>
 </div>
 
-<form method="get" action="{% url 'shop' %}">
+<form method="get" action="{% url 'shop' %}" autocomplete="off">
                 
-    <div class="menu-center hidden min-[1600px]:flex items-center shrink w-[40rem] text-gray-600 text-sm mt-5">
+    <div class="menu-center hidden min-[1300px]:flex items-center shrink w-[40rem] text-gray-600 text-sm mt-5">
         <input type="text" name="query" class="w-full py-2 px-4 bg-gray-100 rounded-l placeholder:text-gray-500 placeholder:text-sm focus:outline-0" placeholder="Buscar en la tienda...">
-        <button type="button" title="buscador" class="h-9 bg-gray-100 rounded-r px-2">
+        <button title="buscador" class="h-9 bg-gray-100 rounded-r px-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>                      
