@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-zn#le8%kfk9nimu_1r)c^8q-%*=+7@1daz&%7(hv4fy(pon*d_'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -36,8 +37,8 @@ LOGIN_URL = '/login/'
 SESSION_COOKIE_AGE = 86400
 CART_SESSION_ID = 'cart'
 
-STRIPE_API_KEY_PUBLISHABLE = 'pk_test_51MM8t2EUHJ3WTNbaB5EDa3OL2DD6n8qn3bu0SJZfAKzn1bdLjWwzFgsvcfKabm7KRtSHlF3EpRQIUBNReS5l61OX00MP6NxvwM'
-STRIPE_API_KEY_HIDDEN = 'sk_test_51MM8t2EUHJ3WTNba6Khay0kkxvBfakxZVEZiUbZlN5nepJ8WGRmjCZG3BNF21r9r32xxsO29kXxvySqFvOeO1wNe00x7ErWnNR'
+STRIPE_API_KEY_PUBLISHABLE = config('STRIPE_API_KEY_PUBLISHABLE')
+STRIPE_API_KEY_HIDDEN = config('STRIPE_API_KEY_HIDDEN')
 
 # Application definition
 
