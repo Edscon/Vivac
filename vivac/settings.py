@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-from decouple import config
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -37,8 +39,8 @@ LOGIN_URL = '/login/'
 SESSION_COOKIE_AGE = 86400
 CART_SESSION_ID = 'cart'
 
-STRIPE_API_KEY_PUBLISHABLE = config('STRIPE_API_KEY_PUBLISHABLE')
-STRIPE_API_KEY_HIDDEN = config('STRIPE_API_KEY_HIDDEN')
+STRIPE_API_KEY_PUBLISHABLE = os.getenv('STRIPE_API_KEY_PUBLISHABLE')
+STRIPE_API_KEY_HIDDEN = os.getenv('STRIPE_API_KEY_HIDDEN')
 
 # Application definition
 
