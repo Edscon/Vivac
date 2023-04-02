@@ -3,10 +3,10 @@
     <div class="max-w-screen-xl mx-auto px-6 xl:px-0 flex items-center justify-between">
         <div class="flex items-center space-x-14 text-sm ">
             <a href="{% url 'shop' %}" class="text-gray-600 hover:text-black">Tienda</a>
-            <a href="#" class="text-gray-600 hover:text-black"> Ciclismo </a>
-            <a href="#" class="text-gray-600 hover:text-black"> Esquí </a>
-            <a href="#" class="text-gray-600 hover:text-black"> Outdoor </a>
-            <a href="#" class="text-gray-600 hover:text-black"> Running </a>
+            <a href="{% url 'shop' %}?category=ciclismo" class="text-gray-600 hover:text-black"> Ciclismo </a>
+            <a href="{% url 'shop' %}?category=esqui" class="text-gray-600 hover:text-black"> Esquí </a>
+            <a href="{% url 'shop' %}?category=outdoor" class="text-gray-600 hover:text-black"> Outdoor </a>
+            <a href="{% url 'shop' %}?category=running" class="text-gray-600 hover:text-black"> Running </a>
         </div>
     </div>
     
