@@ -1,6 +1,6 @@
 <div class="menu-right flex items-center space-x-4 text-gray-600 mt-5">
     
-    <div class="dropdown-menu relative">
+    <div class="dropdown-menu relative cursor-pointer">
 
         <a href="{% url 'myaccount' %}" title="myaccount" class="logouser flex justify-center items-center hover:text-black">
             <svg class="h-6 w-6"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  <circle cx="12" cy="7" r="4" /></svg>                            
@@ -10,7 +10,7 @@
         {% if request.user.is_authenticated %}
         <span class="text-[11px] hidden md:flex ">{{user.first_name}}</span>
 
-        <div open class="block max-[1300px]:hidden absolute w-[240px] bg-white text-gray-500 text-sm rounded-sm top-[50px]">
+        <div open class="block max-[1300px]:hidden absolute w-[240px] bg-white text-gray-500 text-sm rounded-sm top-[50px] left-[-150px]">
             <div class="hidden absolute h-[3px] w-10 bg-green-600 right-[53px] top-[-9px]"></div>
             <a class="block mt-2 px-6 py-3 text-black">Hola {{user.first_name}},</a>
             <hr color="block py-1">
@@ -39,25 +39,21 @@
         <span class="text-[11px] hidden md:flex ">Mis Favoritos</span>
             
     </div>
-
-    <div class="relative">
-
-        <a href="{% url 'cart' %}" title="cart" class="flex justify-center items-center hover:text-black">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-            </svg>                          
-        </a>
-        <div 
+    <a 
             hx-get="{% url 'hx_menu_cart' %}"
             hx-trigger="update-menu-cart from:body"
             hx-swap="innerHTML"
+            class="hidden absolute"
             >
             {% include 'cart/partials/menu_cart.html' %}
     
-        </div>
-
-        <span class="text-[11px] hidden md:flex ">Carrito</span>
-            
+    </a>
+    <div class="dropdown-menu-cart relative"
+        hx-get="{% url 'hx_minicart' %}"
+        hx-trigger="update-menu-cart from:body"
+        hx-swap="innerHTML"
+        >
+            {% include 'cart/partials/minicart.html' %}
     </div>
-
+        
 </div>

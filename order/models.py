@@ -2,7 +2,7 @@ from itertools import product
 from django.db import models
 from django.contrib.auth.models import User
 
-from product.models import Product
+from product.models import Product, Variant
 
 class Order(models.Model):
 
@@ -42,7 +42,7 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, related_name='items', on_delete=models.CASCADE)
+    variant = models.ForeignKey(Variant, related_name='items', on_delete=models.CASCADE, blank=True, null=True)
     price = models.FloatField()
     quantity = models.IntegerField(default=1)
 

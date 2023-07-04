@@ -3,90 +3,437 @@
 {% block title %}{{product.nombre}}{% endblock %}
 
 {% block content%}
-<div class="max-w-6xl mx-auto flex flex-wrap py-6 px-6 xl:px-0">
-    <div class="images w-full mb-6 lg:mb-0 lg:w-3/5">
-        <img 
-            class="rounded-xl" 
-            src="{% if product.image %}{{product.image.url}}{% else %}https://via.placeholder.com/240x240.jpg{% endif %}"
+<style>
+    .Newreseña{
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2 z-0">
+
+    <div class="py-10">
+        <a href="{% url 'shop' %}"
+            class="inline-block flex justify-center w-[200px] py-2 bg-green-500 hover:bg-green-700 text-white"
         >
-    </div>
-
-    <div class="information w-full lg:w-2/5 lg:p-6">
-        <h1 class="text-2xl">{{product.nombre}}</h1>
-        <p class="mt-1 text-gray-400">{{product.get_display_precio|floatformat:2}}€</p>
-
-        {% if product.get_rating > 0 %}
-        <p class="mt-1 text-gray-400">{{product.get_rating}}/5</p>
-        {% endif %}
-
-        {% if product.descripcion %}
-        <p class="mt-6 text-gray-700">{{product.descripcion}}</p>
-        {% endif %}
-
-        <a 
-            title="Tothecart"
-            href="#" 
-            class="mt-6 inline-block px-8 py-4 rounded-xl bg-green-500 text-white hover:bg-green-700"
-            hx-get="{% url 'add_to_cart' product.id %}"
-            hx-target = "#menu-cart-button"
-            hx-swap = "outerHTML"
-        >
-            Añadir al carrito
+            Confirmar Checkout
         </a>
     </div>
 
-    <div class="w-full mt-6">
-        <h2 class="text-xl">Reseñas</h2>
+    <div class="flex flex-wrap relative">
 
+        <div class="h-[600px] w-full lg:w-[60%] flex relative">
+            <div class="w-[15%] h-full overflow-auto space-y-4 px-5">
+                <img 
+                    id = "ImageProd"
+                    onmouseover="Image_mouseover('{{product.image}}')"
+                    class="w-[full] object-contain aspect-[1/1] rounded border cursor-pointer" 
+                    src="{{product.image}}"
+                >
+                {% for image in images_extra %}
+                    <img 
+                    id ="ImageExtra"
+                    onmouseover="Image_mouseover('{{image.image.url}}')"
+                    class="w-[full] object-contain aspect-[1/1] rounded border cursor-pointer" 
+                    src="{{image.image.url}}"
+                    >
+                {% endfor %}
+            </div>
+            <div class="w-[75%] relative">
+                <img 
+                    id = "ImageCenter"
+                    class="w-full object-contain h-full aspect-[3/1] object-left" 
+                    src="{{product.image}}"
+                >
+                <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{product.get_descuento}}%</p>
+            </div>
+            <a href="{% url 'marca' product.marca.slug %}"><img class="image_marca w-20 aspect-[3/1] object-contain absolute top-0 right-10" 
+                src={{product.marca.get_image}}></a>
+        </div>
+
+        <div class="information w-full lg:w-[40%]">
+            <h1 class="text-2xl">{{product.nombre}}</h1>
+            <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{product.precio_retail|floatformat:2}} €</p>
+            <p class="-mt-2 text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
+            <p class="-mt-1 text-xs text-gray-500">Te ahorras {{product.get_ahorro|floatformat:2}} €</p>
+
+            <div class="relative">
+            {% if product.get_rating > 0 %}
+                {% include 'product/partials/stars_review.html' %}
+                <p class="cursor-pointer text-sm text-gray-500 absolute left-28 top-0 hover:text-black hover:underline underline-offset-4" onclick="GoOpinions()">
+                    {{product.reviews.all.count}} Opiniones
+                </p>
+                <p class="cursor-pointer text-sm text-gray-500 absolute left-[195px] top-0 underline-offset-4">
+                    |
+                </p>  
+                <p class="cursor-pointer text-sm text-gray-500 absolute left-[210px] top-0 hover:text-black hover:underline underline-offset-4" onclick="FirstOp()">
+                    Dejanos tu opinion
+                </p> 
+                {% else %}
+                <p class="cursor-pointer text-sm text-gray-500 mt-2 hover:text-black hover:underline underline-offset-4" onclick="FirstOp()">Sé el primero en opinar</p>
+            {% endif %}
+            </div>
+
+            <hr class="w-full mt-3">
+
+            {% if product.variants != 'None' %}
+            <div class="mt-2">
+                <div class="font-semibold text-gray-800">Colores</div>
+    
+                <div class="flex space-x-4 text-sm mt-2">
+                    {% for var in variant_colors %}
+                        {% if forloop.first %}
+                            <a class="w-[80px] h-[80px] rounded border-black border">
+                                <img src="{{var.image}}" class="object-contain rounded">
+                            </a>
+                        {% else %}
+                        <a href="{% url 'variant_product' product.slug var.color.slug %}" class="w-[80px] h-[80px] rounded border hover:border-gray-400">
+                            <img src="{{var.image}}" class="object-contain rounded">
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="mt-4">
+                <div class="font-semibold text-gray-800">Tallas</div>
+                <div class="grid grid-cols-9 gap-x-4 gap-y-1 text-sm mt-2"> 
+                    <input id="sizes" type="text" class="hidden" value="{{sizes}}">
+                    {% for i in sizes %}
+                        {% if i in size %}
+                            <div id="TallasId-{{i}}" onclick="SelectSize('{{i}}')" class="w-[55px] h-[50px] border rounded grid font-semibold hover:border-gray-400 cursor-pointer">
+                                <p class="place-self-center">{{i}}</p>
+                            </div>
+                        {% else %}
+                            <div class="w-[55px] h-[50px] border rounded grid bg-gray-200 text-gray-500 font-semibold">
+                                <p class="place-self-center">{{i}}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div id="noTallas" class="hidden mt-3 flex"> 
+                <svg class="h-3 w-3 text-red-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                <p class="text-sm text-red-500">Selecciona una talla.</p> 
+            </div>
+
+            <div id="top_añadir_carrito">
+                <a 
+                    id="añadir_carrito-" 
+                    class=" mt-6 w-full inline-block py-3 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
+                    onclick="NoTallas()"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 absolute left-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                    </svg> 
+                    <svg class="h-4 w-4 absolute left-9 top-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <p class="text-center">Añadir al carrito</p>
+                </a>
+                {% for i in size %}
+                <a 
+                    id="añadir_carrito-{{i}}"
+                    title="Tothecart"
+                    href="#" 
+                    class="hidden mt-6 w-full inline-block py-3 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
+                    hx-get = "{% url 'add_to_cart' product.id color_first.code i %}"
+                    hx-target = "#menu-cart-button"
+                    hx-swap = "innerHTML"
+                    onclick="EnviarCheckOut()"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 absolute left-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                    </svg> 
+                    <svg class="h-4 w-4 absolute left-9 top-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <p class="text-center">Añadir al carrito</p>
+                </a>
+                {% endfor %}
+            </div>
+            <div class="flex space-x-4 mt-6">
+                <button class="cursor-pointer py-3 bg-gray-100 hover:bg-gray-300">
+                    Favoritos
+                </button>
+                <button id="Compartir" class="cursor-pointer py-3 bg-gray-100 hover:bg-gray-300">
+                    Compartir
+                </button>
+                <div id="Share" class="hidden py-3">    
+                    <a class="py-3 bg-gray-100 hover:bg-gray-300" target="_blank" id="facebook">
+                        facebook
+                    </a>
+                    <a class="py-3 bg-gray-100 hover:bg-gray-300" target="_blank" id="twitter">
+                        Twitter
+                    </a>
+                    <a class="py-3 bg-gray-100 hover:bg-gray-300" target="_blank" id="linkedIn">
+                        LinkedIn
+                    </a>
+                    <a class="py-3 bg-gray-100 hover:bg-gray-300" target="_blank" id="reddit">
+                        Reddit
+                    </a>
+                    <a class="py-3 bg-gray-100 hover:bg-gray-300" target="_blank" id="whatsapp">
+                        Whatsapp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="w-full mt-2">
+        
+        <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative">
+            <button id="descripcion" class="pt-6 pb-3 hover:text-black">Descripción</button>
+            <button id="opiniones"class="pt-6 pb-3 hover:text-black">Opiniones del artículo ({{product.reviews.all.count}})</button>
+            <div id="descripcion_green" class="bg-green-700 h-[2px] w-[85px] absolute -left-4 top-[59px]"></div>
+            <div id="opiniones_green" class="bg-green-700 h-[2px] w-[185px] absolute left-[85px] top-[59px] hidden"></div>
+        </div>
+
+        <hr class="w-full">
+
+        <div class="content-box mt-6 w-[100%] min-h-[200px]">
+            {% if product.descripcion %}
+                <p id="div1" class="w-[60%] text-gray-700 h-[100px] text-justify overflow-auto text-sm">{{product.descripcion}}</p>
+            {% endif %}
+
+            <div id="div2" class="hidden flex relative"> 
+                <div class="w-[60%]">
+                    <input type="text" id="num_reviews" size="20" name="num_reviews" class="hidden" value="{{ product.reviews.all.count }}">
+                    {% for review in product.reviews.all %}
+                        <div id="Review" class="px-4 py-1 bg-gray-100 mb-2 relative text-sm rounded text-gray-700">
+                            <div class="absolute top-5 left-5 h-[50px] w-[50px] bg-white">
+                                <img src="{{product.image}}" class="object-contain">
+                            </div>
+                            <div class="absolute top-5 left-20">
+                                <p class="font-semibold">{{ review.titulo }}</p>
+                                {% include 'product/partials/stars_review_siple.html' %}
+                            </div>
+                            <div class="mt-20 px-1">{{ review.content }}</div>
+        
+                            <div class="mt-2 mb-2 px-1 text-xs text-gray-600">
+                                <p>{{ review.created_by }}, el {{ review.created_at|date:"d-m-Y" }}</p>
+                            </div>
+                            {% if review.created_by.username ==  request.user.username %}
+                                <a onclick="FirstOp()" class="absolute top-5 right-5 hover:text-black hover:scale-105 cursor-pointer">
+                                    <svg class="h-6 w-6" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                    {% if product.reviews.all.count == 0 %}
+                    <div class="text-sm relative border flex px-14 w-full py-3 bg-red-100 ">
+                        <div class="absolute left-0 top-0 h-full w-[4px] bg-red-600"></div>
+                        <svg class="h-6 w-6 text-red-600 absolute top-[10px] left-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p class="text-red-600">¡Sé el primero en opinar sobre este producto!</p>
+                    </div>
+                    {% endif %}
+                </div>   
+                <div class="w-[40%] pl-10">
+                    <a onclick="FirstOp()" class="sticky top-10 inline-block relative border rounded flex justify-center w-full py-2 cursor-pointer hover:bg-gray-200 transition duration-500">
+                        Escribir Reseña
+                        <svg class="h-6 w-6 absolute left-2 scale-90"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+                    </a>
+                    <p>{{prova}}</p>
+                </div>
+            </div>
+            
+        </div>
+
+        <hr class="w-full mt-2">
+
+        
+        <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative">
+            <a href="{% url 'shop' %}" class="pt-6 pb-3 hover:text-black">Otros Productod de la Tienda</a>
+        </div>
+
+        <div class="py-2 xl:px-0">
+            <div class="products flex items-center flex-wrap">
+                {% for product in products_list %}
+                    {% include 'product/partials/product_list_item.html' %}
+                {% endfor %}
+            </div>
+        </div>
         {% if request.user.is_authenticated %}
-        <form method="POST" action="" class="mt-6 p-6 bg-gray-100 mb-6">
-            {% csrf_token %}
-
-            <div>
-                <label>Puntuación</label><br>
-
-                <select name="rating">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3" selected>3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-
-                </select>
-            </div>
-
-            <div>
-                <label>Titulo</label><br>
-                <textarea name="titulo"></textarea>
-            </div>
-
-            <div>
-                <label>Comentario</label><br>
-                <textarea name="content"></textarea>
-            </div>
-
-            <div>
-                <button>Enviar</button>
-            </div>
-        </form>
+            {% for review in product.reviews.all %}
+                {% if review.created_by.username ==  request.user.username %}
+                    {% include 'product/partials/review.html' %}
+                {% endif %}
+            {% endfor %}
         {% endif %}
-
-        {% for review in product.reviews.all %}
-            <div class="px-4 py-1 bg-gray-100 mb-1">
-
-                <strong>{{ review.titulo }}</strong><br>
-
-                <strong>Puntuación: {{ review.rating }}/5</strong><br>
-
-                <strong>Comentario: {{ review.content }}</strong><br>
-
-                <strong>User: {{ review.created_by }}</strong><br>
-
-                <strong>Date: {{ review.created_at|date:"d-m-Y" }}</strong><br>
-                
-
-            </div>
-        {% endfor %}
     </div>
 </div>
+
 {% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+
+    const link = encodeURI(window.location.href);
+    const msg = encodeURIComponent('Te recomiendo este producto de Esports Vivac: ')
+    const title = encodeURIComponent(document.querySelector('title').textContent);
+
+    const fb = document.getElementById('facebook');
+    fb.href = `https://www.facebook.com/share.php?u=${link}`;
+
+    const twitter = document.getElementById('twitter');
+    twitter.href = `https://twitter.com/share?&url=${link}&text=${msg}&hashtags=sports`;
+
+    const linkedIn = document.getElementById('linkedIn');
+    linkedIn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${link}&text=${msg}`;
+
+    const reddit = document.getElementById('reddit');
+    reddit.href = `https://www.reddit.com/submit?url=${link}&title=${title}`;
+
+    const whatsapp = document.getElementById('whatsapp');
+    whatsapp.href = `https://api.whatsapp.com/send?text=${msg}${link}`;
+    
+    comp = document.getElementById('Compartir')
+    comp.onclick = function(){
+        comp.classList.add('hidden');
+        fb.parentNode.classList.remove('hidden');
+    }
+    
+    function NoTallas() {
+        document.getElementById("noTallas").classList.remove("hidden");
+    }
+
+    function delay(time) {
+        return new Promise(resolve => setTimeout(resolve, time));
+    }
+
+
+    var i = 0
+    async function EnviarCheckOut() {
+        await delay(200);
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+        i = 1;
+        document.getElementById('minicart').classList.remove("minicart");
+        document.getElementById('minicart').classList.add("minicart-0");
+        await delay(5000);
+        if( i != 0){
+            i = 0;
+            document.getElementById('minicart').classList.add("minicart");
+            document.getElementById('minicart').classList.remove("minicart-0");
+        }
+    }
+
+    body = document.getElementById('body');
+    
+    body.onclick = function(){
+        if(i == 1){
+            i = 0;
+            document.getElementById('minicart').classList.add("minicart");
+            document.getElementById('minicart').classList.remove("minicart-0");
+        }
+    }
+
+    
+    function Image_mouseover(varsize) {
+        document.getElementById("ImageCenter").src = varsize;
+    }
+
+    var final_size = ''
+
+    function SelectSize(size) {
+        document.getElementById("noTallas").classList.add("hidden");
+        if(final_size != ''){
+            document.getElementById('TallasId-'+ final_size ).classList.remove("border-black")
+        }
+        document.getElementById('TallasId-'+ size ).classList.add("border-black")
+
+        document.getElementById('añadir_carrito-'+ final_size).classList.add("hidden")
+        document.getElementById('añadir_carrito-'+ size).classList.remove("hidden")
+
+        final_size = size
+
+
+    }
+
+
+    const FormReseña = document.getElementById('FormReseña');
+
+    function FirstOp() {
+        if(FormReseña.classList.contains('hidden')){
+                FormReseña.classList.remove('hidden');
+        }else{
+                FormReseña.classList.add('hidden');
+        }
+    }
+
+    function OutForm() {
+        el1.innerHTML = '';
+        el2.innerHTML = '';
+        el3.innerHTML = '';
+        if(!FormReseña.classList.contains('hidden')){
+                FormReseña.classList.add('hidden');
+        }
+    }
+
+
+    const btn1 = document.getElementById("descripcion");
+    const btn2 = document.getElementById("opiniones");
+    const text1 = document.getElementById("div1");
+    const text2 = document.getElementById("div2");
+
+    const green1 = document.getElementById("descripcion_green")
+    const green2 = document.getElementById("opiniones_green")
+
+    function GoOpinions() {
+        if(text2.classList.contains('hidden') && !text1.classList.contains('hidden')){
+            text2.classList.remove('hidden');
+            text1.classList.add('hidden');
+
+            green2.classList.remove('hidden');
+            green1.classList.add('hidden');
+        }
+        window.scroll({
+            top: 700,
+            behavior: "smooth",
+        });
+    }
+
+
+    btn1.onclick = function(){
+
+        if(text1.classList.contains('hidden') && !text2.classList.contains('hidden')){
+            text1.classList.remove('hidden');
+            text2.classList.add('hidden');
+
+            green1.classList.remove('hidden');
+            green2.classList.add('hidden');
+
+            window.scroll({
+            top: 700,
+            behavior: "smooth",
+            });
+        }
+
+    }
+
+    btn2.onclick = function(){
+        if(text2.classList.contains('hidden') && !text1.classList.contains('hidden')){
+            text2.classList.remove('hidden');
+            text1.classList.add('hidden');
+
+            green2.classList.remove('hidden');
+            green1.classList.add('hidden');
+
+            window.scroll({
+            top: 700,
+            behavior: "smooth",
+            });
+        }
+    }
+
+
+
+</script>
+{% endblock %}
+

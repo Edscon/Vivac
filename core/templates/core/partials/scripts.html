@@ -1,14 +1,24 @@
 <script>
+
+    /*TOP*/
+    var swiper = new Swiper(".mySwiper", {
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });
+
     let lastScroll = 0;
     const nav = document.querySelector('.navbar');
     const nav2 = document.querySelector('.buscador');
+    const Top = document.getElementById('Top');
     nscrollup = 0
     nscrollupuntil = 60
 
     window.addEventListener('scroll',() => {
 
         currentScroll = window.pageYOffset
-
+        
         if ((currentScroll < lastScroll && nav.classList.contains('scroll-down') && (nscrollup == nscrollupuntil)) || (currentScroll < 170))  {
             nav.classList.add('scroll-up');
             nav.classList.remove('scroll-down');
@@ -37,6 +47,25 @@
         if(nscrollup == nscrollupuntil + 1){nscrollup = 0;}
 
         lastScroll = currentScroll;
-    
+
     })
+
+    const div = document.querySelector('.menu-mobile');
+    const div2 = document.querySelector('.menu-mobile-l');
+
+    function menu_mobile(){
+
+        if (div.classList.contains('hidden')){
+            div.classList.remove('hidden');
+            div.classList.add('block');
+
+            div2.style.animation ="sidebar-open-left 300ms 1"
+
+        }else{
+            div.classList.remove('block');
+            div.classList.add('hidden');
+
+            div2.style.animation ="sidebar-close-left 300ms 1"
+        }
+   }
 </script>

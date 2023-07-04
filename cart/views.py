@@ -3,15 +3,20 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from .cart import Cart
-from product.models import Product
+from product.models import Product, Variant, Color
 
 
-def add_to_cart(request, product_id):
+
+def add_to_cart(request, product_id, color, size):
+    print(color, size)
     cart = Cart(request)
-    cart.add(product_id)
+    cart.add(product_id, color, size)
+    
+    response = render(request, 'cart/partials/menu_cart.html')
+    
+    response['HX-Trigger'] = 'update-menu-cart'
 
-    return render(request, 'cart/partials/menu_cart.html')
-
+    return response
 
 def cart(request):
     return render(request, 'cart/cart.html')
@@ -21,31 +26,29 @@ def success(request):
     return render(request, 'cart/success.html')
 
 
-def update_cart(request, product_id, action):
+def update_cart(request, product_id, color, size, action):
     cart = Cart(request)
-
+    
     if action == 'increment':
-        cart.add(product_id, 1, True)
+        cart.add(product_id, color, size, 1, True)
     else:
-        cart.add(product_id, -1, True)
+        cart.add(product_id, color, size, -1, True)
 
-    product = Product.objects.get(pk=product_id)
-    quantity = cart.get_item(product_id)
+    variant = Variant.objects.get(product=Product.objects.get(id=product_id), color=Color.objects.get(code=color), size=size)
+    variant_card = cart.get_item(variant.id)
 
-    if quantity:
-        quantity = quantity['quantity']
-
+    if variant_card:
+        quantity = variant_card['quantity']
         item = {
-            'product': {
-                'id': product.id,
-                'nombre': product.nombre,
-                'image': product.image,
-                'get_thumbnail': product.get_thumbnail(),
-                'price': product.precio,
+            'variant': {
+                'id': variant.id,
+                'nombre': variant.nombre,
+                'image': variant.image,
+                'get_thumbnail': variant.image(),
+                'price': variant.precio,
             },
-            'total_price': float(quantity * product.precio),
+            'total_price': float(quantity * variant.precio),
             'quantity': quantity,
-
         }
     else:
         item = None
@@ -66,6 +69,8 @@ def checkout(request):
 def hx_menu_cart(request):
     return render(request, 'cart/partials/menu_cart.html')
 
-
 def hx_cart_total(request):
     return render(request, 'cart/partials/cart_total.html')
+
+def hx_minicart(request):
+    return render(request, 'cart/partials/minicart.html')

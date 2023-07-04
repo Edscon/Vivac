@@ -2,18 +2,20 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.db.models import Q
-from product.models import Product, Category
+from product.models import Product, Category, Marca
 
 from .forms import SignUpForm
 
 
 def frontpage(request):
     products = Product.objects.all()[0:8]
-    categories = Category.objects.all()
+    categories = Category.objects.all()[0:4]
+    marcas = Marca.objects.all()
 
     context = {
         'products': products,
         'categories': categories,
+        'marcas': marcas,
     }
 
     return render(request, 'core/frontpage.html', context)

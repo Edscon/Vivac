@@ -1,0 +1,68 @@
+<ul class="flex mt-2">
+    <input type="text" id="rating-{{ forloop.counter }}" size="20" name="rating-{{ forloop.counter }}" class="hidden" value="{{ review.rating }}">
+    <li>
+        <svg id="star1-{{ forloop.counter }}" class="h-5 w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor" style="fill:rgb(215, 215, 215);">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+        </svg>
+    </li>
+    <li>
+        <svg id="star2-{{ forloop.counter }}" class="h-5 w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor" style="fill:rgb(215, 215, 215);">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+        </svg>
+    </li>
+    <li>
+        <svg id="star3-{{ forloop.counter }}" class="h-5 w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor" style="fill:rgb(215, 215, 215);">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+        </svg>
+    </li>
+    <li>
+        <svg id="star4-{{ forloop.counter }}" class="h-5 w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor" style="fill:rgb(215, 215, 215);">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+        </svg>
+    </li>
+    <li>
+        <svg id="star5-{{ forloop.counter }}" class="h-5 w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor" style="fill:rgb(215, 215, 215);">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+        </svg>
+    </li>   
+</ul>
+
+<script type="text/javascript">
+    window.onload = function() {
+        var num_reviews = document.getElementById("num_reviews").value;
+        var num_reviews = parseInt(num_reviews)
+        
+        for(let i = 1; i <= num_reviews; i++) {
+
+            var num = document.getElementById('rating-'+ i).value;
+
+            var star1 = document.getElementById('star1-'+ i);
+            var star2 = document.getElementById('star2-'+ i);
+            var star3 = document.getElementById('star3-'+ i);
+            var star4 = document.getElementById('star4-'+ i);
+            var star5 = document.getElementById('star5-'+ i);
+            stars_review(num, star1, star2, star3, star4, star5)
+        }
+    }
+
+    function stars_review(num, star1, star2, star3, star4, star5) {
+        
+        var rating_average = parseInt(num)
+    
+        if (rating_average > 0.5) {
+            star1.style.fill = "#D1B000";
+        }
+        if (rating_average > 1.5) {
+            star2.style.fill = "#D1B000";
+        }
+        if (rating_average > 2.5) {
+            star3.style.fill = "#D1B000";
+        }
+        if (rating_average > 3.5) {
+            star4.style.fill = "#D1B000";
+        }
+        if (rating_average > 4.5) {
+            star5.style.fill = "#D1B000";
+        }
+    }
+</script>

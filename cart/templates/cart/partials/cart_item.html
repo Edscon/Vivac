@@ -1,13 +1,13 @@
 {% if item %}
-<div class="product mb-6 flex pr-6" id="cart-item-{{item.product.id}}">
-    <a href="{% url 'product' item.product.slug %}" class="w-1/4">
-        <img class="hover:shadow-lg rounded-xl" src="{{item.product.get_thumbnail}}">
+<div class="product mb-6 flex pr-6" id="cart-item-{{item.variant.id}}">
+    <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-1/4">
+        <img class="hover:shadow-lg rounded-xl" src="{{item.variant.image}}">
     </a>
 
     <div class="w-3/4 pl-6">
         <div class="flex justify-between">
 
-            <a href="{% url 'product' item.product.slug %}" class="text-lg">{{item.product.nombre}}</a>
+            <a href="" class="text-lg">{{item.variant.product.nombre}}</a>
             <span class="mb-6 pt-1 text-green-600 font-semibold">{{item.total_price|floatformat:2}}€</span>
 
         </div>
@@ -18,21 +18,24 @@
 
             <a 
             title="minusitemquantity"
-            class="px-3 py-1 bg-gray-200"
-            hx-get="{% url 'update_cart' item.product.id 'decrement'%}"
-            hx-target="#cart-item-{{item.product.id}}"
+            class="px-3 py-1 bg-gray-200 cursor-pointer"
+            hx-get="{% url 'update_cart' item.variant.product.id item.color item.size 'decrement' %}"
+            hx-target="#cart-item-{{item.variant.id}}"
             hx-swap="outerHTML"
             >
             -
             </a>
-
+            <span>{{item}}</span>
+            <span>{{item.col}}</span>
             <span>{{item.quantity}}</span>
+            <span>{{item.color}}</span>
+            <span>{{item.size}}</span>
 
             <a 
             title="sumitemquantity"
-            class="px-3 py-1 bg-gray-200"
-            hx-get="{% url 'update_cart' item.product.id 'increment'%}"
-            hx-target="#cart-item-{{item.product.id}}"
+            class="px-3 py-1 bg-gray-200 cursor-pointer"
+            hx-get="{% url 'update_cart' item.variant.product.id item.color item.size 'increment' %}"
+            hx-target="#cart-item-{{item.variant.id}}"
             hx-swap="outerHTML"
             >
             +

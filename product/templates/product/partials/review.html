@@ -1,0 +1,131 @@
+<div id="FormReseña" class="fixed w-screen h-screen top-0 left-0 z-[999999] hidden overflow-auto">
+    <form id="form">
+        {% csrf_token %}
+        <div onclick="OutForm()" class="bg-gray-400 opacity-50 fixed w-screen h-screen top-0 left-0"></div>
+        
+        <div class="Newreseña fixed top-[50%] left-[50%] h-full w-full md:h-[750px] md:w-[550px] bg-white border opacity-100 text-base text-gray-800">
+            <a onclick="OutForm()">
+                <svg class="h-6 w-6 absolute top-5 right-5 cursor-pointer"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+                </svg> 
+            </a>
+            <div class="absolute top-10 left-5 font-semibold"">Opina sobre este producto</div>
+            <div class="absolute top-[70px] left-5 h-[150px] w-[150px] bg-white">
+                {% if variant_url %}
+                    <img src="{{variants_first.image}}" class="object-contain">
+                {% else %}
+                    <img src="{{product.image}}" class="object-contain">
+                {% endif %}
+            </div>
+            <h1 class="absolute top-[140px] left-[175px] text-gray-600">{{product.nombre}}</h1>
+            <p class="absolute top-[250px] left-5 text-gray-600 text-sm">Puntua y valora el artículo: </p>
+            {% include 'product/partials/stars_reviewForm.html' %}
+
+            <div class="error1 absolute top-[290px] left-[50%] mb-6 rounded-xl text-xs text-red-600 flex" id="error1"></div>
+
+            <div class="mt-[310px] text-black px-3">
+                <input name="titulo" type="text" autocomplete="off" class="w-full border rounded py-2 px-2 text-sm focus:border-black" placeholder="Título*" value="{{ review.titulo }}">
+                <div class="error2 absolute mb-6 rounded-xl text-xs text-red-600 flex mt-1" id="error2"></div>
+                <textarea name="content" rows="10" cols="110" style="resize: none;" type="text" class="mt-8 w-full border rounded py-2 px-2 text-sm focus:border-black" placeholder="Descripción*" value="{{ review.content }}">{{ review.content }}</textarea>
+                <div class="error3 absolute mb-6 rounded-xl text-xs text-red-600 flex" id="error3"></div>
+                <div class="text-gray-600 text-xs mt-5 flex relative">
+                    <svg class="h-3 w-3 text-gray-800 absolute top-[2px]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <p class="px-4">Mínimo 10 caracteres</p>
+                </div>
+            </div>
+            <hr class="w-full mt-2">
+            <div class="px-10">
+                <button class="inline-block flex justify-center w-full py-2 bg-green-600 hover:bg-green-700 text-white mt-3 rounded" id="FormSubmit">
+                    Enviar
+                </button>
+            </div>
+            <div class="text-gray-600 text-xs mt-4 px-3 ">Campos requeridos</div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    let el1 = document.querySelector('#error1')
+    let el2 = document.querySelector('#error2')
+    let el3 = document.querySelector('#error3')
+
+    function validateForm(data) {
+        let errors = []
+        let error1 = false
+        let error2 = false
+        let error3  = false
+        let error4  = false
+        if(data.rating === 0){
+            errors.push('Campo requerido')
+            error1 = true
+        }if (data.titulo === ''){
+            errors.push('Campo requeridos')
+            error2 = true
+        }if(data.content === ''){
+            errors.push('Campo requerido')
+            error3 = true
+        }if(data.content.length < 10){
+            errors.push('No cumple el mínimo requerido')
+            error4 = true
+        }
+
+        let svg = '<svg class="h-3 w-3 text-red-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>';
+            
+        if (error1){
+            el1.innerHTML = svg + 'Campo requerido';
+        }else {
+            el1.innerHTML = '';
+        }
+        
+        if (error2){
+            el2.innerHTML = svg + 'Campo requerido';
+        }else {
+            el2.innerHTML = '';
+        }
+
+        let html = ''
+        if (error3){
+            html = svg + 'Campo requerido';
+        }if(!error3 && error4){
+            html = svg + 'No cumple el mínimo requerido';
+        }if(html != ''){
+            el3.innerHTML = html;
+        }else{
+            el3.innerHTML = '';
+        }
+        return errors
+    }
+
+    let currentURL = window.location.href;
+
+    FormSubmit.addEventListener('click', function(event){
+        event.preventDefault();
+
+        let data = {
+            'titulo': document.querySelector('input[name=titulo]').value,
+            'content': document.querySelector('textarea[name=content]').value,
+            'rating': puntuacion
+        }
+
+        let errors = validateForm(data)
+
+        if (errors.length) {
+            console.log('Errors', errors)
+        }else{
+            fetch(`${currentURL}`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' 
+                },
+                body: JSON.stringify(data),
+            })
+            location.reload();
+        }
+
+        return false
+    });
+
+</script>

@@ -1,0 +1,90 @@
+<div class="menu-mobile hidden fixed z-[99999] top-0 left-0">
+
+    <div class="w-screen h-screen bg-gray-100 opacity-50 z-0" onclick="menu_mobile()"></div>
+
+    <div class="menu-mobile-l w-screen h-screen absolute flex z-10 top-0">
+
+        <div class="relative w-[80%] bg-white h-screen">
+            <button type="button" title="menu-movile-logo" class="absolute right-5 top-5" onclick="menu_mobile()">        
+                <svg class="h-6 w-6"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+                </svg>                                
+            </button>
+
+            <div class="mt-14 text-[15px] text-gray-800 overflow-auto h-screen">
+
+                <a class="block px-6 py-3 bg-gray-100 flex" href="{% url 'shop' %}">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                    </svg>
+                    <span class="ml-2">Tienda</span> 
+                </a>
+                
+                <hr>
+                <a href="{% url 'shop' %}?category=ciclismo" class="block flex justify-between px-6 py-3">
+                    <span>Ciclismo</span>
+                    <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+                    </svg> 
+                </a>
+                <hr>
+                <a href="{% url 'shop' %}?category=esqui" class="block flex justify-between px-6 py-3">
+                    <span>Esquí</span>
+                    <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+                    </svg> 
+                </a>
+                <hr>
+                <a href="{% url 'shop' %}?category=outdoor" class="block flex justify-between px-6 py-3">
+                    <span>Outdoor</span>
+                    <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+                    </svg> 
+                </a>
+                <hr>
+                <a href="{% url 'shop' %}?category=running" class="block flex justify-between px-6 py-3">
+                    <span>Running</span>
+                    <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+                    </svg> 
+                </a>
+                
+                <hr>
+                <a href="" class="block flex justify-between px-6 py-3">
+                    <span>Marcas</span>
+                    <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+                    </svg> 
+                </a>
+
+                <a class="block px-6 py-3 bg-gray-100 flex" href="{% url 'myaccount' %}">
+                    <svg class="h-6 w-6 text-gray-400"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  
+                        <circle cx="12" cy="7" r="4" />
+                    </svg> 
+                    <span class="ml-2">Perfil de Usuario</span> 
+                </a>
+                
+                {% if request.user.is_authenticated %}
+                <a class="block px-6 py-3">Hola {{user.first_name}},</a>
+                <hr class="block py-1">
+                <a href="{% url 'myaccount' %}" class="block px-6 py-3">Mi Cuenta</a>
+                <a href="{% url 'myaccount' %}" class="block px-6 py-3">Información de la Cuenta</a>
+                <a href="{% url 'myaccount' %}" class="block px-6 py-3">Mi Lista de Favoritos</a>
+                <a href="{% url 'myaccount' %}" class="block px-6 py-3">Mis Pedidos</a>
+                <a href="{% url 'logout' %}" class="block px-6 py-3">Salir</a>
+
+                {% else %}
+                <a href="{% url 'myaccount' %}" class="block px-6 py-3">Mi Cuenta</a>
+                {% endif %}
+
+                <div class="py-10"></div>
+            </div>
+
+        </div>
+
+        <div class=" w-[20%] h-screen" onclick="menu_mobile()">
+            
+        </div>
+    </div>
+</div>

@@ -5,17 +5,24 @@
     <head class="h-0">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://cdn.tailwindcss.com"></script>
         <title>{% block title %}{% endblock %} | Esports Vivac</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+        <script src="https://unpkg.com/htmx.org/dist/ext/multi-swap.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
         {% include 'core/partials/styles.html' %}
     </head>
-
-    <body>
+    
+    <body id="body">
         
         {% include 'core/partials/swipertop.html' %}
 
-        {% include 'core/partials/menu_movile.html' %}
+        {% include 'core/partials/menu_mobile.html' %}
 
         <nav class="navbar scroll-up fixed top-0 z-40 max-[1300px]:mt-8 bg-white w-full min-[1300px]:relative sborder-b sshadow-[0_10px_15px_-10px_rgba(0,0,0,0.1)]">
 
@@ -35,7 +42,7 @@
             {% endblock %}
         </main>
 
-        <footer class="bg-gray-100">
+        <footer class="bg-gray-100 bottom-0">
             <div class="max-w-6xl mx-auto py-10 px-6 xl:px-0 md:flex justify-between">
                 <div class="footer-left mb-12 md:mb-0 ">
                     <h2 class="mb-5 uppercase text-lg">Sobre Nosotros</h2>
@@ -51,22 +58,8 @@
                 </div>
             </div>
         </footer>
-
-        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
         {% block scripts %}
         {% endblock %}
-
-        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-            });
-            
-        </script>
     </body>
     {% include 'core/partials/scripts.html' %}
 </html>

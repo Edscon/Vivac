@@ -15,23 +15,26 @@ def start_order(request):
     cart = Cart(request)
     data = json.loads(request.body)
     total_price = 0
-
+    
     items = []
-
+    
     for item in cart:
-        product = item['product']
-        total_price += product.precio * int(item['quantity'])
+        variant = item['variant']
+        total_price += variant.precio * int(item['quantity'])
+        
+        nombre = variant.product.nombre + ' ' + variant.size + ' ' + variant.color.nombre
 
         items.append({
             'price_data': {
                 'currency': 'eur',
                 'product_data': {
-                    'name': product.nombre,
+                    'name': nombre,
                 },
-                'unit_amount': int(round(float(product.precio) * 100, 2)),
+                'unit_amount': int(round(float(variant.precio) * 100, 2)),
             },
             'quantity': item['quantity'],
         })
+        
 
     stripe.api_key = settings.STRIPE_API_KEY_HIDDEN
     session = stripe.checkout.Session.create(
@@ -60,12 +63,12 @@ def start_order(request):
     order.save()
 
     for item in cart:
-        product = item['product']
+        variant = item['variant']
         quantity = int(item['quantity'])
-        price = product.precio * quantity
+        price = variant.precio * quantity
 
         item = OrderItem.objects.create(
-            order=order, product=product, price=price, quantity=quantity)
+            order=order, variant=variant, price=price, quantity=quantity)
 
     cart.clear()
 

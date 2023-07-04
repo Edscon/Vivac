@@ -4,7 +4,7 @@ from .models import Order, OrderItem
 
 class OrderItemInLine(admin.TabularInline):
     model = OrderItem
-    raw_id_fields = ['product']
+    raw_id_fields = ['variant']
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['id', 'status', 'created_at']
