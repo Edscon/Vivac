@@ -4,7 +4,7 @@ import json
 import pandas as pd
 import time
 
-from .models import Product, Marca, Review, Variant, Color, Size, Image, ExtraImage
+from .models import Product, Marca, Review, Variant, Color, Size, Image, ExtraImage, RedSocial
 
 def unique(lista,str):
     lista1 = []
@@ -73,6 +73,8 @@ def product(request, slug):
                 )
             return redirect('product', slug=slug)
     
+    RedSocials = RedSocial.objects.all()
+
     context = {
         'product': product,
         'products_list': products_list,
@@ -84,6 +86,7 @@ def product(request, slug):
         'sizes': sizes,
         'variant_url': False,
         'images_extra': images_extra,
+        'RedSocials': RedSocials,
     }
     return render(request, 'product/product.html', context)
 
@@ -141,6 +144,8 @@ def variant_product(request, slug, slug_color):
                 )
             return redirect('product', slug=slug)
 
+    RedSocials = RedSocial.objects.all()
+
     context = {
         'product': product,
         'products_list': products_list,
@@ -153,6 +158,7 @@ def variant_product(request, slug, slug_color):
         'slug_color': slug_color,
         'variant_url': True,
         'images_extra': images_extra,
+        'RedSocials': RedSocials,
     }
 
     return render(request, 'product/variant.html', context)

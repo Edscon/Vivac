@@ -34,6 +34,33 @@ class Marca(models.Model):
         else:
             return 'https://via.placeholder.com/240x240.jpg'
 
+class RedSocial(models.Model):
+    nombre = models.CharField(max_length=255)
+    slug = models.SlugField()
+    orden = models.IntegerField(default=0)
+    url_share= models.URLField(blank=True, null=True)
+    image = models.ImageField(
+        upload_to='uploads/RedSocial/', blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = '99 - Red Socials'
+        ordering = ['orden']
+
+    def __str__(self):
+        return self.nombre
+
+    def image_tag(self):
+        if self.image.url is not None:
+            return mark_safe('<img src="{}" height="15" />'.format(self.image.url))
+        else:
+            return ""
+
+    def get_image(self):
+        if self.image:
+            return self.image.url
+        else:
+            return 'https://via.placeholder.com/240x240.jpg'
+
 
 class Category(models.Model):
     nombre = models.CharField(max_length=255)

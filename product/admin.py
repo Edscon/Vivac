@@ -2,10 +2,14 @@ from django.contrib import admin
 from django.db import models
 from django.forms import TextInput, Textarea, FileInput
 
-from .models import Category, Product, Marca, Color, Size, Variant, Review, Image, ExtraImage
+from .models import Category, Product, Marca, Color, Size, Variant, Review, Image, ExtraImage, RedSocial
 
 
 class MarcaOrderAdmin(admin.ModelAdmin):
+    list_display = ['nombre', 'orden', 'image_tag']
+    prepopulated_fields = {'slug': ('nombre',)}
+
+class RedSocialOrderAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'orden', 'image_tag']
     prepopulated_fields = {'slug': ('nombre',)}
 
@@ -69,6 +73,7 @@ class ReviewOrderAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryOrderAdmin)
 admin.site.register(Product, ProductOrderAdmin)
 admin.site.register(Marca, MarcaOrderAdmin)
+admin.site.register(RedSocial, RedSocialOrderAdmin)
 admin.site.register(Color, ColorOrderAdmin)
 admin.site.register(Size, SizeOrderAdmin)
 admin.site.register(Variant, VariantOrderAdmin)

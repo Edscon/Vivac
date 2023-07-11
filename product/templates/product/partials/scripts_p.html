@@ -1,0 +1,306 @@
+<script type="text/javascript">
+
+    const menu_tallas = document.querySelector('.menu-tallas-mobile');
+    const menu_tallas_l = document.querySelector('.menu-tallas-mobile-l');
+
+    function menu_tallas_mobile(){
+
+        if (menu_tallas.classList.contains('invisible')){
+            menu_tallas.classList.remove('invisible');
+            menu_tallas.classList.add('visible');
+
+            menu_tallas_l.style.animation ="tallas-open 500ms 1"
+
+        }else{
+            menu_tallas_l.style.animation ="tallas-close 500ms 1"
+            
+            menu_tallas.classList.remove('visible');
+            menu_tallas.classList.add('invisible');
+        }
+   }
+
+
+
+
+    const lens = document.getElementById('cursormag')
+    const product_img = document.getElementById('ImageCenter') 
+    const magnified_img = document.getElementById('zooming')
+
+    function magnify(product_img, magnified_img){
+        product_img.addEventListener('mousemove', moveLens);
+        lens.addEventListener('mousemove', moveLens);
+        lens.addEventListener('mouseout', leaveLens);
+
+    }
+    
+    function moveLens(e){
+        ImgMarca.classList.add("hidden");
+        information.classList.add("hidden");
+        magnified_img.classList.remove("hidden");
+        lens.classList.remove("hidden");
+        //console.log('X: ' + e.pageX, 'Y:' + e.pageY)
+        let x, y, cx, cy;
+        //Positioncursor position
+        const product_img_react = product_img.getBoundingClientRect();
+
+        x = e.clientX - product_img_react.left - lens.offsetWidth/2;
+        y = e.clientY - product_img_react.top - lens.offsetHeight/2;
+        
+        let max_xpos = product_img_react.width - lens.offsetWidth;
+        let max_ypos = product_img_react.height - lens.offsetHeight;
+
+        if(x >= max_xpos ) x = max_xpos;
+        if(x <= 0) x = 0;
+        
+        if(y >= max_ypos) y = max_ypos;
+        if(y <= 0) y = 0;
+
+        lens.style.cssText = `top: ${y}px; left: ${x}px`
+
+        //Zoom
+        if(window.innerWidth >= 1345){
+            cx = (magnified_img.offsetWidth / lens.offsetWidth) / 3;
+            cy = (magnified_img.offsetHeight / lens.offsetHeight) / 4;
+    
+            magnified_img.style.cssText = `
+                                background: url('${product_img.src}')
+                                -${x * cx / 1.8}px -${y * cy / 1.7}px /
+                                ${product_img_react.width * cx * 1.2}px ${product_img_react.height * cy}px
+                                no-repeat
+            `;
+
+        }else if(window.innerWidth >= 1218){
+            cx = (magnified_img.offsetWidth / lens.offsetWidth) / 2;
+            cy = (magnified_img.offsetHeight / lens.offsetHeight) / 3;
+    
+            magnified_img.style.cssText = `
+                                background: url('${product_img.src}')
+                                -${x * cx / 2}px -${y * cy / 2}px /
+                                ${product_img_react.width * cx / 1.1}px ${product_img_react.height * cy / 1.1}px
+                                no-repeat
+            `;
+        }else{
+            cx = (magnified_img.offsetWidth / lens.offsetWidth) / 2;
+            cy = (magnified_img.offsetHeight / lens.offsetHeight) / 3;
+    
+            magnified_img.style.cssText = `
+                                background: url('${product_img.src}')
+                                -${x * cx / 1.2}px -${y * cy / 1.5}px /
+                                ${product_img_react.width * cx * 1.1}px ${product_img_react.height * cy / 1.1}px
+                                no-repeat
+            `;
+        }
+    }
+
+    function leaveLens(){
+        ImgMarca.classList.remove("hidden");
+        information.classList.remove("hidden");
+        magnified_img.classList.add("hidden");
+        lens.classList.add("hidden");
+    }
+    
+    magnify(product_img, magnified_img);
+
+
+    const link = encodeURI(window.location.href);
+    const msg = encodeURIComponent('Te recomiendo este producto de Esports Vivac: ')
+    const title = encodeURIComponent(document.querySelector('title').textContent);
+
+    const fb = document.getElementById('facebook');
+    fb.href = `https://www.facebook.com/share.php?u=${link}`;
+    
+    const twitter = document.getElementById('twitter');
+    twitter.href = `https://twitter.com/share?&url=${link}&text=${msg}&hashtags=sports`;
+
+    try{
+    
+        const linkedIn = document.getElementById('linkedIn');
+        linkedIn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${link}&text=${msg}`;
+    
+        const reddit = document.getElementById('reddit');
+        reddit.href = `https://www.reddit.com/submit?url=${link}&title=${title}`;
+    }catch{}
+
+    const whatsapp = document.getElementById('whatsapp');
+    whatsapp.href = `https://api.whatsapp.com/send?text=${msg}${link}`;
+    
+    comp = document.getElementById('Compartir')
+    comp.onclick = function(){
+        comp.classList.add('hidden');
+        Share.classList.remove('hidden');
+
+        Favoritos.classList.remove('w-[79%]');
+        Favoritos.classList.add('w-[100%]');
+
+    }
+    OutShare.onclick = function(){
+        comp.classList.remove('hidden');
+        Share.classList.add('hidden');
+
+        Favoritos.classList.add('w-[79%]');
+        Favoritos.classList.remove('w-[100%]');
+    }
+    
+    function NoTallas() {
+        document.getElementById("noTallas").classList.remove("hidden");
+    }
+
+    function delay(time) {
+        return new Promise(resolve => setTimeout(resolve, time));
+    }
+
+    var i = 0
+    async function EnviarCheckOut() {
+        await delay(200);
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+        i = 1;
+        document.getElementById('minicart').classList.remove("minicart");
+        document.getElementById('minicart').classList.add("minicart-0");
+        await delay(5000);
+        if( i != 0){
+            i = 0;
+            document.getElementById('minicart').classList.add("minicart");
+            document.getElementById('minicart').classList.remove("minicart-0");
+        }
+    }
+
+    body = document.getElementById('body');
+    
+    body.onclick = function(){
+        if(i == 1){
+            i = 0;
+            document.getElementById('minicart').classList.add("minicart");
+            document.getElementById('minicart').classList.remove("minicart-0");
+        }
+    }
+
+    
+    function Image_mouseover(varsize) {
+        document.getElementById("ImageCenter").src = varsize;
+    }
+
+    var final_size = ''
+
+    function SelectSize(size, mobile=false) {
+        if (mobile) {
+            menu_tallas_l.style.animation ="tallas-close 500ms 1"
+            
+            menu_tallas.classList.remove('visible');
+            menu_tallas.classList.add('invisible');
+
+            EscogeTalla.value = size;
+        }
+
+        document.getElementById("noTallas").classList.add("hidden");
+        if(final_size != ''){
+            document.getElementById('TallasId-'+ final_size ).classList.remove("border-black")
+        }
+        document.getElementById('TallasId-'+ size ).classList.add("border-black")
+
+        document.getElementById('añadir_carrito-'+ final_size).classList.add("hidden")
+        document.getElementById('añadir_carrito-'+ size).classList.remove("hidden")
+
+        final_size = size
+
+
+    }
+
+    function disableScroll() {
+    // Get the current page scroll position
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+
+        // if any scroll is attempted, set this to the previous value
+        window.onscroll = function() {
+            window.scrollTo(scrollLeft, scrollTop);
+        };
+    }
+
+    function enableScroll() {
+        window.onscroll = function() {};
+    }
+
+    const FormReseña = document.getElementById('FormReseña');
+
+    function FirstOp() {
+        if(FormReseña.classList.contains('hidden')){
+                FormReseña.classList.remove('hidden');
+                disableScroll();
+        }else{
+                FormReseña.classList.add('hidden');
+                enableScroll();
+        }
+    }
+
+    function OutForm() {
+        el1.innerHTML = '';
+        el2.innerHTML = '';
+        el3.innerHTML = '';
+        if(!FormReseña.classList.contains('hidden')){
+                FormReseña.classList.add('hidden');
+                enableScroll();
+        }
+    }
+
+
+    const btn1 = document.getElementById("descripcion");
+    const btn2 = document.getElementById("opiniones");
+    const text1 = document.getElementById("div1");
+    const text2 = document.getElementById("div2");
+
+    const green1 = document.getElementById("descripcion_green")
+    const green2 = document.getElementById("opiniones_green")
+
+    function GoOpinions() {
+        if(text2.classList.contains('hidden') && !text1.classList.contains('hidden')){
+            text2.classList.remove('hidden');
+            text1.classList.add('hidden');
+
+            green1.classList.remove('w-[85px]', '-left-4');
+            green1.classList.add('w-[185px]', 'left-[85px]');
+        }
+        window.scroll({
+            top: 700,
+            behavior: "smooth",
+        });
+    }
+
+
+    btn1.onclick = function(){
+
+        if(text1.classList.contains('hidden') && !text2.classList.contains('hidden')){
+            text1.classList.remove('hidden');
+            text2.classList.add('hidden');
+
+            green1.classList.add('w-[85px]', '-left-4');
+            green1.classList.remove('w-[185px]', 'left-[85px]');
+
+            window.scroll({
+            top: 700,
+            behavior: "smooth",
+            });
+        }
+    }
+
+    btn2.onclick = function(){
+        if(text2.classList.contains('hidden') && !text1.classList.contains('hidden')){
+            text2.classList.remove('hidden');
+            text1.classList.add('hidden');
+
+            green1.classList.remove('w-[85px]', '-left-4');
+            green1.classList.add('w-[185px]', 'left-[85px]');
+
+            window.scroll({
+            top: 700,
+            behavior: "smooth",
+            });
+        }
+    }
+
+
+
+</script>

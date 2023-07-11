@@ -38,19 +38,22 @@
                     >
                 {% endfor %}
             </div>
-            <div class="w-[75%] relative">
+            <div class="hidden lg:block w-[75%] relative">
                 <img 
                     id = "ImageCenter"
                     class="w-full object-contain h-full aspect-[3/1] object-left" 
                     src="{{variants_first.image}}"
                 >
                 <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{product.get_descuento}}%</p>
+                <div id="cursormag" class="absolute w-[150px] h-[100px] bg-gray-100 border border-solid border-gray-200 opacity-50">
+    
+                </div>
             </div>
             <a href="{% url 'marca' product.marca.slug %}"><img class="image_marca w-20 aspect-[3/1] object-contain absolute top-0 right-10" 
                 src={{product.marca.get_image}}></a>
         </div>
 
-        <div class="information w-full lg:w-[40%]">
+        <div id="information" class="information w-full lg:w-[40%]">
             <h1 class="text-2xl">{{product.nombre}}</h1>
             <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{product.precio_retail|floatformat:2}} €</p>
             <p class="-mt-2 text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
@@ -98,7 +101,6 @@
             <div class="mt-4">
                 <div class="font-semibold text-gray-800">Tallas</div>
                 <div class="grid grid-cols-9 gap-x-4 gap-y-1 text-sm mt-2"> 
-                    <input id="sizes" type="text" class="hidden" value="{{sizes}}">
                     {% for i in sizes %}
                         {% if i in size %}
                             <div id="TallasId-{{i}}" onclick="SelectSize('{{i}}')" class="w-[55px] h-[50px] border rounded grid font-semibold hover:border-gray-400 cursor-pointer">
@@ -121,14 +123,14 @@
             <div id="top_añadir_carrito">
                 <a 
                     id="añadir_carrito-" 
-                    class=" mt-6 w-full inline-block py-4 rounded-xl bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
+                    class=" mt-6 w-full inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
                     onclick="NoTallas()"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 absolute left-4">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                     </svg> 
-                    <svg class="h-4 w-4 absolute left-9 top-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    <svg class="h-3 w-3 absolute left-[25px] top-[13px]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/>
                     </svg>
                     <p class="text-center">Añadir al carrito</p>
                 </a>
@@ -137,7 +139,7 @@
                     id="añadir_carrito-{{i}}"
                     title="Tothecart"
                     href="#" 
-                    class="hidden mt-6 w-full inline-block py-4 rounded-xl bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
+                    class="hidden mt-6 w-full inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
                     hx-get = "{% url 'add_to_cart' product.id color.code i %}"
                     hx-target = "#menu-cart-button"
                     hx-swap = "innerHTML"
@@ -146,12 +148,41 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 absolute left-4">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                     </svg> 
-                    <svg class="h-4 w-4 absolute left-9 top-2"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    <svg class="h-3 w-3 absolute left-[25px] top-[13px]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/>
                     </svg>
                     <p class="text-center">Añadir al carrito</p>
                 </a>
                 {% endfor %}
+            </div>
+            <div class="flex justify-center space-x-4 mt-3 text-sm">
+                <button class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[60%]">
+                    <svg class="w-6 h-6 absolute left-2 text-center text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                    <p class="text-center">Añadir a favoritos</p>
+                </button>
+                <button id="Compartir" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[40%]">
+                    <svg class="w-5 h-5 absolute left-2 text-center text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                    </svg>
+                    <p class="text-center">Compartir</p>
+                </button>
+                
+                <div id="Share" class="hidden w-[40%] flex justify-center space-x-4">
+                    <div class="w-8/10 flex justify-center space-x-2">
+                        {% for Red in RedSocials %}
+                            <a class="w-[30px]" target="_blank" id="{{Red.slug}}">
+                                <img src="{{Red.get_image}}" class="w-[30px] h-full object-contain">
+                            </a>
+                        {% endfor %}
+                    </div>
+                    <div class="w-2/10 relative bg-gray-100 cursor-pointer" id="OutShare">
+                        <svg class="h-6 w-6 absolute top-[13%]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+                        </svg> 
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -240,128 +271,14 @@
         {% endif %}
         </div>
     </div>
+    <div id="zooming" class="absolute border top-[25%] left-[55%] w-[65%] h-[65%] bg-green-500 md:w-[40%] z-[2] aspect-[1/1] hidden">
+
+    </div>
 </div>
 
 {% endblock %}
 
 {% block scripts %}
-<script type="text/javascript">
-
-    var final_size = ''
-
-    function SelectSize(size) {
-        document.getElementById("noTallas").classList.add("hidden");
-        if(final_size != ''){
-            document.getElementById('TallasId-'+ final_size ).classList.remove("border-black")
-        }
-        document.getElementById('TallasId-'+ size ).classList.add("border-black")
-
-        document.getElementById('añadir_carrito-'+ final_size).classList.add("hidden")
-        document.getElementById('añadir_carrito-'+ size).classList.remove("hidden")
-
-        final_size = size
-
-
-    }
-
-    function NoTallas() {
-        document.getElementById("noTallas").classList.remove("hidden");
-    }
-
-    function delay(time) {
-        return new Promise(resolve => setTimeout(resolve, time));
-    }
-
-    async function EnviarCheckOut() {
-        await delay(200);
-        window.scroll({
-            top: 0,
-            behavior: "smooth",
-        });
-        
-    }
-
-    function Image_mouseover(varimg) {
-        document.getElementById("ImageCenter").src = varimg;
-    }
-
-    const FormReseña = document.getElementById('FormReseña');
-
-    function FirstOp() {
-        if(FormReseña.classList.contains('hidden')){
-                FormReseña.classList.remove('hidden');
-        }else{
-                FormReseña.classList.add('hidden');
-        }
-    }
-
-    function OutForm() {
-        el1.innerHTML = '';
-        el2.innerHTML = '';
-        el3.innerHTML = '';
-        if(!FormReseña.classList.contains('hidden')){
-                FormReseña.classList.add('hidden');
-        }
-    }
-
-
-    const btn1 = document.getElementById("descripcion");
-    const btn2 = document.getElementById("opiniones");
-    const text1 = document.getElementById("div1");
-    const text2 = document.getElementById("div2");
-
-    const green1 = document.getElementById("descripcion_green")
-    const green2 = document.getElementById("opiniones_green")
-
-    function GoOpinions() {
-        if(text2.classList.contains('hidden') && !text1.classList.contains('hidden')){
-            text2.classList.remove('hidden');
-            text1.classList.add('hidden');
-
-            green2.classList.remove('hidden');
-            green1.classList.add('hidden');
-        }
-        window.scroll({
-            top: 700,
-            behavior: "smooth",
-        });
-    }
-
-
-    btn1.onclick = function(){
-
-        if(text1.classList.contains('hidden') && !text2.classList.contains('hidden')){
-            text1.classList.remove('hidden');
-            text2.classList.add('hidden');
-
-            green1.classList.remove('hidden');
-            green2.classList.add('hidden');
-
-            window.scroll({
-            top: 700,
-            behavior: "smooth",
-            });
-        }
-
-    }
-
-    btn2.onclick = function(){
-        if(text2.classList.contains('hidden') && !text1.classList.contains('hidden')){
-            text2.classList.remove('hidden');
-            text1.classList.add('hidden');
-
-            green2.classList.remove('hidden');
-            green1.classList.add('hidden');
-
-            window.scroll({
-            top: 700,
-            behavior: "smooth",
-            });
-        }
-    }
-
-
-
-</script>
+    {% include 'product/partials/scripts_p.html' %}
 {% endblock %}
 

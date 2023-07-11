@@ -1,0 +1,45 @@
+<div class="menu-tallas-mobile invisible fixed z-[99999] top-0 left h-full">
+
+    <div class="w-screen h-full bg-gray-100 opacity-60 z-0" onclick="menu_tallas_mobile()"></div>
+
+    <div
+        class="menu-tallas-mobile-l w-[80%] min-[360px]:min-w-[300px] min-[440px]:w-[50%] h-full absolute flex z-10 top-0 right-0 border-l">
+
+        <div class="bg-white h-full w-full">
+            <button type="button" title="menu-movile-logo" class="absolute right-5 top-5"
+                onclick="menu_tallas_mobile()">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="mt-14 text-[15px] text-gray-800 overflow-auto h-full relative">
+
+                <span class="block px-6 py-3 bg-gray-100 flex text-[17px]"> Escoje una talla... </span>
+
+                <hr>
+
+                <div class="flex flex-wrap text-sm mt-4 mx-2 font-semibold">
+                    <div class="hidden"></div>
+                    {% for i in sizes %}
+                    {% if i in size %}
+                    <div id="TallasId-{{i}}" onclick="SelectSize('{{i}}',true)"
+                        class="w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                        <p class="place-self-center">{{i}}</p>
+                    </div>
+                    {% else %}
+                    <div class="w-[48%] h-[35px] rounded border-[0.5px] grid bg-neutral-200 text-neutral-500 mt-[4px] mx-[2px]">
+                        <p class="place-self-center">{{i}}</p>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+</div>

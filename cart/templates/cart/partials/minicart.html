@@ -19,8 +19,8 @@
 <span class="text-[11px] hidden md:flex ">Carrito</span>
 
 {% if cart|length > 0 %}
-<div open id="minicart" class="minicart border-dropdown-cart block max-[1300px]:hidden absolute w-[400px] bg-white text-gray-800 text-sm rounded-sm top-[50px] left-[-360px] pt-2"> 
-    <span class="overflow-auto max-h-[250px]">
+<div open id="minicart" class="minicart border-dropdown-cart absolute w-[400px] bg-white text-gray-800 text-sm rounded-sm top-[50px] left-[-360px] pt-2"> 
+    <div class="max-h-[250px] overflow-auto">
         {% for item in cart %}
         {% if forloop.counter0 > 0 %}
             <hr class="mb-2">
@@ -48,7 +48,7 @@
             </span>
         {% endif %}
         {% endfor %}
-    </span>
+    </div>
     <div class="h-[120px] relative bg-gray-100">
         <div class="absolute text-black font-semibold top-[20px] right-[30px] flex space-x-4">
             <span class="text-sm">Subtotal:</span>

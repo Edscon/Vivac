@@ -67,20 +67,51 @@
         transition: all 400ms;
     }
 
-    @keyframes sidebar-open-left{
+
+    /*MenuMobile*/
+    @keyframes sidebar-open{
         0% {
+            visibility: visible;
             transform: translateX(-100%);
         }
         100% {
+            visibility: visible;
             transform: translateX(0);
         }
     }
-    @keyframes sidebar-close-left{
+
+    @keyframes sidebar-close{
         0% {
+            visibility: visible;
             transform: translateX(0);
         }
         100% {
+            visibility: hidden;
             transform: translateX(-100%);
         }
     }
+
+    /*TallasMobile*/
+    @keyframes tallas-open{
+        0% {
+            visibility: visible;
+            transform: translateX(100%);
+        }
+        100% {
+            visibility: visible;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes tallas-close{
+        0% {
+            visibility: visible;
+            transform: translateX(0);
+        }
+        100% {
+            visibility: hidden;
+            transform: translateX(100%);
+        }
+    }
+    
 </style>

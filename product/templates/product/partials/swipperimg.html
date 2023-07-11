@@ -1,0 +1,53 @@
+<style>
+    
+    .mySwiper_product [class^="swiper-button-"]::after{
+        font-size: 15px;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        width: 15px;
+        z-index: 10;
+        color: rgb(83, 83, 83);
+    }
+    .swiper-pagination-bullet-active {
+        background-color: rgb(131, 131, 131) !important;
+    }
+</style>
+<div class="mb-6">
+    <div class="swiper_product mySwiper_product block text-gray-600 w-full text-center relative">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide relative">
+                <img 
+                id = "ImageProdMobile"
+                class="w-[full] object-contain aspect-[1/1] rounded cursor-pointer mb-6" 
+                src="{{product.image}}"
+                >
+            </div>
+            {% for image in images_extra %}
+            <div class="swiper-slide">
+                <img 
+                    id = "ImageProdMobile"
+                    class="w-[full] object-contain aspect-[1/1] rounded cursor-pointer mb-6" 
+                    src="{{image.image.url}}"
+                >
+            </div>
+            {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+<script>
+    var swiper_product = new Swiper(".mySwiper_product", {
+        slidesPerView: 1,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            dynamicBullets: true,
+        },
+    });
+</script>
