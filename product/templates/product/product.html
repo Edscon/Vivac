@@ -123,37 +123,37 @@
                                 </div>
                         {% endif %}
                     {% endfor %}
-                        </div>
-                        <a 
-                        id="OptionTallas" 
-                        class=" border w-full inline-block py-2 rounded bg-white relative transition duration-500 cursor-pointer block lg:hidden"
-                        onclick="menu_tallas_mobile()"
-                        >
-                        <svg class="w-4 h-4 absolute top-[50%] right-[5%] -translate-y-[50%]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
-                        </svg>
-                        <input class="pl-4" id="EscogeTalla" value="Escoge una talla ..."></input>
-                    </a>
-                </div>
-                
-                <div id="noTallas" class="hidden mt-3 flex"> 
-                    <svg class="h-3 w-3 text-red-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
-                    <p class="text-sm text-red-500">Selecciona una talla.</p> 
-                </div>
-                
-                <div id="top_añadir_carrito">
+                    </div>
                     <a 
-                    id="añadir_carrito-" 
-                    class=" mt-6 w-full inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
-                    onclick="NoTallas()"
+                    id="OptionTallas" 
+                    class=" border w-full inline-block py-2 rounded bg-white relative transition duration-500 cursor-pointer block lg:hidden"
+                    onclick="menu_tallas_mobile()"
                     >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 absolute top-[50%] left-[10px] -translate-y-[50%]">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                    </svg> 
-                    <svg class="h-3 w-3 absolute top-[44%] left-[19px] -translate-y-[50%]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/>
+                    <svg class="w-4 h-4 absolute top-[50%] right-[5%] -translate-y-[50%]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
                     </svg>
-                    <p class="text-center text-sm lg:text-base">Añadir al carrito</p>
+                    <input readonly="readonly" class="pl-4" id="EscogeTalla" value="Escoge una talla ..."></input>
+                </a>
+            </div>
+                
+            <div id="noTallas" class="hidden mt-3 flex"> 
+                <svg class="h-3 w-3 text-red-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                <p class="text-sm text-red-500">Selecciona una talla.</p> 
+            </div>
+            
+            <div id="top_añadir_carrito">
+                <a 
+                id="añadir_carrito-" 
+                class=" mt-6 w-full inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
+                onclick="NoTallas()"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 absolute top-[50%] left-[10px] -translate-y-[50%]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                </svg> 
+                <svg class="h-3 w-3 absolute top-[44%] left-[19px] -translate-y-[50%]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/>
+                </svg>
+                <p class="text-center text-sm lg:text-base">Añadir al carrito</p>
                 </a>
                 {% for i in size %}
                 <a 
@@ -220,13 +220,27 @@
         
         <hr class="w-full">
         
-        <div class="content-box mt-6 w-[100%] min-h-[200px]">
+        <div class="content-box mt-6 w-[100%]">
             {% if product.descripcion %}
-            <p id="div1" class="w-[60%] text-gray-700 h-[100px] text-justify overflow-auto text-sm">{{product.descripcion}}</p>
+            <div id="div1" class="flex flex-wrap relative min-h-[200px]">
+                <div class="w-[100%] md:w-[60%] text-gray-700 max-h-[300px] overflow-auto text-sm text-justify md:pr-4 md:border-r border-gray-700">
+                    <p>{{product.descripcion}}</p>
+                </div>
+                <div class="hiddem md:block md:w-[1%]"></div>
+                <div class="sticky top-[140px] xl:top-5 w-[100%] md:w-[39%] text-gray-700 text-sm max-[768px]:mt-3 px-4 bg-gray-100 md:h-[130px] lg:h-[100px] mx-6 md:mx-0">
+                    <p class="text-base font-semibold">¿Porque comprar en Esports Vivac?</p>
+                    <ul class="py-4 list-disc px-6">
+                        <li >30 años de experiencia</li>
+                        <li >Una gran cantidad de marcas y productos</li>
+                        <li >Garantia de devolución 30 dias</li>
+                    </ul>
+                </div>
+            </div>
+            
             {% endif %}
             
-            <div id="div2" class="hidden flex relative"> 
-                <div class="w-[60%]">
+            <div id="div2" class="hidden flex flex-wrap relative"> 
+                <div class="w-[100%] lg:w-[60%] max-h-[360px] overflow-auto">
                     <input type="text" id="num_reviews" size="20" name="num_reviews" class="hidden" value="{{ product.reviews.all.count }}">
                     {% for review in product.reviews.all %}
                     <div id="Review" class="px-4 py-1 bg-gray-100 mb-2 relative text-sm rounded text-gray-700">
@@ -244,11 +258,11 @@
                         </div>
                         {% if review.created_by.username ==  request.user.username %}
                         <a onclick="FirstOp()" class="absolute top-5 right-5 hover:text-black hover:scale-105 cursor-pointer">
-                                    <svg class="h-6 w-6" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
-                                </a>
-                                {% endif %}
-                            </div>
-                            {% endfor %}
+                                <svg class="h-6 w-6" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                        </a>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
                             
                             {% if product.reviews.all.count == 0 %}
                             <div class="text-sm relative border flex px-14 w-full py-3 bg-red-100 ">
@@ -260,12 +274,11 @@
                             </div>
                             {% endif %}
                         </div>   
-                <div class="w-[40%] pl-10">
-                    <a onclick="FirstOp()" class="sticky top-10 inline-block relative border rounded flex justify-center w-full py-2 cursor-pointer hover:bg-gray-200 transition duration-500">
+                <div class="lg:w-[40%] pl-10 hidden lg:block">
+                    <a onclick="FirstOp()" class="sticky top-[140px] xl:top-5 inline-block relative border rounded flex justify-center w-full py-2 cursor-pointer hover:bg-gray-200 transition duration-500">
                         Escribir Reseña
                         <svg class="h-6 w-6 absolute left-2 scale-90"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
                     </a>
-                    <p>{{prova}}</p>
                 </div>
             </div>
             

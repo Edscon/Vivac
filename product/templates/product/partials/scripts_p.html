@@ -192,14 +192,16 @@
             menu_tallas.classList.remove('visible');
             menu_tallas.classList.add('invisible');
 
-            EscogeTalla.value = size;
         }
+        EscogeTalla.value = size;
 
         document.getElementById("noTallas").classList.add("hidden");
         if(final_size != ''){
             document.getElementById('TallasId-'+ final_size ).classList.remove("border-black")
+            document.getElementById('TallasId-'+ final_size + '-Mobile' ).classList.remove("border-black")
         }
         document.getElementById('TallasId-'+ size ).classList.add("border-black")
+        document.getElementById('TallasId-'+ size + '-Mobile' ).classList.add("border-black")
 
         document.getElementById('añadir_carrito-'+ final_size).classList.add("hidden")
         document.getElementById('añadir_carrito-'+ size).classList.remove("hidden")
@@ -263,10 +265,13 @@
             green1.classList.remove('w-[85px]', '-left-4');
             green1.classList.add('w-[185px]', 'left-[85px]');
         }
-        window.scroll({
-            top: 700,
-            behavior: "smooth",
-        });
+
+        if(window.innerWidth >= 1218){
+            window.scroll({
+                top: 700,
+                behavior: "smooth",
+            });
+        }else console.log('Failed to scroll');
     }
 
 
@@ -278,7 +283,7 @@
 
             green1.classList.add('w-[85px]', '-left-4');
             green1.classList.remove('w-[185px]', 'left-[85px]');
-
+            
             window.scroll({
             top: 700,
             behavior: "smooth",
