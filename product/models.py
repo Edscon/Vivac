@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.core.files import File
 from django.utils.safestring import mark_safe
+from ckeditor.fields import RichTextField
 
 from io import BytesIO
 from PIL import Image
@@ -113,7 +114,7 @@ class Product(models.Model):
         max_length=10, choices=TIPOS, default='None')
     nombre = models.CharField(max_length=255)
     slug = models.SlugField()
-    descripcion = models.TextField(blank=True, null=True)
+    descripcion = RichTextField(blank=True, null=True)
     video = models.CharField(max_length=255, blank=True, null=True)
     precio_retail = models.FloatField(null=True)
     precio = models.FloatField()

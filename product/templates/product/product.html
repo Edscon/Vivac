@@ -7,6 +7,28 @@
     .Newreseña{
         transform: translate(-50%, -50%);
     }
+    
+    .mySwiper_product [class^="swiper-button-"]::after{
+        font-size: 15px;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        width: 15px;
+        z-index: 10;
+        color: rgb(83, 83, 83);
+    }
+    .mySwiper_products [class^="swiper-button-"]::after{
+        font-size: 20px;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        width: 15px;
+        z-index: 10;
+        color: rgb(83, 83, 83);
+    }
+    .swiper-pagination-bullet-active {
+        background-color: rgb(131, 131, 131) !important;
+    }
 </style>
 
 {% include 'product/partials/menu_tallas_mobile.html' %}
@@ -224,9 +246,8 @@
             {% if product.descripcion %}
             <div id="div1" class="flex flex-wrap relative min-h-[200px]">
                 <div id="desc" class="w-[100%] md:w-[60%] text-gray-700 overflow-hidden text-sm text-justify md:pr-4 maxh">
-                    <p class="mb-10">{{product.descripcion}}</p>
-
-                    <div  class="flex flex-col justify-center items-center">
+                    {{product.descripcion | safe}}
+                    <div  class="flex flex-col justify-center items-center mt-4">
                         {% if product.video %}
                         <iframe class="aspect-[560/315] h-[180px] min-[400px]:h-[220.5px] lg:h-[315px]" src="{{product.video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         {% endif %}
@@ -310,12 +331,34 @@
         <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative">
             <a href="{% url 'shop' %}" class="pt-6 pb-3 hover:text-black">Otros Productod de la Tienda</a>
         </div>
-        
-        <div class="py-2 xl:px-0">
-            <div class="products flex items-center flex-wrap">
-                {% for product in products_list %}
-                    {% include 'product/partials/product_list_item.html' %}
-                {% endfor %}
+        <div class="w-full relative">
+            <div class="xl:px-0 overflow-hidden mx-10">
+                <div class="swiper_products mySwiper_products block text-gray-600">
+                    <div class="swiper-wrapper">
+                        {% for product in products_list %}
+                        <div class="swiper-slide">
+                            {% include 'product/partials/product_list_item.html' %}
+                        </div>
+                        {% endfor %}
+                        {% for product in products_list %}
+                        <div class="swiper-slide">
+                            {% include 'product/partials/product_list_item.html' %}
+                        </div>
+                        {% endfor %}
+                        {% for product in products_list %}
+                        <div class="swiper-slide">
+                            {% include 'product/partials/product_list_item.html' %}
+                        </div>
+                        {% endfor %}
+                        {% for product in products_list %}
+                        <div class="swiper-slide">
+                            {% include 'product/partials/product_list_item.html' %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
             </div>
         </div>
         {% if request.user.is_authenticated %}
@@ -335,6 +378,17 @@
     {% endblock %}
 
 {% block scripts %}
+<script>
+    var swiper_products = new Swiper(".mySwiper_products", {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        freeMode: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
     {% include 'product/partials/scripts_p.html' %}
 {% endblock %}
 

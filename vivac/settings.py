@@ -42,6 +42,22 @@ CART_SESSION_ID = 'cart'
 STRIPE_API_KEY_PUBLISHABLE = os.getenv('STRIPE_API_KEY_PUBLISHABLE')
 STRIPE_API_KEY_HIDDEN = os.getenv('STRIPE_API_KEY_HIDDEN')
 
+# CKEditor Settings
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js' 
+
+CKEDITOR_CONFIGS = {
+    'default':
+        {
+            'toolbar': 'full',
+            'width': 'auto',
+            'extraPlugins': ','.join([
+                'codesnippet',
+            ]),
+        },
+}
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,6 +71,7 @@ INSTALLED_APPS = [
     'product',
     'cart',
     'order',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
