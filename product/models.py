@@ -114,6 +114,7 @@ class Product(models.Model):
     nombre = models.CharField(max_length=255)
     slug = models.SlugField()
     descripcion = models.TextField(blank=True, null=True)
+    video = models.CharField(max_length=255, blank=True, null=True)
     precio_retail = models.FloatField(null=True)
     precio = models.FloatField()
     unidades = models.IntegerField(null=True)

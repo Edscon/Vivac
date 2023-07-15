@@ -1,5 +1,23 @@
 <script type="text/javascript">
 
+    const descripcion = document.getElementById('desc');
+
+    function Leermas(){
+        
+        if(leermas.classList.contains("hidden")){
+            leermas.classList.remove("hidden");
+            leermenos.classList.add("hidden");
+
+            descripcion.classList.remove('full');
+        }
+        else{
+            descripcion.classList.add('full');
+
+            leermas.classList.add("hidden");
+            leermenos.classList.remove("hidden");
+        }
+    }
+
     const menu_tallas = document.querySelector('.menu-tallas-mobile');
     const menu_tallas_l = document.querySelector('.menu-tallas-mobile-l');
 

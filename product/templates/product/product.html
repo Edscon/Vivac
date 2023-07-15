@@ -211,7 +211,7 @@
         
         <hr class="w-full mt-2">
         
-        <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative">
+        <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative max-[326px]:text-[13px]">
             <button id="descripcion" class="pt-6 pb-3 hover:text-black">Descripción</button>
             <button id="opiniones"class="pt-6 pb-3 hover:text-black">Opiniones del artículo ({{product.reviews.all.count}})</button>
             <div id="descripcion_green" class="bg-green-700 h-[2px] w-[85px] absolute -left-4 top-[59px]"></div>
@@ -223,11 +223,17 @@
         <div class="content-box mt-6 w-[100%]">
             {% if product.descripcion %}
             <div id="div1" class="flex flex-wrap relative min-h-[200px]">
-                <div class="w-[100%] md:w-[60%] text-gray-700 max-h-[300px] overflow-auto text-sm text-justify md:pr-4 md:border-r border-gray-700">
-                    <p>{{product.descripcion}}</p>
+                <div id="desc" class="w-[100%] md:w-[60%] text-gray-700 overflow-hidden text-sm text-justify md:pr-4 maxh">
+                    <p class="mb-10">{{product.descripcion}}</p>
+
+                    <div  class="flex flex-col justify-center items-center">
+                        {% if product.video %}
+                        <iframe class="aspect-[560/315] h-[180px] min-[400px]:h-[220.5px] lg:h-[315px]" src="{{product.video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        {% endif %}
+                    </div>
                 </div>
                 <div class="hiddem md:block md:w-[1%]"></div>
-                <div class="sticky top-[140px] xl:top-5 w-[100%] md:w-[39%] text-gray-700 text-sm max-[768px]:mt-3 px-4 bg-gray-100 md:h-[130px] lg:h-[100px] mx-6 md:mx-0">
+                <div class="sticky top-[140px] xl:top-5 w-[100%] md:w-[39%] text-gray-700 text-sm max-[768px]:mt-3 px-4 bg-gray-100 md:h-[130px] lg:h-[100px] sm:mx-6 md:mx-0">
                     <p class="text-base font-semibold">¿Porque comprar en Esports Vivac?</p>
                     <ul class="py-4 list-disc px-6">
                         <li >30 años de experiencia</li>
@@ -286,6 +292,20 @@
 
         <hr class="w-full mt-2">
 
+        <div onclick="Leermas()" class="flex justify-center w-[100%] lg:w-[60%] mt-2 text-sm cursor-pointer select-none">
+            <div id="leermas" class="flex flex-col justify-center items-center text-gray-500">
+                <div>Leer más</div>
+                <svg class="h-4 w-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </div>      
+            <div id="leermenos" class="flex flex-col justify-center items-center text-gray-500 hidden">
+                <div>Leer menos</div>
+                <svg class="h-4 w-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                </svg>
+            </div>
+        </div>
         
         <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative">
             <a href="{% url 'shop' %}" class="pt-6 pb-3 hover:text-black">Otros Productod de la Tienda</a>
