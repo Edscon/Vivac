@@ -172,6 +172,6 @@ def marca(request, slug):
 
 
 def marcas(request):
-
     marcas = Marca.objects.all()
+
     return render(request, 'product/marca.html', {'marcas': marcas})
