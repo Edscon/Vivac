@@ -123,4 +123,45 @@
         max-height: 1000px;
         transition: max-height 0.5s ease-in;
     }
+
+    /*SHOP*/
+    input[type="range"] {
+        -webkit-appearance: none;
+                appearance: none;
+        margin-right: 15px;
+        height: 10px;
+        background: none;
+        pointer-events: none;
+    }
+    input[type="range"]::-webkit-slider-thumb{
+        -webkit-appearance: none;
+                appearance: none;
+        cursor: pointer;
+        height: 18px;
+        width: 18px;
+        pointer-events: auto;
+        background: #d6d6d6;
+        border-radius: 5px;
+        border: 1px solid #8f8f8f;
+        transition: background .3s ease-in-out;
+    }
+    input[type="range"]::-moz-range-thumb{
+        -moz-appearance: none;
+                appearance: none;
+        cursor: pointer;
+        height: 18px;
+        width: 18px;
+        pointer-events: auto;
+        background: #d6d6d6;
+        border-radius: 5px;
+        border: 1px solid #8f8f8f;
+        transition: background .3s ease-in-out;
+    }
+    input[type="range"]::-webkit-slider-runnable-track{
+        -webkit-appearance: none;
+                appearance: none;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+    }
 </style>

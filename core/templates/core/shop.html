@@ -3,34 +3,93 @@
 {% block title %}Tienda{% endblock %}
 
 {% block content%}
-<div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
-    <div class="filters w-full lg:w-1/4">
-        <h3 class="mb-3 text-xl uppercase">Buscar</h3>
+
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto overflow-hidden max-[1300px]:-mt-6 -mt-2 mb-2">
+
+    <div class="mt-2 max-width-3xl max-auto grid place-content-center bg-green-500 h-[50px]"></div>
+
+    <div class="mt-2 flex flex-wrap min-h-screen">
+        <div class="hidden lg:block w-[20%] border-r pr-10">
+            <h3 class="mb-3 text-xl uppercase">Buscar</h3>
         
-        <form method="get" action=".">
-            <div class="flex">
-                <input type="text" name="query" class="p-4 bg-gray-100 border-0" placeholder="Buscar...">
-                <button class="p-4 bg-gray-100 border-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                    </svg>                      
-                </button>
+            <form method="get" action=".">
+                <div class="flex">
+                    <input type="text" name="query" class="p-4 bg-gray-100 border-0" placeholder="Buscar...">
+                    <button class="p-4 bg-gray-100 border-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>                      
+                    </button>
+                </div>
+            </form>
+
+            <h3 class="mt-6 mb-3 text-xl uppercase">Categorias</h3>
+            <ul class="space-y-2">
+                <li><a href="{% url 'shop' %}" class="{% if not active_category %}text-green-500 {% else %}text-gray-500 {% endif %}"><strong>Todas las categorias</strong></a></li>
+                {% for category in categories %}
+                <li><a href="{% url 'shop' %}?category={{ category.slug }}" class="{% if category.slug == active_category %}text-green-500 {% else %}text-gray-500 {% endif %}">{{category.nombre}}</a></li>
+                {% endfor %}
+            </ul>
+            <div class="text-gray-500 text-xs">
+                <div class="range-input mt-10 w-full relative mb-10">
+                    <div class="absolute top-0 w-full h-[10px] bg-neutral-200 border border-gray-400 rounded"></div>
+                    <input class="w-full slider-range absolute top-0" type="range" name="rangemin" value="{{min_max_price.precio__min}}" id="rangemin" min="{{min_max_price.precio__min}}" max="{{min_max_price.precio__max}}">
+                    <input class="w-full slider-range absolute top-0" type="range" name="rangemax" value="{{min_max_price.precio__max}}" id="rangemax" min="{{min_max_price.precio__min}}" max="{{min_max_price.precio__max}}">
+                    
+                    <div class="flex flex-wrap absolute -top-2 w-full"> 
+                        <div id="range-prices" class="flex flex-wrap absolute top-8 w-full text-center text-gray-800 font-semibold justify-center" >
+                            {{min_max_price.precio__min}},00€ - {{min_max_price.precio__max}},00€
+                        </div>
+                    </div>
+
+                </div>
+                <div class="text-sm mt-6 hidden">
+                    <button class="mt-6 w-full inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-200 cursor-pointer">Filter</button>
+                </div>
             </div>
-        </form>
 
-        <h3 class="mt-6 mb-3 text-xl uppercase">Categorias</h3>
-        <ul class="space-y-2">
-            <li><a href="{% url 'shop' %}" class="{% if not active_category %}text-green-500 {% else %}text-gray-500 {% endif %}"><strong> Todas las categorias</strong></a></li>
-            {% for category in categories %}
-            <li><a href="{% url 'shop' %}?category={{ category.slug }}" class="{% if category.slug == active_category %}text-green-500 {% else %}text-gray-500 {% endif %}">{{category.nombre}}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
 
-    <div class="products w-full lg:w-3/4 -mt-4 flex items-center flex-wrap">
-        {% for product in products %}
-            {% include 'product/partials/product_list_item.html' %}
-        {% endfor %}
+        </div>
+        <div class="w-[100%] lg:w-[80%] text-gray-600 px-4">
+            <div class="h-[200px] w-full relative">
+                <div class="text-sm">Tus selecciones: </div>
+                <div class="flex flex-wrap space-x-4 text-xs absolute bottom-0">
+                    <p>{{products.count}} artículos</p>
+                    <p>Ordenar:</p>
+                    <div class="relative text-black">
+                        <a class="absolute -top-1 w-[80px] h-full py-1 inline-block rounded hover:bg-gray-100 relative transition duration-200 cursor-pointer">
+                            <p class="text-center">Más popular</p>
+                        </a>
+                        <a class="absolute -top-1 w-[80px] h-full py-1 inline-block rounded hover:bg-gray-100 relative transition duration-200 cursor-pointer">
+                            <p class="text-center">Más barato</p>
+                        </a>
+                        <a class="absolute -top-1 w-[80px] h-full py-1 inline-block rounded hover:bg-gray-100 relative transition duration-200 cursor-pointer">
+                            <p class="text-center">Mayor precio</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-wrap w-full">
+                {% for product in products %}
+                    {% include 'product/partials/product_list_item.html' %}
+                {% endfor %}
+                {% for product in products %}
+                    {% include 'product/partials/product_list_item.html' %}
+                {% endfor %}
+                {% for product in products %}
+                    {% include 'product/partials/product_list_item.html' %}
+                {% endfor %}
+                {% for product in products %}
+                    {% include 'product/partials/product_list_item.html' %}
+                {% endfor %}
+                {% for product in products %}
+                    {% include 'product/partials/product_list_item.html' %}
+                {% endfor %}
+                {% for product in products %}
+                    {% include 'product/partials/product_list_item.html' %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -336,10 +336,34 @@
                 <div class="swiper_products mySwiper_products block text-gray-600">
                     <div class="swiper-wrapper">
                         {% for product in products_list %}
-                        <div class="swiper-slide">
-                            {% include 'product/partials/product_list_item.html' %}
+                        <div class="swiper-slide xl:h-[350px]">
+                            <div class="min-w-[100px] xl:w-[300px] h-full py-1 md:px-6 hover:shadow-md hover:border">
+                                <a href="{% url 'product' product.slug %}">
+                                    <img title="image_product" src="{{product.image}}" class="w-full rounded-xl">
+                                </a>
+                            
+                                <div class="pt-3 flex items-center justify-between">
+                                    <a title="productname" href="{% url 'product' product.slug %}">{{ product.nombre }}</a>
+                                </div>
+                                <p class="pt-1 text-gray-400">{{product.get_display_precio|floatformat:2}}€</p>
+                            </div>
                         </div>
                         {% endfor %}
+                        {% for product in products_list %}
+                        <div class="swiper-slide xl:h-[350px]">
+                            <div class=" xl:w-[300px] h-full py-1 md:px-6 hover:shadow-md hover:border">
+                                <a href="{% url 'product' product.slug %}">
+                                    <img title="image_product" src="{{product.image}}" class="w-full rounded-xl">
+                                </a>
+                            
+                                <div class="pt-3 flex items-center justify-between">
+                                    <a title="productname" href="{% url 'product' product.slug %}">{{ product.nombre }}</a>
+                                </div>
+                                <p class="pt-1 text-gray-400">{{product.get_display_precio|floatformat:2}}€</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
                     </div>
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
@@ -367,7 +391,7 @@
     var swiper_products = new Swiper(".mySwiper_products", {
         slidesPerView: 4,
         spaceBetween: 20,
-        freeMode: true,
+        freeMode: false,
         navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
