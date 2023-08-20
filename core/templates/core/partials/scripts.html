@@ -70,10 +70,63 @@
    }
 
    /*SHOP queryString = `category=${param1}&price=${param2}`             ?category={{ category.slug }}*/
+
    const url = window.location.href.split('?')[0];
+   const url2 = window.location.href.split('?')[1];
    const urlParams = new URLSearchParams(window.location.search);
+   let param0 = urlParams.get('query');
    let param1 = urlParams.get('category');
    let param2 = urlParams.get('price');
+   let param3 = urlParams.get('sx');
+   let param4 = urlParams.get('sz');
+   let param5 = urlParams.get('ma');
+
+   function initial_stage(param, Button){
+        if(param){
+            var list_x = []
+            for(j in param.split(':')){
+                list_x.push(param.split(':')[j]);
+                    for(i in Button){
+                        if(list_x[j] == Button[i].value){
+                            Button[i].classList.remove('hover:border-neutral-800')
+                            Button[i].classList.add('bg-neutral-200')
+                            Button[i].classList.add('border-neutral-800')
+                            Button[i].checked = true;
+                        }
+                    }
+            }
+            for(x in list_x){
+                for(i in Button){
+                    if(x == Button[i].value){
+                        Button[i].classList.remove('hover:border-neutral-800')
+                        Button[i].classList.add('bg-neutral-200')
+                        Button[i].classList.add('border-neutral-800')
+                        Button[i].checked = true;
+                    }
+                }
+            }
+        }
+   }
+
+   function sendgetviews(param, str){
+        if(url2){
+            if(param){
+                var list = [];
+                let j = 0;
+                for(i in url2.split('&')){
+                    if(url2.split('&')[i].split('=')[0] != str){
+                        list[j] = url2.split('&')[i]
+                        j += 1;
+                    }
+                }
+                if(list.length > 0){
+                    window.location.href = url + '?'+ list.join('&') + `&${str}=${param}`;
+                }else{window.location.href = url + '?' + `${str}=${param}`;}
+            }else window.location.href = window.location.href + `&${str}=${param}`;
+        }else {
+            window.location.href = url + '?' + `${str}=${param}`;
+        }
+   }
 
    const rangeInput = document.querySelectorAll('.range-input input');
    const rangePrices = document.getElementById('range-prices');
@@ -116,11 +169,122 @@
             let max_price = parseInt(rangeInput[1].value);
             param2 = `${min_price},${max_price}`;
 
-            if(param1){
-                window.location.href = url + '?' + `category=${param1}&price=${param2}`;
-            }else{
-                window.location.href = url + '?' + `price=${param2}`
-            }
+            sendgetviews(param2, 'price')
         });
    });
+   
+   function button_event(param, button_value , string){
+       if(param){
+            var list_x = []
+            for(j in param.split(':')){
+                list_x.push(param.split(':')[j]);
+            }
+            
+            if (!list_x.includes(button_value)){
+                param = param + ':' + button_value
+            }else{
+                param = param.split(':');
+                param = param.filter(item => item != button_value).join(':');
+            }
+            is_param = true;
+        }else{
+            param = button_value
+            is_param = false;
+        }
+        console.log(param);
+        sendget(param, is_param, string);
+    }
+    
+    function sendget(param, is_param, string){
+         if(url2){
+             if(is_param){
+                 temp = url2.split('&')
+                 for(i in temp){
+                     if(temp[i].substr(0, 3) == `${string}=`){
+                         if(param){
+                             temp[i] = `${string}=${param}`
+                         }else{
+                             temp[i] = 'ERROR';
+                         }
+                     }
+                 }
+                 temp = temp.filter(item => item != 'ERROR').join('&');
+                 if(temp){window.location.href = url + '?' + temp}
+                 else{window.location.href = url}
+             }else{
+                 window.location.href = window.location.href + '&' + `${string}=${param}`;
+             }
+         }else{
+             window.location.href = url + '?' + `${string}=${param}`;
+         }
+    }
+
+   const Sexbut = document.querySelectorAll('.sexo button');
+   initial_stage(param3, Sexbut);
+
+   Sexbut.forEach(button => {
+        button.addEventListener('click', () =>{
+            
+            button_event(param3, button.value , 'sx')
+
+        });
+   });
+
+   const SizeBut = document.querySelectorAll('.size button');
+   initial_stage(param4, SizeBut);
+
+   SizeBut.forEach(button => {
+        button.addEventListener('click', () => {
+            
+            button_event(param4, button.value , 'sz')
+
+        });
+   });
+
+   const MarcaBut = document.querySelectorAll('.marca input');
+   initial_stage(param5, MarcaBut);
+
+   MarcaBut.forEach(input => {
+        input.addEventListener('click', () => {
+            
+            button_event(param5, input.value , 'ma')
+
+        });
+   });
+   
+   <!-------------------------Selecciones------------------------->
+
+   const Sel_price = document.querySelectorAll('.selec_price button');
+   Sel_price.forEach(button => 
+        {button.addEventListener('click', () =>{
+            temp = url2.split('&')
+            for (i in temp) {
+                if(temp[i].split('=')[0] == 'price'){
+                    console.log(temp[i], url2)
+                    url4 = url2.replace('&' + temp[i],'')
+                    url4 = url4.replace(temp[i] + '&','')
+                    url4 = url4.replace(temp[i],'')
+                    if(url4){
+                        window.location.href = url + '?' + url4
+                    }else{
+                        window.location.href = url
+                    }
+                }
+            }
+        });
+    });
+
+   const Sel_sx = document.querySelectorAll('.selec_sx button');
+   Sel_sx.forEach(button => {button.addEventListener('click', () =>{
+            button_event(param3, button.value , 'sx')});});
+
+   const Sel_sz = document.querySelectorAll('.selec_sz button');
+   Sel_sz.forEach(button => {button.addEventListener('click', () => {
+            button_event(param4, button.value , 'sz')});});
+
+   const Sel_ma = document.querySelectorAll('.selec_ma button');
+   Sel_ma.forEach(button => {button.addEventListener('click', () => {
+            button_event(param5, button.value , 'ma')});});
+
+
    </script>

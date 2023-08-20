@@ -10,28 +10,17 @@
 
     <div class="mt-2 flex flex-wrap min-h-screen">
         <div class="hidden lg:block w-[20%] border-r pr-10">
-            <h3 class="mb-3 text-xl uppercase">Buscar</h3>
-        
-            <form method="get" action=".">
-                <div class="flex">
-                    <input type="text" name="query" class="p-4 bg-gray-100 border-0" placeholder="Buscar...">
-                    <button class="p-4 bg-gray-100 border-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                        </svg>                      
-                    </button>
-                </div>
-            </form>
 
-            <h3 class="mt-6 mb-3 text-xl uppercase">Categorias</h3>
+            <h3 class="mt-4 mb-3 text-xl uppercase">Categorias</h3>
             <ul class="space-y-2">
                 <li><a href="{% url 'shop' %}" class="{% if not active_category %}text-green-500 {% else %}text-gray-500 {% endif %}"><strong>Todas las categorias</strong></a></li>
                 {% for category in categories %}
                 <li><a href="{% url 'shop' %}?category={{ category.slug }}" class="{% if category.slug == active_category %}text-green-500 {% else %}text-gray-500 {% endif %}">{{category.nombre}}</a></li>
                 {% endfor %}
             </ul>
-            <div class="text-gray-500 text-xs">
-                <div class="range-input mt-10 w-full relative mb-10">
+            <div class="text-gray-800 text-xs mt-10">
+                <div class="text-sm font-semibold">Precio</div>
+                <div class="range-input mt-3 w-full relative mb-10">
                     <div class="absolute top-0 w-full h-[10px] bg-neutral-200 border border-gray-400 rounded"></div>
                     <input class="w-full slider-range absolute top-0" type="range" name="rangemin" value="{{min_max_price.precio__min}}" id="rangemin" min="{{min_max_price.precio__min}}" max="{{min_max_price.precio__max}}">
                     <input class="w-full slider-range absolute top-0" type="range" name="rangemax" value="{{min_max_price.precio__max}}" id="rangemax" min="{{min_max_price.precio__min}}" max="{{min_max_price.precio__max}}">
@@ -43,16 +32,117 @@
                     </div>
 
                 </div>
-                <div class="text-sm mt-6 hidden">
-                    <button class="mt-6 w-full inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-200 cursor-pointer">Filter</button>
+            </div>
+            <div class=" mt-20">
+                <div class="text-sm font-semibold">Sexo</div>     
+                <div class="sexo flex flex-wrap text-xs mt-3 text-center"> 
+                    {% for s in sexo_list %}
+                    {% if s == 'hombre' %}
+                    <button value="hombre" class="w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                        <p class="place-self-center">Hombre</p>
+                    </button>
+                    {% endif %}
+                    {% if s == 'mujer' %}
+                    <button value="mujer" class="w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                        <p class="place-self-center">Mujer</p>
+                    </button>
+                    {% endif %}
+                    {% if s == 'nino' %}
+                    <button value="nino" class="w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                        <p class="place-self-center">Niño</p>
+                    </button>
+                    {% endif %}
+                    {% if s == 'nina' %}
+                    <button value="nina" class="w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                        <p class="place-self-center">Niña</p>
+                    </button>
+                    {% endif %}
+                    {% endfor %}
                 </div>
+            </div>
+            
+            <div class=" mt-10 size">
+                <div class="text-sm font-semibold">Tallas</div>     
+                <div class="flex flex-wrap text-xs mt-3 text-center"> 
+                    {% for i in size_num %}
+                        <button value="{{i}}" class="w-[23%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                            <p class="place-self-center">{{i}}</p>
+                        </button>
+                    {% endfor %}
+                </div>
+                <div class="mt-2 flex flex-wrap text-xs mt-3 text-center"> 
+                    {% for i in size_let %}
+                        <button value="{{i}}" class="w-[23%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                            <p class="place-self-center">{{i}}</p>
+                        </button>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="mt-10 marca">
+                <div class="text-sm font-semibold mb-4">Marcas</div>     
+                {% for i in brands %}
+                    <div class="flex items-center mb-1">
+                        <input id="default-checkbox" type="checkbox" value="{{i.slug}}" class="w-4 h-4 rounded">
+                        <label for="default-checkbox" class="ml-2 text-sm">{{i.slug}}</label>
+                    </div>
+                {% endfor %}
             </div>
 
 
         </div>
-        <div class="w-[100%] lg:w-[80%] text-gray-600 px-4">
-            <div class="h-[200px] w-full relative">
-                <div class="text-sm">Tus selecciones: </div>
+        <div class=" w-[100%] lg:w-[80%] text-gray-600 px-4">
+            <div class="h-[100px] w-full relative">
+                {% if selecciones_querry %}
+                {% for sel in selecciones_querry %}
+                    <div>{{sel}}</div> 
+                {% endfor %}
+                {% endif %}
+                {% if active_category %}
+                    <div>{{active_category}}</div>
+                {% endif %}
+                <div class="flex space-x-2 text-xs mt-2 text-gray-700">
+                    <div class="">Tus selecciones: </div>
+                    <div class="selec_price flex space-x-2">
+                        {% for sel in selecciones_price %}
+                            <button value="{{sel}}" class="p-2 border border-gray-300 rounded flex hover:border-gray-800 hover:bg-gray-100">
+                                <svg class="h-4 w-4"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
+                                <p>{{sel}}</p>
+                            </button>
+                        {% endfor %}
+                    </div>
+                    <div class="selec_sx flex space-x-2">
+                        {% for sel in selecciones_sx %}
+                            <button value="{{sel}}" class="p-2 border border-gray-300 rounded flex hover:border-gray-800 hover:bg-gray-100">
+                                <svg class="h-4 w-4"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
+                                {% if sel == 'nino' %}
+                                    <p>Niño</p>
+                                {% endif %}
+                                {% if sel == 'nina' %}
+                                    <p>Niña</p>
+                                {% else %}
+                                    <p>{{sel}}</p>
+                                    {% endif %}
+                                </button>
+                        {% endfor %}
+                    </div>
+                    <div class="selec_sz flex space-x-2">
+                        {% for sel in selecciones_sz %}
+                            <button value="{{sel}}" class="p-2 border border-gray-300 rounded flex hover:border-gray-800 hover:bg-gray-100">
+                                <svg class="h-4 w-4"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
+                                <p>{{sel}}</p>
+                            </button>
+                        {% endfor %}
+                    </div>
+                    <div class="selec_ma flex space-x-2">
+                        {% for sel in selecciones_ma %}
+                            <button value="{{sel}}" class="p-2 border border-gray-300 rounded flex hover:border-gray-800 hover:bg-gray-100">
+                                <svg class="h-4 w-4"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
+                                <p>{{sel}}</p>
+                            </button>
+                        {% endfor %}
+                    </div>
+
+                </div>
                 <div class="flex flex-wrap space-x-4 text-xs absolute bottom-0">
                     <p>{{products.count}} artículos</p>
                     <p>Ordenar:</p>

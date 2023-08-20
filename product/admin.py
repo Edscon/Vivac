@@ -57,7 +57,7 @@ class SizeOrderAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'code']
 
 class VariantOrderAdmin(admin.ModelAdmin):
-    list_display = ['nombre', 'color', 'size',
+    list_display = ['nombre','color', 'size',
                     'precio', 'image_tag']
 
 class ImageOrderAdmin(admin.ModelAdmin):

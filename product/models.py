@@ -3,6 +3,7 @@ from django.db import models
 from django.core.files import File
 from django.utils.safestring import mark_safe
 from ckeditor.fields import RichTextField
+from multiselectfield import MultiSelectField
 
 from io import BytesIO
 from PIL import Image
@@ -104,7 +105,12 @@ class Product(models.Model):
         ('Ropa', 'Ropa'),
         ('Otros', 'Otros'),
     )
-
+    SEXO = (
+        ('hombre', 'hombre'),
+        ('mujer', 'mujer'),
+        ('nino', 'nino'),
+        ('nina', 'nina'),
+    )
 
     categoria = models.ForeignKey(
         Category, related_name='products', on_delete=models.CASCADE)
@@ -112,6 +118,7 @@ class Product(models.Model):
         Marca, on_delete=models.CASCADE, null=True)
     tipo = models.CharField(
         max_length=10, choices=TIPOS, default='None')
+    sexo = MultiSelectField(choices=SEXO, null=True, blank=True, max_length=30)
     nombre = models.CharField(max_length=255)
     slug = models.SlugField()
     descripcion = RichTextField(blank=True, null=True)
@@ -171,7 +178,7 @@ class Product(models.Model):
 
 
 class Image(models.Model):
-    nombre = models.CharField(max_length=20)
+    nombre = models.CharField(max_length=20, blank=True, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='uploads/images', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='thumbnail/', blank=True, null=True)
@@ -238,14 +245,10 @@ class Size(models.Model):
         return self.nombre
 
 class ExtraImage(models.Model):
-    nombre = models.CharField(max_length=20)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     color = color = models.ForeignKey(
         Color, on_delete=models.CASCADE, blank=True, null=True)
     image = models.ImageField(upload_to='uploads/imagesExtra', blank=True, null=True)
-
-    def __str__(self):
-        return self.nombre
     
     def image_tag(self):
         if self.image:
@@ -254,7 +257,7 @@ class ExtraImage(models.Model):
             return ""
 
 class Variant(models.Model):
-    nombre = models.CharField(max_length=100, blank=True, null=True)
+    nombre = models.CharField(max_length=255, blank=True, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     color = models.ForeignKey(
         Color, on_delete=models.CASCADE, blank=True, null=True)

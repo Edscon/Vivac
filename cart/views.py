@@ -42,7 +42,7 @@ def update_cart(request, product_id, color, size, action):
         item = {
             'variant': {
                 'id': variant.id,
-                'nombre': variant.nombre,
+                'nombre': variant.product.nombre,
                 'image': variant.image,
                 'get_thumbnail': variant.image(),
                 'price': variant.precio,
