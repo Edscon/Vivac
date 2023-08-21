@@ -149,8 +149,9 @@ def shop(request):
                 if list_v.count() != 0:
                     products2 = original.filter(id=i.id)
                     products = products | products2
-
-                selecciones_sz.append(j)
+                    selecciones_sz.append(j)
+                
+    
     #----------------------------------------------------------------
     '''BRANDS'''
     selecciones_ma = []

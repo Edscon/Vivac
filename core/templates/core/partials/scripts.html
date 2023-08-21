@@ -287,4 +287,18 @@
             button_event(param5, button.value , 'ma')});});
 
 
+    function hover_card(product_id){
+        const card_text = document.getElementById(`card-${product_id}-text`);
+        card_text.classList.add('mb-10')
+        card_text.classList.add('border-t')
+        card_text.classList.add('shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
+
+    }
+    function hover_card_leave(product_id){
+        const card_text = document.getElementById(`card-${product_id}-text`);
+        card_text.classList.remove('mb-10')
+        card_text.classList.remove('border-t')
+        card_text.classList.remove('shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
+    }
+
    </script>

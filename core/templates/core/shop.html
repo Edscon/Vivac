@@ -4,18 +4,25 @@
 
 {% block content%}
 
-<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto overflow-hidden max-[1300px]:-mt-6 -mt-2 mb-2">
+{% load static %}
 
-    <div class="mt-2 max-width-3xl max-auto grid place-content-center bg-green-500 h-[50px]"></div>
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto overflow-hidden max-[1300px]:-mt-6 -mt-2 mb-2">
+    
+    <div class="mt-2 max-width-3xl max-auto grid place-content-center xl:h-[50px] w-full overflow-hidden hidden md:block" >
+        <img src="{% static 'img/banner.png' %}" class="object-cover" >
+    </div>
+
+    <div class="mt-2 max-width-3xl max-auto grid place-content-center xl:h-[50px] w-full overflow-hidden md:hidden block" >
+        <img src="{% static 'img/banner_mb.png' %}" class="object-cover" >
+    </div>
 
     <div class="mt-2 flex flex-wrap min-h-screen">
         <div class="hidden lg:block w-[20%] border-r pr-10">
 
-            <h3 class="mt-4 mb-3 text-xl uppercase">Categorias</h3>
-            <ul class="space-y-2">
-                <li><a href="{% url 'shop' %}" class="{% if not active_category %}text-green-500 {% else %}text-gray-500 {% endif %}"><strong>Todas las categorias</strong></a></li>
+            <ul class="space-y-2 text-sm mt-4">
+                <li><a href="{% url 'shop' %}" class="{% if not active_category %}text-green-600 font-semibold {% else %}text-gray-700 font-semibold {% endif %}">Todas las categorias</a></li>
                 {% for category in categories %}
-                <li><a href="{% url 'shop' %}?category={{ category.slug }}" class="{% if category.slug == active_category %}text-green-500 {% else %}text-gray-500 {% endif %}">{{category.nombre}}</a></li>
+                <li><a href="{% url 'shop' %}?category={{ category.slug }}" class="{% if category.slug == active_category %}text-green-600 font-semibold {% else %}text-gray-800 {% endif %}">{{category.nombre}}</a></li>
                 {% endfor %}
             </ul>
             <div class="text-gray-800 text-xs mt-10">
@@ -83,7 +90,7 @@
                 {% for i in brands %}
                     <div class="flex items-center mb-1">
                         <input id="default-checkbox" type="checkbox" value="{{i.slug}}" class="w-4 h-4 rounded">
-                        <label for="default-checkbox" class="ml-2 text-sm">{{i.slug}}</label>
+                        <label for="default-checkbox" class="ml-2 text-sm capitalize">{{i.slug}}</label>
                     </div>
                 {% endfor %}
             </div>
@@ -91,17 +98,20 @@
 
         </div>
         <div class=" w-[100%] lg:w-[80%] text-gray-600 px-4">
-            <div class="h-[100px] w-full relative">
+            <div class="min-h-[10px] w-full relative">
                 {% if selecciones_querry %}
                 {% for sel in selecciones_querry %}
-                    <div>{{sel}}</div> 
+                    <div class="font-semibold text-black text-xl">{{sel}}</div> 
                 {% endfor %}
                 {% endif %}
                 {% if active_category %}
-                    <div>{{active_category}}</div>
+                    <div class="font-semibold text-black text-2xl capitalize">{{active_category}}</div>
                 {% endif %}
-                <div class="flex space-x-2 text-xs mt-2 text-gray-700">
-                    <div class="">Tus selecciones: </div>
+                <div class="flex space-x-2 text-xs mt-2 text-gray-700 relative">
+                    {% if selecciones_querry or selecciones_price or selecciones_price or selecciones_sx or selecciones_sz or selecciones_ma %}
+                    <div class="top-10 align-center my-auto">Tus selecciones: </div>
+                    {% endif %}
+                    {% if selecciones_price %}
                     <div class="selec_price flex space-x-2">
                         {% for sel in selecciones_price %}
                             <button value="{{sel}}" class="p-2 border border-gray-300 rounded flex hover:border-gray-800 hover:bg-gray-100">
@@ -110,6 +120,8 @@
                             </button>
                         {% endfor %}
                     </div>
+                    {% endif %}
+                    {% if selecciones_sx %}
                     <div class="selec_sx flex space-x-2">
                         {% for sel in selecciones_sx %}
                             <button value="{{sel}}" class="p-2 border border-gray-300 rounded flex hover:border-gray-800 hover:bg-gray-100">
@@ -120,11 +132,13 @@
                                 {% if sel == 'nina' %}
                                     <p>Niña</p>
                                 {% else %}
-                                    <p>{{sel}}</p>
+                                    <p class="capitalize">{{sel}}</p>
                                     {% endif %}
                                 </button>
                         {% endfor %}
                     </div>
+                    {% endif %}
+                    {% if selecciones_sz %}
                     <div class="selec_sz flex space-x-2">
                         {% for sel in selecciones_sz %}
                             <button value="{{sel}}" class="p-2 border border-gray-300 rounded flex hover:border-gray-800 hover:bg-gray-100">
@@ -133,17 +147,19 @@
                             </button>
                         {% endfor %}
                     </div>
+                    {% endif %}
+                    {% if selecciones_ma %}
                     <div class="selec_ma flex space-x-2">
                         {% for sel in selecciones_ma %}
                             <button value="{{sel}}" class="p-2 border border-gray-300 rounded flex hover:border-gray-800 hover:bg-gray-100">
                                 <svg class="h-4 w-4"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
-                                <p>{{sel}}</p>
+                                <p class="capitalize">{{sel}}</p>
                             </button>
                         {% endfor %}
                     </div>
-
+                    {% endif %}
                 </div>
-                <div class="flex flex-wrap space-x-4 text-xs absolute bottom-0">
+                <div class="flex flex-wrap space-x-4 text-xs mt-6">
                     <p>{{products.count}} artículos</p>
                     <p>Ordenar:</p>
                     <div class="relative text-black">
@@ -159,25 +175,41 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-wrap w-full">
+            <div class="product_card flex flex-wrap w-full text-black">
                 {% for product in products %}
-                    {% include 'product/partials/product_list_item.html' %}
+                <div onclick="window.location=`{% url 'product' product.slug %}`" onmouseleave="hover_card_leave('{{product.id}}')" onmouseover="hover_card('{{product.id}}')" class=" w-1/2 md:w-1/3 pt-5 h-[450px] hover:shadow-[1px_1px_8px_rgba(0,0,0,0.1)] transition-shadow duration-200 border-b border-gray-300 relative cursor-pointer">
+                    <img src="{{product.image}}" class="w-full rounded-xl px-6">
+                    <div class="text-sm absolute bottom-2 w-full">
+                        <div id="card-{{product.id}}-text" class="w-full transition-shadow duration-200">
+                            {% if product.get_descuento > 0 %}
+                            <div class="flex px-6 mt-1">
+                                <p class="bg-green-700 py-[1px] px-[4px] text-white text-[11px] rounded ">- {{product.get_descuento}}%</p>
+                            </div>
+                            {% else %}
+                            <div class="text-[11px] px-6 py-[1px] mt-1">NEW</div>
+                            {% endif %}
+                        </div>
+                        <div class="px-6">
+                            <div class="pt-3 flex items-center justify-between line-clamp-1">
+                                <p class="line-clamp-1">{{ product.nombre }}</p>
+                            </div>
+                            {% if product.get_descuento > 0 %}
+                            <div class="flex space-x-2">
+                                <p class="pt-1 font-semibold text-green-700">{{product.precio|floatformat:2}}€</p>
+                                <p class="pt-1 line-through">{{product.precio_retail|floatformat:2}}€</p>
+                            </div>
+                            {% else %}
+                            <p class="pt-1 font-semibold">{{product.precio|floatformat:2}}€</p>
+                            {% endif %}
+                            <p class="text-xs mt-3">Disponible en varias tallas</p>
+                        </div>
+                    </div>
+                </div>
                 {% endfor %}
-                {% for product in products %}
-                    {% include 'product/partials/product_list_item.html' %}
-                {% endfor %}
-                {% for product in products %}
-                    {% include 'product/partials/product_list_item.html' %}
-                {% endfor %}
-                {% for product in products %}
-                    {% include 'product/partials/product_list_item.html' %}
-                {% endfor %}
-                {% for product in products %}
-                    {% include 'product/partials/product_list_item.html' %}
-                {% endfor %}
-                {% for product in products %}
-                    {% include 'product/partials/product_list_item.html' %}
-                {% endfor %}
+                
+            </div>
+            <div class="flex text-xs mt-5">
+                <p>{{products.count}} artículos</p>
             </div>
         </div>
     </div>

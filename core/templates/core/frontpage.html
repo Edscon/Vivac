@@ -4,6 +4,7 @@
 
 {% block content%}
 
+{% load static %}
 <style>
     .image_marca{
         scale: 0.7;
@@ -18,13 +19,20 @@
 
 <header class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto overflow-hidden max-[1300px]:-mt-6 -mt-2">
 
-    <div class="mt-2 max-width-3xl max-auto grid place-content-center bg-green-500 h-[50px]">
-        
+    <div class="mt-2 max-width-3xl max-auto grid place-content-center xl:h-[50px] w-full overflow-hidden hidden md:block" >
+        <img src="{% static 'img/banner.png' %}" class="object-cover" >
+    </div>
+
+    <div class="mt-2 max-width-3xl max-auto grid place-content-center xl:h-[50px] w-full overflow-hidden md:hidden block" >
+        <img src="{% static 'img/banner_mb.png' %}" class="object-cover" >
     </div>
     
-    <div class="mt-4 max-width-3xl max-auto grid place-content-center bg-green-500 h-[500px]">
-        <p class="mb-10 text-white">Lo que te hace falta para disfrutar de la montaña</p>
-        <a href="{% url 'shop' %}" class="inline-block flex justify-center px-8 py-4 rounded-xl bg-white text-green-500 hover:px-10">Productos</a>
+    <div class="mt-4 max-width-3xl max-auto grid place-content-center xl:h-[500px] hidden lg:block">
+        <img src="{% static 'img/bannerhome_dk.png' %}" class="object-cover" >
+    </div>
+
+    <div class="mt-4 max-width-3xl max-auto grid place-content-center xl:h-[500px] lg:hidden block">
+        <img src="{% static 'img/bannerhome_mb.png' %}" class="object-cover" >
     </div>
 
     <div class="px-10 mt-4 swiper2 mySwiper2 block text-gray-600 w-full text-center cursor-pointer">
