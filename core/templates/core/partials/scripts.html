@@ -69,6 +69,21 @@
         }
    }
 
+   /*MARCAS*/
+   var swiper2 = new Swiper(".mySwiper2", {
+        breakpoints: {
+        1024: { slidesPerView: 8},
+        640: { slidesPerView: 5},
+        },
+        slidesPerView: 3,
+        spaceBetween: 20,
+        freeMode: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });
+
    /*SHOP queryString = `category=${param1}&price=${param2}`             ?category={{ category.slug }}*/
 
    const url = window.location.href.split('?')[0];
@@ -80,6 +95,7 @@
    let param3 = urlParams.get('sx');
    let param4 = urlParams.get('sz');
    let param5 = urlParams.get('ma');
+   let param6 = urlParams.get('or');
 
    function initial_stage(param, Button){
         if(param){
@@ -182,6 +198,7 @@
             
             if (!list_x.includes(button_value)){
                 param = param + ':' + button_value
+                if(string == 'or'){param = button_value}
             }else{
                 param = param.split(':');
                 param = param.filter(item => item != button_value).join(':');
@@ -251,6 +268,17 @@
 
         });
    });
+
+   const Ordering = document.querySelectorAll('.order button');
+   initial_stage(param6, Ordering);
+   
+   Ordering.forEach(button => {
+        button.addEventListener('click', () => {
+            
+            button_event(param6, button.value , 'or')
+
+        });
+   });
    
    <!-------------------------Selecciones------------------------->
 
@@ -289,16 +317,16 @@
 
     function hover_card(product_id){
         const card_text = document.getElementById(`card-${product_id}-text`);
-        card_text.classList.add('mb-10')
-        card_text.classList.add('border-t')
-        card_text.classList.add('shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
+        card_text.classList.add('md:mb-10')
+        card_text.classList.add('md:border-t')
+        card_text.classList.add('md:shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
 
     }
     function hover_card_leave(product_id){
         const card_text = document.getElementById(`card-${product_id}-text`);
-        card_text.classList.remove('mb-10')
-        card_text.classList.remove('border-t')
-        card_text.classList.remove('shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
+        card_text.classList.remove('md:mb-10')
+        card_text.classList.remove('md:border-t')
+        card_text.classList.remove('md:shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
     }
 
    </script>

@@ -69,6 +69,9 @@ class ReviewOrderAdmin(admin.ModelAdmin):
     list_filter = ['rating', 'created_at']
     search_fields = ['rating']
 
+class ExtraImageAdmin(admin.ModelAdmin):
+    list_display = ['product', 'id', 'image_tag']
+    readonly_fields = ['id','image_tag']
 
 admin.site.register(Category, CategoryOrderAdmin)
 admin.site.register(Product, ProductOrderAdmin)
@@ -79,3 +82,4 @@ admin.site.register(Size, SizeOrderAdmin)
 admin.site.register(Variant, VariantOrderAdmin)
 admin.site.register(Review, ReviewOrderAdmin)
 admin.site.register(Image, ImageOrderAdmin)
+admin.site.register(ExtraImage, ExtraImageAdmin)

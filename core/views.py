@@ -169,6 +169,19 @@ def shop(request):
 
             selecciones_ma.append(j)
     #----------------------------------------------------------------
+    '''ORDERING'''
+
+    order = request.GET.get('or','')
+    print(order)
+
+    if (order == 'sort_popular'):
+        products = products.order_by('-popular_rating')
+    if (order == 'sort_price_asc'):
+        products = products.order_by('precio')
+    if (order == 'sort_price_desc'):
+        products = products.order_by('-precio')
+
+    #----------------------------------------------------------------
     print(products)
 
     'PRECIO MIN/MAX'

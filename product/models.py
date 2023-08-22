@@ -131,6 +131,7 @@ class Product(models.Model):
     creado_en = models.DateTimeField(auto_now_add=True)
     image_id = models.IntegerField(null=True) 
     sizes_shoes = models.CharField(max_length=255, blank=True, null=True)
+    popular_rating = models.IntegerField(null=True, blank=True)
 
     class Meta:
         verbose_name_plural = '1 - Products'
@@ -252,9 +253,12 @@ class ExtraImage(models.Model):
     
     def image_tag(self):
         if self.image:
-            return mark_safe('<img src="{}" height="80" />'.format(self.image.url))
+            return mark_safe('<img src="{}" height="200" />'.format(self.image.url))
         else:
             return ""
+        
+    def ID(self):
+            return self.id
 
 class Variant(models.Model):
     nombre = models.CharField(max_length=255, blank=True, null=True)

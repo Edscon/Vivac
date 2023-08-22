@@ -18,7 +18,6 @@ urlpatterns = [
     path('shop/', shop, name='shop'),
     path('shop/<slug:slug>', product, name='product'),
     path('shop/<slug:slug>/<slug:slug_color>', variant_product, name='variant_product'),
-    path('shop/', marcas, name='shop'),
     path('marcas/<slug:slug>', marca, name='marca'),
 
 ]

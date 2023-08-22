@@ -6,8 +6,19 @@
 
 {% load static %}
 
-<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto overflow-hidden max-[1300px]:-mt-6 -mt-2 mb-2">
+<div class="fixed z-20 w-full grid place-content-center block lg:hidden bottom-4">
+    <div class="mx-auto w-[250px] md:w-[300px] h-[50px] flex text-white text-sm" >
+        <p class="w-1/3 h-full border-r justify-center flex py-3 rounded-l-3xl bg-neutral-700 opacity-90 hover:opacity-100">Categorias</p>
+        <p class="w-1/3 h-full border-r justify-center flex py-3 bg-neutral-700 opacity-90 hover:opacity-100">Ordenación</p>
+        <p class="w-1/3 h-full justify-center flex py-3 relative rounded-r-3xl bg-neutral-700 opacity-90 hover:opacity-100">
+            <svg class="h-4 w-4 text-white absolute left-1 md:left-3 top-[15px]"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="14" cy="6" r="2" />  <line x1="4" y1="6" x2="12" y2="6" />  <line x1="16" y1="6" x2="20" y2="6" />  <circle cx="8" cy="12" r="2" />  <line x1="4" y1="12" x2="6" y2="12" />  <line x1="10" y1="12" x2="20" y2="12" />  <circle cx="17" cy="18" r="2" />  <line x1="4" y1="18" x2="15" y2="18" />  <line x1="19" y1="18" x2="20" y2="18" /></svg>
+            Filtros
+        </p>
+    </div>
+</div>
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto overflow-hidden max-[1300px]:-mt-6 -mt-2 mb-2 relative">
     
+
     <div class="mt-2 max-width-3xl max-auto grid place-content-center xl:h-[50px] w-full overflow-hidden hidden md:block" >
         <img src="{% static 'img/banner.png' %}" class="object-cover" >
     </div>
@@ -107,6 +118,14 @@
                 {% if active_category %}
                     <div class="font-semibold text-black text-2xl capitalize">{{active_category}}</div>
                 {% endif %}
+                <div class="my-4 swiper2 mySwiper2 block text-gray-600 w-full text-center cursor-pointer overflow-hidden">
+                    <div class="swiper-wrapper">
+                    {% for marca in brands %}
+                    <div class="swiper-slide"><a href="{% url 'marca' marca.slug %}"><img class="image_marca w-full aspect-[3/1] object-contain" 
+                        src={{marca.get_image}}></a></div>
+                    {% endfor %}
+                    </div>
+                </div>
                 <div class="flex space-x-2 text-xs mt-2 text-gray-700 relative">
                     {% if selecciones_querry or selecciones_price or selecciones_price or selecciones_sx or selecciones_sz or selecciones_ma %}
                     <div class="top-10 align-center my-auto">Tus selecciones: </div>
@@ -159,26 +178,26 @@
                     </div>
                     {% endif %}
                 </div>
-                <div class="flex flex-wrap space-x-4 text-xs mt-6">
+                <div class="flex flex-wrap space-x-4 text-xs mt-6 order hidden md:flex">
                     <p>{{products.count}} artículos</p>
                     <p>Ordenar:</p>
                     <div class="relative text-black">
-                        <a class="absolute -top-1 w-[80px] h-full py-1 inline-block rounded hover:bg-gray-100 relative transition duration-200 cursor-pointer">
+                        <button value="sort_popular" class="absolute -top-1 w-[80px] h-full py-1 inline-block rounded hover:bg-gray-100 relative transition duration-200 cursor-pointer">
                             <p class="text-center">Más popular</p>
-                        </a>
-                        <a class="absolute -top-1 w-[80px] h-full py-1 inline-block rounded hover:bg-gray-100 relative transition duration-200 cursor-pointer">
+                        </button>
+                        <button value="sort_price_asc" class="absolute -top-1 w-[80px] h-full py-1 inline-block rounded hover:bg-gray-100 relative transition duration-200 cursor-pointer">
                             <p class="text-center">Más barato</p>
-                        </a>
-                        <a class="absolute -top-1 w-[80px] h-full py-1 inline-block rounded hover:bg-gray-100 relative transition duration-200 cursor-pointer">
+                        </button>
+                        <button value="sort_price_desc" class="absolute -top-1 w-[80px] h-full py-1 inline-block rounded hover:bg-gray-100 relative transition duration-200 cursor-pointer">
                             <p class="text-center">Mayor precio</p>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
             <div class="product_card flex flex-wrap w-full text-black">
                 {% for product in products %}
-                <div onclick="window.location=`{% url 'product' product.slug %}`" onmouseleave="hover_card_leave('{{product.id}}')" onmouseover="hover_card('{{product.id}}')" class=" w-1/2 md:w-1/3 pt-5 h-[450px] hover:shadow-[1px_1px_8px_rgba(0,0,0,0.1)] transition-shadow duration-200 border-b border-gray-300 relative cursor-pointer">
-                    <img src="{{product.image}}" class="w-full rounded-xl px-6">
+                <div onclick="window.location=`{% url 'product' product.slug %}`" onmouseleave="hover_card_leave('{{product.id}}')" onmouseover="hover_card('{{product.id}}')" class=" w-1/2 md:w-1/3 pt-5 md:hover:shadow-[1px_1px_8px_rgba(0,0,0,0.1)] transition-shadow duration-200 border-b border-gray-300 relative cursor-pointer">
+                    <img src="{{product.image}}" class="w-full rounded-xl px-6 mb-28 md:mb-[150px]">
                     <div class="text-sm absolute bottom-2 w-full">
                         <div id="card-{{product.id}}-text" class="w-full transition-shadow duration-200">
                             {% if product.get_descuento > 0 %}
@@ -190,8 +209,8 @@
                             {% endif %}
                         </div>
                         <div class="px-6">
-                            <div class="pt-3 flex items-center justify-between line-clamp-1">
-                                <p class="line-clamp-1">{{ product.nombre }}</p>
+                            <div class="pt-3 flex items-center justify-between">
+                                <p class="line-clamp-2 md:line-clamp-1 leading-[16px] h-[33px] md:h-[17px]">{{ product.nombre }}</p>
                             </div>
                             {% if product.get_descuento > 0 %}
                             <div class="flex space-x-2">
