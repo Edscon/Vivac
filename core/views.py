@@ -181,7 +181,6 @@ def shop(request):
     '''ORDERING'''
 
     order = request.GET.get('or','')
-    print(order)
 
     if (order == 'sort_popular'):
         products = products.order_by('-popular_rating')
@@ -191,8 +190,6 @@ def shop(request):
         products = products.order_by('-precio')
 
     #----------------------------------------------------------------
-    print(products)
-
     'PRECIO MIN/MAX'
     min_max_price = products.aggregate(Min("precio"), Max("precio"))
         
@@ -209,7 +206,7 @@ def shop(request):
     'SX'
 
     temp = list(products.values('sexo'))
-    print(temp)
+    
     sexo_list = []
     for j in ['hombre', 'mujer', 'nino', 'nina']:
         for i in temp:
@@ -217,9 +214,6 @@ def shop(request):
 
             for t in range(leng):
                 if str(i['sexo'][t]) == j and j not in sexo_list: sexo_list.append(j)
-            
-    
-    print(sexo_list)
 
     '''TALLAS'''
 
