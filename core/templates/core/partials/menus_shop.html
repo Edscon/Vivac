@@ -1,0 +1,107 @@
+<div class="menu-categorys-mobile invisible fixed z-[99999] top-0 left h-full">
+
+    <div class="w-screen h-full bg-gray-100 opacity-60 z-0" onclick="menu_categorys_mobile()"></div>
+
+    <div
+        class="menu-categorys-mobile-l w-[80%] min-[360px]:min-w-[300px] min-[440px]:w-[50%] h-full absolute flex z-10 top-0 right-0 border-l">
+
+        <div class="bg-white h-full w-full">
+            <button type="button" title="menu-movile-logo" class="absolute right-5 top-5"
+                onclick="menu_categorys_mobile()">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="mt-14 text-gray-800 overflow-auto h-full relative">
+
+                <span class="block px-6 py-3 border-b-[0.1px] border-black flex text-[18px]">Categorías</span>
+
+                <ul class="space-y-1 px-8 mt-4">
+                    <li><a href="{% url 'shop' %}" class="{% if not active_category %}text-green-600 font-semibold {% else %}text-gray-700 font-semibold {% endif %}">Todas las categorías</a></li>
+                    {% for category in categories %}
+                    <li><a href="{% url 'shop' %}?category={{ category.slug }}" class="{% if category.slug == active_category %}text-green-600 font-semibold {% else %}text-gray-800 {% endif %}">{{category.nombre}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="menu-orden-mobile invisible fixed z-[99999] top-0 left h-full">
+
+    <div class="w-screen h-full bg-gray-100 opacity-60 z-0" onclick="menu_orden_mobile()"></div>
+
+    <div
+        class="menu-orden-mobile-l w-[80%] min-[360px]:min-w-[300px] min-[440px]:w-[50%] h-full absolute flex z-10 top-0 right-0 border-l">
+
+        <div class="bg-white h-full w-full">
+            <button type="button" title="menu-movile-logo" class="absolute right-5 top-5"
+                onclick="menu_orden_mobile()">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="mt-14 text-gray-800 overflow-auto h-full relative">
+
+                <span class="block px-6 py-3 border-b-[0.1px] border-black flex text-[18px]">Filtros</span>
+
+                <div class="space-y-1 mt-4 px-3 text-sm order2">
+                    <div class="">Ordenación</div>
+                    <div class="flex flex-wrap text-black">
+                        <button value="sort_popular" class="w-[47%] xl:w-[48%] h-[40px] border border-gray-400 rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                            <p class="place-self-center">Más popular</p>
+                        </button>
+                        <button value="sort_price_asc" class="w-[47%] xl:w-[48%] h-[40px] border border-gray-400  rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                            <p class="place-self-center">Más barato</p>
+                        </button>
+                        <button value="sort_price_desc" class="w-[47%] xl:w-[48%] h-[40px] border border-gray-400  rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                            <p class="place-self-center">Mayor precio</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="menu-filtro-mobile invisible fixed z-[99999] top-0 left h-full">
+
+    <div class="w-screen h-full bg-gray-100 opacity-60 z-0" onclick="menu_filtro_mobile()"></div>
+
+    <div
+        class="menu-filtro-mobile-l w-[80%] min-[360px]:min-w-[300px] min-[440px]:w-[50%] h-full absolute flex z-10 top-0 right-0 border-l">
+
+        <div class="bg-white h-full w-full">
+            <button type="button" title="menu-movile-logo" class="absolute right-5 top-5"
+                onclick="menu_filtro_mobile()">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="mt-14 text-gray-800 overflow-auto h-full relative">
+
+                <span class="block px-6 py-3 border-b-[0.1px] border-black flex text-[18px]">Filtros</span>
+
+                <div class="text-gray-800 text-sm mt-4 px-5">
+                    <div class="text-base font-semibold">Precio</div>
+                    <div class="range-input mt-3 w-full relative mb-10">
+                        <div class="absolute top-0 w-full h-[10px] bg-neutral-200 border border-gray-400 rounded"></div>
+                        <input class="w-full slider-range absolute top-0" type="range" name="rangemin" value="{{min_max_price.precio__min}}" id="rangemin" min="{{min_max_price.precio__min}}" max="{{min_max_price.precio__max}}">
+                        <input class="w-full slider-range absolute top-0" type="range" name="rangemax" value="{{min_max_price.precio__max}}" id="rangemax" min="{{min_max_price.precio__min}}" max="{{min_max_price.precio__max}}">
+                        
+                        <div class="flex flex-wrap absolute -top-2 w-full"> 
+                            <div id="range-prices" class="flex flex-wrap absolute top-8 w-full text-center text-gray-800 font-semibold justify-center" >
+                                {{min_max_price.precio__min}},00€ - {{min_max_price.precio__max}},00€
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

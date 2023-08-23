@@ -6,16 +6,28 @@
 
 {% load static %}
 
-<div class="fixed z-20 w-full grid place-content-center block lg:hidden bottom-4">
-    <div class="mx-auto w-[250px] md:w-[300px] h-[50px] flex text-white text-sm" >
-        <p class="w-1/3 h-full border-r justify-center flex py-3 rounded-l-3xl bg-neutral-700 opacity-90 hover:opacity-100">Categorias</p>
-        <p class="w-1/3 h-full border-r justify-center flex py-3 bg-neutral-700 opacity-90 hover:opacity-100">Ordenación</p>
-        <p class="w-1/3 h-full justify-center flex py-3 relative rounded-r-3xl bg-neutral-700 opacity-90 hover:opacity-100">
-            <svg class="h-4 w-4 text-white absolute left-1 md:left-3 top-[15px]"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="14" cy="6" r="2" />  <line x1="4" y1="6" x2="12" y2="6" />  <line x1="16" y1="6" x2="20" y2="6" />  <circle cx="8" cy="12" r="2" />  <line x1="4" y1="12" x2="6" y2="12" />  <line x1="10" y1="12" x2="20" y2="12" />  <circle cx="17" cy="18" r="2" />  <line x1="4" y1="18" x2="15" y2="18" />  <line x1="19" y1="18" x2="20" y2="18" /></svg>
-            Filtros
-        </p>
+<div class="fixed z-30 w-full grid place-content-center block lg:hidden bottom-24">
+    <div class="mx-auto w-[250px] md:w-[300px] h-[50px] flex text-white text-sm inline-block relative" >
+        <div onclick="menu_categorys_mobile()" class="w-1/3 bg-neutral-700 border-r rounded-l-3xl opacity-90 hover:opacity-100 relative">
+            <p class="absolute m-0 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">Categorias</p>
+        </div>
+        <div onclick="menu_orden_mobile()" class="w-1/3 bg-neutral-700 border-r opacity-90 hover:opacity-100 relative">
+            <p class="absolute m-0 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">Orientación</p>
+        </div>
+        <div onclick="menu_filtro_mobile()" class="w-1/3 bg-neutral-700 border-r rounded-r-3xl opacity-90 hover:opacity-100 relative">
+            <div class="absolute m-0 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                <div class="flex">
+                    <div class="relative"><svg class="h-5 w-5 text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="14" cy="6" r="2" />  <line x1="4" y1="6" x2="12" y2="6" />  <line x1="16" y1="6" x2="20" y2="6" />  <circle cx="8" cy="12" r="2" />  <line x1="4" y1="12" x2="6" y2="12" />  <line x1="10" y1="12" x2="20" y2="12" />  <circle cx="17" cy="18" r="2" />  <line x1="4" y1="18" x2="15" y2="18" />  <line x1="19" y1="18" x2="20" y2="18" /></svg>
+                    </div>
+                    <div>Filtros</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+{% include 'core/partials/menus_shop.html' %}
+
 <div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto overflow-hidden max-[1300px]:-mt-6 -mt-2 mb-2 relative">
     
 
@@ -31,7 +43,7 @@
         <div class="hidden lg:block w-[20%] border-r pr-10">
 
             <ul class="space-y-2 text-sm mt-4">
-                <li><a href="{% url 'shop' %}" class="{% if not active_category %}text-green-600 font-semibold {% else %}text-gray-700 font-semibold {% endif %}">Todas las categorias</a></li>
+                <li><a href="{% url 'shop' %}" class="{% if not active_category %}text-green-600 font-semibold {% else %}text-gray-700 font-semibold {% endif %}">Todas las categorías</a></li>
                 {% for category in categories %}
                 <li><a href="{% url 'shop' %}?category={{ category.slug }}" class="{% if category.slug == active_category %}text-green-600 font-semibold {% else %}text-gray-800 {% endif %}">{{category.nombre}}</a></li>
                 {% endfor %}
@@ -56,22 +68,22 @@
                 <div class="sexo flex flex-wrap text-xs mt-3 text-center"> 
                     {% for s in sexo_list %}
                     {% if s == 'hombre' %}
-                    <button value="hombre" class="w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                    <button value="hombre" class="w-[47%] xl:w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
                         <p class="place-self-center">Hombre</p>
                     </button>
                     {% endif %}
                     {% if s == 'mujer' %}
-                    <button value="mujer" class="w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                    <button value="mujer" class="w-[47%] xl:w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
                         <p class="place-self-center">Mujer</p>
                     </button>
                     {% endif %}
                     {% if s == 'nino' %}
-                    <button value="nino" class="w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                    <button value="nino" class="w-[47%] xl:w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
                         <p class="place-self-center">Niño</p>
                     </button>
                     {% endif %}
                     {% if s == 'nina' %}
-                    <button value="nina" class="w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
+                    <button value="nina" class="w-[47%] xl:w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
                         <p class="place-self-center">Niña</p>
                     </button>
                     {% endif %}
@@ -197,18 +209,19 @@
             <div class="product_card flex flex-wrap w-full text-black">
                 {% for product in products %}
                 <div onclick="window.location=`{% url 'product' product.slug %}`" onmouseleave="hover_card_leave('{{product.id}}')" onmouseover="hover_card('{{product.id}}')" class=" w-1/2 md:w-1/3 pt-5 md:hover:shadow-[1px_1px_8px_rgba(0,0,0,0.1)] transition-shadow duration-200 border-b border-gray-300 relative cursor-pointer">
-                    <img src="{{product.image}}" class="w-full rounded-xl px-6 mb-28 md:mb-[150px]">
-                    <div class="text-sm absolute bottom-2 w-full">
-                        <div id="card-{{product.id}}-text" class="w-full transition-shadow duration-200">
+                    <img src="{{product.image}}" class="z-10 px-0 md:px-3 w-full mb-28 md:mb-[120px] mt-5 md:mt-0">
+                    <div class="z-20 text-sm absolute bottom-2 w-full">
+                        <div id="card-{{product.id}}-text" class="w-full transition-shadow duration-200 mt-1">
                             {% if product.get_descuento > 0 %}
-                            <div class="flex px-6 mt-1">
+                            <div class="flex md:px-5 bg-white mx-1">
                                 <p class="bg-green-700 py-[1px] px-[4px] text-white text-[11px] rounded ">- {{product.get_descuento}}%</p>
                             </div>
                             {% else %}
-                            <div class="text-[11px] px-6 py-[1px] mt-1">NEW</div>
+                            <div class="text-[11px] md:px-5 bg-white mx-1 py-[1px]">NEW</div>
                             {% endif %}
                         </div>
-                        <div class="px-6">
+                        <div  id="card-{{product.id}}-h" class="bg-white"></div>
+                        <div class="md:px-5 bg-white mx-1">
                             <div class="pt-3 flex items-center justify-between">
                                 <p class="line-clamp-2 md:line-clamp-1 leading-[16px] h-[33px] md:h-[17px]">{{ product.nombre }}</p>
                             </div>

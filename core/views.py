@@ -154,6 +154,15 @@ def shop(request):
     
     #----------------------------------------------------------------
     '''BRANDS'''
+    brands = products.values('marca')
+    temp = []
+    for i in brands:
+        temp.append(i['marca'])
+    temp = set(temp)
+    brands = []
+    for i in temp:
+        brands.append(get_object_or_404(Marca,id=i))
+
     selecciones_ma = []
 
     ma = request.GET.get('ma','')
@@ -266,18 +275,6 @@ def shop(request):
             if i == j and j not in temp: temp.append(j)
     size_let = temp
 
-
-
-    '''BRANDS'''
-
-    brands = products.values('marca')
-    temp = []
-    for i in brands:
-        temp.append(i['marca'])
-    temp = set(temp)
-    brands = []
-    for i in temp:
-        brands.append(get_object_or_404(Marca,id=i))
 
 
     context = {

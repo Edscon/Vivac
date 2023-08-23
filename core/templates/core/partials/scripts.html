@@ -13,7 +13,7 @@
     const nav2 = document.querySelector('.buscador');
     const Top = document.getElementById('Top');
     nscrollup = 0
-    nscrollupuntil = 60
+    nscrollupuntil = 40
 
     window.addEventListener('scroll',() => {
 
@@ -187,6 +187,14 @@
 
             sendgetviews(param2, 'price')
         });
+
+        input.addEventListener('touchend', () =>{
+            let min_price = parseInt(rangeInput[0].value);
+            let max_price = parseInt(rangeInput[1].value);
+            param2 = `${min_price},${max_price}`;
+            
+            sendgetviews(param2, 'price')
+        });
    });
    
    function button_event(param, button_value , string){
@@ -271,8 +279,19 @@
 
    const Ordering = document.querySelectorAll('.order button');
    initial_stage(param6, Ordering);
-   
+
    Ordering.forEach(button => {
+        button.addEventListener('click', () => {
+            
+            button_event(param6, button.value , 'or')
+
+        });
+   });
+   
+   const Ordering2 = document.querySelectorAll('.order2 button');
+   initial_stage(param6, Ordering2);
+
+   Ordering2.forEach(button => {
         button.addEventListener('click', () => {
             
             button_event(param6, button.value , 'or')
@@ -317,16 +336,71 @@
 
     function hover_card(product_id){
         const card_text = document.getElementById(`card-${product_id}-text`);
-        card_text.classList.add('md:mb-10')
+        const card_h = document.getElementById(`card-${product_id}-h`);
+        card_h.classList.add('md:h-14')
         card_text.classList.add('md:border-t')
         card_text.classList.add('md:shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
 
     }
     function hover_card_leave(product_id){
         const card_text = document.getElementById(`card-${product_id}-text`);
-        card_text.classList.remove('md:mb-10')
+        const card_h = document.getElementById(`card-${product_id}-h`);
+        card_h.classList.remove('md:h-14')
         card_text.classList.remove('md:border-t')
         card_text.classList.remove('md:shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
+    }
+
+    /*MENUS SHOP*/
+    const menu_categorys = document.querySelector('.menu-categorys-mobile');
+    const menu_categorys_l = document.querySelector('.menu-categorys-mobile-l');
+
+    function menu_categorys_mobile(){
+        if (menu_categorys.classList.contains('invisible')){
+            menu_categorys.classList.remove('invisible');
+            menu_categorys.classList.add('visible');
+
+            menu_categorys_l.style.animation ="tallas-open 300ms 1"
+
+        }else{
+            menu_categorys_l.style.animation ="tallas-close 300ms 1"
+            
+            menu_categorys.classList.remove('visible');
+            menu_categorys.classList.add('invisible');
+        }
+    }
+    const menu_orden = document.querySelector('.menu-orden-mobile');
+    const menu_orden_l = document.querySelector('.menu-orden-mobile-l');
+
+    function menu_orden_mobile(){
+        if (menu_orden.classList.contains('invisible')){
+            menu_orden.classList.remove('invisible');
+            menu_orden.classList.add('visible');
+
+            menu_orden_l.style.animation ="tallas-open 300ms 1"
+
+        }else{
+            menu_orden_l.style.animation ="tallas-close 300ms 1"
+            
+            menu_orden.classList.remove('visible');
+            menu_orden.classList.add('invisible');
+        }
+    }
+    const menu_filtro = document.querySelector('.menu-filtro-mobile');
+    const menu_filtro_l = document.querySelector('.menu-filtro-mobile-l');
+
+    function menu_filtro_mobile(){
+        if (menu_filtro.classList.contains('invisible')){
+            menu_filtro.classList.remove('invisible');
+            menu_filtro.classList.add('visible');
+
+            menu_filtro_l.style.animation ="tallas-open 300ms 1"
+
+        }else{
+            menu_filtro_l.style.animation ="tallas-close 300ms 1"
+            
+            menu_filtro.classList.remove('visible');
+            menu_filtro.classList.add('invisible');
+        }
     }
 
    </script>
