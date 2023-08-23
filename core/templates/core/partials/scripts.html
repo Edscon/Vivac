@@ -22,11 +22,15 @@
         if ((currentScroll < lastScroll && nav.classList.contains('scroll-down') && (nscrollup == nscrollupuntil)) || (currentScroll < 170))  {
             nav.classList.add('scroll-up');
             nav.classList.remove('scroll-down');
+            nav.classList.add('max-[1300px]:mt-8');
+            nav.classList.remove('max-[1300px]:mt-0');
         }
 
         if (currentScroll > lastScroll && nav.classList.contains('scroll-up') && (currentScroll > 170) ) {
             nav.classList.remove('scroll-up');
             nav.classList.add('scroll-down');
+            nav.classList.remove('max-[1300px]:mt-8');
+            nav.classList.add('max-[1300px]:mt-0');
         }
 
         if ((currentScroll < lastScroll && nav2.classList.contains('scroll-down-busca') && (nscrollup == nscrollupuntil)) || (currentScroll < 170)) {
