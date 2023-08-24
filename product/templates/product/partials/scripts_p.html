@@ -202,8 +202,11 @@
     }
 
     var final_size = ''
+    var final_size_sp = ''
 
     function SelectSize(size, mobile=false) {
+        size_sp = size.replace('/', '|')
+
         if (mobile) {
             menu_tallas_l.style.animation ="tallas-close 500ms 1"
             
@@ -221,9 +224,10 @@
         document.getElementById('TallasId-'+ size ).classList.add("border-black")
         document.getElementById('TallasId-'+ size + '-Mobile' ).classList.add("border-black")
 
-        document.getElementById('añadir_carrito-'+ final_size).classList.add("hidden")
-        document.getElementById('añadir_carrito-'+ size).classList.remove("hidden")
+        document.getElementById('añadir_carrito-'+ final_size_sp).classList.add("hidden")
+        document.getElementById('añadir_carrito-'+ size_sp).classList.remove("hidden")
 
+        final_size_sp = size_sp
         final_size = size
 
 

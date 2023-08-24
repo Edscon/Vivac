@@ -35,6 +35,12 @@ def product(request, slug):
     
     size = unique(list(Variant.objects.filter(product=product, color=colors[0]).values('size')),'size')
     sizes = list(product.sizes_shoes.split(", "))
+    
+    size_special = []
+
+    for i in size:
+        size_special.append(i.replace('/', '|'))
+
 
     lista = []
     for i in range(0,len(colors)):
@@ -84,6 +90,7 @@ def product(request, slug):
         'color_first': colors[0],
         'size': size,
         'sizes': sizes,
+        'size_special': size_special,
         'variant_url': False,
         'images_extra': images_extra,
         'RedSocials': RedSocials,

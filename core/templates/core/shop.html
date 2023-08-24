@@ -26,6 +26,17 @@
     </div>
 </div>
 
+<div id="BotArriba" class=" opacity-0 fixed z-[29] w-full grid place-content-end bottom-4 md:bottom-6 -mx-4 cursor-pointer">
+    <div class="bg-neutral-700 left-0 w-[50px] md:w-[140px] h-[50px] md:h-[35px] flex text-white text-sm inline-block relative rounded-3xl" >
+        <div onclick="relocate_page()" class="mx-auto my-auto flex space-x-1">
+            <svg class="h-7 w-7 md:h-5 md:w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+            </svg>
+            <p class="hidden md:block">Volver arriba</p>
+        </div>
+    </div>
+</div>
+
 {% include 'core/partials/menus_shop.html' %}
 
 <div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto overflow-hidden max-[1300px]:-mt-6 -mt-2 mb-2 relative">
@@ -190,6 +201,7 @@
                     </div>
                     {% endif %}
                 </div>
+                {% if products.count > 0 %}
                 <div class="flex flex-wrap space-x-4 text-xs mt-6 order hidden md:flex">
                     <p>{{products.count}} artículos</p>
                     <p>Ordenar:</p>
@@ -205,6 +217,7 @@
                         </button>
                     </div>
                 </div>
+                {% endif %}
             </div>
             <div class="product_card flex flex-wrap w-full text-black">
                 {% for product in products %}
@@ -240,11 +253,13 @@
                 {% endfor %}
                 
             </div>
+            {% if products.count > 0 %}
             <div class="flex text-xs mt-5">
                 <p>{{products.count}} artículos</p>
             </div>
+            {% endif %}
             {% if products.count == 0 %}
-            <div class="text-sm relative border flex px-14 w-full py-3 bg-red-100 mt-2">
+            <div class="text-sm relative border flex px-14 w-full py-3 bg-red-100 mt-4">
                 <div class="absolute left-0 top-0 h-full w-[4px] bg-red-600"></div>
                 <svg class="h-5 w-5 text-red-600 absolute top-[13px] left-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>

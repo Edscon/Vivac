@@ -1,4 +1,40 @@
 <script>
+    function disableScroll() {
+    // Get the current page scroll position
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+
+        // if any scroll is attempted, set this to the previous value
+        window.onscroll = function() {
+            window.scrollTo(scrollLeft, scrollTop);
+        };
+    }
+
+    function enableScroll() {
+        window.onscroll = function() {};
+    }
+
+    /*MENU LOGIN MOBILE*/
+    const menu_login = document.querySelector('.menu-login-mobile');
+    const menu_login_l = document.querySelector('.menu-login-mobile-l');
+
+    function menu_login_mobile(){
+        if (menu_login.classList.contains('invisible')){
+            disableScroll();
+            menu_login.classList.remove('invisible');
+            menu_login.classList.add('visible');
+
+
+            menu_login_l.style.animation ="login-open 300ms 1"
+
+        }else{
+            menu_login_l.style.animation ="login-close 300ms 1"
+            
+            menu_login.classList.remove('visible');
+            menu_login.classList.add('invisible');
+            enableScroll();
+        }
+    }
 
     /*TOP*/
     var swiper = new Swiper(".mySwiper", {
@@ -15,10 +51,25 @@
     nscrollup = 0
     nscrollupuntil = 10
 
-    window.addEventListener('scroll',() => {
+    const BotA = document.getElementById('BotArriba');
 
-        currentScroll = window.pageYOffset
+    
+    window.addEventListener('scroll',() => {
         
+        currentScroll = window.pageYOffset
+
+        /*BotArriba*/
+        if(BotA != null){
+            if(currentScroll > 500){
+                BotA.classList.add('opacity-100');
+                BotA.classList.remove('opacity-0');
+            }else{
+                BotA.classList.add('opacity-0');
+                BotA.classList.remove('opacity-100');
+            }
+        }
+        /*---------*/
+
         if ((currentScroll < lastScroll && nav.classList.contains('scroll-down') && (nscrollup == nscrollupuntil)) || (currentScroll < 170))  {
             nav.classList.add('scroll-up');
             nav.classList.remove('scroll-down');
@@ -87,6 +138,16 @@
             disableOnInteraction: false,
         },
     });
+
+    /*SHOP ARRIBA*/
+
+    function relocate_page(){
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+    }
 
    /*SHOP queryString = `category=${param1}&price=${param2}`             ?category={{ category.slug }}*/
 

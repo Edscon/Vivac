@@ -35,9 +35,11 @@ class Cart(object):
         
         if update_quantity == False:
             if variant_id not in self.cart:
+                size = size.replace('/','|')
                 self.cart[variant_id] = {'quantity': 1, 'id': variant_id, 'color': color, 'size': size}
 
             elif(variant_id in self.cart and self.cart[variant_id]['color'] != color):
+                size = size.replace('/','|')
                 self.cart[variant_id] = {'quantity': 1, 'id': variant_id, 'color': color, 'size': size}
 
         else:

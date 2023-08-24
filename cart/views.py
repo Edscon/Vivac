@@ -8,8 +8,8 @@ from product.models import Product, Variant, Color
 
 
 def add_to_cart(request, product_id, color, size):
-    print(color, size)
     cart = Cart(request)
+    size = size.replace('|', '/')
     cart.add(product_id, color, size)
     
     response = render(request, 'cart/partials/menu_cart.html')
@@ -28,7 +28,7 @@ def success(request):
 
 def update_cart(request, product_id, color, size, action):
     cart = Cart(request)
-    
+    size = size.replace('|', '/')
     if action == 'increment':
         cart.add(product_id, color, size, 1, True)
     else:

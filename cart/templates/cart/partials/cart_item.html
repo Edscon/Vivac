@@ -29,7 +29,7 @@
             <span>{{item.col}}</span>
             <span>{{item.quantity}}</span>
             <span>{{item.color}}</span>
-            <span>{{item.size}}</span>
+            <button class="" value="{{item.size}}" id="item-size">{{item.size}}</button>
 
             <a 
             title="sumitemquantity"
@@ -44,4 +44,10 @@
         </div>
     </div>
 </div>  
+
+<script>
+    const item_size = document.getElementById('item-size')
+    
+    item_size.innerHTML = `<div>${item_size.value.replace('|','/')}</div>`
+</script>
 {% endif %}

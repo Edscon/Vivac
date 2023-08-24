@@ -154,7 +154,15 @@ def shop(request):
     
     #----------------------------------------------------------------
     '''BRANDS'''
-    brands = products.values('marca')
+    if(len(products) == 0):
+        if active_category:
+            brands = Product.objects.filter(categoria__slug=active_category).values('marca')
+        else:
+            brands = Product.objects.all().values('marca')
+    else: brands = products.values('marca')
+
+    print(brands)
+
     temp = []
     for i in brands:
         temp.append(i['marca'])
