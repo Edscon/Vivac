@@ -70,7 +70,9 @@
                     class="w-full object-contain h-full aspect-[1/1] object-top" 
                     src="{{product.image}}"
                 >
+                {% if product.get_descuento > 0 %}
                 <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{product.get_descuento}}%</p>
+                {% endif %}
                 <div id="cursormag" class="absolute w-[150px] h-[100px] bg-gray-100 border border-solid border-gray-200 opacity-50 cursor-zoom-in hidden">
     
                 </div>
@@ -86,9 +88,13 @@
 
         <div id="information" class="information w-full md:w-[40%]">
             <h1 class="text-xl md:text-2xl">{{product.nombre}}</h1>
+            {% if product.get_descuento > 0 %}
             <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{product.precio_retail|floatformat:2}} €</p>
             <p class="-mt-2 text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
             <p class="-mt-1 text-xs text-gray-500">Te ahorras {{product.get_ahorro|floatformat:2}} €</p>
+            {% else %}
+            <p class=" text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
+            {% endif %}
 
             <div class="relative mt-1">
             {% if product.get_rating > 0 %}
@@ -313,7 +319,7 @@
 
         <hr class="w-full mt-2">
 
-        <div onclick="Leermas()" class="flex justify-center w-[100%] lg:w-[60%] mt-2 text-sm cursor-pointer select-none">
+        <div id="leer_mas_menos" onclick="Leermas()" class="flex justify-center w-[100%] lg:w-[60%] mt-2 text-sm cursor-pointer select-none">
             <div id="leermas" class="flex flex-col justify-center items-center text-gray-500">
                 <div>Leer más</div>
                 <svg class="h-4 w-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -335,34 +341,36 @@
             <div class="xl:px-0 overflow-hidden mx-10">
                 <div class="swiper_products mySwiper_products block text-gray-600">
                     <div class="swiper-wrapper">
-                        {% for product in products_list %}
-                        <div class="swiper-slide xl:h-[350px]">
-                            <div class="min-w-[100px] xl:w-[300px] h-full py-1 md:px-6 hover:shadow-md hover:border">
-                                <a href="{% url 'product' product.slug %}">
-                                    <img title="image_product" src="{{product.image}}" class="w-full rounded-xl">
-                                </a>
-                            
-                                <div class="pt-3 flex items-center justify-between">
-                                    <a title="productname" href="{% url 'product' product.slug %}">{{ product.nombre }}</a>
+                            {% for product in products_list %}
+                            <div onclick="window.location=`{% url 'product' product.slug %}`" class="swiper-slide w-1/2 md:w-1/3 pt-5 md:hover:shadow-[1px_1px_8px_rgba(0,0,0,0.1)] transition-shadow duration-200 border-b border-gray-300 relative cursor-pointer">
+                                <img src="{{product.image}}" class="z-10 px-0 md:px-3 w-full mb-[80px] sm:mb-[50px] mt-5 md:mt-0">
+                                <div class="z-[15] text-sm absolute bottom-2 w-full">
+                                    <div id="card-{{product.id}}-text" class="w-full transition-shadow duration-200 mt-1">
+                                        {% if product.get_descuento > 0 %}
+                                        <div class="flex md:px-5 bg-white mx-1">
+                                            <p class="bg-green-700 py-[1px] px-[4px] text-white text-[11px] rounded ">- {{product.get_descuento}}%</p>
+                                        </div>
+                                        {% else %}
+                                        <div class="text-[11px] md:px-5 bg-white mx-1 py-[1px]">NEW</div>
+                                        {% endif %}
+                                    </div>
+                                    <div  id="card-{{product.id}}-h" class="bg-white"></div>
+                                    <div class="md:px-5 bg-white mx-1">
+                                        <div class="pt-3 flex items-center justify-between">
+                                            <p class="line-clamp-2 md:line-clamp-1 leading-[16px] h-[33px] md:h-[17px]">{{ product.nombre }}</p>
+                                        </div>
+                                        {% if product.get_descuento > 0 %}
+                                        <div class="flex space-x-2">
+                                            <p class="pt-1 font-semibold text-green-700">{{product.precio|floatformat:2}}€</p>
+                                            <p class="pt-1 line-through">{{product.precio_retail|floatformat:2}}€</p>
+                                        </div>
+                                        {% else %}
+                                        <p class="pt-1 font-semibold">{{product.precio|floatformat:2}}€</p>
+                                        {% endif %}
+                                    </div>
                                 </div>
-                                <p class="pt-1 text-gray-400">{{product.get_display_precio|floatformat:2}}€</p>
                             </div>
-                        </div>
-                        {% endfor %}
-                        {% for product in products_list %}
-                        <div class="swiper-slide xl:h-[350px]">
-                            <div class=" xl:w-[300px] h-full py-1 md:px-6 hover:shadow-md hover:border">
-                                <a href="{% url 'product' product.slug %}">
-                                    <img title="image_product" src="{{product.image}}" class="w-full rounded-xl">
-                                </a>
-                            
-                                <div class="pt-3 flex items-center justify-between">
-                                    <a title="productname" href="{% url 'product' product.slug %}">{{ product.nombre }}</a>
-                                </div>
-                                <p class="pt-1 text-gray-400">{{product.get_display_precio|floatformat:2}}€</p>
-                            </div>
-                        </div>
-                        {% endfor %}
+                            {% endfor %}
                         
                     </div>
                     <div class="swiper-button-prev"></div>
@@ -389,7 +397,11 @@
 {% block scripts %}
 <script>
     var swiper_products = new Swiper(".mySwiper_products", {
-        slidesPerView: 4,
+        breakpoints: {
+        1024: { slidesPerView: 4},
+        640: { slidesPerView: 3},
+        },
+        slidesPerView: 2,
         spaceBetween: 20,
         freeMode: false,
         navigation: {

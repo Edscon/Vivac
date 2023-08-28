@@ -24,7 +24,8 @@ def product(request, slug):
 
     product = get_object_or_404(Product, slug=slug)
    
-    products_list = Product.objects.all()[0:8]
+    products_list = Product.objects.filter(categoria=product.categoria).order_by('popular_rating')[0:8]
+    print(products_list)
     
     images_extra = ExtraImage.objects.filter(product=product, color=Variant.objects.filter(product=product).first().color)
     if images_extra.count() == 0: images_extra = ExtraImage.objects.filter(product=product)
@@ -48,6 +49,13 @@ def product(request, slug):
     
     preserved = Case(*[When(pk=pk, then=pos) for pos, pk in enumerate(lista)])
     variant_colors = Variant.objects.filter(id__in=lista).order_by(preserved)
+
+    print(variant_colors.values('unidades'))
+
+    if request.user.is_authenticated:
+        review_user = Review.objects.filter(
+                    created_by=request.user, product=product).count()
+    else: review_user = 0
 
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -94,6 +102,7 @@ def product(request, slug):
         'variant_url': False,
         'images_extra': images_extra,
         'RedSocials': RedSocials,
+        'review_user': review_user,
     }
     return render(request, 'product/product.html', context)
 
@@ -101,8 +110,9 @@ def product(request, slug):
 
 def variant_product(request, slug, slug_color):
 
-    products_list = Product.objects.all()[0:8]
     product = get_object_or_404(Product, slug=slug)
+    
+    products_list = Product.objects.all()[0:8]
 
     color = get_object_or_404(Color, slug=slug_color)
     images_extra = ExtraImage.objects.filter(product=product, color=color)
@@ -113,6 +123,11 @@ def variant_product(request, slug, slug_color):
 
     size = unique(list(Variant.objects.filter(product=product, color=color).values('size')),'size')
     sizes = list(product.sizes_shoes.split(", "))
+
+    size_special = []
+
+    for i in size:
+        size_special.append(i.replace('/', '|'))
 
     lista = []
     for i in range(0,len(colors)):
@@ -163,6 +178,7 @@ def variant_product(request, slug, slug_color):
         'size': size,
         'sizes': sizes,
         'slug_color': slug_color,
+        'size_special': size_special,
         'variant_url': True,
         'images_extra': images_extra,
         'RedSocials': RedSocials,

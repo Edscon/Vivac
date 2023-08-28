@@ -18,7 +18,8 @@
                 {% endif %}
             </div>
             <h1 class="absolute top-[140px] left-[175px] text-gray-600">{{product.nombre}}</h1>
-            <p class="absolute top-[250px] left-5 text-gray-600 text-sm">Puntua y valora el artículo: </p>
+            <p class="hidden md:block absolute top-[250px] left-5 text-gray-600 text-sm">Puntua y valora el artículo: </p>
+
             {% include 'product/partials/stars_reviewForm.html' %}
 
             <div class="error1 absolute top-[290px] left-[50%] mb-6 rounded-xl text-xs text-red-600 flex" id="error1"></div>
@@ -26,7 +27,7 @@
             <div class="mt-[310px] text-black px-3">
                 <input name="titulo" type="text" autocomplete="off" class="w-full border rounded py-2 px-2 text-sm focus:border-black" placeholder="Título*" value="{{ review.titulo }}">
                 <div class="error2 absolute mb-6 rounded-xl text-xs text-red-600 flex mt-1" id="error2"></div>
-                <textarea name="content" rows="10" cols="110" style="resize: none;" type="text" class="mt-8 w-full border rounded py-2 px-2 text-sm focus:border-black" placeholder="Descripción*" value="{{ review.content }}">{{ review.content }}</textarea>
+                <textarea name="content" rows="8" cols="110" style="resize: none;" type="text" class="mt-8 w-full border rounded py-2 px-2 text-sm focus:border-black" placeholder="Descripción*" value="{{ review.content }}">{{ review.content }}</textarea>
                 <div class="error3 absolute mb-6 rounded-xl text-xs text-red-600 flex" id="error3"></div>
                 <div class="text-gray-600 text-xs mt-5 flex relative">
                     <svg class="h-3 w-3 text-gray-800 absolute top-[2px]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">

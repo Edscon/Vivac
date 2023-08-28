@@ -7,9 +7,33 @@
     .Newreseña{
         transform: translate(-50%, -50%);
     }
+
+    .mySwiper_product [class^="swiper-button-"]::after{
+        font-size: 15px;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        width: 15px;
+        z-index: 10;
+        color: rgb(83, 83, 83);
+    }
+    .mySwiper_products [class^="swiper-button-"]::after{
+        font-size: 20px;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        width: 15px;
+        z-index: 10;
+        color: rgb(83, 83, 83);
+    }
+    .swiper-pagination-bullet-active {
+        background-color: rgb(131, 131, 131) !important;
+    }
 </style>
 
-<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2">
+{% include 'product/partials/menu_tallas_mobile.html' %}
+
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-14 -mt-10 xl:px-0 px-4 relative">
 
     <div class="py-10">
         <a href="{% url 'shop' %}"
@@ -18,15 +42,17 @@
             Confirmar Checkout
         </a>
     </div>
-
+    <a href="{% url 'marca' product.marca.slug %}"><img class="lg:hidden block image_marca md:w-20 w-[125px] aspect-[3/1] object-contain absolute top-20 md:top-[125px] right-5 md:right-[320px] z-[3]" 
+        src={{product.marca.get_image}}>
+    </a>
     <div class="flex flex-wrap relative">
 
-        <div class="h-[600px] w-full lg:w-[60%] flex relative">
-            <div class="w-[15%] h-full overflow-auto space-y-4 px-5">
+        <div class="md:h-[600px] w-full md:w-[60%] flex relative">
+            <div class="hidden lg:block w-[15%] h-full overflow-auto space-y-4 px-5">
                 <img 
                     id = "ImageProd"
                     onmouseover="Image_mouseover('{{variants_first.image}}')"
-                    class="w-[full] object-contain aspect-[1/1] rounded border" 
+                    class="w-[full] object-contain aspect-[1/1] rounded border cursor-pointer" 
                     src="{{variants_first.image}}"
                 >
                 {% for image in images_extra %}
@@ -41,49 +67,56 @@
             <div class="hidden lg:block w-[75%] relative">
                 <img 
                     id = "ImageCenter"
-                    class="w-full object-contain h-full aspect-[3/1] object-left" 
+                    class="w-full object-contain h-full aspect-[1/1] object-top" 
                     src="{{variants_first.image}}"
                 >
                 <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{product.get_descuento}}%</p>
-                <div id="cursormag" class="absolute w-[150px] h-[100px] bg-gray-100 border border-solid border-gray-200 opacity-50">
+                <div id="cursormag" class="absolute w-[150px] h-[100px] bg-gray-100 border border-solid border-gray-200 opacity-50 cursor-zoom-in hidden">
     
                 </div>
             </div>
-            <a href="{% url 'marca' product.marca.slug %}"><img class="image_marca w-20 aspect-[3/1] object-contain absolute top-0 right-10" 
-                src={{product.marca.get_image}}></a>
+            <div class="lg:hidden block w-full relative md:mr-10 overflow-hidden">
+                {% include 'product/partials/swipperimg.html' %}
+            </div>
+
+            <a id="ImgMarca" href="{% url 'marca' product.marca.slug %}"><img class="hidden lg:block image_marca w-20 lg:w-[125px] aspect-[3/1] object-contain absolute top-0 right-5 z-[3]" 
+                src={{product.marca.get_image}}>
+            </a>
         </div>
 
         <div id="information" class="information w-full lg:w-[40%]">
-            <h1 class="text-2xl">{{product.nombre}}</h1>
+            <h1 class="text-xl md:text-2xl">{{product.nombre}}</h1>
             <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{product.precio_retail|floatformat:2}} €</p>
             <p class="-mt-2 text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
             <p class="-mt-1 text-xs text-gray-500">Te ahorras {{product.get_ahorro|floatformat:2}} €</p>
 
-            <div class="relative">
+            <div class="relative mt-1">
             {% if product.get_rating > 0 %}
                 {% include 'product/partials/stars_review.html' %}
-                <p class="cursor-pointer text-sm text-gray-500 absolute left-28 top-0 hover:text-black hover:underline underline-offset-4" onclick="GoOpinions()">
-                    {{product.reviews.all.count}} Opiniones
-                </p>
-                <p class="cursor-pointer text-sm text-gray-500 absolute left-[195px] top-0 underline-offset-4">
-                    |
-                </p>  
-                <p class="cursor-pointer text-sm text-gray-500 absolute left-[210px] top-0 hover:text-black hover:underline underline-offset-4" onclick="FirstOp()">
-                    Dejanos tu opinion
-                </p> 
+                <div class="cursor-pointer text-sm text-gray-500">
+                    <p class="absolute top-6 min-[361px]:top-0 md:top-6 xl:top-0 left-0 min-[361px]:left-28 md:left-0 xl:left-28 hover:text-black hover:underline underline-offset-4" onclick="GoOpinions()">
+                        {{product.reviews.all.count}} Opiniones
+                    </p>
+                    <p class="absolute top-6 min-[361px]:top-0 md:top-6 xl:top-0 left-[83px] min-[361px]:left-[195px] md:left-[83px] xl:left-[195px] underline-offset-4">
+                        |
+                    </p>  
+                    <p class="absolute top-6 min-[361px]:top-0 md:top-6 xl:top-0 left-[98px] min-[361px]:left-[210px] md:left-[98px] xl:left-[210px] hover:text-black hover:underline underline-offset-4" onclick="FirstOp()">
+                        Dejanos tu opinion
+                    </p> 
+                </div>
+                <hr class="w-full mt-7 min-[361px]:mt-3 md:mt-7 xl:mt-3">
                 {% else %}
                 <p class="cursor-pointer text-sm text-gray-500 mt-2 hover:text-black hover:underline underline-offset-4" onclick="FirstOp()">Sé el primero en opinar</p>
+                <hr class="w-full mt-3">
             {% endif %}
             </div>
-
-            <hr class="w-full mt-3">
 
             {% if product.variants != 'None' %}
             <div class="mt-2">
                 <div class="font-semibold text-gray-800">Colores</div>
     
-                <div class="flex space-x-4 text-sm mt-2">
-                    {% for var in variant_colors %}
+                <div class="flex w-full h-[100px] space-x-4 text-sm mt-2 overflow-auto">
+                     {% for var in variant_colors %}
                         {% if var.color.slug == slug_color %}
                             <a class="w-[80px] h-[80px] rounded border-black border">
                                 <img src="{{var.image}}" class="object-contain rounded">
@@ -98,21 +131,31 @@
             </div>
             {% endif %}
 
-            <div class="mt-4">
-                <div class="font-semibold text-gray-800">Tallas</div>
-                <div class="grid grid-cols-9 gap-x-4 gap-y-1 text-sm mt-2"> 
+            <div class="mt-4 text-sm lg:text-base">
+                <div class="font-semibold text-neutral-800 mb-2">Tallas</div>
+                <div class="lg:grid hidden xl:grid-cols-9 lg:grid-cols-7 md:grid-cols-5 grid-cols-7 gap-x-4 gap-y-1 text-sm pr-4"> 
                     {% for i in sizes %}
                         {% if i in size %}
-                            <div id="TallasId-{{i}}" onclick="SelectSize('{{i}}')" class="w-[55px] h-[50px] border rounded grid font-semibold hover:border-gray-400 cursor-pointer">
-                                <p class="place-self-center">{{i}}</p>
-                            </div>
+                        <div id="TallasId-{{i}}" onclick="SelectSize('{{i}}')" class="w-[55px] h-[50px] border rounded grid font-semibold hover:border-neutral-800 cursor-pointer">
+                            <p class="place-self-center">{{i}}</p>
+                        </div>
                         {% else %}
-                            <div class="w-[55px] h-[50px] border rounded grid bg-gray-200 text-gray-500 font-semibold">
-                                <p class="place-self-center">{{i}}</p>
-                            </div>
+                                <div class="w-[55px] h-[50px] border rounded grid bg-neutral-200 text-neutral-500 font-semibold">
+                                    <p class="place-self-center">{{i}}</p>
+                                </div>
                         {% endif %}
                     {% endfor %}
-                </div>
+                    </div>
+                    <a 
+                    id="OptionTallas" 
+                    class=" border w-full inline-block py-2 rounded bg-white relative transition duration-500 cursor-pointer block lg:hidden"
+                    onclick="menu_tallas_mobile()"
+                    >
+                    <svg class="w-4 h-4 absolute top-[50%] right-[5%] -translate-y-[50%]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+                    </svg>
+                    <input readonly="readonly" class="pl-4" id="EscogeTalla" value="Escoge una talla ..."></input>
+                </a>
             </div>
 
             <div id="noTallas" class="hidden mt-3 flex"> 
@@ -122,19 +165,19 @@
 
             <div id="top_añadir_carrito">
                 <a 
-                    id="añadir_carrito-" 
-                    class=" mt-6 w-full inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
-                    onclick="NoTallas()"
+                id="añadir_carrito-" 
+                class=" mt-6 w-full inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
+                onclick="NoTallas()"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 absolute left-4">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                    </svg> 
-                    <svg class="h-3 w-3 absolute left-[25px] top-[13px]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/>
-                    </svg>
-                    <p class="text-center">Añadir al carrito</p>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 absolute top-[50%] left-[10px] -translate-y-[50%]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                </svg> 
+                <svg class="h-3 w-3 absolute top-[44%] left-[19px] -translate-y-[50%]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/>
+                </svg>
+                <p class="text-center text-sm lg:text-base">Añadir al carrito</p>
                 </a>
-                {% for i in size %}
+                {% for i in size_special %}
                 <a 
                     id="añadir_carrito-{{i}}"
                     title="Tothecart"
@@ -144,37 +187,39 @@
                     hx-target = "#menu-cart-button"
                     hx-swap = "innerHTML"
                     onclick="EnviarCheckOut()"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 absolute left-4">
+                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 absolute top-[50%] left-[10px] -translate-y-[50%]">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                     </svg> 
-                    <svg class="h-3 w-3 absolute left-[25px] top-[13px]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="h-3 w-3 absolute top-[44%] left-[19px] -translate-y-[50%]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/>
                     </svg>
-                    <p class="text-center">Añadir al carrito</p>
+                    <p class="text-center text-sm lg:text-base">Añadir al carrito</p>
                 </a>
                 {% endfor %}
-            </div>
-            <div class="flex justify-center space-x-4 mt-3 text-sm">
-                <button class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[60%]">
-                    <svg class="w-6 h-6 absolute left-2 text-center text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+             </div>
+            
+            <div class="flex flex-wrap mt-3 text-sm">
+                <button id="Favoritos" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[79%] lg:w-[59%] border-[0.1px]">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 absolute top-[50%] left-[10px] -translate-y-[50%] text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                     </svg>
                     <p class="text-center">Añadir a favoritos</p>
                 </button>
-                <button id="Compartir" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[40%]">
-                    <svg class="w-5 h-5 absolute left-2 text-center text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <divc class="w-[2%]"></divc>
+                <button id="Compartir" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[19%] lg:w-[39%] border">
+                    <svg class="w-5 h-5 relative left-[50%] max-[1023px]:-translate-x-[50%] lg:absolute lg:left-2 text-center text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
                     </svg>
-                    <p class="text-center">Compartir</p>
+                    <p class="text-center hidden lg:block">Compartir</p>
                 </button>
                 
-                <div id="Share" class="hidden w-[40%] flex justify-center space-x-4">
+                <div id="Share" class="hidden w-[100%] lg:w-[38%] flex justify-center space-x-4 max-[1024px]:py-2">
                     <div class="w-8/10 flex justify-center space-x-2">
                         {% for Red in RedSocials %}
-                            <a class="w-[30px]" target="_blank" id="{{Red.slug}}">
-                                <img src="{{Red.get_image}}" class="w-[30px] h-full object-contain">
-                            </a>
+                        <a class="w-[30px]" target="_blank" id="{{Red.slug}}">
+                            <img src="{{Red.get_image}}" class="w-[30px] h-full object-contain">
+                        </a>
                         {% endfor %}
                     </div>
                     <div class="w-2/10 relative bg-gray-100 cursor-pointer" id="OutShare">
@@ -185,81 +230,129 @@
                 </div>
             </div>
         </div>
-
-        <hr class="w-full mt-2">
-
         
-        <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative">
+        <hr class="w-full mt-2">
+        
+        <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative max-[326px]:text-[13px]">
             <button id="descripcion" class="pt-6 pb-3 hover:text-black">Descripción</button>
             <button id="opiniones"class="pt-6 pb-3 hover:text-black">Opiniones del artículo ({{product.reviews.all.count}})</button>
             <div id="descripcion_green" class="bg-green-700 h-[2px] w-[85px] absolute -left-4 top-[59px]"></div>
             <div id="opiniones_green" class="bg-green-700 h-[2px] w-[185px] absolute left-[85px] top-[59px] hidden"></div>
         </div>
-
+        
         <hr class="w-full">
-
-        <div class="content-box mt-6 w-[100%] min-h-[200px]">
+        
+        <div class="content-box mt-6 w-[100%]">
             {% if product.descripcion %}
-                <p id="div1" class="w-[60%] text-gray-700 h-[100px] text-justify overflow-auto text-sm">{{product.descripcion}}</p>
+            <div id="div1" class="flex flex-wrap relative min-h-[200px]">
+                <div id="desc" class="w-[100%] md:w-[60%] text-gray-700 overflow-hidden text-sm text-justify md:pr-4 maxh">
+                    {{product.descripcion | safe}}
+                    <div  class="flex flex-col justify-center items-center mt-4">
+                        {% if product.video %}
+                        <iframe class="aspect-[560/315] h-[180px] min-[400px]:h-[220.5px] lg:h-[315px]" src="{{product.video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="hiddem md:block md:w-[1%]"></div>
+                <div class="sticky top-[140px] xl:top-5 w-[100%] md:w-[39%] text-gray-700 text-sm max-[768px]:mt-3 px-4 bg-gray-100 md:h-[130px] lg:h-[100px] sm:mx-6 md:mx-0">
+                    <p class="text-base font-semibold">¿Porque comprar en Esports Vivac?</p>
+                    <ul class="py-4 list-disc px-6">
+                        <li >30 años de experiencia</li>
+                        <li >Una gran cantidad de marcas y productos</li>
+                        <li >Garantia de devolución 30 dias</li>
+                    </ul>
+                </div>
+            </div>
+            
             {% endif %}
-
-            <div id="div2" class="hidden flex relative"> 
-                <div class="w-[60%]">
+            
+            <div id="div2" class="hidden flex flex-wrap relative"> 
+                <div class="w-[100%] lg:w-[60%] max-h-[360px] overflow-auto">
                     <input type="text" id="num_reviews" size="20" name="num_reviews" class="hidden" value="{{ product.reviews.all.count }}">
                     {% for review in product.reviews.all %}
-                        <div id="Review" class="px-4 py-1 bg-gray-100 mb-2 relative text-sm rounded text-gray-700">
-                            <div class="absolute top-5 left-5 h-[50px] w-[50px] bg-white">
-                                <img src="{{product.image}}" class="object-contain">
-                            </div>
-                            <div class="absolute top-5 left-20">
-                                <p class="font-semibold">{{ review.titulo }}</p>
-                                {% include 'product/partials/stars_review_siple.html' %}
-                            </div>
-                            <div class="mt-20 px-1">{{ review.content }}</div>
-        
-                            <div class="mt-2 mb-2 px-1 text-xs text-gray-600">
-                                <p>{{ review.created_by }}, el {{ review.created_at|date:"d-m-Y" }}</p>
-                            </div>
-                            {% if review.created_by.username ==  request.user.username %}
-                                <a onclick="FirstOp()" class="absolute top-5 right-5 hover:text-black hover:scale-105 cursor-pointer">
-                                    <svg class="h-6 w-6" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
-                                </a>
-                            {% endif %}
+                    <div id="Review" class="px-4 py-1 bg-gray-100 mb-2 relative text-sm rounded text-gray-700">
+                        <div class="absolute top-5 left-5 h-[50px] w-[50px] bg-white">
+                            <img src="{{product.image}}" class="object-contain">
                         </div>
-                    {% endfor %}
-
-                    {% if product.reviews.all.count == 0 %}
-                    <div class="text-sm relative border flex px-14 w-full py-3 bg-red-100 ">
-                        <div class="absolute left-0 top-0 h-full w-[4px] bg-red-600"></div>
-                        <svg class="h-6 w-6 text-red-600 absolute top-[10px] left-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                        <p class="text-red-600">¡Sé el primero en opinar sobre este producto!</p>
+                        <div class="absolute top-5 left-20">
+                            <p class="font-semibold">{{ review.titulo }}</p>
+                            {% include 'product/partials/stars_review_siple.html' %}
+                        </div>
+                        <div class="mt-20 px-1">{{ review.content }}</div>
+                        
+                        <div class="mt-2 mb-2 px-1 text-xs text-gray-600">
+                            <p>{{ review.created_by }}, el {{ review.created_at|date:"d-m-Y" }}</p>
+                        </div>
+                        {% if review.created_by.username ==  request.user.username %}
+                        <a onclick="FirstOp()" class="absolute top-5 right-5 hover:text-black hover:scale-105 cursor-pointer">
+                                <svg class="h-6 w-6" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                        </a>
+                        {% endif %}
                     </div>
-                    {% endif %}
-                </div>   
-                <div class="w-[40%] pl-10">
-                    <a onclick="FirstOp()" class="sticky top-10 inline-block relative border rounded flex justify-center w-full py-2 cursor-pointer hover:bg-gray-200 transition duration-500">
+                    {% endfor %}
+                            
+                            {% if product.reviews.all.count == 0 %}
+                            <div class="text-sm relative border flex px-14 w-full py-3 bg-red-100 ">
+                                <div class="absolute left-0 top-0 h-full w-[4px] bg-red-600"></div>
+                                <svg class="h-6 w-6 text-red-600 absolute top-[10px] left-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <p class="text-red-600">¡Sé el primero en opinar sobre este producto!</p>
+                            </div>
+                            {% endif %}
+                        </div>   
+                <div class="lg:w-[40%] pl-10 hidden lg:block">
+                    <a onclick="FirstOp()" class="sticky top-[140px] xl:top-5 inline-block relative border rounded flex justify-center w-full py-2 cursor-pointer hover:bg-gray-200 transition duration-500">
                         Escribir Reseña
                         <svg class="h-6 w-6 absolute left-2 scale-90"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
                     </a>
-                    <p>{{prova}}</p>
                 </div>
             </div>
             
         </div>
 
         <hr class="w-full mt-2">
+
+        <div onclick="Leermas()" class="flex justify-center w-[100%] lg:w-[60%] mt-2 text-sm cursor-pointer select-none">
+            <div id="leermas" class="flex flex-col justify-center items-center text-gray-500">
+                <div>Leer más</div>
+                <svg class="h-4 w-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+            </div>      
+            <div id="leermenos" class="flex flex-col justify-center items-center text-gray-500 hidden">
+                <div>Leer menos</div>
+                <svg class="h-4 w-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                </svg>
+            </div>
+        </div>
         
         <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative">
             <a href="{% url 'shop' %}" class="pt-6 pb-3 hover:text-black">Otros Productod de la Tienda</a>
         </div>
-
-        <div class="py-2 xl:px-0">
-            <div class="products flex items-center flex-wrap">
-                {% for product in products_list %}
-                    {% include 'product/partials/product_list_item.html' %}
-                {% endfor %}
+        <div class="w-full relative">
+            <div class="xl:px-0 overflow-hidden mx-10">
+                <div class="swiper_products mySwiper_products block text-gray-600">
+                    <div class="swiper-wrapper">
+                        {% for product in products_list %}
+                        <div class="swiper-slide xl:h-[350px]">
+                            <div class="min-w-[100px] xl:w-[300px] h-full py-1 md:px-6 hover:shadow-md hover:border">
+                                <a href="{% url 'product' product.slug %}">
+                                    <img title="image_product" src="{{product.image}}" class="w-full rounded-xl">
+                                </a>
+                            
+                                <div class="pt-3 flex items-center justify-between">
+                                    <a title="productname" href="{% url 'product' product.slug %}">{{ product.nombre }}</a>
+                                </div>
+                                <p class="pt-1 text-gray-400">{{product.get_display_precio|floatformat:2}}€</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
             </div>
         </div>
         {% if request.user.is_authenticated %}
@@ -268,17 +361,31 @@
                     {% include 'product/partials/review.html' %}
                 {% endif %}
             {% endfor %}
+            {% if not review_user %}
+                {% include 'product/partials/review.html' %}
+            {% endif %}
         {% endif %}
+        <div id="zooming" class="absolute border top-12 min-[1218px]:top-0 left-[55%] w-[450px] min-[1218px]:w-[550px] min-[1345px]:w-[600px] bg-green-500 z-[2] aspect-[1/1] hidden">
+            
         </div>
     </div>
-    <div id="zooming" class="absolute border top-[25%] left-[55%] w-[65%] h-[65%] bg-green-500 md:w-[40%] z-[2] aspect-[1/1] hidden">
 
-    </div>
 </div>
-
-{% endblock %}
+    
+    {% endblock %}
 
 {% block scripts %}
+<script>
+    var swiper_products = new Swiper(".mySwiper_products", {
+        slidesPerView: 4,
+        spaceBetween: 20,
+        freeMode: false,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
     {% include 'product/partials/scripts_p.html' %}
 {% endblock %}
 

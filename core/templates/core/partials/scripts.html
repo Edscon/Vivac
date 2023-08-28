@@ -18,21 +18,26 @@
     const menu_login = document.querySelector('.menu-login-mobile');
     const menu_login_l = document.querySelector('.menu-login-mobile-l');
 
-    function menu_login_mobile(){
-        if (menu_login.classList.contains('invisible')){
-            disableScroll();
-            menu_login.classList.remove('invisible');
-            menu_login.classList.add('visible');
-
-
-            menu_login_l.style.animation ="login-open 300ms 1"
-
-        }else{
-            menu_login_l.style.animation ="login-close 300ms 1"
-            
-            menu_login.classList.remove('visible');
-            menu_login.classList.add('invisible');
-            enableScroll();
+    function menu_login_mobile(Res=0){
+        if(Res == 1){
+            menu_login.classList.remove('xl:hidden');
+        }
+        if(screen.width < 1280 || Res != 0){
+            if (menu_login.classList.contains('invisible')){
+                disableScroll();
+                menu_login.classList.remove('invisible');
+                menu_login.classList.add('visible');
+    
+    
+                menu_login_l.style.animation ="login-open 300ms 1"
+    
+            }else{
+                menu_login_l.style.animation ="login-close 300ms 1"
+                
+                menu_login.classList.remove('visible');
+                menu_login.classList.add('invisible');
+                enableScroll();
+            }
         }
     }
 

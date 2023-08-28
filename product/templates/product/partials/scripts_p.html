@@ -1,6 +1,11 @@
 <script type="text/javascript">
 
     const descripcion = document.getElementById('desc');
+    console.log();
+    
+    if(descripcion.clientHeight <= 200){
+        leermas.classList.add('hidden');
+    }
 
     function Leermas(){
         
@@ -251,12 +256,16 @@
     const FormReseña = document.getElementById('FormReseña');
 
     function FirstOp() {
-        if(FormReseña.classList.contains('hidden')){
-                FormReseña.classList.remove('hidden');
-                disableScroll();
+        if (FormReseña){
+            if(FormReseña.classList.contains('hidden')){
+                    FormReseña.classList.remove('hidden');
+                    disableScroll();
+            }else{
+                    FormReseña.classList.add('hidden');
+                    enableScroll();
+            }
         }else{
-                FormReseña.classList.add('hidden');
-                enableScroll();
+            menu_login_mobile(1);
         }
     }
 
