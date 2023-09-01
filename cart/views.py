@@ -9,7 +9,7 @@ from product.models import Product, Variant, Color
 
 def add_to_cart(request, product_id, color, size):
     cart = Cart(request)
-    size = size.replace('|', '/')
+    size = size.replace('|', '/') # for sizes 40(2/3)
     cart.add(product_id, color, size)
     
     response = render(request, 'cart/partials/menu_cart.html')
@@ -27,18 +27,25 @@ def success(request):
 
 
 def update_cart(request, product_id, color, size, action):
+    
     cart = Cart(request)
     size = size.replace('|', '/')
     if action == 'increment':
         cart.add(product_id, color, size, 1, True)
-    else:
+    elif action == 'decrement':
         cart.add(product_id, color, size, -1, True)
+    
+    variant = Variant.objects.get(product=Product.objects.get(pk=product_id), color=Color.objects.get(code=color), size=size)
+    quantity = cart.get_item(variant.id)
 
-    variant = Variant.objects.get(product=Product.objects.get(id=product_id), color=Color.objects.get(code=color), size=size)
-    variant_card = cart.get_item(variant.id)
+    if action == 'remove':
+        quantity = 0
+        cart.remove(str(variant.id))
 
-    if variant_card:
-        quantity = variant_card['quantity']
+    size = size.replace('/', '|')
+    if quantity:
+        quantity = quantity['quantity']
+
         item = {
             'variant': {
                 'id': variant.id,
@@ -46,13 +53,19 @@ def update_cart(request, product_id, color, size, action):
                 'image': variant.image,
                 'get_thumbnail': variant.image(),
                 'price': variant.precio,
+                'product': variant.product,
+                'color': {
+                    'slug': Color.objects.get(code=color).slug
+                }
             },
             'total_price': float(quantity * variant.precio),
             'quantity': quantity,
+            'size': size,
+            'color': color,
         }
     else:
         item = None
-
+    
     response = render(request, 'cart/partials/cart_item.html', {'item': item})
 
     response['HX-Trigger'] = 'update-menu-cart'

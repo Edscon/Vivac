@@ -338,7 +338,7 @@
             <a href="{% url 'shop' %}" class="pt-6 pb-3 hover:text-black">Otros Productod de la Tienda</a>
         </div>
         <div class="w-full relative">
-            <div class="xl:px-0 overflow-hidden mx-10">
+            <div class="xl:px-0 overflow-hidden md:mx-10">
                 <div class="swiper_products mySwiper_products block text-gray-600">
                     <div class="swiper-wrapper">
                             {% for product in products_list %}
@@ -373,8 +373,8 @@
                             {% endfor %}
                         
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev hidden md:block"></div>
+                    <div class="swiper-button-next hidden md:block"></div>
                 </div>
             </div>
         </div>

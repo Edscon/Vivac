@@ -1,11 +1,13 @@
+{% if cart|length > 0  %}
 <a href="{% url 'cart' %}" id="menu-cart-button" class="hidden flex justify-center items-center hover:text-black">
-    {% if cart|length > 0  %}
     <span class="absolute -top-2 left-5 bg-green-600 rounded-full h-4 w-4 flex items-center justify-center text-xs text-white">
         {{cart|length}}
     </span>
-    {% else %}
+</a>
+{% else %}
+<a id="menu-cart-button" class="hidden flex justify-center items-center hover:text-black">
     <span class="absolute -top-2 left-5 bg-gray-200 rounded-full h-4 w-4 flex items-center justify-center text-xs text-white">
         0
     </span>
-    {% endif %}
 </a>
+{% endif %}

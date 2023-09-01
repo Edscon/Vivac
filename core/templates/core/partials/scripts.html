@@ -20,9 +20,9 @@
 
     function menu_login_mobile(Res=0){
         if(Res == 1){
-            menu_login.classList.remove('xl:hidden');
+            menu_login.classList.remove('min-[1300px]:hidden');
         }
-        if(screen.width < 1280 || Res != 0){
+        if(screen.width <= 1300 || Res != 0){
             if (menu_login.classList.contains('invisible')){
                 disableScroll();
                 menu_login.classList.remove('invisible');
@@ -75,31 +75,31 @@
         }
         /*---------*/
 
-        if ((currentScroll < lastScroll && nav.classList.contains('scroll-down') && (nscrollup == nscrollupuntil)) || (currentScroll < 170))  {
+        if ((currentScroll < lastScroll && nav.classList.contains('scroll-down') && (nscrollup == nscrollupuntil)) || (currentScroll < 150))  {
             nav.classList.add('scroll-up');
             nav.classList.remove('scroll-down');
             nav.classList.add('max-[1300px]:mt-8');
             nav.classList.remove('max-[1300px]:mt-0');
         }
 
-        if (currentScroll > lastScroll && nav.classList.contains('scroll-up') && (currentScroll > 170) ) {
+        if (currentScroll > lastScroll && nav.classList.contains('scroll-up') && (currentScroll > 150) ) {
             nav.classList.remove('scroll-up');
             nav.classList.add('scroll-down');
             nav.classList.remove('max-[1300px]:mt-8');
             nav.classList.add('max-[1300px]:mt-0');
         }
 
-        if ((currentScroll < lastScroll && nav2.classList.contains('scroll-down-busca') && (nscrollup == nscrollupuntil)) || (currentScroll < 170)) {
+        if ((currentScroll < lastScroll && nav2.classList.contains('scroll-down-busca') && (nscrollup == nscrollupuntil)) || (currentScroll < 150)) {
             nav2.classList.add('scroll-up-busca');
             nav2.classList.remove('scroll-down-busca');
         }
 
-        if (currentScroll > lastScroll && nav2.classList.contains('scroll-up-busca') && (currentScroll > 170)) {
+        if (currentScroll > lastScroll && nav2.classList.contains('scroll-up-busca') && (currentScroll > 150)) {
             nav2.classList.remove('scroll-up-busca');
             nav2.classList.add('scroll-down-busca');
         }
 
-        if(lastScroll > currentScroll && (currentScroll > 170)){
+        if(lastScroll > currentScroll && (currentScroll > 150)){
             nscrollup = nscrollup + 1;
         }else{
             nscrollup = 0;

@@ -4,27 +4,113 @@
 
 {% block content%}
 
-<div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
-    <div class="products w-full lg:w-3/4">
-        {% for item in cart %}
-            {% include 'cart/partials/cart_item.html' %}
-        {% endfor %}
+<header class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto overflow-hidden max-[1300px]:-mt-6 -mt-2 mb-5">
+
+    {% include 'core/partials/banner.html' %}
+    
+
+    <div class="w-full hidden md:flex justify-between relative text-gray-800 mt-8">
+        <div class="bg-white pr-2 z-[3] flex space-x-2">
+            <div class="z-[3] rounded-full border border-gray-300 flex p-4 relative bg-green-700">
+                <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white">
+                    1
+                 </div>
+            </div>
+            <div class="my-auto text-green-700"> Carrito </div>
+        </div>
+        <div class="bg-white px-2 z-[3] flex space-x-2">
+            <div class="z-[3] rounded-full border border-gray-300 flex p-4 relative bg-white">
+                <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                    2
+                 </div>
+            </div>
+            <div class="my-auto"> Pago y envío </div>
+        </div>
+        <div class="bg-white pl-2 z-[3] flex space-x-2">
+            <div class="z-[3] rounded-full border border-gray-300 flex p-4 relative bg-white">
+                <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                    3
+                 </div>
+            </div>
+            <div class="my-auto"> Confirmación </div>
+        </div>
+        <hr class="w-full absolute py-[0.5px] top-[50%] bg-gray-300 z-[0]">
     </div>
-    <dev class="summary mx-auto w-full md:w-2/3 xl:w-1/4 p-6 bg-gray-100 rounded-xl mt-3">
-        <h3 class="uppercase text-lg mb-5">Summary</h3>
-        <div class="mb-6 flex justify-between">
-            <span class="font-semibold">Total</span>
-            <span 
-                class="font-semibold"
-                hx-get="{% url 'hx_cart_total' %}"
-                hx-trigger="update-menu-cart from:body"
-                hx-swap="innerHTML"
-            >
-            {% include 'cart/partials/cart_total.html' %}    
-            </span>
+
+</header>
+
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto xl:px-0 px-4 py-5 flex flex-wrap items-start">
+
+    <div class="w-full flex justify-between lg:mb-8">
+        <a href="{% url 'frontpage' %}" class="w-full lg:w-1/5 py-3 bg-white border flex"><div class="mx-auto my-auto">← Continuar comprando</div></a>
+        <a  href="{% url 'checkout' %}" class="w-1/5 py-3 bg-green-700 border hidden lg:flex"><div class="mx-auto my-auto text-white">Checkout</div></a>
+    </div>
+
+    <div class="w-full ">
+        <div class="w-full hidden lg:flex justify-between font-bold">
+            <div>Descripción del artículo</div>
+            <div class="flex justify-between w-[200px]">
+                <div>Cantidad</div>
+                <div>Precio</div>
+            </div>
+        </div>
+        
+        <hr class="mt-0 lg:mt-3 mb-3 border-white lg:border-gray-300">
+
+        <div class="products w-full">
+            {% for item in cart %}
+                {% include 'cart/partials/cart_item.html' %}  
+                {% if not forloop.last %}
+                <hr class="w-full mb-4">
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% if cart %}
+        <hr class="mb-3 border-gray-300">
+        {% endif %}
+
+        <div class="w-full flex justify-between text-sm">
+            <div></div>
+            <div class="flex justify-between w-[200px]">
+                <div>Subtotal</div>
+                <div
+                    class=""
+                    hx-get="{% url 'hx_cart_total' %}"
+                    hx-trigger="update-menu-cart from:body"
+                    hx-swap="innerHTML"
+                >{% include 'cart/partials/cart_total.html' %} </div>
+            </div>
         </div>
 
-        <a href="{% url 'checkout' %}" class="inline-block  flex justify-center w-full py-2 bg-green-500 hover:bg-green-700 text-white">Checkout</a>
-    </dev>
+    </div>
+
+    <div class="w-full flex justify-between text-base bg-gray-100 py-3 mt-4">
+        <div class="text-sm pl-4 hidden lg:flex">Precios con IVA incluido</div>
+        <div class="text-sm pl-4 flex lg:hidden">IVA incl.</div>
+        <div class="flex justify-between space-x-[10px] font-semibold select-none">
+            <span class="flex relative">
+                
+                <div class="text-center flex">
+                    <div class="flex text-black font-semibold">Total compra</div>
+                </div>
+                
+            </span>
+            <div class="w-[120px] text-black font-semibold">
+                <div
+                    class="text-right"
+                    hx-get="{% url 'hx_cart_total' %}"
+                    hx-trigger="update-menu-cart from:body"
+                    hx-swap="innerHTML"
+                >{% include 'cart/partials/cart_total.html' %} 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full flex justify-between my-4">
+        <a href="{% url 'frontpage' %}" class="w-1/5 py-3 bg-white border hidden lg:flex"><div class="mx-auto my-auto">← Continuar comprando</div></a>
+        <a  href="{% url 'checkout' %}" class="w-full lg:w-1/5 py-3 lg:py-3 bg-green-700 border flex"><div class="mx-auto my-auto text-white">Checkout</div></a>
+    </div>
+
 </div>
 {% endblock %}
