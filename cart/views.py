@@ -54,6 +54,8 @@ def update_cart(request, product_id, color, size, action):
                 'get_thumbnail': variant.image(),
                 'price': variant.precio,
                 'product': variant.product,
+                'precio_retail': variant.precio_retail,
+                'get_descuento': variant.get_descuento,
                 'color': {
                     'slug': Color.objects.get(code=color).slug
                 }
@@ -87,3 +89,6 @@ def hx_cart_total(request):
 
 def hx_minicart(request):
     return render(request, 'cart/partials/minicart.html')
+
+def hx_addtocart(request):
+    return render(request, 'cart/partials/addtocart.html')

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from cart.views import add_to_cart, cart, checkout, hx_menu_cart, update_cart, hx_cart_total, success, hx_minicart
+from cart.views import add_to_cart, cart, checkout, hx_menu_cart, update_cart, hx_cart_total, success, hx_minicart, hx_addtocart
 
 
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
     path('hx_menu_cart/', hx_menu_cart, name="hx_menu_cart"),
     path('hx_cart_total/', hx_cart_total, name="hx_cart_total"),
     path('hx_minicart/', hx_minicart, name="hx_minicart"),
+    path('hx_addtocart/', hx_addtocart, name="hx_addtocart"),
 ]

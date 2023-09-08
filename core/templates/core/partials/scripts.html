@@ -73,6 +73,10 @@
                 BotA.classList.remove('opacity-100');
             }
         }
+        /*-----------*/
+        if(currentScroll != lastScroll){
+            console.log('1');
+        }
         /*---------*/
 
         if ((currentScroll < lastScroll && nav.classList.contains('scroll-down') && (nscrollup == nscrollupuntil)) || (currentScroll < 150))  {

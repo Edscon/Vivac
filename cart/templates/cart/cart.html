@@ -60,21 +60,16 @@
         <div class="products w-full">
             {% for item in cart %}
                 {% include 'cart/partials/cart_item.html' %}  
-                {% if not forloop.last %}
-                <hr class="w-full mb-4">
-                {% endif %}
             {% endfor %}
         </div>
-        {% if cart %}
-        <hr class="mb-3 border-gray-300">
-        {% endif %}
+        
 
         <div class="w-full flex justify-between text-sm">
             <div></div>
             <div class="flex justify-between w-[200px]">
                 <div>Subtotal</div>
                 <div
-                    class=""
+                    class="pr-1"
                     hx-get="{% url 'hx_cart_total' %}"
                     hx-trigger="update-menu-cart from:body"
                     hx-swap="innerHTML"
@@ -84,10 +79,10 @@
 
     </div>
 
-    <div class="w-full flex justify-between text-base bg-gray-100 py-3 mt-4">
+    <div class="w-full flex justify-between text-base bg-gray-100 py-3 mt-4 pr-1">
         <div class="text-sm pl-4 hidden lg:flex">Precios con IVA incluido</div>
         <div class="text-sm pl-4 flex lg:hidden">IVA incl.</div>
-        <div class="flex justify-between space-x-[10px] font-semibold select-none">
+        <div class="flex justify-between space-x-[30px] font-semibold select-none">
             <span class="flex relative">
                 
                 <div class="text-center flex">
@@ -95,7 +90,7 @@
                 </div>
                 
             </span>
-            <div class="w-[120px] text-black font-semibold">
+            <div class="w-[100px] text-black font-semibold">
                 <div
                     class="text-right"
                     hx-get="{% url 'hx_cart_total' %}"

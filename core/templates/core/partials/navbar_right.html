@@ -45,18 +45,19 @@
         </a>
 
         <span class="text-[11px] hidden md:flex ">Mis Favoritos</span>
-            
+        
     </div>
-    <!--a hidden ??-->
-    <a 
+
+    <div 
             hx-get="{% url 'hx_menu_cart' %}"
             hx-trigger="update-menu-cart from:body"
             hx-swap="innerHTML"
-            class="hidden absolute"
+            class="hidden"
             >
             {% include 'cart/partials/menu_cart.html' %}
     
-    </a>
+    </div>
+    
     <div class="dropdown-menu-cart relative"
         hx-get="{% url 'hx_minicart' %}"
         hx-trigger="update-menu-cart from:body"

@@ -1,91 +1,104 @@
 {% load replacement %}
 {% if item %}
-<div class="product flex w-full" id="cart-item-{{item.variant.id}}">
-    <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-[12%] min-w-[100px] min-[450px]:min-w-[150px]">
-        <img class="hover:shadow-lg rounded" src="{{item.variant.image}}">
-    </a>
+<div id="cart-item-{{item.variant.id}}">
 
-    <div class="w-[88%] pl-2 text-sm">
-        <div class="w-full lg:flex justify-between">
-            <div class="flex justify-between relative">
-                <div class="item-size">
-                    <div class="font-semibold">{{item.variant.product.nombre}}</div>
-                    <button class="" value="{{item.size}}" id="item-size-{{item.variant.id}}">Talla:  {{item.size|replace_1}}</button>
-                    <div class="text-green-600">Fecha entrega estimada: </div>
-                </div>
-                <div class="flex lg:hidden bg-white my-auto">
-                    <a 
-                    title="minusitemquantity"
-                    class="px-3 py-1 cursor-pointer"
-                    hx-get="{% url 'update_cart' item.variant.product.id item.color item.size 'remove' %}"
-                    hx-target="#cart-item-{{item.variant.id}}"
-                    hx-swap="outerHTML"
-                    >
-                    <div class="relative">
-                        <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-                            <div class="flex space-x-2">
-                                <div class="relative"><svg class="h-5 w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                                </svg>
+    <div class="product flex w-full">
+        <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-[12%] min-w-[100px] min-[450px]:min-w-[150px]">
+            <img class="hover:shadow-lg rounded" src="{{item.variant.image}}">
+        </a>
+    
+        <div class="w-[88%] pl-2 text-sm">
+            <div class="w-full lg:flex justify-between">
+                <div class="flex justify-between relative">
+                    <div class="item-size">
+                        <div class="font-semibold">{{item.variant.product.nombre}}</div>
+                        <button class="" value="{{item.size}}" id="item-size-{{item.variant.id}}">Talla:  {{item.size|replace_1}}</button>
+                        <div class="text-green-600">Fecha entrega estimada: </div>
+                    </div>
+                    <div class="flex lg:hidden bg-white my-auto">
+                        <a 
+                        title="minusitemquantity"
+                        class="px-3 py-1 cursor-pointer"
+                        hx-get="{% url 'update_cart' item.variant.product.id item.color item.size 'remove' %}"
+                        hx-target="#cart-item-{{item.variant.id}}"
+                        hx-swap="outerHTML"
+                        >
+                        <div class="relative">
+                            <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                                <div class="flex space-x-2">
+                                    <div class="relative"><svg class="h-5 w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                    </svg>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div>
-                    </a>
                 </div>
-            </div>
-            <div class="min-[450px]:flex justify-between min-[450px]:space-x-[10px] font-semibold select-none mt-4 lg:mt-0">
-                <span class="flex relative">
-                    <a 
-                        class="w-[35px] border hover:border-black h-[35px] flex cursor-pointer"
-                        hx-get="{% url 'update_cart' item.variant.product.id item.color item.size 'decrement' %}"
-                        hx-target="#cart-item-{{item.variant.id}}"
-                        hx-swap="outerHTML"
-                    >
-                          <svg class="h-4 w-4 mx-auto my-auto"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                    </a>
-                    <div class="w-[60px] min-[450px]:w-[80px] border-b border-t h-[35px] text-center flex">
-                        <div class="mx-auto my-auto">{{item.quantity}}</div>
-                    </div>
-                    <a 
-                        class="w-[35px] border hover:border-black h-[35px] flex cursor-pointer"
-                        hx-get="{% url 'update_cart' item.variant.product.id item.color item.size 'increment' %}"
-                        hx-target="#cart-item-{{item.variant.id}}"
-                        hx-swap="outerHTML"
-                    >
-                        <svg class="h-4 w-4 mx-auto my-auto"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                    </a>
-                </span>
-                <div class="w-[120px] text-base max-[450px]:mt-2">
-                    <div class="mb-6 mt-1 text-green-600 font-semibold min-[450px]:text-right">{{item.total_price|floatformat:2}} €</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-2 hidden lg:block">
-            <a 
-            title="minusitemquantity"
-            class="px-3 py-1 w-[100px] cursor-pointer"
-            hx-get="{% url 'update_cart' item.variant.product.id item.color item.size 'remove' %}"
-            hx-target="#cart-item-{{item.variant.id}}"
-            hx-swap="outerHTML"
-            >
-            <div class="w-[100px] relative">
-                <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-                    <div class="flex space-x-2">
-                        <div class="relative"><svg class="h-5 w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                        </svg>
+                <div class="min-[400px]:flex justify-between min-[400px]:space-x-[10px] select-none mt-4 lg:mt-0">
+                    <span class="flex relative font-semibold">
+                        <a 
+                            class="w-[35px] border hover:border-black h-[35px] flex cursor-pointer"
+                            hx-get="{% url 'update_cart' item.variant.product.id item.color item.size 'decrement' %}"
+                            hx-target="#cart-item-{{item.variant.id}}"
+                            hx-swap="outerHTML"
+                        >
+                              <svg class="h-4 w-4 mx-auto my-auto"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="5" y1="12" x2="19" y2="12" /></svg>
+                        </a>
+                        <div class="w-[60px] min-[400px]:w-[80px] border-b border-t h-[35px] text-center flex">
+                            <div class="mx-auto my-auto">{{item.quantity}}</div>
                         </div>
-                        <div>Eliminar</div>
+                        <a 
+                            class="w-[35px] border hover:border-black h-[35px] flex cursor-pointer"
+                            hx-get="{% url 'update_cart' item.variant.product.id item.color item.size 'increment' %}"
+                            hx-target="#cart-item-{{item.variant.id}}"
+                            hx-swap="outerHTML"
+                        >
+                            <svg class="h-4 w-4 mx-auto my-auto"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
+                        </a>
+                    </span>
+                    <div class="lg:w-[100px] text-base max-[400px]:mt-2">
+                        <div class="mb-6 mt-1 text-right pr-1">
+                            {% if item.variant.get_descuento != 0 %}
+                            <div class="text-[10px] leading-[10px] text-gray-700 line-through">PVR: {{item.variant.precio_retail|multiply:item.quantity | floatformat:2}} €</div>
+                            <div class="text-green-600 font-semibold">{{item.total_price|floatformat:2}} €</div>
+                            <div class="text-[10px] leading-[10px] text-gray-700">Te ahorras {{item.variant.get_descuento|multiply:item.quantity | floatformat:2}} €</div>
+                            {% else %}
+                            <div class="font-semibold">{{item.total_price|floatformat:2}} €</div>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
-            </a>
+    
+            <div class="mt-2 hidden lg:block">
+                <a 
+                title="minusitemquantity"
+                class="px-3 py-1 w-[100px] cursor-pointer"
+                hx-get="{% url 'update_cart' item.variant.product.id item.color item.size 'remove' %}"
+                hx-target="#cart-item-{{item.variant.id}}"
+                hx-swap="outerHTML"
+                >
+                <div class="w-[100px] relative">
+                    <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                        <div class="flex space-x-2">
+                            <div class="relative"><svg class="h-5 w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                            </svg>
+                            </div>
+                            <div>Eliminar</div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
         </div>
-    </div>
-
-</div>  
+    </div>  
+    
+    <hr class="w-full mb-4 border-gray-300">
+    
+</div>
 
 
 {% endif %}

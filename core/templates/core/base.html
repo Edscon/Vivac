@@ -27,12 +27,24 @@
         {% include 'core/partials/styles.html' %}
     </head>
     
-    <body id="body">
+    <body id="body">       
+        
+        <div 
+            hx-get="{% url 'hx_addtocart' %}"
+            hx-trigger="update-menu-cart from:body"
+            hx-swap="innerHTML"
+            class="hidden"
+            id="minicart_mobile"
+            >
+            {% include 'cart/partials/addtocart.html' %}
+    
+        </div>
 
         {% include 'core/partials/swipertop.html' %}
         
         {% include 'core/partials/menu_mobile.html' %}
         {% include 'core/partials/login_mobile.html' %}
+
 
         <nav class="navbar scroll-up fixed top-0 z-40 max-[1300px]:mt-8 bg-white w-full min-[1300px]:relative">
 

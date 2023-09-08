@@ -1,0 +1,59 @@
+{% if cart|length > 0 %}
+{% load replacement %}
+<a href="{% url 'cart' %}" class="fixed top-[30px] z-[99999999999999] w-full bg-white border border-black">
+    <div class="flex mx-3 space-x-2 my-5">
+        <div class="my-auto pt-[1px]"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 64 64"
+            style="fill:rgb(52, 150, 52);">
+            <path d="M32,6C17.641,6,6,17.641,6,32c0,14.359,11.641,26,26,26s26-11.641,26-26C58,17.641,46.359,6,32,6z M29.081,42.748	l-10.409-9.253l2.657-2.99l7.591,6.747L44,21l3.414,3.414L29.081,42.748z"></path>
+            </svg></div>
+        <div class="font-semibold">Añadido al carrito</div>
+        
+    </div>
+    <div class="max-h-[257px] overflow-auto relative">
+        {% for item in cart %}
+            {% if forloop.counter0 > 0 %}
+                <hr class="mb-2">
+            {% endif %}
+            <div class="">
+                <span class="flex pr-6 mb-2">
+                    <img class="w-1/4" src="{{item.variant.image}}">
+                    <span class="w-3/4">
+                        <span class="flex justify-between space-x-4">
+                            
+                            <span class="text-sm">{{item.variant.product.nombre}}</span>
+                            <span class="mb-6 pt-1 text-black font-semibold w-[80px] text-right">{{item.total_price|floatformat:2}} €</span>
+                            
+                        </span>
+                        
+                        <span class="quantity flex items-center space-x-4 text-gray-500 text-sm space-x-2">
+                            
+                            <span class="w-[80px]">Talla: {{item.size|replace_1}}</span>
+                            <span>Cantidad: {{item.quantity}}</span>
+                            
+                        </span>
+                    </span>
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="h-[120px] relative bg-gray-100">
+        <div class="absolute text-black font-semibold top-[20px] right-[30px] flex space-x-4">
+            <span class="text-sm">Subtotal:</span>
+            <span>{{cart.get_total_cost|floatformat:2}} €</span>
+        </div>
+        <div class="flex w-full space-x-[20px] justify-center absolute top-[60px]">
+            <button href="{% url 'cart' %}" class="border border-gray-300 w-[130px] inline-block py-2 rounded bg-white hover:bg-gray-100 relative transition duration-500 cursor-pointer">
+                <p class="text-center">Var Carrito</p>
+            </button>
+            <button href="{% url 'checkout' %}" class="border border-gray-300 w-[200px] inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 absolute left-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                </svg> 
+                <p class="text-center">Realizar pedido</p>
+            </button>
+        </div>
+    </div>
+</a>
+{% else %}
+<a id="minicart_mobile" class="hidden flex justify-center items-center hover:text-black"></a>
+{% endif %}

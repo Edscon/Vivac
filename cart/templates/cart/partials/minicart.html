@@ -26,7 +26,7 @@
 <span class="text-[11px] hidden md:flex ">Carrito</span>
 
 {% if cart|length > 0 %}
-<div open id="minicart" class="minicart border-dropdown-cart absolute w-[400px] bg-white text-gray-800 text-sm rounded-sm top-[50px] left-[-360px] pt-2"> 
+<div open id="minicart" class="minicart hidden md:block border-dropdown-cart absolute w-[400px] bg-white text-gray-800 text-sm rounded-sm top-[50px] left-[-360px] pt-2"> 
     <div class="max-h-[250px] overflow-auto">
         {% for item in cart %}
         {% if forloop.counter0 > 0 %}
@@ -74,4 +74,7 @@
         </div>
     </div>
 </div>
+{% else %}
+<div id="minicart" class="minicart hidden">
 {% endif %}
+
