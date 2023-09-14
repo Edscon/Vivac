@@ -45,7 +45,7 @@ def product(request, slug):
 
     lista = []
     for i in range(0,len(colors)):
-            lista.append(Variant.objects.filter(color=colors[i]).first().id)
+            lista.append(Variant.objects.filter(color=colors[i], product=product).first().id)
     
     preserved = Case(*[When(pk=pk, then=pos) for pos, pk in enumerate(lista)])
     variant_colors = Variant.objects.filter(id__in=lista).order_by(preserved)

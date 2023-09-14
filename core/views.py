@@ -3,9 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q, Case, When
 from product.models import Product, Category, Marca, Variant, Color
+from core.models import Account
 from django.db.models import Min, Max
 from functools import reduce
+from django.contrib.auth.models import User
+from django.http import JsonResponse
 
+import json
 import pandas as pd
 import operator
 import math
@@ -55,6 +59,27 @@ def signup(request):
 
     return render(request, 'core/signup.html', {'form': form})
 
+def create_user(request):
+    data = json.loads(request.body)
+
+    user = User.objects.create_user(data['first_name'], data['email'], data['password'])
+    user.first_name = data['first_name']
+    user.last_name = data['last_name']
+    user.username = data['first_name']
+    user.save()
+    
+    account = Account(
+        user = user,
+        address = data['address'],
+        city = data['city'],
+        zipcode = data['zipcode'],
+        phone = data['phone'],
+        provincia = data['provincia'],
+        )
+    
+    account.save()
+
+    return JsonResponse({'data': data})
 
 @login_required
 def myaccount(request):

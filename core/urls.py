@@ -2,7 +2,7 @@ from django.contrib.auth import views
 from django.urls import path
 
 
-from core.views import frontpage, shop, signup, myaccount, edit_myaccount
+from core.views import frontpage, shop, signup, myaccount, edit_myaccount, create_user
 from product.views import product, marca, marcas, variant_product
 
 
@@ -19,5 +19,7 @@ urlpatterns = [
     path('shop/<slug:slug>', product, name='product'),
     path('shop/<slug:slug>/<slug:slug_color>', variant_product, name='variant_product'),
     path('marcas/<slug:slug>', marca, name='marca'),
+
+    path('create_user/', create_user, name='create_user'),
 
 ]

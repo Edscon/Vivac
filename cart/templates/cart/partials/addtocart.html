@@ -20,17 +20,28 @@
                     <span class="w-3/4">
                         <span class="flex justify-between space-x-4">
                             
-                            <span class="text-sm">{{item.variant.product.nombre}}</span>
-                            <span class="mb-6 pt-1 text-black font-semibold w-[80px] text-right">{{item.total_price|floatformat:2}} €</span>
+                            <span class="text-xs min-[310px]:text-sm">
+                                <div class="line-clamp-2 max-[310px]:line-clamp-1 leading-[16px] h-[17px] min-[310px]:h-[33px]">{{item.variant.product.nombre}}</div>
+                                <span class="quantity flex items-center space-x-2 mt-1 text-[10px] text-gray-700">
+                            
+                                    <span class="w-[60px]">Talla: {{item.size|replace_1}}</span>
+                                    <span>Cantidad: {{item.quantity}}</span>
+                            
+                                </span>
+
+                            </span>
+                            <span class="mb-6 pt-1 text-black font-semibold w-[85px] text-right text-xs min-[310px]:text-sm">
+                                {% if item.variant.get_descuento != 0 %}
+                                <div class="text-[10px] leading-[10px] text-gray-700 line-through">PVR: {{item.variant.precio_retail|multiply:item.quantity | floatformat:2}} €</div>
+                                <div class="text-green-600 font-semibold ">{{item.total_price|floatformat:2}} €</div>
+                                <div class="text-[10px] leading-[10px] text-gray-700">Te ahorras {{item.variant.get_descuento|multiply:item.quantity | floatformat:2}} €</div>
+                                {% else %}
+                                <div class="font-semibold">{{item.total_price|floatformat:2}} €</div>
+                                {% endif %}
+                            </span>
                             
                         </span>
                         
-                        <span class="quantity flex items-center space-x-4 text-gray-500 text-sm space-x-2">
-                            
-                            <span class="w-[80px]">Talla: {{item.size|replace_1}}</span>
-                            <span>Cantidad: {{item.quantity}}</span>
-                            
-                        </span>
                     </span>
                 </span>
             </div>
@@ -42,14 +53,16 @@
             <span>{{cart.get_total_cost|floatformat:2}} €</span>
         </div>
         <div class="flex w-full space-x-[20px] justify-center absolute top-[60px]">
-            <button href="{% url 'cart' %}" class="border border-gray-300 w-[130px] inline-block py-2 rounded bg-white hover:bg-gray-100 relative transition duration-500 cursor-pointer">
+            <button href="{% url 'cart' %}" class="border border-gray-300 w-[35%] inline-block py-2 rounded bg-white hover:bg-gray-100 relative transition duration-500 cursor-pointer">
                 <p class="text-center">Var Carrito</p>
             </button>
-            <button href="{% url 'checkout' %}" class="border border-gray-300 w-[200px] inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 absolute left-2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                </svg> 
-                <p class="text-center">Realizar pedido</p>
+            <button href="{% url 'checkout' %}" class="border border-gray-300 w-[55%] inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer flex">
+                <div class="m-auto flex space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 max-[300px]:hidden">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                    </svg> 
+                    <p class="">Realizar pedido</p>
+                </div>
             </button>
         </div>
     </div>

@@ -1,0 +1,351 @@
+<script type="application/javascript" src="https://js.stripe.com/v3/"></script>
+<script>
+
+    const passwordInput = document.getElementById("password-input");
+    const passwordInput2 = document.getElementById("password-input2");
+
+    eye.addEventListener('click', () => {
+        if(pwopen.classList.contains('hidden')){
+            pwopen.classList.remove('hidden');
+            pwclose.classList.add('hidden');
+        }
+        else if(pwclose.classList.contains('hidden')){
+            pwclose.classList.remove('hidden');
+            pwopen.classList.add('hidden');
+        }
+        
+        if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    });
+    eye2.addEventListener('click', () => {
+        if(pwopen2.classList.contains('hidden')){
+            pwopen2.classList.remove('hidden');
+            pwclose2.classList.add('hidden');
+        }
+        else if(pwclose2.classList.contains('hidden')){
+            pwclose2.classList.remove('hidden');
+            pwopen2.classList.add('hidden');
+        }
+
+        if (passwordInput2.type === "password") {
+        passwordInput2.type = "text";
+        } else {
+            passwordInput2.type = "password";
+        }
+    });
+
+    function insertAfter(referenceNode, newNode) {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+    }
+
+    /*Provincia*/
+    provincia = document.querySelector('select[name=provincia]')
+    provincia.addEventListener('change', () =>{
+            provincia.parentElement.classList.add("border-gray-400")
+            provincia.parentElement.classList.add("hover:border-black")
+            provincia.parentElement.classList.remove("border-red-500")
+            provincia.parentElement.parentElement.removeChild(provincia.parentElement.parentElement.childNodes[2]);
+    });
+
+
+    const Input_All = document.querySelectorAll('.Inputs input');
+
+    Input_All.forEach(input => {
+        input.addEventListener('focus', () => {
+            
+        });
+        input.addEventListener('blur', () => {
+            prove_input(input)
+        });
+        input.addEventListener('keyup', (event)=> {
+            prove_input(input);
+        }); 
+
+    });
+
+    const isNumeric = n => !isNaN(n);
+    const haveUpperCase = (string) => /[A-Z]/.test(string)
+    const haveLowCase = (string) => /[a-z]/.test(string)
+    const haveNum = (string) => /[0-9]/.test(string)
+    var password1 = ''
+
+    function prove_input(i){
+
+        var prove = false;
+
+        if(i.value == ''){
+            prove = true
+            msg = "Campo requerido."
+        }else{
+            prove = true
+
+            if(i.name == 'phone' && (!isNumeric(i.value) || !/^(?:(?:\+?[0-9]{2,4})?[ ]?[6789][0-9]{8,13})$/.test(i.value))){
+                msg = "El número de teléfono no es correcto. Por favor introduzca uno de nuevo."
+
+            }else if(i.name == 'zipcode' && (!isNumeric(i.value) || !/^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$/.test(i.value))){
+                msg = "Lo sentimos. El código postal no es correcto."
+
+            }else if((i.name == 'pasword1') && (i.value.length < 8 || !haveUpperCase(i.value) || !haveLowCase(i.value) || !haveNum(i.value))){
+                msg = "Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, 1 letra mayúscula, 1 letra minúscula, 1 número."
+
+            }else if(i.name == 'pasword2' && i.value != password1){
+                msg = "Las contraseñas no coinciden."
+
+            }else if(i.name == 'email' &&  !/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(i.value) ){
+                msg = "Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio.com."
+
+            }else {
+                prove = false
+
+            }
+            /*Para confirmar la contraseña*/
+            if(i.name == 'pasword1'){
+                password1 = i.value
+            }
+        }
+        
+        if(prove){
+
+            i.classList.remove("placeholder-gray-500")
+            i.classList.remove("hover:placeholder-black")
+            i.classList.add("placeholder-red-500")
+            i.parentElement.classList.remove("border-gray-400")
+            i.parentElement.classList.remove("hover:border-black")
+            i.parentElement.classList.add("border-red-500")
+
+            if (i.parentElement.parentElement.childNodes.length == 3) {
+                i.parentElement.parentElement.removeChild(i.parentElement.parentElement.childNodes[2]);
+            }
+            const error = document.createElement("div");
+            error.setAttribute("class", "text-red-500 text-xs")
+            error.innerHTML = msg
+            insertAfter(i.parentElement, error)
+
+        }else if(i.classList.contains("placeholder-red-500")){
+
+            i.classList.add("placeholder-gray-500")
+            i.classList.add("hover:placeholder-black")
+            i.classList.remove("placeholder-red-500")
+            i.parentElement.classList.add("border-gray-400")
+            i.parentElement.classList.add("hover:border-black")
+            i.parentElement.classList.remove("border-red-500")
+
+            i.parentElement.parentElement.removeChild(i.parentElement.parentElement.childNodes[2]);
+
+        }
+    }
+
+
+    function validate(){
+
+        var prove = true;
+
+        Input_All.forEach(input => {
+            if(input.value == ''){
+                prove = false;
+                msg = "Campo requerido.";
+            }else{
+                if(input.name == 'phone' && (!isNumeric(input.value) || !/^(?:(?:\+?[0-9]{2,4})?[ ]?[6789][0-9]{8,13})$/.test(input.value))){
+                    prove = false;
+                    msg = "El número de teléfono no es correcto. Por favor introduzca uno de nuevo.";
+                }else if(input.name == 'zipcode' && (!isNumeric(input.value) || !/^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$/.test(input.value))){
+                    prove = false;
+                    msg = "Lo sentimos. El código postal no es correcto.";
+                }else if((input.name == 'pasword1') && (input.value.length < 8 || !haveUpperCase(input.value) || !haveLowCase(input.value) || !haveNum(input.value))){
+                    prove = false;
+                    msg = "Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, 1 letra mayúscula, 1 letra minúscula, 1 número.";
+                }else if(input.name == 'pasword2' && input.value != password1){
+                    prove = false;
+                    msg = "Las contraseñas no coinciden.";
+                }else if(input.name == 'email' &&  !/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(input.value) ){
+                    prove = false;
+                    msg = "Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio.com."
+                }
+            }
+            if(!prove){
+
+                input.classList.remove("placeholder-gray-500")
+                input.classList.remove("hover:placeholder-black")
+                input.classList.add("placeholder-red-500")
+                input.parentElement.classList.remove("border-gray-400")
+                input.parentElement.classList.remove("hover:border-black")
+                input.parentElement.classList.add("border-red-500")
+
+                if (input.parentElement.parentElement.childNodes.length == 3) {
+                    input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
+                }
+                const error = document.createElement("div");
+                error.setAttribute("class", "text-red-500 text-xs")
+                error.innerHTML = msg
+                insertAfter(input.parentElement, error)
+            }
+        });
+        provincia = document.querySelector('select[name=provincia]')
+        if(provincia.value == 'Null'){
+            prove = false
+
+            provincia.classList.remove("placeholder-gray-500")
+            provincia.classList.remove("hover:placeholder-black")
+            provincia.classList.add("placeholder-red-500")
+            provincia.parentElement.classList.remove("border-gray-400")
+            provincia.parentElement.classList.remove("hover:border-black")
+            provincia.parentElement.classList.add("border-red-500")
+
+            if (provincia.parentElement.parentElement.childNodes.length == 3) {
+                provincia.parentElement.parentElement.removeChild(provincia.parentElement.parentElement.childNodes[2]);
+            }
+            const error = document.createElement("div");
+            error.setAttribute("class", "text-red-500 text-xs")
+            error.innerHTML = msg
+            insertAfter(provincia.parentElement, error)
+        
+        }
+        return prove
+    }
+
+    function buy2(event){
+        event.preventDefault()
+        if(validate()){
+            FormInfo.classList.add("hidden")
+            /*Crear cuenta*/
+            let data = {
+                'csrf_token': '{{ csrf_token }}',
+                'first_name': document.querySelector('input[name=first_name]').value,
+                'last_name': document.querySelector('input[name=last_name]').value,
+                'email': document.querySelector('input[name=email]').value,
+                'address': document.querySelector('input[name=address]').value,
+                'city': document.querySelector('input[name=city]').value,
+                'zipcode': document.querySelector('input[name=zipcode]').value,
+                'phone': document.querySelector('input[name=phone]').value,
+                'password': document.querySelector('input[name=pasword1]').value,
+                'provincia': document.querySelector('select[name=provincia]').value,
+            }
+            fetch('/create_user/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' 
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(data),
+            })
+            .then(function(response) {
+                console.log(response.json())
+            })
+            .catch(function(error) {
+                console.log('Errors', error)
+            })
+            /*ABRIR Datos de contacto y envío*/
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+    let el = document.querySelector('#errors')
+
+    function validateForm(data) {
+        let errors = []
+        if (data.first_name === ''){
+            errors.push('Nombre está vacio')
+        }
+        if (data.last_name === ''){
+            errors.push('Apellidos está vacio')
+        }
+        if (data.email === ''){
+            errors.push('Email está vacio')
+        }
+        if (data.address === ''){
+            errors.push('Dirección está vacia')
+        }
+        if (data.city === ''){
+            errors.push('Ciudad está vacia')
+        }
+        if (data.zipcode === ''){
+            errors.push('Código Postal está vacio')
+        }
+        if (data.provincia === ''){
+            errors.push('Provincia está vacio')
+        }
+        if (data.phone === ''){
+            errors.push('Tel. está vacio')
+        }
+
+        if (errors.length > 0){
+
+            let html = '<ul>';
+
+            errors.forEach((error) => {
+
+                html += '<li>' + error + '</li>';
+            })
+            el.innerHTML = html + '</ul>';
+
+        } else {
+            el.innerHTML = '';
+        }
+
+        return errors
+    }
+
+    function buy(event) {
+        event.preventDefault()
+
+        provincia = document.querySelector('select[name=provincia]').value
+        if(provincia == 'Null'){provincia = ''}
+        console.log(provincia)
+
+        let data = {
+            'first_name': document.querySelector('input[name=first_name]').value,
+            'last_name': document.querySelector('input[name=last_name]').value,
+            'email': document.querySelector('input[name=email]').value,
+            'address': document.querySelector('input[name=address]').value,
+            'city': document.querySelector('input[name=city]').value,
+            'zipcode': document.querySelector('input[name=zipcode]').value,
+            'phone': document.querySelector('input[name=phone]').value,
+            'provincia': provincia,
+        }
+        let errors = validateForm(data)
+        if (errors.length) {
+            console.log('Errors', errors)
+        }else{
+            var stripe = Stripe('{{ pub_key }}')
+
+            fetch('/order/start_order/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' 
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(data),
+            })
+            .then(function(response) {
+                return response.json()
+            })
+            .then(function(session) {
+                return stripe.redirectToCheckout({ sessionId: session.session.id })
+            })
+            .then(function(result) {
+                
+                if (result.error) {
+                    alert(result.error.message)
+                }
+            })
+            .catch(function(error) {
+                console.log('Errors', error)
+            })
+        }
+
+        return false
+    }
+</script>

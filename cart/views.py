@@ -75,7 +75,6 @@ def update_cart(request, product_id, color, size, action):
     return response
 
 
-@login_required
 def checkout(request):
     pub_key = settings.STRIPE_API_KEY_PUBLISHABLE
     return render(request, 'cart/checkout.html', {'pub_key': pub_key})
