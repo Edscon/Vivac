@@ -1,17 +1,17 @@
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404
-from django.db.models import Q, Case, When
-from product.models import Product, Category, Marca, Variant, Color
-from core.models import Account
-from django.db.models import Min, Max
-from functools import reduce
 from django.contrib.auth.models import User
+from django.db.models import Q, Case, When
+from django.db.models import Min, Max
 from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+from core.models import Account
+from product.models import Product, Category, Marca, Variant, Color
+from functools import reduce
 
 import json
 import pandas as pd
-import operator
 import math
 
 from .forms import SignUpForm
@@ -28,9 +28,8 @@ def frontpage(request):
 
         if form.is_valid():
             user = form.save()
-
+            print('Frontpage')
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-
             return redirect('/')
     else:
         form = SignUpForm()
@@ -47,37 +46,49 @@ def frontpage(request):
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
-
         if form.is_valid():
             user = form.save()
-
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-
             return redirect('/')
     else:
         form = SignUpForm()
 
     return render(request, 'core/signup.html', {'form': form})
 
+@csrf_exempt
 def create_user(request):
     data = json.loads(request.body)
 
-    user = User.objects.create_user(data['first_name'], data['email'], data['password'])
-    user.first_name = data['first_name']
-    user.last_name = data['last_name']
-    user.username = data['first_name']
-    user.save()
-    
-    account = Account(
-        user = user,
-        address = data['address'],
-        city = data['city'],
-        zipcode = data['zipcode'],
-        phone = data['phone'],
-        provincia = data['provincia'],
+    if(User.objects.filter(email = data['email'] ).count() == 0):
+        user = User.objects.create_user(data['email'], data['email'], data['password'])
+        user.first_name = data['first_name']
+        user.last_name = data['last_name']
+        user.username = data['first_name']
+        user.save()
+        account = Account(
+            user = user,
+            address = '''data['address']''',
+            city = data['city'],
+            zipcode = data['zipcode'],
+            phone = data['phone'],
+            provincia = data['provincia'],
         )
-    
-    account.save()
+        account.save()
+        data['user_id'] = user.id
+
+    elif (User.objects.get(email = data['email']).check_password(data['password'])):
+        user = User.objects.get(email = data['email'])
+        data['user_id'] = user.id
+        account = Account.objects.get(user=user)
+        account.address = '''data['address']''',
+        account.city = data['city'],
+        account.zipcode = data['zipcode'],
+        account.phone = data['phone'],
+        account.provincia = data['provincia'],
+        account.save()
+
+    else:
+        data = {}
 
     return JsonResponse({'data': data})
 
@@ -185,8 +196,6 @@ def shop(request):
         else:
             brands = Product.objects.all().values('marca')
     else: brands = products.values('marca')
-
-    print(brands)
 
     temp = []
     for i in brands:

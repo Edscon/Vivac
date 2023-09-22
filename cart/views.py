@@ -6,7 +6,6 @@ from .cart import Cart
 from product.models import Product, Variant, Color
 
 
-
 def add_to_cart(request, product_id, color, size):
     cart = Cart(request)
     size = size.replace('|', '/') # for sizes 40(2/3)
@@ -20,10 +19,6 @@ def add_to_cart(request, product_id, color, size):
 
 def cart(request):
     return render(request, 'cart/cart.html')
-
-
-def success(request):
-    return render(request, 'cart/success.html')
 
 
 def update_cart(request, product_id, color, size, action):
