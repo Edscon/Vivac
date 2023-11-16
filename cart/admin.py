@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import GastosProvincia
+
+class GastosProvinciaAdmin(admin.ModelAdmin):
+    list_display = ['nombre', 'precio']
+
+admin.site.register(GastosProvincia, GastosProvinciaAdmin)

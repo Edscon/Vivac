@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from .cart import Cart
+from .models import GastosProvincia
 from product.models import Product, Variant, Color
 
 
@@ -72,7 +73,13 @@ def update_cart(request, product_id, color, size, action):
 
 def checkout(request):
     pub_key = settings.STRIPE_API_KEY_PUBLISHABLE
-    return render(request, 'cart/checkout.html', {'pub_key': pub_key})
+
+    envios = {}
+    gastos_provincia = GastosProvincia.objects.values('nombre')
+    for i in range(0, len(gastos_provincia)):
+        envios[GastosProvincia.objects.values('nombre')[i]['nombre']] = GastosProvincia.objects.values('precio')[i]['precio']
+    
+    return render(request, 'cart/checkout.html', {'pub_key': pub_key, 'envios': envios})
 
 
 def hx_menu_cart(request):

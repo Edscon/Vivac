@@ -14,6 +14,7 @@ urlpatterns = [
     path('hx_minicart/', hx_minicart, name="hx_minicart"),
     path('hx_addtocart/', hx_addtocart, name="hx_addtocart"),
 
+
     path('success/', success, name='success'),
     path('payment_canceled/', payment_canceled, name='payment_canceled'),
     path('stripe_webhook/', stripe_webhook, name='stripe_webhook'),

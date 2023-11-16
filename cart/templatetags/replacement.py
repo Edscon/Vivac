@@ -9,3 +9,8 @@ def replace_1(value):
 @register.filter
 def multiply(value, arg):
     return value * arg
+
+@register.filter
+def suma(value, arg):
+    return value + arg
+

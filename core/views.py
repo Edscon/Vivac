@@ -58,7 +58,8 @@ def signup(request):
 @csrf_exempt
 def create_user(request):
     data = json.loads(request.body)
-
+    print(data)
+    return JsonResponse({'data': data})
     if(User.objects.filter(email = data['email'] ).count() == 0):
         user = User.objects.create_user(data['email'], data['email'], data['password'])
         user.first_name = data['first_name']

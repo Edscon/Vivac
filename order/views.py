@@ -48,17 +48,14 @@ def start_order(request):
     )
     payment_intent = session.payment_intent
     session['customer_details']['name'] = 'data["first_name"]'
-    print(session)
-
-
 
     return JsonResponse({'session': session, 'order': payment_intent})
 
 
 def success(request):
+    cart = Cart(request)
+    cart.clear()
     try:
-        cart = Cart(request)
-        cart.clear()
         stripe.api_key = settings.STRIPE_API_KEY_HIDDEN
         checkout_session_id = request.GET.get('session_id', None)
         session = stripe.checkout.Session.retrieve(checkout_session_id)
@@ -68,7 +65,6 @@ def success(request):
         user_payment.stripe_checkout_id = checkout_session_id
         user_payment.save()
     except:
-        print('No')
         customer = '0000000'
     '''ORDER'''
 
@@ -80,7 +76,6 @@ def payment_canceled(request):
 
 @csrf_exempt
 def stripe_webhook(request):
-    print('Holaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     stripe.api_key = settings.STRIPE_API_KEY_HIDDEN
     time.sleep(10)
     payload = request.body
@@ -104,21 +99,6 @@ def stripe_webhook(request):
         user_payment.save()
     return HttpResponse(status = 200)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import json
 import os
 import stripe
 
@@ -131,19 +111,15 @@ app = Flask(__name__, static_folder='public',
             static_url_path='', template_folder='public')
 
 def calculate_order_amount(items):
-    # Replace this constant with a calculation of the order's amount
-    # Calculate the order total on the server to prevent
-    # people from directly manipulating the amount on the client
-    return 1400
+
+    price = items[1] * 100
+    return price
 
 def create_payment(request):
     try:
         data = json.loads(request.body)
 
         # Create a PaymentIntent with the order amount and currency
-        invoice = stripe.invoices.create(
-            customer_creation = 'always',
-        )
 
         intent = stripe.PaymentIntent.create(
             amount=calculate_order_amount(data['items']),
@@ -154,16 +130,6 @@ def create_payment(request):
             },
             metadata={"order_id": "6735"},
         )
-        print(intent)
         return JsonResponse({'clientSecret': intent['client_secret']})
     except Exception as e:
         return jsonify(error=str(e)), 403
-
-if __name__ == '__main__':
-    app.run(port=4242)
-
-    '''
-    It looks like you'd have to (1) create an invoice, (2) create an invoice item for each product in the order, (3) finalize the invoice to get a PaymentIntent, and (4) confirm the intent with a PaymentMethod. It'd be easier if they just added a line_items parameter when creating a PaymentIntent. – 
-
-    
-    '''
