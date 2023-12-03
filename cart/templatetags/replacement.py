@@ -12,5 +12,6 @@ def multiply(value, arg):
 
 @register.filter
 def suma(value, arg):
+    value = float(value)
     return value + arg
 

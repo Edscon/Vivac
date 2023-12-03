@@ -3,13 +3,125 @@
 {% block title %}Pedido completado con Exito{% endblock %}
 
 {% block content%}
-<div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
-    
-    <div class="products w-full lg:w-3/4">
-        <h1 class="mb-5 text-3xl">Pedido completado con Exito</h1>
+{% load replacement %}
+{% load static %}
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto xl:px-0 px-4 py-5 flex flex-wrap items-start">
 
-        <p>Grácias por la compra! {{customer}}</p>
+    <div class="w-full mb-8">
+        <h1 class="mb-5 text-3xl">Pedido completado con Exito</h1>
+        <p class="mb-5">Grácias por la compra! {{customer.name}}</p>
+        
+        <div class="text-lg font-semibold underline">Resumen del Pedido</div>
+        <div class="text-green-600">Fecha entrega estimada: </div>
+    </div>
+
+    <div class="w-[70%] ">
+        <div class="w-full hidden lg:flex justify-between font-bold">
+            <div>Descripción del artículo</div>
+            <div class="flex justify-between w-[200px]">
+                <div>Cantidad</div>
+                <div>Precio</div>
+            </div>
+        </div>
+        
+        <hr class="border-white lg:border-gray-300">
+
+        <div class="products w-full">
+            {% for item in order %}
+                
+            <div class="product flex w-full">
+                <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-[12%] min-w-[100px] min-[450px]:min-w-[150px]">
+                    <img class="hover:shadow-lg rounded" src="{{item.variant.image}}">
+                </a>
+            
+                <div class="w-[88%] pl-2 text-sm my-auto">
+                    <div class="w-full lg:flex justify-between">
+                        <div class="flex justify-between relative">
+                            <div class="item-size">
+                                <div class="font-semibold">{{item.variant.product.nombre}}</div>
+                                <button class="" value="{{item.size}}" id="item-size-{{item.variant.id}}">Talla:  {{item.size|replace_1}}</button>
+                            </div>
+                            
+                        </div>
+                        <div class="min-[400px]:flex justify-between min-[400px]:space-x-[25px] select-none mt-4 lg:mt-0">
+                                
+                            <div class="w-[60px] min-[400px]:w-[80px] h-[35px] text-center flex">
+                                <div class="mx-auto my-auto">{{item.quantity}}</div>
+                            </div>
+                                
+                            
+                            <div class="lg:w-[100px] text-base max-[400px]:mt-2">
+                                <div class="mb-6 mt-1 text-right pr-1">
+                                    {% if item.variant.get_descuento != 0 %}
+                                    <div class="text-[10px] leading-[10px] text-gray-700 line-through">PVR: {{item.variant.precio_retail|multiply:item.quantity | floatformat:2}} €</div>
+                                    {% endif %}
+                                    <div class="font-semibold">{{item.precio|floatformat:2}} €</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="w-full border-gray-300">
+
+            {% endfor %}
+        </div>
+        
+
+        <div class="w-full flex justify-between text-sm mt-3">
+            <div></div>
+            <div class="flex justify-between w-[200px]">
+                <div>Subtotal</div>
+                <div class="pr-1">{{subtotal| floatformat:2}} €</div>
+            </div>
+        </div>
+        <div class="w-full flex justify-between text-sm">
+            <div></div>
+            <div class="flex justify-between w-[200px]">
+                <div>Envio</div>
+                <div class="pr-1">{{orden_compra.envio|multiply:1 | floatformat:2}} €</div>
+            </div>
+        </div>
+
+        <div class="flex justify-between text-base bg-gray-100 py-3 mt-4 pr-1">
+            <div class="text-sm pl-4 hidden lg:flex">Precios con IVA incluido</div>
+            <div class="text-sm pl-4 flex lg:hidden my-auto">IVA incl.</div>
+            <div class="flex justify-between space-x-[30px] font-semibold select-none">
+                <span class="flex relative">
+                    
+                    <div class="text-center flex">
+                        <div class="flex text-black font-semibold">Total compra</div>
+                    </div>
+                    
+                </span>
+                <div class="w-[100px] text-black font-semibold">
+                    <div class="text-right">{{orden_compra.paid_amount| floatformat:2}} €</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="w-[28%] h-[400px] ml-[2%]">
+        
+        <div class="rounded-xl border border-gray-600 h-[200px] p-3">
+            <div class="flex space-x-2">
+                <svg class="h-7 w-7 my-auto"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                <p class="">Preguntas Frecuentes</p>
+            </div>
+            
+
+        </div>
+        
+        
 
     </div>
+
+    <div class="w-full flex justify-between my-4">
+        <a href="{% url 'frontpage' %}" class="w-1/5 py-3 bg-white border hidden lg:flex"><div class="mx-auto my-auto">← Continuar comprando</div></a>
+    </div>
+
 </div>
 {% endblock %}

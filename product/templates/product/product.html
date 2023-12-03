@@ -206,13 +206,47 @@
             </div>
             
             <div class="flex flex-wrap mt-3 text-sm">
-                <button id="Favoritos" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[79%] lg:w-[59%] border-[0.1px]">
-                    <svg class="w-5 h-5 md:w-6 md:h-6 absolute top-[50%] left-[10px] -translate-y-[50%] text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                    </svg>
-                    <p class="text-center">Añadir a favoritos</p>
-                </button>
-                <divc class="w-[2%]"></divc>
+                <iframe name="none" style="display:none;"></iframe>
+
+                {% if request.user.is_authenticated %}
+                    <form method="post" action="{% url 'update_favorito' product.id color_first.code 'añadir' %}" target="none" 
+                        id="Favorito_0"
+                        class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[79%] lg:w-[59%] border-[0.1px]"
+                        onclick="this.classList.add('hidden'); document.getElementById('Favorito_1').classList.remove('hidden');"
+                        >
+                        {% csrf_token %}
+                        <button id="Favoritos" type="submit" class="w-full h-full">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 absolute top-[50%] left-[10px] -translate-y-[50%] text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                            <p class="text-center">Añadir a favoritos</p>
+                        </button>
+                    </form>
+                    <form method="post" action="{% url 'update_favorito' product.id color_first.code 'quitar' %}" target="none" 
+                        id="Favorito_1"
+                        class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[79%] lg:w-[59%] border-[0.1px] hidden"
+                        onclick="this.classList.add('hidden'); document.getElementById('Favorito_0').classList.remove('hidden');"
+                        >
+                        {% csrf_token %}
+                        <button id="Favoritos" type="submit" class="w-full h-full">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 absolute top-[50%] left-[10px] -translate-y-[50%] text-gray-700"  fill="#dc2626" viewBox="0 0 24 24" stroke="none">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                            <p class="text-center">Añadido a favoritos</p>
+                        </button>
+                    </form>
+                {% else %}
+                <div id="Favorito_nouser" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[79%] lg:w-[59%] border-[0.1px]" onclick="FirstOp()">
+                    <button id="Favoritos" class="w-full h-full">
+                        <svg class="w-5 h-5 md:w-6 md:h-6 absolute top-[50%] left-[10px] -translate-y-[50%] text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                        <p class="text-center">Añadir a favoritos</p>
+                    </button>
+                </div>
+                {% endif %}
+
+                <div class="w-[2%]"></div>
                 <button id="Compartir" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[19%] lg:w-[39%] border">
                     <svg class="w-5 h-5 relative left-[50%] max-[1023px]:-translate-x-[50%] lg:absolute lg:left-2 text-center text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>

@@ -9,6 +9,7 @@ class Account(models.Model):
     zipcode = models.CharField(max_length=250, blank=True, null=True)
     phone = models.CharField(max_length=250, blank=True, null=True)
     provincia = models.CharField(max_length=250, blank=True, null=True)
+    favorites = models.CharField(max_length=250, blank=True, null=True)
 
     def __str__(self):
         return self.user.username

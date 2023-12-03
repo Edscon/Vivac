@@ -1,78 +1,200 @@
 import stripe
 import json
 import time
+import os
+import requests
 
-from django.http import HttpResponse
+from django.contrib.auth import login
+from django.http import HttpResponse, JsonResponse
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
-from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from cart.cart import Cart
 
-from .models import Order, OrderItem, UserPayment
+from .models import Order, OrderItem, UserPayment, ClueInfo
+from product.models import Product, Variant
 
+# This is your test secret API key.
+stripe.api_key = settings.STRIPE_API_KEY_HIDDEN
 
-def start_order(request):
+from flask import Flask, render_template, jsonify, request
 
-    cart = Cart(request)
-    user_id = json.loads(request.body)
-    total_price = 0
-    items = []
-    
-    for item in cart:
-        variant = item['variant']
-        total_price += variant.precio * int(item['quantity'])
-        nombre = variant.product.nombre + ' ' + variant.size + ' ' + variant.color.nombre
-        items.append({
-            'price_data': {
-                'currency': 'eur',
-                'product_data': {
-                    'name': nombre,
+app = Flask(__name__, static_folder='public',
+            static_url_path='', template_folder='public')
+
+def calculate_order_amount(items):
+    price = int(items[1] * 100)
+    return price
+
+@csrf_exempt
+def create_payment(request):
+    try:
+        cart = Cart(request)
+        data = json.loads(request.body)
+
+        if(data['customer'] == ''):
+            customer = stripe.Customer.create(
+                name = data['data']['first_name'] + ' ' + data['data']['last_name'],
+                phone = data['data']['phone'],
+                address={
+                    'city': data['data']['city'],
+                    'country': "ES",
+                    'postal_code': data['data']['zipcode'],
+                    'state': data['data']['provincia'],
+                    'line1': data['data']['address'],
                 },
-                'unit_amount': int(round(float(variant.precio) * 100, 2)),
+                email=data['data']['email'],
+            )
+        else:
+            #-----Modyfy customer-----
+            customer = stripe.Customer.modify(
+                data['customer'],
+                name = data['data']['first_name'] + ' ' + data['data']['last_name'],
+                phone = data['data']['phone'],
+                address={
+                    'city': data['data']['city'],
+                    'country': "ES",
+                    'postal_code': data['data']['zipcode'],
+                    'state': data['data']['provincia'],
+                    'line1': data['data']['address'],
+                },
+                email=data['data']['email'],
+            )
+        
+        # Create a PaymentIntent with the order amount and currency
+        intent = stripe.PaymentIntent.create(
+            customer=customer['id'],
+            amount=calculate_order_amount(data['items']),
+            currency='eur',
+            # In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
+            automatic_payment_methods={
+                'enabled': True,
             },
-            'quantity': item['quantity'],
-        })
-
-    stripe.api_key = settings.STRIPE_API_KEY_HIDDEN
-
-    session = stripe.checkout.Session.create(
-        payment_method_types=['card'],
-        line_items=items,
-        mode='payment',
-        customer_creation = 'always',
-        success_url='http://127.0.0.1:8000/cart/success?session_id={CHECKOUT_SESSION_ID}'+ f'&pk={user_id}',
-        cancel_url='http://127.0.0.1:8000/cart/payment_canceled',
-        customer_email = "example@example.com",
-    )
-    payment_intent = session.payment_intent
-    session['customer_details']['name'] = 'data["first_name"]'
-
-    return JsonResponse({'session': session, 'order': payment_intent})
-
-
+            payment_method_configuration= 'pmc_1NwVxXEUHJ3WTNbaat4t1kxi',
+            metadata={"envio": data['data']['envio'], },
+        )
+        
+        return JsonResponse({'clientSecret': intent['client_secret'], 'customer_id': intent['customer'] })
+    except Exception as e:
+        return jsonify(error=str(e)), 403
+    
 def success(request):
     cart = Cart(request)
-    cart.clear()
     try:
         stripe.api_key = settings.STRIPE_API_KEY_HIDDEN
-        checkout_session_id = request.GET.get('session_id', None)
-        session = stripe.checkout.Session.retrieve(checkout_session_id)
-        customer = stripe.Customer.retrieve(session.customer)
-        user_id = request.GET.get('pk', None)
-        user_payment = UserPayment.objects.get(app_user = user_id)
-        user_payment.stripe_checkout_id = checkout_session_id
-        user_payment.save()
+        payment_intent = request.GET.get('payment_intent', None)
+        client_secret = request.GET.get('payment_intent_client_secret', None)
+        email = request.GET.get('email', None)
+
+        payment_intent = stripe.PaymentIntent.retrieve(payment_intent)
+        customer = stripe.Customer.retrieve(payment_intent.customer) 
+        status = payment_intent.status
+
     except:
         customer = '0000000'
+
     '''ORDER'''
+    order = []
+    if(not Order.objects.filter(customer=customer.id)):
+        
+        if(email):
+            user = User.objects.get(email=email)
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        else: user = None
 
+        order = Order.objects.create(
+            user = user,
+            customer = customer.id,
+            first_name= customer.name.split(' ')[0],
+            last_name = customer.name.split(' ')[1],
+            email = customer.email,
+            address = customer.address['line1'],
+            zipcode = customer.address['postal_code'],
+            city = customer.address['city'],
+            provincia = customer.address['state'],
+            phone = customer.phone,
+            paid_amount = payment_intent.amount/100,
+            envio = payment_intent.metadata.envio,
+        )
 
-    return render(request, 'cart/success.html', {'customer': customer})
+    
+        item_quan = {}
+        variants = Variant.objects.filter(size__contains=['_']);
+    
+        for item in cart:
+            variants2 = Variant.objects.filter(id=item['variant'].id)
+            item_quan[item['variant'].id] = item['quantity']
+            variants = variants | variants2
+        
+        for variant in variants:
+            OrderItem.objects.create(
+                order = order,
+                variant = variant,
+                nombre = variant.product.nombre,
+                color = variant.color,
+                size = variant.size,
+                precio = variant.precio,
+                quantity = item_quan[variant.id],
+                image_id = variant.image_id,
+            )
+        orden_compra = Order.objects.filter(customer = customer.id)[0]
+        order =OrderItem.objects.filter(order=orden_compra )
+        message_whatsapp(customer, order,"%.2f" % round(payment_intent.amount/100, 2))
+        
+        cart.clear()
+    
+
+    orden_compra = Order.objects.filter(customer = customer.id)[0]
+    order = OrderItem.objects.filter(order=orden_compra )
+    subtotal = 0
+    for i in order.values('precio'):
+        subtotal = subtotal + i['precio']
+
+    context = {
+        'customer': customer,
+        'order': order,
+        'orden_compra': orden_compra,
+        'subtotal': subtotal,
+    }
+    
+
+    return render(request, 'cart/success.html', context)
+
 
 def payment_canceled(request):
     return render(request, 'cart/payment_canceled.html')
+
+def message_whatsapp(customer, order, amount):
+
+    textitems = ''
+    for item in order:
+        url = f'https://edscon.pythonanywhere.com/shop/{item.nombre.lower().replace(" ", "-")}'
+        textitems = textitems + f'*🤜{item.nombre}*\n      Talla: {item.size}\n\n{url}\n\n'
+
+    info = ClueInfo.objects.all()[0]
+    id_tel = info.id_tel
+    num_tel = info.num_tel
+    token = info.token
+    print(token)
+    try:
+        url = f'https://graph.facebook.com/v17.0/{id_tel}/messages'
+        headers = {
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json"
+        }
+        data = { "messaging_product": "whatsapp", "recipient_type":"individual", "to": f"{num_tel}", "type": "text", "preview_url": True,
+                "text": { 
+                    "body": f"*Avís compra!!*\n{customer.name}\n\n{textitems}_{amount}€_",
+                } }
+
+        r = requests.post(url, headers=headers, json=data)
+        print('Mensaje enviado', r)
+        return r
+    except:
+        return 0
+
 
 @csrf_exempt
 def stripe_webhook(request):
@@ -97,39 +219,6 @@ def stripe_webhook(request):
         line_items = stripe.checkout.Session.list_line_items(session_id, limit=1)
         user_payment.payment_bool = True
         user_payment.save()
+
     return HttpResponse(status = 200)
 
-import os
-import stripe
-
-# This is your test secret API key.
-stripe.api_key = settings.STRIPE_API_KEY_HIDDEN
-
-from flask import Flask, render_template, jsonify, request
-
-app = Flask(__name__, static_folder='public',
-            static_url_path='', template_folder='public')
-
-def calculate_order_amount(items):
-
-    price = items[1] * 100
-    return price
-
-def create_payment(request):
-    try:
-        data = json.loads(request.body)
-
-        # Create a PaymentIntent with the order amount and currency
-
-        intent = stripe.PaymentIntent.create(
-            amount=calculate_order_amount(data['items']),
-            currency='eur',
-            # In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-            automatic_payment_methods={
-                'enabled': True,
-            },
-            metadata={"order_id": "6735"},
-        )
-        return JsonResponse({'clientSecret': intent['client_secret']})
-    except Exception as e:
-        return jsonify(error=str(e)), 403

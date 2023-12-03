@@ -5,6 +5,7 @@ import pandas as pd
 import time
 
 from .models import Product, Marca, Review, Variant, Color, Size, Image, ExtraImage, RedSocial
+from core.models import Account
 
 def unique(lista,str):
     lista1 = []
@@ -21,11 +22,10 @@ def unique(lista,str):
     
 
 def product(request, slug):
-
+    
     product = get_object_or_404(Product, slug=slug)
    
     products_list = Product.objects.filter(categoria=product.categoria).order_by('popular_rating')[0:8]
-    print(products_list)
     
     images_extra = ExtraImage.objects.filter(product=product, color=Variant.objects.filter(product=product).first().color)
     if images_extra.count() == 0: images_extra = ExtraImage.objects.filter(product=product)
@@ -49,8 +49,6 @@ def product(request, slug):
     
     preserved = Case(*[When(pk=pk, then=pos) for pos, pk in enumerate(lista)])
     variant_colors = Variant.objects.filter(id__in=lista).order_by(preserved)
-
-    print(variant_colors.values('unidades'))
 
     if request.user.is_authenticated:
         review_user = Review.objects.filter(
@@ -89,6 +87,16 @@ def product(request, slug):
     
     RedSocials = RedSocial.objects.all()
 
+
+    favorite = False
+
+    if(request.user.is_authenticated ):
+        if(Account.objects.filter(user = request.user).values('favorites')[0]['favorites']):
+            for i in Account.objects.filter(user = request.user).values('favorites')[0]['favorites'].split(','):
+                if(i == f'({product.id}/{colors[0].code})'):
+                    favorite = True
+    
+
     context = {
         'product': product,
         'products_list': products_list,
@@ -103,6 +111,7 @@ def product(request, slug):
         'images_extra': images_extra,
         'RedSocials': RedSocials,
         'review_user': review_user,
+        'favorite': favorite,
     }
     return render(request, 'product/product.html', context)
 

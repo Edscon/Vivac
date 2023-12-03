@@ -1,5 +1,13 @@
 <script type="text/javascript">
 
+    <!-- Producto en favoritos --> 
+    if('{{favorite}}' == 'True'){
+        document.getElementById('Favorito_1').classList.remove('hidden');
+        document.getElementById('Favorito_0').classList.add('hidden');
+    }
+
+
+
     const descripcion = document.getElementById('desc');
     
     
@@ -216,7 +224,6 @@
         document.getElementById('minicart').classList.remove("minicart-0");
 
         } catch (error) {
-            console.log('FFFFFFFFFFF')
             document.getElementById('minicart_mobile').classList.remove("md:hidden");
             document.getElementById('minicart_mobile').classList.add("hidden");
 
@@ -229,7 +236,6 @@
 
     body.onclick = function(){
         if (timeoutId && document.getElementById('minicart').classList.contains("minicart-0")) {
-            console.log('Go')
             cancelDelay();
             document.getElementById('minicart_mobile').classList.remove("md:hidden");
             document.getElementById('minicart_mobile').classList.add("hidden");
@@ -360,7 +366,7 @@
                 top: 700,
                 behavior: "smooth",
             });
-        }else console.log('Failed to scroll');
+        }
     }
 
 

@@ -156,13 +156,13 @@
                             <div class="space-y-6 w-full lg:w-[48%]">
                                 <div>
                                     <div class="border border-gray-400 hover:border-black">
-                                        <input id="phone_sc" name="phone" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Teléfono"
+                                        <input id="phone_sc" name="phone" type="number" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Teléfono"
                                         oninput="document.getElementById('phone_nc').value = this.value">
                                     </div>
                                 </div>
                                 <div>
                                     <div class="border border-gray-400 hover:border-black">
-                                        <input id="address_sc" name="address" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Calle"
+                                        <input id="address_sc" name="address" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Calle y Numero"
                                         oninput="document.getElementById('address_nc').value = this.value">
                                     </div>
                                 </div>
@@ -320,7 +320,7 @@
                         </button>
                         -->
                         
-                        <div id="payment-message" class="hidden"></div>
+                        <div id="payment-message" class="hidden text-xs mt-2 text-red-100"></div>
                     </form>
                 </div>
             </div>

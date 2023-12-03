@@ -64,22 +64,8 @@
             {% endblock %}
         </main>
 
-        <footer class="bg-gray-100 bottom-0">
-            <div class="max-w-6xl mx-auto py-10 px-6 xl:px-0 md:flex justify-between">
-                <div class="footer-left mb-12 md:mb-0 ">
-                    <h2 class="mb-5 uppercase text-lg">Sobre Nosotros</h2>
-                    <p class="text-grey-700">Esports vivac es una tienda espezializada en articulos para deportes de montaña, fundada hace más de 25 años</p>
-                </div>
-                <div class="footer-rigth">
-                    <h2 class="mb-5 uppercase text-lg">Redes Sociales</h2>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-green-500 hover:text-green-800">Instagram</a></li>
-                        <li><a href="#" class="text-green-500 hover:text-green-800">Twitter</a></li>
-                        <li><a href="#" class="text-green-500 hover:text-green-800">Facebook</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
+        {% include 'core/partials/footer.html' %}
+
         {% block scripts %}
         {% endblock %}
     </body>

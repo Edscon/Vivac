@@ -3,10 +3,9 @@
 <p class="text-base text-gray-800 p-4">Iniciar Sesion</p>
 <hr color="block py-1">
 
-<form method="post" action="{% url 'login' %}" autocomplete="off" class="p-2">
+<form method="post" action="{% url 'login_p' %}?next={{request.path}}" autocomplete="off" class="p-2">
     {% csrf_token %}
-    <input type="text" autocomplete="off" name="username" placeholder="Usuario*" class="w-full mt-2 py-2 px-2 bg-white rounded border">
-
+    <input type="text" autocomplete="off" name="email" placeholder="Email*" class="w-full mt-2 py-2 px-2 bg-white rounded border">
     <input type="password" autocomplete="off" name="password" placeholder="Contraseña*" class="w-full mt-2 py-2 px-2 bg-white rounded border">
 
     <button class="w-full mt-2 py-2 px-2 rounded border text-white bg-green-700 hover:bg-green-800">

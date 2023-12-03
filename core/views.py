@@ -3,12 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q, Case, When
 from django.db.models import Min, Max
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from core.models import Account
 from product.models import Product, Category, Marca, Variant, Color
 from functools import reduce
+from itertools import chain
 
 import json
 import pandas as pd
@@ -17,6 +18,24 @@ import math
 from .forms import SignUpForm
 
 
+def login_p(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+
+        if(User.objects.filter(email = email ).count() > 0):
+            user = User.objects.get(email = email)
+            if (user.check_password(password)):
+                login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+                
+            else:
+                print('NO')
+        else: 
+            print('No existe usuario')
+
+    print(request.GET.get('next',''))
+
+    return redirect(request.GET.get('next',''))
 
 def frontpage(request):
     products = Product.objects.all()[0:8]
@@ -24,20 +43,34 @@ def frontpage(request):
     marcas = Marca.objects.all()
 
     if request.method == 'POST':
+        print('OK')
         form = SignUpForm(request.POST)
 
         if form.is_valid():
             user = form.save()
-            print('Frontpage')
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('/')
     else:
         form = SignUpForm()
 
+    
+    lista = []
+    if(request.user.is_authenticated ):
+        if(Account.objects.filter(user = request.user).values('favorites')[0]['favorites']):
+            for i in Account.objects.filter(user = request.user).values('favorites')[0]['favorites'].split(','):
+                id_col = i.replace('(', '').replace(')', '').split('/')
+                try:
+                    lista.append(Variant.objects.filter(product = Product.objects.filter(id=int(id_col[0]))[0], color = Color.objects.filter(code = id_col[1])[0])[0].id)
+                except:
+                    i = 0
+        
+    favorites = Variant.objects.filter(id__in = lista)
+    
     context = {
         'products': products,
         'categories': categories,
         'marcas': marcas,
+        'favorites': favorites,
     }
 
     return render(request, 'core/frontpage.html', context)
@@ -55,41 +88,81 @@ def signup(request):
 
     return render(request, 'core/signup.html', {'form': form})
 
+
+def create_account(user, data):
+    account = Account(
+        user = user,
+        address = data['address'],
+        city = data['city'],
+        zipcode = data['zipcode'],
+        phone = data['phone'],
+        provincia = data['provincia'],
+    )
+    account.save()
+    return account
+
+def info_account(account, data):
+    print(account.address,data['address'])
+    account.address = data['address']
+    account.city = data['city']
+    account.zipcode = data['zipcode']
+    account.phone = data['phone']
+    account.provincia = data['provincia']
+    account.save()
+
 @csrf_exempt
-def create_user(request):
+def create_user_data(data):
+
+    user = User.objects.create_user(data['email'], data['email'], data['password'])
+    user.first_name = data['first_name']
+    user.last_name = data['last_name']
+    user.save()
+
+    return user
+
+@csrf_exempt
+def create_user_(request):
     data = json.loads(request.body)
     print(data)
+    data['user_bool'] = ''
+    '''
+    Si request.user.authenticated ->(1) Check if Acount, if not account -> Crear Acount -> Put all information in Account -> return
+    No request.user.authenticated -> Check if in chekout form want an account('i_cuenta) -> Si -> Check if user exist -> Create User ->  (1)
+                                                                                         -> No -> return
+    '''
+    user = request.user
+    if(not user.is_authenticated):
+        if(data['i_cuenta'] == 1):
+            print('return')
+            return JsonResponse({'data': data})
+        else:
+            if(User.objects.filter(email = data['email'] ).count() == 0):
+                user = create_user_data(data)
+            else:
+                user = User.objects.get(email = data['email'])
+                print(user)
+                if (not user.check_password(data['password'])):
+                    print('None password')
+
+                    print('Este email coincide con un usuario pero la contraseña no es correcta')
+                    return JsonResponse({'data': data})
+    data['user_bool'] = user.email
+
     return JsonResponse({'data': data})
-    if(User.objects.filter(email = data['email'] ).count() == 0):
-        user = User.objects.create_user(data['email'], data['email'], data['password'])
-        user.first_name = data['first_name']
-        user.last_name = data['last_name']
-        user.username = data['first_name']
-        user.save()
-        account = Account(
-            user = user,
-            address = '''data['address']''',
-            city = data['city'],
-            zipcode = data['zipcode'],
-            phone = data['phone'],
-            provincia = data['provincia'],
-        )
-        account.save()
-        data['user_id'] = user.id
 
-    elif (User.objects.get(email = data['email']).check_password(data['password'])):
-        user = User.objects.get(email = data['email'])
-        data['user_id'] = user.id
-        account = Account.objects.get(user=user)
-        account.address = '''data['address']''',
-        account.city = data['city'],
-        account.zipcode = data['zipcode'],
-        account.phone = data['phone'],
-        account.provincia = data['provincia'],
-        account.save()
+@csrf_exempt
+def update_account(request):
 
-    else:
-        data = {}
+    data = json.loads(request.body)
+    print(data)
+    user = User.objects.get(email = data['user_bool'])
+    print('Hola')
+    account = Account.objects.filter(user=user)
+    print(account)
+    if(not account):
+        account = create_account(user, data)
+        print(account)
+    info_account(account, data)
 
     return JsonResponse({'data': data})
 
@@ -331,5 +404,37 @@ def shop(request):
         'selecciones_ma': selecciones_ma,
 
     }
-
+    #update_favorito(request.user, 30)
     return render(request, 'core/shop.html', context)
+
+
+def quienes_somos(request):
+
+    return render(request, 'core/partials/footer/quienes-somos.html',)
+
+def update_favorito(request, id, color, str):
+    if(request.user.is_authenticated):
+        account = Account.objects.filter(user=request.user)
+        if(account):
+            favorites = account.values("favorites")[0]['favorites']
+            if(favorites != None):
+                favorites = favorites.split(',')
+            else:
+                favorites = []
+            if(str == 'quitar'):
+                try:
+                    favorites.remove(f'({id}/{color})')
+                except:
+                    print('Error removing')
+            else:
+                favorites.append(f'({id}/{color})')
+                if(favorites[0]== '' ):
+                    favorites.remove('')
+            favorites = list(dict.fromkeys(favorites))
+            favorites = ",".join(favorites)
+            account.update(favorites = favorites)
+        else:
+            if (str == 'añadir'):
+                Account.objects.create(user=request.user, favorites=f'({id}/{color})')
+    
+    return JsonResponse({'data': 1})

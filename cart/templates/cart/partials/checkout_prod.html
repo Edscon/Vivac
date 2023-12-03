@@ -29,7 +29,7 @@
                 <div class="bg-neutral-100 text-base font-bold text-black">
                     <div class="flex py-2 pl-2 pr-1">
                         <div class="w-[25%]">Total</div>
-                        <input value="{{cart.get_total_cost}}" id="total_ch" class="hidden"></input>
+                        <input value={{cart.get_total_cost}} id="total_ch" class="hidden"></input>
                         <div id="total_ch_2" class="w-[75%] text-right">{{cart.get_total_cost|suma:5|floatformat:2}} €</div>
                     </div>
                 </div>

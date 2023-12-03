@@ -255,13 +255,14 @@
             
             }
         });
-        console.log(prove)
         return prove
     }
 
     var user_id = -1
+    var user_bool = ''
     var data = {}
     var j_cuenta = 0
+
     function buy2(event,i_cuenta){
         j_cuenta = i_cuenta;
         event.preventDefault()
@@ -279,9 +280,11 @@
                 'phone': document.querySelector('input[name=phone]').value,
                 'password': document.querySelector('input[name=pasword1]').value,
                 'provincia': document.querySelector('select[name=provincia]').value,
+                'envio': envios_precio,
+                'i_cuenta': i_cuenta,
             }
 
-            fetch('/create_user/', {
+            fetch('/create_user_/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -292,12 +295,14 @@
             })
             .then(response => response.json())
             .then(json =>{
-                
+                console.log(JSON.stringify(json));
                 if(JSON.stringify(json) == '{"data":{}}'){
                     console.log('Usuario ya creado')
                 }else{
                     user_id = json['data'].user_id
-
+                    user_bool = json['data'].user_bool
+                    data = json['data']
+                    console.log(user_bool)
                     payment()
                 }
             })
@@ -356,6 +361,8 @@
 
     }
 
+    var customer = ''
+
     // Fetches a payment intent and captures the client secret
     async function initialize() {
         const response = await fetch('/order/create_payment/', {
@@ -364,12 +371,13 @@
                 'Content-Type': 'application/json',
                 'X-CSRFToken': '{{ csrf_token }}' 
             },
-            body: JSON.stringify({ items }),
+            body: JSON.stringify({ items , data, customer}),
         });
-    
-        const { clientSecret } = await response.json();
+        
+        const { clientSecret, customer_id } = await response.json();
         const { paymentIntent } = await stripe.retrievePaymentIntent(clientSecret);
-        console.log({paymentIntent})
+        customer = customer_id
+        paymentIntent['customer'] = customer_id
 
         const appearance = {
             theme: 'stripe',
@@ -403,22 +411,68 @@
             paymentElement.mount("#payment-element");
     }
 
-
-    async function handleSubmit(e) {
+    
+    var user_str = ''
+    function handleSubmit(e) {
         e.preventDefault();
         setLoading(true);
+
+        if(user_bool != ''){
+            user_str = `?email=${user_bool}`;
+
+
+            fetch('/update_account/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' 
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(json =>{
+                console.log(JSON.stringify(json));
+                handleSubmit2(e)
+                
+            })
+            .catch(function(error) {
+                console.log('Errors', error)
+            })
+
+        } else{
+            user_str = ''
+            handleSubmit2(e)
+        }
         
+    }
+
+    async function handleSubmit2(e){
+        e.preventDefault();
+
         if(document.getElementById('default-checkbox').checked){
             const { error } = await stripe.confirmPayment({
                 elements,
                 confirmParams: {
                 // Make sure to change this to your payment completion page--------------------------------------
-                    return_url: "http://" + window.location.host + '/cart/success',
+                    return_url: "http://" + window.location.host + '/cart/success'+ user_str,
                     receipt_email: emailAddress,
                     
                 },
             });
-    
+
+            const { error2 } = await stripe.confirmSepaDebitPayment(clientSecret, {
+                payment_method: {
+                    sepa_debit: ibanElement,
+                    billing_details: {
+                        name: data.name,
+                        email: data.email,
+                    },
+                },
+            }).then(function(result) {
+                showMessage("An unexpected error occurred.");
+            });
+            
             // This point will only be reached if there is an immediate error when
             // confirming the payment. Otherwise, your customer will be redirected to
             // your `return_url`. For some payment methods like iDEAL, your customer will
@@ -430,9 +484,9 @@
                 showMessage("An unexpected error occurred.");
             }
         }else{document.getElementById('error_condiciones').classList.remove("hidden");}
-
-        setLoading(false);
         
+        setLoading(false);
+
     }
 
     // Fetches the payment intent status after payment submission
@@ -516,15 +570,17 @@
     
     const gasto_provincias = JSON.parse(document.getElementById('envios').value.replace(/'/g, "\""))
     const element_total = document.getElementById('total_ch')
+    var envios_precio = 0
 
     function gastos(provincia){
         Object.keys(gasto_provincias).forEach( propiedad => {
             if(propiedad == provincia){
+                envios_precio = gasto_provincias[propiedad]
                 const element = document.getElementById('gastos_envio')
                 element.innerHTML = parseFloat(gasto_provincias[propiedad]).toFixed(2).replace('.',',') + ' €'
                 const element_total2 = document.getElementById('total_ch_2')
-                total_payment = parseFloat(parseFloat(element_total.value) + parseFloat(gasto_provincias[propiedad]))
-                element_total2.innerHTML = parseFloat(parseFloat(element_total.value) + parseFloat(gasto_provincias[propiedad])).toFixed(2).replace('.',',') + ' €'
+                total_payment = parseFloat(element_total.value.replace(',','.')) + gasto_provincias[propiedad]
+                element_total2.innerHTML = parseFloat(total_payment).toFixed(2).replace('.',',') + ' €'
             }
         })
     }

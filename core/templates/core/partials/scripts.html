@@ -216,6 +216,7 @@
 
    const rangeInput = document.querySelectorAll('.range-input input');
    const rangePrices = document.getElementById('range-prices');
+   const rangePrices_1 = document.getElementById('range-prices_1');
    let priceGap = 0;
 
    rangeInput.forEach(input =>{
@@ -230,39 +231,69 @@
                 }
             }
             rangePrices.innerHTML = `<div class="">${rangeInput[0].value},00€ - ${rangeInput[1].value},00€</div>`;
+            rangePrices_1.innerHTML = `<div class="">${rangeInput[0].value},00€ - ${rangeInput[1].value},00€</div>`;
         }
 
         input.addEventListener('input', e =>{
-            let minVal = parseInt(rangeInput[0].value);
-            maxVal = parseInt(rangeInput[1].value);
-           
-            if(maxVal - minVal < priceGap) {
-                if(e.target.id === 'rangemin'){
-                    rangeInput[0].value = maxVal - priceGap;
-                }else{
-                    rangeInput[1].value = minVal + priceGap;
+            if(input == rangeInput[0] || input == rangeInput[1]){
+                let minVal = parseInt(rangeInput[0].value);
+                maxVal = parseInt(rangeInput[1].value);
+            
+                if(maxVal - minVal < priceGap) {
+                    if(e.target.id === 'rangemin'){
+                        rangeInput[0].value = maxVal - priceGap;
+                    }else{
+                        rangeInput[1].value = minVal + priceGap;
+                    }
                 }
-            }
-            minVal = rangeInput[0].value;
-            maxVal = rangeInput[1].value;
+                minVal = rangeInput[0].value;
+                maxVal = rangeInput[1].value;
 
-            rangePrices.innerHTML = `<div class="">${minVal},00€ - ${maxVal},00€</div>`;
+                rangePrices.innerHTML = `<div class="">${minVal},00€ - ${maxVal},00€</div>`;
+            }else{
+                let minVal = parseInt(rangeInput[2].value);
+                maxVal = parseInt(rangeInput[3].value);
+            
+                if(maxVal - minVal < priceGap) {
+                    if(e.target.id === 'rangemin'){
+                        rangeInput[2].value = maxVal - priceGap;
+                    }else{
+                        rangeInput[3].value = minVal + priceGap;
+                    }
+                }
+                minVal = rangeInput[2].value;
+                maxVal = rangeInput[3].value;
+
+                rangePrices_1.innerHTML = `<div class="">${minVal},00€ - ${maxVal},00€</div>`;
+            }
             
         });
         
         input.addEventListener('mouseup', () =>{
-            let min_price = parseInt(rangeInput[0].value);
-            let max_price = parseInt(rangeInput[1].value);
-            param2 = `${min_price},${max_price}`;
+            if(input == rangeInput[0] || input == rangeInput[1]){
+                let min_price = parseInt(rangeInput[0].value);
+                let max_price = parseInt(rangeInput[1].value);
+                param2 = `${min_price},${max_price}`;
+            }else{
+                let min_price = parseInt(rangeInput[2].value);
+                let max_price = parseInt(rangeInput[3].value);
+                param2 = `${min_price},${max_price}`;
+            }
 
             sendgetviews(param2, 'price')
         });
 
         input.addEventListener('touchend', () =>{
-            let min_price = parseInt(rangeInput[0].value);
-            let max_price = parseInt(rangeInput[1].value);
-            param2 = `${min_price},${max_price}`;
-            
+            if(input == rangeInput[0] || input == rangeInput[1]){
+                let min_price = parseInt(rangeInput[0].value);
+                let max_price = parseInt(rangeInput[1].value);
+                param2 = `${min_price},${max_price}`;
+            }else{
+                let min_price = parseInt(rangeInput[2].value);
+                let max_price = parseInt(rangeInput[3].value);
+                param2 = `${min_price},${max_price}`;
+            }
+
             sendgetviews(param2, 'price')
         });
    });
@@ -286,7 +317,6 @@
             param = button_value
             is_param = false;
         }
-        console.log(param);
         sendget(param, is_param, string);
     }
     
@@ -366,7 +396,6 @@
             temp = url2.split('&')
             for (i in temp) {
                 if(temp[i].split('=')[0] == 'price'){
-                    console.log(temp[i], url2)
                     url4 = url2.replace('&' + temp[i],'')
                     url4 = url4.replace(temp[i] + '&','')
                     url4 = url4.replace(temp[i],'')
