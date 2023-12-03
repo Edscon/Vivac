@@ -273,7 +273,7 @@
                 'csrf_token': '{{ csrf_token }}',
                 'first_name': document.querySelector('input[name=first_name]').value,
                 'last_name': document.querySelector('input[name=last_name]').value,
-                'email': document.querySelector('input[name=email]').value,
+                'email': document.querySelector('input[name=email_]').value,
                 'address': document.querySelector('input[name=address]').value,
                 'city': document.querySelector('input[name=city]').value,
                 'zipcode': document.querySelector('input[name=zipcode]').value,
@@ -283,7 +283,7 @@
                 'envio': envios_precio,
                 'i_cuenta': i_cuenta,
             }
-
+            
             fetch('/create_user_/', {
                 method: 'POST',
                 headers: {

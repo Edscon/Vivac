@@ -34,6 +34,8 @@ def create_payment(request):
         cart = Cart(request)
         data = json.loads(request.body)
 
+        print(data, data['data']['email'])
+
         if(data['customer'] == ''):
             customer = stripe.Customer.create(
                 name = data['data']['first_name'] + ' ' + data['data']['last_name'],
@@ -97,6 +99,7 @@ def success(request):
 
     '''ORDER'''
     order = []
+
     if(not Order.objects.filter(customer=customer.id)):
         
         if(email):
