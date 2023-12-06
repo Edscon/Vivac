@@ -90,11 +90,12 @@ def product(request, slug):
 
     favorite = False
 
-    if(request.user.is_authenticated ):
-        if(Account.objects.filter(user = request.user).values('favorites')[0]['favorites']):
-            for i in Account.objects.filter(user = request.user).values('favorites')[0]['favorites'].split(','):
-                if(i == f'({product.id}/{colors[0].code})'):
-                    favorite = True
+    if(request.user.is_authenticated):
+        if(Account.objects.filter(user = request.user).exists()):
+            if(Account.objects.filter(user = request.user).values('favorites')[0]['favorites']):
+                for i in Account.objects.filter(user = request.user).values('favorites')[0]['favorites'].split(','):
+                    if(i == f'({product.id}/{colors[0].code})'):
+                        favorite = True
     
 
     context = {

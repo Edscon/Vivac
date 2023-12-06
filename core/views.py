@@ -55,14 +55,15 @@ def frontpage(request):
 
     
     lista = []
-    if(request.user.is_authenticated ):
-        if(Account.objects.filter(user = request.user).values('favorites')[0]['favorites']):
-            for i in Account.objects.filter(user = request.user).values('favorites')[0]['favorites'].split(','):
-                id_col = i.replace('(', '').replace(')', '').split('/')
-                try:
-                    lista.append(Variant.objects.filter(product = Product.objects.filter(id=int(id_col[0]))[0], color = Color.objects.filter(code = id_col[1])[0])[0].id)
-                except:
-                    i = 0
+    if(request.user.is_authenticated):
+        if(Account.objects.filter(user = request.user).exists()):
+            if(Account.objects.filter(user = request.user).values('favorites')[0]['favorites']):
+                for i in Account.objects.filter(user = request.user).values('favorites')[0]['favorites'].split(','):
+                    id_col = i.replace('(', '').replace(')', '').split('/')
+                    try:
+                        lista.append(Variant.objects.filter(product = Product.objects.filter(id=int(id_col[0]))[0], color = Color.objects.filter(code = id_col[1])[0])[0].id)
+                    except:
+                        i = 0
         
     favorites = Variant.objects.filter(id__in = lista)
     

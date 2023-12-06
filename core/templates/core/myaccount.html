@@ -3,8 +3,91 @@
 {% block title %}Mi cuenta{% endblock %}
 
 {% block content%}
-<div class="max-w-6xl mx-auto p-6">
-    <h1 class="mb-5 text-3xl">Mi cuenta</h1>
+{% load replacement %}
+{% load static %}
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto xl:px-0 px-4 py-5">
+    <div class="flex">
+        <div class="menuacount w-[25%] text-sm">
+            <div class="flex border-b border-neutral-300">
+                <div class="w-[3px] bg-green-600"></div>
+                <div class="p-2 w-full">Mi cuenta</div>
+            </div>
+            <div class="flex border-b border-neutral-300">
+                <div class="mr-1 bg-neutral-400"></div>
+                <div class="p-2 w-full">Mis pedidos</div>
+            </div>
+            <div class="flex border-b border-neutral-300">
+                <div class="mr-1 bg-neutral-400"></div>
+                <div class="p-2 w-full">Mis datos</div>
+            </div>
+            <div class="flex border-b border-neutral-300">
+                <div class="mr-1 bg-neutral-400"></div>
+                <div class="p-2 w-full">Mis favoritos</div>
+            </div>
+            <div class="flex border-b border-neutral-300">
+                <div class="mr-1 bg-neutral-400" ></div>
+                <div class="p-2 w-full">Mis opiniones de productos</div>
+            </div>
+            <div class="flex border-b border-neutral-300">
+                <div class="mr-1 bg-neutral-400" ></div>
+                <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
+            </div>
+        </div>
+        
+        <div class="w-[75%] pl-8 text-black text-sm">
+            <div class="mb-5 font-semibold text-lg">Mi cuenta</div>
+            <div class="mb-5">¡Hola, {{request.user.get_full_name}}!</div>
+            <div class="mb-5">Bienvenido/a a Esports Vivac. Desde el panel Mi cuenta podrás ver la actividad reciente de tu cuenta y actualizar tus datos.</div>
+            {% if request.user.orders.first %}
+            <div class="mb-2 mt-10 font-semibold">Tu último pedido</div>
+            <div>
+                    {% for item in request.user.orders.first.items.all %}
+                    <div class="product flex w-full">
+                        <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-[12%] min-w-[100px] min-[450px]:min-w-[150px]">
+                            <img class="hover:shadow-lg rounded" src="{{item.variant.image}}">
+                        </a>
+                    
+                        <div class="w-[88%] pl-2 text-sm my-auto">
+                            <div class="w-full lg:flex justify-between">
+                                <div class="flex justify-between relative">
+                                    <div class="item-size">
+                                        <div class="font-semibold">{{item.variant.product.nombre}}</div>
+                                        <button class="" value="{{item.size}}" id="item-size-{{item.variant.id}}">Talla:  {{item.size|replace_1}}</button>
+                                    </div>
+                                    
+                                </div>
+                                <div class="min-[400px]:flex justify-between min-[400px]:space-x-[25px] select-none mt-4 lg:mt-0">
+                                        
+                                    <div class="w-[60px] min-[400px]:w-[80px] h-[35px] text-center flex">
+                                        <div class="mx-auto my-auto">{{item.quantity}}</div>
+                                    </div>
+                                        
+                                    
+                                    <div class="lg:w-[100px] text-base max-[400px]:mt-2">
+                                        <div class="mb-6 mt-1 text-right pr-1">
+                                            {% if item.variant.get_descuento != 0 %}
+                                            <div class="text-[10px] leading-[10px] text-gray-700 line-through">PVR: {{item.variant.precio_retail|multiply:item.quantity | floatformat:2}} €</div>
+                                            {% endif %}
+                                            <div class="font-semibold">{{item.precio|floatformat:2}} €</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="w-full border-gray-300">
+                    {% endfor %}
+            </div>
+            {% else %}
+            <div class="mb-2 mt-10 font-semibold">Todavía no tienes ningún pedido.</div>
+            <div class="mb-4">Empieza a descubrir todos nuestros productos.</div>
+            <a href="{% url 'shop' %}"><button class="w-[30%] py-3 bg-green-700 text-white text-base">Ir a la tienda</button></a>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <h1 class="my-5 text-3xl">Mi cuenta</h1>
 
     <div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
 
@@ -35,7 +118,7 @@
             {% for item in order.items.all %}
             <div class="product mb-1 flex p-6">
                 <a href="#" class="w-1/4">
-                    <img class="hover:shadow-lg rounded-xl" src="{{item.product.get_thumbnail}}" width="150" height="150">
+                    <img class="hover:shadow-lg rounded-xl" src="{{item.variant.image}}" width="150" height="150">
                 </a>
 
                 <div class="w-3/4 pl-6">

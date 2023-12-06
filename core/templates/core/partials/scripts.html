@@ -489,6 +489,34 @@
             menu_filtro.classList.remove('visible');
             menu_filtro.classList.add('invisible');
         }
-    }
+    };
+
+    /*--------------- Mi cuenta --------------------*/
+    
+
+    const MenuAcount = document.querySelectorAll('.menuacount .flex');
+
+    console.log(MenuAcount) 
+
+    MenuAcount.forEach(div => {
+
+        if(!div.children[0].classList.contains('bg-green-600')){
+            div.addEventListener('mouseover', () =>{
+                div.children[0].classList.remove('w-[0px]');
+                div.children[0].classList.add('w-[3px]');
+                div.children[0].style.animation = "in-out 100ms 1"
+            });
+            div.addEventListener('mouseout', () =>{
+                div.children[0].classList.remove('w-[3px]');
+                div.children[0].classList.add('w-[0px]');
+                div.children[0].style.animation = "out-in 50ms 1"
+            });
+        }
+    
+    });
+
+
+
+
 
    </script>
