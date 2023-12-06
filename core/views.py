@@ -103,13 +103,13 @@ def create_account(user, data):
     return account
 
 def info_account(account, data):
-    print(account.address,data['address'])
-    account.address = data['address']
-    account.city = data['city']
-    account.zipcode = data['zipcode']
-    account.phone = data['phone']
-    account.provincia = data['provincia']
-    account.save()
+    account.update(
+        address = data['address'],
+        city = data['city'],
+        zipcode = data['zipcode'],
+        phone = data['phone'],
+        provincia = data['provincia'],
+    )
 
 @csrf_exempt
 def create_user_data(data):
@@ -153,16 +153,13 @@ def create_user_(request):
 
 @csrf_exempt
 def update_account(request):
-
     data = json.loads(request.body)
-    print(data)
     user = User.objects.get(email = data['user_bool'])
-    print('Hola')
     account = Account.objects.filter(user=user)
-    print(account)
+
     if(not account):
         account = create_account(user, data)
-        print(account)
+        
     info_account(account, data)
 
     return JsonResponse({'data': data})
