@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Mi cuenta{% endblock %}
+{% block title %}Mis pedidos{% endblock %}
 
 {% block content%}
 {% load replacement %}
@@ -35,7 +35,7 @@
         </div>
         
         <div class="w-[75%] pl-8 text-black text-sm">
-            <div class="mb-5 font-semibold text-lg">Mi cuenta</div>
+            <div class="mb-5 font-semibold text-lg">Mis pedidos</div>
             <div class="mb-5">¡Hola, {{request.user.get_full_name}}!</div>
             <div class="mb-5">Bienvenido/a a Esports Vivac. Desde el panel Mi cuenta podrás ver la actividad reciente de tu cuenta y actualizar tus datos.</div>
             {% if request.user.orders.first %}

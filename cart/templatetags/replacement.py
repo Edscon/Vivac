@@ -15,3 +15,8 @@ def suma(value, arg):
     value = float(value)
     return value + arg
 
+@register.filter
+def resta(value, arg):
+    value = float(value)
+    return value - arg
+

@@ -168,6 +168,10 @@ def update_account(request):
 def myaccount(request):
     return render(request, 'core/myaccount.html')
 
+@login_required
+def myorders(request):
+    return render(request, 'core/myorders.html')
+
 
 @login_required
 def edit_myaccount(request):
