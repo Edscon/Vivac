@@ -43,7 +43,7 @@
             <div class="mb-5 mt-10 font-semibold">Tu último pedido</div>
             
             <div class="rounded-xl border border-gray-300">
-                <div class="h-[80px] p-2 bg-neutral-200 flex text-[12px] font-semibold text-gray-700 rounded-t-xl">
+                <div class="min-h-[80px] p-2 bg-neutral-200 flex text-[12px] font-semibold text-gray-700 rounded-t-xl">
                     <div class="w-[50%] flex justify-between ml-4">
                         <div class="h-full w-[120px]">
                             <div>PEDIDO REALIZADO</div>
@@ -66,56 +66,55 @@
                 <hr class="border-white lg:border-gray-300">
                 <div class="">
                         {% for item in request.user.orders.first.items.all %}
-                        <div class="product flex w-full">
-                            <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-[10%] min-w-[100px] min-[450px]:min-w-[150px]">
+                        <div class="flex w-full">
+                            <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-[140px]">
                                 <img class="hover:shadow-lg rounded" src="{{item.variant.image}}">
                             </a>
                         
-                            <div class="w-[88%] pl-2 text-sm my-auto">
+                            <div class="w-[50%] pl-2 text-sm my-auto">
                                 <div class="w-full lg:flex justify-between">
                                     <div class="flex justify-between relative">
                                         <div class="item-size">
-                                            <div class="font-semibold">{{item.variant.product.nombre}}</div>
+                                            <div class="font-semibold"><span class="text-green-700">{{item.quantity}}x</span>&nbsp{{item.variant.product.nombre}}</div>
                                             <div>Talla: {{item.size|replace_1}}</div>
-
-                                            <a 
-                                                id="añadir_carrito-{{i}}"
-                                                title="Tothecart"
-                                                href="#" 
-                                                class="mt-6 w-full inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
-                                                hx-get = "{% url 'add_to_cart' item.variant.product.id item.variant.color.code item.size %}"
-                                                hx-target = "#menu-cart-button"
-                                                hx-swap = "innerHTML"
-                                                onclick="EnviarCheckOut()"
-                                                >
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 absolute top-[50%] left-[10px] -translate-y-[50%]">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                                                </svg> 
-                                                <svg class="h-3 w-3 absolute top-[44%] left-[19px] -translate-y-[50%]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/>
-                                                </svg>
-                                                <p class="text-center text-sm lg:text-base">Comprar de nuevo</p>
-                                            </a>
                                         </div>
                                         
-                                    </div>
-                                    <div class="min-[400px]:flex justify-between min-[400px]:space-x-[25px] mt-4 lg:mt-0">
-                                            
-                                        <div class="w-[60px] min-[400px]:w-[80px] h-[35px] text-center flex">
-                                            <div class="mx-auto my-auto">{{item.quantity}}</div>
-                                        </div>
-                                            
-                                        
-                                        <div class="lg:w-[100px] text-base max-[400px]:mt-2">
-                                            <div class="mb-6 mt-1 text-right pr-1">
-                                                {% if item.variant.get_descuento != 0 %}
-                                                <div class="text-[10px] leading-[10px] text-gray-700 line-through">PVR: {{item.variant.precio_retail|multiply:item.quantity | floatformat:2}} €</div>
-                                                {% endif %}
-                                                <div class="font-semibold">{{item.precio|floatformat:2}} €</div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
+                                <div class="flex space-x-2 mt-2">
+                                    <a 
+                                        id="añadir_carrito-{{i}}"
+                                        title="Tothecart"
+                                         
+                                        class="w-[180px] py-[5px] rounded bg-green-700 text-white hover:bg-black relative transition duration-500 cursor-pointer flex drop-shadow-md"
+                                        hx-get = "{% url 'add_to_cart' item.variant.product.id item.variant.color.code item.size %}"
+                                        hx-target = "#menu-cart-button"
+                                        hx-swap = "innerHTML"
+                                        onclick="EnviarCheckOut()"
+                                        >
+                                        <div class="text-sm flex mx-auto space-x-2">
+                                            <div class="my-auto">
+                                                <svg class="h-4 w-4 text-white"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                                                </svg>
+                                            </div>
+                                            <div class="my-auto">Comprar de nuevo</div>
+                                        </div>
+                                    </a>
+                                    <a class="w-[100px] py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}">
+                                        <div class="m-auto">Ver tu artículo</div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="w-[30%] space-y-2 my-auto">
+                                <a class="w-full py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" 
+                                href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}">
+                                    <div class="m-auto">Devolver o reemplazar productos</div>
+                                </a> 
+                                <a class="w-full py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" 
+                                href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}">
+                                    <div class="m-auto">Escribir una opinión sobre este producto</div>
+                                </a> 
                             </div>
                         </div>
                         <hr class="w-full border-gray-300">
