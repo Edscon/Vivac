@@ -137,7 +137,7 @@ def success(request):
                 variant = variant,
                 nombre = variant.product.nombre,
                 color = variant.color,
-                size = variant.size,
+                size = variant.size.replace('/', '|'),
                 precio = variant.precio,
                 quantity = item_quan[variant.id],
                 image_id = variant.image_id,
