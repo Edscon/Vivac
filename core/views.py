@@ -128,7 +128,7 @@ def create_user_(request):
     data['user_bool'] = ''
     '''
     Si request.user.authenticated ->(1) Check if Acount, if not account -> Crear Acount -> Put all information in Account -> return
-    No request.user.authenticated -> Check if in chekout form want an account('i_cuenta) -> Si -> Check if user exist -> Create User ->  (1)
+    No request.user.authenticated -> Check if in checkout form want an account('i_cuenta) -> Si -> Check if user exist -> Create User ->  (1)
                                                                                          -> No -> return
     '''
     user = request.user
@@ -165,16 +165,16 @@ def update_account(request):
     return JsonResponse({'data': data})
 
 @login_required
-def myaccount(request):
-    return render(request, 'core/myaccount.html')
+def my_account(request):
+    return render(request, 'core/my_account.html')
 
 @login_required
-def myorders(request):
-    return render(request, 'core/myorders.html')
+def my_orders(request):
+    return render(request, 'core/my_orders.html')
 
 
 @login_required
-def edit_myaccount(request):
+def edit_my_account(request):
 
     if request.method == 'POST':
         user = request.user
@@ -183,9 +183,9 @@ def edit_myaccount(request):
         user.email = request.POST.get('email')
         user.username = request.POST.get('username')
         user.save()
-        return redirect('myaccount')
+        return redirect('my_account')
 
-    return render(request, 'core/edit_myaccount.html')
+    return render(request, 'core/edit_my_account.html')
 
 
 def shop(request):
@@ -197,7 +197,7 @@ def shop(request):
     if active_category:
         products = products.filter(categoria__slug=active_category)
 
-    selecciones_querry = []
+    selecciones_query = []
 
     query = request.GET.get('query', '')
 
@@ -210,7 +210,7 @@ def shop(request):
             products2 = originals.filter(Q(nombre__icontains=i) | Q(descripcion__icontains=i) | Q(categoria__slug__icontains=i))
             products = products | products2
         
-        selecciones_querry.append(query)
+        selecciones_query.append(query)
 
     #----------------------------------------------------------------
 
@@ -328,9 +328,9 @@ def shop(request):
     sexo_list = []
     for j in ['hombre', 'mujer', 'nino', 'nina']:
         for i in temp:
-            leng = len(str(i['sexo']).split(', '))
+            length = len(str(i['sexo']).split(', '))
 
-            for t in range(leng):
+            for t in range(length):
                 if str(i['sexo'][t]) == j and j not in sexo_list: sexo_list.append(j)
 
     '''TALLAS'''
@@ -399,7 +399,7 @@ def shop(request):
         'brands': brands,
         'sexo_list': sexo_list,
         
-        'selecciones_querry': selecciones_querry,
+        'selecciones_query': selecciones_query,
         'selecciones_price': selecciones_price,
         'selecciones_sx': selecciones_sx,
         'selecciones_sz': selecciones_sz,

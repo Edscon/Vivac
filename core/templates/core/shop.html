@@ -133,8 +133,8 @@
         </div>
         <div class=" w-[100%] lg:w-[80%] text-gray-600 px-4">
             <div class="min-h-[10px] w-full relative">
-                {% if selecciones_querry %}
-                {% for sel in selecciones_querry %}
+                {% if selecciones_query %}
+                {% for sel in selecciones_query %}
                     <div class="font-semibold text-black text-xl">{{sel}}</div> 
                 {% endfor %}
                 {% endif %}
@@ -150,7 +150,7 @@
                     </div>
                 </div>
                 <div class="flex space-x-2 text-xs mt-2 text-gray-700 relative">
-                    {% if selecciones_querry or selecciones_price or selecciones_price or selecciones_sx or selecciones_sz or selecciones_ma %}
+                    {% if selecciones_query or selecciones_price or selecciones_price or selecciones_sx or selecciones_sz or selecciones_ma %}
                     <div class="top-10 align-center my-auto">Tus selecciones: </div>
                     {% endif %}
                     {% if selecciones_price %}

@@ -496,10 +496,9 @@
 
     const MenuAcount = document.querySelectorAll('.menuacount .flex');
 
-    console.log(MenuAcount) 
+    console.log(MenuAcount)
 
     MenuAcount.forEach(div => {
-
         if(!div.children[0].classList.contains('bg-green-600')){
             div.addEventListener('mouseover', () =>{
                 div.children[0].classList.remove('w-[0px]');
