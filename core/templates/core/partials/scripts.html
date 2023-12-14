@@ -597,4 +597,58 @@
         document.getElementById('minicart').classList.remove("minicart-0");
     });
 
+
+    /*Barra menú on hover*/
+
+    const menu_right_barra = document.querySelectorAll('.menu_right_barra')
+    const menu_bg = document.querySelectorAll('.menu_bg');
+    let t = -1
+    menu_right_barra.forEach( div => {
+        console.log(div.parentElement)
+        div.parentElement.addEventListener('mouseover', () => {
+            if(div == menu_right_barra[0]){t = 0}else if(div == menu_right_barra[1]){t = 1} else {t = 2}
+            menu_bg[t].classList.add('md:block');
+
+            div.classList.remove("h-[0px]");
+            div.classList.add("h-[2px]");
+            div.style.animation = "in-out-menu 100ms 1"
+        });
+        div.parentElement.addEventListener('mouseout', () => {
+            if(div == menu_right_barra[0]){t = 0}else if(div == menu_right_barra[1]){t = 1} else {t = 2}
+            menu_bg[t].classList.remove('md:block');
+            div.classList.add("h-[0px]");
+            div.classList.remove("h-[2px]");
+            div.style.animation = "out-in-menu 100ms 1"
+        });
+        div.parentElement.addEventListener('click', () => {
+            if(div == menu_right_barra[0]){t = 0}else if(div == menu_right_barra[1]){t = 1} else {t = 2}
+            menu_bg[t].classList.remove('md:block');
+            div.classList.add("h-[0px]");
+            div.classList.remove("h-[2px]");
+            div.style.animation = "out-in-menu 100ms 1"
+        });
+    });
+    const menu_right_barra_cart = document.querySelector('.menu_right_barra_cart')
+    const menu_bg_cart = document.querySelector('.menu_bg_cart');
+    const parent_barra_bg_cart = document.querySelector('.dropdown-menu-cart');
+
+    parent_barra_bg_cart.addEventListener('mouseover', () => {
+            menu_bg_cart.classList.add('md:block');
+            menu_right_barra_cart.classList.remove("h-[0px]");
+            menu_right_barra_cart.classList.add("h-[2px]");
+            menu_right_barra_cart.style.animation = "in-out-menu 100ms 1"
+        });
+        parent_barra_bg_cart.addEventListener('mouseout', () => {
+            menu_bg_cart.classList.remove('md:block');
+            menu_right_barra_cart.classList.add("h-[0px]");
+            menu_right_barra_cart.classList.remove("h-[2px]");
+            menu_right_barra_cart.style.animation = "out-in-menu 100ms 1"
+        });
+        parent_barra_bg_cart.addEventListener('click', () => {
+            menu_bg_cart.classList.remove('md:block');
+            menu_right_barra_cart.classList.add("h-[0px]");
+            menu_right_barra_cart.classList.remove("h-[2px]");
+            menu_right_barra_cart.style.animation = "out-in-menu 100ms 1"
+        });
+
    </script>

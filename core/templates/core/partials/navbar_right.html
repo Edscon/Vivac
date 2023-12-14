@@ -1,19 +1,13 @@
 <div class="menu-right flex items-center space-x-4 text-gray-600 mt-5">
     
     <div class="dropdown-menu relative">
-        {% if not request.user.is_authenticated %}
-        <a onclick="menu_login_mobile()" title="my_account" class="logouser flex justify-center items-center hover:text-black cursor-pointer">
-            <svg class="h-6 w-6"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  <circle cx="12" cy="7" r="4" /></svg>                            
-            <div class="hidden absolute h-[3px] w-[40px] bg-green-600 top-[41px]"></div>                         
-        </a>
-        {% endif %}
         {% if request.user.is_authenticated %}
-        <a href="{% url 'my_account' %}" title="my_account" class="logouser flex justify-center items-center hover:text-black cursor-pointer">
+        <a href="{% url 'my_account' %}" title="my_account" class="logouser flex justify-center items-center hover:text-black cursor-pointer z-[3] relative">
             <svg class="h-6 w-6"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  <circle cx="12" cy="7" r="4" /></svg>                            
             <div class="hidden absolute h-[3px] w-[40px] bg-green-600 top-[41px]"></div>                         
         </a>
 
-        <span class="text-[11px] hidden md:flex justify-center cursor-pointer">{{user.first_name}}</span>
+        <span class="text-[11px] hidden md:flex justify-center cursor-pointer z-[3] relative">{{user.first_name}}</span>
 
         <div open class="drop block max-[1300px]:hidden absolute w-[240px] bg-white text-gray-500 text-sm rounded-sm top-[50px] left-[-150px]">
             <a class="block mt-2 px-6 py-3 text-black">Hola {{user.first_name}},</a>
@@ -26,26 +20,36 @@
         </div>
         
         {% else %}
-        <span class="text-[11px] hidden md:flex cursor-pointer">Mi Cuenta</span>
+        <a onclick="menu_login_mobile()" title="my_account" class="logouser flex justify-center items-center hover:text-black cursor-pointer z-[3] relative">
+            <svg class="h-6 w-6"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  <circle cx="12" cy="7" r="4" /></svg>                            
+            <div class="hidden absolute h-[3px] w-[40px] bg-green-600 top-[41px]"></div>                         
+        </a>
+
+        <span class="text-[11px] hidden md:flex cursor-pointer z-[3] relative">Mi Cuenta</span>
 
         <div open class="drop block max-[1300px]:hidden absolute w-[300px] bg-white text-black text-sm rounded-sm top-[50px] left-[-200px]">
             {% include 'core/partials/sign.html' %}
         </div>
 
         {% endif %}
-            
+        <div class="menu_right_barra absolute w-full h-[0px] bg-black -bottom-1"></div>
+
+        <div class="menu_bg absolute w-9 h-9 rounded-full bg-neutral-100 -top-5 -left-[1px] right-0 bottom-0 m-auto z-[0] hidden"></div>
     </div>           
 
     <div class="relative hidden min-[300px]:block">
 
-        <a href="{% url 'my_account' %}" title="favorites" class="flex justify-center items-center hover:text-black">
+        <a href="{% url 'my_account' %}" title="favorites" class="flex justify-center items-center hover:text-black z-[3] relative">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
             </svg>                          
         </a>
 
-        <span class="text-[11px] hidden md:flex ">Mis Favoritos</span>
+        <span class="text-[11px] hidden md:flex z-[3] relative">Mis Favoritos</span>
         
+        <div class="menu_right_barra absolute  w-full h-[0px] bg-black -bottom-1"></div>
+
+        <div class="menu_bg absolute w-9 h-9 rounded-full bg-neutral-100 -top-5 left-0 right-0 bottom-0 m-auto z-[0] hidden"></div>
     </div>
 
     <div 
@@ -57,13 +61,19 @@
             {% include 'cart/partials/menu_cart.html' %}
     
     </div>
-    
-    <div class="dropdown-menu-cart relative"
+    <div class="relative">
+        <div class="dropdown-menu-cart relative"
         hx-get="{% url 'hx_minicart' %}"
         hx-trigger="update-menu-cart from:body"
         hx-swap="innerHTML"
         >
             {% include 'cart/partials/minicart.html' %}
-    </div>
+            
+        </div>
+        <div class="menu_right_barra_cart w-[32px] absolute h-[0px] bg-black -bottom-1 m-auto left-0"></div>
+
+        <div class="menu_bg_cart absolute w-9 h-9 rounded-full bg-neutral-100 -top-5 bottom-0 -left-[2px] m-auto z-[0] hidden"></div>
+    </div>   
+    
         
 </div>
