@@ -63,8 +63,8 @@
                 <div class="text-sm font-semibold">Precio</div>
                 <div class="range-input mt-3 w-full relative mb-10">
                     <div class="absolute top-0 w-full h-[10px] bg-neutral-200 border border-gray-400 rounded"></div>
-                    <input class="w-full slider-range absolute top-0" type="range" name="rangemin" value="{{min_max_price.precio__min}}" id="rangemin" min="{{min_max_price.precio__min}}" max="{{min_max_price.precio__max}}">
-                    <input class="w-full slider-range absolute top-0" type="range" name="rangemax" value="{{min_max_price.precio__max}}" id="rangemax" min="{{min_max_price.precio__min}}" max="{{min_max_price.precio__max}}">
+                    <input class="w-full slider-range absolute top-0" type="range" name="range_min" value="{{min_max_price.precio__min}}" id="range_min" min="{{min_max_price.precio__min}}" max="{{min_max_price.precio__max}}">
+                    <input class="w-full slider-range absolute top-0" type="range" name="range_max" value="{{min_max_price.precio__max}}" id="range_max" min="{{min_max_price.precio__min}}" max="{{min_max_price.precio__max}}">
                     
                     <div class="flex flex-wrap absolute -top-2 w-full"> 
                         <div id="range-prices_1" class="flex flex-wrap absolute top-8 w-full text-center text-gray-800 font-semibold justify-center" >
@@ -154,7 +154,7 @@
                     <div class="top-10 align-center my-auto">Tus selecciones: </div>
                     {% endif %}
                     {% if selecciones_price %}
-                    <div class="selec_price flex space-x-2">
+                    <div class="select_price flex space-x-2">
                         {% for sel in selecciones_price %}
                             <button value="{{sel}}" class="p-2 border border-gray-300 rounded flex hover:border-gray-800 hover:bg-gray-100">
                                 <svg class="h-4 w-4"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
@@ -164,7 +164,7 @@
                     </div>
                     {% endif %}
                     {% if selecciones_sx %}
-                    <div class="selec_sx flex space-x-2">
+                    <div class="select_sx flex space-x-2">
                         {% for sel in selecciones_sx %}
                             <button value="{{sel}}" class="p-2 border border-gray-300 rounded flex hover:border-gray-800 hover:bg-gray-100">
                                 <svg class="h-4 w-4"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
@@ -181,7 +181,7 @@
                     </div>
                     {% endif %}
                     {% if selecciones_sz %}
-                    <div class="selec_sz flex space-x-2">
+                    <div class="select_sz flex space-x-2">
                         {% for sel in selecciones_sz %}
                             <button value="{{sel}}" class="p-2 border border-gray-300 rounded flex hover:border-gray-800 hover:bg-gray-100">
                                 <svg class="h-4 w-4"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
@@ -191,7 +191,7 @@
                     </div>
                     {% endif %}
                     {% if selecciones_ma %}
-                    <div class="selec_ma flex space-x-2">
+                    <div class="select_ma flex space-x-2">
                         {% for sel in selecciones_ma %}
                             <button value="{{sel}}" class="p-2 border border-gray-300 rounded flex hover:border-gray-800 hover:bg-gray-100">
                                 <svg class="h-4 w-4"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>

@@ -29,13 +29,13 @@
     const passwordInput2 = document.getElementById("password-input2");
 
     eye.addEventListener('click', () => {
-        if(pwopen.classList.contains('hidden')){
-            pwopen.classList.remove('hidden');
-            pwclose.classList.add('hidden');
+        if(pw_open.classList.contains('hidden')){
+            pw_open.classList.remove('hidden');
+            pw_close.classList.add('hidden');
         }
-        else if(pwclose.classList.contains('hidden')){
-            pwclose.classList.remove('hidden');
-            pwopen.classList.add('hidden');
+        else if(pw_close.classList.contains('hidden')){
+            pw_close.classList.remove('hidden');
+            pw_open.classList.add('hidden');
         }
         
         if (passwordInput.type === "password") {
@@ -45,13 +45,13 @@
         }
     });
     eye2.addEventListener('click', () => {
-        if(pwopen2.classList.contains('hidden')){
-            pwopen2.classList.remove('hidden');
-            pwclose2.classList.add('hidden');
+        if(pw_open2.classList.contains('hidden')){
+            pw_open2.classList.remove('hidden');
+            pw_close2.classList.add('hidden');
         }
-        else if(pwclose2.classList.contains('hidden')){
-            pwclose2.classList.remove('hidden');
-            pwopen2.classList.add('hidden');
+        else if(pw_close2.classList.contains('hidden')){
+            pw_close2.classList.remove('hidden');
+            pw_open2.classList.add('hidden');
         }
 
         if (passwordInput2.type === "password") {
@@ -122,10 +122,10 @@
             }else if(i.name == 'zipcode' && (!isNumeric(i.value) || !/^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$/.test(i.value))){
                 msg = "Lo sentimos. El código postal no es correcto."
 
-            }else if((i.name == 'pasword1') && (i.value.length < 8 || !haveUpperCase(i.value) || !haveLowCase(i.value) || !haveNum(i.value))){
+            }else if((i.name == 'password1') && (i.value.length < 8 || !haveUpperCase(i.value) || !haveLowCase(i.value) || !haveNum(i.value))){
                 msg = "Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, 1 letra mayúscula, 1 letra minúscula, 1 número."
 
-            }else if(i.name == 'pasword2' && i.value != password1){
+            }else if(i.name == 'password2' && i.value != password1){
                 msg = "Las contraseñas no coinciden."
 
             }else if(i.name == 'email' &&  !/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(i.value) ){
@@ -136,12 +136,12 @@
 
             }
             /*Para confirmar la contraseña*/
-            if(i.name == 'pasword1'){
+            if(i.name == 'password1'){
                 password1 = i.value
             }
         }
-        let allelements = document.getElementsByName(i.name);
-        allelements.forEach(input=> {
+        let all_elements = document.getElementsByName(i.name);
+        all_elements.forEach(input=> {
             if(prove){
     
                 input.classList.remove("placeholder-gray-500")
@@ -182,7 +182,7 @@
         Input_All.forEach(input => {
             var check = true;
             if(input.value == ''){
-                if(i_cuenta && !(input.name == 'pasword1' || input.name == 'pasword2')){
+                if(i_cuenta && !(input.name == 'password1' || input.name == 'password2')){
                     check = false;
                     prove = false;
                     msg = "Campo requerido.";
@@ -196,13 +196,13 @@
                     check = false;
                     prove = false;
                     msg = "Lo sentimos. El código postal no es correcto.";
-                }else if((input.name == 'pasword1') && (input.value.length < 8 || !haveUpperCase(input.value) || !haveLowCase(input.value) || !haveNum(input.value))){
+                }else if((input.name == 'password1') && (input.value.length < 8 || !haveUpperCase(input.value) || !haveLowCase(input.value) || !haveNum(input.value))){
                     if(!i_cuenta){
                         check = false;
                         prove = false;
                         msg = "Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, 1 letra mayúscula, 1 letra minúscula, 1 número.";
                     }
-                }else if(input.name == 'pasword2' && input.value != password1){
+                }else if(input.name == 'password2' && input.value != password1){
                     if(!i_cuenta){
                         check = false;
                         prove = false;
@@ -278,7 +278,7 @@
                 'city': document.querySelector('input[name=city]').value,
                 'zipcode': document.querySelector('input[name=zipcode]').value,
                 'phone': document.querySelector('input[name=phone]').value,
-                'password': document.querySelector('input[name=pasword1]').value,
+                'password': document.querySelector('input[name=password1]').value,
                 'provincia': document.querySelector('select[name=provincia]').value,
                 'envio': envios_precio,
                 'i_cuenta': i_cuenta,
@@ -321,9 +321,9 @@
         document.getElementById("rueda3").classList.remove("hidden");
         document.getElementById("rueda_info").classList.remove("hidden");
         document.getElementById('ContactoForm').classList.add('hidden');
-        const info = document.getElementById("info_shippment");
+        const info = document.getElementById("info_shipment");
         info.innerHTML = `<div class='text-base'>${data.first_name}, ${data.last_name}</div> <div>${data.phone}</div> <div>${data.address}</div> <div>${data.zipcode}, ${data.city}, España</div>`;
-        document.getElementById('datos_shippment').classList.remove('hidden');
+        document.getElementById('datos_shipment').classList.remove('hidden');
         
         
         await delay(Math.floor(Math.random() * 1000)+ 700);
@@ -588,7 +588,7 @@
     /*Funcion para que despues de apretar el botton siguiente en el formulario puedas volver a editarlo*/
     function volver_formulario(){
         const formulario = document.getElementById('ContactoForm').classList.remove('hidden')
-        const info = document.getElementById('datos_shippment').classList.add('hidden')
+        const info = document.getElementById('datos_shipment').classList.add('hidden')
         const tarjetas = document.getElementById('payment').classList.add('hidden')
         if(j_cuenta){
             document.getElementById('button_validate').classList.remove('hidden')

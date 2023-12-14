@@ -4,7 +4,7 @@
 
 {% block content%}
 <style> 
-    .Newreseña{
+    .New_reseña{
         transform: translate(-50%, -50%);
     }
     
@@ -69,7 +69,7 @@
                 {% if product.get_descuento > 0 %}
                 <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{product.get_descuento}}%</p>
                 {% endif %}
-                <div id="cursormag" class="absolute w-[150px] h-[100px] bg-gray-100 border border-solid border-gray-200 opacity-50 cursor-zoom-in hidden">
+                <div id="cursor_magnet" class="absolute w-[150px] h-[100px] bg-gray-100 border border-solid border-gray-200 opacity-50 cursor-zoom-in hidden">
     
                 </div>
             </div>
@@ -103,7 +103,7 @@
                         |
                     </p>  
                     <p class="absolute top-6 min-[361px]:top-0 md:top-6 xl:top-0 left-[98px] min-[361px]:left-[210px] md:left-[98px] xl:left-[210px] hover:text-black hover:underline underline-offset-4" onclick="FirstOp()">
-                        Dejanos tu opinion
+                        Déjanos tu opinion
                     </p> 
                 </div>
                 <hr class="w-full mt-7 min-[361px]:mt-3 md:mt-7 xl:mt-3">
@@ -182,7 +182,7 @@
                 {% for i in size_special %}
                 <a 
                     id="añadir_carrito-{{i}}"
-                    title="Tothecart"
+                    title="Buy_prod"
                     href="#" 
                     class="hidden mt-6 w-full inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer drop-shadow-md"
                     hx-get = "{% url 'add_to_cart' product.id color_first.code i %}"
@@ -295,7 +295,7 @@
                     <ul class="py-4 list-disc px-6">
                         <li >30 años de experiencia</li>
                         <li >Una gran cantidad de marcas y productos</li>
-                        <li >Garantia de devolución 30 dias</li>
+                        <li >Garantía de devolución 30 días</li>
                     </ul>
                 </div>
             </div>
@@ -349,14 +349,14 @@
 
         <hr class="w-full mt-2">
 
-        <div id="leer_mas_menos" onclick="Leermas()" class="flex justify-center w-[100%] lg:w-[60%] mt-2 text-sm cursor-pointer select-none">
-            <div id="leermas" class="flex flex-col justify-center items-center text-gray-500">
+        <div id="leer_mas_menos" onclick="leer_mas()" class="flex justify-center w-[100%] lg:w-[60%] mt-2 text-sm cursor-pointer select-none">
+            <div id="leer_mas" class="flex flex-col justify-center items-center text-gray-500">
                 <div>Leer más</div>
                 <svg class="h-4 w-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
             </div>      
-            <div id="leermenos" class="flex flex-col justify-center items-center text-gray-500 hidden">
+            <div id="leer_menos" class="flex flex-col justify-center items-center text-gray-500 hidden">
                 <div>Leer menos</div>
                 <svg class="h-4 w-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
@@ -365,7 +365,7 @@
         </div>
         
         <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative">
-            <a href="{% url 'shop' %}" class="pt-6 pb-3 hover:text-black">Otros Productod de la Tienda</a>
+            <a href="{% url 'shop' %}" class="pt-6 pb-3 hover:text-black">Otros Productos de la Tienda</a>
         </div>
         <div class="w-full relative">
             <div class="xl:px-0 overflow-hidden md:mx-10">

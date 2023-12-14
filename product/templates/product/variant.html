@@ -4,7 +4,7 @@
 
 {% block content%}
 <style>
-    .Newreseña{
+    .New_reseña{
         transform: translate(-50%, -50%);
     }
 
@@ -71,7 +71,7 @@
                     src="{{variants_first.image}}"
                 >
                 <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{product.get_descuento}}%</p>
-                <div id="cursormag" class="absolute w-[150px] h-[100px] bg-gray-100 border border-solid border-gray-200 opacity-50 cursor-zoom-in hidden">
+                <div id="cursor_magnet" class="absolute w-[150px] h-[100px] bg-gray-100 border border-solid border-gray-200 opacity-50 cursor-zoom-in hidden">
     
                 </div>
             </div>
@@ -101,7 +101,7 @@
                         |
                     </p>  
                     <p class="absolute top-6 min-[361px]:top-0 md:top-6 xl:top-0 left-[98px] min-[361px]:left-[210px] md:left-[98px] xl:left-[210px] hover:text-black hover:underline underline-offset-4" onclick="FirstOp()">
-                        Dejanos tu opinion
+                        Déjanos tu opinion
                     </p> 
                 </div>
                 <hr class="w-full mt-7 min-[361px]:mt-3 md:mt-7 xl:mt-3">
@@ -180,7 +180,7 @@
                 {% for i in size_special %}
                 <a 
                     id="añadir_carrito-{{i}}"
-                    title="Tothecart"
+                    title="Buy_prod"
                     href="#" 
                     class="hidden mt-6 w-full inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
                     hx-get = "{% url 'add_to_cart' product.id color.code i %}"
@@ -206,7 +206,7 @@
                     </svg>
                     <p class="text-center">Añadir a favoritos</p>
                 </button>
-                <divc class="w-[2%]"></divc>
+                <div class="w-[2%]"></div>
                 <button id="Compartir" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[19%] lg:w-[39%] border">
                     <svg class="w-5 h-5 relative left-[50%] max-[1023px]:-translate-x-[50%] lg:absolute lg:left-2 text-center text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
@@ -259,7 +259,7 @@
                     <ul class="py-4 list-disc px-6">
                         <li >30 años de experiencia</li>
                         <li >Una gran cantidad de marcas y productos</li>
-                        <li >Garantia de devolución 30 dias</li>
+                        <li >Garantía de devolución 30 días</li>
                     </ul>
                 </div>
             </div>
@@ -313,14 +313,14 @@
 
         <hr class="w-full mt-2">
 
-        <div onclick="Leermas()" class="flex justify-center w-[100%] lg:w-[60%] mt-2 text-sm cursor-pointer select-none">
-            <div id="leermas" class="flex flex-col justify-center items-center text-gray-500">
+        <div onclick="leer_mas()" class="flex justify-center w-[100%] lg:w-[60%] mt-2 text-sm cursor-pointer select-none">
+            <div id="leer_mas" class="flex flex-col justify-center items-center text-gray-500">
                 <div>Leer más</div>
                 <svg class="h-4 w-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
             </div>      
-            <div id="leermenos" class="flex flex-col justify-center items-center text-gray-500 hidden">
+            <div id="leer_menos" class="flex flex-col justify-center items-center text-gray-500 hidden">
                 <div>Leer menos</div>
                 <svg class="h-4 w-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
@@ -329,7 +329,7 @@
         </div>
         
         <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative">
-            <a href="{% url 'shop' %}" class="pt-6 pb-3 hover:text-black">Otros Productod de la Tienda</a>
+            <a href="{% url 'shop' %}" class="pt-6 pb-3 hover:text-black">Otros Productos de la Tienda</a>
         </div>
         <div class="w-full relative">
             <div class="xl:px-0 overflow-hidden mx-10">
@@ -343,7 +343,7 @@
                                 </a>
                             
                                 <div class="pt-3 flex items-center justify-between">
-                                    <a title="productname" href="{% url 'product' product.slug %}">{{ product.nombre }}</a>
+                                    <a title="product_name" href="{% url 'product' product.slug %}">{{ product.nombre }}</a>
                                 </div>
                                 <p class="pt-1 text-gray-400">{{product.get_display_precio|floatformat:2}}€</p>
                             </div>

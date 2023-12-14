@@ -53,8 +53,8 @@
     const nav = document.querySelector('.navbar');
     const nav2 = document.querySelector('.buscador');
     const Top = document.getElementById('Top');
-    nscrollup = 0
-    nscrollupuntil = 10
+    n_scroll_up = 0
+    n_scroll_up_until = 10
 
     const BotA = document.getElementById('BotArriba');
 
@@ -75,7 +75,7 @@
         }
         /*---------*/
 
-        if ((currentScroll < lastScroll && nav.classList.contains('scroll-down') && (nscrollup == nscrollupuntil)) || (currentScroll < 150))  {
+        if ((currentScroll < lastScroll && nav.classList.contains('scroll-down') && (n_scroll_up == n_scroll_up_until)) || (currentScroll < 150))  {
             nav.classList.add('scroll-up');
             nav.classList.remove('scroll-down');
             nav.classList.add('max-[1300px]:mt-8');
@@ -89,7 +89,7 @@
             nav.classList.add('max-[1300px]:mt-0');
         }
 
-        if ((currentScroll < lastScroll && nav2.classList.contains('scroll-down-busca') && (nscrollup == nscrollupuntil)) || (currentScroll < 150)) {
+        if ((currentScroll < lastScroll && nav2.classList.contains('scroll-down-busca') && (n_scroll_up == n_scroll_up_until)) || (currentScroll < 150)) {
             nav2.classList.add('scroll-up-busca');
             nav2.classList.remove('scroll-down-busca');
         }
@@ -100,11 +100,11 @@
         }
 
         if(lastScroll > currentScroll && (currentScroll > 150)){
-            nscrollup = nscrollup + 1;
+            n_scroll_up = n_scroll_up + 1;
         }else{
-            nscrollup = 0;
+            n_scroll_up = 0;
         }
-        if(nscrollup == nscrollupuntil + 1){nscrollup = 0;}
+        if(n_scroll_up == n_scroll_up_until + 1){n_scroll_up = 0;}
 
         lastScroll = currentScroll;
 
@@ -194,7 +194,7 @@
         }
    }
 
-   function sendgetviews(param, str){
+   function send_get_views(param, str){
         if(url2){
             if(param){
                 var list = [];
@@ -224,7 +224,7 @@
             rangeInput[0].value = param2.split(',')[0]
             rangeInput[1].value = param2.split(',')[1]
             if(rangeInput[1].value - rangeInput[0].value < priceGap) {
-                if(input.id === 'rangemin'){
+                if(input.id === 'range_min'){
                     rangeInput[0].value = rangeInput[1].value - priceGap;
                 }else{
                     rangeInput[1].value = rangeInput[0].value + priceGap;
@@ -240,7 +240,7 @@
                 maxVal = parseInt(rangeInput[1].value);
             
                 if(maxVal - minVal < priceGap) {
-                    if(e.target.id === 'rangemin'){
+                    if(e.target.id === 'range_min'){
                         rangeInput[0].value = maxVal - priceGap;
                     }else{
                         rangeInput[1].value = minVal + priceGap;
@@ -255,7 +255,7 @@
                 maxVal = parseInt(rangeInput[3].value);
             
                 if(maxVal - minVal < priceGap) {
-                    if(e.target.id === 'rangemin'){
+                    if(e.target.id === 'range_min'){
                         rangeInput[2].value = maxVal - priceGap;
                     }else{
                         rangeInput[3].value = minVal + priceGap;
@@ -280,7 +280,7 @@
                 param2 = `${min_price},${max_price}`;
             }
 
-            sendgetviews(param2, 'price')
+            send_get_views(param2, 'price')
         });
 
         input.addEventListener('touchend', () =>{
@@ -294,7 +294,7 @@
                 param2 = `${min_price},${max_price}`;
             }
 
-            sendgetviews(param2, 'price')
+            send_get_views(param2, 'price')
         });
    });
    
@@ -317,10 +317,10 @@
             param = button_value
             is_param = false;
         }
-        sendget(param, is_param, string);
+        send_get(param, is_param, string);
     }
     
-    function sendget(param, is_param, string){
+    function send_get(param, is_param, string){
          if(url2){
              if(is_param){
                  temp = url2.split('&')
@@ -344,10 +344,10 @@
          }
     }
 
-   const Sexbut = document.querySelectorAll('.sexo button');
-   initial_stage(param3, Sexbut);
+   const Sex_button = document.querySelectorAll('.sexo button');
+   initial_stage(param3, Sex_button);
 
-   Sexbut.forEach(button => {
+   Sex_button.forEach(button => {
         button.addEventListener('click', () =>{
             
             button_event(param3, button.value , 'sx')
@@ -390,7 +390,7 @@
    
    <!-------------------------Selecciones------------------------->
 
-   const Sel_price = document.querySelectorAll('.selec_price button');
+   const Sel_price = document.querySelectorAll('.select_price button');
    Sel_price.forEach(button => 
         {button.addEventListener('click', () =>{
             temp = url2.split('&')
@@ -409,15 +409,15 @@
         });
     });
 
-   const Sel_sx = document.querySelectorAll('.selec_sx button');
+   const Sel_sx = document.querySelectorAll('.select_sx button');
    Sel_sx.forEach(button => {button.addEventListener('click', () =>{
             button_event(param3, button.value , 'sx')});});
 
-   const Sel_sz = document.querySelectorAll('.selec_sz button');
+   const Sel_sz = document.querySelectorAll('.select_sz button');
    Sel_sz.forEach(button => {button.addEventListener('click', () => {
             button_event(param4, button.value , 'sz')});});
 
-   const Sel_ma = document.querySelectorAll('.selec_ma button');
+   const Sel_ma = document.querySelectorAll('.select_ma button');
    Sel_ma.forEach(button => {button.addEventListener('click', () => {
             button_event(param5, button.value , 'ma')});});
 
@@ -494,7 +494,7 @@
     /*--------------- Mi cuenta --------------------*/
     
 
-    const MenuAcount = document.querySelectorAll('.menuacount .flex');
+    const MenuAcount = document.querySelectorAll('.menu_account .flex');
 
     console.log(MenuAcount)
 

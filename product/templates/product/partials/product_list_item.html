@@ -4,7 +4,7 @@
     </a>
 
     <div class="pt-3 flex items-center justify-between">
-        <a title="productname" href="{% url 'product' product.slug %}">{{ product.nombre }}</a>
+        <a title="product_name" href="{% url 'product' product.slug %}">{{ product.nombre }}</a>
     </div>
     <p class="pt-1 text-gray-400">{{product.get_display_precio|floatformat:2}}€</p>
 </div>

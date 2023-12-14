@@ -46,7 +46,7 @@
         <form id="FormInfo" class="products" method="post">
             {% csrf_token %}
             <div class="w-full relative">
-                {% include 'cart/partials/checkout/info_shippment.html' %}
+                {% include 'cart/partials/checkout/info_shipment.html' %}
                 <div id="ContactoForm" class="mb-6 rounded-xl border border-gray-600 relative">
 
                     <div id="datos_contacto" class="h-[70px] flex">
@@ -117,13 +117,13 @@
                                 </div>
                                 <div>
                                     <div class="border border-gray-400 hover:border-black relative">
-                                        <input id="password-input" name="pasword1" type="password" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Contraseña">
+                                        <input id="password-input" name="password1" type="password" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Contraseña">
                                         <i id="eye" class="absolute bg-white top-[50%] right-0 -translate-y-[50%] -translate-x-[50%] cursor-pointer">
-                                            <svg id="pwopen" class="h-5 w-5 mx-1 hidden"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg id="pw_open" class="h-5 w-5 mx-1 hidden"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                                             </svg>
-                                            <svg id="pwclose" class="h-5 w-5 mx-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg id="pw_close" class="h-5 w-5 mx-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
                                             </svg>
                                         </i>
@@ -131,13 +131,13 @@
                                 </div>
                                 <div>
                                     <div class="border border-gray-400 hover:border-black relative">
-                                        <input id="password-input2" name="pasword2" type="password" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Confirma tu contraseña">
+                                        <input id="password-input2" name="password2" type="password" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Confirma tu contraseña">
                                         <i id="eye2" class="absolute bg-white top-[50%] right-0 -translate-y-[50%] -translate-x-[50%] cursor-pointer">
-                                            <svg id="pwopen2" class="h-5 w-5 mx-1 hidden"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg id="pw_open2" class="h-5 w-5 mx-1 hidden"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                                             </svg>
-                                            <svg id="pwclose2" class="h-5 w-5 mx-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <svg id="pw_close2" class="h-5 w-5 mx-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
                                             </svg>
                                         </i>

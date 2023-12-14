@@ -50,7 +50,7 @@ def create_payment(request):
                 email=data['data']['email'],
             )
         else:
-            #-----Modyfy customer-----
+            #-----Modify customer-----
             customer = stripe.Customer.modify(
                 data['customer'],
                 name = data['data']['first_name'] + ' ' + data['data']['last_name'],
@@ -123,12 +123,12 @@ def success(request):
         )
 
     
-        item_quan = {}
+        item_quant = {}
         variants = Variant.objects.filter(size__contains=['_']);
     
         for item in cart:
             variants2 = Variant.objects.filter(id=item['variant'].id)
-            item_quan[item['variant'].id] = item['quantity']
+            item_quant[item['variant'].id] = item['quantity']
             variants = variants | variants2
         
         for variant in variants:
@@ -139,12 +139,12 @@ def success(request):
                 color = variant.color,
                 size = variant.size.replace('/', '|'),
                 precio = variant.precio,
-                quantity = item_quan[variant.id],
+                quantity = item_quant[variant.id],
                 image_id = variant.image_id,
             )
         orden_compra = Order.objects.filter(customer = customer.id)[0]
         order =OrderItem.objects.filter(order=orden_compra )
-        message_whatsapp(customer, order,"%.2f" % round(payment_intent.amount/100, 2))
+        message_WhatsApp(customer, order,"%.2f" % round(payment_intent.amount/100, 2))
         
         cart.clear()
     
@@ -169,12 +169,12 @@ def success(request):
 def payment_canceled(request):
     return render(request, 'cart/payment_canceled.html')
 
-def message_whatsapp(customer, order, amount):
+def message_WhatsApp(customer, order, amount):
 
-    textitems = ''
+    text_items = ''
     for item in order:
         url = f'https://edscon.pythonanywhere.com/shop/{item.nombre.lower().replace(" ", "-")}'
-        textitems = textitems + f'*🤜{item.nombre}*\n      Talla: {item.size}\n\n{url}\n\n'
+        text_items = text_items + f'*🤜{item.nombre}*\n      Talla: {item.size}\n\n{url}\n\n'
 
     info = ClueInfo.objects.all()[0]
     id_tel = info.id_tel
@@ -189,7 +189,7 @@ def message_whatsapp(customer, order, amount):
         }
         data = { "messaging_product": "whatsapp", "recipient_type":"individual", "to": f"{num_tel}", "type": "text", "preview_url": True,
                 "text": { 
-                    "body": f"*Avís compra!!*\n{customer.name}\n\n{textitems}_{amount}€_",
+                    "body": f"*Avís compra!!*\n{customer.name}\n\n{text_items}_{amount}€_",
                 } }
 
         r = requests.post(url, headers=headers, json=data)
