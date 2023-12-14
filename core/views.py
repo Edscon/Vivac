@@ -172,6 +172,19 @@ def my_account(request):
 def my_orders(request):
     return render(request, 'core/my_orders.html')
 
+@login_required
+def my_data(request):
+    return render(request, 'core/my_data.html')
+
+@login_required
+def my_favorites(request):
+    return render(request, 'core/my_favorites.html')
+
+@login_required
+def my_reviews(request):
+    return render(request, 'core/my_reviews.html')
+
+
 
 @login_required
 def edit_my_account(request):

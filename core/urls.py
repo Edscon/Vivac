@@ -2,7 +2,7 @@ from django.contrib.auth import views
 from django.urls import path
 
 
-from core.views import frontpage, shop, signup, my_account, my_orders, edit_my_account, create_user_, update_account, quienes_somos, update_favorito, login_p
+from core.views import frontpage, shop, signup, my_account, my_orders, my_data, my_favorites, my_reviews, edit_my_account, create_user_, update_account, quienes_somos, update_favorito, login_p
 from product.views import product, marca, marcas, variant_product
 
 
@@ -15,8 +15,12 @@ urlpatterns = [
     path('login_p/', login_p, name="login_p"),
 
     path('my_account/', my_account, name="my_account"),
-    path('my_orders/', my_orders, name="my_orders"),
+    path('my_account/orders/', my_orders, name="my_orders"),
+    path('my_account/data/', my_data, name="my_data"),
+    path('my_account/favorites/', my_favorites, name="my_favorites"),
+    path('my_account/reviews/', my_reviews, name="my_reviews"),
     path('my_account/edit/', edit_my_account, name="edit_my_account"),
+
     path('shop/', shop, name='shop'),
     path('shop/<slug:slug>', product, name='product'),
     path('shop/<slug:slug>/<slug:slug_color>', variant_product, name='variant_product'),

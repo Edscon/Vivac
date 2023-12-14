@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Account(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name='accounts', on_delete=models.CASCADE)
     address = models.CharField(max_length=250, blank=True, null=True)
     city = models.CharField(max_length=250, blank=True, null=True)
     zipcode = models.CharField(max_length=250, blank=True, null=True)

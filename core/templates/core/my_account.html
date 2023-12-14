@@ -17,20 +17,20 @@
                 <div class="mr-1 bg-neutral-400"></div>
                 <div class="p-2 w-full">Mis pedidos</div>
             </a>
-            <a class="flex border-b border-neutral-300">
+            <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
                 <div class="mr-1 bg-neutral-400"></div>
                 <div class="p-2 w-full">Mis datos</div>
             </a>
-            <a class="flex border-b border-neutral-300">
+            <a class="flex border-b border-neutral-300" href="{% url 'my_favorites' %}">
                 <div class="mr-1 bg-neutral-400"></div>
                 <div class="p-2 w-full">Mis favoritos</div>
             </a>
-            <a class="flex border-b border-neutral-300">
-                <div class="mr-1 bg-neutral-400" ></div>
+            <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
+                <div class="mr-1 bg-neutral-400"></div>
                 <div class="p-2 w-full">Mis opiniones de productos</div>
             </a>
             <a class="flex border-b border-neutral-300">
-                <div class="mr-1 bg-neutral-400" ></div>
+                <div class="mr-1 bg-neutral-400"></div>
                 <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
             </a>
         </div>
@@ -45,16 +45,16 @@
             
             <div class="rounded-xl border border-gray-300">
                 <div class="min-h-[80px] p-2 bg-neutral-200 flex text-[12px] font-semibold text-gray-700 rounded-t-xl">
-                    <div class="w-[50%] flex justify-between ml-4">
+                    <div class="w-[80%] flex justify-between ml-4">
                         <div class="h-full w-[120px]">
                             <div>PEDIDO REALIZADO</div>
                             <div class="text-sm font-normal">{{request.user.orders.first.created_at |date1}}</div>
                         </div>
-                        <div class="h-full">
+                        <div class="h-full w-[80px]">
                             <div>TOTAL</div>
                             <div class="text-sm font-normal">{{request.user.orders.first.paid_amount| floatformat:2}} €</div>
                         </div>
-                        <div class="h-full">
+                        <div class="h-full w-[200px]">
                             <div>ENVIAR A</div>
                             <div class="text-sm font-normal">{{request.user.orders.first.address}}, {{request.user.orders.first.city}} </div>
                         </div>
@@ -67,9 +67,12 @@
                 <hr class="border-white lg:border-gray-300">
                 <div class="">
                         {% for item in request.user.orders.first.items.all %}
+                            {% if forloop.counter0 > 0 %}
+                            <hr class="w-full border-gray-300">
+                            {% endif %}
                         <div class="flex w-full">
-                            <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-[140px]">
-                                <img class="hover:shadow-lg rounded" src="{{item.variant.image}}">
+                            <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-[140px] rounded-b-xl">
+                                <img class="hover:shadow-lg rounded-b-xl" src="{{item.variant.image}}">
                             </a>
                         
                             <div class="w-[50%] pl-2 text-sm my-auto">
@@ -118,7 +121,6 @@
                                 </a> 
                             </div>
                         </div>
-                        <hr class="w-full border-gray-300">
                         {% endfor %}
                 </div>
             </div>
@@ -146,46 +148,5 @@
             <a href="{% url 'logout' %}" class="inline-block flex justify-center w-full py-3 px-6 bg-gray-500 text-white hover:bg-transparent border hover:border-black hover:text-black">Cerrar Sesión</a>
         </dev>
     </div>
-
-
-
-    <hr>
-
-    <h2 class="my-6 text-xl">Mis Compras</h2>
-
-    {% for order in request.user.orders.all %}
-    <div class="w-full mb-6 p-6 flex flex-wrap bg-gray-100">
-        <div class="mb-3 flex justify-between">
-            <a href="#">Id compra: {{order.id}}</a>
-        </div>
-        <div class="mb-6 w-full">
-            {% for item in order.items.all %}
-            <div class="product mb-1 flex p-6">
-                <a href="#" class="w-1/4">
-                    <img class="hover:shadow-lg rounded-xl" src="{{item.variant.image}}" width="150" height="150">
-                </a>
-
-                <div class="w-3/4 pl-6">
-                    <div class="flex justify-between">
-                        <a href="#" class="text-lg">{{item.product.nombre}}</a>
-                        <p class="mb-3 pt-1 text-gray-700">{{item.get_total_price|floatformat:2}}€</p>
-                    </div>
-
-                    <hr>
-
-                    <div class="mt-3">
-                        Cantidad: {{item.quantity}}
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-
-        <div>
-            <p class="text-lg">Fecha: {{order.created_at}}</p>
-            <p class="text-lg">Total: {{order.get_total_price}}€</p>
-        </div>
-    </div>
-    {% endfor %}
 </div>
 {% endblock %}

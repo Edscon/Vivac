@@ -1,0 +1,112 @@
+{% load socialaccount %}
+{% load static %}
+<div class="edit_data invisible fixed z-[99999] top-0 left h-full w-full">
+
+    <div class="w-screen h-screen bg-neutral-700 opacity-70 z-0" onclick="data_edit()"></div>
+
+    <div class="edit_data-l h-screen w-screen sm:h-[720px] sm:w-[350px] absolute flex z-10 top-0 sm:top-[50%] left-0 sm:left-[50%] sm:translate-x-[-50%] sm:translate-y-[-50%] z-10 overflow-hidden">
+
+        <div class="bg-white h-full w-full">
+            <button type="button" title="menu-mobile-logo" class="absolute right-5 top-5"
+                onclick="data_edit()">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="flex mt-10"></div>
+
+            <div class="mt-2 text-gray-800 overflow-hidden h-full relative text-base sm:text-sm">
+                <p class="text-base text-gray-800 p-4 border-b-[0.5px] border-black">Datos personales</p>
+
+                <form method="post" action="{% url 'my_data' %}?next={{request.path}}" autocomplete="off" class="p-2 px-5 data_edit_form">
+                    {% csrf_token %}
+                    <div class="mt-4 space-y-1 relative">
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Nombre*</div>
+                        <input type="text" value="{{request.user.first_name}}" autocomplete="nope" name="name" placeholder="Nombre*" 
+                        class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
+                    </div>
+
+                    <div class="mt-4 space-y-1 relative">
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Apellidos*</div>
+                        <input type="text" value="{{request.user.last_name}}" autocomplete="nope" name="apellidos" placeholder="Apellidos*" 
+                        class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
+                    </div>
+
+                    <div class="mt-4 space-y-1 relative">
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Email*</div>
+                        <input type="text" value="{{request.user.email}}" autocomplete="nope" name="email" placeholder="Email*" 
+                        class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
+                    </div>
+
+                    <div class="mt-4 space-y-1 relative">
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Telefono*</div>
+                        <input type="text" value="{{request.user.accounts.phone}}" autocomplete="nope" name="phone" placeholder="Telefono*" 
+                        class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
+                    </div>
+
+                    <div class="mt-4 space-y-1 relative">
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Calle*</div>
+                        <input type="text" value="{{request.user.accounts.address}}" autocomplete="nope" name="address" placeholder="Calle*" 
+                        class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
+                    </div>
+
+                    <div class="mt-4 space-y-1 relative">
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Código postal*</div>
+                        <input type="text" value="{{request.user.accounts.zipcode}}" autocomplete="nope" name="zipcode" placeholder="Código postal*" 
+                        class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
+                    </div>
+
+                    <div class="mt-4 space-y-1 relative">
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Ciudad*</div>
+                        <input type="text" value="{{request.user.accounts.city}}" autocomplete="nope" name="city" placeholder="Ciudad*" 
+                        class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
+                    </div>
+
+                    <div class="mt-4 space-y-1 relative">
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Provincia*</div>
+                        <input type="text" value="{{request.user.accounts.provincia}}" autocomplete="nope" name="provincia" placeholder="Provincia*" 
+                        class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
+                    </div>
+
+
+                    <button class="w-full mt-6 py-2 px-2 rounded border text-white bg-green-700 hover:bg-green-800">
+                        Guardar
+                    </button>
+                    
+                </form>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+    const Data_Edit_Form = document.querySelectorAll('.data_edit_form .input');
+    Data_Edit_Form.forEach(input => {
+        let focus = {}
+        input.addEventListener('focus', () => {
+            focus[input.name] = 1
+            input.parentElement.children[0].classList.remove('text-neutral-600')
+            input.parentElement.children[0].classList.add('text-black')
+        });
+        input.addEventListener('focusout', () => {
+            focus[input.name] = 0
+            input.parentElement.children[0].classList.add('text-neutral-600')
+            input.parentElement.children[0].classList.remove('text-black')
+        });
+        input.addEventListener('mouseover', () => {
+            input.parentElement.children[0].classList.remove('text-neutral-600')
+            input.parentElement.children[0].classList.add('text-black')
+        });
+        input.addEventListener('mouseout', () => {     
+            if (focus[input.name] === undefined || focus[input.name] == 0) {
+                input.parentElement.children[0].classList.add('text-neutral-600')
+                input.parentElement.children[0].classList.remove('text-black')
+            }
+        });
+    });
+
+</script>

@@ -1,0 +1,121 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Mis datos{% endblock %}
+
+{% block content%}
+{% load replacement %}
+{% load static %}
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto xl:px-0 px-4 py-5">
+    <div class="flex">
+        <div class="menu_account w-[25%] text-sm">
+            <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
+                <div class="mr-1 bg-neutral-400"></div>
+                <div class="p-2 w-full">Mi cuenta</div>
+            </a>
+            <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
+                <div class="mr-1 bg-neutral-400"></div>
+                <div class="p-2 w-full">Mis pedidos</div>
+            </a>
+            <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
+                <div class="w-[3px] bg-green-600"></div>
+                <div class="p-2 w-full">Mis datos</div>
+            </a>
+            <a class="flex border-b border-neutral-300" href="{% url 'my_favorites' %}">
+                <div class="mr-1 bg-neutral-400"></div>
+                <div class="p-2 w-full">Mis favoritos</div>
+            </a>
+            <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
+                <div class="mr-1 bg-neutral-400"></div>
+                <div class="p-2 w-full">Mis opiniones de productos</div>
+            </a>
+            <a class="flex border-b border-neutral-300">
+                <div class="mr-1 bg-neutral-400"></div>
+                <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
+            </a>
+        </div>
+        
+        <div class="w-[75%] pl-8 text-black text-sm relative">
+            <div class="mb-5 font-semibold text-lg">Mis Datos</div>
+            
+            {% if request.user.is_authenticated %}
+            <div id="info_shipment" class="text-base w-full mt-6 space-y-4">
+                <div>
+                    <div class="">Datos personales</div>
+                </div>
+                <div>
+                    <div class="font-semibold text-xs">Nombre</div>
+                    <div>{{request.user.first_name}}</div>
+                </div>
+                <div>
+                    <div class="font-semibold text-xs">Apellidos</div>
+                    <div>{{request.user.last_name}}</div>
+                </div>
+                <div>
+                    <div class="font-semibold text-xs">Email</div>
+                    <div>{{request.user.email}}</div>
+                </div>
+                <hr class="py-[1px] bg-black opacity-70">
+
+                {% if request.user.accounts %}
+                <div>
+                    <div class="font-semibold text-xs">Telefono</div>
+                    <div>{{request.user.accounts.phone}}</div>
+                </div>
+                <div>
+                    <div class="font-semibold text-xs">Calle</div>
+                    <div>{{request.user.accounts.address}}</div>
+                </div>
+                <div>
+                    <div class="font-semibold text-xs">Código postal</div>
+                    <div>{{request.user.accounts.zipcode}}</div>
+                </div>
+                <div>
+                    <div class="font-semibold text-xs">Ciudad</div>
+                    <div>{{request.user.accounts.city}}</div>
+                </div>
+                <div>
+                    <div class="font-semibold text-xs">Provincia</div>
+                    <div>{{request.user.accounts.provincia}}</div>
+                </div>
+                {% else %}
+                <div>
+                    <div class="font-semibold text-xs">Telefono</div>
+                    <div>---------</div>
+                </div>
+                <div>
+                    <div class="font-semibold text-xs">Calle</div>
+                    <div>---------</div>
+                </div>
+                <div>
+                    <div class="font-semibold text-xs">Código postal</div>
+                    <div>---------</div>
+                </div>
+                <div>
+                    <div class="font-semibold text-xs">Ciudad</div>
+                    <div>---------</div>
+                </div>
+                <div>
+                    <div class="font-semibold text-xs">Provincia</div>
+                    <div>---------</div>
+                </div>
+                {% endif %}
+
+            </div>
+            {% endif %}
+
+            <a onclick="data_edit()" class="absolute right-0 top-14 px-2 w-[50px] md:w-[20%] bg-white border border-gray-400 hover:border-black py-2 flex cursor-pointer"> 
+                <div class="flex space-x-2 mx-auto">
+                    <div class="flex px-1 md:px-0">
+                        <svg class=" my-auto h-5 w-5 text-black"  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" /></svg>
+                    </div>
+                    <div class="hidden md:flex">Cambiar</div> 
+                </div>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+{% include 'core/partials/edit_data.html' %}
+
+{% endblock %}

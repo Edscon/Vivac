@@ -15,8 +15,8 @@
     }
 
     /*MENU LOGIN MOBILE*/
-    const menu_login = document.querySelector('.menu-login-mobile');
-    const menu_login_l = document.querySelector('.menu-login-mobile-l');
+    const menu_login = document.querySelector('.edit_data');
+    const menu_login_l = document.querySelector('.edit_data-l');
 
     function menu_login_mobile(Res=0){
         if(Res == 1){
@@ -496,8 +496,6 @@
 
     const MenuAcount = document.querySelectorAll('.menu_account .flex');
 
-    console.log(MenuAcount)
-
     MenuAcount.forEach(div => {
         if(!div.children[0].classList.contains('bg-green-600')){
             div.addEventListener('mouseover', () =>{
@@ -604,7 +602,6 @@
     const menu_bg = document.querySelectorAll('.menu_bg');
     let t = -1
     menu_right_barra.forEach( div => {
-        console.log(div.parentElement)
         div.parentElement.addEventListener('mouseover', () => {
             if(div == menu_right_barra[0]){t = 0}else if(div == menu_right_barra[1]){t = 1} else {t = 2}
             menu_bg[t].classList.add('md:block');
@@ -650,5 +647,28 @@
             menu_right_barra_cart.classList.remove("h-[2px]");
             menu_right_barra_cart.style.animation = "out-in-menu 100ms 1"
         });
+
+    /*Edit Data*/
+    const edit_data = document.querySelector('.edit_data');
+    const edit_data_l = document.querySelector('.edit_data-l');
+    
+    function data_edit(){
+        
+        if (edit_data.classList.contains('invisible')){
+            disableScroll();
+            edit_data.classList.remove('invisible');
+            edit_data.classList.add('visible');
+
+            edit_data_l.style.animation ="login-open 300ms 1"
+
+        }else{
+            edit_data_l.style.animation ="login-close 300ms 1"
+            
+            edit_data.classList.remove('visible');
+            edit_data.classList.add('invisible');
+            enableScroll();
+        }
+        
+    }
 
    </script>
