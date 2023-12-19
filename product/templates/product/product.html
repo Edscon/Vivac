@@ -211,7 +211,7 @@
                         onclick="this.classList.add('hidden'); document.getElementById('Favorito_1').classList.remove('hidden');"
                         >
                         {% csrf_token %}
-                        <button id="Favoritos" type="submit" class="w-full h-full ">
+                        <button type="submit" class="w-full h-full">
                             <svg class="w-5 h-5 md:w-6 md:h-6 absolute top-[50%] left-[10px] -translate-y-[50%] text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                             </svg>
@@ -224,7 +224,7 @@
                         onclick="this.classList.add('hidden'); document.getElementById('Favorito_0').classList.remove('hidden');"
                         >
                         {% csrf_token %}
-                        <button id="Favoritos" type="submit" class="w-full h-full">
+                        <button type="submit" class="w-full h-full">
                             <svg class="w-5 h-5 md:w-6 md:h-6 absolute top-[50%] left-[10px] -translate-y-[50%] text-gray-700"  fill="#dc2626" viewBox="0 0 24 24" stroke="none">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                             </svg>
@@ -232,7 +232,7 @@
                         </button>
                     </form>
                 {% else %}
-                <div id="Favorito_nouser" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[79%] lg:w-[59%] border-[0.1px] drop-shadow-md" onclick="FirstOp()">
+                <div id="Favorito_no_user" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[79%] lg:w-[59%] border-[0.1px] drop-shadow-md" onclick="FirstOp()">
                     <button id="Favoritos" class="w-full h-full drop-shadow-md">
                         <svg class="w-5 h-5 md:w-6 md:h-6 absolute top-[50%] left-[10px] -translate-y-[50%] text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>

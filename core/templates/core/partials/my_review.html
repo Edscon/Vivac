@@ -189,10 +189,7 @@
                 body: JSON.stringify(data),
             }).then(response => response.json())
             .then(json =>{
-                console.log(JSON.stringify(json));
-                console.log(json['url'])
-                console.log(window.location.host + json['url'])
-                location.replace(json['url'])
+                window.history.back();
             })  
         }
 

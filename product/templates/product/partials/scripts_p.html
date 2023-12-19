@@ -156,20 +156,39 @@
     whatsapp.href = `https://api.whatsapp.com/send?text=${msg}${link}`;
     
     comp = document.getElementById('Compartir')
+    const fav0 = document.getElementById('Favorito_0')
+    const fav1 = document.getElementById('Favorito_1')
+    const fav_no_user = document.getElementById('Favorito_no_user')
+
+    function fav_add_remove(div1, str){
+        if (str == 'add'){
+            div1.classList.remove('w-[79%]');
+            div1.classList.add('w-[100%]');
+        }else{
+            div1.classList.add('w-[79%]');
+            div1.classList.remove('w-[100%]');
+        }
+    }
+
     comp.onclick = function(){
         comp.classList.add('hidden');
         Share.classList.remove('hidden');
 
-        Favoritos.classList.remove('w-[79%]');
-        Favoritos.classList.add('w-[100%]');
+        if(fav_no_user == null){
+            fav_add_remove(fav0,'add');
+            fav_add_remove(fav1,'add');
+        }else{fav_add_remove(fav_no_user,'add');}
+        
 
     }
     OutShare.onclick = function(){
         comp.classList.remove('hidden');
         Share.classList.add('hidden');
 
-        Favoritos.classList.add('w-[79%]');
-        Favoritos.classList.remove('w-[100%]');
+        if(fav_no_user == null){
+            fav_add_remove(fav0,'remove');
+            fav_add_remove(fav1,'remove');
+        }else{fav_add_remove(fav_no_user,'remove');}
     }
     
     function NoTallas() {

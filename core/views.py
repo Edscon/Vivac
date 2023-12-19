@@ -222,8 +222,11 @@ def my_reviews(request):
 
 @login_required
 def my_review(request, id):
-    review = get_object_or_404(Review, id=id)
-    product = review.product
+
+    product = get_object_or_404(Product, id=id)
+    
+    review = Review.objects.filter(product=product, created_by=request.user)[0]
+    print(review)
 
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -254,7 +257,7 @@ def my_review(request, id):
                     created_by=request.user,
                 )
                 
-            return JsonResponse({'data': data, 'url': '/my_account/reviews/'})
+            return JsonResponse({'data': data})
 
     
     context = {
