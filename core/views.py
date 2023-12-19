@@ -34,8 +34,6 @@ def login_p(request):
         else: 
             print('No existe usuario')
 
-    print(request.GET.get('next',''))
-
     return redirect(request.GET.get('next',''))
 
 def frontpage(request):
@@ -44,7 +42,6 @@ def frontpage(request):
     marcas = Marca.objects.all()
 
     if request.method == 'POST':
-        print('OK')
         form = SignUpForm(request.POST)
 
         if form.is_valid():
@@ -135,14 +132,12 @@ def create_user_(request):
     user = request.user
     if(not user.is_authenticated):
         if(data['i_cuenta'] == 1):
-            print('return')
             return JsonResponse({'data': data})
         else:
             if(User.objects.filter(email = data['email'] ).count() == 0):
                 user = create_user_data(data)
             else:
                 user = User.objects.get(email = data['email'])
-                print(user)
                 if (not user.check_password(data['password'])):
                     print('None password')
 

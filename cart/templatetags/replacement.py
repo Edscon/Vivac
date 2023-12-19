@@ -8,7 +8,6 @@ def replace_1(value):
     return value.replace("|","/")
 
 def replace_2(value):
-    print('ok')
     return value.replace("/","|")
 
 @register.filter

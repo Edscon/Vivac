@@ -34,8 +34,6 @@ def create_payment(request):
         cart = Cart(request)
         data = json.loads(request.body)
 
-        print(data, data['data']['email'])
-
         if(data['customer'] == ''):
             customer = stripe.Customer.create(
                 name = data['data']['first_name'] + ' ' + data['data']['last_name'],
@@ -180,7 +178,7 @@ def message_WhatsApp(customer, order, amount):
     id_tel = info.id_tel
     num_tel = info.num_tel
     token = info.token
-    print(token)
+    
     try:
         url = f'https://graph.facebook.com/v17.0/{id_tel}/messages'
         headers = {
