@@ -13,10 +13,11 @@
             <a class="block mt-2 px-6 py-3 text-black">Hola {{user.first_name}},</a>
             <hr color="block py-1">
             <a href="{% url 'my_account' %}" class=" block px-6 py-3 hover:bg-gray-100 hover:text-black cursor-pointer">Mi Cuenta</a>
-            <a href="{% url 'my_orders' %}" class=" block px-6 py-3 hover:bg-gray-100 hover:text-black cursor-pointer">Información de la Cuenta</a>
-            <a href="{% url 'my_account' %}" class=" block px-6 py-3 hover:bg-gray-100 hover:text-black cursor-pointer">Mi Lista de Favoritos</a>
-            <a href="{% url 'my_account' %}" class=" block px-6 py-3 hover:bg-gray-100 hover:text-black cursor-pointer">Mis Pedidos</a>
-            <a href="{% url 'logout' %}" class=" block px-6 py-3 hover:bg-gray-100 hover:text-black cursor-pointer">Salir</a>
+            <a href="{% url 'my_orders' %}" class=" block px-6 py-3 hover:bg-gray-100 hover:text-black cursor-pointer">Mis pedidos</a>
+            <a href="{% url 'my_data' %}" class=" block px-6 py-3 hover:bg-gray-100 hover:text-black cursor-pointer">Mis datos</a>
+            <a href="{% url 'my_favorites' %}" class=" block px-6 py-3 hover:bg-gray-100 hover:text-black cursor-pointer">Mis favoritos</a>
+            <a href="{% url 'my_reviews' %}" class=" block px-6 py-3 hover:bg-gray-100 hover:text-black cursor-pointer">Mis opiniones de productos</a>
+            <a href="{% url 'logout' %}" class=" block px-6 py-3 hover:bg-gray-100 hover:text-black cursor-pointer">Cerrar Sesión</a>
         </div>
         
         {% else %}
