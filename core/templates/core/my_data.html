@@ -54,52 +54,49 @@
                     <div class="font-semibold text-xs">Email</div>
                     <div>{{request.user.email}}</div>
                 </div>
-                <hr class="py-[1px] bg-black opacity-70">
+                <hr class="py-[1px] bg-black opacity-70 w-full">
 
-                {% if request.user.accounts %}
+                
                 <div>
                     <div class="font-semibold text-xs">Telefono</div>
-                    <div>{{request.user.accounts.phone}}</div>
+                    {% if request.user.accounts.phone %}
+                        <div>{{request.user.accounts.phone}}</div>
+                    {% else %}
+                        <div>---------</div>
+                    {% endif %}
                 </div>
                 <div>
                     <div class="font-semibold text-xs">Calle</div>
-                    <div>{{request.user.accounts.address}}</div>
+                    {% if request.user.accounts.address %}
+                        <div>{{request.user.accounts.address}}</div>
+                    {% else %}
+                        <div>---------</div>
+                    {% endif %}
                 </div>
                 <div>
                     <div class="font-semibold text-xs">Código postal</div>
-                    <div>{{request.user.accounts.zipcode}}</div>
+                    {% if request.user.accounts.zipcode %}
+                        <div>{{request.user.accounts.zipcode}}</div>
+                    {% else %}
+                        <div>---------</div>
+                    {% endif %}
                 </div>
                 <div>
                     <div class="font-semibold text-xs">Ciudad</div>
-                    <div>{{request.user.accounts.city}}</div>
+                    {% if request.user.accounts.city %}
+                        <div>{{request.user.accounts.city}}</div>
+                    {% else %}
+                        <div>---------</div>
+                    {% endif %}
                 </div>
                 <div>
                     <div class="font-semibold text-xs">Provincia</div>
-                    <div>{{request.user.accounts.provincia}}</div>
+                    {% if request.user.accounts.provincia %}
+                        <div>{{request.user.accounts.provincia}}</div>
+                    {% else %}
+                        <div>---------</div>
+                    {% endif %}
                 </div>
-                {% else %}
-                <div>
-                    <div class="font-semibold text-xs">Telefono</div>
-                    <div>---------</div>
-                </div>
-                <div>
-                    <div class="font-semibold text-xs">Calle</div>
-                    <div>---------</div>
-                </div>
-                <div>
-                    <div class="font-semibold text-xs">Código postal</div>
-                    <div>---------</div>
-                </div>
-                <div>
-                    <div class="font-semibold text-xs">Ciudad</div>
-                    <div>---------</div>
-                </div>
-                <div>
-                    <div class="font-semibold text-xs">Provincia</div>
-                    <div>---------</div>
-                </div>
-                {% endif %}
-
             </div>
             {% endif %}
 

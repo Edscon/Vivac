@@ -627,7 +627,7 @@
     });
     const menu_right_barra_cart = document.querySelector('.menu_right_barra_cart')
     const menu_bg_cart = document.querySelector('.menu_bg_cart');
-    const parent_barra_bg_cart = document.querySelector('.dropdown-menu-cart');
+    const parent_barra_bg_cart = document.querySelector('.dropdown-menu-cart-top');
 
     parent_barra_bg_cart.addEventListener('mouseover', () => {
             menu_bg_cart.classList.add('md:block');
@@ -635,13 +635,13 @@
             menu_right_barra_cart.classList.add("h-[2px]");
             menu_right_barra_cart.style.animation = "in-out-menu 100ms 1"
         });
-        parent_barra_bg_cart.addEventListener('mouseout', () => {
+    parent_barra_bg_cart.addEventListener('mouseout', () => {
             menu_bg_cart.classList.remove('md:block');
             menu_right_barra_cart.classList.add("h-[0px]");
             menu_right_barra_cart.classList.remove("h-[2px]");
             menu_right_barra_cart.style.animation = "out-in-menu 100ms 1"
         });
-        parent_barra_bg_cart.addEventListener('click', () => {
+    parent_barra_bg_cart.addEventListener('click', () => {
             menu_bg_cart.classList.remove('md:block');
             menu_right_barra_cart.classList.add("h-[0px]");
             menu_right_barra_cart.classList.remove("h-[2px]");

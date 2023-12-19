@@ -61,7 +61,7 @@
             {% include 'cart/partials/menu_cart.html' %}
     
     </div>
-    <div class="relative">
+    <div class="relative dropdown-menu-cart-top">
         <div class="dropdown-menu-cart relative"
         hx-get="{% url 'hx_minicart' %}"
         hx-trigger="update-menu-cart from:body"

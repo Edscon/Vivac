@@ -6,8 +6,9 @@ from django.db.models import Min, Max
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
+from django.urls import reverse
 from core.models import Account
-from product.models import Product, Category, Marca, Variant, Color
+from product.models import Product, Category, Marca, Variant, Color, Review
 from functools import reduce
 from itertools import chain
 
@@ -174,15 +175,92 @@ def my_orders(request):
 
 @login_required
 def my_data(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+
+        user = request.user
+        user.first_name = data['first_name']
+        user.last_name = data['last_name']
+        user.save()
+
+        account = Account.objects.filter(user=user)
+        account.update(
+            address = data['address'],
+            city = data['city'],
+            zipcode = data['zipcode'],
+            phone = data['phone'],
+            provincia = data['provincia'],
+        )
+        return JsonResponse({'data': data})
+
     return render(request, 'core/my_data.html')
 
 @login_required
 def my_favorites(request):
-    return render(request, 'core/my_favorites.html')
+
+    lista = []
+    if(request.user.is_authenticated):
+        if(Account.objects.filter(user = request.user).exists()):
+            if(Account.objects.filter(user = request.user).values('favorites')[0]['favorites']):
+                for i in Account.objects.filter(user = request.user).values('favorites')[0]['favorites'].split(','):
+                    id_col = i.replace('(', '').replace(')', '').split('/')
+                    try:
+                        lista.append(Variant.objects.filter(product = Product.objects.filter(id=int(id_col[0]))[0], color = Color.objects.filter(code = id_col[1])[0])[0].id)
+                    except:
+                        i = 0
+        
+    favorites = Variant.objects.filter(id__in = lista)
+
+    context = {
+        'favorites': favorites,
+    }
+    return render(request, 'core/my_favorites.html', context)
 
 @login_required
 def my_reviews(request):
     return render(request, 'core/my_reviews.html')
+
+@login_required
+def my_review(request, id):
+    review = get_object_or_404(Review, id=id)
+    product = review.product
+
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        rating = int(data['rating'])
+        titulo = data['titulo']
+        content = data['content']
+
+        if content:
+            reviews = Review.objects.filter(
+                created_by=request.user, product=product)
+
+            if reviews.count() > 0:
+                review = reviews.first()
+                if rating == 0:
+                    rating = review.rating
+                review.rating = rating
+                review.titulo = titulo
+                review.content = content
+
+                review.save()
+
+            else:
+                review = Review.objects.create(
+                    product=product,
+                    rating=rating,
+                    titulo=titulo,
+                    content=content,
+                    created_by=request.user,
+                )
+                
+            return JsonResponse({'data': data, 'url': '/my_account/reviews/'})
+
+    
+    context = {
+        'review': review,
+    }
+    return render(request, 'core/partials/my_review.html', context)
 
 
 

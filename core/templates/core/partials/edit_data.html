@@ -1,10 +1,10 @@
 {% load socialaccount %}
 {% load static %}
-<div class="edit_data invisible fixed z-[99999] top-0 left h-full w-full">
+<div class="edit_data invisible absolute z-[99999] top-0 left h-full w-full">
 
     <div class="w-screen h-screen bg-neutral-700 opacity-70 z-0" onclick="data_edit()"></div>
 
-    <div class="edit_data-l h-screen w-screen sm:h-[720px] sm:w-[350px] absolute flex z-10 top-0 sm:top-[50%] left-0 sm:left-[50%] sm:translate-x-[-50%] sm:translate-y-[-50%] z-10 overflow-hidden">
+    <div class="edit_data-l h-screen w-screen sm:h-[670px] sm:w-[350px] absolute flex z-10 top-0 sm:top-[50%] sm:translate-y-[-70%] left-0 right-0 m-auto z-10 overflow-hidden">
 
         <div class="bg-white h-full w-full">
             <button type="button" title="menu-mobile-logo" class="absolute right-5 top-5"
@@ -19,7 +19,7 @@
             <div class="mt-2 text-gray-800 overflow-hidden h-full relative text-base sm:text-sm">
                 <p class="text-base text-gray-800 p-4 border-b-[0.5px] border-black">Datos personales</p>
 
-                <form method="post" action="{% url 'my_data' %}?next={{request.path}}" autocomplete="off" class="p-2 px-5 data_edit_form">
+                <form method="post" action="." autocomplete="off" class="p-2 px-5 data_edit_form">
                     {% csrf_token %}
                     <div class="mt-4 space-y-1 relative">
                         <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Nombre*</div>
@@ -30,12 +30,6 @@
                     <div class="mt-4 space-y-1 relative">
                         <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Apellidos*</div>
                         <input type="text" value="{{request.user.last_name}}" autocomplete="nope" name="apellidos" placeholder="Apellidos*" 
-                        class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
-                    </div>
-
-                    <div class="mt-4 space-y-1 relative">
-                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Email*</div>
-                        <input type="text" value="{{request.user.email}}" autocomplete="nope" name="email" placeholder="Email*" 
                         class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
                     </div>
 
@@ -70,7 +64,7 @@
                     </div>
 
 
-                    <button class="w-full mt-6 py-2 px-2 rounded border text-white bg-green-700 hover:bg-green-800">
+                    <button id="submit" class="w-full mt-6 py-2 px-2 rounded border text-white bg-green-700 hover:bg-green-800">
                         Guardar
                     </button>
                     
@@ -107,6 +101,37 @@
                 input.parentElement.children[0].classList.remove('text-black')
             }
         });
+    });
+
+    const submit = document.getElementById('submit');
+    submit.addEventListener('click', () => {
+        event.preventDefault();
+        data = {
+            'csrf_token': '{{ csrf_token }}',
+            'first_name': document.querySelector('input[name=name]').value,
+            'last_name': document.querySelector('input[name=apellidos]').value,
+            'address': document.querySelector('input[name=address]').value,
+            'city': document.querySelector('input[name=city]').value,
+            'zipcode': document.querySelector('input[name=zipcode]').value,
+            'phone': document.querySelector('input[name=phone]').value,
+            'provincia': document.querySelector('input[name=provincia]').value,
+        }
+
+        fetch('.', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}' 
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify(data),
+        }).then(response => response.json())
+        .then(json =>{
+            location.reload();
+        })
+        .catch(function(error) {
+            console.log('Errors', error)
+        })
     });
 
 </script>
