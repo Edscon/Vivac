@@ -295,7 +295,6 @@
             })
             .then(response => response.json())
             .then(json =>{
-                console.log(JSON.stringify(json));
                 if(JSON.stringify(json) == '{"data":{}}'){
                     console.log('Usuario ya creado')
                 }else{
@@ -432,7 +431,6 @@
             })
             .then(response => response.json())
             .then(json =>{
-                console.log(JSON.stringify(json));
                 handleSubmit2(e)
                 
             })

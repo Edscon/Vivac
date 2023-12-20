@@ -88,10 +88,9 @@
                                         </a>
                                         
                                         <form method="post" action="{% url 'update_favorito' item.product.id item.color.code 'quitar' %}"
-                                            id="from_fav"
-                                            class="w-[150px] py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md">
+                                            class="from_fav-{{forloop.counter0}} w-[150px] py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md">
                                             {% csrf_token %}
-                                            <div class="text-sm flex mx-auto space-x-2" onclick="submit_my()">
+                                            <div class="text-sm flex mx-auto space-x-2" onclick='submit_my("{{forloop.counter0}}")'>
                                                 <div class="my-auto">
                                                     <svg class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
@@ -129,11 +128,9 @@
 </div>
 
 <script>
-    function submit_my(){
+    function submit_my(loop){
         event.preventDefault()
-        console.log(document.getElementById('from_fav').action)
-        
-        fetch(document.getElementById('from_fav').action, {
+        fetch(document.querySelector(`.from_fav-${loop}`).action, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
