@@ -343,10 +343,13 @@
                 if(JSON.stringify(json) == '{"data":{}}'){
                     document.getElementById('error_user_password').classList.remove('hidden');
                 }else{
+                    if (!document.getElementById('error_user_password').classList.contains('hidden')){
+                        document.getElementById('error_user_password').classList.add('hidden');
+                    }
+                    
                     user_id = json['data'].user_id
                     user_bool = json['data'].user_bool
                     data = json['data']
-                    console.log(user_bool)
                     payment()
                 }
             })
