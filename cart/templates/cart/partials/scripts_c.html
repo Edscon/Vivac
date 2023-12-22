@@ -104,6 +104,7 @@
     const haveLowCase = (string) => /[a-z]/.test(string)
     const haveNum = (string) => /[0-9]/.test(string)
     var password1 = ''
+    var password2 = ''
 
     function prove_input(i){
 
@@ -139,19 +140,25 @@
             if(i.name == 'password1'){
                 password1 = i.value
             }
+            if(i.name == 'password2'){
+                password2 = i.value
+            }
         }
         let all_elements = document.getElementsByName(i.name);
         all_elements.forEach(input=> {
             if(prove){
-    
+                
                 input.classList.remove("placeholder-gray-500")
                 input.classList.remove("hover:placeholder-black")
                 input.classList.add("placeholder-red-500")
                 input.parentElement.classList.remove("border-gray-400")
                 input.parentElement.classList.remove("hover:border-black")
                 input.parentElement.classList.add("border-red-500")
-    
+
                 if (input.parentElement.parentElement.childNodes.length == 3) {
+                    input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
+                }
+                if (input.parentElement.parentElement.childNodes.length == 5) {
                     input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
                 }
                 const error = document.createElement("div");
@@ -160,7 +167,7 @@
                 insertAfter(input.parentElement, error)
     
             }else if(input.classList.contains("placeholder-red-500")){
-    
+                
                 input.classList.add("placeholder-gray-500")
                 input.classList.add("hover:placeholder-black")
                 input.classList.remove("placeholder-red-500")
@@ -169,7 +176,40 @@
                 input.parentElement.classList.remove("border-red-500")
     
                 input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
+
+                if(input.name == "password1"){
+
+                    Input_All.forEach(input=> {
+                        if (input.name == "password2"){
+                            
+                            input.classList.add("placeholder-gray-500")
+                            input.classList.add("hover:placeholder-black")
+                            input.classList.remove("placeholder-red-500")
+                            input.parentElement.classList.add("border-gray-400")
+                            input.parentElement.classList.add("hover:border-black")
+                            input.parentElement.classList.remove("border-red-500")
+                
+                            input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
+                        }
+                    });
+                }
     
+            }else if(input.name == "password1"){
+                if(i.value == password2){
+                    Input_All.forEach(input=> {
+                        if (input.name == "password2"){
+                            
+                            input.classList.add("placeholder-gray-500")
+                            input.classList.add("hover:placeholder-black")
+                            input.classList.remove("placeholder-red-500")
+                            input.parentElement.classList.add("border-gray-400")
+                            input.parentElement.classList.add("hover:border-black")
+                            input.parentElement.classList.remove("border-red-500")
+
+                            input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
+                        }
+                    });
+                }
             }
         });
     }
@@ -204,6 +244,7 @@
                     }
                 }else if(input.name == 'password2' && input.value != password1){
                     if(!i_cuenta){
+                        console.log('ok')
                         check = false;
                         prove = false;
                         msg = "Las contraseñas no coinciden.";
@@ -296,7 +337,7 @@
             .then(response => response.json())
             .then(json =>{
                 if(JSON.stringify(json) == '{"data":{}}'){
-                    console.log('Usuario ya creado')
+                    document.getElementById('error_user_password').classList.remove('hidden');
                 }else{
                     user_id = json['data'].user_id
                     user_bool = json['data'].user_bool

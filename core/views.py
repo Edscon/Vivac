@@ -142,7 +142,7 @@ def create_user_(request):
                     print('None password')
 
                     print('Este email coincide con un usuario pero la contraseña no es correcta')
-                    return JsonResponse({'data': data})
+                    return JsonResponse({"data":{}})
     data['user_bool'] = user.email
 
     return JsonResponse({'data': data})
