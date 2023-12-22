@@ -6,6 +6,8 @@ from .cart import Cart
 from .models import GastosProvincia
 from product.models import Product, Variant, Color
 
+from datetime import datetime, date, timedelta
+
 
 def add_to_cart(request, product_id, color, size):
     cart = Cart(request)
@@ -18,8 +20,21 @@ def add_to_cart(request, product_id, color, size):
 
     return response
 
+#No considerar los fines de semana
+def date_by_adding_business_days(from_date, add_days):
+    business_days_to_add = add_days
+    current_date = from_date
+    while business_days_to_add > 0:
+        current_date += timedelta(days=1)
+        weekday = current_date.weekday()
+        if weekday >= 5: # Sunday = 6
+            continue
+        business_days_to_add -= 1
+    return current_date
+
 def cart(request):
-    return render(request, 'cart/cart.html')
+    time = date_by_adding_business_days(date.today(), 1)
+    return render(request, 'cart/cart.html',{'time': time})
 
 
 def update_cart(request, product_id, color, size, action):

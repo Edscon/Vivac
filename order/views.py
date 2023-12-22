@@ -12,6 +12,8 @@ from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 
 from cart.cart import Cart
+from cart.views import date_by_adding_business_days
+from datetime import date
 
 from .models import Order, OrderItem, UserPayment, ClueInfo
 from product.models import Product, Variant
@@ -145,21 +147,22 @@ def success(request):
         message_WhatsApp(customer, order,"%.2f" % round(payment_intent.amount/100, 2))
         
         cart.clear()
-    
 
     orden_compra = Order.objects.filter(customer = customer.id)[0]
-    order = OrderItem.objects.filter(order=orden_compra )
+    order = OrderItem.objects.filter(order=orden_compra)
     subtotal = 0
     for i in order.values('precio'):
         subtotal = subtotal + i['precio']
+
+    time = date_by_adding_business_days(orden_compra.created_at, 1)
 
     context = {
         'customer': customer,
         'order': order,
         'orden_compra': orden_compra,
         'subtotal': subtotal,
-    }
-    
+        'time': time
+    } 
 
     return render(request, 'cart/success.html', context)
 
@@ -168,11 +171,12 @@ def payment_canceled(request):
     return render(request, 'cart/payment_canceled.html')
 
 def message_WhatsApp(customer, order, amount):
-
+    
     text_items = ''
     for item in order:
+        print(item.quantity)
         url = f'https://edscon.pythonanywhere.com/shop/{item.nombre.lower().replace(" ", "-")}'
-        text_items = text_items + f'*🤜{item.nombre}*\n      Talla: {item.size}\n\n{url}\n\n'
+        text_items = text_items + f'*🤜{item.nombre}*\n      Talla: {item.size}\n      Quantitat: {item.quantity}\n{url}\n\n'
 
     info = ClueInfo.objects.all()[0]
     id_tel = info.id_tel

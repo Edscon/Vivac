@@ -165,10 +165,12 @@
                 <p class="text-sm text-red-500">Selecciona una talla.</p> 
             </div>
             
-            <div id="top_añadir_carrito">
+            <div class="mt-5 text-xs text-green-700 font-semibold">Producto en Stock. Entrega en 24h</div>
+
+            <div id="top_añadir_carrito" class="mt-1">
                 <a 
                 id="añadir_carrito-" 
-                class=" mt-6 w-full flex py-3 rounded-3xl bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer drop-shadow-md"
+                class="w-full flex rounded py-3 bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer drop-shadow-md"
                 onclick="NoTallas()"
                 >
                 <div class="mx-auto flex space-x-4">
@@ -187,7 +189,7 @@
                     id="añadir_carrito-{{i}}"
                     title="Buy_prod"
                     href="#" 
-                    class="hidden flex mt-6 w-full inline-block py-3 rounded-3xl bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer drop-shadow-md"
+                    class="hidden flex w-full inline-block rounded py-3 bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer drop-shadow-md"
                     hx-get = "{% url 'add_to_cart' product.id color_first.code i %}"
                     hx-target = "#menu-cart-button"
                     hx-swap = "innerHTML"
