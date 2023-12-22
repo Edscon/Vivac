@@ -457,16 +457,40 @@
         const paymentElement = elements.create("payment", paymentElementOptions);
             paymentElement.mount("#payment-element");
     }
-
     
-    var user_str = ''
     function handleSubmit(e) {
         e.preventDefault();
         setLoading(true);
 
+        /*Check if all quantity items of the card exists*/
+        fetch('/check_cart/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}' 
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(json =>{
+            if(JSON.stringify(json) == '{"data":{}}'){
+                update_account(e)
+            }else{
+                document.getElementById('error_stock').classList.remove('hidden');
+                setLoading(false);
+            } 
+            
+        })
+        .catch(function(error) {
+            console.log('Errors', error)
+        })
+    }
+
+    var user_str = ''
+    function update_account(e) {
         if(user_bool != ''){
             user_str = `?email=${user_bool}`;
-
 
             fetch('/update_account/', {
                 method: 'POST',
@@ -479,7 +503,10 @@
             })
             .then(response => response.json())
             .then(json =>{
+                
                 handleSubmit2(e)
+                
+                
                 
             })
             .catch(function(error) {
@@ -679,6 +706,27 @@
             }
         });
     });
+
+    /*Error stock*/
+
+    function check_cart(){
+        fetch('/cart/change_cart/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}' 
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify('1'),
+        })
+        .then(response => response.json())
+        .then(json =>{
+            location.reload();
+        })
+        .catch(function(error) {
+            console.log('Errors', error)
+        })
+    }
 
 
 </script>

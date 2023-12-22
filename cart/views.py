@@ -1,11 +1,14 @@
 from django.conf import settings
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from .cart import Cart
 from .models import GastosProvincia
 from product.models import Product, Variant, Color
 
+import json
 from datetime import datetime, date, timedelta
 
 
@@ -38,7 +41,6 @@ def cart(request):
 
 
 def update_cart(request, product_id, color, size, action):
-    
     cart = Cart(request)
     size = size.replace('|', '/')
     if action == 'increment':
@@ -95,6 +97,19 @@ def checkout(request):
         envios[GastosProvincia.objects.values('nombre')[i]['nombre']] = GastosProvincia.objects.values('precio')[i]['precio']
     
     return render(request, 'cart/checkout.html', {'pub_key': pub_key, 'envios': envios})
+    
+
+@csrf_exempt
+def change_cart(request):
+    cart = Cart(request)
+    data = json.loads(request.body)
+    products = []
+    for item in cart:
+        item['id'] = item['variant'].product.id
+        products.append(item)
+    cart.clear()
+    
+    return JsonResponse({})
 
 
 def hx_menu_cart(request):

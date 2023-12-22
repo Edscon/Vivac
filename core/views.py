@@ -11,6 +11,7 @@ from core.models import Account
 from product.models import Product, Category, Marca, Variant, Color, Review
 from functools import reduce
 from itertools import chain
+from cart.cart import Cart
 
 import json
 import pandas as pd
@@ -155,10 +156,25 @@ def update_account(request):
 
     if(not account):
         account = create_account(user, data)
-        
+
     info_account(account, data)
 
     return JsonResponse({'data': data})
+
+@csrf_exempt
+def check_cart(request):
+    cart = Cart(request)
+    error = {}
+    for item in cart:
+        if(item['quantity'] > item['variant'].unidades):
+            error[f"{item['variant'].id}"] = item['variant'].unidades
+    
+    print(error)
+    if(len(error) > 0):
+        return JsonResponse({'error': error})
+    else:
+        return JsonResponse({'error': {}})
+
 
 @login_required
 def my_account(request):

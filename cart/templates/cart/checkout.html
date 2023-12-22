@@ -42,6 +42,26 @@
 </header>
 
 <div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto xl:px-0 px-1 py-5 flex flex-wrap items-start">
+
+    <div id="error_stock" class="w-full hiddenn">
+        <div class="w-full rounded-lg border border-red-400 text-red-400 relative py-5 mb-2 lg:flex px-5 space-y-2 lg:space-y-0 space-x-1">
+            <div class="flex my-auto space-x-2 lg:w-[60%] w-[100%]">
+                <svg class="h-7 w-7 text-red-500 min-w-[40px]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+                <div>Error, la cantidad no coincide con el stock. No se ha podido continuar con el pedido.</div>
+            </div>
+            <div class="lg:w-[40%] w-[100%] my-auto" onclick="check_cart()">
+                <div class="w-full py-[5px] rounded bg-red-600 relative cursor-pointer flex border drop-shadow-md text-white hover:bg-red-800 transition duration-500">
+                    <div class="m-auto">Cargar la página con las unidades actualizadas</div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+   
+
+
     <div class="w-full lg:w-[60%]">
         <form id="FormInfo" class="products" method="post">
             {% csrf_token %}
