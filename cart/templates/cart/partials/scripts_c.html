@@ -189,7 +189,9 @@
                             input.parentElement.classList.add("hover:border-black")
                             input.parentElement.classList.remove("border-red-500")
                 
-                            input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
+                            if (input.parentElement.parentElement.childNodes.length == 5) {
+                                input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
+                            }
                         }
                     });
                 }
@@ -206,7 +208,9 @@
                             input.parentElement.classList.add("hover:border-black")
                             input.parentElement.classList.remove("border-red-500")
 
-                            input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
+                            if (input.parentElement.parentElement.childNodes.length == 5) {
+                                input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
+                            }
                         }
                     });
                 }
