@@ -583,7 +583,7 @@
         })
     }
 
-    /*Funcion para que despues de apretar el botton siguiente en el formulario puedas volver a editarlo*/
+    /*Función para que después de apretar el botón siguiente en el formulario puedas volver a editarlo*/
     function volver_formulario(){
         const formulario = document.getElementById('ContactoForm').classList.remove('hidden')
         const info = document.getElementById('datos_shipment').classList.add('hidden')
@@ -604,6 +604,33 @@
             document.getElementById('error_condiciones').classList.remove("hidden");
         }
     }
+
+
+    /*Edit data form checkout*/
+    const Data_Edit_Form = document.querySelectorAll('.data_edit_form input');
+    Data_Edit_Form.forEach(input => {
+        let focus = {}
+        input.addEventListener('focus', () => {
+            focus[input.name] = 1
+            input.parentElement.children[0].classList.remove('text-neutral-600')
+            input.parentElement.children[0].classList.add('text-black')
+        });
+        input.addEventListener('focusout', () => {
+            focus[input.name] = 0
+            input.parentElement.children[0].classList.add('text-neutral-600')
+            input.parentElement.children[0].classList.remove('text-black')
+        });
+        input.addEventListener('mouseover', () => {
+            input.parentElement.children[0].classList.remove('text-neutral-600')
+            input.parentElement.children[0].classList.add('text-black')
+        });
+        input.addEventListener('mouseout', () => {     
+            if (focus[input.name] === undefined || focus[input.name] == 0) {
+                input.parentElement.children[0].classList.add('text-neutral-600')
+                input.parentElement.children[0].classList.remove('text-black')
+            }
+        });
+    });
 
 
 </script>

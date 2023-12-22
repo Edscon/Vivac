@@ -1,26 +1,30 @@
 <div id="Formulario" class="hidden">
-    <div class="Inputs px-6 mb-6 flex flex-wrap lg:space-x-[4%] lg:space-y-0 space-y-6 text-md select-none">
+    <div class="Inputs px-6 mb-6 flex flex-wrap lg:space-x-[4%] lg:space-y-0 space-y-6 text-md select-none data_edit_form">
         <div class="space-y-6 w-full lg:w-[48%]">
             <div>
-                <div class="border border-gray-400 hover:border-black">
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Nombre*</div>
                     <input id="first_name_nc" name="first_name" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Nombre" value="{{request.user.first_name}}"
                     oninput="document.getElementById('first_name_sc').value = this.value">
                 </div>
             </div>
             <div>
-                <div class="border border-gray-400 hover:border-black">
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Apellidos*</div>
                     <input id="last_name_nc" name="last_name" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Apellidos" value="{{request.user.last_name}}"
                     oninput="document.getElementById('last_name_sc').value = this.value">
                 </div>
             </div>
             <div>
-                <div class="border border-gray-400 hover:border-black">
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Correo electrónico*</div>
                     <input id="email_nc" name="email_" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Correo electrónico" value="{{request.user.email}}"
                     oninput="document.getElementById('email_sc').value = this.value">
                 </div>
             </div>
             <div>
-                <div class="border border-gray-400 hover:border-black">
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Teléfono*</div>
                     <input id="phone_nc" name="phone" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Teléfono"
                     oninput="document.getElementById('phone_sc').value = this.value">
                 </div>
@@ -28,26 +32,30 @@
         </div>
         <div class="space-y-6 w-full lg:w-[48%]">
             <div>
-                <div class="border border-gray-400 hover:border-black">
-                    <input id="address_nc" name="address" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Calle"
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Calle y Numero*</div>
+                    <input id="address_nc" name="address" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Calle y Numero"
                     oninput="document.getElementById('address_sc').value = this.value">
                 </div>
             </div>
             <div>
-                <div class="border border-gray-400 hover:border-black">
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Ciudad*</div>
                     <input id="city_nc" name="city" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Ciudad"
                     oninput="document.getElementById('city_sc').value = this.value">
                 </div>
             </div>
             <div>
-                <div class="border border-gray-400 hover:border-black">
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Código Postal*</div>
                     <input id="zipcode_nc" name="zipcode" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Código Postal"
                     oninput="document.getElementById('zipcode_sc').value = this.value">
                 </div>
             </div>
             
             <div>
-                <div class="border border-gray-400 hover:border-black">
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Provincia*</div>
                     <select id="provincia_nc" name="provincia" class="w-full p-3 text-black" placeholder="Provincia" 
                     onchange="document.getElementById('provincia_sc').value = this.value; gastos(this.value)">
                         <option disabled selected value="Null">Provincia</option>
