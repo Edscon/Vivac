@@ -169,7 +169,6 @@ def check_cart(request):
         if(item['quantity'] > item['variant'].unidades):
             error[f"{item['variant'].id}"] = item['variant'].unidades
     
-    print(error)
     if(len(error) > 0):
         return JsonResponse({'error': error})
     else:

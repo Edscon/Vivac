@@ -25,6 +25,8 @@ def add_to_cart(request, product_id, color, size):
 
 #No considerar los fines de semana
 def date_by_adding_business_days(from_date, add_days):
+    if from_date.weekday() >= 5:
+        add_days += 1
     business_days_to_add = add_days
     current_date = from_date
     while business_days_to_add > 0:
@@ -80,8 +82,10 @@ def update_cart(request, product_id, color, size, action):
         }
     else:
         item = None
+
+    time = date_by_adding_business_days(date.today(), 1)
     
-    response = render(request, 'cart/partials/cart_item.html', {'item': item})
+    response = render(request, 'cart/partials/cart_item.html', {'item': item, 'time': time})
 
     response['HX-Trigger'] = 'update-menu-cart'
 
@@ -103,12 +107,21 @@ def checkout(request):
 def change_cart(request):
     cart = Cart(request)
     data = json.loads(request.body)
-    products = []
-    for item in cart:
-        item['id'] = item['variant'].product.id
-        products.append(item)
-    cart.clear()
     
+    products = []
+    
+    for item in cart:
+        print(item)
+        if(item['variant'].unidades < item['quantity']): 
+            print('Cantidad Diferente')
+            item['id'] = item['variant'].product.id
+            products.append(item)
+        item['variant'] = 0
+
+    for item in products:
+        print(item['quantity'])
+        cart.add(item['id'], item['color'], item['size'].replace('|', '/'), 1, True)
+
     return JsonResponse({})
 
 

@@ -30,9 +30,11 @@ class Cart(object):
 
     def add(self, product_id, color, size , quantity=1, update_quantity=False):
         product_id = str(product_id)
+        
         variant_id = Variant.objects.filter(product=Product.objects.get(pk=product_id), color=Color.objects.get(code=color), size=size)
+        
         q_max = variant_id[0].unidades
-        print(q_max)
+        
         variant_id = str(variant_id.values('id')[0]['id'])
         
         if variant_id not in self.cart:
@@ -40,11 +42,12 @@ class Cart(object):
             self.cart[variant_id] = {'quantity': 1, 'id': variant_id, 'color': color, 'size': size}
     
         if update_quantity:
-        
+
             if self.cart[variant_id]['quantity'] + int(quantity) <= q_max:
                 self.cart[variant_id]['quantity'] += int(quantity)
-
-
+            else:
+                print('Change')
+                self.cart[variant_id]['quantity'] = q_max
 
             if self.cart[variant_id]['quantity'] == 0:
                 self.remove(variant_id)

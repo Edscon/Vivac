@@ -474,7 +474,8 @@
         })
         .then(response => response.json())
         .then(json =>{
-            if(JSON.stringify(json) == '{"data":{}}'){
+            console.log(JSON.stringify(json))
+            if(JSON.stringify(json) == '{"error":{}}'){
                 update_account(e)
             }else{
                 document.getElementById('error_stock').classList.remove('hidden');
