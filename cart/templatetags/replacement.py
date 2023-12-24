@@ -28,3 +28,7 @@ def resta(value, arg):
 def date1(value):
     value = datetime.strptime(str(value).split(" ")[0], '%Y-%m-%d').date()
     return value
+
+@register.filter
+def lower_(value):
+    return str(value).lower()
