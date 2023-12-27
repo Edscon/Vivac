@@ -103,204 +103,194 @@
     const haveUpperCase = (string) => /[A-Z]/.test(string)
     const haveLowCase = (string) => /[a-z]/.test(string)
     const haveNum = (string) => /[0-9]/.test(string)
+    var msg = "Campo requerido."
     var password1 = ''
     var password2 = ''
+    var provincias_código_postal = {
+        'A Coruña': '15',
+        'Álava': '01',
+        'Albacete': '02',
+        'Alicante': '03',
+        'Almería': '04',
+        'Asturias': '33',
+        'Ávila': '05',
+        'Badajoz': '06',
+        'Baleares': '07',
+        'Barcelona': '08',
+        'Burgos': '09',
+        'Cáceres': '10',
+        'Cádiz': '11',
+        'Cantabria': '39',
+        'Castellón': '12',
+        'Ciudad Real': '13',
+        'Córdoba': '14',
+        'Cuenca': '16',
+        'Girona': '17',
+        'Granada': '18',
+        'Guadalajara': '19',
+        'Gipuzkoa': '20',
+        'Huelva': '21',
+        'Huesca': '22',
+        'Jaén': '23',
+        'La Rioja': '26',
+        'Las Palmas': '35',
+        'León': '24',
+        'Lérida': '25',
+        'Lugo': '27',
+        'Madrid': '28',
+        'Málaga': '29',
+        'Murcia': '30',
+        'Navarra': '31',
+        'Ourense': '32',
+        'Palencia': '34',
+        'Pontevedra': '36',
+        'Salamanca': '37',
+        'Segovia': '40',
+        'Sevilla': '41',
+        'Soria': '42',
+        'Tarragona': '43',
+        'Santa Cruz de Tenerife': '38',
+        'Teruel': '44',
+        'Toledo': '45',
+        'Valencia': '46',
+        'Valladolid': '47',
+        'Vizcaya': '48',
+        'Zamora': '49',
+        'Zaragoza': '50',
+        'Ceuta': '51',
+        'Melilla': '52'
+        };
+    var prov_código_postal = 0
+    provincia = document.getElementsByName('provincia')
 
-    function prove_input(i){
+    function removeChild_red(element){
+        if (element.classList.contains("placeholder-red-500")) {
+            element.classList.add("placeholder-gray-500", "hover:placeholder-black");
+            element.classList.remove("placeholder-red-500");
 
-        var prove = false;
-        msg = "Campo requerido."
+            element.parentElement.classList.add("border-gray-400", "hover:border-black");
+            element.parentElement.classList.remove("border-red-500");
 
-        if(i.value == ''){
-            prove = true
-            msg = "Campo requerido."
-        }else{
-            prove = true
-
-            if(i.name == 'phone' && (!isNumeric(i.value) || !/^(?:(?:\+?[0-9]{2,4})?[ ]?[6789][0-9]{8,13})$/.test(i.value))){
-                msg = "El número de teléfono no es correcto. Por favor introduzca uno de nuevo."
-
-            }else if(i.name == 'zipcode' && (!isNumeric(i.value) || !/^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$/.test(i.value))){
-                msg = "Lo sentimos. El código postal no es correcto."
-
-            }else if((i.name == 'password1') && (i.value.length < 8 || !haveUpperCase(i.value) || !haveLowCase(i.value) || !haveNum(i.value))){
-                msg = "Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, 1 letra mayúscula, 1 letra minúscula, 1 número."
-
-            }else if(i.name == 'password2' && i.value != password1){
-                msg = "Las contraseñas no coinciden."
-
-            }else if(i.name == 'email' &&  !/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(i.value) ){
-                msg = "Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio.com."
-
-            }else {
-                prove = false
-
-            }
-            /*Para confirmar la contraseña*/
-            if(i.name == 'password1'){
-                password1 = i.value
-            }
-            if(i.name == 'password2'){
-                password2 = i.value
+            const childNodesLength = element.parentElement.parentElement.childNodes.length;
+            if (childNodesLength === 3 || childNodesLength === 5) {
+                element.parentElement.parentElement.removeChild(element.parentElement.parentElement.childNodes[2]);
             }
         }
-        let all_elements = document.getElementsByName(i.name);
-        all_elements.forEach(input=> {
-            if(prove){
-                
-                input.classList.remove("placeholder-gray-500")
-                input.classList.remove("hover:placeholder-black")
-                input.classList.add("placeholder-red-500")
-                input.parentElement.classList.remove("border-gray-400")
-                input.parentElement.classList.remove("hover:border-black")
-                input.parentElement.classList.add("border-red-500")
+    }
+    function addChild_red(element){
+        element.classList.remove("placeholder-gray-500", "hover:placeholder-black");
+        element.classList.add("placeholder-red-500");
 
-                if (input.parentElement.parentElement.childNodes.length == 3) {
-                    input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
-                }
-                if (input.parentElement.parentElement.childNodes.length == 5) {
-                    input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
-                }
-                const error = document.createElement("div");
-                error.setAttribute("class", "text-red-500 text-xs")
-                error.innerHTML = msg
-                insertAfter(input.parentElement, error)
-    
-            }else if(input.classList.contains("placeholder-red-500")){
-                
-                input.classList.add("placeholder-gray-500")
-                input.classList.add("hover:placeholder-black")
-                input.classList.remove("placeholder-red-500")
-                input.parentElement.classList.add("border-gray-400")
-                input.parentElement.classList.add("hover:border-black")
-                input.parentElement.classList.remove("border-red-500")
-    
-                input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
+        element.parentElement.classList.remove("border-gray-400", "hover:border-black");
+        element.parentElement.classList.add("border-red-500");
 
-                if(input.name == "password1"){
+        const childNodesLength = element.parentElement.parentElement.childNodes.length;
+        if (childNodesLength === 3 || childNodesLength === 5) {
+            element.parentElement.parentElement.removeChild(element.parentElement.parentElement.childNodes[2]);
+        }
 
-                    Input_All.forEach(input=> {
-                        if (input.name == "password2"){
-                            
-                            input.classList.add("placeholder-gray-500")
-                            input.classList.add("hover:placeholder-black")
-                            input.classList.remove("placeholder-red-500")
-                            input.parentElement.classList.add("border-gray-400")
-                            input.parentElement.classList.add("hover:border-black")
-                            input.parentElement.classList.remove("border-red-500")
-                
-                            if (input.parentElement.parentElement.childNodes.length == 5) {
-                                input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
-                            }
-                        }
-                    });
-                }
-    
-            }else if(input.name == "password1"){
-                if(i.value == password2){
-                    Input_All.forEach(input=> {
-                        if (input.name == "password2"){
-                            
-                            input.classList.add("placeholder-gray-500")
-                            input.classList.add("hover:placeholder-black")
-                            input.classList.remove("placeholder-red-500")
-                            input.parentElement.classList.add("border-gray-400")
-                            input.parentElement.classList.add("hover:border-black")
-                            input.parentElement.classList.remove("border-red-500")
-
-                            if (input.parentElement.parentElement.childNodes.length == 5) {
-                                input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
-                            }
-                        }
-                    });
-                }
-            }
-        });
+        const error = document.createElement("div");
+        error.classList.add("text-red-500", "text-xs");
+        error.innerHTML = msg;
+        insertAfter(element.parentElement, error);
     }
 
 
-    function validate(i_cuenta){
-        let msg = "Campo requerido."
-        var prove = true;
-        
-        Input_All.forEach(input => {
-            var check = true;
-            if(input.value == ''){
-                if(i_cuenta && !(input.name == 'password1' || input.name == 'password2')){
-                    check = false;
-                    prove = false;
-                    msg = "Campo requerido.";
-                }
-            }else{
-                if(input.name == 'phone' && (!isNumeric(input.value) || !/^(?:(?:\+?[0-9]{2,4})?[ ]?[6789][0-9]{8,13})$/.test(input.value))){
-                    check = false;
-                    prove = false;
-                    msg = "El número de teléfono no es correcto. Por favor introduzca uno de nuevo.";
-                }else if(input.name == 'zipcode' && (!isNumeric(input.value) || !/^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$/.test(input.value))){
-                    check = false;
-                    prove = false;
-                    msg = "Lo sentimos. El código postal no es correcto.";
-                }else if((input.name == 'password1') && (input.value.length < 8 || !haveUpperCase(input.value) || !haveLowCase(input.value) || !haveNum(input.value))){
-                    if(!i_cuenta){
-                        check = false;
-                        prove = false;
-                        msg = "Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, 1 letra mayúscula, 1 letra minúscula, 1 número.";
-                    }
-                }else if(input.name == 'password2' && input.value != password1){
-                    if(!i_cuenta){
-                        console.log('ok')
-                        check = false;
-                        prove = false;
-                        msg = "Las contraseñas no coinciden.";
-                    }
-                }else if(input.name == 'email' &&  !/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(input.value) ){
-                    check = false;
-                    prove = false;
-                    msg = "Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio.com."
-                }
-            }
-            if(!check){
-                
-                input.classList.remove("placeholder-gray-500")
-                input.classList.remove("hover:placeholder-black")
-                input.classList.add("placeholder-red-500")
-                input.parentElement.classList.remove("border-gray-400")
-                input.parentElement.classList.remove("hover:border-black")
-                input.parentElement.classList.add("border-red-500")
+    function prove_input(i){
 
-                if (input.parentElement.parentElement.childNodes.length == 3) {
-                    input.parentElement.parentElement.removeChild(input.parentElement.parentElement.childNodes[2]);
+        msg = "Campo requerido."
+        prove = true
+
+        switch (i.name) {
+            case 'phone':
+                if (!isNumeric(i.value) || !/^(?:(?:\+?[0-9]{2,4})?[ ]?[6789][0-9]{8,13})$/.test(i.value)) {
+                    msg = 'El número de teléfono no es correcto.';
+                }else{prove = false}
+                break;
+            case 'zipcode':
+                if (!isNumeric(i.value) || !/^(?:0[1-9]|[1-4]\d|5[0-2])\d{3}$/.test(i.value)) {
+                    msg = "Lo sentimos. El código postal no es correcto."
+                }else{prove = false}
+                prov_código_postal = i.value.toString().substring(0,2);
+                provincia.forEach(select => {
+                    if(prov_código_postal == provincias_código_postal[`${select.value}`]){
+                        removeChild_red(select)
+                    }
+                })
+                break;
+
+            case 'password1':
+                password1 = i.value
+                if (i.value.length < 8 || !haveUpperCase(i.value) || !haveLowCase(i.value) || !haveNum(i.value)) {
+                    msg = "Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, 1 letra mayúscula, 1 letra minúscula, 1 número."
+                }else{prove = false}
+                break;
+
+            case 'password2':
+                password2 = i.value
+                if (i.value != password1) {
+                    msg = "Las contraseñas no coinciden."
+                }else{prove = false}
+                break;
+
+            case 'email_':
+                if (!/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(i.value)) {
+                    msg = "Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio.com."
+                }else{prove = false}
+                break;
+
+            default:
+                if(i.value == ''){
+                    prove = true
+                }else{prove = false}
+        }
+
+        /*Los dos Formularios*/
+        let all_elements = document.getElementsByName(i.name);
+        
+        all_elements.forEach(input=> {
+            if(prove){
+                addChild_red(input)
+            }else{
+                removeChild_red(input)
+
+                if(input.name == "password1" & i.value == password2){
+                    removeChild_red(document.getElementsByName("password2")[0])  
                 }
-                const error = document.createElement("div");
-                error.setAttribute("class", "text-red-500 text-xs")
-                error.innerHTML = msg
-                insertAfter(input.parentElement, error)
             }
         });
 
-        provincia = document.getElementsByName('provincia')
-        provincia.forEach(select => {
-            if(select.value == 'Null'){
-                prove = false
+        return prove
+    }
     
-                select.classList.remove("placeholder-gray-500")
-                select.classList.remove("hover:placeholder-black")
-                select.classList.add("placeholder-red-500")
-                select.parentElement.classList.remove("border-gray-400")
-                select.parentElement.classList.remove("hover:border-black")
-                select.parentElement.classList.add("border-red-500")
-    
-                if (select.parentElement.parentElement.childNodes.length == 3) {
-                    select.parentElement.parentElement.removeChild(select.parentElement.parentElement.childNodes[2]);
+    function validate(i_cuenta){
+        
+        var check = true;
+
+        if(i_cuenta){
+            Input_All.forEach((input, index) => {
+                if(index > 8 & prove_input(input)){
+                    check = false;
                 }
-                const error = document.createElement("div");
-                error.setAttribute("class", "text-red-500 text-xs")
-                error.innerHTML = msg
-                insertAfter(select.parentElement, error)
+            })
+        }else{
+            Input_All.forEach((input, index) => {
+                if(index < 8 & prove_input(input)){
+                    check = false;
+                }
+            })
+        }
+
+        provincia.forEach(select => {
+            if(select.value == 'Null' || prov_código_postal != provincias_código_postal[`${select.value}`]){
+                check = false
+                if(select.value != 'Null' & prov_código_postal != provincias_código_postal[`${select.value}`]){msg = "El código postal no coincide con la provincia"}
+                addChild_red(select)
             
             }
         });
-        return prove
+
+        return check
     }
 
     var user_id = -1
@@ -308,11 +298,12 @@
     var data = {}
     var j_cuenta = 0
 
-    function buy2(event,i_cuenta){
+    function buy2(event, i_cuenta){
         j_cuenta = i_cuenta;
         event.preventDefault()
 
         if(validate(i_cuenta)){
+            console.log('valido')
             /*Crear cuenta*/
             data = {
                 'csrf_token': '{{ csrf_token }}',
@@ -648,13 +639,21 @@
 
     function gastos(provincia){
         Object.keys(gasto_provincias).forEach( propiedad => {
-            if(propiedad == provincia){
-                envios_precio = gasto_provincias[propiedad]
-                const element = document.getElementById('gastos_envio')
-                element.innerHTML = parseFloat(gasto_provincias[propiedad]).toFixed(2).replace('.',',') + ' €'
-                const element_total2 = document.getElementById('total_ch_2')
-                total_payment = parseFloat(element_total.value.replace(',','.')) + gasto_provincias[propiedad]
-                element_total2.innerHTML = parseFloat(total_payment).toFixed(2).replace('.',',') + ' €'
+            if (propiedad === provincia) {
+                envios_precio = gasto_provincias[propiedad];
+
+                const totalAmount = parseFloat(element_total.value.replace(',', '.'));
+
+                if (totalAmount >= 100) {
+                    envios_precio = 0;
+                }
+
+                const elementGastosEnvio = document.getElementById('gastos_envio');
+                elementGastosEnvio.innerHTML = envios_precio.toFixed(2).replace('.', ',') + ' €';
+
+                const elementTotalCh2 = document.getElementById('total_ch_2');
+                const totalPayment = totalAmount + envios_precio;
+                elementTotalCh2.innerHTML = totalPayment.toFixed(2).replace('.', ',') + ' €';
             }
         })
     }
