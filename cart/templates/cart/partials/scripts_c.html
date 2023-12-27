@@ -365,6 +365,7 @@
         
         
         await delay(Math.floor(Math.random() * 1000)+ 700);
+        payment.classList.remove('hidden');
         payment.scrollIntoView({ behavior: "smooth", block: "end"});
         document.getElementById('button_validate').classList.add('hidden');
         document.getElementById('button_validate_2').classList.add('hidden');
@@ -372,10 +373,8 @@
         
         document.getElementById("rueda_info").classList.add("hidden");
         document.getElementById("rueda3").classList.add("hidden");
-        payment.classList.remove('hidden');
     }
 
-    let strpe = ''
     let items = [{ id: "xl-tshirt" }];
     let elements;
     let emailAddress = '';
@@ -383,7 +382,7 @@
     function create_payment(){
 
         // This is your test publishable API key. https://stripe.com/docs/payments/quickstart?lang=python
-        stripe = Stripe("pk_test_51MM8t2EUHJ3WTNbaB5EDa3OL2DD6n8qn3bu0SJZfAKzn1bdLjWwzFgsvcfKabm7KRtSHlF3EpRQIUBNReS5l61OX00MP6NxvwM");
+        stripe = Stripe('{{pub_key}}');
 
         // The items the customer wants to buy
         items = [{ id: "xl-tshirt" }, total_payment];
