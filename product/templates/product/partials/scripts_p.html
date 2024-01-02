@@ -321,6 +321,8 @@
         // Ocultar todos los textos excepto el segundo
         texts.forEach((div, index) => div.classList.toggle('hidden', index !== 1));
 
+        leer_m_m.classList.toggle('hidden');
+
         // Modificar los estilos de los elementos en greens
         greens.forEach((div, index) => {
             const isGreen1 = index === 1;
