@@ -97,7 +97,14 @@ def product(request, slug):
                     if(i == f'({product.id}/{colors[0].code})'):
                         favorite = True
     
-
+    dic_sizes_precio = []
+    for variant in variants:
+        if (variant.size in size):
+            dic_sizes_precio.append([variant.precio_retail, variant.precio, 
+                                     variant.precio_retail - variant.precio, 
+                                     variant.size, 
+                                     round((variant.precio_retail - variant.precio)/variant.precio_retail*100)])
+            
     context = {
         'product': product,
         'products_list': products_list,
@@ -113,6 +120,7 @@ def product(request, slug):
         'RedSocials': RedSocials,
         'review_user': review_user,
         'favorite': favorite,
+        'dic_sizes_precio': dic_sizes_precio
     }
     return render(request, 'product/product.html', context)
 

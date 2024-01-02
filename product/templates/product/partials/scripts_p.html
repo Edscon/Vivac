@@ -6,8 +6,6 @@
         document.getElementById('Favorito_0').classList.add('hidden');
     }
 
-
-
     const descripcion = document.getElementById('desc');
     
     
@@ -49,9 +47,6 @@
         }
    }
 
-
-
-
     const lens = document.getElementById('cursor_magnet')
     const product_img = document.getElementById('ImageCenter') 
     const magnified_img = document.getElementById('zooming')
@@ -88,35 +83,25 @@
         lens.style.cssText = `top: ${y}px; left: ${x}px`
 
         //Zoom
-        if(window.innerWidth >= 1345){
-            cx = (magnified_img.offsetWidth / lens.offsetWidth) / 3;
-            cy = (magnified_img.offsetHeight / lens.offsetHeight) / 4;
+        if(window.innerWidth >= 1280){
+            cx = (magnified_img.offsetWidth / lens.offsetWidth) / 2.1;
+            cy = (magnified_img.offsetHeight / lens.offsetHeight) / 2.5;
     
             magnified_img.style.cssText = `
                                 background: url('${product_img.src}')
-                                -${x * cx / 1.8}px -${y * cy / 1.7}px /
+                                -${x * cx / 1.2}px -${y * cy / 1.7}px /
                                 ${product_img_react.width * cx * 1.2}px ${product_img_react.height * cy}px
                                 no-repeat
             `;
 
-        }else if(window.innerWidth >= 1218){
-            cx = (magnified_img.offsetWidth / lens.offsetWidth) / 2;
-            cy = (magnified_img.offsetHeight / lens.offsetHeight) / 3;
-    
-            magnified_img.style.cssText = `
-                                background: url('${product_img.src}')
-                                -${x * cx / 2}px -${y * cy / 2}px /
-                                ${product_img_react.width * cx / 1.1}px ${product_img_react.height * cy / 1.1}px
-                                no-repeat
-            `;
         }else{
-            cx = (magnified_img.offsetWidth / lens.offsetWidth) / 2;
-            cy = (magnified_img.offsetHeight / lens.offsetHeight) / 3;
+            cx = (magnified_img.offsetWidth / lens.offsetWidth) / 2.2;
+            cy = (magnified_img.offsetHeight / lens.offsetHeight) / 2.8;
     
             magnified_img.style.cssText = `
                                 background: url('${product_img.src}')
-                                -${x * cx / 1.2}px -${y * cy / 1.5}px /
-                                ${product_img_react.width * cx * 1.1}px ${product_img_react.height * cy / 1.1}px
+                                -${x * cx / 1.0}px -${y * cy / 1.7}px /
+                                ${product_img_react.width * cx * 1.4}px ${product_img_react.height * cy }px
                                 no-repeat
             `;
         }
@@ -235,7 +220,7 @@
         final_size_sp = size_sp
         final_size = size
 
-
+        precio_variant(final_size)
     }
 
     function disableScroll() {
@@ -337,5 +322,37 @@
         }
     }
 
+    const original_price = document.getElementById('original_price')
+    const original_desc = document.getElementById('original_desc')
+
+    function precio_variant(f_size){
+        var list_size = document.getElementById('info_precios').value.replace('[[','').replace(']]','')
+        var list_size = list_size.split('], [')
+        for (i in list_size){
+            list_size[i] = list_size[i].split(',')
+        }
+
+        if(!original_price.classList.contains('hidden')){
+            original_price.classList.add('hidden')
+            original_desc.classList.add('hidden')
+        }
+
+        for (i in list_size){
+            var t = list_size[i][3].replace("'",'').replace("'",'').replace(" ",'')
+            if(!document.getElementById(`precio_producto-${t}`).classList.contains('hidden')){
+                document.getElementById(`precio_producto-${t}`).classList.add('hidden')
+                document.getElementById(`precio_desc-${t}`).classList.add('hidden')
+            }
+        }
+        for (i in list_size){
+            var t = list_size[i][3].replace("'",'').replace("'",'').replace(" ",'')
+            if(f_size == t){
+                if(document.getElementById(`precio_producto-${t}`).classList.contains('hidden')){
+                    document.getElementById(`precio_producto-${t}`).classList.remove('hidden')
+                    document.getElementById(`precio_desc-${t}`).classList.remove('hidden')
+                }
+            }
+        }
+    }
 
 </script>

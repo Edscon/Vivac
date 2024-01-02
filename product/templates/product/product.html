@@ -75,9 +75,20 @@
                     class="w-full object-contain h-full aspect-[1/1] object-top" 
                     src="{{product.image}}"
                 >
-                {% if product.get_descuento > 0 %}
-                <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{product.get_descuento}}%</p>
-                {% endif %}
+                {% for precio in dic_sizes_precio %}
+                    <div id="precio_desc-{{precio.3}}" class="hidden">
+                        {% if precio.4 > 0 %}
+                        <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{precio.4}}%</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <div id="original_desc">
+                    {% if product.get_descuento > 0 %}
+                    <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{product.get_descuento}}%</p>
+                    {% endif %}
+                </div>
+                
+
                 <div id="cursor_magnet" class="absolute w-[150px] h-[100px] bg-gray-100 border border-solid border-gray-200 opacity-50 cursor-zoom-in hidden">
     
                 </div>
@@ -93,13 +104,28 @@
 
         <div id="information" class="information w-full md:w-[40%]">
             <h1 class="text-xl md:text-2xl">{{product.nombre}}</h1>
-            {% if product.get_descuento > 0 %}
-            <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{product.precio_retail|floatformat:2}} €</p>
-            <p class="-mt-2 text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
-            <p class="-mt-1 text-xs text-gray-500">Te ahorras {{product.get_ahorro|floatformat:2}} €</p>
-            {% else %}
-            <p class=" text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
-            {% endif %}
+            <input id="info_precios" value="{{dic_sizes_precio}}" class="hidden"></input>
+            {% for precio in dic_sizes_precio %}
+            <div id="precio_producto-{{precio.3}}" class="hidden">
+                {% if product.get_descuento > 0 %}
+                <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{precio.0|floatformat:2}} €</p>
+                <p class="-mt-2 text-[30px] text-green-600 font-bold">{{precio.1|floatformat:2}} €</p>
+                <p class="-mt-1 text-xs text-gray-500">Te ahorras {{precio.2|floatformat:2}} €</p>
+                {% else %}
+                <p class=" text-[30px] text-green-600 font-bold">{{precio.1|floatformat:2}} €</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <div id="original_price">
+                {% if product.get_descuento > 0 %}
+                <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{product.precio_retail|floatformat:2}} €</p>
+                <p class="-mt-2 text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
+                <p class="-mt-1 text-xs text-gray-500">Te ahorras {{product.get_ahorro|floatformat:2}} €</p>
+                {% else %}
+                <p class=" text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
+                {% endif %}
+            </div>
+            
 
             <div class="relative mt-1">
             {% if product.get_rating > 0 %}
