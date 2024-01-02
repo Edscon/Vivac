@@ -534,8 +534,9 @@
     }
 
     // Minicart:
+
     async function EnviarCheckOut() {
-    try {
+    
         window.scroll({
             top: 0,
             left: 0,
@@ -547,6 +548,8 @@
 
         console.log('Finish delay 300')
         console.log(document.getElementById('minicart'), document.getElementById('minicart_mobile'))
+
+        document.getElementById('minicart').classList.remove("minicart");
 
         document.getElementById('minicart').classList.remove("hidden");
         document.getElementById('minicart').classList.add("max-[300px]:hidden");
@@ -564,18 +567,12 @@
 
         document.getElementById('minicart').classList.add("hidden");
         document.getElementById('minicart').classList.remove("max-[300px]:hidden");
-
-        } catch (error) {
-            console.log(error);
-            document.getElementById('minicart_mobile').classList.remove("md:hidden");
-            document.getElementById('minicart_mobile').classList.add("hidden");
-
-            document.getElementById('minicart').classList.add("hidden");
-            document.getElementById('minicart').classList.remove("max-[300px]:hidden");
-        }
+        document.getElementById('minicart').classList.add("minicart");
+        
     }
 
     body = document.getElementById('body');
+    
 
     body.onclick = function(){
         if (timeoutId && document.getElementById('minicart').classList.contains("max-[300px]:hidden")) {
@@ -583,6 +580,7 @@
             document.getElementById('minicart_mobile').classList.remove("md:hidden");
             document.getElementById('minicart_mobile').classList.add("hidden");
 
+            document.getElementById('minicart').classList.add("minicart");
             document.getElementById('minicart').classList.add("hidden");
             document.getElementById('minicart').classList.remove("max-[300px]:hidden");
             console.log('Finish menu cart body')
@@ -591,7 +589,9 @@
 
     minicart_mobile.addEventListener('touchstart', () => {
         cancelDelay();
+        document.getElementById('minicart').classList.remove("minicart");
         document.getElementById('minicart').classList.remove("hidden");
+        
         document.getElementById('minicart').classList.add("max-[300px]:hidden");
         document.getElementById('minicart_mobile').classList.remove("hidden");
         document.getElementById('minicart_mobile').classList.add("md:hidden");
@@ -602,8 +602,8 @@
         document.getElementById('minicart_mobile').classList.remove("md:hidden");
         document.getElementById('minicart_mobile').classList.add("hidden");
 
-        document.getElementById('minicart').classList.add("hidden");
-        document.getElementById('minicart').classList.remove("max-[300px]:hidden");
+        document.getElementById('minicart').classList.add("minicart");
+        document.getElementById('minicart').classList.remove("minicart-0");
     });
 
 

@@ -67,6 +67,7 @@
         hx-get="{% url 'hx_minicart' %}"
         hx-trigger="update-menu-cart from:body"
         hx-swap="innerHTML"
+        id="dropdown-menu-cart"
         >
             {% include 'cart/partials/minicart.html' %}
             
