@@ -548,12 +548,9 @@
         await delay(300); // Delay for 0.3 seconds
 
         console.log('Finish delay 300')
-        console.log(document.getElementById('minicart'), document.getElementById('minicart_mobile'))
 
-        document.getElementById('minicart').classList.remove("minicart");
+        document.getElementById('minicart2').classList.remove("hidden");
 
-        document.getElementById('minicart').classList.remove("hidden");
-        document.getElementById('minicart').classList.add("max-[300px]:hidden");
         document.getElementById('minicart_mobile').classList.remove("hidden");
         document.getElementById('minicart_mobile').classList.add("md:hidden");
 
@@ -566,9 +563,7 @@
         document.getElementById('minicart_mobile').classList.remove("md:hidden");
         document.getElementById('minicart_mobile').classList.add("hidden");
 
-        document.getElementById('minicart').classList.add("hidden");
-        document.getElementById('minicart').classList.remove("max-[300px]:hidden");
-        document.getElementById('minicart').classList.add("minicart");
+        document.getElementById('minicart2').classList.add("hidden");
         
     }
 
@@ -576,24 +571,20 @@
     
 
     body.onclick = function(){
-        if (timeoutId && document.getElementById('minicart').classList.contains("max-[300px]:hidden")) {
+        if (timeoutId && !document.getElementById('minicart2').classList.contains("hidden")) {
             cancelDelay();
             document.getElementById('minicart_mobile').classList.remove("md:hidden");
             document.getElementById('minicart_mobile').classList.add("hidden");
 
-            document.getElementById('minicart').classList.add("minicart");
-            document.getElementById('minicart').classList.add("hidden");
-            document.getElementById('minicart').classList.remove("max-[300px]:hidden");
+            document.getElementById('minicart2').classList.add("hidden");
             console.log('Finish menu cart body')
         }
     }
 
     minicart_mobile.addEventListener('touchstart', () => {
         cancelDelay();
-        document.getElementById('minicart').classList.remove("minicart");
-        document.getElementById('minicart').classList.remove("hidden");
-        
-        document.getElementById('minicart').classList.add("max-[300px]:hidden");
+        document.getElementById('minicart2').classList.remove("hidden");
+
         document.getElementById('minicart_mobile').classList.remove("hidden");
         document.getElementById('minicart_mobile').classList.add("md:hidden");
     });
@@ -603,8 +594,7 @@
         document.getElementById('minicart_mobile').classList.remove("md:hidden");
         document.getElementById('minicart_mobile').classList.add("hidden");
 
-        document.getElementById('minicart').classList.add("minicart");
-        document.getElementById('minicart').classList.remove("minicart-0");
+        document.getElementById('minicart2').classList.add("hidden");
     });
 
 
