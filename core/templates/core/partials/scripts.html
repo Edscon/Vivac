@@ -542,53 +542,57 @@
             behavior: "smooth",
         });
         console.log('Start delay 300')
+
         await delay(300); // Delay for 0.3 seconds
+
         console.log('Finish delay 300')
         console.log(document.getElementById('minicart'), document.getElementById('minicart_mobile'))
 
-        document.getElementById('minicart').classList.remove("minicart");
-        document.getElementById('minicart').classList.add("minicart-0");
+        document.getElementById('minicart').classList.remove("hidden");
+        document.getElementById('minicart').classList.add("max-[300px]:hidden");
         document.getElementById('minicart_mobile').classList.remove("hidden");
         document.getElementById('minicart_mobile').classList.add("md:hidden");
 
         console.log('Start delay 5000 open cart')
+
         await delay(5000); // Delay for 5 seconds
+
         console.log('Finish delay 5000 close cart')
 
         document.getElementById('minicart_mobile').classList.remove("md:hidden");
         document.getElementById('minicart_mobile').classList.add("hidden");
 
-        document.getElementById('minicart').classList.add("minicart");
-        document.getElementById('minicart').classList.remove("minicart-0");
+        document.getElementById('minicart').classList.add("hidden");
+        document.getElementById('minicart').classList.remove("max-[300px]:hidden");
 
         } catch (error) {
             console.log(error);
             document.getElementById('minicart_mobile').classList.remove("md:hidden");
             document.getElementById('minicart_mobile').classList.add("hidden");
 
-            document.getElementById('minicart').classList.add("minicart");
-            document.getElementById('minicart').classList.remove("minicart-0");
+            document.getElementById('minicart').classList.add("hidden");
+            document.getElementById('minicart').classList.remove("max-[300px]:hidden");
         }
     }
 
     body = document.getElementById('body');
 
     body.onclick = function(){
-        if (timeoutId && document.getElementById('minicart').classList.contains("minicart-0")) {
+        if (timeoutId && document.getElementById('minicart').classList.contains("max-[300px]:hidden")) {
             cancelDelay();
             document.getElementById('minicart_mobile').classList.remove("md:hidden");
             document.getElementById('minicart_mobile').classList.add("hidden");
 
-            document.getElementById('minicart').classList.add("minicart");
-            document.getElementById('minicart').classList.remove("minicart-0");
+            document.getElementById('minicart').classList.add("hidden");
+            document.getElementById('minicart').classList.remove("max-[300px]:hidden");
             console.log('Finish menu cart body')
         }
     }
 
     minicart_mobile.addEventListener('touchstart', () => {
         cancelDelay();
-        document.getElementById('minicart').classList.remove("minicart");
-        document.getElementById('minicart').classList.add("minicart-0");
+        document.getElementById('minicart').classList.remove("hidden");
+        document.getElementById('minicart').classList.add("max-[300px]:hidden");
         document.getElementById('minicart_mobile').classList.remove("hidden");
         document.getElementById('minicart_mobile').classList.add("md:hidden");
     });
@@ -598,8 +602,8 @@
         document.getElementById('minicart_mobile').classList.remove("md:hidden");
         document.getElementById('minicart_mobile').classList.add("hidden");
 
-        document.getElementById('minicart').classList.add("minicart");
-        document.getElementById('minicart').classList.remove("minicart-0");
+        document.getElementById('minicart').classList.add("hidden");
+        document.getElementById('minicart').classList.remove("max-[300px]:hidden");
     });
 
 
