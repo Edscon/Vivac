@@ -265,59 +265,83 @@
     }
 
 
-    const btn1 = document.getElementById("descripcion");
-    const btn2 = document.getElementById("opiniones");
-    const text1 = document.getElementById("div1");
-    const text2 = document.getElementById("div2");
+    const btn_s = document.querySelectorAll(".btn_s");
+    const greens = document.querySelectorAll(".greens");
+    const texts = document.querySelectorAll(".texts");
+    const leer_m_m = document.getElementById('leer_mas_menos')
+    var current_index = 0;
 
-    const green1 = document.getElementById("descripcion_green")
-    const green2 = document.getElementById("opiniones_green")
+    btn_s.forEach((button, index) => {
+
+        var selectedButton = btn_s[index];
+        var selectedText = texts[index];
+        var selectedGreen = greens[index];
+
+        button.addEventListener('click', () =>{
+
+            btn_s.forEach(button => button.classList.toggle('text-black', button === selectedButton));
+
+            texts.forEach(div => div.classList.toggle('hidden', div !== selectedText));
+
+            leer_m_m.classList.toggle('hidden', selectedButton !== btn_s[0]);
+
+            current_index = index;
+
+            greens.forEach(div => {
+                const isCurrent = div === selectedGreen;
+                div.classList.replace(isCurrent ? 'bg-neutral-500' : 'bg-green-600', isCurrent ? 'bg-green-600' : 'bg-neutral-500');
+                div.classList.replace(isCurrent ? 'h-[0]' : 'h-[2.5px]', isCurrent ? 'h-[2.5px]' : 'h-[0]');
+                div.style.animation = isCurrent ? 'in-out-menu 100ms 1' : 'out-in-menu 100ms 1';
+            });
+
+            window.scroll({
+                top: 700,
+                behavior: 'smooth',
+            });
+        })
+        button.addEventListener('mouseover', () =>{ 
+            if(index != current_index){
+                selectedGreen.classList.replace('h-[0]', 'h-[2.5px]');
+                selectedGreen.classList.replace('bg-green-600', 'bg-neutral-500');
+                selectedGreen.style.animation = "in-out-menu 100ms 1";
+            }
+        
+        })
+        button.addEventListener('mouseout', () =>{
+            if(index != current_index){
+                selectedGreen.classList.add('h-[0]');
+                selectedGreen.classList.remove('h-[2.5px]');
+                selectedGreen.style.animation = "out-in-menu 100ms 1"
+            }
+        })
+    });
 
     function GoOpinions() {
-        if(text2.classList.contains('hidden') && !text1.classList.contains('hidden')){
-            text2.classList.remove('hidden');
-            text1.classList.add('hidden');
+        current_index = 1
+        // Ocultar todos los textos excepto el segundo
+        texts.forEach((div, index) => div.classList.toggle('hidden', index !== 1));
 
-            green1.classList.remove('w-[85px]', '-left-4');
-            green1.classList.add('w-[185px]', 'left-[85px]');
-        }
+        // Modificar los estilos de los elementos en greens
+        greens.forEach((div, index) => {
+            const isGreen1 = index === 1;
+            
+            if (isGreen1) {
+                div.classList.remove('h-[0]');
+                div.classList.add('h-[2.5px]');
+                div.classList.replace('bg-neutral-500', 'bg-green-600');
+            } else {
+                div.classList.replace('h-[2.5px]', 'h-[0]');
+                div.classList.replace('bg-green-600', 'bg-neutral-500');
+            }
 
-        if(window.innerWidth >= 1218){
+            div.style.animation = "in-out-menu 100ms 1";
+        });
+
+        // Desplazarse hacia abajo si el ancho de la ventana es mayor o igual a 1218
+        if (window.innerWidth >= 1218) {
             window.scroll({
                 top: 700,
                 behavior: "smooth",
-            });
-        }
-    }
-
-
-    btn1.onclick = function(){
-
-        if(text1.classList.contains('hidden') && !text2.classList.contains('hidden')){
-            text1.classList.remove('hidden');
-            text2.classList.add('hidden');
-
-            green1.classList.add('w-[85px]', '-left-4');
-            green1.classList.remove('w-[185px]', 'left-[85px]');
-            
-            window.scroll({
-            top: 700,
-            behavior: "smooth",
-            });
-        }
-    }
-
-    btn2.onclick = function(){
-        if(text2.classList.contains('hidden') && !text1.classList.contains('hidden')){
-            text2.classList.remove('hidden');
-            text1.classList.add('hidden');
-
-            green1.classList.remove('w-[85px]', '-left-4');
-            green1.classList.add('w-[185px]', 'left-[85px]');
-
-            window.scroll({
-            top: 700,
-            behavior: "smooth",
             });
         }
     }

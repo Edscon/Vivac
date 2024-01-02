@@ -312,17 +312,21 @@
         <hr class="w-full mt-2">
         
         <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative max-[326px]:text-[13px]">
-            <button id="descripcion" class="pt-6 pb-3 hover:text-black">Descripción</button>
-            <button id="opiniones"class="pt-6 pb-3 hover:text-black">Opiniones del artículo ({{product.reviews.all.count}})</button>
-            <div id="descripcion_green" class="bg-green-700 h-[2px] w-[85px] absolute -left-4 top-[59px]"></div>
-            <div id="opiniones_green" class="bg-green-700 h-[2px] w-[185px] absolute left-[85px] top-[59px] hidden"></div>
+            <button class="btn_s pt-6 pb-3 hover:text-black flex relative">
+                <div class="mx-auto my-auto">Descripción</div>
+                <div class="greens bg-green-600 h-[2.5px] w-full absolute bottom-0"></div>
+            </button>
+            <button class="btn_s pt-6 pb-3 hover:text-black flex relative">
+                <div class="mx-auto my-auto">Opiniones del artículo ({{product.reviews.all.count}})</div>
+                <div class="greens bg-green-600 h-[0px] w-full absolute bottom-0"></div>
+            </button>
         </div>
         
         <hr class="w-full">
         
         <div class="content-box mt-6 w-[100%]">
-            {% if product.descripcion %}
-            <div id="div1" class="flex flex-wrap relative min-h-[200px]">
+            <div id="div-1" class="texts flex flex-wrap relative min-h-[200px]">
+                {% if product.descripcion %}
                 <div id="desc" class="w-[100%] md:w-[60%] text-gray-900 overflow-hidden text-[13px] text-justify md:pr-4 maxh">
                     {{product.descripcion | safe}}
                     <div  class="flex flex-col justify-center items-center mt-4">
@@ -340,11 +344,11 @@
                         <li >Garantía de devolución 30 días</li>
                     </ul>
                 </div>
+                {% endif %}
             </div>
             
-            {% endif %}
             
-            <div id="div2" class="hidden flex flex-wrap relative"> 
+            <div id="div-2" class="texts hidden flex flex-wrap relative"> 
                 <div class="w-[100%] lg:w-[60%] max-h-[360px] overflow-auto">
                     <input type="text" id="num_reviews" size="20" name="num_reviews" class="hidden" value="{{ product.reviews.all.count }}">
                     {% for review in product.reviews.all %}

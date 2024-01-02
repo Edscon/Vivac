@@ -526,7 +526,6 @@
     }
 
     function cancelDelay() {
-        console.log('Cancel delay');
         if (timeoutId) {
             clearTimeout(timeoutId);
             timeoutId = null;
@@ -542,63 +541,39 @@
             left: 0,
             behavior: "smooth",
         });
-        console.log('Start delay 300')
 
         await delay(600); // Delay for 0.3 seconds
 
-        console.log('Finish delay 300')
-
-        document.getElementById('minicart').classList.remove("minicart");
-        document.getElementById('minicart').classList.add("minicart-0");
-
-        document.getElementById('minicart_mobile').classList.remove("hidden");
-        document.getElementById('minicart_mobile').classList.add("md:hidden");
-
-        console.log('Start delay 5000 open cart')
+        document.getElementById('minicart').classList.replace("minicart", "minicart-0");
+        document.getElementById('minicart_mobile').classList.replace("hidden", "md:hidden");
 
         await delay(5000); // Delay for 5 seconds
 
-        console.log('Finish delay 5000 close cart')
-
-        document.getElementById('minicart_mobile').classList.remove("md:hidden");
-        document.getElementById('minicart_mobile').classList.add("hidden");
-
-        document.getElementById('minicart').classList.add("minicart");
-        document.getElementById('minicart').classList.remove("minicart-0");
+        document.getElementById('minicart').classList.replace("minicart-0", "minicart");
+        document.getElementById('minicart_mobile').classList.replace("md:hidden", "hidden");
         
     }
 
     body = document.getElementById('body');
     
-
     body.onclick = function(){
         if (timeoutId && !document.getElementById('minicart').classList.contains("minicart")) {
             cancelDelay();
-            document.getElementById('minicart_mobile').classList.remove("md:hidden");
-            document.getElementById('minicart_mobile').classList.add("hidden");
-
-            document.getElementById('minicart').classList.add("minicart");
-            document.getElementById('minicart').classList.remove("minicart-0");
-            console.log('Finish menu cart body')
+            document.getElementById('minicart').classList.replace("minicart-0", "minicart");
+            document.getElementById('minicart_mobile').classList.replace("md:hidden", "hidden");
         }
     }
 
     minicart_mobile.addEventListener('touchstart', () => {
         cancelDelay();
-        document.getElementById('minicart').classList.remove("minicart");
-        document.getElementById('minicart').classList.add("minicart-0");
-
-        document.getElementById('minicart_mobile').classList.remove("hidden");
-        document.getElementById('minicart_mobile').classList.add("md:hidden");
+        document.getElementById('minicart').classList.replace("minicart", "minicart-0");
+        document.getElementById('minicart_mobile').classList.replace("hidden", "md:hidden");
     });
 
     minicart_mobile.addEventListener('touchend', async () => {
         await delay(5000);
-        document.getElementById('minicart_mobile').classList.remove("md:hidden");
-        document.getElementById('minicart_mobile').classList.add("hidden");
-
-        document.getElementById('minicart').classList.add("minicart");
-        document.getElementById('minicart').classList.remove("minicart-0");
+        document.getElementById('minicart').classList.replace("minicart-0", "minicart");
+        document.getElementById('minicart_mobile').classList.replace("md:hidden", "hidden");
     });
 
 
