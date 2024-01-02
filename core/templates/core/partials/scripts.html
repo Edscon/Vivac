@@ -527,10 +527,11 @@
     }
 
     function cancelDelay() {
-    if (timeoutId) {
-        clearTimeout(timeoutId);
-        timeoutId = null;
-    }
+        console.log('Cancel delay');
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+        }
     }
 
     // Minicart:
