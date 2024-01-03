@@ -1,13 +1,14 @@
 {% extends 'core/base.html' %}
 
-{% block title %}{{product.nombre}}{{variant.color}}{% endblock %}
+{% block title %}{{product.nombre}}{% endblock %}
 
 {% block content%}
-<style>
+{% load replacement %}
+<style> 
     .New_reseña{
         transform: translate(-50%, -50%);
     }
-
+    
     .mySwiper_product [class^="swiper-button-"]::after{
         font-size: 15px;
         font-weight: bold;
@@ -33,22 +34,26 @@
 
 {% include 'product/partials/menu_tallas_mobile.html' %}
 
-<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-14 -mt-10 xl:px-0 px-4 relative">
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto overflow-hidden max-[1300px]:-mt-6 -mt-2 mb-5 relative xl:px-0 px-4">
+    
+    {% include 'core/partials/banner.html' %}
 
-    <div class="py-10">
-        <a href="{% url 'shop' %}"
-            class="inline-block flex justify-center w-[200px] py-2 bg-green-500 hover:bg-green-700 text-white"
-        >
-            Confirmar Checkout
-        </a>
+    <div class="my-2 hidden lg:flex text-sm space-x-1 cursor-default">
+        <a class="cursor-pointer hover:underline" href="{% url 'shop' %}">Inicio</a> 
+        <div>></div>
+        <a class="cursor-pointer hover:underline" href="{% url 'shop' %}?category={{product.categoria|lower_}}">{{product.categoria}}</a> 
+        <div>></div>
+        <a class="cursor-pointer hover:underline" href="{% url 'marca' product.marca.slug %}">{{product.marca}}</a> 
     </div>
+    <div class="my-2 flex lg:hidden"></div>
+
     <a href="{% url 'marca' product.marca.slug %}"><img class="lg:hidden block image_marca md:w-20 w-[125px] aspect-[3/1] object-contain absolute top-20 md:top-[125px] right-5 md:right-[320px] z-[3]" 
         src={{product.marca.get_image}}>
     </a>
     <div class="flex flex-wrap relative">
 
-        <div class="md:h-[600px] w-full md:w-[60%] flex relative">
-            <div class="hidden lg:block w-[15%] h-full overflow-auto space-y-4 px-5">
+        <div class="md:h-[600px] w-full md:w-[60%] flex relative ">
+            <div class="hidden lg:block w-[11%] h-full overflow-auto space-y-4 mr-5">
                 <img 
                     id = "ImageProd"
                     onmouseover="Image_mouseover('{{variants_first.image}}')"
@@ -59,7 +64,7 @@
                     <img 
                     id ="ImageExtra"
                     onmouseover="Image_mouseover('{{image.image.url}}')"
-                    class="w-[full] object-contain aspect-[1/1] rounded border" 
+                    class="w-[full] object-contain aspect-[1/1] rounded border cursor-pointer" 
                     src="{{image.image.url}}"
                     >
                 {% endfor %}
@@ -70,7 +75,20 @@
                     class="w-full object-contain h-full aspect-[1/1] object-top" 
                     src="{{variants_first.image}}"
                 >
-                <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{product.get_descuento}}%</p>
+                {% for precio in dic_sizes_precio %}
+                    <div id="precio_desc-{{precio.3}}" class="hidden">
+                        {% if precio.4 > 0 %}
+                        <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{precio.4}}%</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <div id="original_desc">
+                    {% if product.get_descuento > 0 %}
+                    <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{product.get_descuento}}%</p>
+                    {% endif %}
+                </div>
+                
+
                 <div id="cursor_magnet" class="absolute w-[150px] h-[100px] bg-gray-100 border border-solid border-gray-200 opacity-50 cursor-zoom-in hidden">
     
                 </div>
@@ -84,11 +102,30 @@
             </a>
         </div>
 
-        <div id="information" class="information w-full lg:w-[40%]">
+        <div id="information" class="information w-full md:w-[40%]">
             <h1 class="text-xl md:text-2xl">{{product.nombre}}</h1>
-            <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{product.precio_retail|floatformat:2}} €</p>
-            <p class="-mt-2 text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
-            <p class="-mt-1 text-xs text-gray-500">Te ahorras {{product.get_ahorro|floatformat:2}} €</p>
+            <input id="info_precios" value="{{dic_sizes_precio}}" class="hidden"></input>
+            {% for precio in dic_sizes_precio %}
+            <div id="precio_producto-{{precio.3}}" class="hidden">
+                {% if product.get_descuento > 0 %}
+                <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{precio.0|floatformat:2}} €</p>
+                <p class="-mt-2 text-[30px] text-green-600 font-bold">{{precio.1|floatformat:2}} €</p>
+                <p class="-mt-1 text-xs text-gray-500">Te ahorras {{precio.2|floatformat:2}} €</p>
+                {% else %}
+                <p class=" text-[30px] text-green-600 font-bold">{{precio.1|floatformat:2}} €</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <div id="original_price">
+                {% if product.get_descuento > 0 %}
+                <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{product.precio_retail|floatformat:2}} €</p>
+                <p class="-mt-2 text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
+                <p class="-mt-1 text-xs text-gray-500">Te ahorras {{product.get_ahorro|floatformat:2}} €</p>
+                {% else %}
+                <p class=" text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
+                {% endif %}
+            </div>
+            
 
             <div class="relative mt-1">
             {% if product.get_rating > 0 %}
@@ -116,18 +153,18 @@
                 <div class="font-semibold text-gray-800">Colores</div>
     
                 <div class="flex w-full h-[100px] space-x-4 text-sm mt-2 overflow-auto">
-                     {% for var in variant_colors %}
-                        {% if var.color.slug == slug_color %}
-                            <a class="w-[80px] h-[80px] rounded border-black border">
-                                <img src="{{var.image}}" class="object-contain rounded">
-                            </a>
-                        {% else %}
-                        <a href="{% url 'variant_product' product.slug var.color.slug %}" class="w-[80px] h-[80px] rounded border hover:border-gray-400">
-                            <img src="{{var.image}}" class="object-contain rounded">
-                        </a>
-                        {% endif %}
-                    {% endfor %}
-                </div>
+                    {% for var in variant_colors %}
+                       {% if var.color.slug == slug_color %}
+                           <a class="w-[80px] h-[80px] rounded border-black border">
+                               <img src="{{var.image}}" class="object-contain rounded">
+                           </a>
+                       {% else %}
+                       <a href="{% url 'variant_product' product.slug var.color.slug %}" class="w-[80px] h-[80px] rounded border hover:border-gray-400">
+                           <img src="{{var.image}}" class="object-contain rounded">
+                       </a>
+                       {% endif %}
+                   {% endfor %}
+               </div>
             </div>
             {% endif %}
 
@@ -157,57 +194,98 @@
                     <input readonly="readonly" class="pl-4" id="EscogeTalla" value="Escoge una talla ..."></input>
                 </a>
             </div>
-
+                
             <div id="noTallas" class="hidden mt-3 flex"> 
                 <svg class="h-3 w-3 text-red-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
                 <p class="text-sm text-red-500">Selecciona una talla.</p> 
             </div>
+            
+            <div class="mt-5 text-xs text-green-700 font-semibold">Producto en Stock. Entrega en 24h</div>
 
-            <div id="top_añadir_carrito">
+            <div id="top_añadir_carrito" class="mt-1">
                 <a 
                 id="añadir_carrito-" 
-                class=" mt-6 w-full inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
+                class="w-full flex rounded py-3 bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer drop-shadow-md"
                 onclick="NoTallas()"
                 >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 absolute top-[50%] left-[10px] -translate-y-[50%]">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                </svg> 
-                <svg class="h-3 w-3 absolute top-[44%] left-[19px] -translate-y-[50%]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/>
-                </svg>
-                <p class="text-center text-sm lg:text-base">Añadir al carrito</p>
+                <div class="mx-auto flex space-x-4">
+                    <div class="my-auto">
+                        <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M8 5h4m-2 2V3M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.938-11H17l-2 7H5m0 0L3 4m0 0h2M3 4l-.792-3H1"/>
+                        </svg>
+                    </div>
+                    
+                    <p class="text-center text-sm lg:text-base">Añadir al carrito</p>
+                </div>
+                    
                 </a>
                 {% for i in size_special %}
                 <a 
                     id="añadir_carrito-{{i}}"
                     title="Buy_prod"
                     href="#" 
-                    class="hidden mt-6 w-full inline-block py-2 rounded bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer"
+                    class="hidden flex w-full inline-block rounded py-3 bg-green-600 text-white hover:bg-black relative transition duration-500 cursor-pointer drop-shadow-md"
                     hx-get = "{% url 'add_to_cart' product.id color.code i %}"
                     hx-target = "#menu-cart-button"
                     hx-swap = "innerHTML"
                     onclick="EnviarCheckOut()"
                     >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 absolute top-[50%] left-[10px] -translate-y-[50%]">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                    </svg> 
-                    <svg class="h-3 w-3 absolute top-[44%] left-[19px] -translate-y-[50%]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/>
-                    </svg>
-                    <p class="text-center text-sm lg:text-base">Añadir al carrito</p>
+                    <div class="mx-auto flex space-x-4">
+                        <div class="my-auto">
+                            <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" d="M8 5h4m-2 2V3M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.938-11H17l-2 7H5m0 0L3 4m0 0h2M3 4l-.792-3H1"/>
+                            </svg>
+                        </div>
+                        
+                        <p class="text-center text-sm lg:text-base">Añadir al carrito</p>
+                    </div>
                 </a>
                 {% endfor %}
-             </div>
+            </div>
             
             <div class="flex flex-wrap mt-3 text-sm">
-                <button id="Favoritos" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[79%] lg:w-[59%] border-[0.1px]">
-                    <svg class="w-5 h-5 md:w-6 md:h-6 absolute top-[50%] left-[10px] -translate-y-[50%] text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                    </svg>
-                    <p class="text-center">Añadir a favoritos</p>
-                </button>
+                <iframe name="none" style="display:none;"></iframe>
+
+                {% if request.user.is_authenticated %}
+                    <form method="post" action="{% url 'update_favorito' product.id color.code 'añadir' %}" target="none" 
+                        id="Favorito_0"
+                        class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[79%] lg:w-[59%] border-[0.1px] drop-shadow-md"
+                        onclick="this.classList.add('hidden'); document.getElementById('Favorito_1').classList.remove('hidden');"
+                        >
+                        {% csrf_token %}
+                        <button type="submit" class="w-full h-full">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 absolute top-[50%] left-[10px] -translate-y-[50%] text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                            <p class="text-center">Añadir a favoritos</p>
+                        </button>
+                    </form>
+                    <form method="post" action="{% url 'update_favorito' product.id color.code 'quitar' %}" target="none" 
+                        id="Favorito_1"
+                        class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[79%] lg:w-[59%] border-[0.1px] hidden drop-shadow-md"
+                        onclick="this.classList.add('hidden'); document.getElementById('Favorito_0').classList.remove('hidden');"
+                        >
+                        {% csrf_token %}
+                        <button type="submit" class="w-full h-full">
+                            <svg class="w-5 h-5 md:w-6 md:h-6 absolute top-[50%] left-[10px] -translate-y-[50%] text-gray-700"  fill="#dc2626" viewBox="0 0 24 24" stroke="none">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                            <p class="text-center">Añadido a favoritos</p>
+                        </button>
+                    </form>
+                {% else %}
+                <div id="Favorito_no_user" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[79%] lg:w-[59%] border-[0.1px] drop-shadow-md" onclick="FirstOp()">
+                    <button id="Favoritos" class="w-full h-full drop-shadow-md">
+                        <svg class="w-5 h-5 md:w-6 md:h-6 absolute top-[50%] left-[10px] -translate-y-[50%] text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                        <p class="text-center">Añadir a favoritos</p>
+                    </button>
+                </div>
+                {% endif %}
+
                 <div class="w-[2%]"></div>
-                <button id="Compartir" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[19%] lg:w-[39%] border">
+                <button id="Compartir" class="relative cursor-pointer rounded py-2 bg-gray-100 hover:bg-gray-300 w-[19%] lg:w-[39%] border drop-shadow-md">
                     <svg class="w-5 h-5 relative left-[50%] max-[1023px]:-translate-x-[50%] lg:absolute lg:left-2 text-center text-gray-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
                     </svg>
@@ -234,18 +312,22 @@
         <hr class="w-full mt-2">
         
         <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative max-[326px]:text-[13px]">
-            <button id="descripcion" class="pt-6 pb-3 hover:text-black">Descripción</button>
-            <button id="opiniones"class="pt-6 pb-3 hover:text-black">Opiniones del artículo ({{product.reviews.all.count}})</button>
-            <div id="descripcion_green" class="bg-green-700 h-[2px] w-[85px] absolute -left-4 top-[59px]"></div>
-            <div id="opiniones_green" class="bg-green-700 h-[2px] w-[185px] absolute left-[85px] top-[59px] hidden"></div>
+            <button class="btn_s pt-6 pb-3 hover:text-black flex relative">
+                <div class="mx-auto my-auto">Descripción</div>
+                <div class="greens bg-green-600 h-[2.5px] w-full absolute bottom-0"></div>
+            </button>
+            <button class="btn_s pt-6 pb-3 hover:text-black flex relative">
+                <div class="mx-auto my-auto">Opiniones del artículo ({{product.reviews.all.count}})</div>
+                <div class="greens bg-green-600 h-[0px] w-full absolute bottom-0"></div>
+            </button>
         </div>
         
         <hr class="w-full">
         
         <div class="content-box mt-6 w-[100%]">
-            {% if product.descripcion %}
-            <div id="div1" class="flex flex-wrap relative min-h-[200px]">
-                <div id="desc" class="w-[100%] md:w-[60%] text-gray-700 overflow-hidden text-sm text-justify md:pr-4 maxh">
+            <div id="div-1" class="texts flex flex-wrap relative min-h-[200px]">
+                {% if product.descripcion %}
+                <div id="desc" class="w-[100%] md:w-[60%] text-gray-900 overflow-hidden text-[13px] text-justify md:pr-4 maxh">
                     {{product.descripcion | safe}}
                     <div  class="flex flex-col justify-center items-center mt-4">
                         {% if product.video %}
@@ -262,45 +344,64 @@
                         <li >Garantía de devolución 30 días</li>
                     </ul>
                 </div>
+                {% endif %}
             </div>
             
-            {% endif %}
             
-            <div id="div2" class="hidden flex flex-wrap relative"> 
-                <div class="w-[100%] lg:w-[60%] max-h-[360px] overflow-auto">
+            <div id="div-2" class="texts hidden flex flex-wrap relative"> 
+                <div class="w-[100%] lg:w-[60%] max-h-[500px] overflow-auto">
                     <input type="text" id="num_reviews" size="20" name="num_reviews" class="hidden" value="{{ product.reviews.all.count }}">
-                    {% for review in product.reviews.all %}
-                    <div id="Review" class="px-4 py-1 bg-gray-100 mb-2 relative text-sm rounded text-gray-700">
-                        <div class="absolute top-5 left-5 h-[50px] w-[50px] bg-white">
-                            <img src="{{product.image}}" class="object-contain">
+                   
+                    <div class="rounded-xl border border-gray-300 mb-6">
+                        <div class="relative">
+                            {% for review in product.reviews.all %}
+                                <div class="relative">
+                                    {% if forloop.counter0 > 0 %}
+                                    <hr class="w-full border-gray-300">
+                                    {% endif %}
+
+                                    <div class="flex w-full relative">
+                                        <div class="w-[20%] min-w-[140px]">
+                                            <a href="{% url 'product' review.product.slug %}" class="w-[140px] rounded-l-xl">
+                                                <img class="hover:shadow-lg rounded-l-xl" src="{{review.product.image}}">
+                                            </a>
+                                        </div>
+                                        
+                                        <div class="w-[80%] text-sm flex flex-wrap relative">
+                                            <div class="w-[100%] md:w-[25%]">
+                                                <div class="item-size">
+                                                    <p class="font-semibold mt-4 mb-1">{{ review.titulo }}</p>
+                                                    {% include 'product/partials/stars_review_siple.html' %}
+                                                </div>
+                                            </div>
+                                            <div class="w-[100%] md:w-[75%] mt-2 md:mt-5 text-sm mb-10 md:mb-7 pr-[50px]">{{ review.content }}</div>
+                                            <p class="text-xs absolute bottom-2 left-0">{{ review.created_by.first_name }} {{review.created_by.last_name}}, el {{ review.created_at|date:"d-m-Y" }}</p>
+
+                                        </div>
+                                        
+                                        {% if review.created_by.email ==  request.user.email %}
+                                        <a onclick="FirstOp()" class="absolute top-5 right-5 hover:text-black hover:scale-105 cursor-pointer">
+                                            <svg class="h-6 w-6" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                                        </a>
+                                        {% endif %}
+
+                                    </div>
+
+                                </div>
+                            {% endfor %} 
                         </div>
-                        <div class="absolute top-5 left-20">
-                            <p class="font-semibold">{{ review.titulo }}</p>
-                            {% include 'product/partials/stars_review_siple.html' %}
-                        </div>
-                        <div class="mt-20 px-1">{{ review.content }}</div>
-                        
-                        <div class="mt-2 mb-2 px-1 text-xs text-gray-600">
-                            <p>{{ review.created_by }}, el {{ review.created_at|date:"d-m-Y" }}</p>
-                        </div>
-                        {% if review.created_by.username ==  request.user.username %}
-                        <a onclick="FirstOp()" class="absolute top-5 right-5 hover:text-black hover:scale-105 cursor-pointer">
-                                <svg class="h-6 w-6" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
-                        </a>
-                        {% endif %}
                     </div>
-                    {% endfor %}
                             
-                            {% if product.reviews.all.count == 0 %}
-                            <div class="text-sm relative border flex px-14 w-full py-3 bg-red-100 ">
-                                <div class="absolute left-0 top-0 h-full w-[4px] bg-red-600"></div>
-                                <svg class="h-6 w-6 text-red-600 absolute top-[10px] left-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                <p class="text-red-600">¡Sé el primero en opinar sobre este producto!</p>
-                            </div>
-                            {% endif %}
-                        </div>   
+                    {% if product.reviews.all.count == 0 %}
+                    <div class="text-sm relative border flex px-14 w-full py-3 bg-red-100 ">
+                        <div class="absolute left-0 top-0 h-full w-[4px] bg-red-600"></div>
+                        <svg class="h-6 w-6 text-red-600 absolute top-[10px] left-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p class="text-red-600">¡Sé el primero en opinar sobre este producto!</p>
+                    </div>
+                    {% endif %}
+                </div>   
                 <div class="lg:w-[40%] pl-10 hidden lg:block">
                     <a onclick="FirstOp()" class="sticky top-[140px] xl:top-5 inline-block relative border rounded flex justify-center w-full py-2 cursor-pointer hover:bg-gray-200 transition duration-500">
                         Escribir Reseña
@@ -313,7 +414,7 @@
 
         <hr class="w-full mt-2">
 
-        <div onclick="leer_mas()" class="flex justify-center w-[100%] lg:w-[60%] mt-2 text-sm cursor-pointer select-none">
+        <div id="leer_mas_menos" onclick="leer_mas_menos()" class="flex justify-center w-[100%] lg:w-[60%] mt-2 text-sm cursor-pointer select-none">
             <div id="leer_mas" class="flex flex-col justify-center items-center text-gray-500">
                 <div>Leer más</div>
                 <svg class="h-4 w-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -332,36 +433,54 @@
             <a href="{% url 'shop' %}" class="pt-6 pb-3 hover:text-black">Otros Productos de la Tienda</a>
         </div>
         <div class="w-full relative">
-            <div class="xl:px-0 overflow-hidden mx-10">
+            <div class="xl:px-0 overflow-hidden md:mx-10">
                 <div class="swiper_products mySwiper_products block text-gray-600">
                     <div class="swiper-wrapper">
-                        {% for product in products_list %}
-                        <div class="swiper-slide xl:h-[350px]">
-                            <div class="min-w-[100px] xl:w-[300px] h-full py-1 md:px-6 hover:shadow-md hover:border">
-                                <a href="{% url 'product' product.slug %}">
-                                    <img title="image_product" src="{{product.image}}" class="w-full rounded-xl">
-                                </a>
-                            
-                                <div class="pt-3 flex items-center justify-between">
-                                    <a title="product_name" href="{% url 'product' product.slug %}">{{ product.nombre }}</a>
+                            {% for product in products_list %}
+                            <div onclick="window.location=`{% url 'product' product.slug %}`" class="swiper-slide w-1/2 md:w-1/3 pt-5 md:hover:shadow-[1px_1px_8px_rgba(0,0,0,0.1)] transition-shadow duration-200 border-b border-gray-300 relative cursor-pointer">
+                                <img src="{{product.image}}" class="z-10 px-0 md:px-3 w-full mb-[80px] sm:mb-[50px] mt-5 md:mt-0">
+                                <div class="z-[15] text-sm absolute bottom-2 w-full">
+                                    <div id="card-{{product.id}}-text" class="w-full transition-shadow duration-200 mt-1">
+                                        {% if product.get_descuento > 0 %}
+                                        <div class="flex md:px-5 bg-white mx-1">
+                                            <p class="bg-green-700 py-[1px] px-[4px] text-white text-[11px] rounded ">- {{product.get_descuento}}%</p>
+                                        </div>
+                                        {% else %}
+                                        <div class="text-[11px] md:px-5 bg-white mx-1 py-[1px]">NEW</div>
+                                        {% endif %}
+                                    </div>
+                                    <div  id="card-{{product.id}}-h" class="bg-white"></div>
+                                    <div class="md:px-5 bg-white mx-1">
+                                        <div class="pt-3 flex items-center justify-between">
+                                            <p class="line-clamp-2 md:line-clamp-1 leading-[16px] h-[33px] md:h-[17px]">{{ product.nombre }}</p>
+                                        </div>
+                                        {% if product.get_descuento > 0 %}
+                                        <div class="flex space-x-2">
+                                            <p class="pt-1 font-semibold text-green-700">{{product.precio|floatformat:2}}€</p>
+                                            <p class="pt-1 line-through">{{product.precio_retail|floatformat:2}}€</p>
+                                        </div>
+                                        {% else %}
+                                        <p class="pt-1 font-semibold">{{product.precio|floatformat:2}}€</p>
+                                        {% endif %}
+                                    </div>
                                 </div>
-                                <p class="pt-1 text-gray-400">{{product.get_display_precio|floatformat:2}}€</p>
                             </div>
-                        </div>
-                        {% endfor %}
+                            {% endfor %}
+                        
                     </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev hidden md:block"></div>
+                    <div class="swiper-button-next hidden md:block"></div>
                 </div>
             </div>
         </div>
         {% if request.user.is_authenticated %}
-            {% for review in product.reviews.all %}
-                {% if review.created_by.username ==  request.user.username %}
-                    {% include 'product/partials/review.html' %}
-                {% endif %}
-            {% endfor %}
-            {% if not review_user %}
+            {% if review_user %}
+                {% for review in product.reviews.all %}
+                    {% if review.created_by.username ==  request.user.username %}
+                        {% include 'product/partials/review.html' %}
+                    {% endif %}
+                {% endfor %}
+            {% else %}
                 {% include 'product/partials/review.html' %}
             {% endif %}
         {% endif %}
@@ -377,7 +496,11 @@
 {% block scripts %}
 <script>
     var swiper_products = new Swiper(".mySwiper_products", {
-        slidesPerView: 4,
+        breakpoints: {
+        1024: { slidesPerView: 4},
+        640: { slidesPerView: 3},
+        },
+        slidesPerView: 2,
         spaceBetween: 20,
         freeMode: false,
         navigation: {

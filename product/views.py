@@ -87,7 +87,6 @@ def product(request, slug):
     
     RedSocials = RedSocial.objects.all()
 
-
     favorite = False
 
     if(request.user.is_authenticated):
@@ -130,7 +129,7 @@ def variant_product(request, slug, slug_color):
 
     product = get_object_or_404(Product, slug=slug)
     
-    products_list = Product.objects.all()[0:8]
+    products_list = Product.objects.filter(categoria=product.categoria).order_by('popular_rating')[0:8]
 
     color = get_object_or_404(Color, slug=slug_color)
     images_extra = ExtraImage.objects.filter(product=product, color=color)
@@ -153,6 +152,11 @@ def variant_product(request, slug, slug_color):
     
     preserved = Case(*[When(pk=pk, then=pos) for pos, pk in enumerate(lista)])
     variant_colors = Variant.objects.filter(id__in=lista).order_by(preserved)
+
+    if request.user.is_authenticated:
+        review_user = Review.objects.filter(
+                    created_by=request.user, product=product).count()
+    else: review_user = 0
 
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -186,6 +190,25 @@ def variant_product(request, slug, slug_color):
 
     RedSocials = RedSocial.objects.all()
 
+    favorite = False
+
+    if(request.user.is_authenticated):
+        if(Account.objects.filter(user = request.user).exists()):
+            if(Account.objects.filter(user = request.user).values('favorites')[0]['favorites']):
+                for i in Account.objects.filter(user = request.user).values('favorites')[0]['favorites'].split(','):
+                    if(i == f'({product.id}/{color.code})'):
+                        favorite = True
+
+
+
+    dic_sizes_precio = []
+    for var in variants:
+        if (var.size in size):
+            dic_sizes_precio.append([var.precio_retail, var.precio, 
+                                     var.precio_retail - var.precio, 
+                                     var.size, 
+                                     round((var.precio_retail - var.precio)/var.precio_retail*100)])
+            
     context = {
         'product': product,
         'products_list': products_list,
@@ -200,6 +223,9 @@ def variant_product(request, slug, slug_color):
         'variant_url': True,
         'images_extra': images_extra,
         'RedSocials': RedSocials,
+        'favorite': favorite,
+        'review_user': review_user,
+        'dic_sizes_precio': dic_sizes_precio
     }
 
     return render(request, 'product/variant.html', context)

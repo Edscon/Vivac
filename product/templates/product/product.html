@@ -107,7 +107,7 @@
             <input id="info_precios" value="{{dic_sizes_precio}}" class="hidden"></input>
             {% for precio in dic_sizes_precio %}
             <div id="precio_producto-{{precio.3}}" class="hidden">
-                {% if product.get_descuento > 0 %}
+                {% if precio.4 > 0 %}
                 <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{precio.0|floatformat:2}} €</p>
                 <p class="-mt-2 text-[30px] text-green-600 font-bold">{{precio.1|floatformat:2}} €</p>
                 <p class="-mt-1 text-xs text-gray-500">Te ahorras {{precio.2|floatformat:2}} €</p>
@@ -349,40 +349,59 @@
             
             
             <div id="div-2" class="texts hidden flex flex-wrap relative"> 
-                <div class="w-[100%] lg:w-[60%] max-h-[360px] overflow-auto">
+                <div class="w-[100%] lg:w-[60%] max-h-[500px] overflow-auto">
                     <input type="text" id="num_reviews" size="20" name="num_reviews" class="hidden" value="{{ product.reviews.all.count }}">
-                    {% for review in product.reviews.all %}
-                    <div id="Review" class="px-4 py-1 bg-gray-100 mb-2 relative text-sm rounded text-gray-700">
-                        <div class="absolute top-5 left-5 h-[50px] w-[50px] bg-white">
-                            <img src="{{product.image}}" class="object-contain">
+                   
+                    <div class="rounded-xl border border-gray-300 mb-6">
+                        <div class="relative">
+                            {% for review in product.reviews.all %}
+                                <div class="relative">
+                                    {% if forloop.counter0 > 0 %}
+                                    <hr class="w-full border-gray-300">
+                                    {% endif %}
+
+                                    <div class="flex w-full relative">
+                                        <div class="w-[20%] min-w-[140px]">
+                                            <a href="{% url 'product' review.product.slug %}" class="w-[140px] rounded-l-xl">
+                                                <img class="hover:shadow-lg rounded-l-xl" src="{{review.product.image}}">
+                                            </a>
+                                        </div>
+                                        
+                                        <div class="w-[80%] text-sm flex flex-wrap relative">
+                                            <div class="w-[100%] md:w-[25%]">
+                                                <div class="item-size">
+                                                    <p class="font-semibold mt-4 mb-1">{{ review.titulo }}</p>
+                                                    {% include 'product/partials/stars_review_siple.html' %}
+                                                </div>
+                                            </div>
+                                            <div class="w-[100%] md:w-[75%] mt-2 md:mt-5 text-sm mb-10 md:mb-7 pr-[50px]">{{ review.content }}</div>
+                                            <p class="text-xs absolute bottom-2 left-0">{{ review.created_by.first_name }} {{review.created_by.last_name}}, el {{ review.created_at|date:"d-m-Y" }}</p>
+
+                                        </div>
+                                        
+                                        {% if review.created_by.email ==  request.user.email %}
+                                        <a onclick="FirstOp()" class="absolute top-5 right-5 hover:text-black hover:scale-105 cursor-pointer">
+                                            <svg class="h-6 w-6" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+                                        </a>
+                                        {% endif %}
+
+                                    </div>
+
+                                </div>
+                            {% endfor %} 
                         </div>
-                        <div class="absolute top-5 left-20">
-                            <p class="font-semibold">{{ review.titulo }}</p>
-                            {% include 'product/partials/stars_review_siple.html' %}
-                        </div>
-                        <div class="mt-20 px-1">{{ review.content }}</div>
-                        
-                        <div class="mt-2 mb-2 px-1 text-xs text-gray-600">
-                            <p>{{ review.created_by }}, el {{ review.created_at|date:"d-m-Y" }}</p>
-                        </div>
-                        {% if review.created_by.username ==  request.user.username %}
-                        <a onclick="FirstOp()" class="absolute top-5 right-5 hover:text-black hover:scale-105 cursor-pointer">
-                                <svg class="h-6 w-6" <svg  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
-                        </a>
-                        {% endif %}
                     </div>
-                    {% endfor %}
                             
-                            {% if product.reviews.all.count == 0 %}
-                            <div class="text-sm relative border flex px-14 w-full py-3 bg-red-100 ">
-                                <div class="absolute left-0 top-0 h-full w-[4px] bg-red-600"></div>
-                                <svg class="h-6 w-6 text-red-600 absolute top-[10px] left-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                                <p class="text-red-600">¡Sé el primero en opinar sobre este producto!</p>
-                            </div>
-                            {% endif %}
-                        </div>   
+                    {% if product.reviews.all.count == 0 %}
+                    <div class="text-sm relative border flex px-14 w-full py-3 bg-red-100 ">
+                        <div class="absolute left-0 top-0 h-full w-[4px] bg-red-600"></div>
+                        <svg class="h-6 w-6 text-red-600 absolute top-[10px] left-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p class="text-red-600">¡Sé el primero en opinar sobre este producto!</p>
+                    </div>
+                    {% endif %}
+                </div>   
                 <div class="lg:w-[40%] pl-10 hidden lg:block">
                     <a onclick="FirstOp()" class="sticky top-[140px] xl:top-5 inline-block relative border rounded flex justify-center w-full py-2 cursor-pointer hover:bg-gray-200 transition duration-500">
                         Escribir Reseña
@@ -455,11 +474,15 @@
             </div>
         </div>
         {% if request.user.is_authenticated %}
-            {% for review in product.reviews.all %}
-                {% if review.created_by.username ==  request.user.username %}
-                    {% include 'product/partials/review.html' %}
-                {% endif %}
-            {% endfor %}
+            {% if review_user %}
+                {% for review in product.reviews.all %}
+                    {% if review.created_by.username ==  request.user.username %}
+                        {% include 'product/partials/review.html' %}
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                {% include 'product/partials/review.html' %}
+            {% endif %}
         {% endif %}
         <div id="zooming" class="absolute border top-12 min-[1218px]:top-0 left-[55%] w-[450px] min-[1218px]:w-[550px] min-[1345px]:w-[600px] bg-green-500 z-[2] aspect-[1/1] hidden">
             
