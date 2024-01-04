@@ -34,8 +34,8 @@
 
 {% include 'product/partials/menu_tallas_mobile.html' %}
 
-<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto overflow-hidden max-[1300px]:-mt-6 -mt-2 mb-5 relative xl:px-0 px-4">
-    
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2 mb-5 relative xl:px-0 px-4">
+
     {% include 'core/partials/banner.html' %}
 
     <div class="my-2 hidden lg:flex text-sm space-x-1 cursor-default">
@@ -336,19 +336,21 @@
                     </div>
                 </div>
                 <div class="hiddem md:block md:w-[1%]"></div>
-                <div class="sticky top-[140px] xl:top-5 w-[100%] md:w-[39%] text-gray-700 text-sm max-[768px]:mt-3 px-4 bg-gray-100 md:h-[130px] lg:h-[100px] sm:mx-6 md:mx-0">
+                <div class="sticky top-[140px] xl:top-5 w-[100%] md:w-[39%] text-gray-700 text-sm max-[768px]:mt-3 px-4 pt-2 bg-gray-100 h-max sm:mx-6 md:mx-0">
                     <p class="text-base font-semibold">¿Porque comprar en Esports Vivac?</p>
-                    <ul class="py-4 list-disc px-6">
-                        <li >30 años de experiencia</li>
-                        <li >Una gran cantidad de marcas y productos</li>
-                        <li >Garantía de devolución 30 días</li>
+                    <ul class="py-4 list-disc px-6 space-y-1">
+                        <li>30 Años de Experiencia</li>
+                        <li>Amplia Variedad de Marcas y Productos</li>
+                        <li>Garantía de Devolución de 30 Días</li>
+                        <li>Atención al Cliente Excepcional</li>
+                        <li>Compromiso con la Calidad</li>
                     </ul>
                 </div>
                 {% endif %}
             </div>
             
             
-            <div id="div-2" class="texts hidden flex flex-wrap relative"> 
+            <div id="div-2" class="texts hidden flex flex-wrap relative h-max"> 
                 <div class="w-[100%] lg:w-[60%] max-h-[500px] overflow-auto">
                     <input type="text" id="num_reviews" size="20" name="num_reviews" class="hidden" value="{{ product.reviews.all.count }}">
                    
@@ -361,8 +363,8 @@
                                     {% endif %}
 
                                     <div class="flex w-full relative">
-                                        <div class="w-[20%] min-w-[140px]">
-                                            <a href="{% url 'product' review.product.slug %}" class="w-[140px] rounded-l-xl">
+                                        <div class="w-[20%] sm:w-[20%] min-w-[80px] sm:min-w-[140px] my-auto">
+                                            <a href="{% url 'product' review.product.slug %}" class="sm:w-[140px] rounded-l-xl">
                                                 <img class="hover:shadow-lg rounded-l-xl" src="{{review.product.image}}">
                                             </a>
                                         </div>
@@ -401,12 +403,14 @@
                         <p class="text-red-600">¡Sé el primero en opinar sobre este producto!</p>
                     </div>
                     {% endif %}
-                </div>   
-                <div class="lg:w-[40%] pl-10 hidden lg:block">
-                    <a onclick="FirstOp()" class="sticky top-[140px] xl:top-5 inline-block relative border rounded flex justify-center w-full py-2 cursor-pointer hover:bg-gray-200 transition duration-500">
+                </div> 
+                <div class="lg:w-[40%] pl-10 hidden lg:block xl:top-5 h-max sticky top-0">
+                    
+                    <a onclick="FirstOp()" class="inline-block relative border rounded flex justify-center w-full py-2 cursor-pointer hover:bg-gray-200 transition duration-500">
                         Escribir Reseña
                         <svg class="h-6 w-6 absolute left-2 scale-90"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
                     </a>
+                    
                 </div>
             </div>
             

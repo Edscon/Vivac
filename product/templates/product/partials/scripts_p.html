@@ -278,7 +278,7 @@
         var selectedGreen = greens[index];
 
         button.addEventListener('click', () =>{
-
+            
             btn_s.forEach(button => button.classList.toggle('text-black', button === selectedButton));
 
             texts.forEach(div => div.classList.toggle('hidden', div !== selectedText));
@@ -300,12 +300,16 @@
             });
         })
         button.addEventListener('mouseover', () =>{ 
-            if(index != current_index){
+            var t = 0
+            window.onscroll = function (e) {  
+                t = 1
+            }
+
+            if(index != current_index && t === 0){
                 selectedGreen.classList.replace('h-[0]', 'h-[2.5px]');
                 selectedGreen.classList.replace('bg-green-600', 'bg-neutral-500');
                 selectedGreen.style.animation = "in-out-menu 100ms 1";
             }
-        
         })
         button.addEventListener('mouseout', () =>{
             if(index != current_index){

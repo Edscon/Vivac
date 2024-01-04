@@ -1,6 +1,6 @@
 from django.urls import path
 
-from cart.views import add_to_cart, cart, checkout, change_cart, hx_menu_cart, update_cart, hx_cart_total, hx_minicart, hx_addtocart
+from cart.views import add_to_cart, cart, checkout, change_cart, hx_menu_cart, update_cart, hx_cart_total, hx_minicart, hx_addtocart, hx_minicart_icon_num
 from order.views import payment_canceled, success, stripe_webhook
 
 
@@ -16,6 +16,7 @@ urlpatterns = [
     path('hx_cart_total/', hx_cart_total, name="hx_cart_total"),
     path('hx_minicart/', hx_minicart, name="hx_minicart"),
     path('hx_addtocart/', hx_addtocart, name="hx_addtocart"),
+    path('hx_minicart_icon_num/', hx_minicart_icon_num, name="hx_minicart_icon_num"),
 
 
     path('success/', success, name='success'),

@@ -136,3 +136,6 @@ def hx_minicart(request):
 
 def hx_addtocart(request):
     return render(request, 'cart/partials/addtocart.html')
+
+def hx_minicart_icon_num(request):
+    return render(request, 'cart/partials/minicart_icon_num.html')

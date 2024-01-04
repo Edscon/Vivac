@@ -63,14 +63,22 @@
     
     </div>
     <div class="relative dropdown-menu-cart-top">
-        <div class="dropdown-menu-cart relative"
-        hx-get="{% url 'hx_minicart' %}"
-        hx-trigger="update-menu-cart from:body"
-        hx-swap="innerHTML"
-        id="dropdown-menu-cart"
-        >
-            {% include 'cart/partials/minicart.html' %}
-            
+        <div class="dropdown-menu-cart">
+            <div class="relative"
+            hx-get="{% url 'hx_minicart_icon_num' %}"
+            hx-trigger="update-menu-cart from:body"
+            hx-swap="innerHTML"
+            >
+                {% include 'cart/partials/minicart_icon_num.html' %}
+                
+            </div>
+            <div class="relative"
+            hx-get="{% url 'hx_minicart' %}"
+            hx-trigger="update-menu-cart from:body"
+            hx-swap="innerHTML"
+            >
+                {% include 'cart/partials/minicart.html' %} 
+            </div>
         </div>
         <div class="menu_right_barra_cart w-[32px] absolute h-[0px] bg-black -bottom-1 m-auto left-0"></div>
 
