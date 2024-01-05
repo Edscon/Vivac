@@ -532,6 +532,32 @@
         }
     }
 
+    let startTime;
+    let time_start = 0;
+    let timeDiff;
+    let time_done = 0;
+
+    htmx.on("htmx:beforeRequest", function(evt) {
+        if(time_start == 0){
+            startTime = performance.now();
+            time_start = 1
+        }
+        // Record the start time before the htmx request
+    });
+
+    htmx.on("htmx:afterSwap", function(evt) {
+        if (evt.target.classList.contains("hx_minicart")) {
+            // Calculate the time difference after the response
+            const endTime = performance.now();
+            timeDiff = endTime - startTime;
+
+            console.log(`Time until response: ${timeDiff} milliseconds`);
+            time_start = 0
+            time_done = 1
+            // Your code to handle the response goes here
+        }
+    });
+
     // Minicart:
 
     async function EnviarCheckOut() {
@@ -542,7 +568,11 @@
             behavior: "smooth",
         });
 
-        await delay(700); // Delay for 0.3 seconds
+        while(time_done == 0){
+            console.log(1);
+            await delay(100);
+        }
+        await delay(timeDiff + 200); // Delay for 0.3 seconds
 
         document.getElementById('minicart').classList.replace("minicart", "minicart-0");
         document.getElementById('minicart_mobile').classList.replace("hidden", "md:hidden");
