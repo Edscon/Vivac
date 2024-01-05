@@ -493,8 +493,24 @@ def shop(request):
 
 
 
+    variants = Variant.objects.filter(product__in=products)
+    original = variants
+    variants = variants.filter(size__contains=['_'])
+
+    for i in products:
+        variants_p = Variant.objects.filter(product=i)
+        colors =  unique(list(variants_p.values('color')),'color')
+        if(colors.count() > 1):
+            t = 0
+            for col in colors:
+                if(t != 0):
+                    first_variant = Variant.objects.filter(product=i, color=col)[0]
+                    variants = variants | Variant.objects.filter(pk = first_variant.id)
+                else: t = 1
+
     context = {
         'products': products,
+        'variants': variants,
         'categories': categories,
         'active_category': active_category,
         'min_max_price': min_max_price,

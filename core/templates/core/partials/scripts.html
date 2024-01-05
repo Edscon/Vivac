@@ -421,21 +421,50 @@
    Sel_ma.forEach(button => {button.addEventListener('click', () => {
             button_event(param5, button.value , 'ma')});});
 
-
     function hover_card(product_id){
         const card_text = document.getElementById(`card-${product_id}-text`);
         const card_h = document.getElementById(`card-${product_id}-h`);
-        card_h.classList.add('md:h-14')
-        card_text.classList.add('md:border-t')
-        card_text.classList.add('md:shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
+        const swiper_prev = document.querySelector(`.mySwiper_shop .swiper-prev-${product_id}`)
+        const swiper_next = document.querySelector(`.mySwiper_shop .swiper-next-${product_id}`)
+
+        const is_swiper = document.getElementById(`variants-${product_id}`);
+
+        if(is_swiper.clientHeight > 0){
+
+            card_h.classList.remove('md:h-0') 
+            card_h.classList.add('md:h-[70px]') 
+            card_h.style.animation = 'in-out-shop 300ms 1';
+    
+            card_text.classList.add('md:border-t')
+            card_text.classList.add('md:shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
+    
+            swiper_prev.classList.remove('hidden')
+            swiper_next.classList.remove('hidden')
+        }
+
 
     }
     function hover_card_leave(product_id){
         const card_text = document.getElementById(`card-${product_id}-text`);
         const card_h = document.getElementById(`card-${product_id}-h`);
-        card_h.classList.remove('md:h-14')
-        card_text.classList.remove('md:border-t')
-        card_text.classList.remove('md:shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
+        const swiper_prev = document.querySelector(`.mySwiper_shop .swiper-prev-${product_id}`)
+        const swiper_next = document.querySelector(`.mySwiper_shop .swiper-next-${product_id}`)
+
+        const is_swiper = document.getElementById(`variants-${product_id}`);
+
+        if(is_swiper.clientHeight > 0){
+
+            card_h.classList.remove('md:h-[70px]')
+            card_h.classList.add('md:h-0')
+            card_h.style.animation = 'out-in-shop 300ms 1';
+    
+            card_text.classList.remove('md:border-t')
+            card_text.classList.remove('md:shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
+    
+            swiper_prev.classList.add('hidden')
+            swiper_next.classList.add('hidden')
+        }
+
     }
 
     /*MENUS SHOP*/
@@ -551,7 +580,6 @@
             const endTime = performance.now();
             timeDiff = endTime - startTime;
 
-            console.log(`Time until response: ${timeDiff} milliseconds`);
             time_start = 0
             time_done = 1
             // Your code to handle the response goes here
@@ -571,15 +599,17 @@
         while(time_done == 0){
             await delay(100);
         }
-        await delay(timeDiff + 200); // Delay for 0.3 seconds
+        await delay(timeDiff + 200); // Delay htmx + 200 ms
 
         document.getElementById('minicart').classList.replace("minicart", "minicart-0");
         document.getElementById('minicart_mobile').classList.replace("hidden", "md:hidden");
+        document.getElementById('añadir_carrito').classList.remove("hidden");
 
         await delay(5000); // Delay for 5 seconds
 
         document.getElementById('minicart').classList.replace("minicart-0", "minicart");
         document.getElementById('minicart_mobile').classList.replace("md:hidden", "hidden");
+        document.getElementById('añadir_carrito').classList.add("hidden");
         
     }
 
@@ -590,6 +620,7 @@
             cancelDelay();
             document.getElementById('minicart').classList.replace("minicart-0", "minicart");
             document.getElementById('minicart_mobile').classList.replace("md:hidden", "hidden");
+            document.getElementById('añadir_carrito').classList.add("hidden");
         }
     }
 
@@ -603,6 +634,7 @@
         await delay(5000);
         document.getElementById('minicart').classList.replace("minicart-0", "minicart");
         document.getElementById('minicart_mobile').classList.replace("md:hidden", "hidden");
+        document.getElementById('añadir_carrito').classList.add("hidden");
     });
 
 

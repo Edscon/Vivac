@@ -1,6 +1,13 @@
 {% load replacement %}
 {% if cart|length > 0 %}
 <div open id="minicart" class="minicart hidden md:block border-dropdown-cart absolute w-[400px] bg-white text-gray-800 text-sm rounded-sm top-[10px] left-[-360px] pt-2"> 
+    <div id="añadir_carrito" class="flex mx-3 space-x-2 mt-1 mb-2 hidden">
+        <div class="my-auto pt-[1px]"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 64 64"
+            style="fill:rgb(52, 150, 52);">
+            <path d="M32,6C17.641,6,6,17.641,6,32c0,14.359,11.641,26,26,26s26-11.641,26-26C58,17.641,46.359,6,32,6z M29.081,42.748	l-10.409-9.253l2.657-2.99l7.591,6.747L44,21l3.414,3.414L29.081,42.748z"></path>
+            </svg></div>
+        <div class="font-semibold">Añadido al carrito</div>
+    </div>
     <div class="max-h-[250px] overflow-auto">
         {% for item in cart %}
         {% if forloop.counter0 > 0 %}

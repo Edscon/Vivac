@@ -1,6 +1,6 @@
 <div class="menu-right flex items-center space-x-4 text-gray-600 mt-5">
     
-    <div class="dropdown-menu relative">
+    <div class="dropdown-menu relative min-w-[36px]">
         {% if request.user.is_authenticated %}
         <a href="{% url 'my_account' %}" title="my_account" class="logouser flex justify-center items-center hover:text-black cursor-pointer z-[3] relative">
             <svg class="h-6 w-6"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  <circle cx="12" cy="7" r="4" /></svg>                            
@@ -35,10 +35,10 @@
         {% endif %}
         <div class="menu_right_barra absolute w-full h-[0px] bg-black -bottom-1"></div>
 
-        <div class="menu_bg absolute w-9 h-9 rounded-full bg-neutral-100 -top-5 -left-[1px] right-0 bottom-0 m-auto z-[0] hidden"></div>
+        <div class="menu_bg absolute w-9 h-9 rounded-full bg-neutral-100 -top-5 left-0 right-0 bottom-0 m-auto z-[0] hidden"></div>
     </div>           
 
-    <div class="relative hidden min-[300px]:block">
+    <div class="relative hidden sm:block">
 
         <a href="{% url 'my_account' %}" title="favorites" class="flex justify-center items-center hover:text-black z-[3] relative">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
