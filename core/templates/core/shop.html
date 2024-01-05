@@ -11,7 +11,7 @@
         font-size: 20px;
         font-weight: bold;
         position: absolute;
-        top: -3px;
+        top: -15px;
         width: 15px;
         color: rgb(83, 83, 83);
     }
@@ -247,8 +247,8 @@
                             <div class="text-[11px] md:px-5 bg-white mx-1 py-[1px]">NEW</div>
                             {% endif %}
                         </div>
-                        <div  id="card-{{product.id}}-h" class="bg-white md:h-0 overflow-hidden mx-14">
-                            <div id="variants-{{product.id}}" class="swiper_shop mySwiper_shop w-full flex space-x-4 text-sm mt-3 bg-white">
+                        <div  id="card-{{product.id}}-h" class="bg-white md:h-0 overflow-hidden mx-[16%] xl:mx-[15%] pl-3 xl:pl-0 pt-0 hidden md:block">
+                            <div id="variants-{{product.id}}" class="swiper_shop mySwiper_shop w-full flex space-x-4 text-sm bg-white">
 
                                 <div class="swiper-wrapper wrapper_shop">
                                     {% for var in variants %}
@@ -322,7 +322,10 @@
 <script>
     
     var swiper_shop = new Swiper(".mySwiper_shop", {
-        slidesPerView: 4,
+        breakpoints: {
+            1280: { slidesPerView: 4},
+        },
+        slidesPerView: 3,
         spaceBetween: 2,
         freeMode: true,
         navigation: {
