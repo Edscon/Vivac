@@ -248,14 +248,15 @@
                             {% endif %}
                         </div>
                         <div  id="card-{{product.id}}-h" class="bg-white md:h-0 overflow-hidden mx-14">
-                            <div id="variants-{{product.id}}" class="swiper_shop mySwiper_shop w-full flex space-x-4 text-sm mt-4 bg-white">
+                            <div id="variants-{{product.id}}" class="swiper_shop mySwiper_shop w-full flex space-x-4 text-sm mt-3 bg-white">
 
                                 <div class="swiper-wrapper wrapper_shop">
                                     {% for var in variants %}
                                         {% if var.product == product %}
                                         
-                                        <a href="{% url 'variant_product' product.slug var.color.slug %}" class="swiper-slide border border-white hover:border-gray-400 sm:w-[50px] rounded-xl">
-                                            <img src="{{var.image}}" class="rounded-xl">
+                                        <a href="{% url 'variant_product' product.slug var.color.slug %}" 
+                                            class="swiper-slide border-b-[2px] border-white hover:border-neutral-600">
+                                            <img src="{{var.image}}" class="">
                                         </a>
                                         
                                         {% endif %}
@@ -341,13 +342,6 @@
         var prevButton = document.querySelectorAll('.swiper-button-prev');
         var nextButton = document.querySelectorAll('.swiper-button-next');
         
-        if (1) {
-            prevButton[0].style.display = 'none';
-            nextButton[0].style.display = 'none';
-        } else {
-            prevButton[0].style.display = 'block';
-            nextButton[0].style.display = 'block';
-        }
     }
     
     
