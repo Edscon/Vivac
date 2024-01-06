@@ -9,15 +9,6 @@
         transform: translate(-50%, -50%);
     }
     
-    .mySwiper_product [class^="swiper-button-"]::after{
-        font-size: 15px;
-        font-weight: bold;
-        position: absolute;
-        top: 50%;
-        width: 15px;
-        z-index: 10;
-        color: rgb(83, 83, 83);
-    }
     .mySwiper_products [class^="swiper-button-"]::after{
         font-size: 20px;
         font-weight: bold;
@@ -433,16 +424,16 @@
             </div>
         </div>
         
-        <div class="w-full flex items-center space-x-4 font-semibold text-gray-600 relative">
-            <a href="{% url 'shop' %}" class="pt-6 pb-3 hover:text-black">Otros Productos de la Tienda</a>
+        <div class="w-full flex items-center space-x-4 font-semibold text-black relative">
+            <a href="{% url 'shop' %}" class="pt-6 pb-3">Otros Productos de la Tienda</a>
         </div>
         <div class="w-full relative">
-            <div class="xl:px-0 overflow-hidden md:mx-10">
+            <div class="xl:px-0 overflow-hidden mx-10">
                 <div class="swiper_products mySwiper_products block text-gray-600">
                     <div class="swiper-wrapper">
                             {% for product in products_list %}
                             <div onclick="window.location=`{% url 'product' product.slug %}`" class="swiper-slide w-1/2 md:w-1/3 pt-5 md:hover:shadow-[1px_1px_8px_rgba(0,0,0,0.1)] transition-shadow duration-200 border-b border-gray-300 relative cursor-pointer">
-                                <img src="{{product.image}}" class="z-10 px-0 md:px-3 w-full mb-[80px] sm:mb-[50px] mt-5 md:mt-0">
+                                <img src="{{product.image}}" class="z-10 px-0 md:px-3 w-full mb-[80px] sm:mb-[50px] mt-0">
                                 <div class="z-[15] text-sm absolute bottom-2 w-full">
                                     <div id="card-{{product.id}}-text" class="w-full transition-shadow duration-200 mt-1">
                                         {% if product.get_descuento > 0 %}
@@ -472,8 +463,8 @@
                             {% endfor %}
                         
                     </div>
-                    <div class="swiper-button-prev hidden md:block"></div>
-                    <div class="swiper-button-next hidden md:block"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
             </div>
         </div>
@@ -501,8 +492,8 @@
 <script>
     var swiper_products = new Swiper(".mySwiper_products", {
         breakpoints: {
-        1024: { slidesPerView: 4},
-        640: { slidesPerView: 3},
+            1024: { slidesPerView: 4},
+            640: { slidesPerView: 3},
         },
         slidesPerView: 2,
         spaceBetween: 20,

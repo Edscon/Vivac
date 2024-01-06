@@ -10,8 +10,8 @@
         transform: translate(-50%, -50%);
     }
     
-    .mySwiper_product [class^="swiper-button-"]::after{
-        font-size: 15px;
+    .mySwiper_favorite [class^="swiper-button-"]::after{
+        font-size: 20px;
         font-weight: bold;
         position: absolute;
         top: 50%;
@@ -82,11 +82,7 @@
         {% endfor %}
     </div>
 
-    <div class="pt-5 xl:px-0 md:flex justify-between">
-        <div class="footer-left mb-0 ">
-            <h2 class="mb-1 uppercase text-lg">Productos</h2>
-        </div>
-    </div>
+    <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold">Productos populares</div>
     
     <div class="w-full relative">
         <div class="xl:px-0 overflow-hidden mx-10">
@@ -131,11 +127,7 @@
     </div>
 
     {% if favorites %}
-    <div class="pt-5 xl:px-0 md:flex justify-between">
-        <div class="footer-left mb-0 ">
-            <h2 class="mb-1 uppercase text-lg">Tus Favoritos</h2>
-        </div>
-    </div>
+    <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold">Tus favoritos</div>
 
     <div class="w-full relative">
         <div class="xl:px-0 overflow-hidden mx-10">
@@ -185,6 +177,20 @@
 {% block scripts %}
 <script>
     var swiper_products = new Swiper(".mySwiper_products", {
+        breakpoints: {
+        1024: { slidesPerView: 4},
+        640: { slidesPerView: 3},
+        },
+        slidesPerView: 2,
+        spaceBetween: 20,
+        freeMode: false,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+
+    var swiper_favorite = new Swiper(".mySwiper_favorite", {
         breakpoints: {
         1024: { slidesPerView: 4},
         640: { slidesPerView: 3},

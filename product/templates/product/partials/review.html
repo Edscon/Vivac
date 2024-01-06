@@ -3,46 +3,76 @@
         {% csrf_token %}
         <div onclick="OutForm()" class="bg-gray-400 opacity-50 fixed w-screen h-screen top-0 left-0"></div>
         
-        <div class="New_reseña fixed top-[50%] left-[50%] h-full w-full md:h-[90%] md:w-[550px] bg-white border opacity-100 text-base text-gray-800 overflow-auto">
+        <div class="New_reseña fixed bg-white border opacity-100 text-base text-gray-800 overflow-auto absolute left-[50%] top-[50%] h-full md:h-max w-full md:w-[550px]">
             <a onclick="OutForm()">
                 <svg class="h-6 w-6 absolute top-5 right-5 cursor-pointer"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
                 </svg> 
             </a>
-            <div class="absolute top-10 left-5 font-semibold"">Opina sobre este producto</div>
-            <div class="absolute top-[70px] left-5 h-[150px] w-[150px] bg-white">
-                {% if variant_url %}
-                    <img src="{{variants_first.image}}" class="object-contain">
-                {% else %}
-                    <img src="{{product.image}}" class="object-contain">
-                {% endif %}
-            </div>
-            <h1 class="absolute top-[140px] left-[175px] text-gray-600">{{product.nombre}}</h1>
-            <p class="hidden md:block absolute top-[250px] left-5 text-gray-600 text-sm">Puntúa y valora el artículo: </p>
+            <div class="mt-20 md:my-8 mx-4 bg-white">
+                <div class="font-semibold"">Opina sobre este producto</div>
 
-            {% include 'product/partials/stars_reviewForm.html' %}
-
-            <div class="error1 absolute top-[290px] left-[50%] mb-6 rounded-xl text-xs text-red-600 flex" id="error1"></div>
-
-            <div class="mt-[310px] text-black px-3">
-                <input name="titulo" type="text" autocomplete="off" class="w-full border rounded py-2 px-2 text-sm focus:border-black" placeholder="Título*" value="{{ review.titulo }}">
-                <div class="error2 absolute mb-6 rounded-xl text-xs text-red-600 flex mt-1" id="error2"></div>
-                <textarea name="content" rows="8" cols="110" style="resize: none;" type="text" class="mt-8 w-full border rounded py-2 px-2 text-sm focus:border-black" placeholder="Descripción*" value="{{ review.content }}">{{ review.content }}</textarea>
-                <div class="error3 absolute mb-6 rounded-xl text-xs text-red-600 flex" id="error3"></div>
-                <div class="text-gray-600 text-xs mt-5 flex relative">
-                    <svg class="h-3 w-3 text-gray-800 absolute top-[2px]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <p class="px-4">Mínimo 10 caracteres</p>
+                <div class="flex">
+                    <div class="mx-auto flex">
+                        <div class="w-[100px]">
+                            {% if variant_url %}
+                                <img src="{{variants_first.image}}" class="object-contain">
+                            {% else %}
+                                <img src="{{product.image}}" class="object-contain">
+                            {% endif %}
+                        </div>
+                        <div class="my-auto mx-2">{{product.nombre}}</div>
+                    </div>
                 </div>
+                <div class="flex w-full">
+                    {% include 'product/partials/stars_reviewForm.html' %}
+                </div>
+                <div class="relative">
+                    <div class="absolute w-full">
+                        <div class="flex w-full">
+                            <div class="error1 mx-auto text-xs text-red-600 flex space-x-1" id="error1"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="text-black mt-5">
+                    <input name="titulo" type="text" autocomplete="off" 
+                        class="w-full border rounded py-2 px-2 text-sm focus:border-black" placeholder="Título*" value="{{ review.titulo }}"
+                    >
+                    <div class="relative">
+                        <div class="absolute w-full">
+                            <div class="flex w-full mt-1">
+                                <div class="error2 text-xs text-red-600 flex space-x-1" id="error2"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <textarea name="content" rows="8" cols="110" style="resize: none;" type="text" 
+                        class="mt-8 w-full border rounded py-2 px-2 text-sm focus:border-black" placeholder="Descripción*" 
+                        value="{{ review.content }}">{{ review.content }}
+                    </textarea>
+
+                    <div class="flex w-full mt-1">
+                        <div class="error3 text-xs text-red-600 flex space-x-1" id="error3"></div>
+                    </div>
+
+                    <div class="text-gray-600 text-xs mt-1 flex space-x-1">
+                        <svg class="h-3 w-3 text-gray-800 my-auto"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p>Mínimo 10 caracteres</p>
+                    </div>
+                </div>
+
             </div>
+
             <hr class="w-full mt-2">
-            <div class="px-10">
-                <button class="inline-block flex justify-center w-full py-2 bg-green-600 hover:bg-green-700 text-white mt-3 rounded" id="FormSubmit">
+            <div class="px-10 mb-6">
+                <button class="inline-block flex justify-center w-full py-2 text-white mt-3 rounded drop-shadow-md bg-green-600 hover:bg-black transition duration-500" id="FormSubmit">
                     Enviar
                 </button>
             </div>
-            <div class="text-gray-600 text-xs mt-4 px-3 ">Campos requeridos</div>
         </div>
     </form>
 </div>
@@ -72,25 +102,27 @@
             error4 = true
         }
 
-        let svg = '<svg class="h-3 w-3 text-red-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>';
-            
+        let svg = ` <svg class="h-3 w-3 text-red-500 my-auto"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+                    </svg>`;
+        
         if (error1){
-            el1.innerHTML = svg + 'Campo requerido';
+            el1.innerHTML = svg + '<div>Campo requerido</div>';
         }else {
             el1.innerHTML = '';
         }
         
         if (error2){
-            el2.innerHTML = svg + 'Campo requerido';
+            el2.innerHTML = svg + '<div>Campo requerido</div>';
         }else {
             el2.innerHTML = '';
         }
 
         let html = ''
         if (error3){
-            html = svg + 'Campo requerido';
+            html = svg + '<div>Campo requerido</div>';
         }if(!error3 && error4){
-            html = svg + 'No cumple el mínimo requerido';
+            html = svg + '<div>No cumple el mínimo requerido</div>';
         }if(html != ''){
             el3.innerHTML = html;
         }else{
