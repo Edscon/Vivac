@@ -5,9 +5,16 @@
 {% block content%}
 {% load replacement %}
 {% load static %}
-<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto xl:px-0 px-4 py-5">
+
+{% include 'core/partials/menu_my_account.html' with page_name="Mis opiniones de productos" %}
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2">
+
+    <div class="block lg:hidden flex cursor-pointer -mt-5 mb-4" onclick="menu_my_account()">
+        <div class="border border-black px-1 py-2">Menu Mi cuenta</div>
+    </div>
+
     <div class="flex">
-        <div class="menu_account w-[25%] text-sm">
+        <div class="menu_account w-[25%] text-sm hidden lg:block my-0 lg:mt-8">
             <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
                 <div class="mr-1 bg-neutral-400"></div>
                 <div class="p-2 w-full">Mi cuenta</div>
@@ -32,9 +39,13 @@
                 <div class="mr-1 bg-neutral-400"></div>
                 <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
             </a>
+            <a class="flex border-b border-neutral-300" href="{% url 'logout' %}">
+                <div class="mr-1 bg-neutral-400"></div>
+                <div class="p-2 w-full">Cerrar Sesión</div>
+            </a>
         </div>
         
-        <div class="w-[75%] pl-8 text-black text-sm relative min-h-[500px]">
+        <div class="w-[100%] lg:w-[75%] lg:pl-8 text-black text-sm my-0 lg:mt-8 relative">
             <div class="mb-5 font-semibold text-lg">Mis Reseñas</div>
 
             {% if request.user.reviews.all %}
@@ -89,6 +100,36 @@
             {% endif %}
 
         </div>
+    </div>
+    <div class="menu_account w-[100%] text-sm lg:hidden block my-0 lg:mt-8">
+        <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
+            <div class="mr-1 bg-neutral-400"></div>
+            <div class="p-2 w-full">Mi cuenta</div>
+        </a>
+        <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
+            <div class="mr-1 bg-neutral-400"></div>
+            <div class="p-2 w-full">Mis pedidos</div>
+        </a>
+        <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
+            <div class="mr-1 bg-neutral-400"></div>
+            <div class="p-2 w-full">Mis datos</div>
+        </a>
+        <a class="flex border-b border-neutral-300" href="{% url 'my_favorites' %}">
+            <div class="mr-1 bg-neutral-400"></div>
+            <div class="p-2 w-full">Mis favoritos</div>
+        </a>
+        <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
+            <div class="w-[3px] bg-green-600"></div>
+            <div class="p-2 w-full">Mis opiniones de productos</div>
+        </a>
+        <a class="flex border-b border-neutral-300">
+            <div class="mr-1 bg-neutral-400"></div>
+            <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
+        </a>
+        <a class="flex border-b border-neutral-300" href="{% url 'logout' %}">
+            <div class="mr-1 bg-neutral-400"></div>
+            <div class="p-2 w-full">Cerrar Sesión</div>
+        </a>
     </div>
 </div>
 

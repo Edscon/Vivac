@@ -127,7 +127,26 @@
             div.classList.remove('visible');
             div.classList.add('invisible');
         }
-   }
+    }
+
+    const div3 = document.querySelector('.menu-my-account');
+    const div4 = document.querySelector('.menu-my-account-l');
+
+    function menu_my_account(){
+
+        if (div3.classList.contains('invisible')){
+            div3.classList.remove('invisible');
+            div3.classList.add('visible');
+
+            div4.style.animation ="sidebar-open 500ms 1"
+
+        }else{
+            div4.style.animation ="sidebar-close 500ms 1"
+            
+            div3.classList.remove('visible');
+            div3.classList.add('invisible');
+        }
+    }
 
    /*MARCAS*/
    var swiper2 = new Swiper(".mySwiper2", {

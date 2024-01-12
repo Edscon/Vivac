@@ -1,0 +1,100 @@
+<div class="menu-my-account invisible fixed z-[99999] top-0 left-0">
+
+    <div class="w-screen h-screen bg-neutral-700 opacity-70 z-0" onclick="menu_my_account()"></div>
+
+    <div class="menu-my-account-l w-screen h-screen absolute flex z-10 top-0">
+
+        <div class="relative w-[80%] bg-white h-screen border-r">
+            <button type="button" title="menu-my-account-logo" class="absolute right-5 top-5" onclick="menu_my_account()">        
+                <svg class="h-6 w-6"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+                </svg>                                
+            </button>
+
+            <div class="mt-14 text-[15px] text-gray-800 overflow-auto h-screen">
+
+                <a class="block px-6 py-3 bg-gray-100 flex" href="{% url 'my_account' %}">
+                    <svg class="h-6 w-6 text-gray-400"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  
+                        <circle cx="12" cy="7" r="4" />
+                    </svg> 
+                    <span class="ml-2">Cuenta</span> 
+                </a>
+                
+                {% if page_name == 'Mi cuenta' %}
+                <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
+                    <div class="w-[3px] bg-green-600"></div>
+                    <div class="p-2 w-full">Mi cuenta</div>
+                </a>
+                {% else %}
+                <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
+                    <div class="mr-1 bg-neutral-400"></div>
+                    <div class="p-2 w-full">Mi cuenta</div>
+                </a>
+                {% endif %}
+
+                {% if page_name == 'Mis pedidos' %}
+                <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
+                    <div class="w-[3px] bg-green-600"></div>
+                    <div class="p-2 w-full">Mis pedidos</div>
+                </a>
+                {% else %}
+                <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
+                    <div class="mr-1 bg-neutral-400"></div>
+                    <div class="p-2 w-full">Mis pedidos</div>
+                </a>
+                {% endif %}
+
+                {% if page_name == 'Mis datos' %}
+                <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
+                    <div class="w-[3px] bg-green-600"></div>
+                    <div class="p-2 w-full">Mis datos</div>
+                </a>
+                {% else %}
+                <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
+                    <div class="mr-1 bg-neutral-400"></div>
+                    <div class="p-2 w-full">Mis datos</div>
+                </a>
+                {% endif %}
+
+                {% if page_name == 'Mis favoritos' %}
+                <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
+                    <div class="w-[3px] bg-green-600"></div>
+                    <div class="p-2 w-full">Mis favoritos</div>
+                </a>
+                {% else %}
+                <a class="flex border-b border-neutral-300" href="{% url 'my_favorites' %}">
+                    <div class="mr-1 bg-neutral-400"></div>
+                    <div class="p-2 w-full">Mis favoritos</div>
+                </a>
+                {% endif %}
+
+                {% if page_name == 'Mis opiniones de productos' %}
+                <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
+                    <div class="w-[3px] bg-green-600"></div>
+                    <div class="p-2 w-full">Mis opiniones de productos</div>
+                </a>
+                {% else %}
+                <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
+                    <div class="mr-1 bg-neutral-400"></div>
+                    <div class="p-2 w-full">Mis opiniones de productos</div>
+                </a>
+                {% endif %}
+
+                <a class="flex border-b border-neutral-300">
+                    <div class="mr-1 bg-neutral-400"></div>
+                    <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
+                </a>
+
+                <a class="flex border-b border-neutral-300 bg-neutral-200" href="{% url 'logout' %}">
+                    <div class="mr-1 bg-neutral-400"></div>
+                    <div class="p-2 w-full">Cerrar sesión</div>
+                </a>
+            </div>
+        </div>
+
+        <div class=" w-[20%] h-screen" onclick="menu_my_account()">
+            
+        </div>
+    </div>
+</div>
