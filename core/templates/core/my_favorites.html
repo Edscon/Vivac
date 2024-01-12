@@ -7,10 +7,10 @@
 {% load static %}
 
 {% include 'core/partials/menu_my_account.html' with page_name="Mis favoritos" %}
-<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2">
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2 px-4 lg:px-0">
 
     <div class="block lg:hidden flex cursor-pointer -mt-5 mb-4" onclick="menu_my_account()">
-        <div class="border border-black px-1 py-2">Menu Mi cuenta</div>
+        <div class="border-[0.5px] border-gray-800 px-1 py-2">Menu Mi cuenta</div>
     </div>
 
     <div class="flex">
@@ -60,66 +60,82 @@
                             <hr class="w-full border-gray-300">
                             {% endif %}
                             <div class="flex w-full">
-                                <a href="{% url 'variant_product' item.product.slug item.color.slug %}" class="w-[140px] rounded-l-xl">
+                                <a href="{% url 'variant_product' item.product.slug item.color.slug %}" class="w-[100px] sm:w-[140px] rounded-l-xl">
                                     <img class="hover:shadow-lg rounded-l-xl" src="{{item.image}}">
                                 </a>
-                            
-                                <div class="w-[50%] pl-2 text-sm my-auto">
-                                    <div class="w-full lg:flex justify-between">
-                                        <div class="flex justify-between relative">
-                                            <div class="item-size">
-                                                <div class="font-semibold">{{item.product.nombre}}</div>
-                                                <div>Talla: {{item.size|replace_1}}</div>
+                                <div class="w-[calc(100%-100px)] sm:w-[calc(100%-140px)] sm:flex sm:justify-between flex-warp">
+                                    <div class="pl-2 text-sm my-auto">
+                                        <div class="w-full lg:flex justify-between">
+                                            <div class="flex justify-between relative">
+                                                <div class="item-size">
+                                                    <div class="font-semibold">{{item.product.nombre}}</div>
+                                                    <div>Talla: {{item.size|replace_1}}</div>
+                                                </div>
+                                                
                                             </div>
-                                            
+                                        </div>
+                                        <div class="flex space-x-0 sm:space-x-2 mt-2 mb-2">
+                                            <a 
+                                                id="añadir_carrito-{{i}}"
+                                                title="Buy_prod"
+                                                 
+                                                class="w-[180px] py-[5px] rounded bg-green-700 text-white hover:bg-black relative transition duration-500 cursor-pointer hidden sm:flex drop-shadow-md"
+                                                hx-get = "{% url 'add_to_cart' item.product.id item.color.code item.size %}"
+                                                hx-target = "#menu-cart-button"
+                                                hx-swap = "innerHTML"
+                                                onclick="EnviarCheckOut()"
+                                                >
+                                                <div class="text-sm flex mx-auto space-x-2">
+                                                    <div class="my-auto">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                                                        </svg> 
+                                                    </div>
+                                                    <div class="my-auto">Añadir al carrito</div>
+                                                </div>
+                                            </a>
+                                            <a class="w-[100px] py-[5px] rounded bg-white relative cursor-pointer border drop-shadow-md hidden md:flex" href="{% url 'variant_product' item.product.slug item.color.slug %}">
+                                                <div class="m-auto">Ver el artículo</div>
+                                            </a>
+                                            <div class="flex justify-between max-[640px]:w-full">
+                                                <form method="post" action="{% url 'update_favorito' item.product.id item.color.code 'quitar' %}"
+                                                    class="my-2 sm:my-0 from_fav-{{forloop.counter0}} px-2 sm:px-0 sm:w-[150px] py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md">
+                                                    {% csrf_token %}
+                                                    <div class="text-sm flex mx-auto space-x-2" onclick='submit_my("{{forloop.counter0}}")'>
+                                                        <div class="my-auto">
+                                                            <svg class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="my-auto hidden sm:block">Quitar el artículo</div>
+                                                        <div class="my-auto sm:hidden block">Quitar</div>
+                                                    </div>
+                                                </form>
+                                                <div class="flex sm:hidden mr-4">
+                                                    <div>
+                                                        {% if item.get_descuento != 0 %}
+                                                        <div class="text-[10px] leading-[10px] text-gray-700 line-through">PVR: {{item.precio_retail| floatformat:2}} €</div>
+                                                        <div class="text-green-600 font-semibold">{{item.precio|floatformat:2}} €</div>
+                                                        <div class="text-[10px] leading-[10px] text-gray-700">Te ahorras {{item.get_descuento| floatformat:2}} €</div>
+                                                        {% else %}
+                                                        <div class="font-semibold">{{item.precio|floatformat:2}} €</div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="flex space-x-2 mt-2">
-                                        <a 
-                                            id="añadir_carrito-{{i}}"
-                                            title="Buy_prod"
-                                             
-                                            class="w-[180px] py-[5px] rounded bg-green-700 text-white hover:bg-black relative transition duration-500 cursor-pointer flex drop-shadow-md"
-                                            hx-get = "{% url 'add_to_cart' item.product.id item.color.code item.size %}"
-                                            hx-target = "#menu-cart-button"
-                                            hx-swap = "innerHTML"
-                                            onclick="EnviarCheckOut()"
-                                            >
-                                            <div class="text-sm flex mx-auto space-x-2">
-                                                <div class="my-auto">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                                                    </svg> 
-                                                </div>
-                                                <div class="my-auto">Añadir al carrito</div>
-                                            </div>
-                                        </a>
-                                        <a class="w-[100px] py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" href="{% url 'variant_product' item.product.slug item.color.slug %}">
-                                            <div class="m-auto">Ver el artículo</div>
-                                        </a>
-                                        
-                                        <form method="post" action="{% url 'update_favorito' item.product.id item.color.code 'quitar' %}"
-                                            class="from_fav-{{forloop.counter0}} w-[150px] py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md">
-                                            {% csrf_token %}
-                                            <div class="text-sm flex mx-auto space-x-2" onclick='submit_my("{{forloop.counter0}}")'>
-                                                <div class="my-auto">
-                                                    <svg class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                                                    </svg>
-                                                </div>
-                                                <div class="my-auto">Quitar el artículo</div>
-                                            </div>
-                                        </form>
+                                    <div class="my-auto text-right text-base mr-4 pb-2 sm:pb-0 ml-2 sm:ml-0 hidden sm:flex justify-between">
+                                        <div>
+                                            {% if item.get_descuento != 0 %}
+                                            <div class="text-[10px] leading-[10px] text-gray-700 line-through">PVR: {{item.precio_retail| floatformat:2}} €</div>
+                                            <div class="text-green-600 font-semibold">{{item.precio|floatformat:2}} €</div>
+                                            <div class="text-[10px] leading-[10px] text-gray-700">Te ahorras {{item.get_descuento| floatformat:2}} €</div>
+                                            {% else %}
+                                            <div class="font-semibold">{{item.precio|floatformat:2}} €</div>
+                                            {% endif %}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="w-[30%] space-y-[1px] my-auto text-right text-base">
-                                    {% if item.get_descuento != 0 %}
-                                    <div class="text-[10px] leading-[10px] text-gray-700 line-through">PVR: {{item.precio_retail| floatformat:2}} €</div>
-                                    <div class="text-green-600 font-semibold">{{item.precio|floatformat:2}} €</div>
-                                    <div class="text-[10px] leading-[10px] text-gray-700">Te ahorras {{item.get_descuento| floatformat:2}} €</div>
-                                    {% else %}
-                                    <div class="font-semibold">{{item.precio|floatformat:2}} €</div>
-                                    {% endif %}
                                 </div>
                             </div>
                         </div>
