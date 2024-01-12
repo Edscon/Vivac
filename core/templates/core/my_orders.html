@@ -9,7 +9,7 @@
 {% include 'core/partials/menu_my_account.html' with page_name="Mis pedidos" %}
 <div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2 px-4 lg:px-0">
 
-    <div class="block lg:hidden flex cursor-pointer -mt-5 mb-4" onclick="menu_my_account()">
+    <div class="block lg:hidden flex cursor-pointer -mt-5 mb-4 text-sm" onclick="menu_my_account()">
         <div class="border-[0.5px] border-gray-800 px-1 py-2">Menu Mi cuenta</div>
     </div>
 
@@ -181,8 +181,7 @@
             {% else %}
             <div class="mb-2 mt-10 font-semibold">Todavía no tienes ningún pedido.</div>
             <div class="mb-4">Empieza a descubrir todos nuestros productos.</div>
-            <a href="{% url 'shop' %}"><button class="w-[30%] py-3 bg-green-700 text-white text-base">Ir a la tienda</button></a>
-            
+            <a href="{% url 'shop' %}"><button class="min-w-[200px] w-[30%] py-3 bg-green-700 text-white text-base">Ir a la tienda</button></a>
             {% endif %}
 
         </div>
