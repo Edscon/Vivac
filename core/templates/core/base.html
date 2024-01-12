@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {% load static %}
-{% load static tailwind_tags %}
 
 <style>
     body {
@@ -15,8 +14,7 @@
         <title>{% block title %}{% endblock %} | Esports Vivac</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
         
-        <!--<script src="https://cdn.tailwindcss.com"></script>-->
-        {% tailwind_css %}
+        <script src="https://cdn.tailwindcss.com"></script>
 
         <script src="https://unpkg.com/htmx.org@1.7.0"></script>
         <script src="https://unpkg.com/htmx.org/dist/ext/multi-swap.js"></script>
