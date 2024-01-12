@@ -7,7 +7,7 @@
 {% load static %}
 
 {% include 'core/partials/menu_my_account.html' with page_name="Mi cuenta" %}
-<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2">
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2 px-4 lg:px-0">
 
     <div class="block lg:hidden flex cursor-pointer -mt-5 mb-4" onclick="menu_my_account()">
         <div class="border border-black px-1 py-2">Menu Mi cuenta</div>
@@ -53,7 +53,7 @@
             {% if request.user.orders.first %}
             <div class="mb-5 mt-10 font-semibold">Tu último pedido</div>
             
-            <div class="rounded-xl border border-gray-300">
+            <div class="rounded-xl border border-gray-300 hidden md:block">
                 <div class="min-h-[80px] p-2 bg-neutral-200 flex text-[12px] font-semibold text-gray-700 rounded-t-xl">
                     <div class="w-[80%] flex justify-between ml-4">
                         <div class="h-full w-[120px]">
@@ -127,13 +127,20 @@
                                 </a> 
                                 <a class="w-full py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" 
                                 href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}">
-                                    <div class="m-auto">Escribir una opinión sobre este producto</div>
+                                    <div class="m-auto hidden xl:block">Escribir una opinión sobre este producto</div>
+                                    <div class="m-auto xl:hidden block">Escribir una opinión</div>
                                 </a> 
                             </div>
                         </div>
                         {% endfor %}
                 </div>
             </div>
+
+            <div class="md:hidden block">
+
+                
+            </div>
+
             {% else %}
             <div class="mb-2 mt-10 font-semibold">Todavía no tienes ningún pedido.</div>
             <div class="mb-4">Empieza a descubrir todos nuestros productos.</div>
