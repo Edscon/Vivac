@@ -11,72 +11,77 @@
                 </svg>                                
             </button>
 
-            <div class="mt-14 text-[15px] text-gray-800 overflow-auto h-screen">
+            <div class="mt-14 text-sm text-gray-800 overflow-auto h-screen">
 
                 <a class="block px-6 py-3 bg-gray-100 flex" href="{% url 'shop' %}">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                     </svg>
-                    <span class="ml-2">Tienda</span> 
+                    <span class="ml-2 my-auto">Tienda</span> 
                 </a>
                 
                 <hr>
-                <a href="{% url 'shop' %}?category=ciclismo" class="block flex justify-between px-6 py-3">
-                    <span>Ciclismo</span>
+                {% for category in categories %}
+                <a href="{% url 'shop' %}?category={{category.slug}}" class="block flex justify-between px-6 py-3">
+                    <span>{{category}}</span>
                     <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
                     </svg> 
                 </a>
                 <hr>
-                <a href="{% url 'shop' %}?category=esqui" class="block flex justify-between px-6 py-3">
-                    <span>Esquí</span>
+                {% endfor %}
+
+                <a class="block px-6 py-3 bg-gray-100 flex" href="{% url 'quienes-somos' %}">
+                    <svg class="h-6 w-6 text-gray-400"  width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  
+                        <path stroke="none" d="M0 0h24v24H0z"/> <polyline points="5 12 3 12 12 3 21 12 19 12" />  
+                        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />  <rect x="10" y="12" width="4" height="4" />
+                    </svg> 
+                    <span class="ml-2 my-auto">Nosotros</span> 
+                </a>
+                <a href="{% url 'alquiler_material' %}" class="block flex justify-between px-6 py-3">
+                    <span>Alquiler Material</span>
                     <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
                     </svg> 
                 </a>
                 <hr>
-                <a href="{% url 'shop' %}?category=outdoor" class="block flex justify-between px-6 py-3">
-                    <span>Outdoor</span>
+                <a href="{% url 'tiendas' %}" class="block flex justify-between px-6 py-3">
+                    <span>Tiendas</span>
                     <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
                     </svg> 
                 </a>
                 <hr>
-                <a href="{% url 'shop' %}?category=running" class="block flex justify-between px-6 py-3">
-                    <span>Running</span>
+                <a href="{% url 'contacto' %}" class="block flex justify-between px-6 py-3">
+                    <span>Contacto</span>
                     <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
                     </svg> 
                 </a>
+                <hr>
                 
-                <hr>
-                <a href="" class="block flex justify-between px-6 py-3">
-                    <span>Marcas</span>
-                    <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
-                    </svg> 
-                </a>
+
 
                 <a class="block px-6 py-3 bg-gray-100 flex" href="{% url 'my_account' %}">
                     <svg class="h-6 w-6 text-gray-400"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  
                         <circle cx="12" cy="7" r="4" />
                     </svg> 
-                    <span class="ml-2">Perfil de Usuario</span> 
+                    <span class="ml-2 my-auto">Perfil de Usuario</span> 
                 </a>
                 
                 {% if request.user.is_authenticated %}
                 <a class="block px-6 py-3">Hola {{user.first_name}},</a>
                 <hr class="block py-1">
-                <a href="{% url 'my_account' %}" class="block px-6 py-3">Mi Cuenta</a>
-                <a href="{% url 'my_orders' %}" class="block px-6 py-3">Mis pedidos</a>
-                <a href="{% url 'my_data' %}" class="block px-6 py-3">Mis datos</a>
-                <a href="{% url 'my_favorites' %}" class="block px-6 py-3">Mis favoritos</a>
-                <a href="{% url 'my_reviews' %}" class="block px-6 py-3">Mis opiniones de productos</a>
-                <a href="{% url 'logout' %}" class="block px-6 py-3">Cerrar Sesión</a>
+                <a href="{% url 'my_account' %}" class="block px-6 py-[8px]">Mi Cuenta</a>
+                <a href="{% url 'my_orders' %}" class="block px-6 py-[8px]">Mis pedidos</a>
+                <a href="{% url 'my_data' %}" class="block px-6 py-[8px]">Mis datos</a>
+                <a href="{% url 'my_favorites' %}" class="block px-6 py-[8px]">Mis favoritos</a>
+                <a href="{% url 'my_reviews' %}" class="block px-6 py-[8px]">Mis opiniones de productos</a>
+                <a href="{% url 'logout' %}" class="block px-6 py-[8px]">Cerrar Sesión</a>
 
                 {% else %}
-                <a href="{% url 'my_account' %}" class="block px-6 py-3">Mi Cuenta</a>
+                <a onclick="menu_login_mobile()" class="block px-6 py-3">Iniciar Sesión</a>
                 {% endif %}
 
                 <div class="py-10"></div>

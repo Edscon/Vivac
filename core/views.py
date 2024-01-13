@@ -560,3 +560,15 @@ def update_favorito(request, id, color, str):
                 Account.objects.create(user=request.user, favorites=f'({id}/{color})')
     
     return JsonResponse({'data': 1})
+
+def tiendas(request):
+
+    return render(request, 'core/partials/tiendas.html')
+
+def contacto(request):
+
+    return render(request, 'core/partials/contacto.html')
+
+def alquiler_material(request):
+
+    return render(request, 'core/partials/alquiler_material.html')

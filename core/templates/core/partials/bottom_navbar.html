@@ -1,12 +1,16 @@
 <div class="hidden min-[1300px]:block shadow-[0_10px_15px_-10px_rgba(0,0,0,0.1)] pt-1">
                 
-    <div class="max-w-screen-xl mx-auto px-6 xl:px-0 flex items-center justify-between">
-        <div class="flex items-center space-x-14 text-sm">
-            <a href="{% url 'shop' %}" class="text-gray-800 hover:text-black hover:underline h-full pt-1 pb-3">Tienda</a>
-            <a href="{% url 'shop' %}?category=ciclismo" class="text-gray-800 hover:text-black hover:underline h-full pt-1 pb-3"> Ciclismo </a>
-            <a href="{% url 'shop' %}?category=esqui" class="text-gray-800 hover:text-black hover:underline h-full pt-1 pb-3"> Esquí </a>
-            <a href="{% url 'shop' %}?category=outdoor" class="text-gray-800 hover:text-black hover:underline h-full pt-1 pb-3"> Outdoor </a>
-            <a href="{% url 'shop' %}?category=running" class="text-gray-800 hover:text-black hover:underline h-full pt-1 pb-3"> Running </a>
+    <div class="max-w-screen-xl mx-auto px-6 xl:px-0 flex items-center justify-between text-gray-800">
+        <div class="flex items-center space-x-1 text-[14.2px]">
+            <a href="{% url 'shop' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[75px]"><div class="mx-auto">Tienda</div></a>
+            {% for category in categories %}
+                <a href="{% url 'shop' %}?category={{ category.slug }}" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex"><div class="mx-auto">{{category}}</div></a>
+            {% endfor %}
+        </div>
+        <div class="flex items-center space-x-0 text-sm font-medium">
+            <a href="{% url 'alquiler_material' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[130px] flex"><div class="mx-auto">Alquiler Material</div></a>
+            <a href="{% url 'tiendas' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[65px] flex"><div class="mx-auto">Tiendas</div></a>
+            <a href="{% url 'contacto' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[65px] text-right"> Contacto </a>
         </div>
     </div>
     
