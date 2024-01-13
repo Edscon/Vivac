@@ -1,10 +1,13 @@
+from django.conf import settings
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q, Case, When
 from django.db.models import Min, Max
+from django.core.mail import send_mail
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
+from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from core.models import Account
@@ -17,7 +20,7 @@ import json
 import pandas as pd
 import math
 
-from .forms import SignUpForm
+from .forms import SignUpForm, ContactForm
 
 
 def login_p(request):
@@ -567,7 +570,36 @@ def tiendas(request):
 
 def contacto(request):
 
-    return render(request, 'core/partials/contacto.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+
+
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            content = form.cleaned_data['content']
+
+            from_email = settings.EMAIL_HOST_USER
+
+            html = render_to_string('core/emails/contactform.html', {'name': name, 'email': email, 'content': content})
+
+            send_mail(
+                f'Consulta de {name}',
+                content,
+                email,
+                [from_email],
+                fail_silently=False,
+                html_message=html,
+            )
+
+
+            return redirect('contacto')
+        
+    else: form = ContactForm()
+    
+
+
+    return render(request, 'core/partials/contacto.html', {'form': form})
 
 def alquiler_material(request):
 

@@ -10,6 +10,14 @@
 
     <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold">Contacto</div>
     
+    <form method="POST" action=".">
+        {% csrf_token %}
+
+        {{form.as_p}}
+
+        <button type="submit">Enviar</button>
+
+    </form>
     
 </div>
 {% endblock %}
