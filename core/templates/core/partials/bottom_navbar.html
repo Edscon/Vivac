@@ -3,9 +3,11 @@
     <div class="max-w-screen-xl mx-auto px-6 xl:px-0 flex items-center justify-between text-gray-800">
         <div class="flex items-center space-x-1 text-[14.2px]">
             <a href="{% url 'shop' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[75px]"><div class="mx-auto">Tienda</div></a>
-            {% for category in categories %}
-                <a href="{% url 'shop' %}?category={{ category.slug }}" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex"><div class="mx-auto">{{category}}</div></a>
-            {% endfor %}
+            <a href="{% url 'shop' %}?category=ciclismo" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex"><div class="mx-auto">Ciclismo</div></a>
+            <a href="{% url 'shop' %}?category=running" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex"><div class="mx-auto">Running</div></a>
+            <a href="{% url 'shop' %}?category=outdoor" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex"><div class="mx-auto">Outdoor</div></a>
+            <a href="{% url 'shop' %}?category=esqui" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex"><div class="mx-auto">Esquí</div></a>
+            
         </div>
         <div class="flex items-center space-x-0 text-sm font-medium">
             <a href="{% url 'alquiler_material' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[130px] flex"><div class="mx-auto">Alquiler Material</div></a>

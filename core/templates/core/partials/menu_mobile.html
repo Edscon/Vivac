@@ -21,15 +21,35 @@
                 </a>
                 
                 <hr>
-                {% for category in categories %}
-                <a href="{% url 'shop' %}?category={{category.slug}}" class="block flex justify-between px-6 py-3">
-                    <span>{{category}}</span>
+
+                <a href="{% url 'shop' %}?category=ciclismo" class="block flex justify-between px-6 py-3">
+                    <span>Ciclismo</span>
                     <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
                     </svg> 
                 </a>
                 <hr>
-                {% endfor %}
+                <a href="{% url 'shop' %}?category=running" class="block flex justify-between px-6 py-3">
+                    <span>Running</span>
+                    <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+                    </svg> 
+                </a>
+                <hr>
+                <a href="{% url 'shop' %}?category=outdoor" class="block flex justify-between px-6 py-3">
+                    <span>Outdoor</span>
+                    <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+                    </svg> 
+                </a>
+                <hr>
+                <a href="{% url 'shop' %}?category=esqui" class="block flex justify-between px-6 py-3">
+                    <span>Esquí</span>
+                    <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+                    </svg> 
+                </a>
+                <hr>
 
                 <a class="block px-6 py-3 bg-gray-100 flex" href="{% url 'quienes-somos' %}">
                     <svg class="h-6 w-6 text-gray-400"  width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  
