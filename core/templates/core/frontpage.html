@@ -86,7 +86,7 @@
     
     <div class="w-full relative">
         <div class="xl:px-0 overflow-hidden mx-10">
-            <div class="swiper_products mySwiper_products block text-gray-600">
+            <div class="swiper_products mySwiper_products block text-black">
                 <div class="swiper-wrapper">
                         {% for product in products %}
                         <div onclick="window.location=`{% url 'product' product.slug %}`" class="swiper-slide w-1/2 md:w-1/3 pt-5 md:hover:shadow-[1px_1px_8px_rgba(0,0,0,0.1)] transition-shadow duration-200 border-b border-gray-300 relative cursor-pointer">
@@ -131,7 +131,7 @@
 
     <div class="w-full relative">
         <div class="xl:px-0 overflow-hidden mx-10">
-            <div class="swiper_favorite mySwiper_favorite block text-gray-600">
+            <div class="swiper_favorite mySwiper_favorite block text-black">
                 <div class="swiper-wrapper">
                         {% for variant in favorites %}
                         <div onclick="window.location=`{% url 'variant_product' variant.product.slug variant.color.slug %}`" class="swiper-slide w-1/2 md:w-1/3 pt-5 md:hover:shadow-[1px_1px_8px_rgba(0,0,0,0.1)] transition-shadow duration-200 border-b border-gray-300 relative cursor-pointer">
