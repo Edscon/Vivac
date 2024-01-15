@@ -11,8 +11,3 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields =['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
-
-class ContactForm(forms.Form):
-    name = forms.CharField(max_length=255)
-    email = forms.EmailField( required=True)
-    content = forms.CharField(widget=forms.Textarea)

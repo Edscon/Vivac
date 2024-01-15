@@ -6,24 +6,240 @@
 
 {% load static %}
 
-<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto xl:px-0 px-4 py-5">
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2">
 
-    <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold">Contacto</div>
+    <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold px-4 lg:px-0">Contáctenos</div>
     
-    <form method="POST" action=".">
-        {% csrf_token %}
-
-        {{form.as_p}}
-
-        <button type="submit">Enviar</button>
-
-    </form>
+    
+    <div class="xl:flex">
+        <div class="w-[100%] xl:w-[50%]">
+            <div class="min-h-[360px] h-[95%] w-[100%] xl:w-[95%] my-8 z-[0]" id="map"></div>
+        </div>
+        <div class="Inputs text-black w-[100%] xl:w-[50%] space-y-6 data_edit_form px-4 lg:px-0">
+            <div class="font-semibold">Formulario de Contacto</div>
+            <div>
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Nombre*</div>
+                    <input id="name" name="name" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
+                    placeholder="Nombre*" value="{{request.user.first_name}}">
+                </div>
+            </div>
+            <div>
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Email*</div>
+                    <input id="email_sc" name="email_" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
+                    placeholder="Correo electrónico*" value="{{request.user.email}}">
+                </div>
+            </div>
+            <div>
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Contenido*</div>
+                    <textarea name="content" rows="8" cols="110" style="resize: none;" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
+                    placeholder="Contenido*" value="{{ review.content }}"></textarea>
+                </div>
+            </div>
+            
+            <div class="text-gray-600 text-xs mt-6 flex relative space-x-2">
+                <svg class="h-3 w-3 text-gray-800  my-auto"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <p class="my-auto">Mínimo 10 caracteres</p>
+            </div>
+            <hr class="w-full mt-2">
+            <div class="md:w-[40%]">
+                <button onclick="send_mail()" class="inline-block flex justify-center w-full py-3 bg-green-700 text-white mt-3 rounded hover:bg-black transition duration-300" id="FormSubmit">
+                    Enviar
+                </button>
+            </div>
+        </div>
+    </div>
     
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
+
+    var map = L.map('map').setView([42.3125, 2.365], 14);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+
+    var marker = L.marker([42.31248526493598, 2.365035402205081]).addTo(map);
+    var marker2 = L.marker([42.307715727810674, 2.3626548985493163]).addTo(map);
+
+    marker.bindPopup("<b>Esports Vivac</b><br>C/ Sant Roc, 16")
+    marker2.bindPopup("<b>Esports Vivac</b><br>Camí del Mur, 1")
+
+    
+
+    const Data_Edit_Form = document.querySelectorAll('.data_edit_form input');
+    Data_Edit_Form.forEach(input => {
+        let focus = {}
+        input.addEventListener('focus', () => {
+            focus[input.name] = 1
+            input.parentElement.children[0].classList.remove('text-neutral-600')
+            input.parentElement.children[0].classList.add('text-black')
+        });
+        input.addEventListener('focusout', () => {
+            focus[input.name] = 0
+            input.parentElement.children[0].classList.add('text-neutral-600')
+            input.parentElement.children[0].classList.remove('text-black')
+        });
+        input.addEventListener('mouseover', () => {
+            input.parentElement.children[0].classList.remove('text-neutral-600')
+            input.parentElement.children[0].classList.add('text-black')
+        });
+        input.addEventListener('mouseout', () => {     
+            if (focus[input.name] === undefined || focus[input.name] == 0) {
+                input.parentElement.children[0].classList.add('text-neutral-600')
+                input.parentElement.children[0].classList.remove('text-black')
+            }
+        });
+    });
+
+    
+    const Input_All = document.querySelectorAll('.Inputs input');
+    const Text_Area = document.querySelector('textarea[name=content]');
+
+    Input_All.forEach(input => {
+        input.addEventListener('focus', () => {
+            
+        });
+        input.addEventListener('blur', () => {
+            prove_input(input)
+        });
+        input.addEventListener('keyup', (event)=> {
+            prove_input(input);
+        }); 
+        input.addEventListener('onchange', (event)=> {
+            prove_input(input);
+        }); 
+    });
+    Text_Area.addEventListener('blur', () => {
+        prove_input(Text_Area)
+    });
+    Text_Area.addEventListener('keyup', (event)=> {
+        prove_input(Text_Area);
+    }); 
+    Text_Area.addEventListener('onchange', (event)=> {
+        prove_input(Text_Area);
+    }); 
+
+    function prove_input(i){
+
+        msg = "Campo requerido."
+        prove = true
+
+        switch (i.name) {
+            case 'email_':
+                if (!/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(i.value)) {
+                    msg = "Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio.com."
+                }else{prove = false}
+                break;
+            case 'content':
+                if(i.value.length < 10){
+                    msg = "Mínimo 10 caracteres."
+                }else{prove = false}
+                break;
+            default:
+                if(i.value == ''){
+                    prove = true
+                }else{prove = false}
+        }
+        if(prove){
+            addChild_red(i)
+        }else{
+            removeChild_red(i)
+        }
+        
+        return prove
+    }
+    
+    function valid_form(){
+        
+        var check = true;
+        
+        Input_All.forEach(input => {
+            if(prove_input(input)){
+                check = false;
+            }
+        })
+
+        if(prove_input(Text_Area)){
+            check = false;
+        }
+        
+        return check;
+    }
+    
+    
+    function send_mail(){
+        
+        if(valid_form()) {
+            data = {
+                'csrf_token': '{{ csrf_token }}',
+                'name': document.querySelector('input[name=name]').value,
+                'email': document.querySelector('input[name=email_]').value,
+                'content': document.querySelector('textarea[name=content]').value,
+            }
+            
+            fetch('.', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' 
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(data),
+            }).then(response => response.json())
+            .then(json =>{
+                location.reload();
+            })
+            .catch(function(error) {
+                console.log('Errors', error)
+            })
+        }
+    }
+
+    function insertAfter(referenceNode, newNode) {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+    }
+    
+    function removeChild_red(element){
+        if (element.classList.contains("placeholder-red-500")) {
+            element.classList.add("placeholder-gray-500", "hover:placeholder-black");
+            element.classList.remove("placeholder-red-500");
+    
+            element.parentElement.classList.add("border-gray-400", "hover:border-black");
+            element.parentElement.classList.remove("border-red-500");
+    
+            const childNodesLength = element.parentElement.parentElement.childNodes.length;
+            if (childNodesLength === 3 || childNodesLength === 5) {
+                element.parentElement.parentElement.removeChild(element.parentElement.parentElement.childNodes[2]);
+            }
+        }
+    }
+    function addChild_red(element){
+        element.classList.remove("placeholder-gray-500", "hover:placeholder-black");
+        element.classList.add("placeholder-red-500");
+    
+        element.parentElement.classList.remove("border-gray-400", "hover:border-black");
+        element.parentElement.classList.add("border-red-500");
+    
+        const childNodesLength = element.parentElement.parentElement.childNodes.length;
+        if (childNodesLength === 3 || childNodesLength === 5) {
+            element.parentElement.parentElement.removeChild(element.parentElement.parentElement.childNodes[2]);
+        }
+    
+        const error = document.createElement("div");
+        error.classList.add("text-red-500", "text-xs");
+        error.innerHTML = msg;
+        insertAfter(element.parentElement, error);
+    }
     
 </script>   
 {% endblock %}

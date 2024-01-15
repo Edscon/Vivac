@@ -20,7 +20,7 @@ import json
 import pandas as pd
 import math
 
-from .forms import SignUpForm, ContactForm
+from .forms import SignUpForm
 
 
 def login_p(request):
@@ -571,35 +571,31 @@ def tiendas(request):
 def contacto(request):
 
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        data = json.loads(request.body)
+        print(data)
+        name = data['name']
+        email = data['email']
+        content = data['content'] 
 
-
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            content = form.cleaned_data['content']
-
-            from_email = settings.EMAIL_HOST_USER
-
-            html = render_to_string('core/emails/contactform.html', {'name': name, 'email': email, 'content': content})
-
-            send_mail(
-                f'Consulta de {name}',
-                content,
-                email,
-                [from_email],
-                fail_silently=False,
-                html_message=html,
-            )
-
-
-            return redirect('contacto')
+        from_email = settings.EMAIL_HOST_USER
         
-    else: form = ContactForm()
+        html = render_to_string('core/emails/contactform.html', {'name': name, 'email': email, 'content': content})
+
+        send_mail(
+            f'Consulta de {name}',
+            content,
+            email,
+            [from_email],
+            fail_silently=False,
+            html_message=html,
+        )
+
+
+        return JsonResponse({'data': data})
     
 
 
-    return render(request, 'core/partials/contacto.html', {'form': form})
+    return render(request, 'core/partials/contacto.html')
 
 def alquiler_material(request):
 
