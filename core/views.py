@@ -4,13 +4,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q, Case, When
 from django.db.models import Min, Max
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMessage, EmailMultiAlternatives
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
 from core.models import Account
+from order.models import Order
 from product.models import Product, Category, Marca, Variant, Color, Review
 from functools import reduce
 from itertools import chain
@@ -589,8 +590,6 @@ def contacto(request):
             fail_silently=False,
             html_message=html,
         )
-
-
         return JsonResponse({'data': data})
     
 
@@ -600,3 +599,37 @@ def contacto(request):
 def alquiler_material(request):
 
     return render(request, 'core/partials/alquiler_material.html')
+
+def my_devoluciones(request, id, order_id):
+
+    variant = Variant.objects.get(pk=id)
+    order = Order.objects.get(pk=order_id)
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        content = request.POST.get('content')
+        files = request.FILES
+        data = 1
+        
+        from_email = settings.EMAIL_HOST_USER
+        
+        html = render_to_string('core/emails/devolucionesform.html', {'name': name, 'email': email, 'content': content})
+
+        email_message = EmailMultiAlternatives(
+            f'Consulta devolución de {name}',
+            content,
+            email,
+            [from_email],
+            reply_to=[email],  # Optional: Set the reply-to address
+        )
+        for key in request.FILES.keys():
+            uploaded_file = request.FILES[key]
+            email_message.attach(uploaded_file.name, uploaded_file.read(), uploaded_file.content_type)
+
+        email_message.attach_alternative(html, "text/html")
+        email_message.send(fail_silently=False)
+
+        return JsonResponse({'data': data})
+
+    return render(request, 'core/partials/my_devoluciones.html', {'variant': variant, 'order': order})

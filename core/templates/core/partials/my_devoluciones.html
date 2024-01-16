@@ -1,0 +1,328 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block content%}
+
+{% load static %}
+{% load replacement %}
+
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2 px-4 lg:px-0">
+
+    <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold px-4 lg:px-0">Devoluciones</div>
+    
+    
+    <div class="xl:flex">
+        <div class="w-[100%] xl:w-[50%]">
+            <div class="h-[95%] w-[100%] xl:w-[95%] xl:my-8 z-[0]" id="map">
+
+                <div class="rounded-xl border border-gray-300 mb-6">
+                    <div class=" w-full">
+                        {% for item in order.items.all %}
+                            {% if variant.id == item.variant.id %}
+                                {% if forloop.counter0 > 0 %}
+                                <hr class="w-full border-gray-300">
+                                {% endif %}
+                                <div class="flex w-full">
+                                    <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-[100px] rounded-xl">
+                                        <img class="hover:shadow-lg rounded-xl" src="{{item.variant.image}}">
+                                    </a>
+                                    <div class="w-[calc(100%-100px)] flex justify-between">
+                                        <div class="pl-2 text-sm my-auto w-[80%]">
+                                            <div class="w-full lg:flex justify-between">
+                                                <div class="flex justify-between relative">
+                                                    <div class="item-size">
+                                                        <div class="font-semibold">{{item.variant.product.nombre}}</div>
+                                                        <div>Talla: {{item.size|replace_1}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-auto"><input checked type="checkbox" id="devolucion" name="devolución" class="rounded-full" value="{{variant.id}}"></div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {% if order.items.all.count > 1 %}
+                    <div>Tienes problemas con otro producto del pedido?</div>
+
+
+                    <div class=" rounded-xl border border-gray-300 mb-6 mt-4">
+                        <div class="min-h-[50px] p-2 bg-neutral-200 flex text-[12px] font-semibold text-gray-700 rounded-t-xl justify-between">
+                            <div class="flex justify-between ml-4">
+                                <div class="h-full">
+                                    <div>PEDIDO REALIZADO</div>
+                                    <div class="text-sm font-normal">{{order.created_at |date1}}</div>
+                                </div>
+                            </div>
+                            <div class="mr-4 h-full">
+                                <div class="mr-4 flex flex-wrap h-full space-x-1">
+                                    <div>PEDIDO ID.º</div>
+                                    <div>{{order.id}}</div>
+                                </div>
+                                <div class="text-sm font-normal text-blue-500">Ver detalles</div>
+                            </div>
+                        </div>
+                        <hr class="border-gray-300">
+                        <div class="h-full w-full">
+                            {% for item in order.items.all %}
+                                {% if variant.id != item.variant.id %}
+                                    {% if forloop.counter0 > 0 %}
+                                    <hr class="w-full border-gray-300">
+                                    {% endif %}
+                                    <div class="flex w-full">
+                                        <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-[100px] rounded-b-xl">
+                                            <img class="hover:shadow-lg rounded-b-xl" src="{{item.variant.image}}">
+                                        </a>
+                                        <div class="w-[calc(100%-100px)] flex justify-between">
+                                            <div class="pl-2 text-sm my-auto w-[80%]">
+                                                <div class="w-full lg:flex justify-between">
+                                                    <div class="flex justify-between relative">
+                                                        <div class="item-size">
+                                                            <div class="font-semibold"><span class="text-green-700">{{item.quantity}}x</span>&nbsp{{item.variant.product.nombre}}</div>
+                                                            <div>Talla: {{item.size|replace_1}}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="m-auto"><input type="checkbox" id="devolucion" name="devolución" class="rounded-3xl" value="{{item.variant.id}}"></div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                
+                <input type="file" id="file_input" name="file_input" accept="image/png, image/jpeg" multiple />
+
+            </div>
+        </div>
+        <div class="Inputs text-black w-[100%] xl:w-[50%] space-y-6 data_edit_form mt-4 xl:mt-0">
+            <div class="font-semibold">Formulario de Devolución</div>
+            <div>
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Nombre*</div>
+                    <input id="name" name="name" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
+                    placeholder="Nombre*" value="{{request.user.first_name}} {{request.user.last_name}}">
+                </div>
+            </div>
+            <div>
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Email*</div>
+                    <input id="email_sc" name="email_" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
+                    placeholder="Correo electrónico*" value="{{request.user.email}}">
+                </div>
+            </div>
+            <div>
+                <div class="border border-gray-400 hover:border-black relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Contenido*</div>
+                    <textarea name="content" rows="8" cols="110" style="resize: none;" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
+                    placeholder="Motivo de la devolución*" value=""></textarea>
+                </div>
+            </div>
+            
+            <div class="text-gray-600 text-xs mt-6 flex relative space-x-2">
+                <svg class="h-3 w-3 text-gray-800  my-auto"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <p class="my-auto">Mínimo 10 caracteres</p>
+            </div>
+            <hr class="w-full mt-2">
+            <div class="md:w-[40%]">
+                <button onclick="send_mail()" class="inline-block flex justify-center w-full py-3 bg-green-700 text-white mt-3 rounded hover:bg-black transition duration-300" id="FormSubmit">
+                    Enviar
+                </button>
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>  
+
+    const Data_Edit_Form = document.querySelectorAll('.data_edit_form input');
+    Data_Edit_Form.forEach(input => {
+        let focus = {}
+        input.addEventListener('focus', () => {
+            focus[input.name] = 1
+            input.parentElement.children[0].classList.remove('text-neutral-600')
+            input.parentElement.children[0].classList.add('text-black')
+        });
+        input.addEventListener('focusout', () => {
+            focus[input.name] = 0
+            input.parentElement.children[0].classList.add('text-neutral-600')
+            input.parentElement.children[0].classList.remove('text-black')
+        });
+        input.addEventListener('mouseover', () => {
+            input.parentElement.children[0].classList.remove('text-neutral-600')
+            input.parentElement.children[0].classList.add('text-black')
+        });
+        input.addEventListener('mouseout', () => {     
+            if (focus[input.name] === undefined || focus[input.name] == 0) {
+                input.parentElement.children[0].classList.add('text-neutral-600')
+                input.parentElement.children[0].classList.remove('text-black')
+            }
+        });
+    });
+
+    
+    const Input_All = document.querySelectorAll('.Inputs input');
+    const Text_Area = document.querySelector('textarea[name=content]');
+
+    Input_All.forEach(input => {
+        input.addEventListener('focus', () => {
+            
+        });
+        input.addEventListener('blur', () => {
+            prove_input(input)
+        });
+        input.addEventListener('keyup', (event)=> {
+            prove_input(input);
+        }); 
+        input.addEventListener('onchange', (event)=> {
+            prove_input(input);
+        }); 
+    });
+    Text_Area.addEventListener('blur', () => {
+        prove_input(Text_Area)
+    });
+    Text_Area.addEventListener('keyup', (event)=> {
+        prove_input(Text_Area);
+    }); 
+    Text_Area.addEventListener('onchange', (event)=> {
+        prove_input(Text_Area);
+    }); 
+
+    function prove_input(i){
+
+        msg = "Campo requerido."
+        prove = true
+
+        switch (i.name) {
+            case 'email_':
+                if (!/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(i.value)) {
+                    msg = "Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio.com."
+                }else{prove = false}
+                break;
+            case 'content':
+                if(i.value.length < 10){
+                    msg = "Mínimo 10 caracteres."
+                }else{prove = false}
+                break;
+            default:
+                if(i.value == ''){
+                    prove = true
+                }else{prove = false}
+        }
+        if(prove){
+            addChild_red(i)
+        }else{
+            removeChild_red(i)
+        }
+        
+        return prove
+    }
+    
+    function valid_form(){
+        
+        var check = true;
+        
+        Input_All.forEach(input => {
+            if(prove_input(input)){
+                check = false;
+            }
+        })
+
+        if(prove_input(Text_Area)){
+            check = false;
+        }
+        
+        return check;
+    }
+    
+    
+    function send_mail(){
+
+        
+        if(valid_form()) {
+            const files = [];
+            const arr = document.querySelectorAll('input[type="file"]')
+            
+            arr.forEach(input => {
+                for (let i = 0; i < input.files['length']; i++) {
+                    files.push(input.files[i]);
+                }
+            })
+
+            const fd = new FormData();
+            files.forEach((file, i) => {
+                fd.append('file'+ i, file)
+            })
+            
+            fd.append('csrf_token', '{{ csrf_token }}');
+            fd.append('name', document.querySelector('input[name=name]').value);
+            fd.append('email', document.querySelector('input[name=email_]').value);
+            fd.append('content', document.querySelector('textarea[name=content]').value);
+
+            
+            fetch(window.location.href, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}' 
+                },
+                credentials: 'same-origin',
+                body: fd,
+            }).then(response => response.json())
+            .then(json =>{
+               location.reload();
+            })
+            .catch(function(error) {
+                console.log('Errors', error)
+            })
+        }
+    }
+
+    function insertAfter(referenceNode, newNode) {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+    }
+    
+    function removeChild_red(element){
+        if (element.classList.contains("placeholder-red-500")) {
+            element.classList.add("placeholder-gray-500", "hover:placeholder-black");
+            element.classList.remove("placeholder-red-500");
+    
+            element.parentElement.classList.add("border-gray-400", "hover:border-black");
+            element.parentElement.classList.remove("border-red-500");
+    
+            const childNodesLength = element.parentElement.parentElement.childNodes.length;
+            if (childNodesLength === 3 || childNodesLength === 5) {
+                element.parentElement.parentElement.removeChild(element.parentElement.parentElement.childNodes[2]);
+            }
+        }
+    }
+    function addChild_red(element){
+        element.classList.remove("placeholder-gray-500", "hover:placeholder-black");
+        element.classList.add("placeholder-red-500");
+    
+        element.parentElement.classList.remove("border-gray-400", "hover:border-black");
+        element.parentElement.classList.add("border-red-500");
+    
+        const childNodesLength = element.parentElement.parentElement.childNodes.length;
+        if (childNodesLength === 3 || childNodesLength === 5) {
+            element.parentElement.parentElement.removeChild(element.parentElement.parentElement.childNodes[2]);
+        }
+    
+        const error = document.createElement("div");
+        error.classList.add("text-red-500", "text-xs");
+        error.innerHTML = msg;
+        insertAfter(element.parentElement, error);
+    }
+    
+</script>   
+{% endblock %}

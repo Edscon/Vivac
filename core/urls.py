@@ -2,7 +2,7 @@ from django.contrib.auth import views
 from django.urls import path
 
 
-from core.views import frontpage, shop, signup, my_account, my_orders, my_data, my_favorites, my_reviews, my_review, edit_my_account, create_user_, update_account, check_cart, quienes_somos, update_favorito, login_p, tiendas, contacto, alquiler_material
+from core.views import frontpage, shop, signup, my_account, my_orders, my_data, my_favorites, my_reviews, my_review, edit_my_account, create_user_, update_account, check_cart, quienes_somos, update_favorito, login_p, tiendas, contacto, alquiler_material, my_devoluciones
 from product.views import product, marca, marcas, variant_product
 
 
@@ -21,6 +21,7 @@ urlpatterns = [
     path('my_account/reviews/', my_reviews, name="my_reviews"),
     path('my_account/review/<int:id>', my_review, name="my_review"),
     path('my_account/edit/', edit_my_account, name="edit_my_account"),
+    path('my_account/devoluciones/<int:id>/<int:order_id>', my_devoluciones, name="my_devoluciones"),
 
     path('shop/', shop, name='shop'),
     path('shop/<slug:slug>', product, name='product'),

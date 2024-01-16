@@ -124,9 +124,9 @@
                             </div>
                             <div class="w-[30%] space-y-2 my-auto">
                                 <a class="w-full py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" 
-                                href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}">
+                                href="{% url 'my_devoluciones' item.variant.id order.id %}">
                                     <div class="m-auto">Devolver o reemplazar productos</div>
-                                </a> 
+                                </a>  
                                 <a class="w-full py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" 
                                 href="{% url 'my_review' item.variant.product.id %}">
                                     <div class="m-auto hidden xl:block">Escribir una opinión sobre este producto</div>
