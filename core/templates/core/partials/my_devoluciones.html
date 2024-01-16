@@ -99,39 +99,42 @@
 
             </div>
         </div>
-        <div class="Inputs text-black w-[100%] xl:w-[50%] space-y-6 data_edit_form mt-4 xl:mt-0">
+        <div class="text-black w-[100%] xl:w-[50%] space-y-6 data_edit_form mt-4 xl:mt-0">
             <div class="font-semibold">Formulario de Devolución</div>
-            <div>
-                <div class="border border-gray-400 hover:border-black relative">
-                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Nombre*</div>
-                    <input id="name" name="name" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
-                    placeholder="Nombre*" value="{{request.user.first_name}} {{request.user.last_name}}">
+            <div class="Inputs space-y-6">
+                <div>
+                    <div class="border border-gray-400 hover:border-black relative">
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Nombre*</div>
+                        <input id="name" name="name" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
+                        placeholder="Nombre*" value="{{request.user.first_name}} {{request.user.last_name}}">
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div class="border border-gray-400 hover:border-black relative">
-                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Email*</div>
-                    <input id="email_sc" name="email_" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
-                    placeholder="Correo electrónico*" value="{{request.user.email}}">
+                <div>
+                    <div class="border border-gray-400 hover:border-black relative">
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Email*</div>
+                        <input id="email_sc" name="email_" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
+                        placeholder="Correo electrónico*" value="{{request.user.email}}">
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div class="border border-gray-400 hover:border-black relative">
-                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Contenido*</div>
-                    <textarea name="content" rows="8" cols="110" style="resize: none;" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
-                    placeholder="Motivo de la devolución*" value=""></textarea>
+                <div>
+                    <div class="border border-gray-400 hover:border-black relative">
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Contenido*</div>
+                        <textarea name="content" rows="8" cols="110" style="resize: none;" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
+                        placeholder="Motivo de la devolución*" value=""></textarea>
+                    </div>
+    
+                    <div class="text-gray-600 text-xs flex relative space-x-2">
+                        <svg class="h-3 w-3 text-gray-800  my-auto"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p class="my-auto">Mínimo 10 caracteres</p>
+                    </div>
                 </div>
             </div>
             
-            <div class="text-gray-600 text-xs mt-6 flex relative space-x-2">
-                <svg class="h-3 w-3 text-gray-800  my-auto"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <p class="my-auto">Mínimo 10 caracteres</p>
-            </div>
             <div class="mt-2">
-                <input class="hidden" type="file" id="file_input" name="file_input" multiple  accept=".png, .jpg, .jpeg"/>
-                <label class="border border-gray-400 py-2 px-2 rounded-lg" for="file_input">Añadir archivos</label>
+                <input class="hidden" type="file" id="file_input" name="file_input" multiple />
+                <label class="border border-gray-400 hover:border-black py-2 px-2 rounded-lg" for="file_input">Añadir archivos</label>
             </div>
             <hr class="w-full mt-2">
             <div class="md:w-[40%]">
@@ -169,6 +172,31 @@
             if (focus[input.name] === undefined || focus[input.name] == 0) {
                 input.parentElement.children[0].classList.add('text-neutral-600')
                 input.parentElement.children[0].classList.remove('text-black')
+            }
+        });
+    });
+
+    const Area = document.querySelectorAll('textarea[name=content]');
+    Area.forEach(textarea => {
+        let focus = {}
+        textarea.addEventListener('focus', () => {
+            focus[textarea.name] = 1
+            textarea.parentElement.children[0].classList.remove('text-neutral-600')
+            textarea.parentElement.children[0].classList.add('text-black')
+        });
+        textarea.addEventListener('focusout', () => {
+            focus[textarea.name] = 0
+            textarea.parentElement.children[0].classList.add('text-neutral-600')
+            textarea.parentElement.children[0].classList.remove('text-black')
+        });
+        textarea.addEventListener('mouseover', () => {
+            textarea.parentElement.children[0].classList.remove('text-neutral-600')
+            textarea.parentElement.children[0].classList.add('text-black')
+        });
+        textarea.addEventListener('mouseout', () => {     
+            if (focus[textarea.name] === undefined || focus[textarea.name] == 0) {
+                textarea.parentElement.children[0].classList.add('text-neutral-600')
+                textarea.parentElement.children[0].classList.remove('text-black')
             }
         });
     });

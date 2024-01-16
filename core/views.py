@@ -609,12 +609,12 @@ def my_devoluciones(request, id, order_id):
         name = request.POST.get('name')
         email = request.POST.get('email')
         content = request.POST.get('content')
-        files = request.FILES
-        data = 1
         
         from_email = settings.EMAIL_HOST_USER
+
+        variants = []
         
-        html = render_to_string('core/emails/devolucionesform.html', {'name': name, 'email': email, 'content': content})
+        html = render_to_string('core/emails/devolucionesform.html', {'name': name, 'email': email, 'content': content, 'variants': variants})
 
         email_message = EmailMultiAlternatives(
             f'Consulta devolució de {name}',
@@ -630,6 +630,6 @@ def my_devoluciones(request, id, order_id):
         email_message.attach_alternative(html, "text/html")
         email_message.send(fail_silently=False)
 
-        return JsonResponse({'data': data})
+        return JsonResponse({'data': 1})
 
     return render(request, 'core/partials/my_devoluciones.html', {'variant': variant, 'order': order})
