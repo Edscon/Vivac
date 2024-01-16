@@ -617,7 +617,7 @@ def my_devoluciones(request, id, order_id):
         html = render_to_string('core/emails/devolucionesform.html', {'name': name, 'email': email, 'content': content})
 
         email_message = EmailMultiAlternatives(
-            f'Consulta devolución de {name}',
+            f'Consulta devolució de {name}',
             content,
             email,
             [from_email],
