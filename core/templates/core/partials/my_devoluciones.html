@@ -96,9 +96,6 @@
                         </div>
                     </div>
                 {% endif %}
-                
-                <input class="hidden" type="file" id="file_input" name="file_input" multiple />
-                <label for="file_input">Añadir archivos</label>
 
             </div>
         </div>
@@ -131,6 +128,10 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
                 <p class="my-auto">Mínimo 10 caracteres</p>
+            </div>
+            <div class="mt-2">
+                <input class="hidden" type="file" id="file_input" name="file_input" multiple  accept=".png, .jpg, .jpeg"/>
+                <label class="border border-gray-400 py-2 px-2 rounded-lg" for="file_input">Añadir archivos</label>
             </div>
             <hr class="w-full mt-2">
             <div class="md:w-[40%]">
