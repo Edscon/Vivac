@@ -7,6 +7,26 @@
 {% load static %}
 {% load replacement %}
 
+<style>
+    .rueda {
+        border: 4px solid rgb(255, 255, 255);
+        border-radius: 50%;
+        border-left-color: transparent;
+        width: 30px;
+        height: 30px;
+        animation: giro 1s linear infinite;
+    }
+    @keyframes giro {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
 <div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2 px-4 lg:px-0">
 
     <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold px-4 lg:px-0">Devoluciones</div>
@@ -133,13 +153,18 @@
             </div>
             
             <div class="mt-2">
-                <input class="hidden" type="file" id="file_input" name="file_input" multiple />
+                <input class="hidden" type="file" id="file_input" name="file_input" multiple onchange="displayImages()"/>
                 <label class="border border-gray-400 hover:border-black py-2 px-2 rounded-lg" for="file_input">Añadir archivos</label>
+                <div id="image_preview" class="mt-4 flex flex-wrap space-x-2"></div>
             </div>
             <hr class="w-full mt-2">
             <div class="md:w-[40%]">
-                <button onclick="send_mail()" class="inline-block flex justify-center w-full py-3 bg-green-700 text-white mt-3 rounded hover:bg-black transition duration-300" id="FormSubmit">
+                <button onclick="send_mail()" class="relative inline-block flex justify-center w-full py-3 bg-green-700 text-white mt-3 rounded hover:bg-black transition duration-300" id="FormSubmit">
                     Enviar
+                    <div id="rueda" class="hidden rounded absolute top-0 w-full h-full grid place-content-center">
+                        <div class="absolute top-0 w-full h-full bg-green-700 opacity-100"></div>
+                        <div class="rueda"></div>
+                    </div>
                 </button>
             </div>
         </div>
@@ -275,32 +300,101 @@
         
         return check;
     }
-    
+
+    const filesArray = [];
+    const imagePreview = document.getElementById('image_preview');
+    var fileInput = document.getElementById('file_input');
+
+    function displayImages() {
+
+        imagePreview.innerHTML = '';
+        // Añadir nuevos archivos al array sin borrar los antiguos
+        
+        for (const file of fileInput.files) {
+            // Verificar si el archivo ya está en el array por su nombre
+            const fileExists = filesArray.some(existingFile => existingFile.name === file.name);
+
+            // Si no existe, agregarlo al array y mostrar miniatura según el tipo de archivo
+            if (!fileExists) {
+                filesArray.push(file);
+            }
+        }
+
+        // Mostrar cada imagen seleccionada como miniatura
+        filesArray.forEach(displayThumbnail);
+    }
+
+    function displayThumbnail(file) {
+        const thumbnailContainer = document.createElement('div');
+        thumbnailContainer.classList.add('thumbnail-container','relative');
+
+        const thumbnail = document.createElement('img');
+        thumbnail.src = file.type.startsWith('image/') ? URL.createObjectURL(file) : getIcon(file.type);
+        thumbnail.classList.add('mb-4');
+        thumbnail.classList.add('h-[80px]', 'z-[1]');
+        thumbnailContainer.appendChild(thumbnail);
+
+        const deleteIcon = createDeleteIcon(file);
+        thumbnailContainer.appendChild(deleteIcon);
+
+        imagePreview.appendChild(thumbnailContainer);
+    }
+
+    function getIcon(fileType) {
+        // Lógica para obtener el icono según el tipo de archivo (puedes personalizar esta parte)
+        if (fileType.startsWith('video/')) {
+            return 'path/to/video-icon.png';
+        } else if (fileType === 'application/pdf') {
+            return "{% static 'img/pdf.png' %}";
+        } else {
+            // Puedes manejar otros tipos de archivos aquí
+            return 'path/to/default-icon.png';
+        }
+    }
+
+    function createDeleteIcon(file) {
+        const deleteIcon = document.createElement('div');
+        deleteIcon.classList.add('absolute', 'top-1', 'right-1', 'z-[10]', 'cursor-pointer');
+        deleteIcon.innerHTML = `<svg class="h-4 w-4 text-red-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                                </svg>`;
+
+        // Attach a click event to the delete icon
+        deleteIcon.addEventListener('click', () => deleteImage(file));
+
+        return deleteIcon;
+    }
+
+    function deleteImage(file) {
+        // Remove the file from the array
+        const index = filesArray.findIndex(existingFile => existingFile.name === file.name);
+        if (index !== -1) {
+            filesArray.splice(index, 1);
+
+            // Find the corresponding thumbnail container and remove it
+            const thumbnailContainers = document.querySelectorAll('.thumbnail-container');
+            thumbnailContainers[index].remove();
+        }
+    }
+
+
     
     function send_mail(){
 
         
         if(valid_form()) {
-            const files = [];
-            const arr = document.querySelectorAll('input[type="file"]')
-            
-            arr.forEach(input => {
-                for (let i = 0; i < input.files['length']; i++) {
-                    files.push(input.files[i]);
-                }
-            })
-
             const fd = new FormData();
-            files.forEach((file, i) => {
-                fd.append('file'+ i, file)
-            })
+            filesArray.forEach((file, i) => {
+                fd.append('file' + i, file);
+            });
             
             fd.append('csrf_token', '{{ csrf_token }}');
             fd.append('name', document.querySelector('input[name=name]').value);
             fd.append('email', document.querySelector('input[name=email_]').value);
             fd.append('content', document.querySelector('textarea[name=content]').value);
 
-            
+            document.getElementById('rueda').classList.remove('hidden');
+
             fetch(window.location.href, {
                 method: 'POST',
                 headers: {
