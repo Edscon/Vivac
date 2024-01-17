@@ -5,8 +5,11 @@
 <p><b>Missatge: </b>{{content}}</p>
 
 <p><b>Productes: </b></p>
-<div>
+<ul>
     {% for var in variants%}
-        <p>{{var.product.nombre}} <b>{{var.size}}</b></p>
+        <li>
+            <p>{{var.product.nombre}} // <b>Talla: {{var.size}}</b></p>
+            <a href="{{ url }}/shop/{{var.product.slug}}/{{var.color.slug}}">{{ url }}/shop/{{var.product.slug}}/{{var.color.slug}}</a>
+        </li>
     {% endfor %}
-</div>
+</ul>
