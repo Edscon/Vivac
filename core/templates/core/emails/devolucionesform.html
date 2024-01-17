@@ -1,6 +1,12 @@
-<h2>Missatge de devolució.(Web) </h2>
+<h2>Missatge d'incidència o devolució.(Web) </h2>
 
 <p><b>Nom: </b>{{name}}</p>
 <p><b>Email: </b>{{email}}</p>
 <p><b>Missatge: </b>{{content}}</p>
 
+<p><b>Productes: </b></p>
+<div>
+    {% for var in variants%}
+        <p>{{var.product.nombre}} <b>{{var.size}}</b></p>
+    {% endfor %}
+</div>

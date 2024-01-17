@@ -29,7 +29,7 @@
 
 <div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2 px-4 lg:px-0">
 
-    <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold px-4 lg:px-0">Devoluciones</div>
+    <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold px-4 lg:px-0">Incidencias o Devoluciones</div>
     
     
     <div class="xl:flex">
@@ -120,7 +120,7 @@
             </div>
         </div>
         <div class="text-black w-[100%] xl:w-[50%] space-y-6 data_edit_form mt-4 xl:mt-0">
-            <div class="font-semibold">Formulario de Devolución</div>
+            <div class="font-semibold">Formulario de incidencias o devoluciones</div>
             <div class="Inputs space-y-6">
                 <div>
                     <div class="border border-gray-400 hover:border-black relative">
@@ -140,7 +140,7 @@
                     <div class="border border-gray-400 hover:border-black relative">
                         <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Contenido*</div>
                         <textarea name="content" rows="8" cols="110" style="resize: none;" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
-                        placeholder="Motivo de la devolución*" value=""></textarea>
+                        placeholder="Motivo de la incidencia o devolución*" value=""></textarea>
                     </div>
     
                     <div class="text-gray-600 text-xs flex relative space-x-2">
@@ -154,7 +154,13 @@
             
             <div class="mt-2">
                 <input class="hidden" type="file" id="file_input" name="file_input" multiple onchange="displayImages()"/>
-                <label class="border border-gray-400 hover:border-black py-2 px-2 rounded-lg" for="file_input">Añadir archivos</label>
+                <label class="border border-gray-400 hover:border-black py-2 px-2 rounded-lg flex w-[160px] space-x-2" for="file_input">
+                    <svg class="h-5 w-5 text-black my-auto"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  
+                        <path d="M7 18a4.6 4.4 0 0 1 0 -9h0a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1" />  <polyline points="9 15 12 12 15 15" />  <line x1="12" y1="12" x2="12" y2="21" />
+                    </svg>
+                    <div class="my-auto">Añadir archivos</div>
+                    
+                </label>
                 <div id="image_preview" class="mt-4 flex flex-wrap space-x-2"></div>
             </div>
             <hr class="w-full mt-2">
@@ -380,7 +386,7 @@
 
     
     function send_mail(){
-
+        
         
         if(valid_form()) {
             const fd = new FormData();
@@ -388,10 +394,15 @@
                 fd.append('file' + i, file);
             });
             
+            const lista_variants = Array.from(document.querySelectorAll('input[name=devolución]:checked'))
+                        .map(checkbox => checkbox.value)
+                        .join(',');
+            
             fd.append('csrf_token', '{{ csrf_token }}');
             fd.append('name', document.querySelector('input[name=name]').value);
             fd.append('email', document.querySelector('input[name=email_]').value);
             fd.append('content', document.querySelector('textarea[name=content]').value);
+            fd.append('variants', lista_variants);
 
             document.getElementById('rueda').classList.remove('hidden');
 
