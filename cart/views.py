@@ -25,7 +25,7 @@ def add_to_cart(request, product_id, color, size):
 
 #No considerar los fines de semana
 def date_by_adding_business_days(from_date, add_days):
-    if from_date.weekday() >= 5:
+    if from_date.hour >= 13:
         add_days += 1
     business_days_to_add = add_days
     current_date = from_date
@@ -38,7 +38,7 @@ def date_by_adding_business_days(from_date, add_days):
     return current_date
 
 def cart(request):
-    time = date_by_adding_business_days(date.today(), 1)
+    time = date_by_adding_business_days(datetime.now(), 1)
     return render(request, 'cart/cart.html',{'time': time})
 
 
@@ -83,7 +83,7 @@ def update_cart(request, product_id, color, size, action):
     else:
         item = None
 
-    time = date_by_adding_business_days(date.today(), 1)
+    time = date_by_adding_business_days(datetime.now(), 1)
     
     response = render(request, 'cart/partials/cart_item.html', {'item': item, 'time': time})
 

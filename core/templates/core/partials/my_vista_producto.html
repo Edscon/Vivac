@@ -1,0 +1,215 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Mis pedidos{% endblock %}
+
+{% block content%}
+{% load replacement %}
+{% load static %}
+
+{% include 'core/partials/menu_my_account.html' with page_name="Mis pedidos" %}
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2 px-4 lg:px-0">
+
+    <div class="block lg:hidden flex cursor-pointer -mt-5 mb-4 text-sm" onclick="menu_my_account()">
+        <div class="border-[0.5px] border-gray-800 px-1 py-1">
+            <svg class="h-6 w-6 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="flex">
+        <div class="menu_account w-[25%] text-sm hidden lg:block my-0 lg:mt-8">
+            <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
+                <div class="mr-1 bg-neutral-400"></div>
+                <div class="p-2 w-full">Mi cuenta</div>
+            </a>
+            <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
+                <div class="w-[3px] bg-green-600"></div>
+                <div class="p-2 w-full">Mis pedidos</div>
+            </a>
+            <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
+                <div class="mr-1 bg-neutral-400"></div>
+                <div class="p-2 w-full">Mis datos</div>
+            </a>
+            <a class="flex border-b border-neutral-300" href="{% url 'my_favorites' %}">
+                <div class="mr-1 bg-neutral-400"></div>
+                <div class="p-2 w-full">Mis favoritos</div>
+            </a>
+            <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
+                <div class="mr-1 bg-neutral-400" ></div>
+                <div class="p-2 w-full">Mis opiniones de productos</div>
+            </a>
+            <a class="flex border-b border-neutral-300">
+                <div class="mr-1 bg-neutral-400" ></div>
+                <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
+            </a>
+            <a class="flex border-b border-neutral-300" href="{% url 'logout' %}">
+                <div class="mr-1 bg-neutral-400"></div>
+                <div class="p-2 w-full">Cerrar Sesión</div>
+            </a>
+        </div>
+        
+        <div class="w-[100%] lg:w-[75%] lg:pl-8 text-black text-sm my-0 lg:mt-8">
+            <div class="mb-2 font-semibold text-lg">Detalles del pedido</div>
+            {% if request.user == order.user %}
+                <div class="border border-gray-300 rounded-xl mb-2 py-4 px-8">
+                    <div class="flex space-x-4 mb-2">
+                        <div>Comprado el {{order.created_at|date1}}</div>
+                        <div>|</div> 
+                        <div>PEDIDO ID.º {{order.id}}</div> 
+                    </div>
+                    <div class="flex justify-between">
+                        <div class="">
+                            <div class="font-semibold">Información de usuario</div>
+                            <div>{{order.user.first_name}} {{order.user.last_name}}</div>
+                            <div>{{order.user.email}}</div>
+                        </div>
+                        <div class="">
+                            <div class="font-semibold">Dirección de envío</div>
+                            <div>{{order.address}}, {{order.city}}, {{order.zipcode}}</div>
+                            <div>{{order.provincia}}</div>
+                        </div>
+                        <div class="w-[25%]">
+                            <div class="font-semibold">Resumen del pedido</div>
+                            <div class="flex justify-between">
+                                <div>Subtotal:</div>
+                                <div class="text-right">{{order.paid_amount|resta:order.envio|floatformat:2}}€</div>
+                            </div>
+                            <div class="flex justify-between">
+                                <div>Envio:</div>
+                                <div class="text-right">{{order.envio|floatformat:2}}€</div>
+                            </div>
+                            <div class="flex justify-between font-semibold">
+                                <div>Importe total:</div>
+                                <div class="text-right">{{order.paid_amount|floatformat:2}}€</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                
+                
+                <div class="rounded-xl border border-gray-300 mb-6">
+                    <div class="py-5 p-2 bg-neutral-200 flex font-semibold text-black rounded-t-xl">
+                        <div class="flex ml-4 space-x-2">
+                            {% if now|date1 < time|date1 %}
+                            <div>En envío </div>
+                            {% else %}
+                            <div>Entregado el </div>
+                            {% endif %}
+        
+                            <div>{{time|date1}}</div>
+                        </div>
+                    </div>
+                    <hr class="border-white lg:border-gray-300">
+                    <div class="">
+                            {% for item in order.items.all %}
+                                {% if forloop.counter0 > 0 %}
+                                <hr class="w-full border-gray-300">
+                                {% endif %}
+                            <div class="flex w-full">
+                                <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-[140px] rounded-b-xl">
+                                    <img class="hover:shadow-lg rounded-b-xl" src="{{item.variant.image}}">
+                                </a>
+                            
+                                <div class="w-[50%] pl-2 text-sm my-auto">
+                                    <div class="w-full lg:flex justify-between">
+                                        <div class="flex justify-between relative">
+                                            <div class="item-size">
+                                                <div class="font-semibold"><span class="text-green-700">{{item.quantity}}x</span>&nbsp{{item.variant.product.nombre}}</div>
+                                                <div>Talla: {{item.size|replace_1}}</div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="flex space-x-2 mt-2">
+                                        <a 
+                                            id="añadir_carrito-{{i}}"
+                                            title="Buy_prod"
+                                             
+                                            class="w-[180px] py-[5px] rounded bg-green-700 text-white hover:bg-black relative transition duration-500 cursor-pointer flex drop-shadow-md"
+                                            hx-get = "{% url 'add_to_cart' item.variant.product.id item.variant.color.code item.size %}"
+                                            hx-target = "#menu-cart-button"
+                                            hx-swap = "innerHTML"
+                                            onclick="EnviarCheckOut()"
+                                            >
+                                            <div class="text-sm flex mx-auto space-x-2">
+                                                <div class="my-auto">
+                                                    <svg class="h-4 w-4 text-white"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="my-auto">Comprar de nuevo</div>
+                                            </div>
+                                        </a>
+                                        <a class="w-[100px] py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}">
+                                            <div class="m-auto">Ver tu artículo</div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="w-[30%] space-y-2 my-auto">
+                                    <a class="w-full py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" 
+                                    href="{% url 'my_devoluciones' item.variant.id order.id %}">
+                                        <div class="m-auto">Devolver o reemplazar productos</div>
+                                    </a>  
+                                    <a class="w-full py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" 
+                                    href="{% url 'my_review' item.variant.product.id %}">
+                                        <div class="m-auto hidden xl:block">Escribir una opinión sobre este producto</div>
+                                        <div class="m-auto xl:hidden block">Escribir una opinión</div>
+                                    </a> 
+                                </div>
+                            </div>
+                            {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="text-sm relative border flex px-14 w-full py-3 bg-red-100 mt-4">
+                    <div class="absolute left-0 top-0 h-full w-[4px] bg-red-600"></div>
+                    <svg class="h-5 w-5 text-red-600 absolute top-[13px] left-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <div class="text-red-600 flex flex-wrap space-x-1">
+                        <p>No tienes permiso para ver esta orden.</p>
+                        
+                        <div class="flex flex-wrap space-x-4">
+                            <a href="/" class="text-red-500 hover:text-red-700 underline">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            
+        </div>
+    </div>
+    <div class="menu_account w-[100%] text-sm lg:hidden block my-0 mt-8">
+        <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
+            <div class="mr-1 bg-neutral-400"></div>
+            <div class="p-2 w-full">Mi cuenta</div>
+        </a>
+        <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
+            <div class="w-[3px] bg-green-600"></div>
+            <div class="p-2 w-full">Mis pedidos</div>
+        </a>
+        <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
+            <div class="mr-1 bg-neutral-400"></div>
+            <div class="p-2 w-full">Mis datos</div>
+        </a>
+        <a class="flex border-b border-neutral-300" href="{% url 'my_favorites' %}">
+            <div class="mr-1 bg-neutral-400"></div>
+            <div class="p-2 w-full">Mis favoritos</div>
+        </a>
+        <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
+            <div class="mr-1 bg-neutral-400" ></div>
+            <div class="p-2 w-full">Mis opiniones de productos</div>
+        </a>
+        <a class="flex border-b border-neutral-300">
+            <div class="mr-1 bg-neutral-400" ></div>
+            <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
+        </a>
+        <a class="flex border-b border-neutral-300" href="{% url 'logout' %}">
+            <div class="mr-1 bg-neutral-400"></div>
+            <div class="p-2 w-full">Cerrar Sesión</div>
+        </a>
+    </div>
+</div>
+{% endblock %}

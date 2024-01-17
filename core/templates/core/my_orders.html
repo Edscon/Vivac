@@ -73,7 +73,11 @@
                     </div>
                     <div class="w-[50%] text-right mr-4">
                         <div>PEDIDO ID.º {{order.id}}</div>
-                        <div class="text-sm font-normal text-blue-500">Ver los detalles del pedido | Factura </div>
+                        <div class="text-sm font-normal text-blue-500">
+                            <a href="{% url 'my_vista_producto' order.id %}">Ver los detalles del pedido</a>
+                             | 
+                            <a href="#">Factura </a>
+                        </div>
                     </div>
                 </div>
                 <hr class="border-white lg:border-gray-300">

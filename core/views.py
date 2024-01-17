@@ -16,7 +16,7 @@ from product.models import Product, Category, Marca, Variant, Color, Review
 from functools import reduce
 from itertools import chain
 from cart.cart import Cart
-
+from cart.views import date_by_adding_business_days
 import json
 import pandas as pd
 import math
@@ -641,3 +641,12 @@ def my_devoluciones(request, id, order_id):
         return JsonResponse({'data': 1})
 
     return render(request, 'core/partials/my_devoluciones.html', {'variant': variant, 'order': order, 'name_user': name_user})
+
+from datetime import datetime
+def my_vista_producto(request, order_id):
+
+    order = Order.objects.get(pk=order_id)
+
+    time = date_by_adding_business_days(order.created_at, 1)
+    print(order.created_at, time)
+    return render(request, 'core/partials/my_vista_producto.html', {'order': order, 'time': time, 'now': datetime.now()})
