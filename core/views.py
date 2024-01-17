@@ -604,7 +604,10 @@ def my_devoluciones(request, id, order_id):
 
     variant = Variant.objects.get(pk=id)
     order = Order.objects.get(pk=order_id)
-
+    if request.user.is_authenticated:
+        name_user = f'{request.user.first_name} {request.user.last_name}'
+    else: name_user = ''
+    
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -632,4 +635,4 @@ def my_devoluciones(request, id, order_id):
 
         return JsonResponse({'data': 1})
 
-    return render(request, 'core/partials/my_devoluciones.html', {'variant': variant, 'order': order})
+    return render(request, 'core/partials/my_devoluciones.html', {'variant': variant, 'order': order, 'name_user': name_user})
