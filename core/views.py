@@ -600,7 +600,6 @@ def alquiler_material(request):
 
     return render(request, 'core/partials/alquiler_material.html')
 
-from django.contrib.sites.models import Site
 def my_devoluciones(request, id, order_id):
 
     variant = Variant.objects.get(pk=id)
@@ -620,7 +619,7 @@ def my_devoluciones(request, id, order_id):
         variants_list = variants_list.split(',')
         
         variants = Variant.objects.filter(id__in=variants_list)
-        current_site = Site.objects.get_current()
+        current_site = 'https://edscon.pythonanywhere.com'
         
         html = render_to_string('core/emails/devolucionesform.html', {'name': name, 'email': email, 'content': content, 'variants': variants, 'order': order, 'url': current_site})
         
