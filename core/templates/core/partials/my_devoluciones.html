@@ -343,12 +343,12 @@
     function getIcon(fileType) {
         // Lógica para obtener el icono según el tipo de archivo (puedes personalizar esta parte)
         if (fileType.startsWith('video/')) {
-            return 'path/to/video-icon.png';
+            return "{% static 'img/video.png' %}";
         } else if (fileType === 'application/pdf') {
             return "{% static 'img/pdf.png' %}";
         } else {
             // Puedes manejar otros tipos de archivos aquí
-            return 'path/to/default-icon.png';
+            return "{% static 'img/default_icon.png' %}";
         }
     }
 
