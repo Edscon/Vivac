@@ -620,7 +620,7 @@ def my_devoluciones(request, id, order_id):
         
         variants = Variant.objects.filter(id__in=variants_list)
         
-        html = render_to_string('core/emails/devolucionesform.html', {'name': name, 'email': email, 'content': content, 'variants': variants})
+        html = render_to_string('core/emails/devolucionesform.html', {'name': name, 'email': email, 'content': content, 'variants': variants, 'order': order})
         
         email_message = EmailMultiAlternatives(
             f'Consulta incidència o devolució de {name}',
