@@ -55,10 +55,10 @@
                     {% csrf_token %}
                     <div class="New_reseña px-3">
                         <div class="flex">
-                            <a href="{% url 'product' review.product.slug %}" class="w-[140px] rounded-b-xl flex">
-                                <img class="hover:shadow-lg rounded-b-xl" src="{{review.product.image}}">
+                            <a href="{% url 'product' product.slug %}" class="w-[140px] rounded-b-xl flex">
+                                <img class="hover:shadow-lg rounded-b-xl" src="{{product.image}}">
                             </a>
-                            <h1 class="my-auto mx-2">{{review.product.nombre}}</h1> 
+                            <h1 class="my-auto mx-2">{{product.nombre}}</h1> 
                         </div>
                         <div class="flex mb-5">
                             <p class="text-gray-600 text-sm mt-1 hidden sm:block">Puntúa y valora el artículo: </p>

@@ -75,7 +75,9 @@
                     </div>
                     <div class="w-[50%] text-right mr-4">
                         <div>PEDIDO ID.º {{request.user.orders.first.id}}</div>
-                        <div class="text-sm font-normal text-blue-500">Ver los detalles del pedido | Factura </div>
+                        <div class="text-sm font-normal text-blue-500">
+                            <a href="{% url 'my_vista_producto' order.id %}">Ver los detalles del pedido</a>
+                        </div>
                     </div>
                 </div>
                 <hr class="border-white lg:border-gray-300">
@@ -127,7 +129,7 @@
                             <div class="w-[30%] space-y-2 my-auto">
                                 <a class="w-full py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" 
                                 href="{% url 'my_devoluciones' item.variant.id request.user.orders.first.id %}">
-                                    <div class="m-auto">Devolver o reemplazar productos</div>
+                                    <div class="m-auto">Devolución o incidencia</div>
                                 </a> 
                                 <a class="w-full py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" 
                                 href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}">
@@ -153,7 +155,9 @@
                             <div>PEDIDO ID.º</div>
                             <div>{{order.id}}</div>
                         </div>
-                        <div class="text-sm font-normal text-blue-500">Ver detalles</div>
+                        <div class="text-sm font-normal text-blue-500">
+                            <a href="{% url 'my_vista_producto' order.id %}">Ver detalles</a>
+                        </div>
                     </div>
                 </div>
                 <hr class="border-white lg:border-gray-300">

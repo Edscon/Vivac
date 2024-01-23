@@ -239,8 +239,9 @@ def my_review(request, id):
 
     product = get_object_or_404(Product, id=id)
     
-    review = Review.objects.filter(product=product, created_by=request.user)[0]
-    print(review)
+    if Review.objects.filter(product=product, created_by=request.user).exists():
+        review = Review.objects.filter(product=product, created_by=request.user)[0]
+    else: review = 0
 
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -276,6 +277,7 @@ def my_review(request, id):
     
     context = {
         'review': review,
+        'product': product,
     }
     return render(request, 'core/partials/my_review.html', context)
 

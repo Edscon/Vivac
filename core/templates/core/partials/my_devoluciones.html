@@ -83,7 +83,9 @@
                                     <div>PEDIDO ID.º</div>
                                     <div>{{order.id}}</div>
                                 </div>
-                                <div class="text-sm font-normal text-blue-500">Ver detalles</div>
+                                <div class="text-sm font-normal text-blue-500">
+                                    <a href="{% url 'my_vista_producto' order.id %}">Ver detalles</a>
+                                </div>
                             </div>
                         </div>
                         <hr class="border-gray-300">
