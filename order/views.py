@@ -75,7 +75,7 @@ def create_payment(request):
                 'enabled': True,
             },
             payment_method_configuration= 'pmc_1NwVxXEUHJ3WTNbaat4t1kxi',
-            metadata={"envio": data['data']['envio'], },
+            metadata={"envio": str(data['data']['envio']) + "|@|" + str(data['data']['detalles_envio'])},
         )
         
         return JsonResponse({'clientSecret': intent['client_secret'], 'customer_id': intent['customer'] })
@@ -119,7 +119,8 @@ def success(request):
             provincia = customer.address['state'],
             phone = customer.phone,
             paid_amount = payment_intent.amount/100,
-            envio = payment_intent.metadata.envio,
+            envio = int(payment_intent.metadata.envio.split('|@|')[0]),
+            detalles_envio = payment_intent.metadata.envio.split('|@|')[1],
         )
 
     
@@ -174,7 +175,6 @@ def message_WhatsApp(customer, order, amount):
     
     text_items = ''
     for item in order:
-        print(item.quantity)
         url = f'https://edscon.pythonanywhere.com/shop/{item.nombre.lower().replace(" ", "-")}'
         text_items = text_items + f'*🤜{item.nombre}*\n      Talla: {item.size}\n      Quantitat: {item.quantity}\n{url}\n\n'
 

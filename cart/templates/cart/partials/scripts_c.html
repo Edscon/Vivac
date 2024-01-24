@@ -316,6 +316,7 @@
                 'phone': document.querySelector('input[name=phone]').value,
                 'password': document.querySelector('input[name=password1]').value,
                 'provincia': document.querySelector('select[name=provincia]').value,
+                'detalles_envio': document.querySelector('textarea[name=detalles]').value,
                 'envio': envios_precio,
                 'i_cuenta': i_cuenta,
             }
@@ -705,6 +706,24 @@
             }
         });
     });
+
+    /*Detalles envio*/
+    function detalles_envio(){
+        if(det_nc.classList.contains('hidden')){
+            det_nc.classList.remove('hidden')
+            det_sc.classList.remove('hidden')
+        }else{
+            det_nc.classList.add('hidden')
+            det_sc.classList.add('hidden')
+        }
+    }
+    detalles_envio_nc.addEventListener('click', () => {
+        detalles_envio()
+    });
+    detalles_envio_sc.addEventListener('click', () => {
+        detalles_envio()
+    });
+
 
     /*Error stock*/
 

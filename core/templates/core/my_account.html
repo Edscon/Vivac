@@ -76,7 +76,7 @@
                     <div class="w-[50%] text-right mr-4">
                         <div>PEDIDO ID.º {{request.user.orders.first.id}}</div>
                         <div class="text-sm font-normal text-blue-500">
-                            <a href="{% url 'my_vista_producto' order.id %}">Ver los detalles del pedido</a>
+                            <a href="{% url 'my_vista_producto' request.user.orders.first.id %}">Ver los detalles del pedido</a>
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,7 @@
                             <div>{{order.id}}</div>
                         </div>
                         <div class="text-sm font-normal text-blue-500">
-                            <a href="{% url 'my_vista_producto' order.id %}">Ver detalles</a>
+                            <a href="{% url 'my_vista_producto' request.user.orders.first.id %}">Ver detalles</a>
                         </div>
                     </div>
                 </div>

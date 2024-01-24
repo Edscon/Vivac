@@ -27,6 +27,8 @@ class Order(models.Model):
     city = models.CharField(max_length=255)
     provincia = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
+    detalles_envio = models.TextField( blank=True, null=True)
+
 
     created_at = models.DateTimeField(auto_now_add=True)
 

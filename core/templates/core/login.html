@@ -3,46 +3,273 @@
 {% block title %}Login{% endblock %}
 
 {% block content%}
-<div class="max-w-lg mx-auto flex flex-wrap p-6">
-    <div class="w-full bg-gray-100 p-6 rounded-xl">
-        <h1 class="mb-6 text-2xl">Iniciar session</h1>
+{% load socialaccount %}
+<div class="mx-auto max-w-lg mx-auto max-[1300px]:-mt-4 mt-6">
 
-        <form method="post" action="." class="space-y-3">
+    <div id="Formulario_register" class=" border rounded-xl border-gray-500">
+        
+        <div class="font-semibold text-xl p-4">Iniciar Sesión</div>
 
-            {% csrf_token %}
+        <div class="Inputs space-y-6 text-md select-none data_edit_form p-4">
 
             <div>
-                <label>Usuario</label>
-                <input type="text" name="username" class="w-full mt-2 py-2 px-6 bg-white rounded-xl">
+                <div class="relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Email*</div>
+                    <input id="email_reg" name="email_" type="text" class="input w-full p-3 bg-white border border-neutral-400 hover:border-black focus:border-black hover:placeholder-black focus:placeholder-black" 
+                    placeholder="Correo electrónico" value="{{request.user.email}}">
+                </div>
             </div>
             <div>
-                <label>Contraseña</label>
-                <input type="password" name="password" class="w-full mt-2 py-2 px-6 bg-white rounded-xl">
-            </div>
-
-            {% if form.errors %}
-                {% for field in form %}
-                    {% for error in field.errors %}
-                    <div class="p-2 bg-red-200 text-red-800 rounded-xl">
-                        {{ error | escape }}
-                    </div>  
-                    {% endfor %}
-                {% endfor %}
-
-                {% for error in form.non_field_errors %}
-                    <div class="p-2 bg-red-200 text-red-800 rounded-xl">
-                        {{ error | escape }}
+                <div class="relative">
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Contraseña*</div>
+                    <input id="password-input" name="password1" type="password" class="input w-full p-3 bg-white border border-neutral-400 hover:border-black focus:border-black hover:placeholder-black focus:placeholder-black" 
+                            placeholder="Contraseña" autocomplete="on">
+                    <i id="eye" class="absolute bg-white top-[50%] right-0 -translate-y-[50%] -translate-x-[50%] cursor-pointer">
+                        <svg id="pw_open" class="h-5 w-5 mx-1 hidden"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                        <svg id="pw_close" class="h-5 w-5 mx-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+                        </svg>
+                    </i>
+                </div>
+                <div class="text-[12px] flex space-x-2 mt-1">
+                    <div class="my-auto">
+                        <svg class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
                     </div>
-                {% endfor %}
-            {% endif %} 
-
-            <div>
-                <button class="py-2 px-6 rounded-xl text-white bg-green-500 hover:bg-green-800">
-                    Enviar
-                </button>
+                    <div>Mínimo 8 caracteres, incluyendo número, mayúscula y minúscula.</div>
+                      
+                </div>
             </div>
-        </form>
+        </div>
+
+        <div class="mt-2 px-4">
+            
+            <div id="error_user_password" class="text-red-500 text-sm mb-1 hidden">Este email o contraseña no son correctos.</div>
+            <a onclick="login()" class="mr-4 w-[100%] inline-block py-3 border flex bg-green-700 text-white hover:bg-black relative transition duration-500 cursor-pointer drop-shadow-md">
+                <p class="m-auto">Iniciar sesión</p>
+            </a>
+           
+            <div class="w-full flex text-xs mb-4 mt-2">
+                <p>¿Nuevo en Esports Vivac?</p>
+                <a href="{% url 'signup' %}" class="font-semibold hover:underline px-1">Regístrate aquí</a>
+            </div>
+    
+            
+        </div>
+
+
+        <div class="bg-neutral-100 pb-2 rounded-b-xl">
+            <div class="p-4">
+                <a  
+                    class="mr-4 w-full inline-block py-2 rounded bg-white text-black relative cursor-pointer border hover:border-gray-400 drop-shadow-md"
+                    href="{% provider_login_url 'google' %}"
+                    >
+                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" class="h-6 w-6 absolute top-[50%] left-[15px] -translate-y-[50%]"><path fill="#fbc02d" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12	s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20	s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#e53935" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039	l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4caf50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36	c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1565c0" d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>
+                    <p class="text-center">Inicia sesión con Google</p>
+                </a>
+            </div>
+        </div>
+
     </div>
 
 </div>
+{% endblock %}
+{% block scripts %}
+
+<script>
+    const Data_Edit_Form = document.querySelectorAll('.data_edit_form .input');
+    Data_Edit_Form.forEach(input => {
+        let focus = {}
+        input.addEventListener('focus', () => {
+            focus[input.name] = 1
+            input.parentElement.children[0].classList.remove('text-neutral-600')
+            input.parentElement.children[0].classList.add('text-black')
+        });
+        input.addEventListener('focusout', () => {
+            focus[input.name] = 0
+            input.parentElement.children[0].classList.add('text-neutral-600')
+            input.parentElement.children[0].classList.remove('text-black')
+        });
+        input.addEventListener('mouseover', () => {
+            input.parentElement.children[0].classList.remove('text-neutral-600')
+            input.parentElement.children[0].classList.add('text-black')
+        });
+        input.addEventListener('mouseout', () => {     
+            if (focus[input.name] === undefined || focus[input.name] == 0) {
+                input.parentElement.children[0].classList.add('text-neutral-600')
+                input.parentElement.children[0].classList.remove('text-black')
+            }
+        });
+    });
+
+    const Input_All = document.querySelectorAll('.Inputs input');
+
+    Input_All.forEach(input => {
+        input.addEventListener('focus', () => {
+
+        });
+        input.addEventListener('blur', () => {
+            prove_input_reg(input)
+        });
+        input.addEventListener('keyup', (event)=> {
+            prove_input_reg(input);
+        }); 
+        input.addEventListener('onchange', (event)=> {
+            prove_input_reg(input);
+        }); 
+
+    });
+
+    const isNumeric = n => !isNaN(n);
+    const haveUpperCase = (string) => /[A-Z]/.test(string)
+    const haveLowCase = (string) => /[a-z]/.test(string)
+    const haveNum = (string) => /[0-9]/.test(string)
+    var msg = "Campo requerido."
+
+    function removeChild_red(element){
+        if (element.classList.contains("placeholder-red-500")) {
+            element.classList.add("placeholder-gray-500", "hover:placeholder-black");
+            element.classList.remove("placeholder-red-500");
+
+            element.parentElement.classList.add("border-gray-400", "hover:border-black");
+            element.parentElement.classList.remove("border-red-500");
+
+            const childNodesLength = element.parentElement.parentElement.childNodes.length;
+            if (childNodesLength === 3 || childNodesLength === 5) {
+                element.parentElement.parentElement.removeChild(element.parentElement.parentElement.childNodes[2]);
+            }
+        }
+    }
+    function addChild_red(element){
+        element.classList.remove("placeholder-gray-500", "hover:placeholder-black");
+        element.classList.add("placeholder-red-500");
+
+        element.parentElement.classList.remove("border-gray-400", "hover:border-black");
+        element.parentElement.classList.add("border-red-500");
+
+        const childNodesLength = element.parentElement.parentElement.childNodes.length;
+        if (childNodesLength === 3 || childNodesLength === 5) {
+            element.parentElement.parentElement.removeChild(element.parentElement.parentElement.childNodes[2]);
+        }
+
+        const error = document.createElement("div");
+        error.classList.add("text-red-500", "text-xs");
+        error.innerHTML = msg;
+        insertAfter(element.parentElement, error);
+    }
+
+    function insertAfter(referenceNode, newNode) {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+    }
+
+    function prove_input_reg(i){
+        msg = "Campo requerido."
+        prove = true
+
+        switch (i.name) {
+
+            case 'password1':
+                if (i.value.length < 8 || !haveUpperCase(i.value) || !haveLowCase(i.value) || !haveNum(i.value)) {
+                    msg = "Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, 1 letra mayúscula, 1 letra minúscula, 1 número."
+                }else{prove = false}
+                break;
+
+            case 'email_':
+                if (!/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(i.value)) {
+                    msg = "Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio.com."
+                }else{prove = false}
+                break;
+
+            default:
+                if(i.value == ''){
+                    prove = true
+                }else{prove = false}
+        }
+       
+        if(prove){
+            addChild_red(i)
+        }else{
+            removeChild_red(i)
+        }
+
+        return prove
+    }
+
+    function form_register_valid(){
+        
+        var check = true;
+        
+        Input_All.forEach((input, index) => {
+            if(prove_input_reg(input)){
+                check = false;
+            }
+        })
+
+        return check
+
+    }
+
+
+    function login(){
+        event.preventDefault()
+        if(form_register_valid()){
+            data = {
+                'csrf_token': '{{ csrf_token }}',
+                'email': document.querySelector('input[name=email_]').value,
+                'password': document.querySelector('input[name=password1]').value,
+                'i_cuenta': 0,
+                'is_register': true,
+            }
+            
+            fetch('/login_user/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' 
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(json =>{
+                if(JSON.stringify(json) == '{"data":{}}'){
+                    document.getElementById('error_user_password').classList.remove('hidden');
+                }else{
+                    if (!document.getElementById('error_user_password').classList.contains('hidden')){
+                        document.getElementById('error_user_password').classList.add('hidden');
+                    }
+                    
+                    window.location.href = window.location.href.split('/login')[0]
+                }
+            })
+            .catch(function(error) {
+                console.log('Errors', error)
+            })
+        }
+    }
+    
+    const passwordInput = document.getElementById("password-input");
+    const passwordInput2 = document.getElementById("password-input2");
+
+    eye.addEventListener('click', () => {
+        if(pw_open.classList.contains('hidden')){
+            pw_open.classList.remove('hidden');
+            pw_close.classList.add('hidden');
+        }
+        else if(pw_close.classList.contains('hidden')){
+            pw_close.classList.remove('hidden');
+            pw_open.classList.add('hidden');
+        }
+        
+        if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    });
+</script>   
 {% endblock %}

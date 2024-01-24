@@ -143,6 +143,13 @@ def create_user_(request):
                 user = create_user_data(data)
             else:
                 user = User.objects.get(email = data['email'])
+
+                try:
+                    if(data['is_register'] == True):
+                        print('Usuario ya creado')
+                        return JsonResponse({"data":{}})
+                except: print('Error')
+
                 if (not user.check_password(data['password'])):
                     print('None password')
 
@@ -151,6 +158,18 @@ def create_user_(request):
     data['user_bool'] = user.email
 
     return JsonResponse({'data': data})
+
+@csrf_exempt
+def login_user(request):
+    data = json.loads(request.body)
+    print(data)
+    if(User.objects.filter(email = data['email'] ).count() > 0):
+        user = User.objects.get(email = data['email'])
+        if (user.check_password(data['password'])):
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            return JsonResponse({'data': data})
+    else:
+        return JsonResponse({"data":{}})
 
 @csrf_exempt
 def update_account(request):
@@ -173,10 +192,11 @@ def check_cart(request):
         if(item['quantity'] > item['variant'].unidades):
             error[f"{item['variant'].id}"] = item['variant'].unidades
     
+    print(len(error) > 0)
     if(len(error) > 0):
         return JsonResponse({'error': error})
     else:
-        return JsonResponse({'error': {}})
+        return JsonResponse({'error':{}})
 
 
 @login_required
