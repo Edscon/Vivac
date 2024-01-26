@@ -91,6 +91,15 @@
                 </div>
             </div>
         </div>
+        <div class="my-5 text-black px-4">
+            <div class="flex mb-1">
+                <input id="default-checkbox" type="checkbox" class="w-6 h-6 rounded cursor-pointer" onclick="check_condiciones()">
+                <label for="default-checkbox" class="ml-2 text-sm cursor-pointer">
+                    Acepto las condiciones generales de compra y la política de privacidad de esports vivac.
+                </label>
+            </div>
+            <div id="error_condiciones" class="text-xs text-red-500 hidden px-7">Campo requerido.</div>
+        </div>
 
         <div class="mt-2 px-4">
             
@@ -263,40 +272,44 @@
     function register(){
         event.preventDefault()
         if(form_register_valid()){
-            data = {
-                'csrf_token': '{{ csrf_token }}',
-                'first_name': document.querySelector('input[name=first_name]').value,
-                'last_name': document.querySelector('input[name=last_name]').value,
-                'email': document.querySelector('input[name=email_]').value,
-                'password': document.querySelector('input[name=password1]').value,
-                'i_cuenta': 0,
-                'is_register': true,
-            }
-            
-            fetch('/create_user_/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}' 
-                },
-                credentials: 'same-origin',
-                body: JSON.stringify(data),
-            })
-            .then(response => response.json())
-            .then(json =>{
-                if(JSON.stringify(json) == '{"data":{}}'){
-                    document.getElementById('error_user_password').classList.remove('hidden');
-                }else{
-                    if (!document.getElementById('error_user_password').classList.contains('hidden')){
-                        document.getElementById('error_user_password').classList.add('hidden');
-                    }
-                    
-                    window.location.href = window.location.href.split('/login')[0]
+            if(document.getElementById('default-checkbox').checked){
+                data = {
+                    'csrf_token': '{{ csrf_token }}',
+                    'first_name': document.querySelector('input[name=first_name]').value,
+                    'last_name': document.querySelector('input[name=last_name]').value,
+                    'email': document.querySelector('input[name=email_]').value,
+                    'password': document.querySelector('input[name=password1]').value,
+                    'i_cuenta': 0,
+                    'is_register': true,
                 }
-            })
-            .catch(function(error) {
-                console.log('Errors', error)
-            })
+                
+                fetch('/create_user_/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}' 
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(data),
+                })
+                .then(response => response.json())
+                .then(json =>{
+                    if(JSON.stringify(json) == '{"data":{}}'){
+                        document.getElementById('error_user_password').classList.remove('hidden');
+                    }else{
+                        if (!document.getElementById('error_user_password').classList.contains('hidden')){
+                            document.getElementById('error_user_password').classList.add('hidden');
+                        }
+                        
+                        window.location.href = window.location.href.split('/login')[0]
+                    }
+                })
+                .catch(function(error) {
+                    console.log('Errors', error)
+                })
+            }else{
+                check_condiciones()
+            }
         }
     }
 
@@ -314,7 +327,7 @@
         }
         
         if (passwordInput.type === "password") {
-        passwordInput.type = "text";
+            passwordInput.type = "text";
         } else {
             passwordInput.type = "password";
         }
@@ -330,10 +343,19 @@
         }
 
         if (passwordInput2.type === "password") {
-        passwordInput2.type = "text";
+            passwordInput2.type = "text";
         } else {
             passwordInput2.type = "password";
         }
     });
+
+    function check_condiciones(){
+        if(document.getElementById('default-checkbox').checked){
+            document.getElementById('error_condiciones').classList.add("hidden");
+        }else{
+            document.getElementById('error_condiciones').classList.remove("hidden");
+        }
+    }
+
 </script>   
 {% endblock %}

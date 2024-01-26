@@ -10,13 +10,16 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
+from django.core.mail import send_mail, EmailMessage, EmailMultiAlternatives
+from django.template.loader import render_to_string
+from email.mime.image import MIMEImage
 
 from cart.cart import Cart
 from cart.views import date_by_adding_business_days
 from datetime import date
 
 from .models import Order, OrderItem, UserPayment, ClueInfo
-from product.models import Product, Variant
+from product.models import Product, Variant, Image
 
 # This is your test secret API key.
 stripe.api_key = settings.STRIPE_API_KEY_HIDDEN
@@ -146,7 +149,6 @@ def success(request):
         orden_compra = Order.objects.filter(customer = customer.id)[0]
         order =OrderItem.objects.filter(order=orden_compra )
         message_WhatsApp(customer, order,"%.2f" % round(payment_intent.amount/100, 2))
-        
         cart.clear()
 
     orden_compra = Order.objects.filter(customer = customer.id)[0]
@@ -155,6 +157,7 @@ def success(request):
     for i in order.values('precio'):
         subtotal = subtotal + i['precio']
 
+    send_email_order(order, customer)
     time = date_by_adding_business_days(orden_compra.created_at, 1)
 
     context = {
@@ -201,6 +204,59 @@ def message_WhatsApp(customer, order, amount):
         return 0
 
 
+def send_email_order(order, customer):
+    
+    name = customer.name
+    email = order[0].order.email
+    email = 'eduard.soler.11@gmail.com'
+    
+    content = 'Esports Vivac'
+
+    from_email = settings.EMAIL_HOST_USER
+    html = render_to_string('core/emails/pedidoform.html', {'customer': customer, 'order_items': order, 'order': order[0].order})
+        
+    email_message = EmailMultiAlternatives(
+        f'TU PEDIDO #{order[0].order.id} EN ESPORTS VIVAC HA SIDO CONFIRMADO',
+        content,
+        from_email,
+        [email],
+    )
+
+    '''
+    for key in request.FILES.keys():
+        uploaded_file = request.FILES[key]
+        email_message.attach(uploaded_file.name, uploaded_file.read(), uploaded_file.content_type)
+    '''
+
+    email_message.attach_alternative(html, "text/html")
+
+    email_message.mixed_subtype = 'related'
+
+    img_variants = {}
+    for item in order:
+        nombre = item.variant.id
+        img = Image.objects.get(pk=item.variant.image_id)
+
+        if nombre not in img_variants:
+            img_variants[nombre] = img.image.url.split('images/')[1]
+
+    for f in ['logo.png',]:
+        fp = open(os.path.join(os.path.dirname(__file__), '..', 'static', 'img', f), 'rb')
+        msg_img = MIMEImage(fp.read())
+        fp.close()
+        msg_img.add_header('Content-ID', '<{}>'.format(f))
+        email_message.attach(msg_img)
+
+    for name, url in img_variants.items():
+        fp = open(os.path.join(os.path.dirname(__file__), '..', 'media', 'uploads', 'images', url), 'rb')
+        msg_img = MIMEImage(fp.read())
+        fp.close()
+        msg_img.add_header('Content-ID', '<{}>'.format(name))
+        email_message.attach(msg_img)
+
+     
+    email_message.send(fail_silently=False)
+
 @csrf_exempt
 def stripe_webhook(request):
     stripe.api_key = settings.STRIPE_API_KEY_HIDDEN
@@ -226,4 +282,3 @@ def stripe_webhook(request):
         user_payment.save()
 
     return HttpResponse(status = 200)
-

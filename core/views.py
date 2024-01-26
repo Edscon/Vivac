@@ -672,3 +672,17 @@ def my_vista_producto(request, order_id):
     time = date_by_adding_business_days(order.created_at, 1)
     print(order.created_at, time)
     return render(request, 'core/partials/my_vista_producto.html', {'order': order, 'time': time, 'now': datetime.now()})
+
+@login_required
+@csrf_exempt
+def change_psw(request):
+    data = json.loads(request.body)
+    if(request.user.is_authenticated):
+            user = request.user
+            if (user.check_password(data['password_old'])):
+                user.set_password(data['password_new'])
+                user.save()
+                login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+                return JsonResponse({'data': data})
+    
+    return JsonResponse({"data":{}})

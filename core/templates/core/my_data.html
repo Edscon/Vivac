@@ -70,6 +70,80 @@
                     <div class="font-semibold text-xs">Email</div>
                     <div>{{request.user.email}}</div>
                 </div>
+                <div onclick="change_password()" class="mt-4 font-semibold border flex w-[180px] py-2 text-sm cursor-pointer">
+                    <div class="mx-auto flex space-x-2">
+                        <div>Cambiar contraseña</div>
+                        <div class="my-auto">
+                            <svg id="svg_icon" class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div id="passwords" class="Inputs space-y-6 text-md select-none data_edit_form hidden">
+        
+                    <div>
+                        <div class="relative">
+                            <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Contraseña antigua*</div>
+                            <input id="password-input_antigua" name="password_antigua" type="password" class="input w-full p-3 bg-white border border-neutral-400 hover:border-black focus:border-black hover:placeholder-black focus:placeholder-black" 
+                                    placeholder="Contraseña antigua" autocomplete="on">
+                            <i id="eye_a" class="absolute bg-white top-[50%] right-0 -translate-y-[50%] -translate-x-[50%] cursor-pointer">
+                                <svg id="pw_open_a" class="h-5 w-5 mx-1 hidden"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                                <svg id="pw_close_a" class="h-5 w-5 mx-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+                                </svg>
+                            </i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="relative">
+                            <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Nueva Contraseña*</div>
+                            <input id="password-input" name="password1" type="password" class="input w-full p-3 bg-white border border-neutral-400 hover:border-black focus:border-black hover:placeholder-black focus:placeholder-black" 
+                                    placeholder="Nueva Contraseña" autocomplete="on">
+                            <i id="eye" class="absolute bg-white top-[50%] right-0 -translate-y-[50%] -translate-x-[50%] cursor-pointer">
+                                <svg id="pw_open" class="h-5 w-5 mx-1 hidden"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                                <svg id="pw_close" class="h-5 w-5 mx-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+                                </svg>
+                            </i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="relative">
+                            <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Confirma tu nueva contraseña*</div>
+                            <input id="password-input2" name="password2" type="password" class="input w-full p-3 bg-white border border-neutral-400 hover:border-black focus:border-black hover:placeholder-black focus:placeholder-black" 
+                                    placeholder="Confirma tu nueva contraseña" autocomplete="on">
+                            <i id="eye2" class="absolute bg-white top-[50%] right-0 -translate-y-[50%] -translate-x-[50%] cursor-pointer">
+                                <svg id="pw_open2" class="h-5 w-5 mx-1 hidden"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                                <svg id="pw_close2" class="h-5 w-5 mx-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+                                </svg>
+                            </i>
+                        </div>
+                        <div class="text-[12px] flex space-x-2 mt-1">
+                            <div class="my-auto">
+                                <svg class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <div>Mínimo 8 caracteres, incluyendo número, mayúscula y minúscula.</div>
+                              
+                        </div>
+                    </div>
+                    <div id="error_user_password" class="text-red-500 text-sm mb-1 hidden">La contraseña antigua no coincide.</div>
+                    <a onclick="change_password_confirm(event)" class="mr-4 w-full md:w-[200px] inline-block py-3 border flex bg-green-700 text-white hover:bg-black relative transition duration-500 cursor-pointer drop-shadow-md">
+                        <p class="m-auto">Confirmar</p>
+                    </a>
+                </div>
                 <hr class="py-[1px] bg-black opacity-70 w-full">
 
                 
@@ -159,4 +233,236 @@
     </div>
 </div>
 
+{% endblock %}
+{% block scripts %}
+
+<script>
+    const passwords = document.getElementById('passwords')
+    const svg_icon = document.getElementById('svg_icon')
+    function change_password(){
+        if(passwords.classList.contains('hidden')){
+            passwords.classList.remove('hidden')
+            svg_icon.classList.add('rotate-180')
+        }else{
+            passwords.classList.add('hidden')
+            svg_icon.classList.remove('rotate-180')
+        }
+        
+    }
+
+    const Input_All = document.querySelectorAll('.Inputs input');
+
+    Input_All.forEach(input => {
+        input.addEventListener('focus', () => {
+
+        });
+        input.addEventListener('blur', () => {
+            prove_input_psw(input)
+        });
+        input.addEventListener('keyup', (event)=> {
+            prove_input_psw(input);
+        }); 
+        input.addEventListener('onchange', (event)=> {
+            prove_input_psw(input);
+        }); 
+
+    });
+
+    const isNumeric = n => !isNaN(n);
+    const haveUpperCase = (string) => /[A-Z]/.test(string)
+    const haveLowCase = (string) => /[a-z]/.test(string)
+    const haveNum = (string) => /[0-9]/.test(string)
+    var msg = "Campo requerido."
+    var password1 = ''
+    var password2 = ''
+    var password_old = ''
+
+    function removeChild_red(element){
+        if (element.classList.contains("placeholder-red-500")) {
+            element.classList.add("placeholder-gray-500", "hover:placeholder-black");
+            element.classList.remove("placeholder-red-500");
+
+            element.parentElement.classList.add("border-gray-400", "hover:border-black");
+            element.parentElement.classList.remove("border-red-500");
+
+            const childNodesLength = element.parentElement.parentElement.childNodes.length;
+            if (childNodesLength === 3 || childNodesLength === 5) {
+                element.parentElement.parentElement.removeChild(element.parentElement.parentElement.childNodes[2]);
+            }
+        }
+    }
+    function addChild_red(element){
+        element.classList.remove("placeholder-gray-500", "hover:placeholder-black");
+        element.classList.add("placeholder-red-500");
+
+        element.parentElement.classList.remove("border-gray-400", "hover:border-black");
+        element.parentElement.classList.add("border-red-500");
+
+        const childNodesLength = element.parentElement.parentElement.childNodes.length;
+        if (childNodesLength === 3 || childNodesLength === 5) {
+            element.parentElement.parentElement.removeChild(element.parentElement.parentElement.childNodes[2]);
+        }
+
+        const error = document.createElement("div");
+        error.classList.add("text-red-500", "text-xs");
+        error.innerHTML = msg;
+        insertAfter(element.parentElement, error);
+    }
+
+    function insertAfter(referenceNode, newNode) {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+    }
+
+    function prove_input_psw(i){
+        msg = "Campo requerido."
+        prove = true
+
+        switch (i.name) {
+
+            case 'password1':
+                password1 = i.value
+                if (i.value.length < 8 || !haveUpperCase(i.value) || !haveLowCase(i.value) || !haveNum(i.value)) {
+                    msg = "Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, 1 letra mayúscula, 1 letra minúscula, 1 número."
+                }else if(password1 == password_old){
+                    msg = "Las contraseña antigua y la nueva coinciden"
+                }
+                else{prove = false}
+                break;
+
+            case 'password2':
+                password2 = i.value
+                if (i.value != password1) {
+                    msg = "Las contraseñas no coinciden."
+                }else{prove = false}
+                break;
+
+            case 'password_antigua':
+                password_old = i.value
+                if (i.value.length < 8 || !haveUpperCase(i.value) || !haveLowCase(i.value) || !haveNum(i.value)) {
+                    msg = "Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, 1 letra mayúscula, 1 letra minúscula, 1 número."
+                }else{prove = false}
+                break;
+
+            default:
+                if(i.value == ''){
+                    prove = true
+                }else{prove = false}
+        }
+       
+        if(prove){
+            addChild_red(i)
+        }else{
+            removeChild_red(i)
+
+            if(i.name == "password1" & i.value == password2){
+                removeChild_red(document.getElementsByName("password2")[0])  
+                removeChild_red(document.getElementsByName("password_antigua")[0]) 
+            }
+        }
+
+        return prove
+    }
+
+
+    function validate_password(){
+        var check = true;
+        
+        Input_All.forEach((input, index) => {
+            if(prove_input_psw(input)){
+                check = false;
+            }
+        })
+
+        return check
+    }
+
+    function change_password_confirm(e){
+        e.preventDefault()
+        if(validate_password()){
+            data = {
+                'csrf_token': '{{ csrf_token }}',
+                'password_old': document.querySelector('input[name=password_antigua]').value,
+                'password_new': document.querySelector('input[name=password1]').value,
+            }
+            
+            fetch('/change_psw/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' 
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(json =>{
+                if(JSON.stringify(json) == '{"data":{}}'){
+                    document.getElementById('error_user_password').classList.remove('hidden');
+                }else{
+                    if (!document.getElementById('error_user_password').classList.contains('hidden')){
+                        document.getElementById('error_user_password').classList.add('hidden');
+                    }
+                    
+                    location.reload();
+                }
+            })
+            .catch(function(error) {
+                console.log('Errors', error)
+            })
+        }
+    }
+
+    const passwordInput = document.getElementById("password-input");
+    const passwordInput2 = document.getElementById("password-input2");
+    const passwordInput_a = document.getElementById("password-input_antigua");
+
+    eye.addEventListener('click', () => {
+        if(pw_open.classList.contains('hidden')){
+            pw_open.classList.remove('hidden');
+            pw_close.classList.add('hidden');
+        }
+        else if(pw_close.classList.contains('hidden')){
+            pw_close.classList.remove('hidden');
+            pw_open.classList.add('hidden');
+        }
+        
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    });
+    eye2.addEventListener('click', () => {
+        if(pw_open2.classList.contains('hidden')){
+            pw_open2.classList.remove('hidden');
+            pw_close2.classList.add('hidden');
+        }
+        else if(pw_close2.classList.contains('hidden')){
+            pw_close2.classList.remove('hidden');
+            pw_open2.classList.add('hidden');
+        }
+
+        if (passwordInput2.type === "password") {
+            passwordInput2.type = "text";
+        } else {
+            passwordInput2.type = "password";
+        }
+    });
+    eye_a.addEventListener('click', () => {
+        if(pw_open_a.classList.contains('hidden')){
+            pw_open_a.classList.remove('hidden');
+            pw_close_a.classList.add('hidden');
+        }
+        else if(pw_close_a.classList.contains('hidden')){
+            pw_close_a.classList.remove('hidden');
+            pw_open_a.classList.add('hidden');
+        }
+
+        if (passwordInput_a.type === "password") {
+            passwordInput_a.type = "text";
+        } else {
+            passwordInput_a.type = "password";
+        }
+    });
+</script>   
 {% endblock %}

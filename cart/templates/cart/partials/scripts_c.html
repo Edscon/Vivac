@@ -135,7 +135,7 @@
         'La Rioja': '26',
         'Las Palmas': '35',
         'León': '24',
-        'Lérida': '25',
+        'Lleida': '25',
         'Lugo': '27',
         'Madrid': '28',
         'Málaga': '29',
@@ -644,7 +644,7 @@
 
                 const totalAmount = parseFloat(element_total.value.replace(',', '.'));
 
-                if (totalAmount >= 100) {
+                if (totalAmount >= 100 & provincia != 'Baleares' & provincia != 'Las Palmas' & provincia != 'Santa Cruz de Tenerife') {
                     envios_precio = 0;
                 }
 
