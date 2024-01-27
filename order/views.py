@@ -29,9 +29,12 @@ from flask import Flask, render_template, jsonify, request
 app = Flask(__name__, static_folder='public',
             static_url_path='', template_folder='public')
 
-def calculate_order_amount(items):
-    price = int(items[1] * 100)
-    return price
+def calculate_order_amount(cart):
+    price = 0
+    for item in cart:
+        price = price + (item['total_price'] * 100)
+
+    return int(price)
 
 @csrf_exempt
 def create_payment(request):
@@ -71,7 +74,7 @@ def create_payment(request):
         # Create a PaymentIntent with the order amount and currency
         intent = stripe.PaymentIntent.create(
             customer=customer['id'],
-            amount=calculate_order_amount(data['items']),
+            amount=calculate_order_amount(cart),
             currency='eur',
             # In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
             automatic_payment_methods={
@@ -213,7 +216,14 @@ def send_email_order(order, customer):
     content = 'Esports Vivac'
 
     from_email = settings.EMAIL_HOST_USER
-    html = render_to_string('core/emails/pedidoform.html', {'customer': customer, 'order_items': order, 'order': order[0].order})
+
+    subtotal = 0
+    for i in order.values('precio'):
+        subtotal = subtotal + i['precio']
+
+    time = date_by_adding_business_days(order[0].order.created_at, 1)
+
+    html = render_to_string('core/emails/pedidoform.html', {'customer': customer, 'order_items': order, 'order': order[0].order, 'subtotal': subtotal, 'time': time})
         
     email_message = EmailMultiAlternatives(
         f'TU PEDIDO #{order[0].order.id} EN ESPORTS VIVAC HA SIDO CONFIRMADO',
@@ -221,12 +231,6 @@ def send_email_order(order, customer):
         from_email,
         [email],
     )
-
-    '''
-    for key in request.FILES.keys():
-        uploaded_file = request.FILES[key]
-        email_message.attach(uploaded_file.name, uploaded_file.read(), uploaded_file.content_type)
-    '''
 
     email_message.attach_alternative(html, "text/html")
 

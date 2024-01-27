@@ -2,41 +2,113 @@
 {% load replacement %}
 <h2>Pedido completado con éxito </h2>
 
-<div style="margin-left: auto; margin-right: auto; border:1px solid black;  min-height: 400px; padding: 10px; width: 700px; font-size: 15px; line-height: 22px; background-color: rgb(255, 255, 255);">
-    <div style="display: flex; background-color: rgb(255, 255, 255); padding-bottom: 5px;" >
-        <img style="margin-left: 0;" title="titulo" src="cid:logo.png" width="150px" height="70px">
-        <div style="margin-top: auto; margin-bottom: auto; font-size: 16px; line-height: 24px; font-weight: 600;">TU PEDIDO #{{order.id}} EN ESPORTS VIVAC HA SIDO CONFIRMADO</div>
-    </div>
-    <hr style="margin-bottom: 20px;">
-    <div style="margin-left: 0; font-weight: 600;">Gracias por la compra! {{customer.name}},</div>
-    <div>Gracias por tu pedido, esperamos que hayas disfrutado tu experiencia de compra con nosotros.</div>
-
-    <table style="width: 100%; margin-top: 30px; border-collapse: collapse;">
-        <tr style="border-collapse: collapse; border-bottom: 1px solid rgb(41, 41, 41);">
-          <th style="width: 70%; text-align: left;">Descripción del artículo</th>
-          <th style="width: 15%; text-align: left; text-align: center;">Cantidad</th>
-          <th style="width: 15%; text-align: left; text-align: center;">Precio</th>
-        </tr>
-        {% for item in order_items %}
-            <tr style="border-collapse: collapse; border-bottom: 1px solid rgb(138, 138, 138);">
-                <td style="vertical-align: center; display: flex;">
-                    <img style="margin-left: 0;" title="titulo" src="cid:{{item.variant.id}}" width="100px">
-                    <div style="margin-top: auto; margin-bottom: auto; vertical-align: center;">
-                        <div style="font-weight: 500;">{{item.variant.product.nombre}}</div>
-                        <div>Talla:  {{item.size|replace_1}}</div>
-                    </div>
-                    
-                </td>
-                <td style="vertical-align: center; text-align: center;">{{item.quantity}}</td>
-                <td style="vertical-align: center; text-align: center;">
-                    {% if item.variant.get_descuento != 0 %}
-                        <div style="margin-left: 0; font-size: 10px; line-height: 15px; text-decoration-line: line-through;
-                        ">PVR: {{item.variant.precio_retail|multiply:item.quantity | floatformat:2}} €</div>
-                    {% endif %}
-                    <div style="margin-top: auto; margin-bottom: auto;">{{item.precio|floatformat:2}} €</div>
-                </td>
+<div style="margin-left: auto; margin-right: auto; border:1px solid black;  min-height: 300px; width: 700px; font-size: 15px; line-height: 22px; background-color: rgb(255, 255, 255);">
+    <div style="padding: 10px;">
+        <div style="display: flex; background-color: rgb(255, 255, 255); padding-bottom: 5px;" >
+            <img style="margin-left: 0;" title="titulo" src="cid:logo.png" height="70px">
+            <div style="margin-top: auto; margin-bottom: auto; font-size: 16px; line-height: 24px; font-weight: 600;">TU PEDIDO #{{order.id}} EN ESPORTS VIVAC HA SIDO CONFIRMADO</div>
+        </div>
+        <hr style="margin-bottom: 20px;">
+        <div style="padding-left: 30px; padding-right: 30px;">
+            <div style="margin-left: 0; font-weight: 600;">Gracias por la compra! {{customer.name}},</div>
+            <div>Gracias por tu pedido, esperamos que hayas disfrutado tu experiencia de compra con nosotros.</div>
+            <div style="margin-top: 20px; ">Fecha entrega estimada: {{time| date1}}</div>
+        </div>
+    
+    
+        <table style="width: 100%; margin-top: 30px; border-collapse: collapse;">
+            <tr style="border-collapse: collapse; border-bottom: 1px solid rgb(41, 41, 41);">
+              <th style="width: 70%; text-align: left;">Descripción del artículo</th>
+              <th style="width: 15%; text-align: center;">Cantidad</th>
+              <th style="width: 15%; text-align: center;">Precio</th>
             </tr>
-        {% endfor %}
-      </table>
+            {% for item in order_items %}
+                <tr style="border-collapse: collapse; border-bottom: 1px solid rgb(138, 138, 138);">
+                    <td style="vertical-align: center; display: flex;">
+                        <img style="margin-left: 0;" title="titulo" src="cid:{{item.variant.id}}" width="100px">
+                        <div style="margin-top: auto; margin-bottom: auto; vertical-align: center;">
+                            <div style="font-weight: 500;">{{item.variant.product.nombre}}</div>
+                            <div>Talla:  {{item.size|replace_1}}</div>
+                        </div>
+                        
+                    </td>
+                    <td style="vertical-align: center; text-align: center;">{{item.quantity}}</td>
+                    <td style="vertical-align: center; text-align: center;">
+                        {% if item.variant.get_descuento != 0 %}
+                            <div style="margin-left: 0; font-size: 10px; line-height: 15px; text-decoration-line: line-through;
+                            ">PVR: {{item.variant.precio_retail|multiply:item.quantity | floatformat:2}} €</div>
+                        {% endif %}
+                        <div style="margin-top: auto; margin-bottom: auto;">{{item.precio|floatformat:2}} €</div>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <th></th>
+                <th style="vertical-align: center; text-align: center; font-weight: normal;">Subtotal</th>
+                <th style="vertical-align: center; text-align: center; font-weight: normal;">{{subtotal| floatformat:2}} €</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th style="vertical-align: center; text-align: center; font-weight: normal;">Envio</th>
+                <th style="vertical-align: center; text-align: center; font-weight: normal;">{{order.envio|multiply:1 | floatformat:2}} €</th>
+            </tr>
+            <tr style="height: 50px; background-color: rgb(230, 230, 230);">
+                <th style="vertical-align: center; text-align: left;">Precios con IVA incluido</th>
+                <th style="vertical-align: center; text-align: center;">Total compra</th>
+                <th style="vertical-align: center; text-align: center;">{{order.paid_amount| floatformat:2}} €</th>
+            </tr>
+        </table>
+        <div style="padding-left: 20px; padding-right: 20px;">
+            <div style="margin-top: 30px;">
+                <div style="font-weight: 600; margin-bottom: 5px;">Detalles del Pedido</div>
+            
+                <div>Dirección: {{order.address}}</div>
+                <div>Ciudad: {{order.city}}, {{order.zipcode}}</div>
+                <div>Provincia: {{order.provincia}}</div>
+                <div>Tel: {{order.phone}}</div>
+                <div>Email: {{order.email}}</div>
+                {% if order.detalles_envio == '' %}
+                {% else %}
+                    <div>Detalles para el envio: {{order.detalles_envio}}</div>
+                {% endif %}
+            </div>
+        
+        
+            <div style="margin-top: 5px; font-size: 12px; line-height: 16px; color:rgb(138, 138, 138);">Si algo en el pedido no es correcto, puedes contactar con nosotros <a href="http://edscon.pythonanywhere.com/contacto/">link</a></div>
+        
+            <div style="margin-top: 30px;">
+                <div style="font-weight: 600; margin-bottom: 5px;">Siguiente paso</div>
+                <div>Recibirás un correo electrónico de la empresa de transporte, que te notificará que tu pedido ha sido despachado de sus instalaciones. 
+                    Además, incluirá un código de seguimiento que te permitirá monitorear el estado en tiempo real de tu pedido.
+                </div>
+            </div>
+            
+        </div>
+        
+        <div style="margin-top: 20px; margin-left: auto; margin-right: auto; width: 60%;">
+            <div style="font-size: 12px; line-height: 16px; text-align: center;">Este es un email automático por favor, no contestes a este email.</div>
+        </div>
+
+    </div>
+    
+    <hr style="margin-top: 0px;">
+
+    <div style="margin-left: auto; margin-right: auto; width: 60%; font-size: 10px; line-height: 14px;">
+        <div style="text-align: center;">
+            <p>Esports Vivac es una tienda de deportes online especializada en primeras marcas.</p>
+            <p>
+                <span>© 2023-2023 Vivac Camprodon, S.L. - Todos los derechos reservados</span>
+                &nbsp;|&nbsp;
+                <a>Condiciones legales</a>
+                &nbsp;|&nbsp;
+                <a>Política de privacidad</a>
+                &nbsp;|&nbsp;
+                <a>Política de cookies</a>
+                &nbsp;|&nbsp;
+                <a>Condiciones generales de compra</a>
+            </p>
+            <p>C.I.F. B17829516. Inscrita en el Registro Mercantil Barcelona. tomo ****. folio ***. Hoja * ***. Inscripción *.</p>
+        </div>
+    </div>
 
 </div>

@@ -376,17 +376,12 @@
         document.getElementById("rueda3").classList.add("hidden");
     }
 
-    let items = [{ id: "xl-tshirt" }];
     let elements;
     let emailAddress = '';
-    let total_payment = 100;
     function create_payment(){
 
         // This is your test publishable API key. https://stripe.com/docs/payments/quickstart?lang=python
         stripe = Stripe('{{pub_key}}');
-
-        // The items the customer wants to buy
-        items = [{ id: "xl-tshirt" }, total_payment];
 
         initialize();
         checkStatus();
@@ -409,7 +404,7 @@
                 'Content-Type': 'application/json',
                 'X-CSRFToken': '{{ csrf_token }}' 
             },
-            body: JSON.stringify({ items , data, customer}),
+            body: JSON.stringify({ data, customer}),
         });
         
         const { clientSecret, customer_id } = await response.json();
