@@ -152,6 +152,7 @@ def success(request):
         orden_compra = Order.objects.filter(customer = customer.id)[0]
         order =OrderItem.objects.filter(order=orden_compra )
         message_WhatsApp(customer, order,"%.2f" % round(payment_intent.amount/100, 2))
+        send_email_order(order, customer)
         cart.clear()
 
     orden_compra = Order.objects.filter(customer = customer.id)[0]
@@ -160,7 +161,7 @@ def success(request):
     for i in order.values('precio'):
         subtotal = subtotal + i['precio']
 
-    send_email_order(order, customer)
+    
     time = date_by_adding_business_days(orden_compra.created_at, 1)
 
     context = {

@@ -5,17 +5,19 @@
 {% block content%}
 {% load replacement %}
 {% load static %}
-<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto xl:px-0 px-4 py-5 flex flex-wrap items-start">
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto xl:px-0 px-4 py-5">
 
     <div class="w-full mb-8">
         <h1 class="mb-5 text-3xl">Pedido completado con éxito</h1>
         <p class="mb-5">Gracias por la compra! {{customer.name}}</p>
         
-        <div class="text-lg font-semibold underline">Resumen del Pedido</div>
-        <div class="text-green-600">Fecha entrega estimada: {{time| date1}}</div>
+        <div>
+            <div class="text-lg font-semibold underline mb-2">Resumen del Pedido</div>
+            <div class="text-green-600">Fecha entrega estimada: {{time| date1}}</div>
+        </div>
     </div>
 
-    <div class="w-[70%] ">
+    <div class="w-[100%]">
         <div class="w-full hidden lg:flex justify-between font-bold">
             <div>Descripción del artículo</div>
             <div class="flex justify-between w-[200px]">
@@ -43,14 +45,14 @@
                             </div>
                             
                         </div>
-                        <div class="min-[400px]:flex justify-between min-[400px]:space-x-[25px] select-none mt-4 lg:mt-0">
+                        <div class="min-[300px]:flex justify-between min-[300px]:space-x-[25px] select-none mt-4 lg:mt-0">
                                 
-                            <div class="w-[60px] min-[400px]:w-[80px] h-[35px] text-center flex">
+                            <div class="w-[60px] min-[300px]:w-[80px] h-[35px] text-center flex">
                                 <div class="mx-auto my-auto">{{item.quantity}}</div>
                             </div>
                                 
                             
-                            <div class="lg:w-[100px] text-base max-[400px]:mt-2">
+                            <div class="lg:w-[100px] text-base max-[300px]:mt-2">
                                 <div class="mb-6 mt-1 text-right pr-1">
                                     {% if item.variant.get_descuento != 0 %}
                                     <div class="text-[10px] leading-[10px] text-gray-700 line-through">PVR: {{item.variant.precio_retail|multiply:item.quantity | floatformat:2}} €</div>
@@ -101,27 +103,120 @@
         </div>
     </div>
 
-
-    <div class="w-[28%] h-[400px] ml-[2%]">
-        
-        <div class="rounded-xl border border-gray-600 h-[200px] p-3">
-            <div class="flex space-x-2">
-                <svg class="h-7 w-7 my-auto"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                <p class="">Preguntas Frecuentes</p>
+    <div class="flex flex-wrap w-[100%] mt-8 gap-5">
+        <div class="w-[100%] lg:w-[49%]">
+            
+            <div class="rounded-xl border border-gray-600 p-3">
+                <div class="flex space-x-2">
+                    <svg class="h-7 w-7 my-auto"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                    <p class="text-lg font-semibold underline my-auto">Preguntas Frecuentes</p>
+                </div>
+                <div class="mt-2 ml-4">
+                    <div onclick="open_preguntas(1)" class="min-h-10 border-b border-gray-400 flex justify-between cursor-pointer">
+                        <div class="my-auto">¿Cómo puedo rastrear mi pedido?</div>
+                        <div class="my-auto mr-2">
+                            <svg id="svg_1" class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="respuesta-1" class="hidden my-2 text-sm">Recibirás un número de seguimiento con cada pedido, el cual te será enviado a través de un correo electrónico por parte del transportista en el momento en que el pedido salga de sus instalaciones.
+                        <br> Puedes rastrear el estado de tu pedido desde el siguiente enlace.&nbsp;<a class="underline text-green-600 font-semibold" target="_blank" href="https://www.nacex.es/irHome.do">link</a></div>
+                    <div onclick="open_preguntas(2)" class="min-h-10 border-b border-gray-400 flex justify-between cursor-pointer">
+                        <div class="my-auto">¿Qué debo hacer si mi producto llega dañado o defectuoso?</div>
+                        <div class="my-auto mr-2">
+                            <svg id="svg_2" class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="respuesta-2" class="hidden my-2 text-sm">En caso de que tengas una cuenta con nosotros puedes hacerlo desde Mi Cuenta / <a class="underline font-semibold" target="_blank" href="{% url 'my_vista_producto' orden_compra.id %}">Ver los detalles del pedido</a>  y abrir una incidencia.
+                        <br> En caso de que no tengas cuenta con nosotros puedes contactarnos a través del siguiente <a class="underline text-green-600 font-semibold" target="_blank" href="{% url 'contacto' %}">link</a></div>
+                    <div onclick="open_preguntas(3)" class="min-h-10 border-b border-gray-400 flex justify-between cursor-pointer">
+                        <div class="my-auto">¿Puedo realizar cambios en mi pedido después de haberlo realizado?</div>
+                        <div class="my-auto mr-2">
+                            <svg id="svg_3" class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="respuesta-3" class="hidden my-2 text-sm">Depende de varios factores y de si el transportista ya ha recogido tu paquete. Puedes contactarnos y explicarnos los cambios a través del siguiente <a class="underline text-green-600 font-semibold" target="_blank" href="{% url 'contacto' %}">link</a></div>
+                    <div onclick="open_preguntas(4)" class="min-h-10 border-b border-gray-400 flex justify-between cursor-pointer">
+                        <div class="my-auto">¿Cómo puedo devolver un producto?</div>
+                        <div class="my-auto mr-2">
+                            <svg id="svg_4" class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="respuesta-4" class="hidden my-2 text-sm">En caso de que tengas una cuenta con nosotros puedes hacerlo desde Mi Cuenta / <a class="underline font-semibold" target="_blank" href="{% url 'my_vista_producto' orden_compra.id %}">Ver los detalles del pedido</a>  y abrir una devolución.
+                        <br> En caso de que no tengas cuenta con nosotros puedes contactarnos a través del siguiente <a class="underline text-green-600 font-semibold" target="_blank" href="{% url 'contacto' %}">link</a></div>
+                    <div onclick="open_preguntas(5)" class="min-h-10 border-b border-gray-400 flex justify-between cursor-pointer">
+                        <div class="my-auto">¿Cómo puedo ponerme en contacto con el servicio al cliente?</div>
+                        <div class="my-auto mr-2">
+                            <svg id="svg_5" class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="respuesta-5" class="hidden my-2 text-sm">Puedes contactarnos a través del siguiente <a class="underline text-green-600 font-semibold" target="_blank" href="{% url 'contacto' %}">link</a></div>
+                </div>
+    
             </div>
             
-
         </div>
-        
-        
-
+    
+        <div class="w-[1005] lg:w-[48%] space-y-5" >
+            <div>
+                <div class="text-lg font-semibold underline mb-2">Detalles del Pedido</div>
+                <div class="gap-5 min-[400px]:flex overflow-hidden justify-between">
+                    <div class="space-y-2 w-full min-[400px]:w-[50%]">
+                        <div><span class="font-semibold">Dirección:</span>&nbsp;{{orden_compra.address}}</div>
+                        <div><span class="font-semibold">Ciudad:</span>&nbsp;{{orden_compra.city}}, {{orden_compra.zipcode}}</div>
+                        <div><span class="font-semibold">Provincia:</span>&nbsp;{{orden_compra.provincia}}</div>
+                    </div>
+                    <div class="space-y-2 w-full min-[400px]:w-[50%] max-[400px]:mt-2">
+                        <div><span class="font-semibold">Tel:</span>&nbsp;{{orden_compra.phone}}</div>
+                        <div><span class="font-semibold">Email:</span>&nbsp;{{orden_compra.email}}</div>
+                    </div>
+                    
+                </div>
+                {% if orden_compra.detalles_envio == '' %}
+                {% else %}
+                    <div class="mt-2"><span class="font-semibold">Detalles para el envio:</span>&nbsp;{{orden_compra.detalles_envio}}</div>
+                {% endif %}
+            </div>
+    
+            <div class="text-sm text-gray-600">Si algo en el pedido no es correcto, puedes contactar con nosotros <a class="underline text-green-600 font-semibold" href="{% url 'contacto' %}">link</a></div>
+            
+        </div>
     </div>
+
+
 
     <div class="w-full flex justify-between my-4">
         <a href="{% url 'frontpage' %}" class="w-1/5 py-3 bg-white border hidden lg:flex"><div class="mx-auto my-auto">← Continuar comprando</div></a>
     </div>
 
 </div>
+{% endblock %}
+{% block scripts %}
+
+<script>
+    function open_preguntas(i){
+        const respuesta = document.getElementById(`respuesta-${i}`)
+        const svg_icon = document.getElementById(`svg_${i}`)
+
+        if(respuesta.classList.contains('hidden')){
+            respuesta.classList.remove('hidden')
+            svg_icon.classList.add('rotate-180')
+        }else{
+            respuesta.classList.add('hidden')
+            svg_icon.classList.remove('rotate-180')
+        }
+        
+    }
+</script>   
 {% endblock %}

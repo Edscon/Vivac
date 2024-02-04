@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Account
+from core.models import Account, Alquiler
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 
@@ -16,3 +16,4 @@ admin.site.unregister(User)
 admin.site.register(User,CustomUserAdmin)
 
 admin.site.register(Account)
+admin.site.register(Alquiler)

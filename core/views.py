@@ -10,7 +10,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from django.urls import reverse
-from core.models import Account
+from core.models import Account, Alquiler
 from order.models import Order
 from product.models import Product, Category, Marca, Variant, Color, Review
 from functools import reduce
@@ -620,7 +620,9 @@ def contacto(request):
 
 def alquiler_material(request):
 
-    return render(request, 'core/partials/alquiler_material.html')
+    alquiler = Alquiler.objects.first()
+
+    return render(request, 'core/partials/alquiler_material.html', {'alquiler': alquiler})
 
 def my_devoluciones(request, id, order_id):
 
