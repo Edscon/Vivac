@@ -1,50 +1,156 @@
-{% extends 'core/base.html' %}
+{{% extends 'core/base.html' %}
 
-{% block title %}Tiendas{% endblock %}
+{% block title %}Alquiler Material{% endblock %}
 
 {% block content%}
 
 {% load static %}
 
-<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto xl:px-0 px-4 py-5">
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 px-4 lg:px-0">
 
-    <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold">Alquiler de material</div>
+    <div class="mt-5 xl:mx-0 md:flex mb-1 text-2xl font-semibold">Alquiler de material</div>
     
     <div>Te ofrecemos un alquiler de material adaptado a tus necesidades. </div>
-    
-    <div>Tarifa alquiler material esquí</div>
 
-    <div>{{alquiler}}</div>
-
-    <div>{{alquiler.esquí_completo_adulto}}</div>
-    <div>{{alquiler.snowblade_completo}}</div>
-    <div>{{alquiler.snowboard_completo_adulto}}</div>
-    <div>{{alquiler.esquí_gama_alta_completo_adulto}}</div>
-
-    <div>{{alquiler.casco}}</div>
-
-    <div>{{alquiler.esquí_completo_junior}}</div>
-    <div>{{alquiler.snowboard_completo_junior}}</div>
-
-    <div>{{alquiler.esquí_montaña_completo}}</div>
-    <div>{{alquiler.raquetas}}</div>
-    <div>{{alquiler.raquetas_y_palos}}</div>
-    <div>{{alquiler.grampones}}</div>
-    <div>{{alquiler.piolet}}</div>
-    <div>{{alquiler.grampones_y_piolet}}</div>
-
-    <div>{{alquiler.palos}}</div>
-
-    <div>{{alquiler.esquí_temporada_adulto}}</div>
-    <div>{{alquiler.esquí_temporada_junior_70_90cm}}</div>
-    <div>{{alquiler.esquí_temporada_junior_100_110cm}}</div>
-    <div>{{alquiler.esquí_temporada_junior_120_130cm}}</div>
-    <div>{{alquiler.esquí_temporada_junior_140_150cm}}</div>
-
-    <div>Tarifa alquiler material snowboard</div>
-
-    <div>Tarifa alquiler temporada</div>
-
+    <div class="mt-10">
+        <div class="flex mb-5">
+            <div class="my-auto"></div>
+            <div class="my-auto font-semibold">
+                <div class="text-2xl">Precios alquiler 1 día</div>
+                <div class="text-lg">Precios por persona IVA incluido</div>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="w-[50%] mr-2">
+                <div class="w-full text-center mb-2 font-semibold">ADULTO</div>
+                <div class="font-semibold">
+                    <div class="flex h-[50px] bg-green-700 text-white">
+                        <div class="w-1/2 text-center my-auto">Tipo de Alquiler</div>
+                        <div class="w-1/2 text-center my-auto">Precio</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Esquí Completo</div>
+                        <div class="border w-1/2 text-center">{{alquiler.esquí_completo_adulto | floatformat:2}} €</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Snowblade Completo</div>
+                        <div class="border w-1/2 text-center">{{alquiler.snowblade_completo | floatformat:2}} €</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Snowboard Completo</div>
+                        <div class="border w-1/2 text-center">{{alquiler.snowboard_completo_adulto | floatformat:2}} €</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Esquí alta gama Completo</div>
+                        <div class="border w-1/2 text-center">{{alquiler.esquí_gama_alta_completo_adulto | floatformat:2}} €</div>
+                    </div>
+                    <div class="mt-2 font-normal">*El casco no está incluido y tiene un costo adicional de {{alquiler.casco | floatformat:2}} € para adultos.</div>
+                </div>
+            </div>
+            <div class="w-[50%] ml-2">
+                <div class="w-full text-center mb-2 font-semibold">JUNIOR</div>
+                <div class="font-semibold">
+                    <div class="flex h-[50px] bg-green-700 text-white">
+                        <div class="w-1/2 text-center my-auto">Tipo de Alquiler</div>
+                        <div class="w-1/2 text-center my-auto">Precio</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Esquí Completo</div>
+                        <div class="border w-1/2 text-center">{{alquiler.esquí_completo_junior | floatformat:2}} €</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Snowboard Completo</div>
+                        <div class="border w-1/2 text-center">{{alquiler.snowboard_completo_junior | floatformat:2}} €</div>
+                    </div>
+                    <div class="mt-2 font-normal">*El casco no está incluido y tiene un costo adicional de {{alquiler.casco | floatformat:2}} € para juniors.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-10">
+        <div class="flex mb-5">
+            <div class="my-auto"></div>
+            <div class="my-auto font-semibold">
+                <div class="text-2xl">Precios alquiler 1 día Otro Material</div>
+                <div class="text-lg">Precios por persona IVA incluido</div>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="w-[50%] mr-2">
+                <div class="font-semibold">
+                    <div class="flex h-[50px] bg-green-700 text-white">
+                        <div class="w-1/2 text-center my-auto">Tipo de Alquiler</div>
+                        <div class="w-1/2 text-center my-auto">Precio</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Esquí de montaña Completo</div>
+                        <div class="border w-1/2 text-center">{{alquiler.esquí_montaña_completo | floatformat:2}} €</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Raquetas</div>
+                        <div class="border w-1/2 text-center">{{alquiler.raquetas | floatformat:2}} €</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Raquetas + Palos</div>
+                        <div class="border w-1/2 text-center">{{alquiler.raquetas_y_palos | floatformat:2}} €</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Grampones</div>
+                        <div class="border w-1/2 text-center">{{alquiler.grampones | floatformat:2}} €</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Piolet</div>
+                        <div class="border w-1/2 text-center">{{alquiler.piolet | floatformat:2}} €</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Grampones + Piolet</div>
+                        <div class="border w-1/2 text-center">{{alquiler.grampones_y_piolet | floatformat:2}} €</div>
+                    </div>
+                    <div class="mt-2 font-normal">*Los palos tienen un costo adicional de {{alquiler.palos | floatformat:2}} € en todos los casos, excepto en el pack completo de esquí de montaña.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-10">
+        <div class="flex mb-5">
+            <div class="my-auto"></div>
+            <div class="my-auto font-semibold">
+                <div class="text-2xl">Precios alquiler esquí de temporada</div>
+                <div class="text-lg">Precios por persona IVA incluido</div>
+                <div class="text-lg">El pack incluye esquí, botas y palos</div>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="w-[50%] mr-2">
+                <div class="font-semibold">
+                    <div class="flex h-[50px] bg-green-700 text-white">
+                        <div class="w-1/2 text-center my-auto">Tipo de Alquiler</div>
+                        <div class="w-1/2 text-center my-auto">Precio</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Adulto</div>
+                        <div class="border w-1/2 text-center">{{alquiler.esquí_temporada_adulto | floatformat:2}} €</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Junior 70/90cm</div>
+                        <div class="border w-1/2 text-center">{{alquiler.esquí_temporada_junior_70_90cm | floatformat:2}} €</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Junior 100/110cm</div>
+                        <div class="border w-1/2 text-center">{{alquiler.esquí_temporada_junior_100_110cm| floatformat:2}} €</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Junior 120/130cm</div>
+                        <div class="border w-1/2 text-center">{{alquiler.esquí_temporada_junior_120_130cm | floatformat:2}} €</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%]">Junior 140/150cm</div>
+                        <div class="border w-1/2 text-center">{{alquiler.esquí_temporada_junior_140_150cm | floatformat:2}} €</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 {% endblock %}
