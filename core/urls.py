@@ -2,7 +2,7 @@ from django.contrib.auth import views
 from django.urls import path
 
 
-from core.views import frontpage, shop, signup, my_account, my_orders, my_data, my_favorites, my_reviews, my_review, edit_my_account, create_user_, update_account, check_cart, quienes_somos, update_favorito, login_p, login_user, tiendas, contacto, alquiler_material, my_devoluciones, my_vista_producto, change_psw
+from core.views import frontpage, shop, signup, my_account, my_orders, my_data, my_favorites, my_reviews, my_review, edit_my_account, create_user_, update_account, check_cart, quienes_somos, update_favorito, login_p, login_user, tiendas, contacto, alquiler_material, my_devoluciones, my_vista_producto, change_psw, ventajas, ayuda, condiciones_legales, politica_de_privacidad, politica_de_cookies, condiciones_generales_compra_web
 from product.views import product, marca, marcas, variant_product
 
 
@@ -36,10 +36,17 @@ urlpatterns = [
     path('update_account/', update_account, name='update_account'),
     path('check_cart/', check_cart, name='check_cart'),
 
-    path('quienes-somos/', quienes_somos, name='quienes-somos'),
     path('alquiler_material/', alquiler_material, name='alquiler_material'),
     path('tiendas/', tiendas, name='tiendas'),
     path('contacto/', contacto, name='contacto'),
+
+    path('quienes-somos/', quienes_somos, name='quienes-somos'),
+    path('ventajas/', ventajas, name='ventajas'),
+    path('ayuda', ayuda, name='ayuda'),
+    path('condiciones_legales/', condiciones_legales, name='condiciones_legales'),
+    path('politica_de_privacidad/', politica_de_privacidad, name='politica_de_privacidad'),
+    path('politica_de_cookies/', politica_de_cookies, name='politica_de_cookies'),
+    path('condiciones_generales_compra_web/', condiciones_generales_compra_web, name='condiciones_generales_compra_web'),
 
     path('update_favorito/<int:id>/<str:color>/<str:str>', update_favorito, name='update_favorito'),
 

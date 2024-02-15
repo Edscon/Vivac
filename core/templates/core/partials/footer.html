@@ -5,24 +5,25 @@
             <div class="grid grid-cols-2 min-[460px]:grid-cols-3 md:grid-cols-5 gap-y-5 gap-x-8 sm:gap-x-24 md:gap-8 lg:gap-24 mb-6 text-xs w-[100%] pb-6 border-b border-gray-300">
                 <div>
                     <div class="mb-1 font-semibold text-[13px]">Sobre Esports Vivac</div>
-                    <a href="{% url 'quienes-somos' %}" class="hover:underline">Quiénes somos</a>
-                    <div>Ventajas</div>
-                    <div>Tiendas</div>
+                    <div><a href="{% url 'quienes-somos' %}" class="hover:underline">Quiénes somos</a></div>
+                    <div><a href="{% url 'ventajas' %}" class="hover:underline">Ventajas</a></div>
+                    <div><a href="{% url 'tiendas' %}" class="hover:underline">Tiendas</a></div>
+                    <div><a href="{% url 'alquiler_material' %}" class="hover:underline">Alquiler Material</a></div>
                 </div>
                 <div>
                     <div class="mb-1 font-semibold text-[13px]">Garantías</div>
-                    <div>Devoluciones</div>
-                    <div>Plazos de entrega</div>
-                    <div>Métodos de pago</div>
-                    <div>Compra segura</div>
+                    <div><a href="{% url 'ayuda' %}#devolucion" class="hover:underline">Devoluciones</a></div>
+                    <div><a href="{% url 'ayuda' %}#plazos" class="hover:underline">Plazos de entrega</a></div>
+                    <div><a href="{% url 'ayuda' %}#metodos" class="hover:underline">Métodos de pago</a></div>
+                    <div><a href="{% url 'ayuda' %}#seguridad" class="hover:underline">Compra segura</a></div>
                 </div>
                 <div>
                     <div class="mb-1 font-semibold text-[13px]">Atención al cliente</div>
-                    <div>Ayuda</div>
-                    <div>Seguimiento pedidos</div>
-                    <div>Gastos de envío</div>
-                    <div>Cambio de talla</div>
-                    <div>Facturas</div>
+                    <div><a href="{% url 'ayuda' %}#seguridad" class="hover:underline">Ayuda</a></div>
+                    <div><a href="{% url 'ayuda' %}#segimiento" class="hover:underline">Seguimiento pedidos</a></div>
+                    <div><a href="{% url 'ayuda' %}#portes" class="hover:underline">Gastos de envío</a></div>
+                    <div><a href="{% url 'ayuda' %}#devolucion" class="hover:underline">Cambio de talla</a></div>
+                    <div><a href="{% url 'ayuda' %}#factura" class="hover:underline">Facturas</a></div>
                 </div>
                 <div>
                     <div class="mb-1 font-semibold text-[13px]">Esports Vivac en</div>
@@ -312,13 +313,13 @@
             <p>
                 <span>© 2023-2023 Vivac Camprodon, S.L. - Todos los derechos reservados</span>
                 &nbsp;|&nbsp;
-                <a>Condiciones legales</a>
+                <a href="{% url 'condiciones_legales' %}" class="hover:underline">Condiciones legales</a>
                 &nbsp;|&nbsp;
-                <a>Política de privacidad</a>
+                <a href="{% url 'politica_de_privacidad' %}" class="hover:underline">Política de privacidad</a>
                 &nbsp;|&nbsp;
-                <a>Política de cookies</a>
+                <a href="{% url 'politica_de_cookies' %}" class="hover:underline">Política de cookies</a>
                 &nbsp;|&nbsp;
-                <a>Condiciones generales de compra</a>
+                <a href="{% url 'condiciones_generales_compra_web' %}" class="hover:underline">Condiciones generales de compra</a>
             </p>
             <p>C.I.F. B17829516. Inscrita en el Registro Mercantil Barcelona. tomo ****. folio ***. Hoja * ***. Inscripción *.</p>
 

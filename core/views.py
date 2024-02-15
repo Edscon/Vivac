@@ -555,11 +555,6 @@ def shop(request):
     #update_favorito(request.user, 30)
     return render(request, 'core/shop.html', context)
 
-
-def quienes_somos(request):
-
-    return render(request, 'core/partials/footer/quienes-somos.html',)
-
 def update_favorito(request, id, color, str):
     if(request.user.is_authenticated):
         account = Account.objects.filter(user=request.user)
@@ -688,3 +683,31 @@ def change_psw(request):
                 return JsonResponse({'data': data})
     
     return JsonResponse({"data":{}})
+
+def quienes_somos(request):
+
+    return render(request, 'core/partials/footer/quienes-somos.html',)
+
+def ventajas(request):
+
+    return render(request, 'core/partials/footer/ventajas.html',)
+
+def ayuda(request):
+
+    return render(request, 'core/partials/footer/ayuda.html',)
+
+def condiciones_legales(request):
+
+    return render(request, 'core/partials/footer/condiciones_legales.html',)
+
+def politica_de_privacidad(request):
+
+    return render(request, 'core/partials/footer/politica_de_privacidad.html',)
+
+def politica_de_cookies(request):
+
+    return render(request, 'core/partials/footer/politica_de_cookies.html',)
+
+def condiciones_generales_compra_web(request):
+
+    return render(request, 'core/partials/footer/condiciones_generales_compra_web.html',)
