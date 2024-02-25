@@ -95,7 +95,7 @@
             
         </div>
 
-        <div class="space-y-3 text-sm">
+        <div id="devolucion" class="space-y-3 text-sm">
             <h2 class="text-lg">¿Puedo devolver un producto?</h2>
 
             <p>¡Por supuesto! Tienes un plazo de 30 días para realizar una devolución o cambio desde el momento en que recibas tu pedido.</p>
@@ -225,4 +225,26 @@
 {% endblock %}
 
 {% block scripts %}
+<script>
+    window.onload = function() {
+
+      if(window.location.hash) {
+        
+        var targetId = window.location.hash.substring(1);
+        
+        var targetElement = document.getElementById(targetId);
+        
+        if(targetElement) {
+            var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            
+            if (windowWidth > 1300) {
+                window.scrollBy(0, -30);
+            } else {
+                window.scrollBy(0, -100);
+            }
+        }
+      }
+    };
+</script>
+
 {% endblock %}
