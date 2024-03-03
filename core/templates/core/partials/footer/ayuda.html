@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="space-y-3 text-sm">
+        <div class="space-y-3 text-sm" id="metodos">
             <h2 class="text-lg">¿Qué métodos de pago puedo utilizar?</h2>
         
             <div>
@@ -54,7 +54,8 @@
                         Podrás pagar de manera rápida y segura usando tu cuenta de PayPal, sin compartir información financiera con Esports Vivac.
                     </p>
                 </div>
-                <div>
+
+                <div class="hidden">
                     <h3 class="font-semibold">Transferencia bancaria</h3>
                     <p>
                         Tu pedido será activado desde el momento en que recibamos el importe íntegro del mismo y éste será enviado cuando tengamos todos los productos que lo conforman. Nuestros datos bancarios son los siguientes:
@@ -64,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <div class="space-y-3 text-sm">
+        <div class="space-y-3 text-sm" id="gastos">
             <h2 class="text-lg">¿Los gastos de envío son gratuitos?</h2>
         
             <p>En España (solo península), los envíos son gratuitos en compras superiores a 100€</p>
@@ -118,8 +119,8 @@
                 <div class="mt-1">
                     <h2 class="font-semibold">Entra en tu cuenta e indícanos qué quieres devolver</h2>
         
-                    <p>Si tienes cuenta, inicia sesión en Esports Vivac con tus datos de usuario y accede a <b class="font-semibold">Mi cuenta > Mis pedidos.</b></p>
-                    <p>-----------------------------------------------------------------</p>
+                    <p>Si dispones de una cuenta, por favor inicia sesión en Esports Vivac utilizando tus datos de usuario y dirígete a <b class="font-semibold">Mi cuenta > Mis pedidos</b>. Allí, selecciona el producto que deseas devolver y marca el botón de "Devolución o incidencia". Podrás adjuntar fotos para que podamos procesar tu solicitud de manera más rápida.</p>
+                    <p>Si no tienes una cuenta, por favor envíanos un <a class="underline text-blue-400" href="{% url 'contacto' %}">correo electrónico</a> con los detalles de tu incidencia.</p>
                 </div>
             </div>
             <div class="flex space-x-1">
@@ -142,7 +143,7 @@
             </div>
         </div>
 
-        <div class="space-y-3 text-sm">
+        <div class="space-y-3 text-sm" id="plazos">
             <h2 class="text-lg">¿Cuándo recibiré mi pedido?</h2>
 
             <p>
@@ -159,7 +160,7 @@
             
         </div>
 
-        <div class="space-y-3 text-sm">
+        <div class="space-y-3 text-sm" id="segimiento">
             <h2 class="text-lg">¿Puedo hacer seguimiento de mi pedido en todo momento?</h2>
 
             <p>
@@ -181,7 +182,7 @@
             
         </div>
 
-        <div class="space-y-3 text-sm">
+        <div class="space-y-3 text-sm" id="factura">
             <h2 class="text-lg">¿Cómo puedo solicitar una factura?</h2>
 
             <p> Para solicitar una factura, envía un <a class="underline text-blue-400" href="{% url 'contacto' %}">correo electrónico</a> a nuestro equipo de atención al cliente con los detalles de tu pedido y te ayudaremos con tu solicitud.</p>
@@ -200,8 +201,10 @@
 
             <p>Es crucial que revises el embalaje y el producto tan pronto como recibas tu paquete. Si detectas algún daño, te recomendamos no aceptar la entrega o dejar constancia de ello al momento de recibirla para posterior revisión. Si encuentras alguna incidencia, por favor infórmanos en un plazo máximo de 24 horas después de recibirlo. Esto nos permitirá comunicarnos con la empresa de transporte y proceder con las reclamaciones necesarias.</p>
 
-            <p>Si tienes cuenta, inicia sesión en Esports Vivac con tus datos de usuario y accede a <b class="font-semibold">Mi cuenta > Mis pedidos.</b></p>
-            <p>----------------------------</p>
+            <h2 class="font-semibold">Entra en tu cuenta e indícanos la incidencia</h2>
+        
+            <p>Si dispones de una cuenta, por favor inicia sesión en Esports Vivac utilizando tus datos de usuario y dirígete a <b class="font-semibold">Mi cuenta > Mis pedidos</b>. Allí, selecciona el producto que tiene la incidencia y marca el botón de "Devolución o incidencia". Podrás adjuntar fotos para que podamos procesar tu solicitud de manera más rápida.</p>
+            <p>Si no tienes una cuenta, por favor envíanos un <a class="underline text-blue-400" href="{% url 'contacto' %}">correo electrónico</a> con los detalles de tu incidencia.</p>
 
         </div>
 
@@ -211,13 +214,10 @@
             <p>
                 Si encuentras algún problema como un producto incorrecto o faltante,(cuenta) por favor contáctenos dentro de las 24 horas siguientes y haremos todo lo posible para reponer el artículo correcto y entregártelo lo antes posible. En caso de no disponer de stock, procederemos con el reembolso correspondiente.
             </p>
-            <p>----------------------------</p>
 
             <p><b class="font-semibold">IMPORTANTE:</b> Para procesar tu reclamación, necesitaremos fotos del paquete recibido, que incluyan el embalaje exterior con sus etiquetas, así como también de las etiquetas del producto recibido.</p>
 
         </div>
-
-        <div>¿Tienes más dudas?¿Tienes más dudas?¿Tienes más dudas?¿Tienes más dudas?¿Tienes más dudas?¿Tienes más dudas?¿Tienes más dudas?</div>
 
     </div>
     
@@ -226,25 +226,22 @@
 
 {% block scripts %}
 <script>
-    window.onload = function() {
-
-      if(window.location.hash) {
-        
-        var targetId = window.location.hash.substring(1);
-        
-        var targetElement = document.getElementById(targetId);
-        
-        if(targetElement) {
-            var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-            
-            if (windowWidth > 1300) {
-                window.scrollBy(0, -30);
-            } else {
-                window.scrollBy(0, -100);
+    function scrollFunction() {
+        if (window.location.hash) {
+            var targetId = window.location.hash.substring(1);
+            var targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                if (windowWidth > 1300) {
+                    window.scrollBy(0, -30);
+                } else {
+                    window.scrollBy(0, -100);
+                }
             }
+            
         }
-      }
-    };
+    }
+    window.onload = scrollFunction;
 </script>
 
 {% endblock %}
