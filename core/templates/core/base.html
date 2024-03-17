@@ -11,6 +11,14 @@
     <head class="h-0">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TWFJWBM7');
+        </script>
+        <!-- End Google Tag Manager -->
         <title>{% block title %}{% endblock %} | Esports Vivac</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
         
@@ -19,7 +27,6 @@
         <script src="https://unpkg.com/htmx.org@1.7.0"></script>
         <script src="https://unpkg.com/htmx.org/dist/ext/multi-swap.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-        <script src="https://js.stripe.com/v3/"></script>
 
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
@@ -34,7 +41,11 @@
     </head>
     
     <body id="body" class="max-[768px]:overflow-x-hidden">       
-        
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWFJWBM7" 
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+            <!-- End Google Tag Manager (noscript) -->
         <div 
             hx-get="{% url 'hx_addtocart' %}"
             hx-trigger="update-menu-cart from:body"
@@ -71,6 +82,8 @@
         </main>
 
         {% include 'core/partials/footer.html' %}
+
+        {% include 'core/partials/cookie.html' %}
 
         {% block scripts %}
         {% endblock %}

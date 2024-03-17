@@ -23,6 +23,26 @@ import math
 
 from .forms import SignUpForm
 
+@csrf_exempt
+def set_cookie_accepted(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            accepted = data.get('accepted', False)
+            if accepted:
+                request.session['cookie_accepted'] = True
+                return JsonResponse({'status': 'success'})
+            else:
+                return JsonResponse({'status': 'error', 'message': 'Accepted field missing or false'}, status=400)
+        except json.JSONDecodeError:
+            return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'}, status=400)
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Only POST requests are allowed'}, status=405)
+
+def get_cookie_accepted(request):
+    cookie_accepted = request.session.get('cookie_accepted', False)
+    return JsonResponse({'accepted': cookie_accepted})
+
 
 def login_p(request):
     if request.method == 'POST':
