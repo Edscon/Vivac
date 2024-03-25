@@ -204,7 +204,7 @@ USE_TZ = True
 
 LANGUAGES = [
     ('es', _('Español')),
-    ('ca', _('Català'))
+    ('ca', _('Català')),
 ]
 
 LOCALE_PATHS = [
