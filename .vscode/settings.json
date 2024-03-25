@@ -21,14 +21,23 @@
     ],
     "cSpell.words": [
         "addtocart",
+        "allauth",
+        "ALLOWALL",
         "Cantaluña",
         "categoria",
+        "codesnippet",
         "descripcion",
+        "dotenv",
         "forloop",
+        "googleapis",
         "infórmanos",
+        "mysql",
         "navbarleft",
         "siple",
+        "socialaccount",
+        "SOCIALACCOUNT",
         "swipertop",
-        "swipperimg"
+        "swipperimg",
+        "whitenoise"
     ]
 }

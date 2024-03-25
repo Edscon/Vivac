@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from django.utils.translation import gettext_lazy as _
 
 load_dotenv()
 
@@ -114,6 +115,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
@@ -197,9 +199,17 @@ LANGUAGE_CODE = 'es'
 TIME_ZONE = 'CET'
 
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
 
+LANGUAGES = [
+    ('es', _('Español')),
+    ('ca', _('Català'))
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale')
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/

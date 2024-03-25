@@ -5,6 +5,7 @@
 {% block content%}
 
 {% load static %}
+{% load i18n %}
 <style> 
     .New_reseña{
         transform: translate(-50%, -50%);
@@ -82,7 +83,7 @@
         {% endfor %}
     </div>
 
-    <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold">Productos populares</div>
+    <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold">{% trans 'Productos populares' %}</div>
     
     <div class="w-full relative">
         <div class="xl:px-0 overflow-hidden mx-10">
