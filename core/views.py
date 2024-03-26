@@ -22,6 +22,7 @@ import pandas as pd
 import math
 
 from .forms import SignUpForm
+from django.utils.translation import gettext_lazy as _
 
 @csrf_exempt
 def set_cookie_accepted(request):

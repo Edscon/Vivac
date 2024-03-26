@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-26 00:28+0100\n"
+"POT-Creation-Date: 2024-03-26 21:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,10 @@ msgstr ""
 msgid "Productos populares"
 msgstr "Productes populars"
 
+#: product/models.py:68
+msgid "Nombre"
+msgstr "Nom"
+
 #: vivac/settings.py:206
 msgid "Español"
 msgstr "Catalan"
@@ -29,3 +33,6 @@ msgstr "Catalan"
 #: vivac/settings.py:207
 msgid "Català"
 msgstr "Castellà"
+
+msgid "Ciclismo"
+msgstr "Ciclisme"

@@ -7,7 +7,7 @@ from multiselectfield import MultiSelectField
 
 from io import BytesIO
 from PIL import Image
-
+from django.utils.translation import gettext_lazy as _
 
 class Marca(models.Model):
     nombre = models.CharField(max_length=255)
@@ -65,7 +65,7 @@ class RedSocial(models.Model):
 
 
 class Category(models.Model):
-    nombre = models.CharField(max_length=255)
+    nombre = models.CharField(_('Nombre'), max_length=255)
     slug = models.SlugField()
     orden = models.IntegerField(default=0)
     image = models.ImageField(
