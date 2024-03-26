@@ -62,6 +62,14 @@ def login_p(request):
     return redirect(request.GET.get('next',''))
 
 def frontpage(request):
+
+    from django.utils import translation
+    #user_language = settings.LANGUAGE_CODE
+    #translation.activate(user_language)
+    #request.COOKIES[settings.LANGUAGE_COOKIE_NAME] = user_language
+    if 'django_language' in request.session:
+        del request.session['django_language']
+
     products = Product.objects.all()[0:8]
     categories = Category.objects.all()[0:4]
     marcas = Marca.objects.all()
@@ -95,6 +103,7 @@ def frontpage(request):
         'categories': categories,
         'marcas': marcas,
         'favorites': favorites,
+        'LANGUAGES': settings.LANGUAGES,
     }
 
     return render(request, 'core/frontpage.html', context)
@@ -731,3 +740,15 @@ def politica_de_cookies(request):
 def condiciones_generales_compra_web(request):
 
     return render(request, 'core/partials/footer/condiciones_generales_compra_web.html',)
+
+
+'''
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ redirect_to }}">
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <button type="submit" name="language" value="{{ language.code }}" class="language-button">
+                {{ language.name_local }}
+            </button>
+        {% endfor %}
+    '''

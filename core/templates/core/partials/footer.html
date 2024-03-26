@@ -1,4 +1,5 @@
 {% load static%}
+{% load i18n %}
 <footer class="bg-white bottom-0 border-t border-gray-400 mt-5">
     <div class="max-w-screen-xl mx-auto py-10 px-6 space-x-3 w-full">
         <div class="grid justify-center">
@@ -26,43 +27,64 @@
                     <div><a href="{% url 'ayuda' %}#factura" class="hover:underline">Facturas</a></div>
                 </div>
                 <div>
-                    <div class="mb-1 font-semibold text-[13px]">Esports Vivac en</div>
-                    <div class="flex space-x-1">
-                        <svg class="my-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="10px" viewBox="0 0 15 10" version="1.1">
-                            <g id="surface1">
-                            <rect x="0" y="0" width="15" height="10" style="fill:rgb(98.823529%,86.666667%,3.529412%);fill-opacity:1;stroke:none;"/>
-                            <path style="fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;stroke-width:60;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(85.490196%,7.058824%,10.196078%);stroke-opacity:1;stroke-miterlimit:4;" d="M 0 90.070312 L 810 90.070312 M 810 210.09375 L 0 210.09375 M 0 329.90625 L 810 329.90625 M 810 449.929688 L 0 449.929688 " transform="matrix(0.0185185,0,0,0.0185185,0,0)"/>
-                            </g>
-                        </svg>
-                        <div>Català</div>
-                    </div>
-                    <div class="flex space-x-1">
-                        <svg class="my-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="10px" viewBox="0 0 15 10" version="1.1">
-                            <g id="surface1">
-                            <rect x="0" y="0" width="15" height="10" style="fill:rgb(77.647059%,4.313725%,11.764706%);fill-opacity:1;stroke:none;"/>
-                            <path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,76.862745%,0%);fill-opacity:1;" d="M 0 2.5 L 15 2.5 L 15 7.5 L 0 7.5 Z M 0 2.5 "/>
-                            </g>
-                        </svg>
-                        <div>Español</div>
-                    </div>
-                    <div class="flex space-x-1">
-                        <svg class="my-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="10px" viewBox="0 0 15 10" version="1.1">
-                            <defs>
-                            <clipPath id="clip1">
-                              <path d="M 7.5 5 L 15 5 L 15 10 Z M 7.5 5 L 7.5 10 L 0 10 Z M 7.5 5 L 0 5 L 0 0 Z M 7.5 5 L 7.5 0 L 15 0 Z M 7.5 5 "/>
-                            </clipPath>
-                            </defs>
-                            <g id="surface1">
-                            <rect x="0" y="0" width="15" height="10" style="fill:rgb(0.392157%,12.941176%,41.176471%);fill-opacity:1;stroke:none;"/>
-                            <path style="fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:4;" d="M 0 0 L 50 30 M 50 0 L 0 30 " transform="matrix(0.3,0,0,0.333333,0,0)"/>
-                            <g clip-path="url(#clip1)" clip-rule="nonzero">
-                            <path style="fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(78.431373%,6.27451%,18.039216%);stroke-opacity:1;stroke-miterlimit:4;" d="M 0 0 L 50 30 M 50 0 L 0 30 " transform="matrix(0.3,0,0,0.333333,0,0)"/>
-                            </g>
-                            <path style="fill-rule:nonzero;fill:rgb(78.431373%,6.27451%,18.039216%);fill-opacity:1;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:4;" d="M -1.002604 11.003906 L 21.002604 11.003906 L 21.002604 -0.996094 L 28.997396 -0.996094 L 28.997396 11.003906 L 51.002604 11.003906 L 51.002604 18.996094 L 28.997396 18.996094 L 28.997396 30.996094 L 21.002604 30.996094 L 21.002604 18.996094 L -1.002604 18.996094 Z M -1.002604 11.003906 " transform="matrix(0.3,0,0,0.333333,0,0)"/>
-                            </g>
+                    <form action="{% url 'set_language' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-1 font-semibold text-[13px]">Esports Vivac en</div>
+                        
+                        <div class="flex space-x-1">
+                            <svg class="my-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="10px" viewBox="0 0 15 10" version="1.1">
+                                <g id="surface1">
+                                <rect x="0" y="0" width="15" height="10" style="fill:rgb(98.823529%,86.666667%,3.529412%);fill-opacity:1;stroke:none;"/>
+                                <path style="fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;stroke-width:60;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(85.490196%,7.058824%,10.196078%);stroke-opacity:1;stroke-miterlimit:4;" d="M 0 90.070312 L 810 90.070312 M 810 210.09375 L 0 210.09375 M 0 329.90625 L 810 329.90625 M 810 449.929688 L 0 449.929688 " transform="matrix(0.0185185,0,0,0.0185185,0,0)"/>
+                                </g>
                             </svg>
-                        <div>English</div>
-                    </div>
+                            <button type="submit" name="language" value="{{ 'ca' }}" class="language-button">
+                                Català
+                            </button>
+                        </div>
+                        <div class="flex space-x-1">
+                            <svg class="my-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="10px" viewBox="0 0 15 10" version="1.1">
+                                <g id="surface1">
+                                <rect x="0" y="0" width="15" height="10" style="fill:rgb(77.647059%,4.313725%,11.764706%);fill-opacity:1;stroke:none;"/>
+                                <path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,76.862745%,0%);fill-opacity:1;" d="M 0 2.5 L 15 2.5 L 15 7.5 L 0 7.5 Z M 0 2.5 "/>
+                                </g>
+                            </svg>
+                            <button type="submit" name="language" value="{{ 'es' }}" class="language-button">
+                                Español
+                            </button>
+                        </div>
+                        <div class="flex space-x-1">
+                            <svg class="my-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="10px" viewBox="0 0 15 10" version="1.1">
+                                <defs>
+                                <clipPath id="clip1">
+                                  <path d="M 7.5 5 L 15 5 L 15 10 Z M 7.5 5 L 7.5 10 L 0 10 Z M 7.5 5 L 0 5 L 0 0 Z M 7.5 5 L 7.5 0 L 15 0 Z M 7.5 5 "/>
+                                </clipPath>
+                                </defs>
+                                <g id="surface1">
+                                <rect x="0" y="0" width="15" height="10" style="fill:rgb(0.392157%,12.941176%,41.176471%);fill-opacity:1;stroke:none;"/>
+                                <path style="fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:4;" d="M 0 0 L 50 30 M 50 0 L 0 30 " transform="matrix(0.3,0,0,0.333333,0,0)"/>
+                                <g clip-path="url(#clip1)" clip-rule="nonzero">
+                                <path style="fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(78.431373%,6.27451%,18.039216%);stroke-opacity:1;stroke-miterlimit:4;" d="M 0 0 L 50 30 M 50 0 L 0 30 " transform="matrix(0.3,0,0,0.333333,0,0)"/>
+                                </g>
+                                <path style="fill-rule:nonzero;fill:rgb(78.431373%,6.27451%,18.039216%);fill-opacity:1;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:4;" d="M -1.002604 11.003906 L 21.002604 11.003906 L 21.002604 -0.996094 L 28.997396 -0.996094 L 28.997396 11.003906 L 51.002604 11.003906 L 51.002604 18.996094 L 28.997396 18.996094 L 28.997396 30.996094 L 21.002604 30.996094 L 21.002604 18.996094 L -1.002604 18.996094 Z M -1.002604 11.003906 " transform="matrix(0.3,0,0,0.333333,0,0)"/>
+                                </g>
+                                </svg>
+                            <div>English</div>
+                        </div>
+                    </form>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            var languageButtons = document.querySelectorAll('.language-button');
+                            languageButtons.forEach(function(button) {
+                                button.addEventListener('click', function() {
+                                    var languageCode = this.value;
+                                    document.querySelector('#language-form input[name="language"]').value = languageCode;
+                                    document.querySelector('#language-form').submit();
+                                });
+                            });
+                        });
+                    </script>
+
                 </div>
                 <div>
                     <div class="mb-1 font-semibold text-[13px]">Redes Sociales</div>
