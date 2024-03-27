@@ -1,3 +1,4 @@
+{% load i18n %}
 <div id ="Top_" class="swiper mySwiper fixed top-0 z-30 hidden max-[1300px]:block bg-[#326437] text-[13px] text-white pt-1 pb-2 w-full text-center text-[14px] opacity-100">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
@@ -6,7 +7,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
             </svg>
                                       
-            <span class="px-4 flex space-x-1"><p class="underline">Envío gratis</p> <p>a partir de 100 €</p></span>
+            <span class="px-4 flex space-x-1"><p class="underline">{% trans 'Envío gratis' %} </p> <p>{% trans 'a partir de 100 €' %} </p></span>
         </a>
       </div>
       <div class="swiper-slide">
@@ -16,7 +17,7 @@
             </svg>
               
                                       
-            <span class="px-4 flex space-x-1"><p>Entrega en </p><p class="underline"> 48 horas</p></span>
+            <span class="px-4 flex space-x-1"><p>{% trans 'Entrega en' %} </p><p class="underline">{% trans '48 horas' %}</p></span>
         </a>
       </div>
       <div class="swiper-slide">
@@ -25,7 +26,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
             </svg>
                                       
-            <span class="px-4 flex space-x-1"><p class="underline">Devolución</p> <p>de 30 dias</p></span>
+            <span class="px-4 flex space-x-1"><p class="underline">{% trans 'Devolución' %}</p> <p>{% trans 'de 30 días' %}</p></span>
         </a>
       </div>
     </div>
@@ -38,7 +39,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
             </svg>
                                       
-            <span class="px-4 flex space-x-1"><p class="underline">Envío gratis</p> <p>a partir de 100€</p></span>
+            <span class="px-4 flex space-x-1"><p class="underline">{% trans 'Envío gratis' %}</p> <p>{% trans 'a partir de 100 €' %}</p></span>
         </a>
 
         <a href="#" class="flex justify-center items-center">
@@ -47,14 +48,14 @@
             </svg>
               
                                       
-            <span class="px-4 flex space-x-1"><p>Entrega en </p><p class="underline"> 48 horas</p></span>
+            <span class="px-4 flex space-x-1"><p>{% trans 'Entrega en' %} </p><p class="underline">{% trans '48 horas' %}</p></span>
         </a>
         <a href="#" class="flex justify-center items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
             </svg>
                                       
-            <span class="px-4 flex space-x-1"><p class="underline">Devolución</p> <p>de 30 dias</p></span>
+            <span class="px-4 flex space-x-1"><p class="underline">{% trans 'Devolución' %}</p> <p>{% trans 'de 30 días' %}</p></span>
         </a>
     </div>
 </div>

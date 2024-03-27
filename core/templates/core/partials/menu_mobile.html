@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="menu-mobile invisible fixed z-[99999] top-0 left-0">
 
     <div class="w-screen h-screen bg-neutral-700 opacity-70 z-0" onclick="menu_mobile()"></div>
@@ -17,34 +18,34 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-400">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                     </svg>
-                    <span class="ml-2 my-auto">Tienda</span> 
+                    <span class="ml-2 my-auto">{% trans 'Tienda' %}</span> 
                 </a>
                 
                 <hr>
 
                 <a href="{% url 'shop' %}?category=ciclismo" class="block flex justify-between px-6 py-3">
-                    <span>Ciclismo</span>
+                    <span>{% trans 'Ciclismo' %}</span>
                     <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
                     </svg> 
                 </a>
                 <hr>
                 <a href="{% url 'shop' %}?category=running" class="block flex justify-between px-6 py-3">
-                    <span>Running</span>
+                    <span>{% trans 'Running' %}</span>
                     <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
                     </svg> 
                 </a>
                 <hr>
                 <a href="{% url 'shop' %}?category=outdoor" class="block flex justify-between px-6 py-3">
-                    <span>Outdoor</span>
+                    <span>{% trans 'Outdoor' %}</span>
                     <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
                     </svg> 
                 </a>
                 <hr>
                 <a href="{% url 'shop' %}?category=esqui" class="block flex justify-between px-6 py-3">
-                    <span>Esquí</span>
+                    <span>{% trans 'Esquí' %}</span>
                     <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
                     </svg> 
@@ -56,24 +57,24 @@
                         <path stroke="none" d="M0 0h24v24H0z"/> <polyline points="5 12 3 12 12 3 21 12 19 12" />  
                         <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />  <rect x="10" y="12" width="4" height="4" />
                     </svg> 
-                    <span class="ml-2 my-auto">Nosotros</span> 
+                    <span class="ml-2 my-auto">{% trans 'Nosotros' %}</span> 
                 </a>
                 <a href="{% url 'alquiler_material' %}" class="block flex justify-between px-6 py-3">
-                    <span>Alquiler Material</span>
+                    <span>{% trans 'Alquiler Material' %}</span>
                     <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
                     </svg> 
                 </a>
                 <hr>
                 <a href="{% url 'tiendas' %}" class="block flex justify-between px-6 py-3">
-                    <span>Tiendas</span>
+                    <span>{% trans 'Tiendas' %}</span>
                     <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
                     </svg> 
                 </a>
                 <hr>
                 <a href="{% url 'contacto' %}" class="block flex justify-between px-6 py-3">
-                    <span>Contacto</span>
+                    <span>{% trans 'Contacto' %}</span>
                     <svg class="h-4 w-4 mt-1"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
                     </svg> 
@@ -87,21 +88,21 @@
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  
                         <circle cx="12" cy="7" r="4" />
                     </svg> 
-                    <span class="ml-2 my-auto">Perfil de Usuario</span> 
+                    <span class="ml-2 my-auto">{% trans 'Perfil de Usuario' %}</span> 
                 </a>
                 
                 {% if request.user.is_authenticated %}
-                <a class="block px-6 py-3">Hola {{user.first_name}},</a>
+                <a class="block px-6 py-3">{% trans 'Hola' %} {{user.first_name}},</a>
                 <hr class="block py-1">
-                <a href="{% url 'my_account' %}" class="block px-6 py-[8px]">Mi Cuenta</a>
-                <a href="{% url 'my_orders' %}" class="block px-6 py-[8px]">Mis pedidos</a>
-                <a href="{% url 'my_data' %}" class="block px-6 py-[8px]">Mis datos</a>
-                <a href="{% url 'my_favorites' %}" class="block px-6 py-[8px]">Mis favoritos</a>
-                <a href="{% url 'my_reviews' %}" class="block px-6 py-[8px]">Mis opiniones de productos</a>
-                <a href="{% url 'logout' %}" class="block px-6 py-[8px]">Cerrar Sesión</a>
+                <a href="{% url 'my_account' %}" class="block px-6 py-[8px]">{% trans 'Mi Cuenta' %}</a>
+                <a href="{% url 'my_orders' %}" class="block px-6 py-[8px]">{% trans 'Mis pedidos' %}</a>
+                <a href="{% url 'my_data' %}" class="block px-6 py-[8px]">{% trans 'Mis datos' %}</a>
+                <a href="{% url 'my_favorites' %}" class="block px-6 py-[8px]">{% trans 'Mis favoritos' %}</a>
+                <a href="{% url 'my_reviews' %}" class="block px-6 py-[8px]">{% trans 'Mis opiniones de productos' %}</a>
+                <a href="{% url 'logout' %}" class="block px-6 py-[8px]">{% trans 'Cerrar Sesión' %}</a>
 
                 {% else %}
-                <a onclick="menu_login_mobile()" class="block px-6 py-3">Iniciar Sesión</a>
+                <a onclick="menu_login_mobile()" class="block px-6 py-3">{% trans 'Iniciar Sesión' %}</a>
                 {% endif %}
 
                 <div class="py-10"></div>

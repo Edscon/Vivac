@@ -65,7 +65,8 @@ class RedSocial(models.Model):
 
 
 class Category(models.Model):
-    nombre = models.CharField(_('Nombre'), max_length=255)
+    nombre = models.CharField(max_length=255)
+    nombre_ca = models.CharField(max_length=255)
     slug = models.SlugField()
     orden = models.IntegerField(default=0)
     image = models.ImageField(
@@ -120,6 +121,7 @@ class Product(models.Model):
         max_length=10, choices=TIPOS, default='None')
     sexo = MultiSelectField(choices=SEXO, null=True, blank=True, max_length=30)
     nombre = models.CharField(max_length=255)
+    nombre_ca = models.CharField(max_length=255)
     slug = models.SlugField()
     descripcion = RichTextField(blank=True, null=True)
     video = models.CharField(max_length=255, blank=True, null=True)

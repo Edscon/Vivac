@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-26 21:07+0100\n"
+"POT-Creation-Date: 2024-03-27 21:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,325 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: core/templates/core/frontpage.html:86
+#: cart/templates/cart/partials/addtocart.html:10
+#: cart/templates/cart/partials/minicart.html:10
+msgid "Añadido al carrito"
+msgstr "Afegit al carretó"
+
+#: cart/templates/cart/partials/addtocart.html:33
+#: cart/templates/cart/partials/minicart.html:33
+msgid "Talla"
+msgstr "Talla"
+
+#: cart/templates/cart/partials/addtocart.html:34
+#: cart/templates/cart/partials/minicart.html:34
+msgid "Cantidad"
+msgstr "Quantitat"
+
+#: cart/templates/cart/partials/addtocart.html:43
+#: cart/templates/cart/partials/minicart.html:43
+msgid "Te ahorras"
+msgstr "T'estalvies"
+
+#: cart/templates/cart/partials/addtocart.html:58
+#: cart/templates/cart/partials/minicart.html:60
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#: cart/templates/cart/partials/addtocart.html:63
+#: cart/templates/cart/partials/minicart.html:65
+msgid "Ver Carrito"
+msgstr "Veure Carretó"
+
+#: cart/templates/cart/partials/addtocart.html:70
+#: cart/templates/cart/partials/minicart.html:72
+msgid "Realizar pedido"
+msgstr "Realitzar la comanda"
+
+#: cart/templates/cart/partials/minicart_icon_num.html:27
+msgid "Carrito"
+msgstr "Carretó"
+
+#: core/templates/core/frontpage.html:6
+msgid "Tienda deportes online"
+msgstr "Botiga d'esports en línia"
+
+#: core/templates/core/frontpage.html:91
 msgid "Productos populares"
 msgstr "Productes populars"
 
-#: product/models.py:68
-msgid "Nombre"
-msgstr "Nom"
+#: core/templates/core/frontpage.html:141
+msgid "Tus favoritos"
+msgstr "Els teus favorits"
+
+#: core/templates/core/partials/bottom_navbar.html:7
+#: core/templates/core/partials/menu_mobile.html:21
+msgid "Tienda"
+msgstr "Productes"
+
+#: core/templates/core/partials/bottom_navbar.html:10
+#: core/templates/core/partials/menu_mobile.html:27
+msgid "Ciclismo"
+msgstr "Ciclisme"
+
+#: core/templates/core/partials/bottom_navbar.html:13
+#: core/templates/core/partials/menu_mobile.html:34
+msgid "Running"
+msgstr "Running"
+
+#: core/templates/core/partials/bottom_navbar.html:16
+#: core/templates/core/partials/menu_mobile.html:41
+msgid "Outdoor"
+msgstr "Outdoor"
+
+#: core/templates/core/partials/bottom_navbar.html:19
+#: core/templates/core/partials/menu_mobile.html:48
+msgid "Esquí"
+msgstr "Esquí"
+
+#: core/templates/core/partials/bottom_navbar.html:25
+#: core/templates/core/partials/footer.html:12
+#: core/templates/core/partials/menu_mobile.html:63
+msgid "Alquiler Material"
+msgstr "Lloguer Material"
+
+#: core/templates/core/partials/bottom_navbar.html:27
+#: core/templates/core/partials/footer.html:11
+#: core/templates/core/partials/menu_mobile.html:70
+msgid "Tiendas"
+msgstr "Botigues"
+
+#: core/templates/core/partials/bottom_navbar.html:28
+#: core/templates/core/partials/menu_mobile.html:77
+msgid "Contacto"
+msgstr "Contacte"
+
+#: core/templates/core/partials/bottom_navbar.html:35
+#: core/templates/core/partials/navbarleft-center.html:21
+msgid "Buscar en la tienda"
+msgstr "Cercar a la botiga"
+
+#: core/templates/core/partials/footer.html:8
+msgid "Sobre Esports Vivac"
+msgstr "Sobre Esports Vivac"
+
+#: core/templates/core/partials/footer.html:9
+msgid "Quiénes somos"
+msgstr "Qui som"
+
+#: core/templates/core/partials/footer.html:10
+msgid "Ventajas"
+msgstr "Avantatges"
+
+#: core/templates/core/partials/footer.html:15
+msgid "Garantías"
+msgstr "Garanties"
+
+#: core/templates/core/partials/footer.html:16
+msgid "Devoluciones"
+msgstr "Devolucions"
+
+#: core/templates/core/partials/footer.html:17
+msgid "Plazos de entrega"
+msgstr "Terminis d'entrega"
+
+#: core/templates/core/partials/footer.html:18
+msgid "Métodos de pago"
+msgstr "Mètodes de pagament"
+
+#: core/templates/core/partials/footer.html:19
+msgid "Compra segura"
+msgstr "Compra segura"
+
+#: core/templates/core/partials/footer.html:22
+msgid "Atención al cliente"
+msgstr "Atenció al client"
+
+#: core/templates/core/partials/footer.html:23
+msgid "Ayuda"
+msgstr "Ajuda"
+
+#: core/templates/core/partials/footer.html:24
+msgid "Seguimiento pedidos"
+msgstr "Seguiment comandes"
+
+#: core/templates/core/partials/footer.html:25
+msgid "Gastos de envío"
+msgstr "Despeses d'enviament"
+
+#: core/templates/core/partials/footer.html:26
+msgid "Cambio de talla"
+msgstr "Canvi de talla"
+
+#: core/templates/core/partials/footer.html:27
+msgid "Facturas"
+msgstr "Factures"
+
+#: core/templates/core/partials/footer.html:32
+msgid "Esports Vivac en"
+msgstr "Esports Vivac en"
+
+#: core/templates/core/partials/footer.html:111
+msgid "Formas de pago"
+msgstr "Formes de pagament"
+
+#: core/templates/core/partials/footer.html:143
+msgid "Envíos realizados con"
+msgstr "Enviaments realitzats amb"
+
+#: core/templates/core/partials/footer.html:326
+msgid "Seguridad"
+msgstr "Seguretat"
+
+#: core/templates/core/partials/footer.html:333
+msgid ""
+"\n"
+"            <p>Esports Vivac es una tienda de deportes online especializada "
+"en primeras marcas. </p>\n"
+"            "
+msgstr ""
+"\n"
+"            <p>Esports Vivac és una botiga d'esports online especialitzada "
+"en primeres marques. </p>\n"
+"            "
+
+#: core/templates/core/partials/footer.html:337
+msgid ""
+" <span>© 2023-2023 Vivac Camprodon, S.L. - Todos los derechos reservados</"
+"span> "
+msgstr ""
+" <span>© 2023-2023 Vivac Camprodon, S.L. - Tots els drets reservats</"
+"span> "
+
+#: core/templates/core/partials/footer.html:339
+msgid "Condiciones legales"
+msgstr "Condicions legals"
+
+#: core/templates/core/partials/footer.html:341
+msgid "Política de privacidad"
+msgstr "Política de privadesa"
+
+#: core/templates/core/partials/footer.html:343
+msgid "Política de cookies"
+msgstr "Política de cookies"
+
+#: core/templates/core/partials/footer.html:345
+msgid "Condiciones generales de compra"
+msgstr "Condicions generals de compra"
+
+#: core/templates/core/partials/login_mobile.html:25
+#: core/templates/core/partials/menu_mobile.html:105
+#: core/templates/core/partials/sign.html:4
+msgid "Iniciar Sesión"
+msgstr "Iniciar sessió"
+
+#: core/templates/core/partials/login_mobile.html:29
+#: core/templates/core/partials/sign.html:9
+msgid "Email"
+msgstr "Correu electrònic"
+
+#: core/templates/core/partials/login_mobile.html:31
+#: core/templates/core/partials/sign.html:10
+msgid "Contraseña"
+msgstr "Contrasenya"
+
+#: core/templates/core/partials/login_mobile.html:34
+#: core/templates/core/partials/sign.html:13
+msgid "Enviar"
+msgstr "Enviar"
+
+#: core/templates/core/partials/login_mobile.html:42
+#: core/templates/core/partials/sign.html:28
+msgid "Iniciar sesión con"
+msgstr "Iniciar sessió amb"
+
+#: core/templates/core/partials/login_mobile.html:55
+#: core/templates/core/partials/sign.html:33
+msgid "¿Nuevo en Esports Vivac?"
+msgstr "Nou a Esports Vivac?"
+
+#: core/templates/core/partials/login_mobile.html:56
+#: core/templates/core/partials/sign.html:34
+msgid "Regístrate aquí"
+msgstr "Registra't aquí"
+
+#: core/templates/core/partials/menu_mobile.html:60
+msgid "Nosotros"
+msgstr "Nosaltres"
+
+#: core/templates/core/partials/menu_mobile.html:91
+msgid "Perfil de Usuario"
+msgstr "Perfil d'Usuari"
+
+#: core/templates/core/partials/menu_mobile.html:95
+#: core/templates/core/partials/navbar_right.html:14
+msgid "Hola"
+msgstr "Hola"
+
+#: core/templates/core/partials/menu_mobile.html:97
+#: core/templates/core/partials/navbar_right.html:16
+#: core/templates/core/partials/navbar_right.html:30
+msgid "Mi Cuenta"
+msgstr "La meva Compta"
+
+#: core/templates/core/partials/menu_mobile.html:98
+#: core/templates/core/partials/navbar_right.html:17
+msgid "Mis pedidos"
+msgstr "Les meves comandes"
+
+#: core/templates/core/partials/menu_mobile.html:99
+#: core/templates/core/partials/navbar_right.html:18
+msgid "Mis datos"
+msgstr "Les meves dades"
+
+#: core/templates/core/partials/menu_mobile.html:100
+#: core/templates/core/partials/navbar_right.html:19
+msgid "Mis favoritos"
+msgstr "Els meus favorits"
+
+#: core/templates/core/partials/menu_mobile.html:101
+#: core/templates/core/partials/navbar_right.html:20
+msgid "Mis opiniones de productos"
+msgstr "Les meves opinions sobre productes"
+
+#: core/templates/core/partials/menu_mobile.html:102
+#: core/templates/core/partials/navbar_right.html:21
+msgid "Cerrar Sesión"
+msgstr "Tancar sessió"
+
+#: core/templates/core/partials/navbar_right.html:50
+msgid "Mis Favoritos"
+msgstr "Els meus Favorits"
+
+#: core/templates/core/partials/swipertop.html:10
+#: core/templates/core/partials/swipertop.html:42
+msgid "Envío gratis"
+msgstr "Enviament gratuït"
+
+#: core/templates/core/partials/swipertop.html:10
+#: core/templates/core/partials/swipertop.html:42
+msgid "a partir de 100 €"
+msgstr "a partir de 100 €"
+
+#: core/templates/core/partials/swipertop.html:20
+#: core/templates/core/partials/swipertop.html:51
+msgid "Entrega en"
+msgstr "Entrega en"
+
+#: core/templates/core/partials/swipertop.html:20
+#: core/templates/core/partials/swipertop.html:51
+msgid "48 horas"
+msgstr "48 hores"
+
+#: core/templates/core/partials/swipertop.html:29
+#: core/templates/core/partials/swipertop.html:58
+msgid "Devolución"
+msgstr "Devolució"
+
+#: core/templates/core/partials/swipertop.html:29
+#: core/templates/core/partials/swipertop.html:58
+msgid "de 30 días"
+msgstr "de 30 dies"
 
 #: vivac/settings.py:206
 msgid "Español"
@@ -34,5 +346,5 @@ msgstr "Catalan"
 msgid "Català"
 msgstr "Castellà"
 
-msgid "Ciclismo"
-msgstr "Ciclisme"
+#~ msgid "Nombre"
+#~ msgstr "Nom"

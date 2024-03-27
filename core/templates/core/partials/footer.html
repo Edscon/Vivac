@@ -5,31 +5,31 @@
         <div class="grid justify-center">
             <div class="grid grid-cols-2 min-[460px]:grid-cols-3 md:grid-cols-5 gap-y-5 gap-x-8 sm:gap-x-24 md:gap-8 lg:gap-24 mb-6 text-xs w-[100%] pb-6 border-b border-gray-300">
                 <div>
-                    <div class="mb-1 font-semibold text-[13px]">Sobre Esports Vivac</div>
-                    <div><a href="{% url 'quienes-somos' %}" class="hover:underline">Quiénes somos</a></div>
-                    <div><a href="{% url 'ventajas' %}" class="hover:underline">Ventajas</a></div>
-                    <div><a href="{% url 'tiendas' %}" class="hover:underline">Tiendas</a></div>
-                    <div><a href="{% url 'alquiler_material' %}" class="hover:underline">Alquiler Material</a></div>
+                    <div class="mb-1 font-semibold text-[13px]">{% trans 'Sobre Esports Vivac' %}</div>
+                    <div><a href="{% url 'quienes-somos' %}" class="hover:underline">{% trans 'Quiénes somos' %}</a></div>
+                    <div><a href="{% url 'ventajas' %}" class="hover:underline">{% trans 'Ventajas' %}</a></div>
+                    <div><a href="{% url 'tiendas' %}" class="hover:underline">{% trans 'Tiendas' %}</a></div>
+                    <div><a href="{% url 'alquiler_material' %}" class="hover:underline">{% trans 'Alquiler Material' %}</a></div>
                 </div>
                 <div>
-                    <div class="mb-1 font-semibold text-[13px]">Garantías</div>
-                    <div><a href="{% url 'ayuda' %}#devolucion" class="hover:underline">Devoluciones</a></div>
-                    <div><a href="{% url 'ayuda' %}#plazos" class="hover:underline">Plazos de entrega</a></div>
-                    <div><a href="{% url 'ayuda' %}#metodos" class="hover:underline">Métodos de pago</a></div>
-                    <div><a href="{% url 'ayuda' %}" class="hover:underline">Compra segura</a></div>
+                    <div class="mb-1 font-semibold text-[13px]">{% trans 'Garantías' %}</div>
+                    <div><a href="{% url 'ayuda' %}#devolucion" class="hover:underline">{% trans 'Devoluciones' %}</a></div>
+                    <div><a href="{% url 'ayuda' %}#plazos" class="hover:underline">{% trans 'Plazos de entrega' %}</a></div>
+                    <div><a href="{% url 'ayuda' %}#metodos" class="hover:underline">{% trans 'Métodos de pago' %}</a></div>
+                    <div><a href="{% url 'ayuda' %}" class="hover:underline">{% trans 'Compra segura' %}</a></div>
                 </div>
                 <div>
-                    <div class="mb-1 font-semibold text-[13px]">Atención al cliente</div>
-                    <div><a href="{% url 'ayuda' %}" class="hover:underline">Ayuda</a></div>
-                    <div><a href="{% url 'ayuda' %}#segimiento" class="hover:underline">Seguimiento pedidos</a></div>
-                    <div><a href="{% url 'ayuda' %}#gastos" class="hover:underline">Gastos de envío</a></div>
-                    <div><a href="{% url 'ayuda' %}#devolucion" class="hover:underline">Cambio de talla</a></div>
-                    <div><a href="{% url 'ayuda' %}#factura" class="hover:underline">Facturas</a></div>
+                    <div class="mb-1 font-semibold text-[13px]">{% trans 'Atención al cliente' %}</div>
+                    <div><a href="{% url 'ayuda' %}" class="hover:underline">{% trans 'Ayuda' %}</a></div>
+                    <div><a href="{% url 'ayuda' %}#segimiento" class="hover:underline">{% trans 'Seguimiento pedidos' %}</a></div>
+                    <div><a href="{% url 'ayuda' %}#gastos" class="hover:underline">{% trans 'Gastos de envío' %}</a></div>
+                    <div><a href="{% url 'ayuda' %}#devolucion" class="hover:underline">{% trans 'Cambio de talla' %}</a></div>
+                    <div><a href="{% url 'ayuda' %}#factura" class="hover:underline">{% trans 'Facturas' %}</a></div>
                 </div>
                 <div>
                     <form action="{% url 'set_language' %}" method="POST">
                         {% csrf_token %}
-                        <div class="mb-1 font-semibold text-[13px]">Esports Vivac en</div>
+                        <div class="mb-1 font-semibold text-[13px]">{% trans 'Esports Vivac en' %}</div>
                         
                         <div class="flex space-x-1">
                             <svg class="my-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="10px" viewBox="0 0 15 10" version="1.1">
@@ -108,7 +108,7 @@
         <div class="grid justify-center">
             <div class="grid gap-y-6 grid-cols-2 sm:grid-cols-3 gap-x-2 w-[100%]">
                 <div class="pr-4 border-r border-gray-300">
-                    <div class="mb-1 font-semibold text-[13px]">Formas de pago</div>
+                    <div class="mb-1 font-semibold text-[13px]">{% trans 'Formas de pago' %}</div>
                     <div class="flex space-x-2">
                         <svg class="h-10 w-10 my-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256px" height="199px" viewBox="0 0 256 199" version="1.1">
                             <g id="surface1">
@@ -140,7 +140,7 @@
                     </div>
                 </div>
                 <div class="pl-4 sm:px-4 sm:border-r border-gray-300">
-                    <div class="mb-0 font-semibold text-[13px]">Envíos realizados con</div>
+                    <div class="mb-0 font-semibold text-[13px]">{% trans 'Envíos realizados con' %}</div>
                     <div class="flex space-x-0">
                         <svg class="h-10 w-12 my-auto hidden" version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 viewBox="0 0 845.1 296.4" style="enable-background:new 0 0 845.1 296.4;" xml:space="preserve">
@@ -323,25 +323,26 @@
                     </div>
                 </div>
                 <div class="sm:pl-4">
-                    <div class="mb-1 font-semibold text-[13px]">Seguridad</div>
+                    <div class="mb-1 font-semibold text-[13px]">{% trans 'Seguridad' %}</div>
                     <img class="my-auto py-2" src="{% static 'img/sec-payment.png' %}" class="object-cover" >
                 </div>
             </div>
         </div>
 
         <div class="w-full text-[10px] text-center px-[15%] space-y-3 mt-4">
-            
-            <p>Esports Vivac es una tienda de deportes online especializada en primeras marcas.</p>
+            {% blocktrans %}
+            <p>Esports Vivac es una tienda de deportes online especializada en primeras marcas. </p>
+            {% endblocktrans %}
             <p>
-                <span>© 2023-2023 Vivac Camprodon, S.L. - Todos los derechos reservados</span>
+                {% blocktrans %} <span>© 2023-2023 Vivac Camprodon, S.L. - Todos los derechos reservados</span> {% endblocktrans %}
                 &nbsp;|&nbsp;
-                <a href="{% url 'condiciones_legales' %}" class="hover:underline">Condiciones legales</a>
+                <a href="{% url 'condiciones_legales' %}" class="hover:underline">{% trans 'Condiciones legales' %}</a>
                 &nbsp;|&nbsp;
-                <a href="{% url 'politica_de_privacidad' %}" class="hover:underline">Política de privacidad</a>
+                <a href="{% url 'politica_de_privacidad' %}" class="hover:underline">{% trans 'Política de privacidad' %}</a>
                 &nbsp;|&nbsp;
-                <a href="{% url 'politica_de_cookies' %}" class="hover:underline">Política de cookies</a>
+                <a href="{% url 'politica_de_cookies' %}" class="hover:underline">{% trans 'Política de cookies' %}</a>
                 &nbsp;|&nbsp;
-                <a href="{% url 'condiciones_generales_compra_web' %}" class="hover:underline">Condiciones generales de compra</a>
+                <a href="{% url 'condiciones_generales_compra_web' %}" class="hover:underline">{% trans 'Condiciones generales de compra' %}</a>
             </p>
             <p>C.I.F. B17829516. Inscrita en el Registro Mercantil Barcelona. tomo ****. folio ***. Hoja * ***. Inscripción *.</p>
 

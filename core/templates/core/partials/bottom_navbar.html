@@ -1,25 +1,38 @@
+{% load i18n %}
 <div class="hidden min-[1300px]:block shadow-[0_10px_15px_-10px_rgba(0,0,0,0.1)] pt-1">
                 
     <div class="max-w-screen-xl mx-auto px-6 xl:px-0 flex items-center justify-between text-gray-800">
         <div class="flex items-center space-x-1 text-[14.2px]">
-            <a href="{% url 'shop' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[75px]"><div class="mx-auto">Tienda</div></a>
-            <a href="{% url 'shop' %}?category=ciclismo" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex"><div class="mx-auto">Ciclismo</div></a>
-            <a href="{% url 'shop' %}?category=running" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex"><div class="mx-auto">Running</div></a>
-            <a href="{% url 'shop' %}?category=outdoor" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex"><div class="mx-auto">Outdoor</div></a>
-            <a href="{% url 'shop' %}?category=esqui" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex"><div class="mx-auto">Esquí</div></a>
+            <a href="{% url 'shop' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[75px]">
+                <div class="mx-auto">{% trans 'Tienda' %}</div>
+            </a>
+            <a href="{% url 'shop' %}?category=ciclismo" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex">
+                <div class="mx-auto">{% trans 'Ciclismo' %}</div>
+            </a>
+            <a href="{% url 'shop' %}?category=running" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex">
+                <div class="mx-auto">{% trans 'Running' %}</div>
+            </a>
+            <a href="{% url 'shop' %}?category=outdoor" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex">
+                <div class="mx-auto">{% trans 'Outdoor' %}</div>
+            </a>
+            <a href="{% url 'shop' %}?category=esqui" class="hover:text-black hover:underline pt-1 pb-3 w-[100px] flex">
+                <div class="mx-auto">{% trans 'Esquí' %}</div>
+            </a>
             
         </div>
         <div class="flex items-center space-x-0 text-sm font-medium">
-            <a href="{% url 'alquiler_material' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[130px] flex"><div class="mx-auto">Alquiler Material</div></a>
-            <a href="{% url 'tiendas' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[65px] flex"><div class="mx-auto">Tiendas</div></a>
-            <a href="{% url 'contacto' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[65px] text-right"> Contacto </a>
+            <a href="{% url 'alquiler_material' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[130px] flex">
+                <div class="mx-auto">{% trans 'Alquiler Material' %}</div>
+            </a>
+            <a href="{% url 'tiendas' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[65px] flex"><div class="mx-auto">{% trans 'Tiendas' %}</div></a>
+            <a href="{% url 'contacto' %}" class="hover:text-black hover:underline pt-1 pb-3 w-[65px] text-right">{% trans 'Contacto' %}</a>
         </div>
     </div>
     
 </div>
 <div class="z-20 buscador scroll-up-busca hidden max-[1300px]:block fixed top-0 bg-white shadow-[0_10px_15px_-10px_rgba(0,0,0,0.1)] py-2 w-full">
     <form class="min-[1300px]:hidden flex justify-items-center mx-4 text-gray-600 text-sm" method="get" action="{% url 'shop' %}">              
-        <input type="text" name="query" class="w-full py-2 px-4 bg-gray-100 rounded-l placeholder:text-gray-500 placeholder:text-sm focus:outline-0" placeholder="Buscar en la tienda...">
+        <input type="text" name="query" class="w-full py-2 px-4 bg-gray-100 rounded-l placeholder:text-gray-500 placeholder:text-sm focus:outline-0" placeholder="{% trans 'Buscar en la tienda' %}...">
         <button class="h-9 bg-gray-100 rounded-r px-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
