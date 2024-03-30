@@ -6,6 +6,52 @@
     <div class="menu-mobile-l w-screen h-screen absolute flex z-10 top-0">
 
         <div class="relative w-[80%] bg-white h-screen border-r">
+            <div class="absolute left-5 top-5 text-gray-800 text-[14px]">
+                <form class="flex space-x-2" action="{% url 'set_language' %}" method="POST">
+                    {% csrf_token %}
+                    
+                    <div class="flex space-x-1">
+                        <svg class="my-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="10px" viewBox="0 0 15 10" version="1.1">
+                            <g id="surface1">
+                            <rect x="0" y="0" width="15" height="10" style="fill:rgb(98.823529%,86.666667%,3.529412%);fill-opacity:1;stroke:none;"/>
+                            <path style="fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;stroke-width:60;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(85.490196%,7.058824%,10.196078%);stroke-opacity:1;stroke-miterlimit:4;" d="M 0 90.070312 L 810 90.070312 M 810 210.09375 L 0 210.09375 M 0 329.90625 L 810 329.90625 M 810 449.929688 L 0 449.929688 " transform="matrix(0.0185185,0,0,0.0185185,0,0)"/>
+                            </g>
+                        </svg>
+                        <button type="submit" name="language" value="{{ 'ca' }}" class="language-button">
+                            Català
+                        </button>
+                    </div>
+                    <div class="flex space-x-1">
+                        <svg class="my-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="10px" viewBox="0 0 15 10" version="1.1">
+                            <g id="surface1">
+                            <rect x="0" y="0" width="15" height="10" style="fill:rgb(77.647059%,4.313725%,11.764706%);fill-opacity:1;stroke:none;"/>
+                            <path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,76.862745%,0%);fill-opacity:1;" d="M 0 2.5 L 15 2.5 L 15 7.5 L 0 7.5 Z M 0 2.5 "/>
+                            </g>
+                        </svg>
+                        <button type="submit" name="language" value="{{ 'es' }}" class="language-button">
+                            Español
+                        </button>
+                    </div>
+                    <div class="flex space-x-1 hidden">
+                        <svg class="my-auto" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="10px" viewBox="0 0 15 10" version="1.1">
+                            <defs>
+                            <clipPath id="clip1">
+                              <path d="M 7.5 5 L 15 5 L 15 10 Z M 7.5 5 L 7.5 10 L 0 10 Z M 7.5 5 L 0 5 L 0 0 Z M 7.5 5 L 7.5 0 L 15 0 Z M 7.5 5 "/>
+                            </clipPath>
+                            </defs>
+                            <g id="surface1">
+                            <rect x="0" y="0" width="15" height="10" style="fill:rgb(0.392157%,12.941176%,41.176471%);fill-opacity:1;stroke:none;"/>
+                            <path style="fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:4;" d="M 0 0 L 50 30 M 50 0 L 0 30 " transform="matrix(0.3,0,0,0.333333,0,0)"/>
+                            <g clip-path="url(#clip1)" clip-rule="nonzero">
+                            <path style="fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;stroke-width:4;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(78.431373%,6.27451%,18.039216%);stroke-opacity:1;stroke-miterlimit:4;" d="M 0 0 L 50 30 M 50 0 L 0 30 " transform="matrix(0.3,0,0,0.333333,0,0)"/>
+                            </g>
+                            <path style="fill-rule:nonzero;fill:rgb(78.431373%,6.27451%,18.039216%);fill-opacity:1;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(100%,100%,100%);stroke-opacity:1;stroke-miterlimit:4;" d="M -1.002604 11.003906 L 21.002604 11.003906 L 21.002604 -0.996094 L 28.997396 -0.996094 L 28.997396 11.003906 L 51.002604 11.003906 L 51.002604 18.996094 L 28.997396 18.996094 L 28.997396 30.996094 L 21.002604 30.996094 L 21.002604 18.996094 L -1.002604 18.996094 Z M -1.002604 11.003906 " transform="matrix(0.3,0,0,0.333333,0,0)"/>
+                            </g>
+                            </svg>
+                        <div>English</div>
+                    </div>
+                </form>
+            </div>
             <button type="button" title="menu-mobile-logo" class="absolute right-5 top-5" onclick="menu_mobile()">        
                 <svg class="h-6 w-6"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>

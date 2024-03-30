@@ -1,13 +1,13 @@
 {% load static%}
-<div id="aviso-cookies" class="bg-white bottom-0 border-t border-gray-400 mt-5 z-[9000] h-[25%] w-full fixed hidden">
-    <div class="max-w-screen-xl mx-auto py-10 px-6 space-x-3 w-full">
+<div id="aviso-cookies" class="bg-white bottom-0 border-t border-gray-400 mt-5 z-[9000] w-full fixed hidden max-h-[50%] min-h-[20%] overflow-hidden">
+    <div class="max-w-screen-xl mx-auto py-4 px-6 space-x-3 w-full">
 
-        <div class="flex">
-            <div class="w-[50%]">
-                <h1 class="font-semibold text-xl mb-2">Nos preocupamos por tu privacidad</h1> 
-                <div class="text-sm">Nuestro sitio web utiliza cookies propias y de terceros para mejorar tu experiencia de navegación. Al continuar navegando en nuestro sitio, aceptas el uso de cookies de acuerdo con nuestra <a class="underline text-blue-400" href="{% url 'politica_de_cookies' %}">Política de Cookies</a>. Para obtener más información sobre cómo utilizamos las cookies y cómo puedes desactivarlas, consulta nuestra <a class="underline text-blue-400" href="{% url 'politica_de_privacidad' %}">Política de Privacidad</a>.</div>
+        <div class="flex flex-wrap">
+            <div class="w-full lg:w-[50%]">
+                <h1 class="font-semibold text-xl mb-1">Nos preocupamos por tu privacidad</h1> 
+                <div class="text-xs lg:text-sm">Nuestro sitio web utiliza cookies propias y de terceros para mejorar tu experiencia de navegación. Al continuar navegando en nuestro sitio, aceptas el uso de cookies de acuerdo con nuestra <a class="underline text-blue-400" href="{% url 'politica_de_cookies' %}">Política de Cookies</a>. Para obtener más información sobre cómo utilizamos las cookies y cómo puedes desactivarlas, consulta nuestra <a class="underline text-blue-400" href="{% url 'politica_de_privacidad' %}">Política de Privacidad</a>.</div>
             </div>
-            <div class="w-[50%] flex">
+            <div class="w-full lg:w-[50%] flex mt-6 lg:my-0">
 
                 <a id="aceptar-cookies" class="m-auto flex w-[200px] inline-block py-3 bg-black text-white hover:bg-gray-800 relative transition duration-500 cursor-pointer drop-shadow-md">
                     <div class="m-auto">Aceptar cookies</div>
