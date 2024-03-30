@@ -48,13 +48,26 @@
 <header class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto overflow-hidden max-[1300px]:-mt-6 -mt-2">
 
     {% include 'core/partials/banner.html' %}
-    <a href="{% url 'shop' %}" class="mt-4 max-width-3xl max-auto grid place-content-center xl:h-[500px] hidden lg:block">
-        <img src="{% static 'img/bannerhome_dk.png' %}" class="object-cover" >
-    </a>
-    
-    <a href="{% url 'shop' %}" class="mt-4 max-width-3xl max-auto grid place-content-center xl:h-[500px] lg:hidden block">
-        <img src="{% static 'img/bannerhome_mb.png' %}" class="object-cover" >
-    </a>
+
+    {% if request.LANGUAGE_CODE == 'ca' %} 
+        <a href="{% url 'shop' %}" class="mt-4 max-width-3xl max-auto grid place-content-center xl:h-[500px] hidden lg:block">
+            <img src="{% static 'img/bannerhome_dk_ca.png' %}" class="object-cover" >
+        </a>
+    {% else %}
+        <a href="{% url 'shop' %}" class="mt-4 max-width-3xl max-auto grid place-content-center xl:h-[500px] hidden lg:block">
+            <img src="{% static 'img/bannerhome_dk.png' %}" class="object-cover" >
+        </a>
+    {% endif %}
+
+    {% if request.LANGUAGE_CODE == 'ca' %} 
+        <a href="{% url 'shop' %}" class="mt-4 max-width-3xl max-auto grid place-content-center xl:h-[500px] lg:hidden block">
+            <img src="{% static 'img/bannerhome_mb_ca.png' %}" class="object-cover" >
+        </a>
+    {% else %}
+        <a href="{% url 'shop' %}" class="mt-4 max-width-3xl max-auto grid place-content-center xl:h-[500px] lg:hidden block">
+            <img src="{% static 'img/bannerhome_mb.png' %}" class="object-cover" >
+        </a>
+    {% endif %}
 
     <div class="px-10 mt-4 swiper2 mySwiper2 block text-gray-600 w-full text-center cursor-pointer">
         <div class="swiper-wrapper">
