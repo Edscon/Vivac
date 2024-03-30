@@ -37,7 +37,7 @@
     .image_marca{
         scale: 0.7;
         filter: invert(10%) sepia(0%) saturate(50%) hue-rotate(262deg) brightness(95%) contrast(80%);
-        transition: scale 500ms;
+        transition: scale 300ms;
     }
     .image_marca:hover{
         scale: 1;
@@ -69,7 +69,7 @@
         </a>
     {% endif %}
 
-    <div class="px-10 mt-4 swiper2 mySwiper2 block text-gray-600 w-full text-center cursor-pointer">
+    <div class="px-10 mt-4 swiper2 mySwiper2 block text-gray-600 w-full text-center cursor-move">
         <div class="swiper-wrapper">
         {% for marca in marcas %}
         <!--  href="{% url 'marca' marca.slug %}"-->

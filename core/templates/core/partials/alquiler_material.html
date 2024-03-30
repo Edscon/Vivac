@@ -24,7 +24,7 @@
             <div class="w-[100%] lg:w-[49%] mr-2">
                 <div class="w-full text-center mb-2 font-semibold">ADULTO</div>
                 <div class="font-semibold">
-                    <div class="flex h-[50px] bg-green-700 text-white">
+                    <div class="flex h-[50px] bg-black text-white">
                         <div class="w-1/2 text-center my-auto">Tipo de Alquiler</div>
                         <div class="w-1/2 text-center my-auto">Precio</div>
                     </div>
@@ -50,7 +50,7 @@
             <div class="w-[100%] lg:w-[49%] ml-2">
                 <div class="w-full text-center mb-2 font-semibold mt-10 lg:mt-0">JUNIOR</div>
                 <div class="font-semibold">
-                    <div class="flex h-[50px] bg-green-700 text-white">
+                    <div class="flex h-[50px] bg-black text-white">
                         <div class="w-1/2 text-center my-auto">Tipo de Alquiler</div>
                         <div class="w-1/2 text-center my-auto">Precio</div>
                     </div>
@@ -80,7 +80,7 @@
                 <div class="flex">
                     <div class="w-[100%] mr-2">
                         <div class="font-semibold">
-                            <div class="flex h-[50px] bg-green-700 text-white">
+                            <div class="flex h-[50px] bg-black text-white">
                                 <div class="w-1/2 text-center my-auto">Tipo de Alquiler</div>
                                 <div class="w-1/2 text-center my-auto">Precio</div>
                             </div>
@@ -125,7 +125,7 @@
                 <div class="flex">
                     <div class="w-[100%] mr-2">
                         <div class="font-semibold">
-                            <div class="flex h-[50px] bg-green-700 text-white">
+                            <div class="flex h-[50px] bg-black text-white">
                                 <div class="w-1/2 text-center my-auto">Tipo de Alquiler</div>
                                 <div class="w-1/2 text-center my-auto">Precio</div>
                             </div>
@@ -154,14 +154,48 @@
                 </div>
             </div>
         </div>
-        <div class="w-[100%] lg:w-[50%] mt-10 lg:mt-32 pl-4 max-[1023px]:hidden">
+        <div class="w-[100%] lg:w-[50%] mt-10 lg:mt-8 lg:pl-4">
             <div class="text-center font-semibold">Tiempo en Vallter 2000</div>
-            <div class="hidden">
-                <img src="https://www.tiempo.com/wimages/fotoe83e1d09403b04d540f8288f69ec5690.png">
-            </div>
-            <div class="">
-                <img src="https://www.tiempo.com/wimages/foto83ac495cb63b09a87d6beabcb04ae50f.png">
-            </div>
+
+            <script>
+                (function(d, s, id) {
+                    if (d.getElementById(id)) {
+                        if (window.__TOMORROW__) {
+                            window.__TOMORROW__.renderWidget();
+                        }
+                        return;
+                    }
+                    const fjs = d.getElementsByTagName(s)[0];
+                    const js = d.createElement(s);
+                    js.id = id;
+                    js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+        
+                    fjs.parentNode.insertBefore(js, fjs);
+                })(document, 'script', 'tomorrow-sdk');
+                </script>
+        
+                <div class="tomorrow"
+                   data-location-id="2181165"
+                   data-language="ES"
+                   data-unit-system="METRIC"
+                   data-skin="light"
+                   data-widget-type="upcoming"
+                   style="padding-bottom:22px;position:relative;"
+                >
+                  <a
+                    href="https://www.tomorrow.io/weather-api/"
+                    rel="nofollow noopener noreferrer"
+                    target="_blank"
+                    style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
+                  >
+                    <img
+                      alt="Powered by the Tomorrow.io Weather API"
+                      src="https://weather-website-client.tomorrow.io/img/powered-by.svg"
+                      width="250"
+                      height="18"
+                    />
+                  </a>
+                </div>
         </div>
     </div>
     
