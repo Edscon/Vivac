@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 15:15+0200\n"
+"POT-Creation-Date: 2024-03-31 19:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,14 +78,14 @@ msgid "Alquiler Material"
 msgstr "Lloguer Material"
 
 #: core/templates/core/partials/alquiler_material.html:14
-msgid 
+msgid ""
 "\n"
 "    <div>Te ofrecemos un servicio de alquiler de material adaptado a tus "
 "necesidades para tus aventuras en la nieve. Desde esquís de pista hasta "
 "esquís de montaña, raquetas de nieve y más, tenemos todo lo que necesitas "
 "para disfrutar plenamente de una gran experiencia. </div>\n"
 "    "
-msgstr 
+msgstr ""
 "\n"
 "    <div>T'ofereixem un servei de lloguer de material adaptat a les teves "
 "necessitats per a les teves aventures a la neu. Des de esquís de pista fins "
@@ -272,6 +272,7 @@ msgid "Nombre"
 msgstr "Nom"
 
 #: core/templates/core/partials/contacto.html:32
+#: core/templates/core/partials/footer/condiciones_legales.html:21
 #: core/templates/core/partials/login_mobile.html:29
 #: core/templates/core/partials/sign.html:9
 msgid "Email"
@@ -302,10 +303,10 @@ msgid "Campo requerido"
 msgstr "Camp requerit"
 
 #: core/templates/core/partials/contacto.html:143
-msgid 
+msgid ""
 "Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio."
 "com"
-msgstr 
+msgstr ""
 "Si us plau, introdueixi una adreça de correu electrònic vàlida. Per exemple, "
 "hola@domini.com"
 
@@ -372,6 +373,7 @@ msgid "Esports Vivac en"
 msgstr "Esports Vivac en"
 
 #: core/templates/core/partials/footer.html:90
+#: core/templates/core/partials/footer/condiciones_legales.html:69
 msgid "Redes Sociales"
 msgstr "Xarxes socials"
 
@@ -423,6 +425,7 @@ msgid "Condiciones generales de compra"
 msgstr "Condicions generals de compra"
 
 #: core/templates/core/partials/footer.html:347
+#: core/templates/core/partials/footer/condiciones_legales.html:23
 msgid ""
 "C.I.F. B17829516. Inscrita en el Registro Mercantil Gerona. tomo 2214. folio "
 "138. Hoja 36928. Inscripción 1."
@@ -446,9 +449,9 @@ msgid ""
 "refinar tu búsqueda al máximo. También puedes explorar nuestras categorías "
 "desde el menú principal."
 msgstr ""
-"Fer les teves compres és fàcil amb nosaltres. Pots utilitzar el nostre cercador a la "
-"pàgina principal introduint el nom de l'article que desitges, o bé, "
-"aprofitar els nostres filtres situats a l'esquerra de la pàgina per "
+"Fer les teves compres és fàcil amb nosaltres. Pots utilitzar el nostre "
+"cercador a la pàgina principal introduint el nom de l'article que desitges, "
+"o bé, aprofitar els nostres filtres situats a l'esquerra de la pàgina per "
 "refinar la teva cerca al màxim. També pots explorar les nostres categories "
 "des del menú principal."
 
@@ -459,10 +462,10 @@ msgid ""
 "los artículos que has agregado y hacer cambios según lo necesites, como "
 "ajustar la cantidad de un artículo o eliminarlo del carrito."
 msgstr ""
-"Un cop trobis el producte que desitges, selecciona la talla si és "
-"necessari, i fes clic a 'Afegir al carretó'. Des d'allà, podràs veure tots "
-"els articles que has afegit i fer canvis segons les necessitats, com "
-"ajustar la quantitat d'un article o eliminar-lo del carretó."
+"Un cop trobis el producte que desitges, selecciona la talla si és necessari, "
+"i fes clic a 'Afegir al carretó'. Des d'allà, podràs veure tots els articles "
+"que has afegit i fer canvis segons les necessitats, com ajustar la quantitat "
+"d'un article o eliminar-lo del carretó."
 
 #: core/templates/core/partials/footer/ayuda.html:25
 msgid ""
@@ -479,16 +482,17 @@ msgid ""
 "Si es tu primera vez comprando con nosotros, necesitarás completar un "
 "formulario con tus datos para poder enviar tu pedido correctamente."
 msgstr ""
-"Si és la teva primera vegada comprant amb nosaltres, necessitaràs completar un "
-"formulari amb les teves dades per poder enviar correctament la teva comanda."
+"Si és la teva primera vegada comprant amb nosaltres, necessitaràs completar "
+"un formulari amb les teves dades per poder enviar correctament la teva "
+"comanda."
 
 #: core/templates/core/partials/footer/ayuda.html:31
 msgid ""
 "Si ya eres cliente registrado, simplemente inicia sesión con tu usuario y "
 "contraseña."
 msgstr ""
-"Si ja ets client registrat, simplement inicia sessió amb el teu nom d'usuari i "
-"contrasenya."
+"Si ja ets client registrat, simplement inicia sessió amb el teu nom d'usuari "
+"i contrasenya."
 
 #: core/templates/core/partials/footer/ayuda.html:34
 msgid ""
@@ -516,7 +520,8 @@ msgid ""
 "la pasarela de pago de Stripe que garantiza la seguridad de tus pagos."
 msgstr ""
 "Targetes de crèdit i dèbit (MasterCard, Visa i Visa Electron), a través de "
-"la passarel·la de pagament de Stripe que garanteix la seguretat dels teus pagaments."
+"la passarel·la de pagament de Stripe que garanteix la seguretat dels teus "
+"pagaments."
 
 #: core/templates/core/partials/footer/ayuda.html:53
 msgid "PayPal"
@@ -527,8 +532,8 @@ msgid ""
 "Podrás pagar de manera rápida y segura usando tu cuenta de PayPal, sin "
 "compartir información financiera con Esports Vivac."
 msgstr ""
-"Podràs pagar de manera ràpida i segura utilitzant el teu compte de PayPal, sense "
-"compartir informació financera amb Esports Vivac."
+"Podràs pagar de manera ràpida i segura utilitzant el teu compte de PayPal, "
+"sense compartir informació financera amb Esports Vivac."
 
 #: core/templates/core/partials/footer/ayuda.html:60
 msgid "Transferencia bancaria"
@@ -543,16 +548,16 @@ msgid ""
 "En España (solo península), los envíos son gratuitos en compras superiores a "
 "100€"
 msgstr ""
-"A Espanya (només península), els enviaments són gratuïts en compres superiors a "
-"100€"
+"A Espanya (només península), els enviaments són gratuïts en compres "
+"superiors a 100€"
 
 #: core/templates/core/partials/footer/ayuda.html:74
 msgid ""
 "Los pedidos con importes inferiores a 49€ tienen unos gastos de envío a "
 "partir de 6,80€."
 msgstr ""
-"Els comandes amb import superior a 49€ tenen uns costos d'enviament a "
-"partir de 6,80€."
+"Els comandes amb import superior a 49€ tenen uns costos d'enviament a partir "
+"de 6,80€."
 
 #: core/templates/core/partials/footer/ayuda.html:76
 #: core/templates/core/partials/footer/ayuda.html:159
@@ -572,11 +577,11 @@ msgid ""
 "producto. Por favor, infórmanos lo antes posible si detectas algún error en "
 "la información de envío."
 msgstr ""
-"Per als enviaments dins d'Espanya, confiem en empreses com Nacex. És important "
-"que ens proporciones correctament les dades d'enviament; en cas contrari, "
-"qualsevol error en l'adreça pot ocasionar retards en la lliurament del "
-"producte. Si us plau, avísanos el més aviat possible si detectes algun error en "
-"la informació d'enviament."
+"Per als enviaments dins d'Espanya, confiem en empreses com Nacex. És "
+"important que ens proporciones correctament les dades d'enviament; en cas "
+"contrari, qualsevol error en l'adreça pot ocasionar retards en la lliurament "
+"del producte. Si us plau, avísanos el més aviat possible si detectes algun "
+"error en la informació d'enviament."
 
 #: core/templates/core/partials/footer/ayuda.html:85
 msgid "¿Puedo recibir un pedido en 24h?"
@@ -591,11 +596,12 @@ msgid ""
 "compra antes de las 12:00 a.m. Esta es nuestra forma de asegurar una "
 "experiencia de entrega rápida y eficiente para nuestros clientes."
 msgstr ""
-"Ens comprometem a garantir un temps de lliurament d'almenys 48 hores "
-"per als nostres enviaments (dies laborables). No obstant això, és important destacar "
-"que és probable que rebin la vostra comanda abans de les 24 hores si realitzes "
-"la compra abans de les 12:00 a.m. Aquesta és la nostra manera de garantir una "
-"experiència de lliurament ràpida i eficient per als nostres clients."
+"Ens comprometem a garantir un temps de lliurament d'almenys 48 hores per als "
+"nostres enviaments (dies laborables). No obstant això, és important destacar "
+"que és probable que rebin la vostra comanda abans de les 24 hores si "
+"realitzes la compra abans de les 12:00 a.m. Aquesta és la nostra manera de "
+"garantir una experiència de lliurament ràpida i eficient per als nostres "
+"clients."
 
 #: core/templates/core/partials/footer/ayuda.html:94
 msgid "¿Hay que pagar algo al recibir mi pedido?"
@@ -620,8 +626,8 @@ msgid ""
 "¡Por supuesto! Tienes un plazo de 30 días para realizar una devolución o "
 "cambio desde el momento en que recibas tu pedido."
 msgstr ""
-"Per descomptat! Tens un termini de 30 dies per realitzar una devolució o "
-"un canvi des del moment en què rebeu la vostra comanda."
+"Per descomptat! Tens un termini de 30 dies per realitzar una devolució o un "
+"canvi des del moment en què rebeu la vostra comanda."
 
 #: core/templates/core/partials/footer/ayuda.html:106
 msgid ""
@@ -641,9 +647,10 @@ msgid ""
 "6.20 euros) y el reembolso se realiza en un plazo de 5 a 9 días laborables."
 msgstr ""
 "La teva devolució serà recollida a l'adreça que triïs, no serà necessari "
-"imprimir res, simplement assegura't de tenir el paquet preparat quan vinguin a "
-"recollir-lo. Aquest servei té un cost de 6,80 euros (península, Catalunya "
-"6,20 euros) i el reemborsament es realitza en un termini de 5 a 9 dies laborables."
+"imprimir res, simplement assegura't de tenir el paquet preparat quan vinguin "
+"a recollir-lo. Aquest servei té un cost de 6,80 euros (península, Catalunya "
+"6,20 euros) i el reemborsament es realitza en un termini de 5 a 9 dies "
+"laborables."
 
 #: core/templates/core/partials/footer/ayuda.html:121
 msgid "Entra en tu cuenta e indícanos qué quieres devolver"
@@ -657,11 +664,11 @@ msgid ""
 "marca el botón de \"Devolución o incidencia\". Podrás adjuntar fotos para "
 "que podamos procesar tu solicitud de manera más rápida."
 msgstr ""
-"Si tens un compte, si us plau inicia la sessió a Esports Vivac "
-"utilitzant les teves dades d'usuari i dirigeix-te a <b class=\"font-semibold\">La meva "
-"compta > Les meves comandes</b>. Allà, selecciona el producte que desitges retornar i "
-"marca el botó de \"Devolució o incidència\". Podràs adjuntar fotos per tal "
-"que puguem processar la teva sol·licitud de manera més ràpida."
+"Si tens un compte, si us plau inicia la sessió a Esports Vivac utilitzant "
+"les teves dades d'usuari i dirigeix-te a <b class=\"font-semibold\">La meva "
+"compta > Les meves comandes</b>. Allà, selecciona el producte que desitges "
+"retornar i marca el botó de \"Devolució o incidència\". Podràs adjuntar "
+"fotos per tal que puguem processar la teva sol·licitud de manera més ràpida."
 
 #: core/templates/core/partials/footer/ayuda.html:124
 #: core/templates/core/partials/footer/ayuda.html:208
@@ -700,8 +707,8 @@ msgid ""
 "Una vez recojamos la devolución, revisaremos que está todo correcto y "
 "procederemos a abonarte el importe de la compra."
 msgstr ""
-"Un cop recollim la devolució, revisarem que està tot correcte i "
-"procedirem a abonar-te l'import de la compra."
+"Un cop recollim la devolució, revisarem que està tot correcte i procedirem a "
+"abonar-te l'import de la compra."
 
 #: core/templates/core/partials/footer/ayuda.html:148
 msgid "¿Cuándo recibiré mi pedido?"
@@ -713,9 +720,9 @@ msgid ""
 "enlace de seguimiento para que puedas saber dónde está tu pedido en todo "
 "momento."
 msgstr ""
-"En el moment que la teva comanda surti del magatzem, et enviarem un correu electrònic amb "
-"l'enllaç de seguiment perquè puguis saber on es troba la teva comanda en tot "
-"moment."
+"En el moment que la teva comanda surti del magatzem, et enviarem un correu "
+"electrònic amb l'enllaç de seguiment perquè puguis saber on es troba la teva "
+"comanda en tot moment."
 
 #: core/templates/core/partials/footer/ayuda.html:159
 msgid ""
@@ -737,9 +744,9 @@ msgid ""
 "contactar al transportista si lo necesitas. "
 msgstr ""
 "Per descomptat! Un cop la teva comanda surti del nostre magatzem, rebràs un "
-"correu electrònic que inclourà un enllaç perquè puguis fer el "
-"seguiment de l'enviament. A més, aquest correu et proporcionarà l'opció de "
-"contactar amb el transportista si ho necessites. "
+"correu electrònic que inclourà un enllaç perquè puguis fer el seguiment de "
+"l'enviament. A més, aquest correu et proporcionarà l'opció de contactar amb "
+"el transportista si ho necessites. "
 
 #: core/templates/core/partials/footer/ayuda.html:174
 msgid "¿Qué pasa si en el momento de la entrega estoy ausente?"
@@ -754,10 +761,10 @@ msgid ""
 "posibilidad de recoger el paquete directamente en la delegación del "
 "transportista de tu zona."
 msgstr ""
-"Si no et trobes a casa en el moment de l'entrega, el missatger et "
-"deixarà una nota d'avís perquè contactis amb l'oficina de missatgeria i "
-"puguis acordar una segona entrega. Normalment serà per al dia següent, "
-"encara que la franja horària la determinarà el transportista. També tindràs la "
+"Si no et trobes a casa en el moment de l'entrega, el missatger et deixarà "
+"una nota d'avís perquè contactis amb l'oficina de missatgeria i puguis "
+"acordar una segona entrega. Normalment serà per al dia següent, encara que "
+"la franja horària la determinarà el transportista. També tindràs la "
 "possibilitat de recollir el paquet directament a la delegació del "
 "transportista de la teva zona."
 
@@ -795,15 +802,14 @@ msgid ""
 "nutrición, material de escalada, por motivos de seguridad y productos "
 "electrónicos que hayan sido encendidos y/o activados."
 msgstr ""
-"No s'accepten devolucions ni canvis dels productes d'alimentació i "
-"nutrició, material d'escalada, per motius de seguretat, i productes "
-"electrònics que hagin estat encès i/o activats."
+"No s'accepten devolucions ni canvis dels productes d'alimentació i nutrició, "
+"material d'escalada, per motius de seguretat, i productes electrònics que "
+"hagin estat encès i/o activats."
 
 #: core/templates/core/partials/footer/ayuda.html:201
 msgid ""
 "¿Qué tengo que hacer si recibo un producto dañado o un paquete en mal estado?"
-msgstr ""
-"Què he de fer si rebo un producte danyat o un paquet en mal estat?"
+msgstr "Què he de fer si rebo un producte danyat o un paquet en mal estat?"
 
 #: core/templates/core/partials/footer/ayuda.html:203
 msgid ""
@@ -814,11 +820,11 @@ msgid ""
 "horas después de recibirlo. Esto nos permitirá comunicarnos con la empresa "
 "de transporte y proceder con las reclamaciones necesarias."
 msgstr ""
-"És crucial que revisis l'embalatge i el producte tan aviat com rebeu el vostre "
-"paquet. Si detecteu algun dany, us recomanem no acceptar la entrega o "
-"deixar constància d'això en el moment de rebre-la per a revisió posterior. Si "
-"trobeu alguna incidència, si us plau informeu-nos en un termini màxim de 24 "
-"hores després de rebre-la. Això ens permetrà comunicar-nos amb l'empresa "
+"És crucial que revisis l'embalatge i el producte tan aviat com rebeu el "
+"vostre paquet. Si detecteu algun dany, us recomanem no acceptar la entrega o "
+"deixar constància d'això en el moment de rebre-la per a revisió posterior. "
+"Si trobeu alguna incidència, si us plau informeu-nos en un termini màxim de "
+"24 hores després de rebre-la. Això ens permetrà comunicar-nos amb l'empresa "
 "de transport i procedir amb les reclamacions necessàries."
 
 #: core/templates/core/partials/footer/ayuda.html:205
@@ -833,8 +839,8 @@ msgid ""
 "incidencia y marca el botón de \"Devolución o incidencia\". Podrás adjuntar "
 "fotos para que podamos procesar tu solicitud de manera más rápida."
 msgstr ""
-"Si tens un compte, si us plau inicia sessió a Esports Vivac "
-"utilitzant les teves dades d'usuari i dirigeix-te a <b class=\"font-semibold\">La meva "
+"Si tens un compte, si us plau inicia sessió a Esports Vivac utilitzant les "
+"teves dades d'usuari i dirigeix-te a <b class=\"font-semibold\">La meva "
 "compta> Les meves comandes</b>. Allà, selecciona el producte que té la "
 "incidència i marca el botó de \"Devolució o incidència\". Podràs adjuntar "
 "fotos perquè puguem processar la teva sol·licitud de manera més ràpida.."
@@ -851,11 +857,10 @@ msgid ""
 "En caso de no disponer de stock, procederemos con el reembolso "
 "correspondiente."
 msgstr ""
-"Si trobes algun problema com un producte incorrecte o falta, (compte) "
-"si us plau contacta'ns dins de les 24 hores següents i farem tot el "
-"possible per reemplaçar l'article correcte i lliurar-t'ho el més aviat possible. "
-"En cas de no disposar de stock, procedirem amb el reemborsament "
-"corresponent."
+"Si trobes algun problema com un producte incorrecte o falta, (compte) si us "
+"plau contacta'ns dins de les 24 hores següents i farem tot el possible per "
+"reemplaçar l'article correcte i lliurar-t'ho el més aviat possible. En cas "
+"de no disposar de stock, procedirem amb el reemborsament corresponent."
 
 #: core/templates/core/partials/footer/ayuda.html:219
 msgid ""
@@ -863,7 +868,515 @@ msgid ""
 "incluyan el embalaje exterior con sus etiquetas, así como también de las "
 "etiquetas del producto recibido."
 msgstr ""
-"Per processar la teva reclamació, necessitarem fotos del paquet rebut, que incloguin l'embalatge exterior amb les seves etiquetes, així com també de les etiquetes del producte rebut."
+"Per processar la teva reclamació, necessitarem fotos del paquet rebut, que "
+"incloguin l'embalatge exterior amb les seves etiquetes, així com també de "
+"les etiquetes del producte rebut."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:6
+msgid "Condiciones generales de acceso y uso web"
+msgstr "Condicions generals d'accés i ús del web"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:12
+msgid "CONDICIONES GENERALES DE ACCESO Y USO WEB"
+msgstr "CONDICIONS GENERALS D'ACCÉS I ÚS DEL WEB"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:17
+msgid "El titular del sitio web"
+msgstr "El titular del lloc web"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:17
+msgid ""
+"(el \"Sitio Web\") es la empresa Vivac Camprodon S.L., operando bajo el "
+"nombre comercial 'Esports Vivac®', cuyos datos de identificación son los "
+"siguientes:"
+msgstr ""
+"(el \"Lloc Web\") és l'empresa Vivac Camprodon S.L., operant sota el nom comercial 'Esports Vivac®', amb les següents dades d'identificació:"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:19
+msgid "Domicilio social"
+msgstr "Domicili social"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:19
+msgid "C/ Sant Roc, 16, 17867 Camprodon"
+msgstr "C/ Sant Roc, 16, 17867 Camprodon"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:22
+#: core/templates/core/partials/footer/ventajas.html:38
+msgid "Teléfono"
+msgstr "Telèfon"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:23
+msgid "Datos registrales"
+msgstr "Dades registrals"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:26
+msgid "Acceso al Sitio Web"
+msgstr "Accés al Lloc Web"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:27
+msgid ""
+"Las presentes Condiciones Generales de Acceso y Uso regulan el acceso y "
+"utilización del Sitio Web que ESPORTS VIVAC pone a disposición de los "
+"usuarios de Internet que sean mayores de 14 años y que tiene por objeto "
+"facilitar al usuario información relativa a ESPORTS VIVAC y sus productos y/"
+"o servicios."
+msgstr ""
+"Les presents Condicions Generals d'Accés i Ús regulen l'accés i utilització del Lloc Web que ESPORTS VIVAC posa a disposició dels usuaris d'Internet majors de 14 anys i que té per objecte facilitar a l'usuari informació relativa a ESPORTS VIVAC i els seus productes i/o serveis."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:29
+msgid ""
+"El acceso y utilización del Sitio Web por el usuario conlleva la aceptación "
+"de las presentes Condiciones Generales de Acceso y Uso. Por lo tanto, le "
+"rogamos que lea atentamente las <u>Condiciones Generales de Acceso y Uso</u> "
+"cuando se proponga utilizar el Sitio Web ya que éstas podrán ser adaptadas y/"
+"o modificadas en cualquier momento."
+msgstr ""
+"L'accés i utilització del Lloc Web per part de l'usuari implica l'acceptació de les presents Condicions Generals d'Accés i Ús. Per tant, us demanem que llegiu atentament les <u>Condicions Generals d'Accés i Ús</u> quan tingueu la intenció d'utilitzar el Lloc Web ja que aquestes poden ser adaptades i/o modificades en qualsevol moment."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:31
+msgid ""
+"Si no acepta las presentes Condiciones Generales, le rogamos se abstenga de "
+"utilizar el Sitio Web y su contenido."
+msgstr ""
+"Si no accepta les presents Condicions Generals, us preguem que us abstingueu d'utilitzar el Lloc Web i el seu contingut."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:35
+msgid "Utilización del Sitio Web"
+msgstr "Utilització del Lloc Web"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:37
+msgid ""
+"El usuario se compromete a hacer un uso diligente del Sitio Web, así como de "
+"la información relativa a los productos y/o servicios contenida en el mismo, "
+"con total sujeción tanto a la normativa aplicable como a las presentes "
+"Condiciones Generales de Acceso y Uso."
+msgstr ""
+"L'usuari es compromet a fer un ús diligent del Lloc Web, així com de la informació relativa als productes i/o serveis continguda en el mateix, amb total subjectació tant a la normativa aplicable com a les presents Condicions Generals d'Accés i Ús."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:39
+msgid ""
+"Asimismo, el usuario se compromete a no realizar acto alguno con objeto de "
+"dañar, inutilizar y/o sobrecargar el Sitio Web, o que impidiera, de "
+"cualquier forma, la normal utilización y/o funcionamiento del mismo."
+msgstr ""
+"A més, l'usuari es compromet a no realitzar cap acte amb l'objecte de danyar, inutilitzar i/o sobrecarregar el Lloc Web, o que impedeixi, de qualsevol forma, la normal utilització i/o funcionament del mateix."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:41
+msgid ""
+"ESPORTS VIVAC se reserva el derecho de retirar, en cualquier momento, y, de "
+"forma unilateral los contenidos de cualquier sección del Sitio Web, cuando, "
+"por su contenido, ESPORTS VIVAC lo estime pertinente. En todo caso, para "
+"interponer cualquier reclamación relacionada con los contenidos del Sitio "
+"Web, hay que enviar un correo electrónico a"
+msgstr ""
+"ESPORTS VIVAC es reserva el dret de retirar, en qualsevol moment, i de forma unilateral els continguts de qualsevol secció del Lloc Web, quan, pel seu contingut, ESPORTS VIVAC ho estimi pertinent. En tot cas, per interposar qualsevol reclamació relacionada amb els continguts del Lloc Web, cal enviar un correu electrònic a"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:43
+msgid ""
+"Se informa al usuario de que, en el caso de que incumpla las Condiciones "
+"Generales de Acceso y Uso o cualesquiera otros términos o condiciones "
+"recogidos en el Sitio Web, ESPORTS VIVAC se reserva el derecho a limitar, "
+"suspender y/o terminar su acceso al Sitio Web, adoptando cualquier medida "
+"técnica que sea necesaria al efecto."
+msgstr ""
+"S'informa a l'usuari que, en cas de incomplir les Condicions Generals d'Accés i Ús o qualsevol altre terme o condició recollit al Lloc Web, ESPORTS VIVAC es reserva el dret a limitar, suspendre i/o finalitzar el seu accés al Lloc Web, adoptant qualsevol mesura tècnica que sigui necessària a l'efecte."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:45
+msgid ""
+"ESPORTS VIVAC realiza sus mejores esfuerzos para mantener el Sitio Web en "
+"buen funcionamiento, evitando errores o, en su caso, reparándolos, y "
+"manteniendo los contenidos del Sitio Web debidamente actualizados. No "
+"obstante, ESPORTS VIVAC no garantiza la disponibilidad y continuidad en el "
+"acceso al Sitio Web ni la inexistencia de errores en sus contenidos, así "
+"como tampoco que estos últimos sean oportunamente actualizados."
+msgstr ""
+"ESPORTS VIVAC realitza els seus millors esforços per mantenir el Lloc Web en bon funcionament, evitant errors o, si s'escau, reparant-los, i mantenint els continguts del Lloc Web degudament actualitzats. No obstant això, ESPORTS VIVAC no garanteix la disponibilitat i continuïtat en l'accés al Lloc Web ni l'absència d'errors en els seus continguts, així com tampoc que aquests últims siguin actualitzats puntualment."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:47
+msgid ""
+"ESPORTS VIVAC se reserva la facultad de efectuar, en cualquier momento y sin "
+"necesidad de previo aviso, modificaciones, supresiones y/o actualizaciones "
+"sobre la información contenida en el Sitio Web, su configuración o "
+"presentación."
+msgstr ""
+"ESPORTS VIVAC es reserva la facultat d'efectuar, en qualsevol moment i sense necessitat de previ avís, modificacions, supressions i/o actualitzacions sobre la informació continguda al Lloc Web, la seva configuració o presentació."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:51
+msgid "Responsabilidad"
+msgstr "Responsabilitat"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:53
+msgid ""
+"Tanto el acceso al Sitio Web como el uso que pueda hacerse de cualquier "
+"información que contiene, se realizan bajo la responsabilidad exclusiva del "
+"usuario."
+msgstr ""
+"Tant l'accés al Lloc Web com l'ús que es pugui fer de qualsevol informació que conté, es realitzen sota la responsabilitat exclusiva de l'usuari."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:55
+msgid ""
+"ESPORTS VIVAC no se responsabiliza de cualesquiera daños y/o perjuicios que "
+"pudieran derivarse, directa o indirectamente, del acceso o uso de la "
+"información contenida en el Sitio Web y, especialmente, de aquella "
+"información relativa a terceros distintos de ESPORTS VIVAC, incluyéndose, "
+"pero no limitándose, a los productos en los sistemas informáticos o los "
+"provocados por la introducción de virus y/o ataques informáticos y tampoco "
+"será responsable de los daños que pudieran sufrir los usuarios por un uso "
+"inadecuado del Sitio Web ni de las caídas, interrupciones, ausencia y/o "
+"defecto en las comunicaciones."
+msgstr ""
+"ESPORTS VIVAC no es responsabilitza dels danys i/o perjudicis que puguin derivar-se, directa o indirectament, de l'accés o ús de la informació continguda al Lloc Web i, especialment, d'aquella informació relativa a tercers diferents d'ESPORTS VIVAC, incloent, però no limitant-se, als productes en els sistemes informàtics o els provocats per la introducció de virus i/o atacs informàtics. Tampoc serà responsable dels danys que puguin patir els usuaris per un ús inadequat del Lloc Web ni de les caigudes, interrupcions, absència i/o defecte en les comunicacions."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:57
+msgid ""
+"En concreto, ESPORTS VIVAC deja expresa constancia de que toda la "
+"información relativa a las especificaciones de sus productos que, en su "
+"caso, se contenga en el Sitio Web no sustituye a las condiciones de "
+"contratación de ESPORTS VIVAC, a las que deberá remitirse el usuario para la "
+"adquisición y el correcto uso de los mismos, por lo que se recuerda al "
+"usuario la necesidad de proceder a la lectura atenta de toda la "
+"documentación que se acompañe junto con los productos adquiridos."
+msgstr ""
+"En concret, ESPORTS VIVAC deixa expressa constància que tota la informació relativa a les especificacions dels seus productes que, en el seu cas, es contingui al Lloc Web no substitueix les condicions de contractació d'ESPORTS VIVAC, a les quals haurà de remetre's l'usuari per a l'adquisició i el correcte ús dels mateixos, per la qual cosa s'agraeix al usuari la necessitat de procedir a la lectura atenta de tota la documentació que s'acompanyi juntament amb els productes adquirits."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:59
+msgid ""
+"Asimismo, ESPORTS VIVAC manifiesta que la información suministrada al "
+"usuario como resultado de las consultas específicas relativas a los "
+"productos ofrecidos en el Sitio Web tiene carácter meramente indicativo, por "
+"lo que no asume responsabilidad alguna derivada de cualesquiera daños y/o "
+"perjuicios que pudieran derivarse, directa o indirectamente, de la "
+"utilización por parte del usuario de dicha información suministrada."
+msgstr ""
+"De la mateixa manera, ESPORTS VIVAC manifesta que la informació subministrada a l'usuari com a resultat de les consultes específiques relatives als productes oferts al Lloc Web té caràcter merament indicatiu, per la qual cosa no assumeix cap responsabilitat derivada de qualsevol dany i/o perjudici que pogués derivar-se, directa o indirectament, de la utilització per part de l'usuari d'aquesta informació subministrada."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:61
+msgid ""
+"Adicionalmente, ESPORTS VIVAC no se hace responsable de ningún daño y/o "
+"perjuicio en el software o hardware del usuario que se derive del acceso al "
+"Sitio Web."
+msgstr ""
+"Addicionalment, ESPORTS VIVAC no es fa responsable de cap dany i/o perjudici en el programari o maquinari de l'usuari que es derivi de l'accés al Lloc Web."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:63
+msgid ""
+"ESPORTS VIVAC, tampoco será responsable por la información enviada por el "
+"usuario cuando no tenga conocimiento efectivo de que la información "
+"almacenada es ilícita o de que pueda lesionar derechos de un tercero. En el "
+"momento que se tenga conocimiento efectivo de que contiene datos como los "
+"anteriormente referidos, ESPORTS VIVAC se compromete a actuar con diligencia "
+"para retirarlos o hacer imposible el acceso a ellos."
+msgstr ""
+"ESPORTS VIVAC, tampoc serà responsable de la informació enviada per l'usuari quan no tingui coneixement efectiu que la informació emmagatzemada és il·lícita o que pugui lesionar drets d'un tercer. En el moment que es tingui coneixement efectiu que conté dades com les anteriorment referides, ESPORTS VIVAC es compromet a actuar amb diligència per retirar-los o fer impossible l'accés a ells."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:65
+msgid ""
+"El usuario responderá de los daños y perjuicios de toda naturaleza que "
+"ESPORTS VIVAC pueda sufrir como consecuencia del incumplimiento de "
+"cualesquiera de las obligaciones a las que queda sometido en virtud de las "
+"Condiciones Generales de Acceso y Uso o de la legislación aplicable en "
+"relación con la utilización del Sitio Web."
+msgstr ""
+"El usuari respondrà dels danys i perjudicis de tota naturalesa que ESPORTS VIVAC pugui patir com a conseqüència de l'incompliment de qualsevol de les obligacions a les quals queda sotmès en virtut de les Condicions Generals d'Accés i Ús o de la legislació aplicable en relació amb la utilització del Lloc Web."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:71
+msgid ""
+"ESPORTS VIVAC dispone de perfiles en algunas redes sociales (como, por "
+"ejemplo, en Facebook, Twitter, LinkedIn, Youtube, Google+ o Instagram), con "
+"la finalidad de informar sobre sus productos y/o servicios."
+msgstr ""
+"ESPORTS VIVAC disposa de perfils en algunes xarxes socials (com ara Facebook, Twitter, LinkedIn, YouTube, Google+ o Instagram), amb la finalitat d'informar sobre els seus productes i/o serveis."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:73
+msgid ""
+"Los usuarios que se adhiera a alguno de los perfiles abiertos por ESPORTS "
+"VIVAC en las redes sociales deberá respetar y cumplir los términos y "
+"condiciones de la red social de que se trate."
+msgstr ""
+"Els usuaris que s'adhereixin a algun dels perfils oberts per ESPORTS VIVAC a les xarxes socials hauran de respectar i complir els termes i condicions de la xarxa social corresponent."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:75
+msgid ""
+"ESPORTS VIVAC podrá acceder a la información de carácter público de los "
+"usuarios de la red social, enviar mensajes individuales cuando la red social "
+"lo permita, si bien no serán incorporados a ningún fichero, salvo que se "
+"indique lo contrario."
+msgstr ""
+"ESPORTS VIVAC podrà accedir a la informació de caràcter públic dels usuaris de la xarxa social, enviar missatges individuals quan la xarxa social ho permeti, tot i que no seran incorporats a cap fitxer, llevat que s'indiqui el contrari."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:77
+msgid "ESPORTS VIVAC realizará las siguientes actuaciones"
+msgstr "ESPORTS VIVAC realitzarà les següents actuacions"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:80
+msgid "Acceso a la información pública del perfil del usuario"
+msgstr "Accés a la informació pública del perfil de l'usuari"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:81
+msgid ""
+"A solicitud del usuario, publicación en su perfil de información que, "
+"previamente, ya haya sido publicada por ESPORTS VIVAC"
+msgstr ""
+"A petició de l'usuari, publicació al seu perfil d'informació que prèviament ja hagi estat publicada per ESPORTS VIVAC."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:82
+msgid ""
+"Enviar mensajes individuales a través de los canales de la red social, "
+"cuando estén permitidos"
+msgstr ""
+"Enviar missatges individuals a través dels canals de la xarxa social, quan estiguin permesos."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:83
+msgid ""
+"Actualizaciones del estado de la página que se mostrarán en el perfil del "
+"usuario"
+msgstr ""
+"Actualitzacions de l'estat de la pàgina que es mostraran al perfil de l'usuari."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:86
+msgid ""
+"ESPORTS VIVAC se reserva el derecho a realizar concursos, promociones y/o "
+"sorteos a través de sus cuentas en las redes sociales y en los que podrán "
+"participar los usuarios que estén adheridos a sus perfiles."
+msgstr ""
+"ESPORTS VIVAC es reserva el dret a realitzar concursos, promocions i/o sorteigs a través dels seus comptes a les xarxes socials i en els quals podran participar els usuaris que estiguin adherits als seus perfils."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:90
+msgid "Blogs y foros"
+msgstr "Blogs i fòrums"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:92
+msgid ""
+"Los usuarios del Sitio Web podrán introducir sus propios contenidos en los "
+"blogs y foros de ESPORTS VIVAC, de conformidad con los términos y "
+"condiciones previstos en las Condiciones Generales de Acceso y Uso."
+msgstr ""
+"El Lloc Web permitira als usuaris introduir els seus propis continguts als blogs i fòrums d'ESPORTS VIVAC, d'acord amb els termes i condicions previstos a les Condicions Generals d'Accés i Ús."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:94
+msgid ""
+"La persona identificada, en cada caso, como la que ha remitido los "
+"contenidos será responsable de los mismos. En ningún caso, los contenidos "
+"reflejarán, la opinión de ESPORTS VIVAC."
+msgstr ""
+"La persona identificada, en cada cas, com la que ha remès els continguts serà responsable dels mateixos. En cap cas, els continguts reflectiran l'opinió d'ESPORTS VIVAC."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:96
+msgid ""
+"ESPORTS VIVAC no se responsabiliza de los posibles errores, inexactitudes o "
+"irregularidades que puedan contener los contenidos publicados, así como de "
+"los daños o perjuicios que se pudieran derivar por la inserción de los "
+"contenidos en las secciones de la red social u otras plataformas que, en su "
+"caso, permitan esta clase de servicios."
+msgstr ""
+"ESPORTS VIVAC no es responsabilitza dels possibles errors, inexactituds o irregularitats que puguin contenir els continguts publicats, així com dels danys o perjudicis que es poguessin derivar per la inserció dels continguts a les seccions de la xarxa social o altres plataformes que, en el seu cas, permetin aquesta classe de serveis."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:98
+msgid ""
+"El usuario suministrador de los contenidos cede a ESPORTS VIVAC, en "
+"cualquier tipo de soporte, los derechos para su reproducción, uso, "
+"distribución, comunicación pública o cualquier otro tipo de actividad sobre "
+"los mismos."
+msgstr ""
+"El usuari subministrador dels continguts cedeix a ESPORTS VIVAC, en qualsevol tipus de suport, els drets per a la seva reproducció, ús, distribució, comunicació pública o qualsevol altre tipus d'activitat sobre els mateixos."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:100
+msgid ""
+"Asimismo, el usuario suministrador declara ser el titular de los derechos "
+"sobre los contenidos, en su caso, o garantiza que dispone de los derechos y "
+"autorizaciones necesarios del autor o propietario, para su uso por parte de "
+"ESPORTS VIVAC."
+msgstr ""
+"Així mateix, l'usuari subministrador declara ser el titular dels drets sobre els continguts, si és el cas, o garanteix que disposa dels drets i autoritzacions necessàries de l'autor o propietari, per al seu ús per part de ESPORTS VIVAC."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:102
+msgid ""
+"ESPORTS VIVAC no se responsabiliza, de los daños o perjuicios que se "
+"pudieran ocasionar por el uso, reproducción, distribución o comunicación "
+"pública o cualquier otro tipo de actividad que realice sobre los contenidos "
+"que se encuentren protegidos por derechos de propiedad intelectual "
+"pertenecientes a terceros, sin que el usuario haya obtenido, debidamente, de "
+"sus titulares la autorización necesaria para llevar a cabo el uso que "
+"pretenda efectuar."
+msgstr ""
+"ESPORTS VIVAC no es responsabilitza dels danys o perjudicis que es puguin ocasionar per l'ús, reproducció, distribució o comunicació pública o qualsevol altre tipus d'activitat que realitzi sobre els continguts que es trobin protegits pels drets de propietat intel·lectual pertanyents a tercers, sense que l'usuari hagi obtingut, degudament, dels seus titulars l'autorització necessària per dur a terme l'ús que pretenen realitzar."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:105
+msgid "Política en materia de enlaces (“links”)"
+msgstr "Política en matèria d'enllaços ('links')"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:107
+msgid "a) Enlaces con el Sitio Web"
+msgstr "a) Enllaços amb el Lloc Web"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:109
+msgid ""
+"Aquellos terceros que tengan intención de incluir en un sitio web (“Sitio "
+"Enlazante”) un enlace que dirija al Sitio Web, o un enmarcado con el mismo, "
+"deberán obtener necesariamente el consentimiento previo, expreso y por "
+"escrito de ESPORTS VIVAC."
+msgstr ""
+"Aquells tercers que tinguin la intenció d'incloure en un lloc web (\"Lloc Enllaçant\") un enllaç que dirigeixi al Lloc Web, o un enmarcat amb el mateix, hauran d'obtenir necessàriament el consentiment previ, exprés i per escrit d'ESPORTS VIVAC."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:111
+msgid ""
+"En ningún caso, la autorización otorgada por ESPORTS VIVAC significa que "
+"avale, promocione, garantice, supervise y/o recomiende el contenido y/o los "
+"servicios del Sitio Enlazante ni que sea responsable del contenido del mismo."
+msgstr ""
+"En cap cas, l'autorització concedida per ESPORTS VIVAC significa que avali, promocioni, garanteixi, supervisi i/o recomani el contingut i/o els serveis del Lloc Enllaçant ni que sigui responsable del contingut del mateix."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:113
+msgid ""
+"El Sitio Enlazante deberá cumplir con la legislación vigente y no podrá, en "
+"ningún caso, albergar contenidos, propios o de terceros, que sean ilícitos y/"
+"o nocivos (violentos, racistas, denigrantes, etc.); y/o resulten "
+"inapropiados o no pertinentes en relación con los productos y/o servicios de "
+"ESPORTS VIVAC."
+msgstr ""
+"El Lloc Enllaçant haurà de complir amb la legislació vigent i no podrà, en cap cas, allotjar continguts, propis o de tercers, que siguin il·lícits i/o nocius (violents, racistes, denigrants, etc.); i/o resultin inapropiats o no pertinents en relació amb els productes i/o serveis d'ESPORTS VIVAC."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:115
+msgid ""
+"En el supuesto de incumplimiento de cualquier de los términos referidos "
+"anteriormente, ESPORTS VIVAC procederá, de forma inmediata, a la revocación "
+"del consentimiento otorgado al Sitio Enlazante, que deberá suprimir el "
+"enlace."
+msgstr ""
+"En el supòsit de incompliment de qualsevol dels termes esmentats anteriorment, ESPORTS VIVAC procedirà, de forma immediata, a la revocació del consentiment atorgat al Lloc Enllaçant, que haurà de suprimir l'enllaç."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:117
+msgid "b) Enlaces con otros sitios web"
+msgstr "b) Enllaços amb altres llocs web"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:119
+msgid ""
+"En el Sitio Web pueden incluirse distintos enlaces que permiten al usuario "
+"acceder a otros sitios web (“<b class=\"font-semibold\">Sitios Enlazados</"
+"b>”)."
+msgstr ""
+"En el lloc web es poden incloure diferents enllaços que permeten a l'usuari accedir a altres llocs web (“<b class=\"font-semibold\">Llocs Enllaçats</b>”)."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:121
+msgid ""
+"En ningún caso, la existencia de Sitios Enlazados comporta recomendación, "
+"promoción, identificación y/o conformidad de ESPORTS VIVAC, con las "
+"manifestaciones, contenidos y/o servicios proporcionados a través de los "
+"Sitios Enlazados."
+msgstr ""
+"En cap cas, l'existència de Llocs Enllaçats comporta una recomanació, promoció, identificació i/o conformitat de ESPORTS VIVAC amb les manifestacions, continguts i/o serveis proporcionats a través dels Llocs Enllaçats."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:123
+msgid ""
+"En consecuencia, ESPORTS VIVAC no se hace responsable del contenido, "
+"condiciones de uso, políticas de privacidad y demás condiciones de los "
+"Sitios Enlazados, siendo el usuario el único responsable de comprobarlos y "
+"aceptarlos cada vez que acceda y use los mismos."
+msgstr ""
+"Per tant, ESPORTS VIVAC no es fa responsable del contingut, les condicions d'ús, les polítiques de privadesa i altres condicions dels Llocs Enllaçats, essent l'usuari l'únic responsable de comprovar-los i acceptar-los cada vegada que hi accedeixi i els utilitzi."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:128
+msgid "Propiedad intelectual e industrial"
+msgstr "Propietat intel·lectual i industrial"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:130
+msgid ""
+"Todos los derechos de propiedad intelectual, diseños, bases de datos, "
+"programas de ordenador subyacentes (incluidos los códigos fuente), así como "
+"los distintos elementos que integran el Sitio Web (textos, gráficos, "
+"fotografías, videos, grabaciones sonoras, combinaciones de colores, etc.) "
+"[“<b class=\"font-semibold\">Contenidos</b>”], su estructura, selección y "
+"orden, son titularidad de ESPORTS VIVAC o, en su caso, de sus licenciantes."
+msgstr ""
+"Tot els drets de propietat intel·lectual, dissenys, bases de dades, programes informàtics subministrats (incloent els codis font), així com els diferents elements que integren el Lloc Web (textos, gràfics, fotografies, vídeos, enregistraments sonors, combinacions de colors, etc.) [“<b class=\"font-semibold\">Continguts</b>”], la seva estructura, selecció i ordre, són propietat de ESPORTS VIVAC o, si escau, dels seus llicenciants."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:132
+msgid ""
+"Mediante las presentes Condiciones Generales de Acceso y Uso, queda "
+"expresamente prohibido al usuario la reproducción, transformación, "
+"distribución, comunicación pública, puesta a disposición, extracción y/o "
+"cualquier otra forma de difusión no autorizadas expresamente del Sitio Web, "
+"sus Contenidos y/o los signos distintivos y nombres de dominio titularidad "
+"de ESPORTS VIVAC."
+msgstr ""
+"Mitjançant les presents Condicions Generals d'Accés i Ús, queda expressament prohibit a l'usuari la reproducció, transformació, distribució, comunicació pública, posada a disposició, extracció i/o qualsevol altra forma de difusió no autoritzades expressament del Lloc Web, els seus Continguts i/o els signes distintius i noms de domini titularitat d'ESPORTS VIVAC."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:134
+msgid ""
+"La utilización no autorizada de los Contenidos, así como los daños y "
+"perjuicios ocasionados en los derechos de propiedad intelectual e industrial "
+"de ESPORTS VIVAC, pueden dar lugar al ejercicio de las acciones que "
+"legalmente le correspondan, y a las responsabilidades que, en su caso, se "
+"deriven de los mismos."
+msgstr ""
+"La utilització no autoritzada dels continguts, així com els danys i perjudicis ocasionats en els drets de propietat intel·lectual i industrial d'ESPORTS VIVAC, poden donar lloc a l'exercici de les accions que legalment li corresponguin, i a les responsabilitats que, en el seu cas, es derivin dels mateixos."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:136
+msgid ""
+"El uso del Sitio Web por el usuario no supone la cesión a su favor por parte "
+"de ESPORTS VIVAC de derecho alguno de propiedad intelectual y/o industrial "
+"sobre el Sitio Web y los Contenidos."
+msgstr ""
+"L'ús del lloc web per part de l'usuari no implica la cessió a la seva favor per part d'ESPORTS VIVAC de cap dret de propietat intel·lectual i/o industrial sobre el Lloc Web i els Continguts."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:141
+msgid "Nulidad"
+msgstr "Nul·litat"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:143
+msgid ""
+"Si cualquiera de las cláusulas de las Condiciones Generales de Acceso y Uso "
+"fuese declarada, total o parcialmente, nula o ineficaz, tal nulidad o "
+"ineficacia afectará sólo a dicha disposición o a la parte de la misma que "
+"resulte nula o ineficaz y las mismas permanecerán vigentes en todo lo demás, "
+"teniéndose por no puesta tal disposición o la parte de la misma que resulte "
+"afectada."
+msgstr ""
+"Si alguna de les clàusules de les Condicions Generals d'Accés i Ús fos declarada, total o parcialment, nul·la o ineficaç, aquesta nul·litat o ineficàcia afectarà només a aquesta disposició o a la part d'aquesta que resulti nul·la o ineficaç, i les altres restaran vigents en tot el demés, tenint-se per no posada aquesta disposició o la part d'aquesta que resulti afectada."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:145
+msgid ""
+"A tales efectos, las Condiciones Generales de Acceso y Uso sólo dejarán de "
+"tener validez exclusivamente respecto de la disposición nula o ineficaz, y "
+"ninguna otra parte o disposición del mismo quedará anulada, invalidada, "
+"perjudicada o afectada por tal nulidad o ineficacia, salvo que por resultar "
+"esencial hubiese de afectar a las Condiciones Generales de Acceso y Uso de "
+"forma integral."
+msgstr ""
+"En aquests efectes, les Condicions Generals d'Accés i Ús només deixaran de tenir validesa exclusivament respecte de la disposició nul·la o ineficaç, i cap altra part o disposició del mateix quedarà anul·lada, invalidada, perjudicada o afectada per tal nul·litat o ineficàcia, llevat que per resultar essencial hagués de afectar a les Condicions Generals d'Accés i Ús de forma integral."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:150
+msgid "Protección de datos de carácter personal"
+msgstr "Protecció de dades de caràcter personal"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:152
+msgid ""
+"Los aspectos relativos al tratamiento de los datos personales de los "
+"usuarios del Sitio Web se regulan en la <u>Política de Privacidad </u>del "
+"Sitio Web."
+msgstr ""
+"Els aspectes relatius al tractament de les dades personals dels "
+"usuaris del Lloc Web es regulen a la <u>Política de Privadesa</u> del "
+"Lloc Web."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:157
+msgid "Legislación aplicable y jurisdicción"
+msgstr "Llegislació aplicable i jurisdicció"
+
+#: core/templates/core/partials/footer/condiciones_legales.html:159
+msgid ""
+"El acceso y utilización del Sitio Web se regirá e interpretará de "
+"conformidad con la legislación española."
+msgstr ""
+"L'accés i la utilització del Lloc Web es regiran i interpretaran de conformitat amb la legislació espanyola."
+
+#: core/templates/core/partials/footer/condiciones_legales.html:161
+msgid ""
+"En el supuesto de que surja cualquier conflicto o discrepancia en la "
+"interpretación y/o aplicación de las Condiciones Generales, los Juzgados "
+"competentes serán los que disponga la normativa legal aplicable."
+msgstr ""
+"En cas que sorgeixi qualsevol conflicte o discrepància en la interpretació i/o aplicació de les Condicions Generals, els Jutjats competents seran els que disposi la normativa legal aplicable."
 
 #: core/templates/core/partials/footer/ventajas.html:6
 msgid "Ventajas Esports Vivac"
@@ -910,6 +1423,7 @@ msgid "Servicio de entrega rápido"
 msgstr "Servei d'entrega ràpid"
 
 #: core/templates/core/partials/footer/ventajas.html:28
+#, python-format
 msgid ""
 "Nos comprometemos a enviar el 90%% de nuestros productos en un plazo de 48 "
 "horas. Sin embargo, es importante destacar que existe una alta probabilidad "
@@ -942,10 +1456,6 @@ msgstr ""
 #: core/templates/core/partials/footer/ventajas.html:35
 msgid "Puedes encontrarnos en"
 msgstr "Pots trobar-nos a"
-
-#: core/templates/core/partials/footer/ventajas.html:38
-msgid "Teléfono"
-msgstr "Telèfon"
 
 #: core/templates/core/partials/footer/ventajas.html:39
 msgid ""

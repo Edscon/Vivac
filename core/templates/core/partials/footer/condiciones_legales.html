@@ -1,163 +1,164 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Condiciones generales de acceso y uso web{% endblock %}
+{% load static%}
+{% load i18n %}
+
+{% block title %}{% trans 'Condiciones generales de acceso y uso web' %}{% endblock %}
 
 {% block content%}
 
-{% load static %}
-
 <div class="max-w-screen-md lg:max-w-screen-lg mx-auto max-[1300px]:-mt-6 px-4 lg:px-0">
 
-    <h1 class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold px-4 lg:px-0">CONDICIONES GENERALES DE ACCESO Y USO WEB</h1>
+    <h1 class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold px-4 lg:px-0">{% trans 'CONDICIONES GENERALES DE ACCESO Y USO WEB' %}</h1>
 
     <div class="text-sm space-y-10">
         <div class="space-y-2">
             <div>
-                El titular del sitio web <a class="underline text-blue-400" href=".">https://www.esportsvivac.com</a> (el "Sitio Web") es la empresa Vivac Camprodon S.L., operando bajo el nombre comercial 'Esports Vivac®', cuyos datos de identificación son los siguientes:
+                {% trans 'El titular del sitio web' %} <a class="underline text-blue-400" href=".">https://www.esportsvivac.com</a> {% blocktrans %}(el "Sitio Web") es la empresa Vivac Camprodon S.L., operando bajo el nombre comercial 'Esports Vivac®', cuyos datos de identificación son los siguientes:{% endblocktrans %}
             </div>
-            <div><b class="font-semibold">Domicilio social: </b>C/ Sant Roc, 16, 17867 Camprodon</div>
+            <div><b class="font-semibold">{% trans 'Domicilio social' %}: </b>{% trans 'C/ Sant Roc, 16, 17867 Camprodon' %}</div>
             <div><b class="font-semibold">C.I.F.nº: </b>B-17829516</div>
-            <div><b class="font-semibold">Email: </b><a class="underline text-blue-400" href="mailto:vivac@esportsvivac.com">vivac@esportsvivac.com</a></div>
-            <div><b class="font-semibold">Teléfono: </b>+34 972 74 13 92 / +34 972 13 04 26</div>
-            <div><b class="font-semibold">Datos registrales: </b> Inscrita en el Registro Mercantil de Barcelona al Tomo XXX, Folio XX y Hoja número B-xx, inscripción xª</div>
+            <div><b class="font-semibold">{% trans 'Email' %}: </b><a class="underline text-blue-400" href="mailto:vivac@esportsvivac.com">vivac@esportsvivac.com</a></div>
+            <div><b class="font-semibold">{% trans 'Teléfono' %}: </b>+34 972 74 13 92 / +34 972 13 04 26</div>
+            <div><b class="font-semibold">{% trans 'Datos registrales' %}: </b> {% trans 'C.I.F. B17829516. Inscrita en el Registro Mercantil Gerona. tomo 2214. folio 138. Hoja 36928. Inscripción 1.' %}</div>
         </div>
         <div class="space-y-2">
-            <h2 class="font-semibold">Acceso al Sitio Web</h2>
-            <div>Las presentes Condiciones Generales de Acceso y Uso regulan el acceso y utilización del Sitio Web que ESPORTS VIVAC pone a disposición de los usuarios de Internet que sean mayores de 14 años y que tiene por objeto facilitar al usuario información relativa a ESPORTS VIVAC y sus productos y/o servicios.</div>
+            <h2 class="font-semibold">{% trans 'Acceso al Sitio Web' %}</h2>
+            <div>{% blocktrans %}Las presentes Condiciones Generales de Acceso y Uso regulan el acceso y utilización del Sitio Web que ESPORTS VIVAC pone a disposición de los usuarios de Internet que sean mayores de 14 años y que tiene por objeto facilitar al usuario información relativa a ESPORTS VIVAC y sus productos y/o servicios.{% endblocktrans %}</div>
 
-            <div>El acceso y utilización del Sitio Web por el usuario conlleva la aceptación de las presentes Condiciones Generales de Acceso y Uso. Por lo tanto, le rogamos que lea atentamente las <u>Condiciones Generales de Acceso y Uso</u> cuando se proponga utilizar el Sitio Web ya que éstas podrán ser adaptadas y/o modificadas en cualquier momento.</div>
+            <div>{% blocktrans %}El acceso y utilización del Sitio Web por el usuario conlleva la aceptación de las presentes Condiciones Generales de Acceso y Uso. Por lo tanto, le rogamos que lea atentamente las <u>Condiciones Generales de Acceso y Uso</u> cuando se proponga utilizar el Sitio Web ya que éstas podrán ser adaptadas y/o modificadas en cualquier momento.{% endblocktrans %}</div>
 
-            <div>Si no acepta las presentes Condiciones Generales, le rogamos se abstenga de utilizar el Sitio Web y su contenido.</div>
+            <div>{% blocktrans %}Si no acepta las presentes Condiciones Generales, le rogamos se abstenga de utilizar el Sitio Web y su contenido.{% endblocktrans %}</div>
             
         </div>
         <div class="space-y-2">
-            <h2 class="font-semibold">Utilización del Sitio Web</h2>
+            <h2 class="font-semibold">{% trans 'Utilización del Sitio Web' %}</h2>
 
-            <div>El usuario se compromete a hacer un uso diligente del Sitio Web, así como de la información relativa a los productos y/o servicios contenida en el mismo, con total sujeción tanto a la normativa aplicable como a las presentes Condiciones Generales de Acceso y Uso.</div>
+            <div>{% blocktrans %}El usuario se compromete a hacer un uso diligente del Sitio Web, así como de la información relativa a los productos y/o servicios contenida en el mismo, con total sujeción tanto a la normativa aplicable como a las presentes Condiciones Generales de Acceso y Uso.{% endblocktrans %}</div>
 
-            <div>Asimismo, el usuario se compromete a no realizar acto alguno con objeto de dañar, inutilizar y/o sobrecargar el Sitio Web, o que impidiera, de cualquier forma, la normal utilización y/o funcionamiento del mismo.</div>
+            <div>{% blocktrans %}Asimismo, el usuario se compromete a no realizar acto alguno con objeto de dañar, inutilizar y/o sobrecargar el Sitio Web, o que impidiera, de cualquier forma, la normal utilización y/o funcionamiento del mismo.{% endblocktrans %}</div>
 
-            <div>ESPORTS VIVAC se reserva el derecho de retirar, en cualquier momento, y, de forma unilateral los contenidos de cualquier sección del Sitio Web, cuando, por su contenido, ESPORTS VIVAC lo estime pertinente. En todo caso, para interponer cualquier reclamación relacionada con los contenidos del Sitio Web, hay que enviar un correo electrónico a <a class="underline text-blue-400" href="mailto:vivac@esportsvivac.com">vivac@esportsvivac.com</a></div>
+            <div>{% blocktrans %}ESPORTS VIVAC se reserva el derecho de retirar, en cualquier momento, y, de forma unilateral los contenidos de cualquier sección del Sitio Web, cuando, por su contenido, ESPORTS VIVAC lo estime pertinente. En todo caso, para interponer cualquier reclamación relacionada con los contenidos del Sitio Web, hay que enviar un correo electrónico a{% endblocktrans %} <a class="underline text-blue-400" href="mailto:vivac@esportsvivac.com">vivac@esportsvivac.com</a></div>
 
-            <div>Se informa al usuario de que, en el caso de que incumpla las Condiciones Generales de Acceso y Uso o cualesquiera otros términos o condiciones recogidos en el Sitio Web, ESPORTS VIVAC se reserva el derecho a limitar, suspender y/o terminar su acceso al Sitio Web, adoptando cualquier medida técnica que sea necesaria al efecto.</div>
+            <div>{% blocktrans %}Se informa al usuario de que, en el caso de que incumpla las Condiciones Generales de Acceso y Uso o cualesquiera otros términos o condiciones recogidos en el Sitio Web, ESPORTS VIVAC se reserva el derecho a limitar, suspender y/o terminar su acceso al Sitio Web, adoptando cualquier medida técnica que sea necesaria al efecto.{% endblocktrans %}</div>
 
-            <div>ESPORTS VIVAC realiza sus mejores esfuerzos para mantener el Sitio Web en buen funcionamiento, evitando errores o, en su caso, reparándolos, y manteniendo los contenidos del Sitio Web debidamente actualizados. No obstante, ESPORTS VIVAC no garantiza la disponibilidad y continuidad en el acceso al Sitio Web ni la inexistencia de errores en sus contenidos, así como tampoco que estos últimos sean oportunamente actualizados.</div>
+            <div>{% blocktrans %}ESPORTS VIVAC realiza sus mejores esfuerzos para mantener el Sitio Web en buen funcionamiento, evitando errores o, en su caso, reparándolos, y manteniendo los contenidos del Sitio Web debidamente actualizados. No obstante, ESPORTS VIVAC no garantiza la disponibilidad y continuidad en el acceso al Sitio Web ni la inexistencia de errores en sus contenidos, así como tampoco que estos últimos sean oportunamente actualizados.{% endblocktrans %}</div>
 
-            <div>ESPORTS VIVAC se reserva la facultad de efectuar, en cualquier momento y sin necesidad de previo aviso, modificaciones, supresiones y/o actualizaciones sobre la información contenida en el Sitio Web, su configuración o presentación.</div>
+            <div>{% blocktrans %}ESPORTS VIVAC se reserva la facultad de efectuar, en cualquier momento y sin necesidad de previo aviso, modificaciones, supresiones y/o actualizaciones sobre la información contenida en el Sitio Web, su configuración o presentación.{% endblocktrans %}</div>
             
         </div>
         <div class="space-y-2">
-            <h2 class="font-semibold">Responsabilidad</h2>
+            <h2 class="font-semibold">{% trans 'Responsabilidad' %}</h2>
 
-            <div>Tanto el acceso al Sitio Web como el uso que pueda hacerse de cualquier información que contiene, se realizan bajo la responsabilidad exclusiva del usuario.</div>
+            <div>{% blocktrans %}Tanto el acceso al Sitio Web como el uso que pueda hacerse de cualquier información que contiene, se realizan bajo la responsabilidad exclusiva del usuario.{% endblocktrans %}</div>
 
-            <div>ESPORTS VIVAC no se responsabiliza de cualesquiera daños y/o perjuicios que pudieran derivarse, directa o indirectamente, del acceso o uso de la información contenida en el Sitio Web y, especialmente, de aquella información relativa a terceros distintos de ESPORTS VIVAC, incluyéndose, pero no limitándose, a los productos en los sistemas informáticos o los provocados por la introducción de virus y/o ataques informáticos y tampoco será responsable de los daños que pudieran sufrir los usuarios por un uso inadecuado del Sitio Web ni de las caídas, interrupciones, ausencia y/o defecto en las comunicaciones.</div>
+            <div>{% blocktrans %}ESPORTS VIVAC no se responsabiliza de cualesquiera daños y/o perjuicios que pudieran derivarse, directa o indirectamente, del acceso o uso de la información contenida en el Sitio Web y, especialmente, de aquella información relativa a terceros distintos de ESPORTS VIVAC, incluyéndose, pero no limitándose, a los productos en los sistemas informáticos o los provocados por la introducción de virus y/o ataques informáticos y tampoco será responsable de los daños que pudieran sufrir los usuarios por un uso inadecuado del Sitio Web ni de las caídas, interrupciones, ausencia y/o defecto en las comunicaciones.{% endblocktrans %}</div>
 
-            <div>En concreto, ESPORTS VIVAC deja expresa constancia de que toda la información relativa a las especificaciones de sus productos que, en su caso, se contenga en el Sitio Web no sustituye a las condiciones de contratación de ESPORTS VIVAC, a las que deberá remitirse el usuario para la adquisición y el correcto uso de los mismos, por lo que se recuerda al usuario la necesidad de proceder a la lectura atenta de toda la documentación que se acompañe junto con los productos adquiridos.</div>
+            <div>{% blocktrans %}En concreto, ESPORTS VIVAC deja expresa constancia de que toda la información relativa a las especificaciones de sus productos que, en su caso, se contenga en el Sitio Web no sustituye a las condiciones de contratación de ESPORTS VIVAC, a las que deberá remitirse el usuario para la adquisición y el correcto uso de los mismos, por lo que se recuerda al usuario la necesidad de proceder a la lectura atenta de toda la documentación que se acompañe junto con los productos adquiridos.{% endblocktrans %}</div>
 
-            <div>Asimismo, ESPORTS VIVAC manifiesta que la información suministrada al usuario como resultado de las consultas específicas relativas a los productos ofrecidos en el Sitio Web tiene carácter meramente indicativo, por lo que no asume responsabilidad alguna derivada de cualesquiera daños y/o perjuicios que pudieran derivarse, directa o indirectamente, de la utilización por parte del usuario de dicha información suministrada.</div>
+            <div>{% blocktrans %}Asimismo, ESPORTS VIVAC manifiesta que la información suministrada al usuario como resultado de las consultas específicas relativas a los productos ofrecidos en el Sitio Web tiene carácter meramente indicativo, por lo que no asume responsabilidad alguna derivada de cualesquiera daños y/o perjuicios que pudieran derivarse, directa o indirectamente, de la utilización por parte del usuario de dicha información suministrada.{% endblocktrans %}</div>
 
-            <div>Adicionalmente, ESPORTS VIVAC no se hace responsable de ningún daño y/o perjuicio en el software o hardware del usuario que se derive del acceso al Sitio Web.</div>
+            <div>{% blocktrans %}Adicionalmente, ESPORTS VIVAC no se hace responsable de ningún daño y/o perjuicio en el software o hardware del usuario que se derive del acceso al Sitio Web.{% endblocktrans %}</div>
 
-            <div>ESPORTS VIVAC, tampoco será responsable por la información enviada por el usuario cuando no tenga conocimiento efectivo de que la información almacenada es ilícita o de que pueda lesionar derechos de un tercero. En el momento que se tenga conocimiento efectivo de que contiene datos como los anteriormente referidos, ESPORTS VIVAC se compromete a actuar con diligencia para retirarlos o hacer imposible el acceso a ellos.</div>
+            <div>{% blocktrans %}ESPORTS VIVAC, tampoco será responsable por la información enviada por el usuario cuando no tenga conocimiento efectivo de que la información almacenada es ilícita o de que pueda lesionar derechos de un tercero. En el momento que se tenga conocimiento efectivo de que contiene datos como los anteriormente referidos, ESPORTS VIVAC se compromete a actuar con diligencia para retirarlos o hacer imposible el acceso a ellos.{% endblocktrans %}</div>
 
-            <div>El usuario responderá de los daños y perjuicios de toda naturaleza que ESPORTS VIVAC pueda sufrir como consecuencia del incumplimiento de cualesquiera de las obligaciones a las que queda sometido en virtud de las Condiciones Generales de Acceso y Uso o de la legislación aplicable en relación con la utilización del Sitio Web.</div>
+            <div>{% blocktrans %}El usuario responderá de los daños y perjuicios de toda naturaleza que ESPORTS VIVAC pueda sufrir como consecuencia del incumplimiento de cualesquiera de las obligaciones a las que queda sometido en virtud de las Condiciones Generales de Acceso y Uso o de la legislación aplicable en relación con la utilización del Sitio Web.{% endblocktrans %}</div>
 
         </div>
         <div class="space-y-2">
-            <h2 class="font-semibold">Redes Sociales</h2>
+            <h2 class="font-semibold">{% trans 'Redes Sociales' %}</h2>
 
-            <div>ESPORTS VIVAC dispone de perfiles en algunas redes sociales (como, por ejemplo, en Facebook, Twitter, LinkedIn, Youtube, Google+ o Instagram), con la finalidad de informar sobre sus productos y/o servicios.</div>
+            <div>{% blocktrans %}ESPORTS VIVAC dispone de perfiles en algunas redes sociales (como, por ejemplo, en Facebook, Twitter, LinkedIn, Youtube, Google+ o Instagram), con la finalidad de informar sobre sus productos y/o servicios.{% endblocktrans %}</div>
 
-            <div>Los usuarios que se adhiera a alguno de los perfiles abiertos por ESPORTS VIVAC en las redes sociales deberá respetar y cumplir los términos y condiciones de la red social de que se trate.</div>
+            <div>{% blocktrans %}Los usuarios que se adhiera a alguno de los perfiles abiertos por ESPORTS VIVAC en las redes sociales deberá respetar y cumplir los términos y condiciones de la red social de que se trate.{% endblocktrans %}</div>
 
-            <div>ESPORTS VIVAC podrá acceder a la información de carácter público de los usuarios de la red social, enviar mensajes individuales cuando la red social lo permita, si bien no serán incorporados a ningún fichero, salvo que se indique lo contrario.</div>
+            <div>{% blocktrans %}ESPORTS VIVAC podrá acceder a la información de carácter público de los usuarios de la red social, enviar mensajes individuales cuando la red social lo permita, si bien no serán incorporados a ningún fichero, salvo que se indique lo contrario.{% endblocktrans %}</div>
 
-            <div>ESPORTS VIVAC realizará las siguientes actuaciones:</div>
+            <div>{% blocktrans %}ESPORTS VIVAC realizará las siguientes actuaciones{% endblocktrans %}:</div>
 
             <ol class="list-disc ml-5">
-                <li>Acceso a la información pública del perfil del usuario</li>
-                <li>A solicitud del usuario, publicación en su perfil de información que, previamente, ya haya sido publicada por ESPORTS VIVAC</li>
-                <li>Enviar mensajes individuales a través de los canales de la red social, cuando estén permitidos</li>
-                <li>Actualizaciones del estado de la página que se mostrarán en el perfil del usuario</li>
+                <li>{% blocktrans %}Acceso a la información pública del perfil del usuario{% endblocktrans %}</li>
+                <li>{% blocktrans %}A solicitud del usuario, publicación en su perfil de información que, previamente, ya haya sido publicada por ESPORTS VIVAC{% endblocktrans %}</li>
+                <li>{% blocktrans %}Enviar mensajes individuales a través de los canales de la red social, cuando estén permitidos{% endblocktrans %}</li>
+                <li>{% blocktrans %}Actualizaciones del estado de la página que se mostrarán en el perfil del usuario{% endblocktrans %}</li>
             </ol>
 
-            <div>ESPORTS VIVAC se reserva el derecho a realizar concursos, promociones y/o sorteos a través de sus cuentas en las redes sociales y en los que podrán participar los usuarios que estén adheridos a sus perfiles.</div>
+            <div>{% blocktrans %}ESPORTS VIVAC se reserva el derecho a realizar concursos, promociones y/o sorteos a través de sus cuentas en las redes sociales y en los que podrán participar los usuarios que estén adheridos a sus perfiles.{% endblocktrans %}</div>
 
         </div>
         <div class="space-y-2">
-            <h2 class="font-semibold">Blogs y foros</h2>
+            <h2 class="font-semibold">{% trans 'Blogs y foros' %}</h2>
 
-            <div>Los usuarios del Sitio Web podrán introducir sus propios contenidos en los blogs y foros de ESPORTS VIVAC, de conformidad con los términos y condiciones previstos en las Condiciones Generales de Acceso y Uso.</div>
+            <div>{% blocktrans %}Los usuarios del Sitio Web podrán introducir sus propios contenidos en los blogs y foros de ESPORTS VIVAC, de conformidad con los términos y condiciones previstos en las Condiciones Generales de Acceso y Uso.{% endblocktrans %}</div>
 
-            <div>La persona identificada, en cada caso, como la que ha remitido los contenidos será responsable de los mismos. En ningún caso, los contenidos reflejarán, la opinión de ESPORTS VIVAC.</div>
+            <div>{% blocktrans %}La persona identificada, en cada caso, como la que ha remitido los contenidos será responsable de los mismos. En ningún caso, los contenidos reflejarán, la opinión de ESPORTS VIVAC.{% endblocktrans %}</div>
             
-            <div>ESPORTS VIVAC no se responsabiliza de los posibles errores, inexactitudes o irregularidades que puedan contener los contenidos publicados, así como de los daños o perjuicios que se pudieran derivar por la inserción de los contenidos en las secciones de la red social u otras plataformas que, en su caso, permitan esta clase de servicios.</div>
+            <div>{% blocktrans %}ESPORTS VIVAC no se responsabiliza de los posibles errores, inexactitudes o irregularidades que puedan contener los contenidos publicados, así como de los daños o perjuicios que se pudieran derivar por la inserción de los contenidos en las secciones de la red social u otras plataformas que, en su caso, permitan esta clase de servicios.{% endblocktrans %}</div>
 
-            <div>El usuario suministrador de los contenidos cede a ESPORTS VIVAC, en cualquier tipo de soporte, los derechos para su reproducción, uso, distribución, comunicación pública o cualquier otro tipo de actividad sobre los mismos.</div>
+            <div>{% blocktrans %}El usuario suministrador de los contenidos cede a ESPORTS VIVAC, en cualquier tipo de soporte, los derechos para su reproducción, uso, distribución, comunicación pública o cualquier otro tipo de actividad sobre los mismos.{% endblocktrans %}</div>
 
-            <div>Asimismo, el usuario suministrador declara ser el titular de los derechos sobre los contenidos, en su caso, o garantiza que dispone de los derechos y autorizaciones necesarios del autor o propietario, para su uso por parte de ESPORTS VIVAC.</div>
+            <div>{% blocktrans %}Asimismo, el usuario suministrador declara ser el titular de los derechos sobre los contenidos, en su caso, o garantiza que dispone de los derechos y autorizaciones necesarios del autor o propietario, para su uso por parte de ESPORTS VIVAC.{% endblocktrans %}</div>
 
-            <div>ESPORTS VIVAC no se responsabiliza, de los daños o perjuicios que se pudieran ocasionar por el uso, reproducción, distribución o comunicación pública o cualquier otro tipo de actividad que realice sobre los contenidos que se encuentren protegidos por derechos de propiedad intelectual pertenecientes a terceros, sin que el usuario haya obtenido, debidamente, de sus titulares la autorización necesaria para llevar a cabo el uso que pretenda efectuar.</div>
+            <div>{% blocktrans %}ESPORTS VIVAC no se responsabiliza, de los daños o perjuicios que se pudieran ocasionar por el uso, reproducción, distribución o comunicación pública o cualquier otro tipo de actividad que realice sobre los contenidos que se encuentren protegidos por derechos de propiedad intelectual pertenecientes a terceros, sin que el usuario haya obtenido, debidamente, de sus titulares la autorización necesaria para llevar a cabo el uso que pretenda efectuar.{% endblocktrans %}</div>
         </div>
         <div class="space-y-2">
-            <h2 class="font-semibold">Política en materia de enlaces (“links”)</h2>
+            <h2 class="font-semibold">{% trans 'Política en materia de enlaces (“links”)' %}</h2>
 
-            <div class="font-semibold">a) Enlaces con el Sitio Web</div>
+            <div class="font-semibold">{% trans 'a) Enlaces con el Sitio Web' %}</div>
 
-            <div>Aquellos terceros que tengan intención de incluir en un sitio web (“Sitio Enlazante”) un enlace que dirija al Sitio Web, o un enmarcado con el mismo, deberán obtener necesariamente el consentimiento previo, expreso y por escrito de ESPORTS VIVAC.</div>
+            <div>{% blocktrans %}Aquellos terceros que tengan intención de incluir en un sitio web (“Sitio Enlazante”) un enlace que dirija al Sitio Web, o un enmarcado con el mismo, deberán obtener necesariamente el consentimiento previo, expreso y por escrito de ESPORTS VIVAC.{% endblocktrans %}</div>
 
-            <div>En ningún caso, la autorización otorgada por ESPORTS VIVAC significa que avale, promocione, garantice, supervise y/o recomiende el contenido y/o los servicios del Sitio Enlazante ni que sea responsable del contenido del mismo.</div>
+            <div>{% blocktrans %}En ningún caso, la autorización otorgada por ESPORTS VIVAC significa que avale, promocione, garantice, supervise y/o recomiende el contenido y/o los servicios del Sitio Enlazante ni que sea responsable del contenido del mismo.{% endblocktrans %}</div>
 
-            <div>El Sitio Enlazante deberá cumplir con la legislación vigente y no podrá, en ningún caso, albergar contenidos, propios o de terceros, que sean ilícitos y/o nocivos (violentos, racistas, denigrantes, etc.); y/o resulten inapropiados o no pertinentes en relación con los productos y/o servicios de ESPORTS VIVAC.</div>
+            <div>{% blocktrans %}El Sitio Enlazante deberá cumplir con la legislación vigente y no podrá, en ningún caso, albergar contenidos, propios o de terceros, que sean ilícitos y/o nocivos (violentos, racistas, denigrantes, etc.); y/o resulten inapropiados o no pertinentes en relación con los productos y/o servicios de ESPORTS VIVAC.{% endblocktrans %}</div>
 
-            <div>En el supuesto de incumplimiento de cualquier de los términos referidos anteriormente, ESPORTS VIVAC procederá, de forma inmediata, a la revocación del consentimiento otorgado al Sitio Enlazante, que deberá suprimir el enlace.</div>
+            <div>{% blocktrans %}En el supuesto de incumplimiento de cualquier de los términos referidos anteriormente, ESPORTS VIVAC procederá, de forma inmediata, a la revocación del consentimiento otorgado al Sitio Enlazante, que deberá suprimir el enlace.{% endblocktrans %}</div>
 
-            <div class="font-semibold">b) Enlaces con otros sitios web</div>
+            <div class="font-semibold">{% trans 'b) Enlaces con otros sitios web' %}</div>
 
-            <div>En el Sitio Web pueden incluirse distintos enlaces que permiten al usuario acceder a otros sitios web (“<b class="font-semibold">Sitios Enlazados</b>”).</div>
+            <div>{% blocktrans %}En el Sitio Web pueden incluirse distintos enlaces que permiten al usuario acceder a otros sitios web (“<b class="font-semibold">Sitios Enlazados</b>”).{% endblocktrans %}</div>
 
-            <div>En ningún caso, la existencia de Sitios Enlazados comporta recomendación, promoción, identificación y/o conformidad de ESPORTS VIVAC, con las manifestaciones, contenidos y/o servicios proporcionados a través de los Sitios Enlazados.</div>
+            <div>{% blocktrans %}En ningún caso, la existencia de Sitios Enlazados comporta recomendación, promoción, identificación y/o conformidad de ESPORTS VIVAC, con las manifestaciones, contenidos y/o servicios proporcionados a través de los Sitios Enlazados.{% endblocktrans %}</div>
             
-            <div>En consecuencia, ESPORTS VIVAC no se hace responsable del contenido, condiciones de uso, políticas de privacidad y demás condiciones de los Sitios Enlazados, siendo el usuario el único responsable de comprobarlos y aceptarlos cada vez que acceda y use los mismos.</div>
+            <div>{% blocktrans %}En consecuencia, ESPORTS VIVAC no se hace responsable del contenido, condiciones de uso, políticas de privacidad y demás condiciones de los Sitios Enlazados, siendo el usuario el único responsable de comprobarlos y aceptarlos cada vez que acceda y use los mismos.{% endblocktrans %}</div>
 
         </div>
 
         <div class="space-y-2">
-            <h2 class="font-semibold">Propiedad intelectual e industrial</h2>
+            <h2 class="font-semibold">{% trans 'Propiedad intelectual e industrial' %}</h2>
 
-            <div>Todos los derechos de propiedad intelectual, diseños, bases de datos, programas de ordenador subyacentes (incluidos los códigos fuente), así como los distintos elementos que integran el Sitio Web (textos, gráficos, fotografías, videos, grabaciones sonoras, combinaciones de colores, etc.) [“<b class="font-semibold">Contenidos</b>”], su estructura, selección y orden, son titularidad de ESPORTS VIVAC o, en su caso, de sus licenciantes.</div>
+            <div>{% blocktrans %}Todos los derechos de propiedad intelectual, diseños, bases de datos, programas de ordenador subyacentes (incluidos los códigos fuente), así como los distintos elementos que integran el Sitio Web (textos, gráficos, fotografías, videos, grabaciones sonoras, combinaciones de colores, etc.) [“<b class="font-semibold">Contenidos</b>”], su estructura, selección y orden, son titularidad de ESPORTS VIVAC o, en su caso, de sus licenciantes.{% endblocktrans %}</div>
 
-            <div>Mediante las presentes Condiciones Generales de Acceso y Uso, queda expresamente prohibido al usuario la reproducción, transformación, distribución, comunicación pública, puesta a disposición, extracción y/o cualquier otra forma de difusión no autorizadas expresamente del Sitio Web, sus Contenidos y/o los signos distintivos y nombres de dominio titularidad de ESPORTS VIVAC.</div>
+            <div>{% blocktrans %}Mediante las presentes Condiciones Generales de Acceso y Uso, queda expresamente prohibido al usuario la reproducción, transformación, distribución, comunicación pública, puesta a disposición, extracción y/o cualquier otra forma de difusión no autorizadas expresamente del Sitio Web, sus Contenidos y/o los signos distintivos y nombres de dominio titularidad de ESPORTS VIVAC.{% endblocktrans %}</div>
 
-            <div>La utilización no autorizada de los Contenidos, así como los daños y perjuicios ocasionados en los derechos de propiedad intelectual e industrial de ESPORTS VIVAC, pueden dar lugar al ejercicio de las acciones que legalmente le correspondan, y a las responsabilidades que, en su caso, se deriven de los mismos.</div>
+            <div>{% blocktrans %}La utilización no autorizada de los Contenidos, así como los daños y perjuicios ocasionados en los derechos de propiedad intelectual e industrial de ESPORTS VIVAC, pueden dar lugar al ejercicio de las acciones que legalmente le correspondan, y a las responsabilidades que, en su caso, se deriven de los mismos.{% endblocktrans %}</div>
 
-            <div>El uso del Sitio Web por el usuario no supone la cesión a su favor por parte de ESPORTS VIVAC de derecho alguno de propiedad intelectual y/o industrial sobre el Sitio Web y los Contenidos.</div>
-
-        </div>
-
-        <div class="space-y-2">
-            <h2 class="font-semibold">Nulidad</h2>
-
-            <div>Si cualquiera de las cláusulas de las Condiciones Generales de Acceso y Uso fuese declarada, total o parcialmente, nula o ineficaz, tal nulidad o ineficacia afectará sólo a dicha disposición o a la parte de la misma que resulte nula o ineficaz y las mismas permanecerán vigentes en todo lo demás, teniéndose por no puesta tal disposición o la parte de la misma que resulte afectada.</div>
-
-            <div>A tales efectos, las Condiciones Generales de Acceso y Uso sólo dejarán de tener validez exclusivamente respecto de la disposición nula o ineficaz, y ninguna otra parte o disposición del mismo quedará anulada, invalidada, perjudicada o afectada por tal nulidad o ineficacia, salvo que por resultar esencial hubiese de afectar a las Condiciones Generales de Acceso y Uso de forma integral.</div>
+            <div>{% blocktrans %}El uso del Sitio Web por el usuario no supone la cesión a su favor por parte de ESPORTS VIVAC de derecho alguno de propiedad intelectual y/o industrial sobre el Sitio Web y los Contenidos.{% endblocktrans %}</div>
 
         </div>
 
         <div class="space-y-2">
-            <h2 class="font-semibold">Protección de datos de carácter personal</h2>
+            <h2 class="font-semibold">{% trans 'Nulidad' %}</h2>
 
-            <div>Los aspectos relativos al tratamiento de los datos personales de los usuarios del Sitio Web se regulan en la <u>Política de Privacidad </u>del Sitio Web.</div>
+            <div>{% blocktrans %}Si cualquiera de las cláusulas de las Condiciones Generales de Acceso y Uso fuese declarada, total o parcialmente, nula o ineficaz, tal nulidad o ineficacia afectará sólo a dicha disposición o a la parte de la misma que resulte nula o ineficaz y las mismas permanecerán vigentes en todo lo demás, teniéndose por no puesta tal disposición o la parte de la misma que resulte afectada.{% endblocktrans %}</div>
+
+            <div>{% blocktrans %}A tales efectos, las Condiciones Generales de Acceso y Uso sólo dejarán de tener validez exclusivamente respecto de la disposición nula o ineficaz, y ninguna otra parte o disposición del mismo quedará anulada, invalidada, perjudicada o afectada por tal nulidad o ineficacia, salvo que por resultar esencial hubiese de afectar a las Condiciones Generales de Acceso y Uso de forma integral.{% endblocktrans %}</div>
 
         </div>
 
         <div class="space-y-2">
-            <h2 class="font-semibold">Legislación aplicable y jurisdicción</h2>
+            <h2 class="font-semibold">{% trans 'Protección de datos de carácter personal' %}</h2>
 
-            <div>El acceso y utilización del Sitio Web se regirá e interpretará de conformidad con la legislación española.</div>
+            <div>{% blocktrans %}Los aspectos relativos al tratamiento de los datos personales de los usuarios del Sitio Web se regulan en la <u>Política de Privacidad </u>del Sitio Web.{% endblocktrans %}</div>
 
-            <div>En el supuesto de que surja cualquier conflicto o discrepancia en la interpretación y/o aplicación de las Condiciones Generales, los Juzgados competentes serán los que disponga la normativa legal aplicable.</div>
+        </div>
+
+        <div class="space-y-2">
+            <h2 class="font-semibold">{% trans 'Legislación aplicable y jurisdicción' %}</h2>
+
+            <div>{% blocktrans %}El acceso y utilización del Sitio Web se regirá e interpretará de conformidad con la legislación española.{% endblocktrans %}</div>
+
+            <div>{% blocktrans %}En el supuesto de que surja cualquier conflicto o discrepancia en la interpretación y/o aplicación de las Condiciones Generales, los Juzgados competentes serán los que disponga la normativa legal aplicable.{% endblocktrans %}</div>
 
         </div>
 
