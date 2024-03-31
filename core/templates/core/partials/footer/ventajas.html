@@ -1,65 +1,65 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Ventajas Esports Vivac{% endblock %}
+{% load static%}
+{% load i18n %}
+
+{% block title %}{% trans 'Ventajas Esports Vivac' %}{% endblock %}
 
 {% block content%}
 
-{% load static %}
-
 <div class="max-w-screen-md lg:max-w-screen-lg mx-auto max-[1300px]:-mt-6 px-4 lg:px-0">
 
-    <h1 class="mt-5 xl:mx-0 md:flex mb-1 text-xl font-semibold mb-5">Razones para comprar en Esports Vivac</h1>
+    <h1 class="mt-5 xl:mx-0 md:flex mb-1 text-xl font-semibold mb-5">{% trans 'Razones para comprar en Esports Vivac' %}</h1>
 
     <div class="space-y-5">
         <div>
-            <h2 class="text-lg">Gran selección de productos</h2>
+            <h2 class="text-lg">{% trans 'Gran selección de productos' %}</h2>
         
-            <div class="text-sm mt-2">Con una amplia selección de productos y un catálogo que abarca diversas áreas como deportes al aire libre, running, ciclismo, esquí y outdoor, en Esports Vivac nos destacamos por nuestra especialización y compromiso con la calidad. ¡Y seguimos añadiendo nuevos productos y marcas!</div>
+            <div class="text-sm mt-2">{% blocktrans %} Con una amplia selección de productos y un catálogo que abarca diversas áreas como deportes al aire libre, running, ciclismo, esquí y outdoor, en Esports Vivac nos destacamos por nuestra especialización y compromiso con la calidad. ¡Y seguimos añadiendo nuevos productos y marcas! {% endblocktrans %}</div>
         </div>
         <div>
-            <h2 class="text-lg">Envío gratuito</h2>
+            <h2 class="text-lg">{% trans 'Envío gratuito' %}</h2>
         
-            <div class="text-sm mt-2">Ofrecemos envío gratuito en todos los pedidos con un valor superior a 100€, con excepción de ciertos productos de gran peso o volumen. Lamentablemente, no realizamos envíos a Ceuta y Melilla, pero sí a Baleares y Canarias, aunque en estos casos el envío no es gratuito.</div>
+            <div class="text-sm mt-2">{% blocktrans %} Ofrecemos envío gratuito en todos los pedidos con un valor superior a 100€, con excepción de ciertos productos de gran peso o volumen. Lamentablemente, no realizamos envíos a Ceuta y Melilla, pero sí a Baleares y Canarias, aunque en estos casos el envío no es gratuito. {% endblocktrans %}</div>
         </div>
         <div>
-            <h2 class="text-lg">Servicio de entrega rápido</h2>
+            <h2 class="text-lg">{% trans 'Servicio de entrega rápido' %}</h2>
         
-            <div class="text-sm mt-2">Nos comprometemos a enviar el 90% de nuestros productos en un plazo de 48 horas. Sin embargo, es importante destacar que existe una alta probabilidad de que el envío llegue en tan solo 24 horas. Para aquellos productos que requieran un tiempo de entrega diferente, especificamos este plazo en la página del producto y durante el proceso de compra, ya que puede variar según el fabricante.</div>
+            <div class="text-sm mt-2">{% blocktrans %}Nos comprometemos a enviar el 90% de nuestros productos en un plazo de 48 horas. Sin embargo, es importante destacar que existe una alta probabilidad de que el envío llegue en tan solo 24 horas. Para aquellos productos que requieran un tiempo de entrega diferente, especificamos este plazo en la página del producto y durante el proceso de compra, ya que puede variar según el fabricante.{% endblocktrans %}</div>
         </div>
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg">Atención al Cliente</h2>
+            <h2 class="text-lg">{% trans 'Atención al Cliente' %}</h2>
         
-            <div>En Esports Vivac, nos dedicamos plenamente a brindarte la mejor atención al cliente. A través de nuestra línea telefónica, estaremos encantados de resolver cualquier pregunta que puedas tener durante el proceso de compra.</div>
+            <div>{% blocktrans %}En Esports Vivac, nos dedicamos plenamente a brindarte la mejor atención al cliente. A través de nuestra línea telefónica, estaremos encantados de resolver cualquier pregunta que puedas tener durante el proceso de compra.{% endblocktrans %}</div>
 
-            <p>Puedes encontrarnos en:</p>
+            <p>{% trans 'Puedes encontrarnos en' %}:</p>
             
             <ul class="list-disc pl-10">
-                <li>Teléfono: 972 13 04 26 o 972 74 13 92</li>
-                <li>Para cualquier consulta adicional, te invitamos a visitar nuestra sección de ayuda.</li>
-                <li>Síguenos en nuestras redes sociales:</li>
-                <li><a target=”_blank” class="underline text-blue-400" href="https://www.instagram.com/esports_vivac/">Instagram</a></li>
+                <li>{% trans 'Teléfono' %}: 972 13 04 26 o 972 74 13 92</li>
+                <li>{% trans 'Para cualquier consulta adicional, te invitamos a visitar nuestra sección de ayuda.' %}</li>
+                <li>{% trans 'Síguenos en nuestras redes sociales' %}: <a target=”_blank” class="underline text-blue-400" href="https://www.instagram.com/esports_vivac/">Instagram</a></li>
             </ul>
         </div>
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg">Devoluciones</h2>
+            <h2 class="text-lg">{% trans 'Devoluciones' %}</h2>
         
-            <div>Si compras un producto y simplemente no te convence, tienes hasta 30 días para devolvérnoslo. No tendrás que darnos ningún tipo de explicación. El producto debe estar en el mismo estado en que se entregó y deberá conservar su embalaje y etiquetado original. En ningún caso aceptaremos un producto que haya sido usado por el cliente o con el embalaje original deteriorado.</div>
+            <div>{% blocktrans %}Si compras un producto y simplemente no te convence, tienes hasta 30 días para devolvérnoslo. No tendrás que darnos ningún tipo de explicación. El producto debe estar en el mismo estado en que se entregó y deberá conservar su embalaje y etiquetado original. En ningún caso aceptaremos un producto que haya sido usado por el cliente o con el embalaje original deteriorado.{% endblocktrans %}</div>
 
         </div>
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg">Hashtag #esportsvivac</h2>
+            <h2 class="text-lg">{% trans 'Hashtag' %} #esportsvivac</h2>
         
             <div>
-                Utiliza el hashtag #esportsvivac en tus fotos de Instagram y forma parte activa de nuestra comunidad. Comparte tus momentos deportivos con Esports Vivac y descubre a personas con tus mismas pasiones.
+                {% blocktrans %}Utiliza el hashtag #esportsvivac en tus fotos de Instagram y forma parte activa de nuestra comunidad. Comparte tus momentos deportivos con Esports Vivac y descubre a personas con tus mismas pasiones.{% endblocktrans %}
             </div>
             <div>
-                Al utilizar el hashtag #esportsvivac, autorizas expresamente a Vivac Camprodon, S.L., domiciliada en C/Sant Roc, 16, a reproducir, comunicar públicamente, distribuir y transformar las fotografías que publiques en la red social Instagram con la etiqueta #esportsvivac, en la página web www.esportsvivac.com y en cualesquiera otras plataformas de su titularidad, de manera indefinida, gratuita y a nivel mundial.
+                {% blocktrans %}Al utilizar el hashtag #esportsvivac, autorizas expresamente a Vivac Camprodon, S.L., domiciliada en C/Sant Roc, 16, a reproducir, comunicar públicamente, distribuir y transformar las fotografías que publiques en la red social Instagram con la etiqueta #esportsvivac, en la página web www.esportsvivac.com y en cualesquiera otras plataformas de su titularidad, de manera indefinida, gratuita y a nivel mundial.{% endblocktrans %}
             </div>
             <div>
-                Asimismo, declaras: (i) que eres el propietario de las fotografías, (ii) que cuentas con la autorización de las personas que aparezcan en ellas, (iii) que el uso de las fotografías no viola ninguna ley ni los términos y condiciones de Instagram. Además, aceptas: (i) que tus datos personales sean incorporados a un archivo propiedad de Esports Vivac con los fines mencionados anteriormente, así como para recibir comunicaciones comerciales de Esports Vivac, (ii) que puedes revocar el consentimiento para recibir comunicaciones comerciales y ejercer tus derechos de acceso, rectificación, cancelación y oposición enviando un correo electrónico a vivac@esportsvivac.com.
+                {% blocktrans %}Asimismo, declaras: (i) que eres el propietario de las fotografías, (ii) que cuentas con la autorización de las personas que aparezcan en ellas, (iii) que el uso de las fotografías no viola ninguna ley ni los términos y condiciones de Instagram. Además, aceptas: (i) que tus datos personales sean incorporados a un archivo propiedad de Esports Vivac con los fines mencionados anteriormente, así como para recibir comunicaciones comerciales de Esports Vivac, (ii) que puedes revocar el consentimiento para recibir comunicaciones comerciales y ejercer tus derechos de acceso, rectificación, cancelación y oposición enviando un correo electrónico a vivac@esportsvivac.com.{% endblocktrans %}
             </div>
             <div>
-                Por último, aceptas que Esports Vivac no será responsable de ninguna reclamación derivada de la violación de estos términos y condiciones.
+                {% blocktrans %}Por último, aceptas que Esports Vivac no será responsable de ninguna reclamación derivada de la violación de estos términos y condiciones.{% endblocktrans %}
             </div>
 
         </div>

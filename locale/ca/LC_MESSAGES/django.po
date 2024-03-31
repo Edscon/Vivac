@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-27 21:58+0100\n"
+"POT-Creation-Date: 2024-03-31 15:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,53 +61,195 @@ msgstr "Carretó"
 msgid "Tienda deportes online"
 msgstr "Botiga d'esports en línia"
 
-#: core/templates/core/frontpage.html:91
+#: core/templates/core/frontpage.html:104
 msgid "Productos populares"
 msgstr "Productes populars"
 
-#: core/templates/core/frontpage.html:141
+#: core/templates/core/frontpage.html:154
 msgid "Tus favoritos"
 msgstr "Els teus favorits"
 
+#: core/templates/core/partials/alquiler_material.html:6
+#: core/templates/core/partials/alquiler_material.html:12
+#: core/templates/core/partials/bottom_navbar.html:25
+#: core/templates/core/partials/footer.html:12
+#: core/templates/core/partials/menu_mobile.html:109
+msgid "Alquiler Material"
+msgstr "Lloguer Material"
+
+#: core/templates/core/partials/alquiler_material.html:14
+msgid 
+"\n"
+"    <div>Te ofrecemos un servicio de alquiler de material adaptado a tus "
+"necesidades para tus aventuras en la nieve. Desde esquís de pista hasta "
+"esquís de montaña, raquetas de nieve y más, tenemos todo lo que necesitas "
+"para disfrutar plenamente de una gran experiencia. </div>\n"
+"    "
+msgstr 
+"\n"
+"    <div>T'ofereixem un servei de lloguer de material adaptat a les teves "
+"necessitats per a les teves aventures a la neu. Des de esquís de pista fins "
+"a esquís de muntanya, raquetes de neu i més, tenim tot el que necessites per "
+"gaudir plenament d'una gran experiència. </div>\n"
+"    "
+
+#: core/templates/core/partials/alquiler_material.html:22
+msgid "Precios alquiler 1 día"
+msgstr "Preus de lloguer per 1 dia"
+
+#: core/templates/core/partials/alquiler_material.html:23
+#: core/templates/core/partials/alquiler_material.html:80
+#: core/templates/core/partials/alquiler_material.html:126
+msgid "Precios por persona IVA incluido"
+msgstr "Preus per persona amb IVA inclòs"
+
+#: core/templates/core/partials/alquiler_material.html:28
+msgid "ADULTO"
+msgstr "ADULT"
+
+#: core/templates/core/partials/alquiler_material.html:31
+#: core/templates/core/partials/alquiler_material.html:57
+#: core/templates/core/partials/alquiler_material.html:87
+#: core/templates/core/partials/alquiler_material.html:134
+msgid "Tipo de Alquiler"
+msgstr "Tipus de Lloguer"
+
+#: core/templates/core/partials/alquiler_material.html:32
+#: core/templates/core/partials/alquiler_material.html:58
+#: core/templates/core/partials/alquiler_material.html:88
+#: core/templates/core/partials/alquiler_material.html:135
+msgid "Precio"
+msgstr "Preu"
+
+#: core/templates/core/partials/alquiler_material.html:35
+#: core/templates/core/partials/alquiler_material.html:61
+msgid "Esquí Completo"
+msgstr "Esquí Complet"
+
+#: core/templates/core/partials/alquiler_material.html:39
+msgid "Snowblade Completo"
+msgstr "Snowblade Complet"
+
+#: core/templates/core/partials/alquiler_material.html:43
+#: core/templates/core/partials/alquiler_material.html:65
+msgid "Snowboard Completo"
+msgstr "Snowboard Complet"
+
+#: core/templates/core/partials/alquiler_material.html:47
+msgid "Esquí Alta Gama Completo"
+msgstr "Esquí d'Alta Gama Complet"
+
+#: core/templates/core/partials/alquiler_material.html:50
+#: core/templates/core/partials/alquiler_material.html:68
+msgid "El casco no está incluido y tiene un costo adicional de"
+msgstr "El casc no està inclòs i té un cost addicional de"
+
+#: core/templates/core/partials/alquiler_material.html:50
+msgid "para adultos"
+msgstr "per a adults"
+
+#: core/templates/core/partials/alquiler_material.html:54
+msgid "JUNIOR"
+msgstr "JUNIOR"
+
+#: core/templates/core/partials/alquiler_material.html:68
+msgid "para juniors"
+msgstr "per a júniors"
+
+#: core/templates/core/partials/alquiler_material.html:79
+msgid "Precios alquiler 1 día Otro Material"
+msgstr "Preus de lloguer per 1 dia Altres Materials"
+
+#: core/templates/core/partials/alquiler_material.html:92
+msgid "Esquí de Montaña Completo"
+msgstr "Esquí de Muntanya Complet"
+
+#: core/templates/core/partials/alquiler_material.html:97
+msgid "Raquetas"
+msgstr "Raquetes"
+
+#: core/templates/core/partials/alquiler_material.html:101
+msgid "Raquetas + Palos"
+msgstr "Raquetes + Pals"
+
+#: core/templates/core/partials/alquiler_material.html:105
+msgid "Grampones"
+msgstr "Grampons"
+
+#: core/templates/core/partials/alquiler_material.html:109
+msgid "Piolet"
+msgstr "Piolet"
+
+#: core/templates/core/partials/alquiler_material.html:113
+msgid "Grampones + Piolet"
+msgstr "Grampons + Piolet"
+
+#: core/templates/core/partials/alquiler_material.html:116
+msgid "Los palos tienen un costo adicional de"
+msgstr "El pals tenen un cost addicional de"
+
+#: core/templates/core/partials/alquiler_material.html:116
+msgid "en todos los casos, excepto en el pack completo de esquí de montaña"
+msgstr "en tots els casos, excepte en el pack complet d'esquí de muntanya"
+
+#: core/templates/core/partials/alquiler_material.html:125
+msgid "Precios alquiler esquí de temporada"
+msgstr "Preus de lloguer d'esquí de temporada"
+
+#: core/templates/core/partials/alquiler_material.html:127
+msgid "El pack incluye esquís, botas y palos"
+msgstr "El pack inclou esquís, botes i pals"
+
+#: core/templates/core/partials/alquiler_material.html:138
+msgid "Adulto"
+msgstr "Adult"
+
+#: core/templates/core/partials/alquiler_material.html:142
+#: core/templates/core/partials/alquiler_material.html:146
+#: core/templates/core/partials/alquiler_material.html:150
+#: core/templates/core/partials/alquiler_material.html:154
+msgid "Junior"
+msgstr "Junior"
+
+#: core/templates/core/partials/alquiler_material.html:163
+msgid "Tiempo en Vallter 2000"
+msgstr "Temps a Vallter 2000"
+
 #: core/templates/core/partials/bottom_navbar.html:7
-#: core/templates/core/partials/menu_mobile.html:21
+#: core/templates/core/partials/menu_mobile.html:67
 msgid "Tienda"
 msgstr "Productes"
 
 #: core/templates/core/partials/bottom_navbar.html:10
-#: core/templates/core/partials/menu_mobile.html:27
+#: core/templates/core/partials/menu_mobile.html:73
 msgid "Ciclismo"
 msgstr "Ciclisme"
 
 #: core/templates/core/partials/bottom_navbar.html:13
-#: core/templates/core/partials/menu_mobile.html:34
+#: core/templates/core/partials/menu_mobile.html:80
 msgid "Running"
 msgstr "Running"
 
 #: core/templates/core/partials/bottom_navbar.html:16
-#: core/templates/core/partials/menu_mobile.html:41
+#: core/templates/core/partials/menu_mobile.html:87
 msgid "Outdoor"
 msgstr "Outdoor"
 
 #: core/templates/core/partials/bottom_navbar.html:19
-#: core/templates/core/partials/menu_mobile.html:48
+#: core/templates/core/partials/menu_mobile.html:94
 msgid "Esquí"
 msgstr "Esquí"
 
-#: core/templates/core/partials/bottom_navbar.html:25
-#: core/templates/core/partials/footer.html:12
-#: core/templates/core/partials/menu_mobile.html:63
-msgid "Alquiler Material"
-msgstr "Lloguer Material"
-
 #: core/templates/core/partials/bottom_navbar.html:27
 #: core/templates/core/partials/footer.html:11
-#: core/templates/core/partials/menu_mobile.html:70
+#: core/templates/core/partials/menu_mobile.html:116
+#: core/templates/core/partials/tiendas.html:6
 msgid "Tiendas"
 msgstr "Botigues"
 
 #: core/templates/core/partials/bottom_navbar.html:28
-#: core/templates/core/partials/menu_mobile.html:77
+#: core/templates/core/partials/contacto.html:6
+#: core/templates/core/partials/menu_mobile.html:123
 msgid "Contacto"
 msgstr "Contacte"
 
@@ -115,6 +257,57 @@ msgstr "Contacte"
 #: core/templates/core/partials/navbarleft-center.html:21
 msgid "Buscar en la tienda"
 msgstr "Cercar a la botiga"
+
+#: core/templates/core/partials/contacto.html:12
+msgid "Contáctenos"
+msgstr "Contacta'ns"
+
+#: core/templates/core/partials/contacto.html:22
+msgid "Formulario de Contacto"
+msgstr "Formulari de contacte"
+
+#: core/templates/core/partials/contacto.html:25
+#: core/templates/core/partials/contacto.html:27
+msgid "Nombre"
+msgstr "Nom"
+
+#: core/templates/core/partials/contacto.html:32
+#: core/templates/core/partials/login_mobile.html:29
+#: core/templates/core/partials/sign.html:9
+msgid "Email"
+msgstr "Correu electrònic"
+
+#: core/templates/core/partials/contacto.html:34
+msgid "Correo electrónico"
+msgstr "Correu electrònic"
+
+#: core/templates/core/partials/contacto.html:39
+#: core/templates/core/partials/contacto.html:41
+msgid "Contenido"
+msgstr "Contingut"
+
+#: core/templates/core/partials/contacto.html:49
+#: core/templates/core/partials/contacto.html:148
+msgid "Mínimo 10 caracteres"
+msgstr "Mínim 10 caràcters"
+
+#: core/templates/core/partials/contacto.html:54
+#: core/templates/core/partials/login_mobile.html:34
+#: core/templates/core/partials/sign.html:13
+msgid "Enviar"
+msgstr "Enviar"
+
+#: core/templates/core/partials/contacto.html:137
+msgid "Campo requerido"
+msgstr "Camp requerit"
+
+#: core/templates/core/partials/contacto.html:143
+msgid 
+"Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio."
+"com"
+msgstr 
+"Si us plau, introdueixi una adreça de correu electrònic vàlida. Per exemple, "
+"hola@domini.com"
 
 #: core/templates/core/partials/footer.html:8
 msgid "Sobre Esports Vivac"
@@ -133,6 +326,7 @@ msgid "Garantías"
 msgstr "Garanties"
 
 #: core/templates/core/partials/footer.html:16
+#: core/templates/core/partials/footer/ventajas.html:44
 msgid "Devoluciones"
 msgstr "Devolucions"
 
@@ -153,6 +347,7 @@ msgid "Atención al cliente"
 msgstr "Atenció al client"
 
 #: core/templates/core/partials/footer.html:23
+#: core/templates/core/partials/footer/ayuda.html:6
 msgid "Ayuda"
 msgstr "Ajuda"
 
@@ -175,6 +370,10 @@ msgstr "Factures"
 #: core/templates/core/partials/footer.html:32
 msgid "Esports Vivac en"
 msgstr "Esports Vivac en"
+
+#: core/templates/core/partials/footer.html:90
+msgid "Redes Sociales"
+msgstr "Xarxes socials"
 
 #: core/templates/core/partials/footer.html:111
 msgid "Formas de pago"
@@ -205,8 +404,7 @@ msgid ""
 " <span>© 2023-2023 Vivac Camprodon, S.L. - Todos los derechos reservados</"
 "span> "
 msgstr ""
-" <span>© 2023-2023 Vivac Camprodon, S.L. - Tots els drets reservats</"
-"span> "
+" <span>© 2023-2023 Vivac Camprodon, S.L. - Tots els drets reservats</span> "
 
 #: core/templates/core/partials/footer.html:339
 msgid "Condiciones legales"
@@ -224,26 +422,628 @@ msgstr "Política de cookies"
 msgid "Condiciones generales de compra"
 msgstr "Condicions generals de compra"
 
+#: core/templates/core/partials/footer.html:347
+msgid ""
+"C.I.F. B17829516. Inscrita en el Registro Mercantil Gerona. tomo 2214. folio "
+"138. Hoja 36928. Inscripción 1."
+msgstr ""
+"C.I.F. B17829516. Inscrita en el Registre Mercantil de Girona. tom 2214. "
+"full 138. fulla 36928. Inscripció 1."
+
+#: core/templates/core/partials/footer/ayuda.html:12
+msgid "Centro de soporte"
+msgstr "Centre de suport"
+
+#: core/templates/core/partials/footer/ayuda.html:16
+msgid "¿Cómo puedo hacer un pedido?"
+msgstr "Com puc fer una comanda?"
+
+#: core/templates/core/partials/footer/ayuda.html:19
+msgid ""
+"Hacer tus compras es fácil con nosotros. Puedes usar nuestro buscador en la "
+"página principal ingresando el nombre del artículo que deseas, o bien, "
+"aprovechar nuestros filtros ubicados en la parte izquierda de la página para "
+"refinar tu búsqueda al máximo. También puedes explorar nuestras categorías "
+"desde el menú principal."
+msgstr ""
+"Fer les teves compres és fàcil amb nosaltres. Pots utilitzar el nostre cercador a la "
+"pàgina principal introduint el nom de l'article que desitges, o bé, "
+"aprofitar els nostres filtres situats a l'esquerra de la pàgina per "
+"refinar la teva cerca al màxim. També pots explorar les nostres categories "
+"des del menú principal."
+
+#: core/templates/core/partials/footer/ayuda.html:22
+msgid ""
+"Una vez que encuentres el producto que deseas, selecciona la talla si es "
+"necesario, y haz clic en 'Añadir al carrito'. Desde allí, podrás ver todos "
+"los artículos que has agregado y hacer cambios según lo necesites, como "
+"ajustar la cantidad de un artículo o eliminarlo del carrito."
+msgstr ""
+"Un cop trobis el producte que desitges, selecciona la talla si és "
+"necessari, i fes clic a 'Afegir al carretó'. Des d'allà, podràs veure tots "
+"els articles que has afegit i fer canvis segons les necessitats, com "
+"ajustar la quantitat d'un article o eliminar-lo del carretó."
+
+#: core/templates/core/partials/footer/ayuda.html:25
+msgid ""
+"Si deseas continuar comprando, simplemente haz clic en 'Continuar "
+"comprando'. Cuando estés listo para realizar tu pedido, haz clic en "
+"'Finalizar pedido'."
+msgstr ""
+"Si desitges continuar comprant, simplementament fes clic a 'Continuar "
+"comprant'. Quan estiguis llest per realitzar la teva comanda, fes clic a "
+"'Finalitzar comanda'."
+
+#: core/templates/core/partials/footer/ayuda.html:28
+msgid ""
+"Si es tu primera vez comprando con nosotros, necesitarás completar un "
+"formulario con tus datos para poder enviar tu pedido correctamente."
+msgstr ""
+"Si és la teva primera vegada comprant amb nosaltres, necessitaràs completar un "
+"formulari amb les teves dades per poder enviar correctament la teva comanda."
+
+#: core/templates/core/partials/footer/ayuda.html:31
+msgid ""
+"Si ya eres cliente registrado, simplemente inicia sesión con tu usuario y "
+"contraseña."
+msgstr ""
+"Si ja ets client registrat, simplement inicia sessió amb el teu nom d'usuari i "
+"contrasenya."
+
+#: core/templates/core/partials/footer/ayuda.html:34
+msgid ""
+"Una vez que todo esté correcto, verás en pantalla la confirmación de tu "
+"pedido y recibirás un correo electrónico con todos los detalles."
+msgstr ""
+"Un cop tot estigui correcte, veuràs a la pantalla la confirmació de la teva "
+"comanda i rebràs un correu electrònic amb tots els detalls."
+
+#: core/templates/core/partials/footer/ayuda.html:39
+msgid "¿Qué métodos de pago puedo utilizar?"
+msgstr "Quins mètodes de pagament puc utilitzar?"
+
+#: core/templates/core/partials/footer/ayuda.html:42
+msgid "Nuestros principales métodos de pago son los siguientes"
+msgstr "Els nostres principals mètodes de pagament són els següents"
+
+#: core/templates/core/partials/footer/ayuda.html:47
+msgid "Tarjeta de crédito"
+msgstr "Targeta de crèdit"
+
+#: core/templates/core/partials/footer/ayuda.html:49
+msgid ""
+"Tarjetas de crédito y débito (MasterCard, Visa y Visa Electron), a través de "
+"la pasarela de pago de Stripe que garantiza la seguridad de tus pagos."
+msgstr ""
+"Targetes de crèdit i dèbit (MasterCard, Visa i Visa Electron), a través de "
+"la passarel·la de pagament de Stripe que garanteix la seguretat dels teus pagaments."
+
+#: core/templates/core/partials/footer/ayuda.html:53
+msgid "PayPal"
+msgstr "PayPal"
+
+#: core/templates/core/partials/footer/ayuda.html:55
+msgid ""
+"Podrás pagar de manera rápida y segura usando tu cuenta de PayPal, sin "
+"compartir información financiera con Esports Vivac."
+msgstr ""
+"Podràs pagar de manera ràpida i segura utilitzant el teu compte de PayPal, sense "
+"compartir informació financera amb Esports Vivac."
+
+#: core/templates/core/partials/footer/ayuda.html:60
+msgid "Transferencia bancaria"
+msgstr "Transferència bancària"
+
+#: core/templates/core/partials/footer/ayuda.html:70
+msgid "¿Los gastos de envío son gratuitos?"
+msgstr "¿Els costos d'enviament són gratuïts?"
+
+#: core/templates/core/partials/footer/ayuda.html:72
+msgid ""
+"En España (solo península), los envíos son gratuitos en compras superiores a "
+"100€"
+msgstr ""
+"A Espanya (només península), els enviaments són gratuïts en compres superiors a "
+"100€"
+
+#: core/templates/core/partials/footer/ayuda.html:74
+msgid ""
+"Los pedidos con importes inferiores a 49€ tienen unos gastos de envío a "
+"partir de 6,80€."
+msgstr ""
+"Els comandes amb import superior a 49€ tenen uns costos d'enviament a "
+"partir de 6,80€."
+
+#: core/templates/core/partials/footer/ayuda.html:76
+#: core/templates/core/partials/footer/ayuda.html:159
+#: core/templates/core/partials/footer/ayuda.html:219
+msgid "IMPORTANTE"
+msgstr "IMPORTANT"
+
+#: core/templates/core/partials/footer/ayuda.html:76
+msgid "No hacemos envíos a Ceuta y Melilla"
+msgstr "No fem enviaments a Ceuta i Melilla"
+
+#: core/templates/core/partials/footer/ayuda.html:79
+msgid ""
+"Para los envíos dentro de España, confiamos en empresas Nacex. Es importante "
+"que nos proporciones los datos de envío correctamente; de lo contrario, "
+"cualquier error en la dirección puede resultar en retrasos en la entrega del "
+"producto. Por favor, infórmanos lo antes posible si detectas algún error en "
+"la información de envío."
+msgstr ""
+"Per als enviaments dins d'Espanya, confiem en empreses com Nacex. És important "
+"que ens proporciones correctament les dades d'enviament; en cas contrari, "
+"qualsevol error en l'adreça pot ocasionar retards en la lliurament del "
+"producte. Si us plau, avísanos el més aviat possible si detectes algun error en "
+"la informació d'enviament."
+
+#: core/templates/core/partials/footer/ayuda.html:85
+msgid "¿Puedo recibir un pedido en 24h?"
+msgstr "Puc rebre un comanda en 24h?"
+
+#: core/templates/core/partials/footer/ayuda.html:88
+#: core/templates/core/partials/footer/ayuda.html:151
+msgid ""
+"Nos comprometemos a garantizar un tiempo de entrega de al menos 48 horas "
+"para nuestros envíos (días laborales). Sin embargo, es importante destacar "
+"que es probable que recibas tu pedido antes de las 24 horas si realizas tu "
+"compra antes de las 12:00 a.m. Esta es nuestra forma de asegurar una "
+"experiencia de entrega rápida y eficiente para nuestros clientes."
+msgstr ""
+"Ens comprometem a garantir un temps de lliurament d'almenys 48 hores "
+"per als nostres enviaments (dies laborables). No obstant això, és important destacar "
+"que és probable que rebin la vostra comanda abans de les 24 hores si realitzes "
+"la compra abans de les 12:00 a.m. Aquesta és la nostra manera de garantir una "
+"experiència de lliurament ràpida i eficient per als nostres clients."
+
+#: core/templates/core/partials/footer/ayuda.html:94
+msgid "¿Hay que pagar algo al recibir mi pedido?"
+msgstr "Cal pagar alguna cosa al rebre la meva comanda?"
+
+#: core/templates/core/partials/footer/ayuda.html:96
+msgid ""
+"Todos los gastos serán indicados en tu carrito de compra antes de finalizar "
+"el pedido e incluirán también los gastos de envío una vez rellenado el "
+"formulario."
+msgstr ""
+"Tots els costos seran indicats al teu carret de compra abans de finalitzar "
+"la comanda i inclouran també les despeses d'enviament un cop omplert el "
+"formulari."
+
+#: core/templates/core/partials/footer/ayuda.html:101
+msgid "¿Puedo devolver un producto?"
+msgstr "Puc retornar un producte?"
+
+#: core/templates/core/partials/footer/ayuda.html:103
+msgid ""
+"¡Por supuesto! Tienes un plazo de 30 días para realizar una devolución o "
+"cambio desde el momento en que recibas tu pedido."
+msgstr ""
+"Per descomptat! Tens un termini de 30 dies per realitzar una devolució o "
+"un canvi des del moment en què rebeu la vostra comanda."
+
+#: core/templates/core/partials/footer/ayuda.html:106
+msgid ""
+"Para las devoluciones puedes elegir entre llevar tu paquete a un punto de "
+"recogida o solicitar que un transportista lo recoja en la dirección que nos "
+"facilites."
+msgstr ""
+"Per a les devolucions, pots triar entre portar el teu paquet a un punt de "
+"recollida o sol·licitar que un transportista el reculli a l'adreça que ens "
+"facilitis."
+
+#: core/templates/core/partials/footer/ayuda.html:110
+msgid ""
+"Tu devolución sea recogida en la dirección que elijas, no será necesario "
+"imprimir nada, solo asegúrate de tener el paquete listo para cuando vengan a "
+"buscarlo. Este servicio tiene un coste de 6.80 euros (peninsula,  Cantaluña "
+"6.20 euros) y el reembolso se realiza en un plazo de 5 a 9 días laborables."
+msgstr ""
+"La teva devolució serà recollida a l'adreça que triïs, no serà necessari "
+"imprimir res, simplement assegura't de tenir el paquet preparat quan vinguin a "
+"recollir-lo. Aquest servei té un cost de 6,80 euros (península, Catalunya "
+"6,20 euros) i el reemborsament es realitza en un termini de 5 a 9 dies laborables."
+
+#: core/templates/core/partials/footer/ayuda.html:121
+msgid "Entra en tu cuenta e indícanos qué quieres devolver"
+msgstr "Entra al teu compte i indica'ns què vols retornar"
+
+#: core/templates/core/partials/footer/ayuda.html:123
+msgid ""
+"Si dispones de una cuenta, por favor inicia sesión en Esports Vivac "
+"utilizando tus datos de usuario y dirígete a <b class=\"font-semibold\">Mi "
+"cuenta > Mis pedidos</b>. Allí, selecciona el producto que deseas devolver y "
+"marca el botón de \"Devolución o incidencia\". Podrás adjuntar fotos para "
+"que podamos procesar tu solicitud de manera más rápida."
+msgstr ""
+"Si tens un compte, si us plau inicia la sessió a Esports Vivac "
+"utilitzant les teves dades d'usuari i dirigeix-te a <b class=\"font-semibold\">La meva "
+"compta > Les meves comandes</b>. Allà, selecciona el producte que desitges retornar i "
+"marca el botó de \"Devolució o incidència\". Podràs adjuntar fotos per tal "
+"que puguem processar la teva sol·licitud de manera més ràpida."
+
+#: core/templates/core/partials/footer/ayuda.html:124
+#: core/templates/core/partials/footer/ayuda.html:208
+msgid "Si no tienes una cuenta, por favor envíanos un"
+msgstr "Si no tens un compte, si us plau envia'ns un"
+
+#: core/templates/core/partials/footer/ayuda.html:124
+#: core/templates/core/partials/footer/ayuda.html:189
+#: core/templates/core/partials/footer/ayuda.html:208
+msgid "correo electrónico"
+msgstr "correu electrònic"
+
+#: core/templates/core/partials/footer/ayuda.html:124
+#: core/templates/core/partials/footer/ayuda.html:208
+msgid "con los detalles de tu incidencia"
+msgstr "amb els detalls de la teva incidència"
+
+#: core/templates/core/partials/footer/ayuda.html:131
+msgid "Prepara el paquete"
+msgstr "Prepara el paquet"
+
+#: core/templates/core/partials/footer/ayuda.html:133
+msgid ""
+"Prepara los artículos a devolver, sin uso previo, con su embalaje y "
+"etiquetado original."
+msgstr ""
+"Prepara els articles a retornar, sense ús previ, amb el seu embalatge i "
+"etiquetat original."
+
+#: core/templates/core/partials/footer/ayuda.html:140
+msgid "Gestión de la devolución y reembolso del dinero"
+msgstr "Gestió de la devolució i reemborsament dels diners"
+
+#: core/templates/core/partials/footer/ayuda.html:142
+msgid ""
+"Una vez recojamos la devolución, revisaremos que está todo correcto y "
+"procederemos a abonarte el importe de la compra."
+msgstr ""
+"Un cop recollim la devolució, revisarem que està tot correcte i "
+"procedirem a abonar-te l'import de la compra."
+
+#: core/templates/core/partials/footer/ayuda.html:148
+msgid "¿Cuándo recibiré mi pedido?"
+msgstr "Quan rebré la meva comanda?"
+
+#: core/templates/core/partials/footer/ayuda.html:155
+msgid ""
+"En el momento que tu pedido salga del almacén, te enviaremos un email con el "
+"enlace de seguimiento para que puedas saber dónde está tu pedido en todo "
+"momento."
+msgstr ""
+"En el moment que la teva comanda surti del magatzem, et enviarem un correu electrònic amb "
+"l'enllaç de seguiment perquè puguis saber on es troba la teva comanda en tot "
+"moment."
+
+#: core/templates/core/partials/footer/ayuda.html:159
+msgid ""
+"Tu pedido será entregado cuando todos los artículos del pedido estén "
+"disponibles."
+msgstr ""
+"La teva comanda serà entregada quan tots els articles de la comanda estiguin "
+"disponibles."
+
+#: core/templates/core/partials/footer/ayuda.html:165
+msgid "¿Puedo hacer seguimiento de mi pedido en todo momento?"
+msgstr "Puc fer seguiment de la meva comanda en tot moment?"
+
+#: core/templates/core/partials/footer/ayuda.html:168
+msgid ""
+"¡Por supuesto! Una vez que tu pedido salga de nuestro almacén, recibirás un "
+"correo electrónico que incluirá un enlace para que puedas hacer el "
+"seguimiento del envío. Además, este correo te proporcionará la opción de "
+"contactar al transportista si lo necesitas. "
+msgstr ""
+"Per descomptat! Un cop la teva comanda surti del nostre magatzem, rebràs un "
+"correu electrònic que inclourà un enllaç perquè puguis fer el "
+"seguiment de l'enviament. A més, aquest correu et proporcionarà l'opció de "
+"contactar amb el transportista si ho necessites. "
+
+#: core/templates/core/partials/footer/ayuda.html:174
+msgid "¿Qué pasa si en el momento de la entrega estoy ausente?"
+msgstr "Què passa si en el moment de la entrega estic absent?"
+
+#: core/templates/core/partials/footer/ayuda.html:177
+msgid ""
+"Si no te encuentras en casa en el momento de la entrega, el mensajero te "
+"dejará una nota de aviso para que contactes con la oficina de mensajería y "
+"puedas acordar una segunda entrega. Normalmente será para el día siguiente, "
+"aunque la franja horaria la determinará el transportista. También tendrás la "
+"posibilidad de recoger el paquete directamente en la delegación del "
+"transportista de tu zona."
+msgstr ""
+"Si no et trobes a casa en el moment de l'entrega, el missatger et "
+"deixarà una nota d'avís perquè contactis amb l'oficina de missatgeria i "
+"puguis acordar una segona entrega. Normalment serà per al dia següent, "
+"encara que la franja horària la determinarà el transportista. També tindràs la "
+"possibilitat de recollir el paquet directament a la delegació del "
+"transportista de la teva zona."
+
+#: core/templates/core/partials/footer/ayuda.html:180
+msgid ""
+"Te informamos del teléfono gratuito del transportista que opera con nosotros "
+"en España:"
+msgstr ""
+"Et proporcionem el telèfon gratuït del transportista que opera amb nosaltres "
+"a España:"
+
+#: core/templates/core/partials/footer/ayuda.html:187
+msgid "¿Cómo puedo solicitar una factura?"
+msgstr "Com puc sol·licitar una factura?"
+
+#: core/templates/core/partials/footer/ayuda.html:189
+msgid "Para solicitar una factura, envía un"
+msgstr "Per sol·licitar una factura, envia un"
+
+#: core/templates/core/partials/footer/ayuda.html:189
+msgid ""
+"a nuestro equipo de atención al cliente con los detalles de tu pedido y te "
+"ayudaremos con tu solicitud."
+msgstr ""
+"al nostre equip d'atenció al client amb els detalls de la teva comanda i "
+"t'ajudarem amb la teva sol·licitud."
+
+#: core/templates/core/partials/footer/ayuda.html:194
+msgid "¿Hay algún artículo que no pueda devolver ni cambiar?"
+msgstr "Hi ha algun article que no pugui retornar ni canviar?"
+
+#: core/templates/core/partials/footer/ayuda.html:196
+msgid ""
+"No se aceptan devoluciones ni cambios de los productos de alimentación y "
+"nutrición, material de escalada, por motivos de seguridad y productos "
+"electrónicos que hayan sido encendidos y/o activados."
+msgstr ""
+"No s'accepten devolucions ni canvis dels productes d'alimentació i "
+"nutrició, material d'escalada, per motius de seguretat, i productes "
+"electrònics que hagin estat encès i/o activats."
+
+#: core/templates/core/partials/footer/ayuda.html:201
+msgid ""
+"¿Qué tengo que hacer si recibo un producto dañado o un paquete en mal estado?"
+msgstr ""
+"Què he de fer si rebo un producte danyat o un paquet en mal estat?"
+
+#: core/templates/core/partials/footer/ayuda.html:203
+msgid ""
+"Es crucial que revises el embalaje y el producto tan pronto como recibas tu "
+"paquete. Si detectas algún daño, te recomendamos no aceptar la entrega o "
+"dejar constancia de ello al momento de recibirla para posterior revisión. Si "
+"encuentras alguna incidencia, por favor infórmanos en un plazo máximo de 24 "
+"horas después de recibirlo. Esto nos permitirá comunicarnos con la empresa "
+"de transporte y proceder con las reclamaciones necesarias."
+msgstr ""
+"És crucial que revisis l'embalatge i el producte tan aviat com rebeu el vostre "
+"paquet. Si detecteu algun dany, us recomanem no acceptar la entrega o "
+"deixar constància d'això en el moment de rebre-la per a revisió posterior. Si "
+"trobeu alguna incidència, si us plau informeu-nos en un termini màxim de 24 "
+"hores després de rebre-la. Això ens permetrà comunicar-nos amb l'empresa "
+"de transport i procedir amb les reclamacions necessàries."
+
+#: core/templates/core/partials/footer/ayuda.html:205
+msgid "Entra en tu cuenta e indícanos la incidencia"
+msgstr "Entra al teu compte i indica'ns la incidència"
+
+#: core/templates/core/partials/footer/ayuda.html:207
+msgid ""
+"Si dispones de una cuenta, por favor inicia sesión en Esports Vivac "
+"utilizando tus datos de usuario y dirígete a <b class=\"font-semibold\">Mi "
+"cuenta > Mis pedidos</b>. Allí, selecciona el producto que tiene la "
+"incidencia y marca el botón de \"Devolución o incidencia\". Podrás adjuntar "
+"fotos para que podamos procesar tu solicitud de manera más rápida."
+msgstr ""
+"Si tens un compte, si us plau inicia sessió a Esports Vivac "
+"utilitzant les teves dades d'usuari i dirigeix-te a <b class=\"font-semibold\">La meva "
+"compta> Les meves comandes</b>. Allà, selecciona el producte que té la "
+"incidència i marca el botó de \"Devolució o incidència\". Podràs adjuntar "
+"fotos perquè puguem processar la teva sol·licitud de manera més ràpida.."
+
+#: core/templates/core/partials/footer/ayuda.html:213
+msgid "¿Qué debo hacer si mi pedido es incorrecto o incompleto?"
+msgstr "Què he de fer si la meva comanda és incorrecta o incompleta?"
+
+#: core/templates/core/partials/footer/ayuda.html:216
+msgid ""
+"Si encuentras algún problema como un producto incorrecto o faltante,(cuenta) "
+"por favor contáctenos dentro de las 24 horas siguientes y haremos todo lo "
+"posible para reponer el artículo correcto y entregártelo lo antes posible. "
+"En caso de no disponer de stock, procederemos con el reembolso "
+"correspondiente."
+msgstr ""
+"Si trobes algun problema com un producte incorrecte o falta, (compte) "
+"si us plau contacta'ns dins de les 24 hores següents i farem tot el "
+"possible per reemplaçar l'article correcte i lliurar-t'ho el més aviat possible. "
+"En cas de no disposar de stock, procedirem amb el reemborsament "
+"corresponent."
+
+#: core/templates/core/partials/footer/ayuda.html:219
+msgid ""
+"Para procesar tu reclamación, necesitaremos fotos del paquete recibido, que "
+"incluyan el embalaje exterior con sus etiquetas, así como también de las "
+"etiquetas del producto recibido."
+msgstr ""
+"Per processar la teva reclamació, necessitarem fotos del paquet rebut, que incloguin l'embalatge exterior amb les seves etiquetes, així com també de les etiquetes del producte rebut."
+
+#: core/templates/core/partials/footer/ventajas.html:6
+msgid "Ventajas Esports Vivac"
+msgstr "Avantatges Esports Vivac"
+
+#: core/templates/core/partials/footer/ventajas.html:12
+msgid "Razones para comprar en Esports Vivac"
+msgstr "Raons per comprar a Esports Vivac"
+
+#: core/templates/core/partials/footer/ventajas.html:16
+msgid "Gran selección de productos"
+msgstr "Gran selecció de productes"
+
+#: core/templates/core/partials/footer/ventajas.html:18
+msgid ""
+" Con una amplia selección de productos y un catálogo que abarca diversas "
+"áreas como deportes al aire libre, running, ciclismo, esquí y outdoor, en "
+"Esports Vivac nos destacamos por nuestra especialización y compromiso con la "
+"calidad. ¡Y seguimos añadiendo nuevos productos y marcas! "
+msgstr ""
+" Amb una àmplia selecció de productes i un catàleg que abasta diverses àrees "
+"com esports a l'aire lliure, running, ciclisme, esquí i outdoor, a Esports "
+"Vivac ens destaquem per la nostra especialització i compromís amb la "
+"qualitat. I seguim afegint nous productes i marques! "
+
+#: core/templates/core/partials/footer/ventajas.html:21
+msgid "Envío gratuito"
+msgstr "Enviament gratuït"
+
+#: core/templates/core/partials/footer/ventajas.html:23
+msgid ""
+" Ofrecemos envío gratuito en todos los pedidos con un valor superior a 100€, "
+"con excepción de ciertos productos de gran peso o volumen. Lamentablemente, "
+"no realizamos envíos a Ceuta y Melilla, pero sí a Baleares y Canarias, "
+"aunque en estos casos el envío no es gratuito. "
+msgstr ""
+" Oferim enviaments gratuïts en tots els comandes amb un valor superior a "
+"100€, amb excepció de certs productes de gran pes o volum. Lamentablement, "
+"no realitzem enviaments a Ceuta i Melilla, però sí a les Balears i Canàries, "
+"tot i que en aquests casos l'enviament no és gratuït. "
+
+#: core/templates/core/partials/footer/ventajas.html:26
+msgid "Servicio de entrega rápido"
+msgstr "Servei d'entrega ràpid"
+
+#: core/templates/core/partials/footer/ventajas.html:28
+msgid ""
+"Nos comprometemos a enviar el 90%% de nuestros productos en un plazo de 48 "
+"horas. Sin embargo, es importante destacar que existe una alta probabilidad "
+"de que el envío llegue en tan solo 24 horas. Para aquellos productos que "
+"requieran un tiempo de entrega diferente, especificamos este plazo en la "
+"página del producto y durante el proceso de compra, ya que puede variar "
+"según el fabricante."
+msgstr ""
+"Ens comprometem a enviar el 90%% dels nostres productes en un termini de 48 "
+"hores. No obstant això, és important destacar que hi ha una alta "
+"probabilitat que l'enviament arribi en tan sols 24 hores. Per als productes "
+"que requereixin un temps de lliurament diferent, especifiquem aquest termini "
+"a la pàgina del producte i durant el procés de compra, ja que pot variar "
+"segons el fabricant."
+
+#: core/templates/core/partials/footer/ventajas.html:31
+msgid "Atención al Cliente"
+msgstr "Atenció al Client"
+
+#: core/templates/core/partials/footer/ventajas.html:33
+msgid ""
+"En Esports Vivac, nos dedicamos plenamente a brindarte la mejor atención al "
+"cliente. A través de nuestra línea telefónica, estaremos encantados de "
+"resolver cualquier pregunta que puedas tener durante el proceso de compra."
+msgstr ""
+"A Esports Vivac, ens dediquem plenament a oferir-te la millor atenció al "
+"client. A través de la nostra línia telefònica, estarem encantats de "
+"resoldre qualsevol pregunta que puguis tenir durant el procés de compra."
+
+#: core/templates/core/partials/footer/ventajas.html:35
+msgid "Puedes encontrarnos en"
+msgstr "Pots trobar-nos a"
+
+#: core/templates/core/partials/footer/ventajas.html:38
+msgid "Teléfono"
+msgstr "Telèfon"
+
+#: core/templates/core/partials/footer/ventajas.html:39
+msgid ""
+"Para cualquier consulta adicional, te invitamos a visitar nuestra sección de "
+"ayuda."
+msgstr ""
+"Per a qualsevol consulta addicional, et convidem a visitar la nostra secció "
+"d'ajuda."
+
+#: core/templates/core/partials/footer/ventajas.html:40
+msgid "Síguenos en nuestras redes sociales"
+msgstr "Segueix-nos a les nostres xarxes socials"
+
+#: core/templates/core/partials/footer/ventajas.html:46
+msgid ""
+"Si compras un producto y simplemente no te convence, tienes hasta 30 días "
+"para devolvérnoslo. No tendrás que darnos ningún tipo de explicación. El "
+"producto debe estar en el mismo estado en que se entregó y deberá conservar "
+"su embalaje y etiquetado original. En ningún caso aceptaremos un producto "
+"que haya sido usado por el cliente o con el embalaje original deteriorado."
+msgstr ""
+"Si compres un producte i simplement no et convenç, tens fins a 30 dies per "
+"tornar-nos-lo. No hauràs de donar-nos cap tipus d'explicació. El producte ha "
+"d'estar en el mateix estat en què es va lliurar i ha de conservar el seu "
+"embalatge i etiquetatge originals. En cap cas acceptarem un producte que "
+"hagi estat utilitzat pel client o amb l'embalatge original deteriorat."
+
+#: core/templates/core/partials/footer/ventajas.html:50
+msgid "Hashtag"
+msgstr "Hashtag"
+
+#: core/templates/core/partials/footer/ventajas.html:53
+msgid ""
+"Utiliza el hashtag #esportsvivac en tus fotos de Instagram y forma parte "
+"activa de nuestra comunidad. Comparte tus momentos deportivos con Esports "
+"Vivac y descubre a personas con tus mismas pasiones."
+msgstr ""
+"Utilitza el hashtag #esportsvivac a les teves fotos d'Instagram i forma part "
+"activa de la nostra comunitat. Comparteix els teus moments esportius amb "
+"Esports Vivac i descobreix persones amb les teves mateixes passions."
+
+#: core/templates/core/partials/footer/ventajas.html:56
+msgid ""
+"Al utilizar el hashtag #esportsvivac, autorizas expresamente a Vivac "
+"Camprodon, S.L., domiciliada en C/Sant Roc, 16, a reproducir, comunicar "
+"públicamente, distribuir y transformar las fotografías que publiques en la "
+"red social Instagram con la etiqueta #esportsvivac, en la página web www."
+"esportsvivac.com y en cualesquiera otras plataformas de su titularidad, de "
+"manera indefinida, gratuita y a nivel mundial."
+msgstr ""
+"Al utilitzar el hashtag #esportsvivac, autoritzes expressament a Vivac "
+"Camprodon, S.L., amb domicili a C/Sant Roc, 16, a reproduir, comunicar "
+"públicament, distribuir i transformar les fotografies que publiquis a la "
+"xarxa social Instagram amb l'etiqueta #esportsvivac, a la pàgina web www."
+"esportsvivac.com i en qualsevol altra plataforma de la seva titularitat, de "
+"manera indefinida, gratuïta i a nivell mundial."
+
+#: core/templates/core/partials/footer/ventajas.html:59
+msgid ""
+"Asimismo, declaras: (i) que eres el propietario de las fotografías, (ii) que "
+"cuentas con la autorización de las personas que aparezcan en ellas, (iii) "
+"que el uso de las fotografías no viola ninguna ley ni los términos y "
+"condiciones de Instagram. Además, aceptas: (i) que tus datos personales sean "
+"incorporados a un archivo propiedad de Esports Vivac con los fines "
+"mencionados anteriormente, así como para recibir comunicaciones comerciales "
+"de Esports Vivac, (ii) que puedes revocar el consentimiento para recibir "
+"comunicaciones comerciales y ejercer tus derechos de acceso, rectificación, "
+"cancelación y oposición enviando un correo electrónico a vivac@esportsvivac."
+"com."
+msgstr ""
+"Aixi mateix, declares: (i) que ets el propietari de les fotografies, (ii) "
+"que comptes amb l'autorització de les persones que hi apareguin, (iii) que "
+"l'ús de les fotografies no viola cap llei ni els termes i condicions "
+"d'Instagram. A més, acceptes: (i) que les teves dades personals siguin "
+"incorporades a un fitxer propietat d'Esports Vivac amb els fins esmentats "
+"anteriorment, així com per rebre comunicacions comercials d'Esports Vivac, "
+"(ii) que pots revocar el consentiment per rebre comunicacions comercials i "
+"exercir els teus drets d'accés, rectificació, cancel·lació i oposició "
+"enviant un correu electrònic a vivac@esportsvivac.com."
+
+#: core/templates/core/partials/footer/ventajas.html:62
+msgid ""
+"Por último, aceptas que Esports Vivac no será responsable de ninguna "
+"reclamación derivada de la violación de estos términos y condiciones."
+msgstr ""
+"Finalment, acceptes que Esports Vivac no serà responsable de cap reclamació "
+"derivada de la violació d'aquests termes i condicions."
+
 #: core/templates/core/partials/login_mobile.html:25
-#: core/templates/core/partials/menu_mobile.html:105
+#: core/templates/core/partials/menu_mobile.html:151
 #: core/templates/core/partials/sign.html:4
 msgid "Iniciar Sesión"
 msgstr "Iniciar sessió"
-
-#: core/templates/core/partials/login_mobile.html:29
-#: core/templates/core/partials/sign.html:9
-msgid "Email"
-msgstr "Correu electrònic"
 
 #: core/templates/core/partials/login_mobile.html:31
 #: core/templates/core/partials/sign.html:10
 msgid "Contraseña"
 msgstr "Contrasenya"
-
-#: core/templates/core/partials/login_mobile.html:34
-#: core/templates/core/partials/sign.html:13
-msgid "Enviar"
-msgstr "Enviar"
 
 #: core/templates/core/partials/login_mobile.html:42
 #: core/templates/core/partials/sign.html:28
@@ -260,46 +1060,46 @@ msgstr "Nou a Esports Vivac?"
 msgid "Regístrate aquí"
 msgstr "Registra't aquí"
 
-#: core/templates/core/partials/menu_mobile.html:60
+#: core/templates/core/partials/menu_mobile.html:106
 msgid "Nosotros"
 msgstr "Nosaltres"
 
-#: core/templates/core/partials/menu_mobile.html:91
+#: core/templates/core/partials/menu_mobile.html:137
 msgid "Perfil de Usuario"
 msgstr "Perfil d'Usuari"
 
-#: core/templates/core/partials/menu_mobile.html:95
+#: core/templates/core/partials/menu_mobile.html:141
 #: core/templates/core/partials/navbar_right.html:14
 msgid "Hola"
 msgstr "Hola"
 
-#: core/templates/core/partials/menu_mobile.html:97
+#: core/templates/core/partials/menu_mobile.html:143
 #: core/templates/core/partials/navbar_right.html:16
 #: core/templates/core/partials/navbar_right.html:30
 msgid "Mi Cuenta"
 msgstr "La meva Compta"
 
-#: core/templates/core/partials/menu_mobile.html:98
+#: core/templates/core/partials/menu_mobile.html:144
 #: core/templates/core/partials/navbar_right.html:17
 msgid "Mis pedidos"
 msgstr "Les meves comandes"
 
-#: core/templates/core/partials/menu_mobile.html:99
+#: core/templates/core/partials/menu_mobile.html:145
 #: core/templates/core/partials/navbar_right.html:18
 msgid "Mis datos"
 msgstr "Les meves dades"
 
-#: core/templates/core/partials/menu_mobile.html:100
+#: core/templates/core/partials/menu_mobile.html:146
 #: core/templates/core/partials/navbar_right.html:19
 msgid "Mis favoritos"
 msgstr "Els meus favorits"
 
-#: core/templates/core/partials/menu_mobile.html:101
+#: core/templates/core/partials/menu_mobile.html:147
 #: core/templates/core/partials/navbar_right.html:20
 msgid "Mis opiniones de productos"
 msgstr "Les meves opinions sobre productes"
 
-#: core/templates/core/partials/menu_mobile.html:102
+#: core/templates/core/partials/menu_mobile.html:148
 #: core/templates/core/partials/navbar_right.html:21
 msgid "Cerrar Sesión"
 msgstr "Tancar sessió"
@@ -338,6 +1138,145 @@ msgstr "Devolució"
 msgid "de 30 días"
 msgstr "de 30 dies"
 
+#: core/templates/core/partials/tiendas.html:12
+msgid "Nuestras Tiendas"
+msgstr "Les Nostres Botigues"
+
+#: core/templates/core/partials/tiendas.html:17
+msgid "Vivac Outdoor"
+msgstr "Vivac Outdoor"
+
+#: core/templates/core/partials/tiendas.html:18
+msgid ""
+"\n"
+"                <div class=\"mt-4\">\n"
+"                    Tienda ubicada en la entrada de Camprodon. Especializada "
+"en todo tipo de material técnico para realizar actividades de \n"
+"                    montaña y aventura. Aquí encontrarás todo el material "
+"necesario para practicar esquí alpino, de montaña, trekking, ciclismo, "
+"running y muchos otros.\n"
+"                </div>\n"
+"                "
+msgstr ""
+"\n"
+"                <div class=\"mt-4\">\n"
+"                    Botiga ubicada a l'entrada de Camprodon. Especialitzada "
+"en tot tipus de material tècnic per realitzar activitats de \n"
+"                    muntanya i aventura. Aquí trobaràs tot el material "
+"necessari per practicar esquí alpí, de muntanya, trekking, ciclisme, running "
+"i molts altres.\n"
+"                </div>\n"
+"                "
+
+#: core/templates/core/partials/tiendas.html:24
+msgid ""
+"\n"
+"                <div class=\"mt-4\">\n"
+"                    También ofrecemos todo el material de alquiler para "
+"facilitar la práctica de tus deportes favoritos, brindándote una amplia gama "
+"de opciones de alquiler, \n"
+"                    fácil, de calidad y a un precio razonable.\n"
+"                </div>\n"
+"                "
+msgstr ""
+"\n"
+"                <div class=\"mt-4\">\n"
+"                    També oferim tot el material de lloguer per facilitar la "
+"pràctica dels teus esports favorits, proporcionant-te una àmplia gamma "
+"d'opcions de lloguer, \n"
+"                    fàcil, de qualitat i a un preu raonable.\n"
+"                </div>\n"
+"                "
+
+#: core/templates/core/partials/tiendas.html:37
+#: core/templates/core/partials/tiendas.html:93
+msgid "HORARIOS TIENDA"
+msgstr "HORARIS BOTIGA"
+
+#: core/templates/core/partials/tiendas.html:40
+#: core/templates/core/partials/tiendas.html:96
+msgid "LUNES"
+msgstr "DILLUNS"
+
+#: core/templates/core/partials/tiendas.html:41
+#: core/templates/core/partials/tiendas.html:97
+msgid "Cerrado"
+msgstr "Tancat"
+
+#: core/templates/core/partials/tiendas.html:44
+#: core/templates/core/partials/tiendas.html:100
+msgid "MARTES"
+msgstr "DIMARTS"
+
+#: core/templates/core/partials/tiendas.html:48
+#: core/templates/core/partials/tiendas.html:104
+msgid "MIÉRCOLES"
+msgstr "DIMECRES"
+
+#: core/templates/core/partials/tiendas.html:52
+#: core/templates/core/partials/tiendas.html:108
+msgid "JUEVES"
+msgstr "DIJOUS"
+
+#: core/templates/core/partials/tiendas.html:56
+#: core/templates/core/partials/tiendas.html:112
+msgid "VIERNES"
+msgstr "DIVENDRES"
+
+#: core/templates/core/partials/tiendas.html:60
+#: core/templates/core/partials/tiendas.html:116
+msgid "SÁBADO"
+msgstr "DISSABTE"
+
+#: core/templates/core/partials/tiendas.html:64
+#: core/templates/core/partials/tiendas.html:120
+msgid "DOMINGO"
+msgstr "DIUMENGE"
+
+#: core/templates/core/partials/tiendas.html:67
+#: core/templates/core/partials/tiendas.html:123
+msgid ""
+"*Los horarios pueden cambiar; te recomendamos consultar nuestra tienda en "
+"Google Maps, donde los horarios estarán actualizados en el siguiente "
+msgstr ""
+"*Els horaris poden canviar; et recomanem consultar la nostra botiga a Google "
+"Maps, on els horaris estaran actualitzats en el següent "
+
+#: core/templates/core/partials/tiendas.html:68
+#: core/templates/core/partials/tiendas.html:124
+msgid "enlace"
+msgstr "enllaç"
+
+#: core/templates/core/partials/tiendas.html:79
+msgid "Vivac Multi-Deporte"
+msgstr "Vivac Multi-Esport"
+
+#: core/templates/core/partials/tiendas.html:80
+msgid ""
+"\n"
+"                <div class=\"mt-4\">\n"
+"                    En la tienda de moda situada junto al famoso puente "
+"románico de Camprodon, podrás encontrar una amplia variedad de ropa y "
+"calzado deportivo de las marcas más actuales, \n"
+"                    dirigido a personas de todas las edades. Además, también "
+"ofrecemos material para otros deportes como fútbol, entre otros.\n"
+"                </div>\n"
+"                "
+msgstr ""
+"\n"
+"                <div class=\"mt-4\">\n"
+"                    A la botiga de moda situada al costat del famós pont "
+"romànic de Camprodon, podràs trobar una àmplia varietat de roba i calçat "
+"esportiu de les marques més actuals, \n"
+"                    dirigit a persones de totes les edats. A més, també "
+"oferim material per altres esports com el futbol, entre altres.\n"
+"                </div>\n"
+"                "
+
+#: core/templates/core/partials/tiendas.html:121
+msgid "Tarde Cerrado"
+msgstr "Tarda Tancat"
+
 #: vivac/settings.py:206
 msgid "Español"
 msgstr "Catalan"
@@ -345,6 +1284,3 @@ msgstr "Catalan"
 #: vivac/settings.py:207
 msgid "Català"
 msgstr "Castellà"
-
-#~ msgid "Nombre"
-#~ msgstr "Nom"

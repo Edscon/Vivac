@@ -1,66 +1,71 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Tiendas{% endblock %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans 'Tiendas' %}{% endblock %}
 
 {% block content%}
 
-{% load static %}
-
 <div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 px-4 lg:px-0">
 
-    <div class="mt-5 xl:mx-0 md:flex text-lg font-semibold">Nuestras Tiendas</div>
+    <div class="mt-5 xl:mx-0 md:flex text-lg font-semibold">{% trans 'Nuestras Tiendas' %}</div>
     
     <div class="mt-4 lg:mt-10">
         <div class="flex flex-wrap">
             <div class="w-[100%] lg:w-[40%] pr-4 mb-10 lg:mb-0">
-                <div class="lg:mt-10 font-semibold">Vivac Outdoor</div>
+                <div class="lg:mt-10 font-semibold">{% trans 'Vivac Outdoor' %}</div>
+                {% blocktrans %}
                 <div class="mt-4">
                     Tienda ubicada en la entrada de Camprodon. Especializada en todo tipo de material técnico para realizar actividades de 
                     montaña y aventura. Aquí encontrarás todo el material necesario para practicar esquí alpino, de montaña, trekking, ciclismo, running y muchos otros.
                 </div>
+                {% endblocktrans %}
+                {% blocktrans %}
                 <div class="mt-4">
                     También ofrecemos todo el material de alquiler para facilitar la práctica de tus deportes favoritos, brindándote una amplia gama de opciones de alquiler, 
                     fácil, de calidad y a un precio razonable.
                 </div>
+                {% endblocktrans %}
             </div>
             <div class="w-[100%] lg:w-[60%] flex flex-wrap ">
                 <div class="w-[100%] sm:w-[320px] mr-[2%] flex mb-10 sm:mb-0">
-                    <img class="max-w-[320px] mx-auto" src="{% static 'img/botiga_outdoor.jpg' %}">
+                    <img class="max-w-[320px] mx-auto" src="{% static 'img/tiendas/botiga_outdoor.jpg' %}">
                 </div>
                 
                 <div class="w-[100%] sm:w-[45%]">
-                    <div class="w-full text-center mb-2 font-semibold">HORARIOS TIENDA</div>
+                    <div class="w-full text-center mb-2 font-semibold">{% trans 'HORARIOS TIENDA' %}</div>
                     <div class="text-sm">
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">LUNES</div></div>
-                            <div class="border w-1/2 text-center flex"><div class="m-auto">Cerrado</div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'LUNES' %}</div></div>
+                            <div class="border w-1/2 text-center flex"><div class="m-auto">{% trans 'Cerrado' %}</div></div>
                         </div>
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">MARTES</div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'MARTES' %}</div></div>
                             <div class="border w-1/2 text-center flex"><div class="m-auto leading-6"><div>10:00-13:30</div><div>17:00-20:00</div> </div></div>
                         </div>
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">MIÉRCOLES</div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'MIÉRCOLES' %}</div></div>
                             <div class="border w-1/2 text-center flex"><div class="m-auto leading-6"><div>10:00-13:30</div><div>17:00-20:00</div> </div></div>
                         </div>
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">JUEVES</div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'JUEVES' %}</div></div>
                             <div class="border w-1/2 text-center flex"><div class="m-auto leading-6"><div>10:00-13:30</div><div>17:00-20:00</div> </div></div>
                         </div>
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">VIERNES</div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'VIERNES' %}</div></div>
                             <div class="border w-1/2 text-center flex"><div class="m-auto leading-6"><div>10:00-13:30</div><div>17:00-20:00</div> </div></div>
                         </div>
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">SÁBADO</div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'SÁBADO' %}</div></div>
                             <div class="border w-1/2 text-center flex"><div class="m-auto leading-6"><div>8:00-14:00</div><div>17:00-20:30</div> </div></div>
                         </div>
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">DOMINGO</div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'DOMINGO' %}</div></div>
                             <div class="border w-1/2 text-center flex"><div class="m-auto leading-6"><div>10:00-14:00</div><div>16:00-18:00</div> </div></div>
                         </div>
-                        <div class="mt-2 font-xs">*Los horarios pueden cambiar; te recomendamos consultar nuestra tienda en Google Maps, donde los horarios estarán actualizados en el siguiente 
-                            <a class="text-green-600 underline" target="_blank" href="https://www.google.es/maps/place/Esports+Vivac/@42.3077164,2.3600767,17z/data=!3m1!4b1!4m6!3m5!1s0x12a54ebf76aff25d:0x64d5654e8cd22f11!8m2!3d42.3077164!4d2.3626516!16s%2Fg%2F119wtqxjh?entry=ttu">enlace</a>
+                        <div class="mt-2 font-xs">{% blocktrans %}*Los horarios pueden cambiar; te recomendamos consultar nuestra tienda en Google Maps, donde los horarios estarán actualizados en el siguiente {% endblocktrans %}
+                            <a class="text-green-600 underline" target="_blank" href="https://www.google.es/maps/place/Esports+Vivac/@42.3077164,2.3600767,17z/data=!3m1!4b1!4m6!3m5!1s0x12a54ebf76aff25d:0x64d5654e8cd22f11!8m2!3d42.3077164!4d2.3626516!16s%2Fg%2F119wtqxjh?entry=ttu">{% trans 'enlace' %}</a>
                             .
                         </div>
                     </div>
@@ -71,50 +76,52 @@
     <div class="mt-10">
         <div class="flex lg:flex-row-reverse flex-wrap">
             <div class="w-[100%] lg:w-[40%] mb-10 lg:mb-0">
-                <div class="lg:mt-10 font-semibold">Vivac Multi-Esport</div>
+                <div class="lg:mt-10 font-semibold">{% trans 'Vivac Multi-Deporte' %}</div>
+                {% blocktrans %}
                 <div class="mt-4">
                     En la tienda de moda situada junto al famoso puente románico de Camprodon, podrás encontrar una amplia variedad de ropa y calzado deportivo de las marcas más actuales, 
                     dirigido a personas de todas las edades. Además, también ofrecemos material para otros deportes como fútbol, entre otros.
                 </div>
+                {% endblocktrans %}
             </div>
             <div class="w-[100%] lg:w-[60%] flex flex-wrap ">
                 <div class="w-[100%] sm:w-[320px] mr-[2%] flex mb-10 sm:mb-0">
-                    <img class="max-w-[320px] mx-auto" src="{% static 'img/botiga_outdoor.jpg' %}">
+                    <img class="max-w-[320px] mx-auto" src="{% static 'img/tiendas/botiga_multi_esport.jpg' %}">
                 </div>
                 
                 <div class="w-[100%] sm:w-[50%]">
-                    <div class="w-full text-center mb-2 font-semibold">HORARIOS TIENDA</div>
+                    <div class="w-full text-center mb-2 font-semibold">{% trans 'HORARIOS TIENDA' %}</div>
                     <div class="text-sm">
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">LUNES</div></div>
-                            <div class="border w-1/2 text-center flex"><div class="m-auto">Cerrado</div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'LUNES' %}</div></div>
+                            <div class="border w-1/2 text-center flex"><div class="m-auto">{% trans 'Cerrado' %}</div></div>
                         </div>
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">MARTES</div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'MARTES' %}</div></div>
                             <div class="border w-1/2 text-center flex"><div class="m-auto leading-6"><div>10:00-13:30</div><div>17:00-20:00</div> </div></div>
                         </div>
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">MIÉRCOLES</div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'MIÉRCOLES' %}</div></div>
                             <div class="border w-1/2 text-center flex"><div class="m-auto leading-6"><div>10:00-13:30</div><div>17:00-20:00</div> </div></div>
                         </div>
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">JUEVES</div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'JUEVES' %}</div></div>
                             <div class="border w-1/2 text-center flex"><div class="m-auto leading-6"><div>10:00-13:30</div><div>17:00-20:00</div> </div></div>
                         </div>
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">VIERNES</div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'VIERNES' %}</div></div>
                             <div class="border w-1/2 text-center flex"><div class="m-auto leading-6"><div>10:00-13:30</div><div>17:00-20:00</div> </div></div>
                         </div>
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">SÁBADO</div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'SÁBADO' %}</div></div>
                             <div class="border w-1/2 text-center flex"><div class="m-auto leading-6"><div>10:00-14:00</div><div>17:00-20:30</div> </div></div>
                         </div>
                         <div class="flex leading-10">
-                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">DOMINGO</div></div>
-                            <div class="border w-1/2 text-center flex"><div class="m-auto leading-6"><div>10:00-14:00</div><div>Tarde Cerrado</div> </div></div>
+                            <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'DOMINGO' %}</div></div>
+                            <div class="border w-1/2 text-center flex"><div class="m-auto leading-6"><div>10:00-14:00</div><div>{% trans 'Tarde Cerrado' %}</div> </div></div>
                         </div>
-                        <div class="mt-2 font-xs">*Los horarios pueden cambiar; te recomendamos consultar nuestra tienda en Google Maps, donde los horarios estarán actualizados en el siguiente 
-                            <a class="text-green-600 underline" target="_blank" href="https://www.google.es/maps/place/Esports+Vivac+Camprodon/@42.3114389,2.3612027,17z/data=!4m6!3m5!1s0x12a53f6cf3eb0307:0xb8f7fe7a7de2fe4c!8m2!3d42.3125026!4d2.3650672!16s%2Fg%2F1tg57n86?entry=ttu">enlace</a>
+                        <div class="mt-2 font-xs">{% blocktrans %}*Los horarios pueden cambiar; te recomendamos consultar nuestra tienda en Google Maps, donde los horarios estarán actualizados en el siguiente {% endblocktrans %}
+                            <a class="text-green-600 underline" target="_blank" href="https://www.google.es/maps/place/Esports+Vivac+Camprodon/@42.3114389,2.3612027,17z/data=!4m6!3m5!1s0x12a53f6cf3eb0307:0xb8f7fe7a7de2fe4c!8m2!3d42.3125026!4d2.3650672!16s%2Fg%2F1tg57n86?entry=ttu">{% trans 'enlace' %}</a>
                             .
                         </div>
                     </div>
