@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-06 17:39+0200\n"
+"POT-Creation-Date: 2024-04-06 21:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,6 +118,8 @@ msgstr "Tipus de Lloguer"
 #: core/templates/core/partials/alquiler_material.html:58
 #: core/templates/core/partials/alquiler_material.html:88
 #: core/templates/core/partials/alquiler_material.html:135
+#: core/templates/core/partials/menus_shop.html:95
+#: core/templates/core/shop.html:77
 msgid "Precio"
 msgstr "Preu"
 
@@ -217,6 +219,7 @@ msgstr "Temps a Vallter 2000"
 
 #: core/templates/core/partials/bottom_navbar.html:7
 #: core/templates/core/partials/menu_mobile.html:67
+#: core/templates/core/shop.html:6
 msgid "Tienda"
 msgstr "Productes"
 
@@ -4133,6 +4136,77 @@ msgstr "Les meves opinions sobre productes"
 msgid "Cerrar Sesión"
 msgstr "Tancar sessió"
 
+#: core/templates/core/partials/menus_shop.html:19
+#: core/templates/core/shop.html:27
+msgid "Categorías"
+msgstr "Categories"
+
+#: core/templates/core/partials/menus_shop.html:22
+#: core/templates/core/shop.html:66
+msgid "Todas las categorías"
+msgstr "Totes les categories"
+
+#: core/templates/core/partials/menus_shop.html:54
+#: core/templates/core/partials/menus_shop.html:92
+#: core/templates/core/shop.html:37
+msgid "Filtros"
+msgstr "Filtres"
+
+#: core/templates/core/partials/menus_shop.html:57
+#: core/templates/core/shop.html:30
+msgid "Ordenación"
+msgstr "Ordenació"
+
+#: core/templates/core/partials/menus_shop.html:60
+#: core/templates/core/shop.html:224
+msgid "Más popular"
+msgstr "Més popular"
+
+#: core/templates/core/partials/menus_shop.html:63
+#: core/templates/core/shop.html:227
+msgid "Más barato"
+msgstr "Més barat"
+
+#: core/templates/core/partials/menus_shop.html:66
+#: core/templates/core/shop.html:230
+msgid "Mayor precio"
+msgstr "Major preu"
+
+#: core/templates/core/partials/menus_shop.html:111
+#: core/templates/core/shop.html:92
+msgid "Sexo"
+msgstr "Sexe"
+
+#: core/templates/core/partials/menus_shop.html:116
+#: core/templates/core/shop.html:97
+msgid "Hombre"
+msgstr "Home"
+
+#: core/templates/core/partials/menus_shop.html:121
+#: core/templates/core/shop.html:102
+msgid "Mujer"
+msgstr "Dona"
+
+#: core/templates/core/partials/menus_shop.html:126
+#: core/templates/core/shop.html:107 core/templates/core/shop.html:186
+msgid "Niño"
+msgstr "Nen"
+
+#: core/templates/core/partials/menus_shop.html:131
+#: core/templates/core/shop.html:112 core/templates/core/shop.html:189
+msgid "Niña"
+msgstr "Nena"
+
+#: core/templates/core/partials/menus_shop.html:139
+#: core/templates/core/shop.html:120
+msgid "Tallas"
+msgstr "Talles"
+
+#: core/templates/core/partials/menus_shop.html:156
+#: core/templates/core/shop.html:137
+msgid "Marcas"
+msgstr "Marques"
+
 #: core/templates/core/partials/navbar_right.html:50
 msgid "Mis Favoritos"
 msgstr "Els meus Favorits"
@@ -4301,6 +4375,38 @@ msgstr ""
 msgid "Tarde Cerrado"
 msgstr "Tarda Tancat"
 
+#: core/templates/core/shop.html:50
+msgid "Volver arriba"
+msgstr "Tornar a dalt"
+
+#: core/templates/core/shop.html:168
+msgid "Tus selecciones:"
+msgstr "Les teves seleccions:"
+
+#: core/templates/core/shop.html:220 core/templates/core/shop.html:296
+msgid "artículos"
+msgstr "articles"
+
+#: core/templates/core/shop.html:221
+msgid "Ordenar:"
+msgstr "Ordenar:"
+
+#: core/templates/core/shop.html:287
+msgid "Disponible en varias tallas"
+msgstr "Disponible en diverses talles"
+
+#: core/templates/core/shop.html:306
+msgid "No hay productos que concuerden con la selección."
+msgstr "No hi ha productes que coincideixin amb la selecció."
+
+#: core/templates/core/shop.html:316
+msgid "Ver Todos los productos."
+msgstr "Veure Tots els productes."
+
+#: core/templates/core/shop.html:321
+msgid "Ver todos los productos de la tienda."
+msgstr "Veure tots els productes de la botiga."
+
 #: vivac/settings.py:206
 msgid "Español"
 msgstr "Catalan"
@@ -4308,9 +4414,6 @@ msgstr "Catalan"
 #: vivac/settings.py:207
 msgid "Català"
 msgstr "Castellà"
-
-#~ msgid "Recogida de productos"
-#~ msgstr "Recollida de productes"
 
 #~ msgid ""
 #~ "En conformidad con el Real Decreto 110/2015, de 20 de febrero, sobre "

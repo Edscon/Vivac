@@ -1,10 +1,11 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Tienda{% endblock %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans 'Tienda' %}{% endblock %}
 
 {% block content%}
-
-{% load static %}
 
 <style>
     .mySwiper_shop [class^="swiper-button-"]::after{
@@ -23,17 +24,17 @@
 <div class="fixed z-30 w-full grid place-content-center block lg:hidden bottom-4">
     <div class="mx-auto w-[250px] md:w-[300px] h-[50px] flex text-white text-sm inline-block relative" >
         <div onclick="menu_categorys_mobile()" class="w-1/3 bg-neutral-700 border-r rounded-l-3xl opacity-90 hover:opacity-100 relative">
-            <p class="absolute m-0 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">Categorías</p>
+            <p class="absolute m-0 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">{% trans 'Categorías' %}</p>
         </div>
         <div onclick="menu_orden_mobile()" class="w-1/3 bg-neutral-700 border-r opacity-90 hover:opacity-100 relative">
-            <p class="absolute m-0 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">Orientación</p>
+            <p class="absolute m-0 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">{% trans 'Ordenación' %}</p>
         </div>
         <div onclick="menu_filtro_mobile()" class="w-1/3 bg-neutral-700 border-r rounded-r-3xl opacity-90 hover:opacity-100 relative">
             <div class="absolute m-0 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
                 <div class="flex">
                     <div class="relative"><svg class="h-5 w-5 text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="14" cy="6" r="2" />  <line x1="4" y1="6" x2="12" y2="6" />  <line x1="16" y1="6" x2="20" y2="6" />  <circle cx="8" cy="12" r="2" />  <line x1="4" y1="12" x2="6" y2="12" />  <line x1="10" y1="12" x2="20" y2="12" />  <circle cx="17" cy="18" r="2" />  <line x1="4" y1="18" x2="15" y2="18" />  <line x1="19" y1="18" x2="20" y2="18" /></svg>
                     </div>
-                    <div>Filtros</div>
+                    <div>{% trans 'Filtros' %}</div>
                 </div>
             </div>
         </div>
@@ -46,7 +47,7 @@
             <svg class="h-7 w-7 md:h-5 md:w-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
             </svg>
-            <p class="hidden md:block">Volver arriba</p>
+            <p class="hidden md:block">{% trans 'Volver arriba' %}</p>
         </div>
     </div>
 </div>
@@ -62,13 +63,18 @@
         <div class="hidden lg:block w-[20%] border-r pr-10">
 
             <ul class="space-y-2 text-sm mt-4">
-                <li><a href="{% url 'shop' %}" class="{% if not active_category %}text-green-600 font-semibold {% else %}text-gray-700 font-semibold {% endif %}">Todas las categorías</a></li>
+                <li><a href="{% url 'shop' %}" class="{% if not active_category %}text-green-600 font-semibold {% else %}text-gray-700 font-semibold {% endif %}">{% trans 'Todas las categorías' %}</a></li>
                 {% for category in categories %}
-                <li><a href="{% url 'shop' %}?category={{ category.slug }}" class="{% if category.slug == active_category %}text-green-600 font-semibold {% else %}text-gray-800 {% endif %}">{{category.nombre}}</a></li>
+                <li><a href="{% url 'shop' %}?category={{ category.slug }}" class="{% if category.slug == active_category %}text-green-600 font-semibold {% else %}text-gray-800 {% endif %}">
+                    {% if request.LANGUAGE_CODE == 'es' %} {{ category.nombre }}
+                    {% elif request.LANGUAGE_CODE == 'ca' %} {{ category.nombre_ca }}
+                    {% else %} {{ category.nombre }}
+                    {% endif %}
+                </a></li>
                 {% endfor %}
             </ul>
             <div class="text-gray-800 text-xs mt-10">
-                <div class="text-sm font-semibold">Precio</div>
+                <div class="text-sm font-semibold">{% trans 'Precio' %}</div>
                 <div class="range-input mt-3 w-full relative mb-10">
                     <div class="absolute top-0 w-full h-[10px] bg-neutral-200 border border-gray-400 rounded"></div>
                     <input class="w-full slider-range absolute top-0" type="range" name="range_min" value="{{min_max_price.precio__min}}" id="range_min" min="{{min_max_price.precio__min}}" max="{{min_max_price.precio__max}}">
@@ -83,27 +89,27 @@
                 </div>
             </div>
             <div class=" mt-20">
-                <div class="text-sm font-semibold">Sexo</div>     
+                <div class="text-sm font-semibold">{% trans 'Sexo' %}</div>     
                 <div class="sexo flex flex-wrap text-xs mt-3 text-center"> 
                     {% for s in sexo_list %}
                     {% if s == 'hombre' %}
                     <button value="hombre" class="w-[47%] xl:w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
-                        <p class="place-self-center">Hombre</p>
+                        <p class="place-self-center">{% trans 'Hombre' %}</p>
                     </button>
                     {% endif %}
                     {% if s == 'mujer' %}
                     <button value="mujer" class="w-[47%] xl:w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
-                        <p class="place-self-center">Mujer</p>
+                        <p class="place-self-center">{% trans 'Mujer' %}</p>
                     </button>
                     {% endif %}
                     {% if s == 'nino' %}
                     <button value="nino" class="w-[47%] xl:w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
-                        <p class="place-self-center">Niño</p>
+                        <p class="place-self-center">{% trans 'Niño' %}</p>
                     </button>
                     {% endif %}
                     {% if s == 'nina' %}
                     <button value="nina" class="w-[47%] xl:w-[48%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
-                        <p class="place-self-center">Niña</p>
+                        <p class="place-self-center">{% trans 'Niña' %}</p>
                     </button>
                     {% endif %}
                     {% endfor %}
@@ -111,7 +117,7 @@
             </div>
             
             <div class=" mt-10 size">
-                <div class="text-sm font-semibold">Tallas</div>     
+                <div class="text-sm font-semibold">{% trans 'Tallas' %}</div>     
                 <div class="flex flex-wrap text-xs mt-3 text-center"> 
                     {% for i in size_num %}
                         <button value="{{i}}" class="w-[23%] h-[35px] border-[0.5px] rounded grid hover:border-neutral-800 cursor-pointer mt-[4px] mx-[2px]">
@@ -128,7 +134,7 @@
                 </div>
             </div>
             <div class="mt-10 marca">
-                <div class="text-sm font-semibold mb-4">Marcas</div>     
+                <div class="text-sm font-semibold mb-4">{% trans 'Marcas' %}</div>     
                 {% for i in brands %}
                     <div class="flex items-center mb-1">
                         <input id="default-checkbox" type="checkbox" value="{{i.slug}}" class="w-4 h-4 rounded">
@@ -146,9 +152,22 @@
                     <div class="font-semibold text-black text-xl">{{sel}}</div> 
                 {% endfor %}
                 {% endif %}
+
+
                 {% if active_category %}
-                    <div class="font-semibold text-black text-2xl capitalize">{{active_category}}</div>
+                {% for category in categories %}
+                    {% if category.slug == active_category %}
+                    <div class="font-semibold text-black text-2xl capitalize">
+                        {% if request.LANGUAGE_CODE == 'es' %} {{ category.nombre }}
+                        {% elif request.LANGUAGE_CODE == 'ca' %} {{ category.nombre_ca }}
+                        {% else %} {{ category.nombre }}
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                {% endfor %}
                 {% endif %}
+
+
                 <div class="my-4 swiper2 mySwiper2 block text-gray-600 w-full text-center cursor-pointer overflow-hidden">
                     <div class="swiper-wrapper">
                     {% for marca in brands %}
@@ -157,9 +176,10 @@
                     {% endfor %}
                     </div>
                 </div>
+
                 <div class="flex space-x-2 text-xs mt-2 text-gray-700 relative">
                     {% if selecciones_query or selecciones_price or selecciones_price or selecciones_sx or selecciones_sz or selecciones_ma %}
-                    <div class="top-10 align-center my-auto">Tus selecciones: </div>
+                    <div class="top-10 align-center my-auto">{% trans 'Tus selecciones:' %} </div>
                     {% endif %}
                     {% if selecciones_price %}
                     <div class="select_price flex space-x-2">
@@ -171,19 +191,21 @@
                         {% endfor %}
                     </div>
                     {% endif %}
+
                     {% if selecciones_sx %}
                     <div class="select_sx flex space-x-2">
                         {% for sel in selecciones_sx %}
                             <button value="{{sel}}" class="p-2 border border-gray-300 rounded flex hover:border-gray-800 hover:bg-gray-100">
                                 <svg class="h-4 w-4"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="18" y1="6" x2="6" y2="18" />  <line x1="6" y1="6" x2="18" y2="18" /></svg>
                                 {% if sel == 'nino' %}
-                                    <p>Niño</p>
+                                    <p>{% trans 'Niño' %}</p>
+                                {% elif sel == 'nina' %}
+                                    <p>{% trans 'Niña' %}</p>
+                                {% elif sel == 'hombre' %}
+                                    <p>{% trans 'Hombre' %}</p>
+                                {% elif sel == 'mujer' %}
+                                    <p>{% trans 'Mujer' %}</p>
                                 {% endif %}
-                                {% if sel == 'nina' %}
-                                    <p>Niña</p>
-                                {% else %}
-                                    <p class="capitalize">{{sel}}</p>
-                                    {% endif %}
                                 </button>
                         {% endfor %}
                     </div>
@@ -211,17 +233,17 @@
                 </div>
                 {% if products.count > 0 %}
                 <div class="flex flex-wrap space-x-4 text-xs mt-6 order hidden md:flex">
-                    <p>{{products.count}} artículos</p>
-                    <p>Ordenar:</p>
+                    <p>{{products.count}} {% trans 'artículos' %}</p>
+                    <p>{% trans 'Ordenar:' %}</p>
                     <div class="relative text-black">
                         <button value="sort_popular" class="absolute -top-1 w-[80px] h-full py-1 inline-block rounded hover:bg-gray-100 relative transition duration-200 cursor-pointer">
-                            <p class="text-center">Más popular</p>
+                            <p class="text-center">{% trans 'Más popular' %}</p>
                         </button>
                         <button value="sort_price_asc" class="absolute -top-1 w-[80px] h-full py-1 inline-block rounded hover:bg-gray-100 relative transition duration-200 cursor-pointer">
-                            <p class="text-center">Más barato</p>
+                            <p class="text-center">{% trans 'Más barato' %}</p>
                         </button>
                         <button value="sort_price_desc" class="absolute -top-1 w-[80px] h-full py-1 inline-block rounded hover:bg-gray-100 relative transition duration-200 cursor-pointer">
-                            <p class="text-center">Mayor precio</p>
+                            <p class="text-center">{% trans 'Mayor precio' %}</p>
                         </button>
                     </div>
                 </div>
@@ -263,7 +285,12 @@
                         </div>
                         <div onclick="window.location=`{% url 'product' product.slug %}`" class="md:px-5 bg-white mx-1 z-[1]">
                             <div class="pt-3 flex items-center justify-between">
-                                <p class="line-clamp-2 md:line-clamp-1 leading-[16px] h-[33px] md:h-[17px]">{{ product.nombre }}</p>
+                                <p class="line-clamp-2 md:line-clamp-1 leading-[16px] h-[33px] md:h-[17px]">
+                                    {% if request.LANGUAGE_CODE == 'es' %} {{ product.nombre }}
+                                    {% elif request.LANGUAGE_CODE == 'ca' %} {{ product.nombre_ca }}
+                                    {% else %} {{ product.nombre }}
+                                    {% endif %}
+                                </p>
                             </div>
                             {% if product.get_descuento > 0 %}
                             <div class="flex space-x-2">
@@ -273,7 +300,7 @@
                             {% else %}
                             <p class="pt-1 font-semibold">{{product.precio|floatformat:2}}€</p>
                             {% endif %}
-                            <p class="text-xs mt-3">Disponible en varias tallas</p>
+                            <p class="text-xs mt-3">{% trans 'Disponible en varias tallas' %}</p>
                         </div>
                     </div>
                 </div>
@@ -282,7 +309,7 @@
             </div>
             {% if products.count > 0 %}
             <div class="flex text-xs mt-5">
-                <p>{{products.count}} artículos</p>
+                <p>{{products.count}} {% trans 'artículos' %}</p>
             </div>
             {% endif %}
             {% if products.count == 0 %}
@@ -292,17 +319,22 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
                 <div class="text-red-600 flex flex-wrap space-x-1">
-                    <p>No hay productos que concuerden con la selección.</p>
+                    <p>{% trans 'No hay productos que concuerden con la selección.' %}</p>
                     {% for category in categories %}
                     {% if category.slug == active_category %}
                     <div class="flex flex-wrap space-x-4">
-                        <a href="{% url 'shop' %}?category={{ category.slug }}" class="text-red-500 hover:text-red-700 underline">Ver todos los productos de {{category.nombre}}.</a>
-                        <a href="{% url 'shop' %}" class="text-red-500 hover:text-red-700 underline">Ver Todos los productos.</a>  
+                        <a href="{% url 'shop' %}?category={{ category.slug }}" class="text-red-500 hover:text-red-700 underline">
+                            {% if request.LANGUAGE_CODE == 'es' %} Ver todos los productos de {{category.nombre}}.
+                            {% elif request.LANGUAGE_CODE == 'ca' %} Ver todos los productos de {{ category.nombre_ca }}.
+                            {% else %} Ver todos los productos de {{category.nombre}}.
+                            {% endif %}
+                        </a>
+                        <a href="{% url 'shop' %}" class="text-red-500 hover:text-red-700 underline">{% trans 'Ver Todos los productos.' %}</a>  
                     </div>
                     {% endif %}
                     {% endfor %}
                     {% if active_category == '' %}
-                    <a href="{% url 'shop' %}" class="text-red-500 hover:text-red-600 underline">Ver todos los productos de la tienda.</a> 
+                    <a href="{% url 'shop' %}" class="text-red-500 hover:text-red-600 underline">{% trans 'Ver todos los productos de la tienda.' %}</a> 
                     {% endif %}
                 </div>
             </div>
