@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-06 21:13+0200\n"
+"POT-Creation-Date: 2024-04-06 21:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4158,17 +4158,17 @@ msgid "Ordenación"
 msgstr "Ordenació"
 
 #: core/templates/core/partials/menus_shop.html:60
-#: core/templates/core/shop.html:224
+#: core/templates/core/shop.html:240
 msgid "Más popular"
 msgstr "Més popular"
 
 #: core/templates/core/partials/menus_shop.html:63
-#: core/templates/core/shop.html:227
+#: core/templates/core/shop.html:243
 msgid "Más barato"
 msgstr "Més barat"
 
 #: core/templates/core/partials/menus_shop.html:66
-#: core/templates/core/shop.html:230
+#: core/templates/core/shop.html:246
 msgid "Mayor precio"
 msgstr "Major preu"
 
@@ -4178,22 +4178,22 @@ msgid "Sexo"
 msgstr "Sexe"
 
 #: core/templates/core/partials/menus_shop.html:116
-#: core/templates/core/shop.html:97
+#: core/templates/core/shop.html:97 core/templates/core/shop.html:205
 msgid "Hombre"
 msgstr "Home"
 
 #: core/templates/core/partials/menus_shop.html:121
-#: core/templates/core/shop.html:102
+#: core/templates/core/shop.html:102 core/templates/core/shop.html:207
 msgid "Mujer"
 msgstr "Dona"
 
 #: core/templates/core/partials/menus_shop.html:126
-#: core/templates/core/shop.html:107 core/templates/core/shop.html:186
+#: core/templates/core/shop.html:107 core/templates/core/shop.html:201
 msgid "Niño"
 msgstr "Nen"
 
 #: core/templates/core/partials/menus_shop.html:131
-#: core/templates/core/shop.html:112 core/templates/core/shop.html:189
+#: core/templates/core/shop.html:112 core/templates/core/shop.html:203
 msgid "Niña"
 msgstr "Nena"
 
@@ -4379,31 +4379,31 @@ msgstr "Tarda Tancat"
 msgid "Volver arriba"
 msgstr "Tornar a dalt"
 
-#: core/templates/core/shop.html:168
+#: core/templates/core/shop.html:182
 msgid "Tus selecciones:"
 msgstr "Les teves seleccions:"
 
-#: core/templates/core/shop.html:220 core/templates/core/shop.html:296
+#: core/templates/core/shop.html:236 core/templates/core/shop.html:312
 msgid "artículos"
 msgstr "articles"
 
-#: core/templates/core/shop.html:221
+#: core/templates/core/shop.html:237
 msgid "Ordenar:"
 msgstr "Ordenar:"
 
-#: core/templates/core/shop.html:287
+#: core/templates/core/shop.html:303
 msgid "Disponible en varias tallas"
 msgstr "Disponible en diverses talles"
 
-#: core/templates/core/shop.html:306
+#: core/templates/core/shop.html:322
 msgid "No hay productos que concuerden con la selección."
 msgstr "No hi ha productes que coincideixin amb la selecció."
 
-#: core/templates/core/shop.html:316
+#: core/templates/core/shop.html:332
 msgid "Ver Todos los productos."
 msgstr "Veure Tots els productes."
 
-#: core/templates/core/shop.html:321
+#: core/templates/core/shop.html:337
 msgid "Ver todos los productos de la tienda."
 msgstr "Veure tots els productes de la botiga."
 
