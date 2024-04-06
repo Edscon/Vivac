@@ -1,18 +1,20 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Registro{% endblock %}
+{% load i18n %}
+{% load socialaccount %}
+
+{% block title %}{% trans 'Registro' %}{% endblock %}
 
 {% block content%}
-{% load socialaccount %}
 <div class="mx-auto max-w-lg mx-auto max-[1300px]:-mt-4 mt-6">
 
     <div id="Formulario_register" class=" border rounded-xl border-gray-500">
         
-        <div class="font-semibold text-xl p-4">Únete a Esports Vivac</div>
+        <div class="font-semibold text-xl p-4">{% trans 'Únete a Esports Vivac' %}</div>
 
         <div class="bg-neutral-100 pb-2">
             <div class="p-4">
-                <div class="text-sm mb-2">Regístrate usando</div>
+                <div class="text-sm mb-2">{% trans 'Regístrate usando' %}</div>
                 <a  
                     class="mr-4 w-full inline-block py-2 rounded bg-white text-black relative cursor-pointer border hover:border-gray-400 drop-shadow-md"
                     href="{% provider_login_url 'google' %}"
@@ -26,34 +28,34 @@
 
         <div class="Inputs space-y-6 text-md select-none data_edit_form p-4">
 
-            <div class="text-sm">O regístrate con tus datos</div>
+            <div class="text-sm">{% trans 'O regístrate con tus datos' %}</div>
 
             <div>
                 <div class="relative">
-                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Nombre*</div>
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">{% trans 'Nombre' %}*</div>
                     <input id="first_name_reg" name="first_name" type="text" class="input w-full p-3 bg-white border border-neutral-400 hover:border-black focus:border-black hover:placeholder-black focus:placeholder-black" 
-                    placeholder="Nombre" value="{{request.user.first_name}}">
+                    placeholder="{% trans 'Nombre' %}" value="{{request.user.first_name}}">
                 </div>
             </div>
             <div>
                 <div class="relative">
-                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Apellidos*</div>
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">{% trans 'Apellidos' %}*</div>
                     <input id="last_name_reg" name="last_name" type="text" class="input w-full p-3 bg-white border border-neutral-400 hover:border-black focus:border-black hover:placeholder-black focus:placeholder-black" 
-                    placeholder="Apellidos" value="{{request.user.last_name}}">
+                    placeholder="{% trans 'Apellidos' %}" value="{{request.user.last_name}}">
                 </div>
             </div>
             <div>
                 <div class="relative">
-                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Email*</div>
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">{% trans 'Email' %}*</div>
                     <input id="email_reg" name="email_" type="text" class="input w-full p-3 bg-white border border-neutral-400 hover:border-black focus:border-black hover:placeholder-black focus:placeholder-black" 
-                    placeholder="Correo electrónico" value="{{request.user.email}}">
+                    placeholder="{% trans 'Correo electrónico' %}" value="{{request.user.email}}">
                 </div>
             </div>
             <div>
                 <div class="relative">
-                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Contraseña*</div>
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">{% trans 'Contraseña' %}*</div>
                     <input id="password-input" name="password1" type="password" class="input w-full p-3 bg-white border border-neutral-400 hover:border-black focus:border-black hover:placeholder-black focus:placeholder-black" 
-                            placeholder="Contraseña" autocomplete="on">
+                            placeholder="{% trans 'Contraseña' %}" autocomplete="on">
                     <i id="eye" class="absolute bg-white top-[50%] right-0 -translate-y-[50%] -translate-x-[50%] cursor-pointer">
                         <svg id="pw_open" class="h-5 w-5 mx-1 hidden"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -67,9 +69,9 @@
             </div>
             <div>
                 <div class="relative">
-                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Confirma tu contraseña*</div>
+                    <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">{% trans 'Confirma tu contraseña' %}*</div>
                     <input id="password-input2" name="password2" type="password" class="input w-full p-3 bg-white border border-neutral-400 hover:border-black focus:border-black hover:placeholder-black focus:placeholder-black" 
-                            placeholder="Confirma tu contraseña" autocomplete="on">
+                            placeholder="{% trans 'Confirma tu contraseña' %}" autocomplete="on">
                     <i id="eye2" class="absolute bg-white top-[50%] right-0 -translate-y-[50%] -translate-x-[50%] cursor-pointer">
                         <svg id="pw_open2" class="h-5 w-5 mx-1 hidden"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -86,7 +88,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
-                    <div>Mínimo 8 caracteres, incluyendo número, mayúscula y minúscula.</div>
+                    <div>{% trans 'Mínimo 8 caracteres, incluyendo número, mayúscula y minúscula.' %}</div>
                       
                 </div>
             </div>
@@ -95,22 +97,22 @@
             <div class="flex mb-1">
                 <input id="default-checkbox" type="checkbox" class="w-6 h-6 rounded cursor-pointer" onclick="check_condiciones()">
                 <label for="default-checkbox" class="ml-2 text-sm cursor-pointer">
-                    Acepto las condiciones generales de compra y la política de privacidad de esports vivac.
+                    {% trans 'Acepto las condiciones generales de compra y la política de privacidad de esports vivac.' %}
                 </label>
             </div>
-            <div id="error_condiciones" class="text-xs text-red-500 hidden px-7">Campo requerido.</div>
+            <div id="error_condiciones" class="text-xs text-red-500 hidden px-7">{% trans 'Campo requerido.' %}</div>
         </div>
 
         <div class="mt-2 px-4">
             
-            <div id="error_user_password" class="text-red-500 text-sm mb-1 hidden">Este email coincide con un usuario ya creado.</div>
+            <div id="error_user_password" class="text-red-500 text-sm mb-1 hidden">{% trans 'Este email coincide con un usuario ya creado.' %}</div>
             <a onclick="register()" class="mr-4 w-[100%] inline-block py-3 border flex bg-green-700 text-white hover:bg-black relative transition duration-500 cursor-pointer drop-shadow-md">
-                <p class="m-auto">Registrarse</p>
+                <p class="m-auto">{% trans 'Registrarse' %}</p>
             </a>
            
             <div class="w-full flex text-xs mb-4 mt-2">
-                <p>¿Tienes una cuenta en Esports Vivac?</p>
-                <a href="{% url 'login' %}" class="font-semibold hover:underline px-1">Inicia sesión aquí</a>
+                <p>{% trans '¿Tienes una cuenta en Esports Vivac?' %}</p>
+                <a href="{% url 'login' %}" class="font-semibold hover:underline px-1">{% trans 'Inicia sesión aquí' %}</a>
             </div>
     
             
@@ -210,7 +212,7 @@
     }
 
     function prove_input_reg(i){
-        msg = "Campo requerido."
+        msg = "{% trans 'Campo requerido.' %}"
         prove = true
 
         switch (i.name) {
@@ -218,20 +220,20 @@
             case 'password1':
                 password1 = i.value
                 if (i.value.length < 8 || !haveUpperCase(i.value) || !haveLowCase(i.value) || !haveNum(i.value)) {
-                    msg = "Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, 1 letra mayúscula, 1 letra minúscula, 1 número."
+                    msg = "{% trans 'Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, 1 letra mayúscula, 1 letra minúscula, 1 número.' %}"
                 }else{prove = false}
                 break;
 
             case 'password2':
                 password2 = i.value
                 if (i.value != password1) {
-                    msg = "Las contraseñas no coinciden."
+                    msg = "{% trans 'Las contraseñas no coinciden.' %}"
                 }else{prove = false}
                 break;
 
             case 'email_':
                 if (!/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/.test(i.value)) {
-                    msg = "Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio.com."
+                    msg = "{% trans 'Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio.com.' %}"
                 }else{prove = false}
                 break;
 

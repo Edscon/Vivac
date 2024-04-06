@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-06 21:42+0200\n"
+"POT-Creation-Date: 2024-04-06 22:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,6 +68,94 @@ msgstr "Productes populars"
 #: core/templates/core/frontpage.html:154
 msgid "Tus favoritos"
 msgstr "Els teus favorits"
+
+#: core/templates/core/login.html:6
+msgid "Login"
+msgstr ""
+
+#: core/templates/core/login.html:14
+#: core/templates/core/partials/login_mobile.html:25
+#: core/templates/core/partials/menu_mobile.html:151
+#: core/templates/core/partials/sign.html:4
+msgid "Iniciar Sesión"
+msgstr "Iniciar sessió"
+
+#: core/templates/core/login.html:20
+#: core/templates/core/partials/contacto.html:32
+#: core/templates/core/partials/footer/condiciones_generales_compra_web.html:27
+#: core/templates/core/partials/footer/condiciones_legales.html:21
+#: core/templates/core/partials/login_mobile.html:29
+#: core/templates/core/partials/sign.html:9 core/templates/core/signup.html:49
+msgid "Email"
+msgstr "Correu electrònic"
+
+#: core/templates/core/login.html:22
+#: core/templates/core/partials/contacto.html:34
+#: core/templates/core/signup.html:51
+msgid "Correo electrónico"
+msgstr "Correu electrònic"
+
+#: core/templates/core/login.html:27 core/templates/core/login.html:29
+#: core/templates/core/partials/login_mobile.html:31
+#: core/templates/core/partials/sign.html:10 core/templates/core/signup.html:56
+#: core/templates/core/signup.html:58
+msgid "Contraseña"
+msgstr "Contrasenya"
+
+#: core/templates/core/login.html:46 core/templates/core/signup.html:91
+msgid "Mínimo 8 caracteres, incluyendo número, mayúscula y minúscula."
+msgstr "Mínim 8 caràcters, incloent número, majúscula i minúscula."
+
+#: core/templates/core/login.html:54
+#, fuzzy
+#| msgid "Este email coincide con un usuario ya creado."
+msgid "Este email o contraseña no son correctos."
+msgstr "Aquest correu electrònic coincideix amb un usuari ja creat."
+
+#: core/templates/core/login.html:56
+#, fuzzy
+#| msgid "Iniciar Sesión"
+msgid "Iniciar sesión"
+msgstr "Iniciar sessió"
+
+#: core/templates/core/login.html:60
+#: core/templates/core/partials/login_mobile.html:55
+#: core/templates/core/partials/sign.html:33
+msgid "¿Nuevo en Esports Vivac?"
+msgstr "Nou a Esports Vivac?"
+
+#: core/templates/core/login.html:61
+#: core/templates/core/partials/login_mobile.html:56
+#: core/templates/core/partials/sign.html:34
+msgid "Regístrate aquí"
+msgstr "Registra't aquí"
+
+#: core/templates/core/login.html:75
+#, fuzzy
+#| msgid "Iniciar sesión con"
+msgid "Inicia sesión con Google"
+msgstr "Iniciar sessió amb"
+
+#: core/templates/core/login.html:173 core/templates/core/signup.html:103
+#: core/templates/core/signup.html:215
+msgid "Campo requerido."
+msgstr "Camp requerit."
+
+#: core/templates/core/login.html:180 core/templates/core/signup.html:223
+msgid ""
+"Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, "
+"1 letra mayúscula, 1 letra minúscula, 1 número."
+msgstr ""
+"Aquesta contrasenya no compleix els requisits mínims. Mínim 8 caràcters, 1 "
+"lletra majúscula, 1 lletra minúscula, 1 número."
+
+#: core/templates/core/login.html:186 core/templates/core/signup.html:236
+msgid ""
+"Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio."
+"com."
+msgstr ""
+"Si us plau, introdueixi una adreça de correu electrònic vàlida. Per exemple, "
+"hola@domini.com"
 
 #: core/templates/core/partials/alquiler_material.html:6
 #: core/templates/core/partials/alquiler_material.html:12
@@ -271,20 +359,9 @@ msgstr "Formulari de contacte"
 
 #: core/templates/core/partials/contacto.html:25
 #: core/templates/core/partials/contacto.html:27
+#: core/templates/core/signup.html:35 core/templates/core/signup.html:37
 msgid "Nombre"
 msgstr "Nom"
-
-#: core/templates/core/partials/contacto.html:32
-#: core/templates/core/partials/footer/condiciones_generales_compra_web.html:27
-#: core/templates/core/partials/footer/condiciones_legales.html:21
-#: core/templates/core/partials/login_mobile.html:29
-#: core/templates/core/partials/sign.html:9
-msgid "Email"
-msgstr "Correu electrònic"
-
-#: core/templates/core/partials/contacto.html:34
-msgid "Correo electrónico"
-msgstr "Correu electrònic"
 
 #: core/templates/core/partials/contacto.html:39
 #: core/templates/core/partials/contacto.html:41
@@ -4066,31 +4143,10 @@ msgstr ""
 "Finalment, acceptes que Esports Vivac no serà responsable de cap reclamació "
 "derivada de la violació d'aquests termes i condicions."
 
-#: core/templates/core/partials/login_mobile.html:25
-#: core/templates/core/partials/menu_mobile.html:151
-#: core/templates/core/partials/sign.html:4
-msgid "Iniciar Sesión"
-msgstr "Iniciar sessió"
-
-#: core/templates/core/partials/login_mobile.html:31
-#: core/templates/core/partials/sign.html:10
-msgid "Contraseña"
-msgstr "Contrasenya"
-
 #: core/templates/core/partials/login_mobile.html:42
 #: core/templates/core/partials/sign.html:28
 msgid "Iniciar sesión con"
 msgstr "Iniciar sessió amb"
-
-#: core/templates/core/partials/login_mobile.html:55
-#: core/templates/core/partials/sign.html:33
-msgid "¿Nuevo en Esports Vivac?"
-msgstr "Nou a Esports Vivac?"
-
-#: core/templates/core/partials/login_mobile.html:56
-#: core/templates/core/partials/sign.html:34
-msgid "Regístrate aquí"
-msgstr "Registra't aquí"
 
 #: core/templates/core/partials/menu_mobile.html:106
 msgid "Nosotros"
@@ -4406,6 +4462,58 @@ msgstr "Veure Tots els productes."
 #: core/templates/core/shop.html:337
 msgid "Ver todos los productos de la tienda."
 msgstr "Veure tots els productes de la botiga."
+
+#: core/templates/core/signup.html:6
+msgid "Registro"
+msgstr "Registre"
+
+#: core/templates/core/signup.html:13
+msgid "Únete a Esports Vivac"
+msgstr "Uneix-te a Esports Vivac"
+
+#: core/templates/core/signup.html:17
+msgid "Regístrate usando"
+msgstr "Registra't utilitzant"
+
+#: core/templates/core/signup.html:31
+msgid "O regístrate con tus datos"
+msgstr "O registra't amb les teves dades"
+
+#: core/templates/core/signup.html:42 core/templates/core/signup.html:44
+msgid "Apellidos"
+msgstr "Cognoms"
+
+#: core/templates/core/signup.html:72 core/templates/core/signup.html:74
+msgid "Confirma tu contraseña"
+msgstr "Confirma la teva contrasenya"
+
+#: core/templates/core/signup.html:100
+msgid ""
+"Acepto las condiciones generales de compra y la política de privacidad de "
+"esports vivac."
+msgstr ""
+"Acepto les condicions generals de compra i la política de privacitat de "
+"Esports Vivac."
+
+#: core/templates/core/signup.html:108
+msgid "Este email coincide con un usuario ya creado."
+msgstr "Aquest correu electrònic coincideix amb un usuari ja creat."
+
+#: core/templates/core/signup.html:110
+msgid "Registrarse"
+msgstr "Registrar-se"
+
+#: core/templates/core/signup.html:114
+msgid "¿Tienes una cuenta en Esports Vivac?"
+msgstr "Ja tens un compte a Esports Vivac?"
+
+#: core/templates/core/signup.html:115
+msgid "Inicia sesión aquí"
+msgstr "Inicia sessió aquí"
+
+#: core/templates/core/signup.html:230
+msgid "Las contraseñas no coinciden."
+msgstr "Les contrasenyes no coincideixen."
 
 #: vivac/settings.py:206
 msgid "Español"
