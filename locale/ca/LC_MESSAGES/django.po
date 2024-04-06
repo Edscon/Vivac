@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 21:11+0200\n"
+"POT-Creation-Date: 2024-04-06 16:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1514,6 +1514,762 @@ msgstr ""
 "o aplicació de les Condicions Generals, els Jutjats competents seran els que "
 "disposi la normativa legal aplicable."
 
+#: core/templates/core/partials/footer/politica_de_cookies.html:6
+#: core/templates/core/partials/footer/politica_de_cookies.html:12
+msgid "Política De Cookies"
+msgstr "Política De Cookies"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:18
+msgid ""
+"La siguiente información sobre nuestra Política de Cookies refleja el "
+"compromiso de VIVAC CAMPRODON, S.L., (“ESPORTS VIVAC”), entidad con "
+"domicilio en C/ Sant Roc, 16, 17867 Camprodon (Gerona), con CIF número "
+"B17829516, como responsable del tratamiento, para utilizar cookies y "
+"tecnologías similares garantizando el derecho a la privacidad de cada uno de "
+"los usuarios de nuestros servicios. En este documento explicamos cómo "
+"utilizamos cookies y tecnologías similares durante el uso de nuestros "
+"servicios:"
+msgstr ""
+"La següent declaració sobre la nostra Política de Privadesa reflecteix el "
+"compromís de VIVAC CAMPRODON, S.L., (“ESPORTS VIVAC”), entitat amb domicili "
+"a C/ Sant Roc, 16, 17867 Camprodon (Girona), amb CIF número B17829516, en "
+"qualitat de responsable del tractament, per mantenir i garantir relacions "
+"comercials segures mitjançant la protecció de les dades personals. Ens "
+"comprometem a salvaguardar el dret a la privadesa de cada usuari dels "
+"nostres serveis. En aquest document, detallem com utilitzem les dades "
+"personals durant l'ús dels nostres serveis:"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:23
+msgid "1. DESCRIPCIÓN DE COOKIES"
+msgstr "1. DESCRIPCIÓ DE LES COOKIES"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:26
+msgid ""
+"Una \"Cookie\" es un pequeño archivo de texto que un sitio web almacena en "
+"el navegador del usuario, facilitando la navegación por una página web y son "
+"esenciales para el funcionamiento de Internet."
+msgstr ""
+"Una \"Cookie\" és un petit fitxer de text que un lloc web emmagatzema al "
+"navegador de l'usuari, facilitant la navegació per una pàgina web i són "
+"essencials per al funcionament d'Internet."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:29
+msgid ""
+"Las cookies se utilizan, por ejemplo, para recordar los gustos de los "
+"usuarios en la web, como el idioma o el navegador utilizado; también se "
+"emplean para analizar los hábitos y comportamientos del usuario con el fin "
+"de mejorar los servicios ofrecidos, o para adaptar los contenidos de una "
+"página web a las preferencias del visitante."
+msgstr ""
+"Les cookies s'utilitzen, per exemple, per recordar els gustos dels usuaris a "
+"la web, com l'idioma o el navegador utilitzat; també s'empleen per analitzar "
+"els hàbits i comportaments de l'usuari amb la finalitat de millorar els "
+"serveis oferts, o per adaptar els continguts d'una pàgina web a les "
+"preferències del visitant."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:35
+msgid "2. QUÉ TIPO DE COOKIES UTILIZAMOS"
+msgstr "2. QUIN TIPUS DE COOKIES UTILITZEM"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:37
+msgid "SEGÚN LA ENTIDAD QUE LA GESTIONA"
+msgstr "SEGONS L'ENTITAT QUE LA GESTIONA"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:40
+msgid ""
+"Cookies propias: Son aquellas que se envían a tu equipo desde nuestros "
+"propios equipos o dominios y desde los que prestamos el servicio que nos "
+"solicitas."
+msgstr ""
+"Cookies pròpies: Són aquelles que s'envien al teu equip des dels nostres "
+"propis equips o dominis i des dels quals presten el servei que ens "
+"sol·licites."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:41
+msgid ""
+"Cookies de terceros: Son aquellas que se envían a tu equipo desde un equipo "
+"o dominio que no es gestionado por nosotros, sino por otra entidad "
+"colaboradora, como las utilizadas por redes sociales o por contenido externo."
+msgstr ""
+"Cookies de tercers: Són aquelles que s'envien al teu equip des d'un equip o "
+"domini que no és gestionat per nosaltres, sinó per una altra entitat "
+"col·laboradora, com les utilitzades per xarxes socials o per contingut "
+"extern."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:44
+msgid "SEGÚN EL PLAZO DE TIEMPO QUE PERMANECEN ACTIVAS"
+msgstr "SEGONS EL TERMINI DE TEMPS QUE PERMANEIXEN ACTIVES"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:48
+msgid ""
+"Cookies de sesión: Son cookies temporales que permanecen en el archivo de "
+"cookies de tu navegador hasta que abandonas la página web, por lo que "
+"ninguna queda registrada en el disco duro de tu ordenador. La información "
+"obtenida por medio de estas cookies se utiliza para analizar pautas de "
+"tráfico en la web. A la larga, esto nos permite proporcionar una mejor "
+"experiencia para mejorar el contenido y facilitar su uso."
+msgstr ""
+"Cookies de sessió: Són cookies temporals que romanen en l'arxiu de cookies "
+"del teu navegador fins que abandones la pàgina web, per la qual cosa cap "
+"queda registrada al disc dur del teu ordinador. La informació obtinguda per "
+"mitjà d'aquestes cookies s'utilitza per analitzar pautes de trànsit a la "
+"web. A la llarga, això ens permet proporcionar una millor experiència per "
+"millorar el contingut i facilitar-ne l'ús."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:51
+msgid ""
+"Cookies persistentes: Son almacenadas en el disco duro y nuestra web las lee "
+"cada vez que realizas una nueva visita. Estas cookies tienen una fecha de "
+"expiración determinada, tras la cual dejarán de funcionar. Generalmente, "
+"utilizamos estas cookies para facilitar los servicios de compra y registro."
+msgstr ""
+"Cookies persistents: Són emmagatzemades al disc dur i el nostre lloc web les "
+"llegeix cada vegada que realitzes una nova visita. Aquestes cookies tenen "
+"una data d'expiració determinada, després de la qual deixaran de funcionar. "
+"Generalment, utilitzem aquestes cookies per facilitar els serveis de compra "
+"i registre."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:54
+msgid "SEGÚN SU FINALIDAD"
+msgstr "SEGONS LA SEVA FINALITAT"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:58
+msgid ""
+"Estrictamente necesarias: Estas cookies son indispensables para facilitar la "
+"navegación correcta por nuestro sitio web y asegurar que el contenido se "
+"carga eficientemente. Permiten la correcta utilización de las diferentes "
+"opciones o servicios disponibles, como realizar el proceso de compra o "
+"controlar el fraude vinculado a la seguridad del servicio. Incluyen cookies "
+"analíticas y agregadas para realizar un seguimiento del tráfico del sitio y "
+"las páginas visitadas."
+msgstr ""
+"Estrictament necessàries: Aquestes cookies són indispensables per facilitar "
+"la navegació correcta pel nostre lloc web i assegurar que el contingut es "
+"carrega eficientment. Permeten la correcta utilització de les diferents "
+"opcions o serveis disponibles, com realitzar el procés de compra o controlar "
+"el frau vinculat a la seguretat del servei. Incorporen cookies analítiques i "
+"agregades per realitzar un seguiment del tràfic del lloc i les pàgines "
+"visitades."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:61
+msgid ""
+"Analíticas y optimización: Estas cookies, ya sean propias o de terceros, nos "
+"permiten optimizar tu experiencia en el sitio web evaluando su rendimiento y "
+"añadiendo nuevas funcionalidades para mejorar."
+msgstr ""
+"Analítiques i optimització: Aquestes cookies, ja siguin pròpies o de "
+"tercers, ens permeten optimitzar la teva experiència al lloc web avaluant el "
+"seu rendiment i afegint noves funcionalitats per millorar."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:64
+msgid ""
+"Personalización: Estas cookies permiten guardar la información de "
+"preferencia del usuario para mejorar la calidad de nuestros servicios y "
+"ofrecer una experiencia más personalizada, incluyendo la recomendación de "
+"productos. Algunas de estas cookies pueden ser multidispositivo."
+msgstr ""
+"Personalització: Aquestes cookies permeten desar la informació de "
+"preferència de l'usuari per millorar la qualitat dels nostres serveis i "
+"oferir una experiència més personalitzada, incloent la recomanació de "
+"productes. Algunes d'aquestes cookies poden ser multidispositiu."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:67
+msgid ""
+"Publicidad comportamental: Estas cookies se utilizan para almacenar "
+"información sobre el comportamiento de los usuarios, obtenida a través de la "
+"observación continua. Gracias a ellas, podemos conocer los hábitos de "
+"navegación en el sitio web y mostrar publicidad relacionada con tu perfil de "
+"navegación."
+msgstr ""
+"Publicitat conductual: Aquestes cookies s'utilitzen per emmagatzemar "
+"informació sobre el comportament dels usuaris, obtinguda a través de "
+"l'observació contínua. Gràcies a elles, podem conèixer els hàbits de "
+"navegació al lloc web i mostrar publicitat relacionada amb el teu perfil de "
+"navegació."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:71
+msgid ""
+"A continuación, describimos qué tipos de cookies utilizamos y sus "
+"finalidades. Puedes obtener más información sobre cada una de las cookies, "
+"así como su duración, en la siguiente lista:"
+msgstr ""
+"A continuació, describim quins tipus de cookies utilitzem i les seves "
+"finalitats. Pots obtenir més informació sobre cadascuna de les cookies, així "
+"com la seva durada, a la següent llista:"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:76
+msgid "Lista de cookies"
+msgstr "Llista de cookies"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:82
+#: core/templates/core/partials/footer/politica_de_cookies.html:133
+msgid "Cookie"
+msgstr "Cookie"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:83
+msgid "Dominio"
+msgstr "Domini"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:84
+msgid "Descripción"
+msgstr "Descripció"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:85
+msgid "Duración"
+msgstr "Durada"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:86
+#: core/templates/core/partials/footer/politica_de_cookies.html:132
+msgid "Tipo"
+msgstr "Tipus"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:93
+msgid ""
+"Esta cookie está asociada con la plataforma de desarrollo web Django para "
+"Python. Se utiliza para ayudar a proteger el sitio web contra ataques de "
+"falsificación de solicitudes entre sitios."
+msgstr ""
+"Aquesta cookie està associada amb la plataforma de desenvolupament web "
+"Django per a Python. S'utilitza per ajudar a protegir el lloc web contra "
+"atacs de falsificació de sol·licituds entre llocs."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:94
+#: core/templates/core/partials/footer/politica_de_cookies.html:108
+#: core/templates/core/partials/footer/politica_de_cookies.html:115
+msgid "año"
+msgstr "any"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:95
+#: core/templates/core/partials/footer/politica_de_cookies.html:116
+#: core/templates/core/partials/footer/politica_de_cookies.html:123
+#: core/templates/core/partials/footer/politica_de_cookies.html:138
+#: core/templates/core/partials/footer/politica_de_cookies.html:150
+#: core/templates/core/partials/footer/politica_de_cookies.html:154
+msgid "Necesaria"
+msgstr "Necessària"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:100
+msgid ""
+"Se utiliza para identificar y mantener la sesión activa del usuario en el "
+"sitio web. Permite al servidor reconocer al usuario como único durante su "
+"visita y garantizar la continuidad de la sesión mientras navega por el sitio."
+msgstr ""
+"S'utilitza per identificar i mantenir la sessió activa de l'usuari al lloc "
+"web. Permet al servidor reconèixer l'usuari com a únic durant la seva visita "
+"i garantir la continuïtat de la sessió mentre navega pel lloc."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:101
+msgid "día"
+msgstr "dia"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:102
+#: core/templates/core/partials/footer/politica_de_cookies.html:109
+#: core/templates/core/partials/footer/politica_de_cookies.html:142
+#: core/templates/core/partials/footer/politica_de_cookies.html:146
+msgid "Otro"
+msgstr "Un altre"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:107
+#: core/templates/core/partials/footer/politica_de_cookies.html:114
+#: core/templates/core/partials/footer/politica_de_cookies.html:121
+msgid "Stripe establece esta cookie para procesar pagos."
+msgstr "Stripe estableix aquesta cookie per processar pagaments."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:108
+msgid "mes"
+msgstr "mes"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:108
+msgid "días"
+msgstr "dies"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:122
+msgid "hora"
+msgstr "hora"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:163
+msgid "Almacenar la información en un dispositivo y/o acceder a ella"
+msgstr "Emmagatzemar la informació en un dispositiu i/o accedir-hi"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:165
+msgid ""
+"Las cookies, identificadores de dispositivos o identificadores online "
+"similares (por ejemplo, identificadores de inicio de sesión, identificadores "
+"asignados aleatoriamente, identificadores de red), junto con otra "
+"información (como el tipo de navegador, idioma, tamaño de pantalla, "
+"tecnologías compatibles, etc.), pueden almacenarse o leerse en tu "
+"dispositivo para reconocerlo cada vez que te conectes a una aplicación o "
+"página web, con el fin de cumplir una o varias de las finalidades descritas "
+"en este texto."
+msgstr ""
+"Les cookies, identificadors de dispositius o identificadors en línia "
+"similars (per exemple, identificadors d'inici de sessió, identificadors "
+"assignats de manera aleatòria, identificadors de xarxa), juntament amb altra "
+"informació (com el tipus de navegador, idioma, mida de pantalla, tecnologies "
+"compatibles, etc.), es poden emmagatzemar o llegir al teu dispositiu per "
+"reconèixer-te cada vegada que et connectis a una aplicació o pàgina web, amb "
+"la finalitat de complir una o diverses de les finalitats descrites en aquest "
+"text."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:169
+msgid ""
+"Publicidad y contenido personalizados, medición de publicidad y contenido, "
+"investigación de audiencia y desarrollo de servicios"
+msgstr ""
+"Publicitat i contingut personalitzats, mesurament de la publicitat i el "
+"contingut, investigació de l'audiència i desenvolupament de serveis"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:171
+msgid ""
+"La publicidad y el contenido pueden personalizarse según tu perfil. Tu "
+"actividad en este servicio puede utilizarse para crear o mejorar un perfil "
+"sobre ti y así recibir publicidad o contenido personalizados. Se puede medir "
+"el rendimiento de la publicidad y del contenido, y generar informes basados "
+"en tu actividad y la de otros usuarios. Tu actividad en este servicio puede "
+"contribuir al desarrollo y mejora de productos y servicios."
+msgstr ""
+"La publicitat i el contingut es poden personalitzar segons el teu perfil. La "
+"teva activitat en aquest servei es pot utilitzar per crear o millorar un "
+"perfil sobre tu i així rebre publicitat o contingut personalitzats. Es pot "
+"mesurar el rendiment de la publicitat i del contingut, i generar informes "
+"basats en la teva activitat i la dels altres usuaris. La teva activitat en "
+"aquest servei pot contribuir al desenvolupament i millora de productes i "
+"serveis."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:173
+msgid "Uso de datos limitados para seleccionar anuncios básicos"
+msgstr "Ús de dades limitades per seleccionar anuncis bàsics"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:175
+msgid ""
+"La publicidad mostrada en este servicio puede basarse en datos limitados, "
+"como la página web o la aplicación que estés utilizando, tu ubicación "
+"aproximada, el tipo de dispositivo o el contenido con el que estás "
+"interactuando (o has interactuado), por ejemplo, para limitar la cantidad de "
+"veces que se muestra un anuncio específico."
+msgstr ""
+"La publicitat mostrada en aquest servei es pot basar en dades limitades, com "
+"la pàgina web o l'aplicació que estiguis utilitzant, la teva ubicació "
+"aproximada, el tipus de dispositiu o el contingut amb el qual estiguis "
+"interactuant (o has interactuat), per exemple, per limitar la quantitat de "
+"vegades que se t'ensenya un anunci específic."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:177
+msgid "Crear perfiles para publicidad personalizada"
+msgstr "Crear perfils per a publicitat personalitzada"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:179
+msgid ""
+"La información sobre tu actividad en este servicio, como los formularios que "
+"completes y el contenido que consumas, puede ser almacenada y combinada con "
+"otra información que tengamos sobre ti o sobre usuarios similares, como tu "
+"actividad previa en este servicio y en otras páginas web o aplicaciones. "
+"Esta información puede utilizarse posteriormente para crear o mejorar un "
+"perfil sobre ti, que podría incluir posibles intereses y aspectos "
+"personales. Este perfil puede ser utilizado en el futuro para mostrarte "
+"publicidad que pueda resultarte más relevante en función de tus posibles "
+"intereses, ya sea por nuestra parte o por parte de terceros."
+msgstr ""
+"La informació sobre la teva activitat en aquest servei, com els formularis "
+"que completis i el contingut que consumis, pot ser emmagatzemada i combinada "
+"amb altra informació que tinguem sobre tu o sobre usuaris similars, com la "
+"teva activitat prèvia en aquest servei i en altres pàgines web o "
+"aplicacions. Aquesta informació es pot utilitzar posteriorment per crear o "
+"millorar un perfil sobre tu, que podria incloure possibles interessos i "
+"aspectes personals. Aquest perfil es pot utilitzar en el futur per mostrar-"
+"te publicitat que pugui resultar-te més rellevant en funció dels teus "
+"possibles interessos, ja sigui per part nostra o per part de tercers."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:182
+msgid "Uso de perfiles para la selección de contenido personalizado"
+msgstr "Ús de perfils per a la selecció de contingut personalitzat"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:185
+msgid ""
+"El contenido que se te presenta en este servicio puede basarse en un perfil "
+"de personalización de contenido, lo que puede reflejar tu actividad en este "
+"u otros servicios (por ejemplo, los formularios que envías o el contenido "
+"que visualizas), tus posibles intereses y aspectos personales. Un ejemplo de "
+"lo anterior sería la adaptación del orden en el que se te presenta el "
+"contenido, para que así te resulte más sencillo encontrar el contenido (no "
+"publicitario) que coincida con tus intereses."
+msgstr ""
+"El contingut que se t'ofereix en aquest servei es pot basar en un perfil de "
+"personalització de contingut, el qual pot reflectir la teva activitat en "
+"aquest o altres serveis (per exemple, els formularis que enviïs o el "
+"contingut que visualitzis), els teus possibles interessos i aspectes "
+"personals. Un exemple del que esmentem anteriorment seria l'adaptació de "
+"l'ordre en què se t'ofereix el contingut, per tal que et sigui més fàcil "
+"trobar el contingut (no publicitari) que coincideixi amb els teus interessos."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:188
+msgid "Medir el rendimiento de la publicidad"
+msgstr "Mesurar el rendiment de la publicitat"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:191
+msgid ""
+"La información sobre qué publicidad se te presenta y sobre la forma en que "
+"interactúas con ella puede utilizarse para determinar lo bien que ha "
+"funcionado un anuncio en tu caso o en el de otros usuarios y si se han "
+"alcanzado los objetivos publicitarios. Por ejemplo, si has visualizado un "
+"anuncio, si has hecho clic sobre el mismo, si eso te ha llevado "
+"posteriormente a comprar un producto o a visitar una página web, etc. Esto "
+"resulta muy útil para comprender la relevancia de las campañas publicitarias."
+msgstr ""
+"La informació sobre quina publicitat se t'ofereix i sobre la forma en què hi "
+"interactues es pot utilitzar per determinar quin bon funcionament ha tingut "
+"un anunci en el teu cas o en el dels altres usuaris i si s'han assolit els "
+"objectius publicitaris. Per exemple, si has vist un anunci, si hi has fet "
+"clic, si això t'ha portat posteriorment a comprar un producte o a visitar "
+"una pàgina web, etc. Això resulta molt útil per comprendre la rellevància de "
+"les campanyes publicitàries."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:194
+msgid "Medir el rendimiento del contenido"
+msgstr "Mesurar el rendiment del contingut"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:197
+msgid ""
+"La información sobre qué contenido se te presenta y sobre la forma en que "
+"interactúas con él puede utilizarse para determinar, por ejemplo, si el "
+"contenido (no publicitario) ha llegado a su público previsto y ha coincidido "
+"con sus intereses. Por ejemplo, si hasleído un artículo, si has visualizado "
+"un vídeo, si has escuchado un “pódcast” o si has consultado la descripción "
+"de un producto, cuánto tiempo has pasado en esos servicios y en las páginas "
+"web que has visitado, etc. Esto resulta muy útil para comprender la "
+"relevancia del contenido (no publicitario) que se te muestra."
+msgstr ""
+"La informació sobre quin contingut se t'ofereix i sobre la forma en què hi "
+"interactues es pot utilitzar per determinar, per exemple, si el contingut "
+"(no publicitari) ha arribat al seu públic previst i ha coincidit amb els "
+"seus interessos. Per exemple, si has llegit un article, si has vist un "
+"vídeo, si has escoltat un podcast o si has consultat la descripció d'un "
+"producte, quant temps has passat en aquests serveis i en les pàgines web que "
+"has visitat, etc. Això resulta molt útil per comprendre la rellevància del "
+"contingut (no publicitari) que se t'ofereix."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:200
+msgid ""
+"Comprender al público a través de estadísticas o a través de la combinación "
+"de datos procedentes de diferentes fuentes"
+msgstr ""
+"Comprendre el públic a través d'estadístiques o a través de la combinació de "
+"dades procedents de diferents fonts"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:203
+msgid ""
+"Se pueden generar informes basados en la combinación de conjuntos de datos "
+"(como perfiles de usuario, estadísticas, estudios de mercado, datos "
+"analíticos) respecto a tus interacciones y las de otros usuarios con el "
+"contenido publicitario (o no publicitario) para identificar las "
+"características comunes (por ejemplo, para determinar qué público objetivo "
+"es más receptivo a una campaña publicitaria o a ciertos contenidos)."
+msgstr ""
+"Es poden generar informes basats en la combinació de conjunts de dades (com "
+"perfils d'usuari, estadístiques, estudis de mercat, dades analítiques) "
+"respecte a les teves interaccions i les dels altres usuaris amb el contingut "
+"publicitari (o no publicitari) per identificar les característiques comunes "
+"(per exemple, per determinar quin públic objectiu és més receptiu a una "
+"campanya publicitària o a certs continguts)."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:206
+msgid "Desarrollo y mejora de los servicios"
+msgstr "Desenvolupament i millora dels serveis"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:209
+msgid ""
+"La información sobre tu actividad en este servicio, como tu interacción con "
+"los anuncios o con el contenido, puede resultar muy útil para mejorar "
+"productos y servicios, así como para crear otros nuevos en base a las "
+"interacciones de los usuarios, el tipo de audiencia, etc. Esta finalidad "
+"específica no incluye el desarrollo ni la mejora de los perfiles de usuario "
+"y de identificadores."
+msgstr ""
+"La informació sobre la teva activitat en aquest servei, com la teva "
+"interacció amb els anuncis o amb el contingut, pot resultar molt útil per "
+"millorar productes i serveis, així com per crear d'altres nous basats en les "
+"interaccions dels usuaris, el tipus d'audiència, etc. Aquesta finalitat "
+"específica no inclou el desenvolupament ni la millora dels perfils d'usuari "
+"i d'identificadors."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:212
+msgid "Uso de datos limitados con el objetivo de seleccionar el contenido"
+msgstr "Ús de dades limitades amb l'objectiu de seleccionar el contingut"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:215
+msgid ""
+"El contenido que se presenta en este servicio puede basarse en datos "
+"limitados, como por ejemplo la página web o la aplicación que esté "
+"utilizando, tu ubicación no precisa, el tipo de dispositivo o el contenido "
+"con el que estás interactuando (o con el que has interactuado) (por ejemplo, "
+"para limitar el número de veces que se te presenta un vídeo o un artículo en "
+"concreto)."
+msgstr ""
+"El contingut que se t'ofereix en aquest servei es pot basar en dades "
+"limitades, com per exemple la pàgina web o l'aplicació que estiguis "
+"utilitzant, la teva ubicació no precisa, el tipus de dispositiu o el "
+"contingut amb el qual estiguis interactuant (o amb el qual has interactuat) "
+"(per exemple, per limitar el nombre de vegades que se t'ofereix un vídeo o "
+"un article en concret)."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:220
+msgid "Utilizar datos de localización geográfica precisa"
+msgstr "Utilitzar dades de localització geogràfica precisa"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:222
+msgid ""
+"Con tu aprobación, tu ubicación exacta (dentro de un radio inferior a 500 "
+"metros) podrá utilizarse para apoyar las finalidades que se explican en este "
+"documento."
+msgstr ""
+"Amb la teva aprovació, la teva ubicació exacta (dins d'un radi inferior a "
+"500 metres) es podrà utilitzar per donar suport a les finalitats que s' "
+"expliquen en aquest document."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:226
+msgid ""
+"Analizar activamente las características del dispositivo para su "
+"identificación"
+msgstr ""
+"Analitzar activament les característiques del dispositiu per a la seva "
+"identificació"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:228
+msgid ""
+"Con tu aceptación, se pueden solicitar y utilizar ciertas características "
+"específicas de tu dispositivo para distinguirlo de otros (por ejemplo, las "
+"fuentes o complementos instalados y la resolución de su pantalla) en apoyo "
+"de las finalidades que se explican en este documento."
+msgstr ""
+"Amb la teva acceptació, es poden sol·licitar i utilitzar certes "
+"característiques específiques del teu dispositiu per distingir-lo d'altres "
+"(per exemple, les fonts o complements instal·lats i la resolució de la seva "
+"pantalla) en suport dels objectius que s'expliquen en aquest document."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:232
+msgid "Garantizar la seguridad, evitar y detectar fraudes, y eliminar fallos"
+msgstr "Garantir la seguretat, evitar i detectar frau, i eliminar falles"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:234
+msgid ""
+"Tus datos pueden utilizarse para supervisar y evitar las actividades "
+"inusuales y potencialmente fraudulentas (por ejemplo, en relación con la "
+"publicidad, o con actividad realizada por bots), así como para asegurar que "
+"los sistemas y los procesos funcionen de forma correcta y segura. Asimismo, "
+"se puede utilizar para corregir cualquier problema que tú, el editor/medio "
+"de comunicación o el anunciante podáis encontraros a la hora de la entrega "
+"del contenido y los anuncios, así como en tu interacción con ellos."
+msgstr ""
+"Les teves dades es poden utilitzar per supervisar i evitar les activitats "
+"inusuals i potencialment fraudulentes (per exemple, en relació amb la "
+"publicitat o amb l'activitat realitzada per bots), així com per assegurar "
+"que els sistemes i els processos funcionin de forma correcta i segura. Així "
+"mateix, es pot utilitzar per corregir qualsevol problema que tu, l'editor/"
+"mitjà de comunicació o l'anunciant us pugueu trobar en l'entrega del "
+"contingut i els anuncis, així com en la vostra interacció amb ells."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:238
+msgid "Ofrecer y presentar publicidad y contenido"
+msgstr "Oferir i presentar publicitat i contingut"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:240
+msgid ""
+"Cierta información (como una dirección IP o las capacidades del dispositivo) "
+"se utiliza para garantizar la compatibilidad técnica del contenido o de la "
+"publicidad, así como para facilitar la transmisión del contenido o del "
+"anuncio a tu dispositivo."
+msgstr ""
+"Certa informació (com una adreça IP o les capacitats del dispositiu) es "
+"utilitza per garantir la compatibilitat tècnica del contingut o de la "
+"publicitat, així com per facilitar la transmissió del contingut o de "
+"l'anunci al teu dispositiu."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:244
+msgid ""
+"Cotejo y combinación de datos procedentes de otras fuentes de información"
+msgstr ""
+"Comprovació i combinació de dades procedents d'altres fonts d'informació"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:246
+msgid ""
+"La información en relación con tu actividad en este servicio puede cotejarse "
+"y combinarse con otra información sobre tu persona procedente de diversas "
+"fuentes (por ejemplo, tu actividad en un servicio en línea independiente, tu "
+"uso de una tarjeta de fidelización en la tienda o tus respuestas a una "
+"encuesta) en apoyo de los fines que se explican en este documento."
+msgstr ""
+"La informació en relació amb la teva activitat en aquest servei es pot "
+"comprovar i combinar amb altra informació sobre la teva persona procedent de "
+"diverses fonts (per exemple, la teva activitat en un servei en línia "
+"independent, el teu ús d'una targeta de fidelització a la botiga o les teves "
+"respostes a una enquesta) en suport dels objectius que s'expliquen en aquest "
+"document."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:250
+msgid "Vincular diferentes dispositivos"
+msgstr "Vincular diferents dispositius"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:252
+msgid ""
+"En apoyo de las finalidades que se explican en este documento, tu "
+"dispositivo podría considerarse como vinculado a otros dispositivos que te "
+"pertenezcan o sean de tu hogar (por ejemplo, porque ha iniciado sesión en el "
+"mismo servicio tanto desde tu teléfono como desde tu ordenador, o porque "
+"podrías haber utilizado la misma conexión a Internet en ambos dispositivos)."
+msgstr ""
+"En suport dels objectius que s'expliquen en aquest document, el teu "
+"dispositiu podria considerar-se vinculat a altres dispositius que et "
+"pertanyin o siguin de la teva llar (per exemple, perquè has iniciat la "
+"sessió en el mateix servei tant des del teu telèfon com des del teu "
+"ordinador, o perquè podries haber utilitzat la mateixa connexió a Internet "
+"en ambdós dispositius)."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:256
+msgid ""
+"Identificación de dispositivos en función de la información transmitida de "
+"forma automática"
+msgstr ""
+"Identificació de dispositius en funció de la informació transmesa de forma "
+"automàtica"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:258
+msgid ""
+"Tu dispositivo podría distinguirse de otros en función de la información que "
+"envía de forma automática al acceder a Internet (por ejemplo, la dirección "
+"IP de tu conexión a Internet o el tipo de navegador que estás utilizando) en "
+"apoyo de los fines que se exponen en este documento."
+msgstr ""
+"El teu dispositiu es podria distingir d'altres en funció de la informació "
+"que envia de forma automàtica en accedir a Internet (per exemple, l'adreça "
+"IP de la teva connexió a Internet o el tipus de navegador que estàs "
+"utilitzant) en suport dels objectius que s'exposen en aquest document."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:262
+msgid "3. BASE LEGÍTIMA PARA EL USO DE COOKIES"
+msgstr "3. BASE LEGÍTIMA PER A L'ÚS DE LES COOKIES"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:264
+msgid ""
+"La legitimación para el uso de las cookies estrictamente funcionales, viene "
+"dada porque el tratamiento es necesario para el cumplimiento de una "
+"obligación legal conforme a la Ley 34/2002 Ley de Servicios de la "
+"Información y de Comercio Electrónico."
+msgstr ""
+"La legitimació per a l'ús de les cookies estrictament funcionals, ve donada "
+"perquè el tractament és necessari per al compliment d'una obligació legal "
+"conforme a la Llei 34/2002 Llei de Serveis de la Informació i de Comerç "
+"Electrònic."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:266
+msgid ""
+"La legitimación para el uso de las cookies con fines analíticos de "
+"optimización de personalización de publicidad comportamental y valoración "
+"está basada en el consentimiento que se solicita, conforme al Artículo 6.1."
+"a) del Reglamento (UE) 2017/679."
+msgstr ""
+"La legitimació per a l'ús de les cookies amb finalitats analítiques "
+"d'optimització de personalització de publicitat comportamental i valoració "
+"està basada en el consentiment que es sol·licita, conforme a l'Article 6.1. "
+"a) del Reglament (UE) 2017/679."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:270
+msgid "4. PLAZO DE CONSERVACIÓN DE LA INFORMACIÓN"
+msgstr "4. TERMINI DE CONSERVACIÓ DE LA INFORMACIÓ"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:272
+msgid ""
+"Mantendremos la información mientras sea necesario para la prestación del "
+"servicio solicitado, hasta que nos manifiestes tu oposición o hasta que "
+"revoques tu consentimiento. En estos casos, la información se mantendrá "
+"debidamente bloqueada sin que la podamos utilizar mientras sea necesaria "
+"para el ejercicio o defensa de reclamaciones legales o contractuales. Una "
+"vez transcurrido este plazo de tiempo, tus datos serán eliminados "
+"definitivamente."
+msgstr ""
+"Mantenim la informació mentre sigui necessària per a la prestació del servei "
+"solicitada, fins que ens manifestis la teva oposició o fins que revocis el "
+"teu consentiment. En aquests casos, la informació es mantindrà degudament "
+"blocada sense que la puguem utilitzar mentre sigui necessària per a "
+"l'exercici o defensa de reclamacions legals o contractuales. Un cop "
+"transcorregut aquest termini de temps, les teves dades seran eliminades "
+"definitivament."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:274
+msgid ""
+"En los casos en que obtenemos datos automáticamente a través de cookies, ten "
+"en cuenta que algunas pueden estar instaladas durante años. No obstante, "
+"puedes limitar su uso en el tiempo eliminándolas de los navegadores o "
+"dispositivos."
+msgstr ""
+"En els casos en què obtenim dades automàticament a través de cookies, "
+"tingues en compte que algunes poden estar instal·lades durant anys. No "
+"obstant això, pots limitar el seu ús en el temps eliminant-les dels "
+"navegadors o dispositius."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:278
+msgid "5. FORMAS DE BLOQUEAR Y LIMITAR EL USO DE COOKIES:"
+msgstr "5. FORMES DE BLOQUEJAR I LIMITAR L'ÚS DE LES COOKIES:"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:280
+msgid ""
+"Es importante destacar que estas tecnologías no son intrusivas, ya que toda "
+"la información obtenida a través de las cookies es totalmente anónima, y en "
+"ningún caso puede ser asociada a un usuario concreto e identificado. Esta "
+"información nos permite adaptar y mejorar sus servicios a los intereses de "
+"los usuarios. No obstante, el usuario tiene la opción de impedir la "
+"generación de cookies, mediante la selección de la correspondiente opción en "
+"su programa navegador. Informa que en el caso de que deshabilite el uso de "
+"cookies la navegación puede ser más lenta de lo habitual."
+msgstr ""
+"És important destacar que aquestes tecnologies no són intrusives, ja que "
+"tota la informació obtinguda a través de les cookies és totalment anònima, i "
+"en cap cas pot ser associada a un usuari concret i identificat. Aquesta "
+"informació ens permet adaptar i millorar els seus serveis als interessos "
+"dels usuaris. No obstant això, l'usuari té l'opció d'impedir la generació de "
+"cookies, mitjançant la selecció de la corresponent opció en el seu programa "
+"navegador. Informa que en el cas que deshabilitis l'ús de cookies la "
+"navegació pot ser més lenta del que és habitual."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:282
+msgid ""
+"Concretamente, todos los navegadores permiten hacer cambios que permiten "
+"desactivar la configuración de las cookies. Estos ajustes se encuentran "
+"ubicados en las \"opciones\" o \"preferencias\" del menú de su navegador."
+msgstr ""
+"Concretament, tots els navegadors permeten fer canvis que permeten "
+"desactivar la configuració de les cookies. Aquests ajustos es troben ubicats "
+"a les \"opcions\" o \"preferències\" del menú del seu navegador."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:289
+msgid ""
+"En cambio, si se desea bloquear las cookies analíticas de Google, se puede "
+"instalar un complemento en el navegador siguiendo las instrucciones "
+"indicadas en el siguiente enlace:"
+msgstr ""
+"En canvi, si es desitja bloquejar les cookies analítiques de Google, es pot "
+"instal·lar un complement al navegador seguint les instruccions indicades en "
+"el següent enllaç:"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:293
+msgid "6. MÁS INFORMACIÓN"
+msgstr "6. MÉS INFORMACIÓ"
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:295
+msgid ""
+"Para obtener más información sobre el tratamiento de datos, recomendamos "
+"visitar nuestra política de privacidad."
+msgstr ""
+"Per obtenir més informació sobre el tractament de dades, recomanem visitar "
+"la nostra política de privadesa."
+
+#: core/templates/core/partials/footer/politica_de_cookies.html:297
+msgid ""
+"Además, cualquier usuario que tenga cualquier duda acerca de estas "
+"tecnologías puede remitirnos la consulta a la dirección electrónica"
+msgstr ""
+"A més, qualsevol usuari que tingui qualsevol dubte sobre aquestes "
+"tecnologies pot remetre'ns la consulta a l'adreça electrònica"
+
 #: core/templates/core/partials/footer/politica_de_privacidad.html:6
 msgid "Política de protección de datos de carácter personal"
 msgstr "Política de protecció de dades de caràcter personal"
@@ -1666,8 +2422,6 @@ msgstr ""
 "seus serveis."
 
 #: core/templates/core/partials/footer/politica_de_privacidad.html:65
-#, fuzzy
-#| msgid "Protección de datos de carácter personal"
 msgid "Comunicación de datos a terceros:"
 msgstr "Comunicació de dades a tercers:"
 

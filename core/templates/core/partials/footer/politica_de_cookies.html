@@ -1,125 +1,126 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Política De Cookies{% endblock %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans 'Política De Cookies' %}{% endblock %}
 
 {% block content%}
 
-{% load static %}
-
 <div class="max-w-screen-md lg:max-w-screen-lg mx-auto max-[1300px]:-mt-6 px-4 lg:px-0">
 
-    <h1 class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold mb-5">Política De Cookies</h1>
+    <h1 class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold mb-5">{% trans 'Política De Cookies' %}</h1>
 
     <div class="space-y-10">
         <div class="space-y-3 text-sm">
         
             <div>
-                La siguiente información sobre nuestra Política de Cookies refleja el compromiso de VIVAC CAMPRODON, S.L., (“ESPORTS VIVAC”), entidad con domicilio en C/ Sant Roc, 16, 17867 Camprodon (Gerona), con CIF número B17829516, como responsable del tratamiento, para utilizar cookies y tecnologías similares garantizando el derecho a la privacidad de cada uno de los usuarios de nuestros servicios. En este documento explicamos cómo utilizamos cookies y tecnologías similares durante el uso de nuestros servicios:
+                {% blocktrans %}La siguiente información sobre nuestra Política de Cookies refleja el compromiso de VIVAC CAMPRODON, S.L., (“ESPORTS VIVAC”), entidad con domicilio en C/ Sant Roc, 16, 17867 Camprodon (Gerona), con CIF número B17829516, como responsable del tratamiento, para utilizar cookies y tecnologías similares garantizando el derecho a la privacidad de cada uno de los usuarios de nuestros servicios. En este documento explicamos cómo utilizamos cookies y tecnologías similares durante el uso de nuestros servicios:{% endblocktrans %}
             </div>
             
         </div>
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg font-semibold">1. DESCRIPCIÓN DE COOKIES</h2>
+            <h2 class="text-lg font-semibold">{% trans '1. DESCRIPCIÓN DE COOKIES' %}</h2>
         
             <div>
-                Una "Cookie" es un pequeño archivo de texto que un sitio web almacena en el navegador del usuario, facilitando la navegación por una página web y son esenciales para el funcionamiento de Internet.
+                {% blocktrans %}Una "Cookie" es un pequeño archivo de texto que un sitio web almacena en el navegador del usuario, facilitando la navegación por una página web y son esenciales para el funcionamiento de Internet.{% endblocktrans %}
             </div>
             <div>
-                Las cookies se utilizan, por ejemplo, para recordar los gustos de los usuarios en la web, como el idioma o el navegador utilizado; también se emplean para analizar los hábitos y comportamientos del usuario con el fin de mejorar los servicios ofrecidos, o para adaptar los contenidos de una página web a las preferencias del visitante.
+                {% blocktrans %}Las cookies se utilizan, por ejemplo, para recordar los gustos de los usuarios en la web, como el idioma o el navegador utilizado; también se emplean para analizar los hábitos y comportamientos del usuario con el fin de mejorar los servicios ofrecidos, o para adaptar los contenidos de una página web a las preferencias del visitante.{% endblocktrans %}
             </div>
             
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg font-semibold">2. QUÉ TIPO DE COOKIES UTILIZAMOS</h2>
+            <h2 class="text-lg font-semibold">{% trans '2. QUÉ TIPO DE COOKIES UTILIZAMOS' %}</h2>
             
-            <h3 >SEGÚN LA ENTIDAD QUE LA GESTIONA</h3>
+            <h3 >{% trans 'SEGÚN LA ENTIDAD QUE LA GESTIONA' %}</h3>
 
             <ul class="list-disc pl-10 space-y-2">
-                <li>Cookies propias: Son aquellas que se envían a tu equipo desde nuestros propios equipos o dominios y desde los que prestamos el servicio que nos solicitas.</li>
-                <li>Cookies de terceros: Son aquellas que se envían a tu equipo desde un equipo o dominio que no es gestionado por nosotros, sino por otra entidad colaboradora, como las utilizadas por redes sociales o por contenido externo.</li>
+                <li>{% blocktrans %}Cookies propias: Son aquellas que se envían a tu equipo desde nuestros propios equipos o dominios y desde los que prestamos el servicio que nos solicitas.{% endblocktrans %}</li>
+                <li>{% blocktrans %}Cookies de terceros: Son aquellas que se envían a tu equipo desde un equipo o dominio que no es gestionado por nosotros, sino por otra entidad colaboradora, como las utilizadas por redes sociales o por contenido externo.{% endblocktrans %}</li>
             </ul>
 
-            <h3 >SEGÚN EL PLAZO DE TIEMPO QUE PERMANECEN ACTIVAS</h3>
+            <h3 >{% trans 'SEGÚN EL PLAZO DE TIEMPO QUE PERMANECEN ACTIVAS' %}</h3>
 
             <ul class="list-disc pl-10 space-y-2">
                 <li>
-                    Cookies de sesión: Son cookies temporales que permanecen en el archivo de cookies de tu navegador hasta que abandonas la página web, por lo que ninguna queda registrada en el disco duro de tu ordenador. La información obtenida por medio de estas cookies se utiliza para analizar pautas de tráfico en la web. A la larga, esto nos permite proporcionar una mejor experiencia para mejorar el contenido y facilitar su uso.
+                    {% blocktrans %}Cookies de sesión: Son cookies temporales que permanecen en el archivo de cookies de tu navegador hasta que abandonas la página web, por lo que ninguna queda registrada en el disco duro de tu ordenador. La información obtenida por medio de estas cookies se utiliza para analizar pautas de tráfico en la web. A la larga, esto nos permite proporcionar una mejor experiencia para mejorar el contenido y facilitar su uso.{% endblocktrans %}
                 </li>
                 <li>
-                    Cookies persistentes: Son almacenadas en el disco duro y nuestra web las lee cada vez que realizas una nueva visita. Estas cookies tienen una fecha de expiración determinada, tras la cual dejarán de funcionar. Generalmente, utilizamos estas cookies para facilitar los servicios de compra y registro.
+                    {% blocktrans %}Cookies persistentes: Son almacenadas en el disco duro y nuestra web las lee cada vez que realizas una nueva visita. Estas cookies tienen una fecha de expiración determinada, tras la cual dejarán de funcionar. Generalmente, utilizamos estas cookies para facilitar los servicios de compra y registro.{% endblocktrans %}
                 </li>
             </ul>
-            <h3 >SEGÚN SU FINALIDAD</h3>
+            <h3 >{% trans 'SEGÚN SU FINALIDAD' %}</h3>
 
             <ul class="list-disc pl-10 space-y-2">
                 <li> 
-                    Estrictamente necesarias: Estas cookies son indispensables para facilitar la navegación correcta por nuestro sitio web y asegurar que el contenido se carga eficientemente. Permiten la correcta utilización de las diferentes opciones o servicios disponibles, como realizar el proceso de compra o controlar el fraude vinculado a la seguridad del servicio. Incluyen cookies analíticas y agregadas para realizar un seguimiento del tráfico del sitio y las páginas visitadas.
+                    {% blocktrans %}Estrictamente necesarias: Estas cookies son indispensables para facilitar la navegación correcta por nuestro sitio web y asegurar que el contenido se carga eficientemente. Permiten la correcta utilización de las diferentes opciones o servicios disponibles, como realizar el proceso de compra o controlar el fraude vinculado a la seguridad del servicio. Incluyen cookies analíticas y agregadas para realizar un seguimiento del tráfico del sitio y las páginas visitadas.{% endblocktrans %}
                 </li>
                 <li>
-                    Analíticas y optimización: Estas cookies, ya sean propias o de terceros, nos permiten optimizar tu experiencia en el sitio web evaluando su rendimiento y añadiendo nuevas funcionalidades para mejorar.
+                    {% blocktrans %}Analíticas y optimización: Estas cookies, ya sean propias o de terceros, nos permiten optimizar tu experiencia en el sitio web evaluando su rendimiento y añadiendo nuevas funcionalidades para mejorar.{% endblocktrans %}
                 </li>
                 <li>
-                    Personalización: Estas cookies permiten guardar la información de preferencia del usuario para mejorar la calidad de nuestros servicios y ofrecer una experiencia más personalizada, incluyendo la recomendación de productos. Algunas de estas cookies pueden ser multidispositivo.
+                    {% blocktrans %}Personalización: Estas cookies permiten guardar la información de preferencia del usuario para mejorar la calidad de nuestros servicios y ofrecer una experiencia más personalizada, incluyendo la recomendación de productos. Algunas de estas cookies pueden ser multidispositivo.{% endblocktrans %}
                 </li>
                 <li>
-                    Publicidad comportamental: Estas cookies se utilizan para almacenar información sobre el comportamiento de los usuarios, obtenida a través de la observación continua. Gracias a ellas, podemos conocer los hábitos de navegación en el sitio web y mostrar publicidad relacionada con tu perfil de navegación.
+                    {% blocktrans %}Publicidad comportamental: Estas cookies se utilizan para almacenar información sobre el comportamiento de los usuarios, obtenida a través de la observación continua. Gracias a ellas, podemos conocer los hábitos de navegación en el sitio web y mostrar publicidad relacionada con tu perfil de navegación.{% endblocktrans %}
                 </li>
             </ul>
 
-            <div>A continuación, describimos qué tipos de cookies utilizamos y sus finalidades. Puedes obtener más información sobre cada una de las cookies, así como su duración, en la siguiente lista:</div>
+            <div>{% blocktrans %}A continuación, describimos qué tipos de cookies utilizamos y sus finalidades. Puedes obtener más información sobre cada una de las cookies, así como su duración, en la siguiente lista:{% endblocktrans %}</div>
             
         </div>
 
         <div class="space-y-3 text-sm ">
-            <h2 class="text-lg font-semibold">Lista de cookies</h2>
+            <h2 class="text-lg font-semibold">{% trans 'Lista de cookies' %}</h2>
 
             <div class="overflow-x-auto hidden md:block">
                 <table class="table-auto border-collapse w-full">
                     <thead>
                         <tr class="bg-gray-200">
-                            <th class="px-4 py-2">Cookie</th>
-                            <th class="px-4 py-2">Dominio</th>
-                            <th class="px-4 py-2">Descripción</th>
-                            <th class="px-4 py-2">Duración</th>
-                            <th class="px-4 py-2">Tipo</th>
+                            <th class="px-4 py-2">{% trans 'Cookie' %}</th>
+                            <th class="px-4 py-2">{% trans 'Dominio' %}</th>
+                            <th class="px-4 py-2">{% trans 'Descripción' %}</th>
+                            <th class="px-4 py-2">{% trans 'Duración' %}</th>
+                            <th class="px-4 py-2">{% trans 'Tipo' %}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="border px-4 py-2">csrftoken</td>
-                            <td class="border px-4 py-2">edscon.pythonanywhere.com</td>
-                            <td class="border px-4 py-2">Esta cookie está asociada con la plataforma de desarrollo web Django para Python. Se utiliza para ayudar a proteger el sitio web contra ataques de falsificación de solicitudes entre sitios.</td>
-                            <td class="border px-4 py-2">1 año</td>
-                            <td class="border px-4 py-2">Necesaria</td>
+                            <td class="border px-4 py-2">esportsvivac.com</td>
+                            <td class="border px-4 py-2">{% blocktrans %}Esta cookie está asociada con la plataforma de desarrollo web Django para Python. Se utiliza para ayudar a proteger el sitio web contra ataques de falsificación de solicitudes entre sitios.{% endblocktrans %}</td>
+                            <td class="border px-4 py-2">1 {% trans 'año' %}</td>
+                            <td class="border px-4 py-2">{% trans 'Necesaria' %}</td>
                         </tr>
                         <tr class="bg-gray-100">
                             <td class="border px-4 py-2">sessionid</td>
-                            <td class="border px-4 py-2">edscon.pythonanywhere.com</td>
-                            <td class="border px-4 py-2">Se utiliza para identificar y mantener la sesión activa del usuario en el sitio web. Permite al servidor reconocer al usuario como único durante su visita y garantizar la continuidad de la sesión mientras navega por el sitio.</td>
-                            <td class="border px-4 py-2">1 día</td>
-                            <td class="border px-4 py-2">Otro</td>
+                            <td class="border px-4 py-2">esportsvivac.com</td>
+                            <td class="border px-4 py-2">{% blocktrans %}Se utiliza para identificar y mantener la sesión activa del usuario en el sitio web. Permite al servidor reconocer al usuario como único durante su visita y garantizar la continuidad de la sesión mientras navega por el sitio.{% endblocktrans %}</td>
+                            <td class="border px-4 py-2">1 {% trans 'día' %}</td>
+                            <td class="border px-4 py-2">{% trans 'Otro' %}</td>
                         </tr>
                         <tr>
                             <td class="border px-4 py-2">m</td>
                             <td class="border px-4 py-2">m.stripe.com</td>
-                            <td class="border px-4 py-2">Stripe establece esta cookie para procesar pagos.</td>
-                            <td class="border px-4 py-2">1 año 1 mes 4 días</td>
-                            <td class="border px-4 py-2">Otro</td>
+                            <td class="border px-4 py-2">{% trans 'Stripe establece esta cookie para procesar pagos.' %}</td>
+                            <td class="border px-4 py-2">1 {% trans 'año' %} 1 {% trans 'mes' %} 4 {% trans 'días' %}</td>
+                            <td class="border px-4 py-2">{% trans 'Otro' %}</td>
                         </tr>
                         <tr class="bg-gray-100">
                             <td class="border px-4 py-2">__stripe_mid</td>
-                            <td class="border px-4 py-2">.edscon.pythonanywhere.com</td>
-                            <td class="border px-4 py-2">Stripe establece esta cookie para procesar pagos.</td>
-                            <td class="border px-4 py-2">1 año</td>
-                            <td class="border px-4 py-2">Necesaria</td>
+                            <td class="border px-4 py-2">esportsvivac.com</td>
+                            <td class="border px-4 py-2">{% trans 'Stripe establece esta cookie para procesar pagos.' %}</td>
+                            <td class="border px-4 py-2">1 {% trans 'año' %}</td>
+                            <td class="border px-4 py-2">{% trans 'Necesaria' %}</td>
                         </tr>
                         <tr>
                             <td class="border px-4 py-2">__stripe_sid</td>
-                            <td class="border px-4 py-2">.edscon.pythonanywhere.com</td>
-                            <td class="border px-4 py-2">Stripe establece esta cookie para procesar pagos.</td>
-                            <td class="border px-4 py-2">1 hora</td>
-                            <td class="border px-4 py-2">Necesaria</td>
+                            <td class="border px-4 py-2">esportsvivac.com</td>
+                            <td class="border px-4 py-2">{% trans 'Stripe establece esta cookie para procesar pagos.' %}</td>
+                            <td class="border px-4 py-2">1 {% trans 'hora' %}</td>
+                            <td class="border px-4 py-2">{% trans 'Necesaria' %}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -128,29 +129,29 @@
                 <table class="table-auto border-collapse w-full">
                     <thead class="hidden">
                         <tr class="bg-gray-200">
-                            <th class="px-4 py-2">Tipo</th>
-                            <th class="px-4 py-2">Cookie</th>
+                            <th class="px-4 py-2">{% trans 'Tipo' %}</th>
+                            <th class="px-4 py-2">{% trans 'Cookie' %}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="border px-4 py-2">Necesaria</td>
+                            <td class="border px-4 py-2">{% trans 'Necesaria' %}</td>
                             <td class="border px-4 py-2">csrftoken</td>
                         </tr>
                         <tr class="bg-gray-100">
-                            <td class="border px-4 py-2">Otro</td>
+                            <td class="border px-4 py-2">{% trans 'Otro' %}</td>
                             <td class="border px-4 py-2">sessionid</td>
                         </tr>
                         <tr>
-                            <td class="border px-4 py-2">Otro</td>
+                            <td class="border px-4 py-2">{% trans 'Otro' %}</td>
                             <td class="border px-4 py-2">m</td>
                         </tr>
                         <tr class="bg-gray-100">
-                            <td class="border px-4 py-2">Necesaria</td>
+                            <td class="border px-4 py-2">{% trans 'Necesaria' %}</td>
                             <td class="border px-4 py-2">__stripe_mid</td>
                         </tr>
                         <tr>
-                            <td class="border px-4 py-2">Necesaria</td>
+                            <td class="border px-4 py-2">{% trans 'Necesaria' %}</td>
                             <td class="border px-4 py-2">__stripe_sid</td>
                         </tr>
                     </tbody>
@@ -159,141 +160,141 @@
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg font-semibold">Almacenar la información en un dispositivo y/o acceder a ella</h2>
+            <h2 class="text-lg font-semibold">{% trans 'Almacenar la información en un dispositivo y/o acceder a ella' %}</h2>
 
-            <div>Las cookies, identificadores de dispositivos o identificadores online similares (por ejemplo, identificadores de inicio de sesión, identificadores asignados aleatoriamente, identificadores de red), junto con otra información (como el tipo de navegador, idioma, tamaño de pantalla, tecnologías compatibles, etc.), pueden almacenarse o leerse en tu dispositivo para reconocerlo cada vez que te conectes a una aplicación o página web, con el fin de cumplir una o varias de las finalidades descritas en este texto.</div>
+            <div>{% blocktrans %}Las cookies, identificadores de dispositivos o identificadores online similares (por ejemplo, identificadores de inicio de sesión, identificadores asignados aleatoriamente, identificadores de red), junto con otra información (como el tipo de navegador, idioma, tamaño de pantalla, tecnologías compatibles, etc.), pueden almacenarse o leerse en tu dispositivo para reconocerlo cada vez que te conectes a una aplicación o página web, con el fin de cumplir una o varias de las finalidades descritas en este texto.{% endblocktrans %}</div>
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg font-semibold">Publicidad y contenido personalizados, medición de publicidad y contenido, investigación de audiencia y desarrollo de servicios</h2>
+            <h2 class="text-lg font-semibold">{% blocktrans %}Publicidad y contenido personalizados, medición de publicidad y contenido, investigación de audiencia y desarrollo de servicios{% endblocktrans %}</h2>
 
-            <div>La publicidad y el contenido pueden personalizarse según tu perfil. Tu actividad en este servicio puede utilizarse para crear o mejorar un perfil sobre ti y así recibir publicidad o contenido personalizados. Se puede medir el rendimiento de la publicidad y del contenido, y generar informes basados en tu actividad y la de otros usuarios. Tu actividad en este servicio puede contribuir al desarrollo y mejora de productos y servicios.</div>
+            <div>{% blocktrans %}La publicidad y el contenido pueden personalizarse según tu perfil. Tu actividad en este servicio puede utilizarse para crear o mejorar un perfil sobre ti y así recibir publicidad o contenido personalizados. Se puede medir el rendimiento de la publicidad y del contenido, y generar informes basados en tu actividad y la de otros usuarios. Tu actividad en este servicio puede contribuir al desarrollo y mejora de productos y servicios.{% endblocktrans %}</div>
 
-            <ul class="list-disc pl-10 text-lg"><li>Uso de datos limitados para seleccionar anuncios básicos</li></ul>
+            <ul class="list-disc pl-10 text-lg"><li>{% trans 'Uso de datos limitados para seleccionar anuncios básicos' %}</li></ul>
             
-            <div class="pl-10">La publicidad mostrada en este servicio puede basarse en datos limitados, como la página web o la aplicación que estés utilizando, tu ubicación aproximada, el tipo de dispositivo o el contenido con el que estás interactuando (o has interactuado), por ejemplo, para limitar la cantidad de veces que se muestra un anuncio específico</div>
+            <div class="pl-10">{% blocktrans %}La publicidad mostrada en este servicio puede basarse en datos limitados, como la página web o la aplicación que estés utilizando, tu ubicación aproximada, el tipo de dispositivo o el contenido con el que estás interactuando (o has interactuado), por ejemplo, para limitar la cantidad de veces que se muestra un anuncio específico.{% endblocktrans %}</div>
 
-            <ul class="list-disc pl-10 text-lg"><li>Crear perfiles para publicidad personalizada</li></ul>
+            <ul class="list-disc pl-10 text-lg"><li>{% trans 'Crear perfiles para publicidad personalizada' %}</li></ul>
             
-            <div class="pl-10">La información sobre tu actividad en este servicio, como los formularios que completes y el contenido que consumas, puede ser almacenada y combinada con otra información que tengamos sobre ti o sobre usuarios similares, como tu actividad previa en este servicio y en otras páginas web o aplicaciones. Esta información puede utilizarse posteriormente para crear o mejorar un perfil sobre ti, que podría incluir posibles intereses y aspectos personales. Este perfil puede ser utilizado en el futuro para mostrarte publicidad que pueda resultarte más relevante en función de tus posibles intereses, ya sea por nuestra parte o por parte de terceros.</div>
+            <div class="pl-10">{% blocktrans %}La información sobre tu actividad en este servicio, como los formularios que completes y el contenido que consumas, puede ser almacenada y combinada con otra información que tengamos sobre ti o sobre usuarios similares, como tu actividad previa en este servicio y en otras páginas web o aplicaciones. Esta información puede utilizarse posteriormente para crear o mejorar un perfil sobre ti, que podría incluir posibles intereses y aspectos personales. Este perfil puede ser utilizado en el futuro para mostrarte publicidad que pueda resultarte más relevante en función de tus posibles intereses, ya sea por nuestra parte o por parte de terceros.{% endblocktrans %}</div>
             
             <ul class="list-disc pl-10 text-lg">
-                <li>Uso de perfiles para la selección de contenido personalizado</li>
+                <li>{% trans 'Uso de perfiles para la selección de contenido personalizado' %}</li>
             </ul>
             
-            <div class="pl-10">El contenido que se te presenta en este servicio puede basarse en un perfil de personalización de contenido, lo que puede reflejar tu actividad en este u otros servicios (por ejemplo, los formularios que envías o el contenido que visualizas), tus posibles intereses y aspectos personales. Un ejemplo de lo anterior sería la adaptación del orden en el que se te presenta el contenido, para que así te resulte más sencillo encontrar el contenido (no publicitario) que coincida con tus intereses.</div>
+            <div class="pl-10">{% blocktrans %}El contenido que se te presenta en este servicio puede basarse en un perfil de personalización de contenido, lo que puede reflejar tu actividad en este u otros servicios (por ejemplo, los formularios que envías o el contenido que visualizas), tus posibles intereses y aspectos personales. Un ejemplo de lo anterior sería la adaptación del orden en el que se te presenta el contenido, para que así te resulte más sencillo encontrar el contenido (no publicitario) que coincida con tus intereses.{% endblocktrans %}</div>
             
             <ul class="list-disc pl-10 text-lg">
-                <li>Medir el rendimiento de la publicidad</li>
+                <li>{% trans 'Medir el rendimiento de la publicidad' %}</li>
             </ul>
             
-            <div class="pl-10">La información sobre qué publicidad se te presenta y sobre la forma en que interactúas con ella puede utilizarse para determinar lo bien que ha funcionado un anuncio en tu caso o en el de otros usuarios y si se han alcanzado los objetivos publicitarios. Por ejemplo, si has visualizado un anuncio, si has hecho clic sobre el mismo, si eso te ha llevado posteriormente a comprar un producto o a visitar una página web, etc. Esto resulta muy útil para comprender la relevancia de las campañas publicitarias.</div>
+            <div class="pl-10">{% blocktrans %}La información sobre qué publicidad se te presenta y sobre la forma en que interactúas con ella puede utilizarse para determinar lo bien que ha funcionado un anuncio en tu caso o en el de otros usuarios y si se han alcanzado los objetivos publicitarios. Por ejemplo, si has visualizado un anuncio, si has hecho clic sobre el mismo, si eso te ha llevado posteriormente a comprar un producto o a visitar una página web, etc. Esto resulta muy útil para comprender la relevancia de las campañas publicitarias.{% endblocktrans %}</div>
             
             <ul class="list-disc pl-10 text-lg">
-                <li>Medir el rendimiento del contenido</li>
+                <li>{% trans 'Medir el rendimiento del contenido' %}</li>
             </ul>
             
-            <div class="pl-10">La información sobre qué contenido se te presenta y sobre la forma en que interactúas con él puede utilizarse para determinar, por ejemplo, si el contenido (no publicitario) ha llegado a su público previsto y ha coincidido con sus intereses. Por ejemplo, si hasleído un artículo, si has visualizado un vídeo, si has escuchado un “pódcast” o si has consultado la descripción de un producto, cuánto tiempo has pasado en esos servicios y en las páginas web que has visitado, etc. Esto resulta muy útil para comprender la relevancia del contenido (no publicitario) que se te muestra.</div>
+            <div class="pl-10">{% blocktrans %}La información sobre qué contenido se te presenta y sobre la forma en que interactúas con él puede utilizarse para determinar, por ejemplo, si el contenido (no publicitario) ha llegado a su público previsto y ha coincidido con sus intereses. Por ejemplo, si hasleído un artículo, si has visualizado un vídeo, si has escuchado un “pódcast” o si has consultado la descripción de un producto, cuánto tiempo has pasado en esos servicios y en las páginas web que has visitado, etc. Esto resulta muy útil para comprender la relevancia del contenido (no publicitario) que se te muestra.{% endblocktrans %}</div>
             
             <ul class="list-disc pl-10 text-lg">
-                <li>Comprender al público a través de estadísticas o a través de la combinación de datos procedentes de diferentes fuentes</li>
+                <li>{% trans 'Comprender al público a través de estadísticas o a través de la combinación de datos procedentes de diferentes fuentes' %}</li>
             </ul>
             
-            <div class="pl-10">Se pueden generar informes basados en la combinación de conjuntos de datos (como perfiles de usuario, estadísticas, estudios de mercado, datos analíticos) respecto a tus interacciones y las de otros usuarios con el contenido publicitario (o no publicitario) para identificar las características comunes (por ejemplo, para determinar qué público objetivo es más receptivo a una campaña publicitaria o a ciertos contenidos).</div>
+            <div class="pl-10">{% blocktrans %}Se pueden generar informes basados en la combinación de conjuntos de datos (como perfiles de usuario, estadísticas, estudios de mercado, datos analíticos) respecto a tus interacciones y las de otros usuarios con el contenido publicitario (o no publicitario) para identificar las características comunes (por ejemplo, para determinar qué público objetivo es más receptivo a una campaña publicitaria o a ciertos contenidos).{% endblocktrans %}</div>
             
             <ul class="list-disc pl-10 text-lg">
-                <li>Desarrollo y mejora de los servicios</li>
+                <li>{% trans 'Desarrollo y mejora de los servicios' %}</li>
             </ul>
             
-            <div class="pl-10">La información sobre tu actividad en este servicio, como tu interacción con los anuncios o con el contenido, puede resultar muy útil para mejorar productos y servicios, así como para crear otros nuevos en base a las interacciones de los usuarios, el tipo de audiencia, etc. Esta finalidad específica no incluye el desarrollo ni la mejora de los perfiles de usuario y de identificadores.</div>
+            <div class="pl-10">{% blocktrans %}La información sobre tu actividad en este servicio, como tu interacción con los anuncios o con el contenido, puede resultar muy útil para mejorar productos y servicios, así como para crear otros nuevos en base a las interacciones de los usuarios, el tipo de audiencia, etc. Esta finalidad específica no incluye el desarrollo ni la mejora de los perfiles de usuario y de identificadores.{% endblocktrans %}</div>
 
             <ul class="list-disc pl-10 text-lg">
-                <li>Uso de datos limitados con el objetivo de seleccionar el contenido</li>
+                <li>{% trans 'Uso de datos limitados con el objetivo de seleccionar el contenido' %}</li>
             </ul>
             
-            <div class="pl-10">El contenido que se presenta en este servicio puede basarse en datos limitados, como por ejemplo la página web o la aplicación que esté utilizando, tu ubicación no precisa, el tipo de dispositivo o el contenido con el que estás interactuando (o con el que has interactuado) (por ejemplo, para limitar el número de veces que se te presenta un vídeo o un artículo en concreto).</div>
+            <div class="pl-10">{% blocktrans %}El contenido que se presenta en este servicio puede basarse en datos limitados, como por ejemplo la página web o la aplicación que esté utilizando, tu ubicación no precisa, el tipo de dispositivo o el contenido con el que estás interactuando (o con el que has interactuado) (por ejemplo, para limitar el número de veces que se te presenta un vídeo o un artículo en concreto).{% endblocktrans %}</div>
             
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg font-semibold">Utilizar datos de localización geográfica precisa</h2>
+            <h2 class="text-lg font-semibold">{% trans 'Utilizar datos de localización geográfica precisa' %}</h2>
 
-            <div>Con tu aprobación, tu ubicación exacta (dentro de un radio inferior a 500 metros) podrá utilizarse para apoyar las finalidades que se explican en este documento.</div>
+            <div>{% blocktrans %}Con tu aprobación, tu ubicación exacta (dentro de un radio inferior a 500 metros) podrá utilizarse para apoyar las finalidades que se explican en este documento.{% endblocktrans %}</div>
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg font-semibold">Analizar activamente las características del dispositivo para su identificación</h2>
+            <h2 class="text-lg font-semibold">{% trans 'Analizar activamente las características del dispositivo para su identificación' %}</h2>
 
-            <div>Con tu aceptación, se pueden solicitar y utilizar ciertas características específicas de tu dispositivo para distinguirlo de otros (por ejemplo, las fuentes o complementos instalados y la resolución de su pantalla) en apoyo de las finalidades que se explican en este documento.</div>
+            <div>{% blocktrans %}Con tu aceptación, se pueden solicitar y utilizar ciertas características específicas de tu dispositivo para distinguirlo de otros (por ejemplo, las fuentes o complementos instalados y la resolución de su pantalla) en apoyo de las finalidades que se explican en este documento.{% endblocktrans %}</div>
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg font-semibold">Garantizar la seguridad, evitar y detectar fraudes, y eliminar fallos</h2>
+            <h2 class="text-lg font-semibold">{% trans 'Garantizar la seguridad, evitar y detectar fraudes, y eliminar fallos' %}</h2>
 
-            <div>Tus datos pueden utilizarse para supervisar y evitar las actividades inusuales y potencialmente fraudulentas (por ejemplo, en relación con la publicidad, o con actividad realizada por bots), así como para asegurar que los sistemas y los procesos funcionen de forma correcta y segura. Asimismo, se puede utilizar para corregir cualquier problema que tú, el editor/medio de comunicación o el anunciante podáis encontraros a la hora de la entrega del contenido y los anuncios, así como en tu interacción con ellos.</div>
+            <div>{% blocktrans %}Tus datos pueden utilizarse para supervisar y evitar las actividades inusuales y potencialmente fraudulentas (por ejemplo, en relación con la publicidad, o con actividad realizada por bots), así como para asegurar que los sistemas y los procesos funcionen de forma correcta y segura. Asimismo, se puede utilizar para corregir cualquier problema que tú, el editor/medio de comunicación o el anunciante podáis encontraros a la hora de la entrega del contenido y los anuncios, así como en tu interacción con ellos.{% endblocktrans %}</div>
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg font-semibold">Ofrecer y presentar publicidad y contenido</h2>
+            <h2 class="text-lg font-semibold">{% trans 'Ofrecer y presentar publicidad y contenido' %}</h2>
 
-            <div>Cierta información (como una dirección IP o las capacidades del dispositivo) se utiliza para garantizar la compatibilidad técnica del contenido o de la publicidad, así como para facilitar la transmisión del contenido o del anuncio a tu dispositivo.</div>
+            <div>{% blocktrans %}Cierta información (como una dirección IP o las capacidades del dispositivo) se utiliza para garantizar la compatibilidad técnica del contenido o de la publicidad, así como para facilitar la transmisión del contenido o del anuncio a tu dispositivo.{% endblocktrans %}</div>
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg font-semibold">Cotejo y combinación de datos procedentes de otras fuentes de información</h2>
+            <h2 class="text-lg font-semibold">{% trans 'Cotejo y combinación de datos procedentes de otras fuentes de información' %}</h2>
 
-            <div>La información en relación con tu actividad en este servicio puede cotejarse y combinarse con otra información sobre tu persona procedente de diversas fuentes (por ejemplo, tu actividad en un servicio en línea independiente, tu uso de una tarjeta de fidelización en la tienda o tus respuestas a una encuesta) en apoyo de los fines que se explican en este documento.</div>
+            <div>{% blocktrans %}La información en relación con tu actividad en este servicio puede cotejarse y combinarse con otra información sobre tu persona procedente de diversas fuentes (por ejemplo, tu actividad en un servicio en línea independiente, tu uso de una tarjeta de fidelización en la tienda o tus respuestas a una encuesta) en apoyo de los fines que se explican en este documento.{% endblocktrans %}</div>
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg font-semibold">Vincular diferentes dispositivos</h2>
+            <h2 class="text-lg font-semibold">{% trans 'Vincular diferentes dispositivos' %}</h2>
 
-            <div>En apoyo de las finalidades que se explican en este documento, tu dispositivo podría considerarse como vinculado a otros dispositivos que te pertenezcan o sean de tu hogar (por ejemplo, porque ha iniciado sesión en el mismo servicio tanto desde tu teléfono como desde tu ordenador, o porque podrías haber utilizado la misma conexión a Internet en ambos dispositivos).</div>
+            <div>{% blocktrans %}En apoyo de las finalidades que se explican en este documento, tu dispositivo podría considerarse como vinculado a otros dispositivos que te pertenezcan o sean de tu hogar (por ejemplo, porque ha iniciado sesión en el mismo servicio tanto desde tu teléfono como desde tu ordenador, o porque podrías haber utilizado la misma conexión a Internet en ambos dispositivos).{% endblocktrans %}</div>
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="text-lg font-semibold">Identificación de dispositivos en función de la información transmitida de forma automática</h2>
+            <h2 class="text-lg font-semibold">{% trans 'Identificación de dispositivos en función de la información transmitida de forma automática' %}</h2>
 
-            <div>Tu dispositivo podría distinguirse de otros en función de la información que envía de forma automática al acceder a Internet (por ejemplo, la dirección IP de tu conexión a Internet o el tipo de navegador que estás utilizando) en apoyo de los fines que se exponen en este documento.</div>
+            <div>{% blocktrans %}Tu dispositivo podría distinguirse de otros en función de la información que envía de forma automática al acceder a Internet (por ejemplo, la dirección IP de tu conexión a Internet o el tipo de navegador que estás utilizando) en apoyo de los fines que se exponen en este documento.{% endblocktrans %}</div>
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="text-xl font-semibold">3. BASE LEGÍTIMA PARA EL USO DE COOKIES</h2>
+            <h2 class="text-xl font-semibold">{% trans '3. BASE LEGÍTIMA PARA EL USO DE COOKIES' %}</h2>
         
-            <div>La legitimación para el uso de las cookies estrictamente funcionales, viene dada porque el tratamiento es necesario para el cumplimiento de una obligación legal conforme a la Ley 34/2002 Ley de Servicios de la Información y de Comercio Electrónico.</div>
+            <div>{% blocktrans %}La legitimación para el uso de las cookies estrictamente funcionales, viene dada porque el tratamiento es necesario para el cumplimiento de una obligación legal conforme a la Ley 34/2002 Ley de Servicios de la Información y de Comercio Electrónico.{% endblocktrans %}</div>
         
-            <div>La legitimación para el uso de las cookies con fines analíticos de optimización de personalización de publicidad comportamental y valoración está basada en el consentimiento que se solicita, conforme al Artículo 6.1.a) del Reglamento (UE) 2017/679.</div>
+            <div>{% blocktrans %}La legitimación para el uso de las cookies con fines analíticos de optimización de personalización de publicidad comportamental y valoración está basada en el consentimiento que se solicita, conforme al Artículo 6.1.a) del Reglamento (UE) 2017/679.{% endblocktrans %}</div>
         </div>        
 
         <div class="space-y-3 text-sm">
-            <h2 class="text-xl font-semibold">4. PLAZO DE CONSERVACIÓN DE LA INFORMACIÓN</h2>
+            <h2 class="text-xl font-semibold">{% trans '4. PLAZO DE CONSERVACIÓN DE LA INFORMACIÓN' %}</h2>
         
-            <div>Mantendremos la información mientras sea necesario para la prestación del servicio solicitado, hasta que nos manifiestes tu oposición o hasta que revoques tu consentimiento. En estos casos, la información se mantendrá debidamente bloqueada sin que la podamos utilizar mientras sea necesaria para el ejercicio o defensa de reclamaciones legales o contractuales. Una vez transcurrido este plazo de tiempo, tus datos serán eliminados definitivamente.</div>
+            <div>{% blocktrans %}Mantendremos la información mientras sea necesario para la prestación del servicio solicitado, hasta que nos manifiestes tu oposición o hasta que revoques tu consentimiento. En estos casos, la información se mantendrá debidamente bloqueada sin que la podamos utilizar mientras sea necesaria para el ejercicio o defensa de reclamaciones legales o contractuales. Una vez transcurrido este plazo de tiempo, tus datos serán eliminados definitivamente.{% endblocktrans %}</div>
         
-            <div>En los casos en que obtenemos datos automáticamente a través de cookies, ten en cuenta que algunas pueden estar instaladas durante años. No obstante, puedes limitar su uso en el tiempo eliminándolas de los navegadores o dispositivos.</div>
+            <div>{% blocktrans %}En los casos en que obtenemos datos automáticamente a través de cookies, ten en cuenta que algunas pueden estar instaladas durante años. No obstante, puedes limitar su uso en el tiempo eliminándolas de los navegadores o dispositivos.{% endblocktrans %}</div>
         </div>
         
         <div class="space-y-3 text-sm">
-            <h2 class="text-xl font-semibold">5. FORMAS DE BLOQUEAR Y LIMITAR EL USO DE COOKIES:</h2>
+            <h2 class="text-xl font-semibold">{% trans '5. FORMAS DE BLOQUEAR Y LIMITAR EL USO DE COOKIES:' %}</h2>
         
-            <div>Es importante destacar que estas tecnologías no son intrusivas, ya que toda la información obtenida a través de las cookies es totalmente anónima, y en ningún caso puede ser asociada a un usuario concreto e identificado. Esta información nos permite adaptar y mejorar sus servicios a los intereses de los usuarios. No obstante, el usuario tiene la opción de impedir la generación de cookies, mediante la selección de la correspondiente opción en su programa navegador. Informa que en el caso de que deshabilite el uso de cookies la navegación puede ser más lenta de lo habitual.</div>
+            <div>{% blocktrans %}Es importante destacar que estas tecnologías no son intrusivas, ya que toda la información obtenida a través de las cookies es totalmente anónima, y en ningún caso puede ser asociada a un usuario concreto e identificado. Esta información nos permite adaptar y mejorar sus servicios a los intereses de los usuarios. No obstante, el usuario tiene la opción de impedir la generación de cookies, mediante la selección de la correspondiente opción en su programa navegador. Informa que en el caso de que deshabilite el uso de cookies la navegación puede ser más lenta de lo habitual.{% endblocktrans %}</div>
         
-            <div>Concretamente, todos los navegadores permiten hacer cambios que permiten desactivar la configuración de las cookies. Estos ajustes se encuentran ubicados en las "opciones" o "preferencias" del menú de su navegador.</div>
+            <div>{% blocktrans %}Concretamente, todos los navegadores permiten hacer cambios que permiten desactivar la configuración de las cookies. Estos ajustes se encuentran ubicados en las "opciones" o "preferencias" del menú de su navegador.{% endblocktrans %}</div>
         
             <div>Internet Explorer: <a class="underline text-blue-400" href="http://windows.microsoft.com/es-es/windows-vista/block-or-allow-cookies">http://windows.microsoft.com/es-es/windows-vista/block-or-allow-cookies</a></div>
             <div>Mozilla Firefox: <a class="underline text-blue-400" href="https://support.mozilla.org/es/kb/cookies-informacion-que-los-sitios-web-guardan-en-?redirectlocale=en-us&redirectslug=cookies">https://support.mozilla.org/es/kb/cookies-informacion-que-los-sitios-web-guardan-en-?redirectlocale=en-us&redirectslug=cookies</a></div>
             <div>Google Chrome: <a class="underline text-blue-400" href="https://support.google.com/chrome/answer/95647?hl=es">https://support.google.com/chrome/answer/95647?hl=es</a></div>
             <div>Safari: <a class="underline text-blue-400" href="https://support.apple.com/es-es/guide/safari/sfri11471/mac">https://support.apple.com/es-es/guide/safari/sfri11471/mac</a></div>
         
-            <div>En cambio, si se desea bloquear las cookies analíticas de Google, se puede instalar un complemento en el navegador siguiendo las instrucciones indicadas en el siguiente enlace: <a class="underline text-blue-400" href="https://tools.google.com/dlpage/gaoptout">https://tools.google.com/dlpage/gaoptout</a>.</div>
+            <div>{% blocktrans %}En cambio, si se desea bloquear las cookies analíticas de Google, se puede instalar un complemento en el navegador siguiendo las instrucciones indicadas en el siguiente enlace:{% endblocktrans %} <a class="underline text-blue-400" href="https://tools.google.com/dlpage/gaoptout">https://tools.google.com/dlpage/gaoptout</a>.</div>
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="text-xl font-semibold">6. MÁS INFORMACIÓN</h2>
+            <h2 class="text-xl font-semibold">{% trans '6. MÁS INFORMACIÓN' %}</h2>
         
-            <div>Para obtener más información sobre el tratamiento de datos, recomendamos visitar nuestra política de privacidad.</div>
+            <div>{% blocktrans %}Para obtener más información sobre el tratamiento de datos, recomendamos visitar nuestra política de privacidad.{% endblocktrans %}</div>
         
-            <div>Además, cualquier usuario que tenga cualquier duda acerca de estas tecnologías puede remitirnos la consulta a la dirección electrónica <a class="underline text-blue-400" href="mailto:vivac@esportsvivac.com">vivac@esportsvivac.com</a>.</div>
+            <div>{% blocktrans %}Además, cualquier usuario que tenga cualquier duda acerca de estas tecnologías puede remitirnos la consulta a la dirección electrónica{% endblocktrans %} <a class="underline text-blue-400" href="mailto:vivac@esportsvivac.com">vivac@esportsvivac.com</a>.</div>
         </div>
         
         
