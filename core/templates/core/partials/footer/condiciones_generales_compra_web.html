@@ -1,244 +1,240 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Condiciones Generales de Compra{% endblock %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans 'Condiciones Generales de Compra' %}{% endblock %}
 
 {% block content%}
 
-{% load static %}
-
 <div class="max-w-screen-md lg:max-w-screen-lg mx-auto max-[1300px]:-mt-6 px-4 lg:px-0">
 
-    <h1 class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold mb-5">Condiciones Generales de Compra</h1>
+    <h1 class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold mb-5">{% trans 'Condiciones Generales de Compra' %}</h1>
     
     <div class="space-y-10">
         <div class="space-y-3 text-sm">
         
             <div>
-                Las condiciones generales de compra se aplican a la adquisición de productos ofrecidos por ESPORTS VIVAC a través de su sitio web ubicado en la URL www.esportsvivac.com (el "Sitio Web") por parte de cualquier usuario ("Cliente").
+                {% blocktrans %}Las condiciones generales de compra se aplican a la adquisición de productos ofrecidos por ESPORTS VIVAC a través de su sitio web ubicado en la URL www.esportsvivac.com (el "Sitio Web") por parte de cualquier usuario ("Cliente").{% endblocktrans %}
             </div>
             
             <div class="space-y-1 text-sm">
                 <div>
-                    Los datos de identificación de ESPORTS VIVAC son los siguientes:
+                    {% blocktrans %}Los datos de identificación de ESPORTS VIVAC son los siguientes:{% endblocktrans %}
                 </div>
-                <div><b class="font-semibold">Domicilio social: </b>C/ Sant Roc, 16, 17867 Camprodon</div>
-                <div><b class="font-semibold">C.I.F.nº: </b>B-17829516</div>
-                <div><b class="font-semibold">Email: </b><a class="underline text-blue-400" href="mailto:vivac@esportsvivac.com">vivac@esportsvivac.com</a></div>
-                <div><b class="font-semibold">Teléfono: </b>+34 972 74 13 92 / +34 972 13 04 26</div>
-                <div><b class="font-semibold">Datos registrales: </b> Inscrita en el Registro Mercantil de Barcelona al Tomo XXX, Folio XX y Hoja número B-xx, inscripción xª</div>
+                <div><b class="font-semibold">{% trans 'Domicilio social' %}: </b>{% trans 'C/ Sant Roc, 16, 17867 Camprodon' %}</div>
+            <div><b class="font-semibold">C.I.F.nº: </b>B-17829516</div>
+            <div><b class="font-semibold">{% trans 'Email' %}: </b><a class="underline text-blue-400" href="mailto:vivac@esportsvivac.com">vivac@esportsvivac.com</a></div>
+            <div><b class="font-semibold">{% trans 'Teléfono' %}: </b>+34 972 74 13 92 / +34 972 13 04 26</div>
+            <div><b class="font-semibold">{% trans 'Datos registrales' %}: </b> {% trans 'C.I.F. B17829516. Inscrita en el Registro Mercantil Gerona. tomo 2214. folio 138. Hoja 36928. Inscripción 1.' %}</div>
             </div>
         
             <div>
-                La adquisición de los productos ofrecidos a través del Sitio Web implica la aceptación de los términos y condiciones establecidos en estas Condiciones Generales de Compra. Por lo tanto, antes de proceder a su aceptación, lea detenidamente su contenido. Si no está de acuerdo con las presentes Condiciones Generales, la compra de los productos no podrá realizarse, y en consecuencia, no generará ninguna obligación ni responsabilidad por parte de ESPORTS VIVAC.
+                {% blocktrans %}La adquisición de los productos ofrecidos a través del Sitio Web implica la aceptación de los términos y condiciones establecidos en estas Condiciones Generales de Compra. Por lo tanto, antes de proceder a su aceptación, lea detenidamente su contenido. Si no está de acuerdo con las presentes Condiciones Generales, la compra de los productos no podrá realizarse, y en consecuencia, no generará ninguna obligación ni responsabilidad por parte de ESPORTS VIVAC.{% endblocktrans %}
             </div>
             <div>
-                Al realizar un pedido de compra a través del Sitio Web, el Cliente declara tener al menos 16 años de edad y poseer la capacidad legal necesaria para contratar los productos ofrecidos en el Sitio Web.
+                {% blocktrans %}Al realizar un pedido de compra a través del Sitio Web, el Cliente declara tener al menos 16 años de edad y poseer la capacidad legal necesaria para contratar los productos ofrecidos en el Sitio Web.{% endblocktrans %}
             </div>
             <div>
-                Para realizar un pedido de compra, el Cliente deberá seguir los procedimientos establecidos en el Sitio Web.
+                {% blocktrans %}Para realizar un pedido de compra, el Cliente deberá seguir los procedimientos establecidos en el Sitio Web.{% endblocktrans %}
             </div>
             <div>
-                ESPORTS VIVAC se reserva el derecho de modificar el contenido y/o el alcance de las Condiciones Generales de Compra en cualquier momento, sin necesidad de previo aviso. Por tanto, es responsabilidad del Cliente revisar periódicamente las Condiciones Generales de Compra antes de adquirir cualquier producto en el Sitio Web.
+                {% blocktrans %}ESPORTS VIVAC se reserva el derecho de modificar el contenido y/o el alcance de las Condiciones Generales de Compra en cualquier momento, sin necesidad de previo aviso. Por tanto, es responsabilidad del Cliente revisar periódicamente las Condiciones Generales de Compra antes de adquirir cualquier producto en el Sitio Web.{% endblocktrans %}
             </div>
             
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="font-semibold">Registro del Cliente</h2>
+            <h2 class="font-semibold">{% trans 'Registro del Cliente' %}</h2>
         
             <div>
-                Para iniciar el proceso de compra de los productos del Sitio Web, el Cliente deberá registrarse en la sección correspondiente del Sitio Web como "Regístrate" (o como "invitado"). En futuras compras, si el Cliente se ha registrado previamente, solo necesitará proporcionar su dirección de correo electrónico y contraseña en la sección "Mi Cuenta".
+                {% blocktrans %}Para iniciar el proceso de compra de los productos del Sitio Web, el Cliente deberá registrarse en la sección correspondiente del Sitio Web como "Regístrate" (o como "invitado"). En futuras compras, si el Cliente se ha registrado previamente, solo necesitará proporcionar su dirección de correo electrónico y contraseña en la sección "Mi Cuenta".{% endblocktrans %}
             </div>
             
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="font-semibold">Productos y representación gráfica de los mismos</h2>
+            <h2 class="font-semibold">{% trans 'Productos y representación gráfica de los mismos' %}</h2>
         
             <div>
-                ESPORTS VIVAC se reserva el derecho de determinar los productos disponibles para los usuarios a través de la Web. En cualquier momento, podemos agregar nuevos productos a los ya disponibles en la web, los cuales estarán sujetos a los términos establecidos en estas Condiciones Generales, a menos que se indique lo contrario. Asimismo, nos reservamos el derecho de cambiar, modificar, agregar o eliminar productos y servicios ofrecidos en la Web en cualquier momento y sin previo aviso. Estos cambios no afectarán las transacciones previamente aceptadas por los Usuarios.
+                {% blocktrans %}ESPORTS VIVAC se reserva el derecho de determinar los productos disponibles para los usuarios a través de la Web. En cualquier momento, podemos agregar nuevos productos a los ya disponibles en la web, los cuales estarán sujetos a los términos establecidos en estas Condiciones Generales, a menos que se indique lo contrario. Asimismo, nos reservamos el derecho de cambiar, modificar, agregar o eliminar productos y servicios ofrecidos en la Web en cualquier momento y sin previo aviso. Estos cambios no afectarán las transacciones previamente aceptadas por los Usuarios.{% endblocktrans %}
             </div>
 
             <div>
-                En la web, encontrarás información detallada sobre las características de los artículos. Es importante que el usuario comprador lea atentamente la descripción de los productos antes de formalizar la compra, ya que esta información forma parte de las condiciones de venta y su aceptación. Sin embargo, es importante tener en cuenta lo siguiente:
+                {% blocktrans %}En la web, encontrarás información detallada sobre las características de los artículos. Es importante que el usuario comprador lea atentamente la descripción de los productos antes de formalizar la compra, ya que esta información forma parte de las condiciones de venta y su aceptación. Sin embargo, es importante tener en cuenta lo siguiente:{% endblocktrans %}
             </div>
 
             <div>
-                1-Las fotografías, vídeos y cualquier representación visual o gráfica, así como los nombres comerciales, marcas o signos distintivos de la web, se publican para informar al cliente sobre los productos con la máxima exhaustividad posible. ESPORTS VIVAC se esfuerza por representar los artículos con la mayor precisión y fidelidad posible a la realidad física, considerando las limitaciones tecnológicas de visualización.
+                {% blocktrans %}1-Las fotografías, vídeos y cualquier representación visual o gráfica, así como los nombres comerciales, marcas o signos distintivos de la web, se publican para informar al cliente sobre los productos con la máxima exhaustividad posible. ESPORTS VIVAC se esfuerza por representar los artículos con la mayor precisión y fidelidad posible a la realidad física, considerando las limitaciones tecnológicas de visualización.{% endblocktrans %}
             </div>
             <div>
-                2-A pesar de nuestros esfuerzos y debido a las limitaciones tecnológicas y/o a la percepción visual subjetiva de cada usuario, pueden surgir discrepancias entre la representación web y el producto recibido. Estas discrepancias incluyen el tono del color, los volúmenes, el peso, la textura, los brillos, entre otros. Tales discrepancias no son responsabilidad de ESPORTS VIVAC ni se deben atribuir a acciones de publicidad engañosa o fraudulenta.
+                {% blocktrans %}2-A pesar de nuestros esfuerzos y debido a las limitaciones tecnológicas y/o a la percepción visual subjetiva de cada usuario, pueden surgir discrepancias entre la representación web y el producto recibido. Estas discrepancias incluyen el tono del color, los volúmenes, el peso, la textura, los brillos, entre otros. Tales discrepancias no son responsabilidad de ESPORTS VIVAC ni se deben atribuir a acciones de publicidad engañosa o fraudulenta.{% endblocktrans %}
             </div>    
                 
             <div>
-                3-Algunas fotografías, descripciones, textos, representaciones gráficas y vídeos relativos a los productos son suministrados directamente por los proveedores de ESPORTS VIVAC. Estas descripciones de los productos y marcas de terceros en la web se elaboran a partir de la información facilitada por los proveedores, por lo que ESPORTS VIVAC no tiene control sobre ella ni asume responsabilidad alguna.
+                {% blocktrans %}3-Algunas fotografías, descripciones, textos, representaciones gráficas y vídeos relativos a los productos son suministrados directamente por los proveedores de ESPORTS VIVAC. Estas descripciones de los productos y marcas de terceros en la web se elaboran a partir de la información facilitada por los proveedores, por lo que ESPORTS VIVAC no tiene control sobre ella ni asume responsabilidad alguna.{% endblocktrans %}
             </div>
             
         </div>
         <div class="space-y-3 text-sm">
-            <h2 class="font-semibold">Marcas y responsabilidad por sostenibilidad</h2>
+            <h2 class="font-semibold">{% trans 'Marcas y responsabilidad por sostenibilidad' %}</h2>
         
             <div>
-                En cuanto a la sostenibilidad de los productos de marcas de terceros, queremos destacar que no asumimos responsabilidad por la veracidad de las afirmaciones relacionadas con la sostenibilidad de los productos ofrecidos en nuestro sitio web. Aunque nos esforzamos por proporcionar información precisa y completa, la información sobre la sostenibilidad proviene directamente de las propias marcas y fabricantes.
+                {% blocktrans %}En cuanto a la sostenibilidad de los productos de marcas de terceros, queremos destacar que no asumimos responsabilidad por la veracidad de las afirmaciones relacionadas con la sostenibilidad de los productos ofrecidos en nuestro sitio web. Aunque nos esforzamos por proporcionar información precisa y completa, la información sobre la sostenibilidad proviene directamente de las propias marcas y fabricantes.{% endblocktrans %}
             </div>
             <div>
-                ESPORTS VIVAC no tiene la obligación legal de verificar ni garantizar la exactitud de estas afirmaciones sobre sostenibilidad. Cualquier reclamación, garantía o responsabilidad con respecto a la sostenibilidad de un producto debe dirigirse a la marca o fabricante correspondiente. Es responsabilidad de ellos proporcionar información precisa y transparente sobre sus productos en términos de sostenibilidad.
+                {% blocktrans %}ESPORTS VIVAC no tiene la obligación legal de verificar ni garantizar la exactitud de estas afirmaciones sobre sostenibilidad. Cualquier reclamación, garantía o responsabilidad con respecto a la sostenibilidad de un producto debe dirigirse a la marca o fabricante correspondiente. Es responsabilidad de ellos proporcionar información precisa y transparente sobre sus productos en términos de sostenibilidad.{% endblocktrans %}
             </div>
             
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="font-semibold">Precio y forma de pago</h2>
+            <h2 class="font-semibold">{% trans 'Precio y forma de pago' %}</h2>
         
-            <p class="mb-4">El precio de los productos será el que aparezca en la moneda indicada junto a cada producto del Sitio Web.</p>
+            <p class="mb-4">{% blocktrans %}El precio de los productos será el que aparezca en la moneda indicada junto a cada producto del Sitio Web.{% endblocktrans %}</p>
 
-            <p class="mb-4">Los precios de venta indicados en nuestra web se muestran de la siguiente manera:</p>
+            <p class="mb-4">{% blocktrans %}Los precios de venta indicados en nuestra web se muestran de la siguiente manera:{% endblocktrans %}</p>
 
             <ul class="list-disc list-inside mb-4 space-y-1">
+                {% blocktrans %}
                 <li>Si el Cliente reside en la Unión Europea, todos los precios incluyen el IVA.</li>
                 <li>Si el Cliente reside fuera de la Unión Europea, será responsable de cualquier impuesto local, pago de tasa de importación o aduana a la llegada del envío a su destino, cuando corresponda.</li>
+                {% endblocktrans %}
             </ul>
 
-            <p class="mb-4">Los gastos de envío no están incluidos en el precio de los productos y corren por cuenta del Cliente, a menos que el pedido tenga los gastos de envío gratuitos. Estos gastos de envío se añadirán al total del importe de los productos seleccionados, por lo que el cliente podrá consultarlos en todo momento en la cesta de la compra antes de confirmar el pedido y finalizar el proceso de compra.</p>
+            <p class="mb-4">{% blocktrans %}Los gastos de envío no están incluidos en el precio de los productos y corren por cuenta del Cliente, a menos que el pedido tenga los gastos de envío gratuitos. Estos gastos de envío se añadirán al total del importe de los productos seleccionados, por lo que el cliente podrá consultarlos en todo momento en la cesta de la compra antes de confirmar el pedido y finalizar el proceso de compra.{% endblocktrans %}</p>
 
-            <p class="mb-4">ESPORTS VIVAC se reserva el derecho de efectuar, en cualquier momento y sin previo aviso, las modificaciones que considere oportunas, pudiendo actualizar con frecuencia los productos o los precios. El precio aplicable a la solicitud de compra efectuada por el Cliente será el que conste en el momento de aceptar las Condiciones Generales de Compra.</p>
+            <p class="mb-4">{% blocktrans %}ESPORTS VIVAC se reserva el derecho de efectuar, en cualquier momento y sin previo aviso, las modificaciones que considere oportunas, pudiendo actualizar con frecuencia los productos o los precios. El precio aplicable a la solicitud de compra efectuada por el Cliente será el que conste en el momento de aceptar las Condiciones Generales de Compra.{% endblocktrans %}</p>
 
-            <p class="mb-4">El Cliente podrá realizar el pago de los productos mediante cualquiera de los medios de pago señalados a continuación:</p>
+            <p class="mb-4">{% blocktrans %}El Cliente podrá realizar el pago de los productos mediante cualquiera de los medios de pago señalados a continuación:{% endblocktrans %}</p>
 
             <ul class="list-disc list-inside mb-4 space-y-1">
+                {% blocktrans %}
                 <li><strong>Pago con tarjeta:</strong> El Cliente deberá incluir el número de su tarjeta de débito/crédito (Visa, Visa Electron y Mastercard), así como el resto de información adicional que le sea requerida en el procedimiento de compra. El cargo se efectuará una vez que sea aceptado por la entidad financiera del Cliente, ya que, en caso contrario, la compra no podrá llevarse a cabo. Cuando añada un nuevo método de pago durante la comprobación, guardaremos automáticamente esa información en su Cuenta para que pueda utilizarse en futuras operaciones. Para ello, el cliente autoriza a ESPORTS VIVAC a gestionar el almacenado de los datos de su método de pago y a practicar cargos por medio de éste. Los datos del método de pago son almacenados por Adyen BV como procesador de pagos siguiendo los estándares y normas vigentes en la industria de pagos. El cliente es el único responsable de la exactitud de la información de su método de pago, por lo que ESPORTS VIVAC no es responsable de ninguna pérdida que el cliente pueda sufrir como resultado de información incorrecta sobre el método de pago proporcionado.</li>
                 <li><strong>Pago mediante PayPal:</strong> Será necesario que el Cliente disponga de una cuenta PayPal para utilizar este medio de pago.</li>
+                {% endblocktrans %}
             </ul>
 
-            <p class="mb-4">El justificante de compra de los productos estará disponible y se podrá visualizar en la sección “Mi cuenta”. Desde esta sección, el Cliente también se podrá descargar la factura del pedido. Para cualquier duda o petición sobre facturación se podrá dirigir a nuestro departamento de Atención al Cliente.</p>
+            <p class="mb-4">{% blocktrans %}El justificante de compra de los productos estará disponible y se podrá visualizar en la sección “Mi cuenta”. Desde esta sección, el Cliente también se podrá descargar la factura del pedido. Para cualquier duda o petición sobre facturación se podrá dirigir a nuestro departamento de Atención al Cliente.{% endblocktrans %}</p>
 
-            <p class="mb-4">Una vez finalizado el proceso de compra, se generará una confirmación vía electrónica, adjuntándose una copia de las Condiciones Generales de Compra que el Cliente podrá imprimir, quedándose archivado en la sección “Mi Cuenta”.</p>
+            <p class="mb-4">{% blocktrans %}Una vez finalizado el proceso de compra, se generará una confirmación vía electrónica, adjuntándose una copia de las Condiciones Generales de Compra que el Cliente podrá imprimir, quedándose archivado en la sección “Mi Cuenta”.{% endblocktrans %}</p>
 
-            <p class="mb-4">ESPORTS VIVAC ha implementado un programa de detección de posibles operaciones fraudulentas y se reserva el derecho a solicitar información, confirmaciones y/o documentos adicionales al Cliente, aún después de haber realizado una o más compras a través del Sitio Web, mediante llamada telefónica o correo electrónico, con la finalidad de confirmar que el Cliente efectivamente ha realizado y autorizado dicha compra y/o que la entrega o devolución de la misma se ha realizado correctamente y de esta forma autoriza definitivamente la transacción respectiva.</p>
+            <p class="mb-4">{% blocktrans %}ESPORTS VIVAC ha implementado un programa de detección de posibles operaciones fraudulentas y se reserva el derecho a solicitar información, confirmaciones y/o documentos adicionales al Cliente, aún después de haber realizado una o más compras a través del Sitio Web, mediante llamada telefónica o correo electrónico, con la finalidad de confirmar que el Cliente efectivamente ha realizado y autorizado dicha compra y/o que la entrega o devolución de la misma se ha realizado correctamente y de esta forma autoriza definitivamente la transacción respectiva.{% endblocktrans %}</p>
 
-            <p class="mb-4">ESPORTS VIVAC podrá formular telefónicamente diversas comprobaciones sobre la identidad del Cliente, o bien solicitar: (a) una confirmación y autorización por escrito firmada por el Cliente responsable de la compra respectiva; y (b) copia de la identificación oficial vigente y con fotografía del Cliente para confirmar su identidad. ESPORTS VIVAC se obliga a guardar dicha información y documentos con elevadas medidas de seguridad, de conformidad con la normativa vigente.</p>
+            <p class="mb-4">{% blocktrans %}ESPORTS VIVAC podrá formular telefónicamente diversas comprobaciones sobre la identidad del Cliente, o bien solicitar: (a) una confirmación y autorización por escrito firmada por el Cliente responsable de la compra respectiva; y (b) copia de la identificación oficial vigente y con fotografía del Cliente para confirmar su identidad. ESPORTS VIVAC se obliga a guardar dicha información y documentos con elevadas medidas de seguridad, de conformidad con la normativa vigente.{% endblocktrans %}</p>
 
-            <p class="mb-4">En caso de que el Cliente no responda favorablemente o no entregue a ESPORTS VIVAC la documentación e información solicitada en un plazo de 48 horas contadas a partir de la llamada o del envío del correo electrónico por parte de ESPORTS VIVAC, la transacción detallada en dicha comunicación y el pedido respectivo podrán ser cancelados, sin necesidad de aviso posterior ni responsabilidad de ESPORTS VIVAC, procediendo a reembolsar al Cliente el importe pagado respecto a dicha compra.</p>
+            <p class="mb-4">{% blocktrans %}En caso de que el Cliente no responda favorablemente o no entregue a ESPORTS VIVAC la documentación e información solicitada en un plazo de 48 horas contadas a partir de la llamada o del envío del correo electrónico por parte de ESPORTS VIVAC, la transacción detallada en dicha comunicación y el pedido respectivo podrán ser cancelados, sin necesidad de aviso posterior ni responsabilidad de ESPORTS VIVAC, procediendo a reembolsar al Cliente el importe pagado respecto a dicha compra.{% endblocktrans %}</p>
 
-            <p class="mb-4">Dicho procedimiento de verificación se realiza para la seguridad del Cliente y, por tanto, al aceptar las presentes Condiciones Generales de Compra, el Cliente acepta someterse al procedimiento de detección de posibles operaciones fraudulentas referido y autoriza a ESPORTS VIVAC para que, una vez que el Cliente proporcione la información y documentos adicionales referidos, éstos puedan ser utilizados para compras futuras del mismo Cliente.</p>
+            <p class="mb-4">{% blocktrans %}Dicho procedimiento de verificación se realiza para la seguridad del Cliente y, por tanto, al aceptar las presentes Condiciones Generales de Compra, el Cliente acepta someterse al procedimiento de detección de posibles operaciones fraudulentas referido y autoriza a ESPORTS VIVAC para que, una vez que el Cliente proporcione la información y documentos adicionales referidos, éstos puedan ser utilizados para compras futuras del mismo Cliente.{% endblocktrans %}</p>
     
             
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="font-semibold">Entrega de productos</h2>
+            <h2 class="font-semibold">{% trans 'Entrega de productos' %}</h2>
 
-            <p class="mb-4">Una vez ESPORTS VIVAC haya verificado que el proceso de compra se ha realizado correctamente, procederá a entregar los productos a la dirección indicada por el Cliente en el procedimiento de compra, en horario laboral habitual y en los plazos previstos en el Sitio Web que, en ningún caso, será más tarde de los treinta (30) días siguientes a la aceptación del Cliente de su pedido.</p>
+            <p class="mb-4">{% blocktrans %}Una vez ESPORTS VIVAC haya verificado que el proceso de compra se ha realizado correctamente, procederá a entregar los productos a la dirección indicada por el Cliente en el procedimiento de compra, en horario laboral habitual y en los plazos previstos en el Sitio Web que, en ningún caso, será más tarde de los treinta (30) días siguientes a la aceptación del Cliente de su pedido.{% endblocktrans %}</p>
 
-            <p class="mb-4">ESPORTS VIVAC podrá informar al Cliente, mediante el envío de un email, de la fecha de salida de los almacenes de ESPORTS VIVAC del pedido y los datos de contacto de la empresa de transporte que vaya a realizar la entrega.</p>
+            <p class="mb-4">{% blocktrans %}ESPORTS VIVAC podrá informar al Cliente, mediante el envío de un email, de la fecha de salida de los almacenes de ESPORTS VIVAC del pedido y los datos de contacto de la empresa de transporte que vaya a realizar la entrega.{% endblocktrans %}</p>
 
-            <p class="mb-4">La entrega se realizará en un plazo aproximado de 72 horas y se considerará efectuada a partir del momento en el cual el producto haya sido puesto a disposición del Cliente en el lugar indicado por el Cliente o en el punto de recogida correspondiente.</p>
+            <p class="mb-4">{% blocktrans %}La entrega se realizará en un plazo aproximado de 72 horas y se considerará efectuada a partir del momento en el cual el producto haya sido puesto a disposición del Cliente en el lugar indicado por el Cliente o en el punto de recogida correspondiente.{% endblocktrans %}</p>
 
-            <p class="mb-4">El riesgo de los productos (entre otros, la pérdida, menoscabo o robo) se transmitirá al Cliente a partir del momento en que los mismos se hayan puesto a su disposición.</p>
+            <p class="mb-4">{% blocktrans %}El riesgo de los productos (entre otros, la pérdida, menoscabo o robo) se transmitirá al Cliente a partir del momento en que los mismos se hayan puesto a su disposición.{% endblocktrans %}</p>
 
-            <p class="mb-4">Si hubiera alguna incidencia en la entrega de los productos, ESPORTS VIVAC informaría adecuadamente y de forma inmediata al Cliente.</p>
+            <p class="mb-4">{% blocktrans %}Si hubiera alguna incidencia en la entrega de los productos, ESPORTS VIVAC informaría adecuadamente y de forma inmediata al Cliente.{% endblocktrans %}</p>
 
-            <p class="mb-4">La entrega podrá realizarse a través de cualquiera de las siguientes vías:</p>
+            <p class="mb-4">{% blocktrans %}La entrega podrá realizarse a través de cualquiera de las siguientes vías:{% endblocktrans %}</p>
 
             <ul class="list-disc list-inside mb-4 font-semibold">
-                <li>A la dirección indicada por el Cliente al efectuar la compra.</li>
+                <li>{% blocktrans %}A la dirección indicada por el Cliente al efectuar la compra.{% endblocktrans %}</li>
             </ul>
 
-            <p class="mb-4">En el supuesto que el Cliente, tras efectuar la compra, quisiera modificar la dirección de entrega podrá hacerlo siempre y cuando el pedido esté “Pendiente de envío”. ESPORTS VIVAC no será responsable por los errores y/o perjuicios causados en la entrega cuando la dirección introducida por el Cliente no exista, sea incorrecta o cuando no se cumplan los requisitos para el cambio de dirección de entrega indicados previamente. ESPORTS VIVAC podrá realizar la entrega de los productos en varias expediciones.</p>
+            <p class="mb-4">{% blocktrans %}En el supuesto que el Cliente, tras efectuar la compra, quisiera modificar la dirección de entrega podrá hacerlo siempre y cuando el pedido esté “Pendiente de envío”. ESPORTS VIVAC no será responsable por los errores y/o perjuicios causados en la entrega cuando la dirección introducida por el Cliente no exista, sea incorrecta o cuando no se cumplan los requisitos para el cambio de dirección de entrega indicados previamente. ESPORTS VIVAC podrá realizar la entrega de los productos en varias expediciones.{% endblocktrans %}</p>
 
-            <p class="mb-4">Si en el momento de la entrega del producto en la dirección indicada por el Cliente, éste se hallara ausente o nadie recogiera el producto, el Cliente deberá contactar lo antes posible con ESPORTS VIVAC para concertar una nueva fecha de entrega. Si la entrega del producto al Cliente no se ha efectuado por causas no imputables a ESPORTS VIVAC o al transportista, los productos serán devueltos a ESPORTS VIVAC y el Cliente deberá hacerse asumir los gastos de envío y de retorno, así como de los posibles gastos de gestión asociados.</p>
+            <p class="mb-4">{% blocktrans %}Si en el momento de la entrega del producto en la dirección indicada por el Cliente, éste se hallara ausente o nadie recogiera el producto, el Cliente deberá contactar lo antes posible con ESPORTS VIVAC para concertar una nueva fecha de entrega. Si la entrega del producto al Cliente no se ha efectuado por causas no imputables a ESPORTS VIVAC o al transportista, los productos serán devueltos a ESPORTS VIVAC y el Cliente deberá hacerse asumir los gastos de envío y de retorno, así como de los posibles gastos de gestión asociados.{% endblocktrans %}</p>
 
-            <p class="mb-4">En el momento de la entrega del producto, el Cliente o el receptor deberá exhibir un documento de identificación al transportista, verificar el estado aparente de los bultos y firmar y anotar en el albarán de entrega (en el formato presentado por el transportista) las observaciones y reservas aparentes en ese momento (por ejemplo, por la falta de bultos o por daños o manipulación aparentes en los Productos o embalaje). De ser el albarán en formato papel, el Cliente deberá solicitar una copia del albarán al transportista.</p>
+            <p class="mb-4">{% blocktrans %}En el momento de la entrega del producto, el Cliente o el receptor deberá exhibir un documento de identificación al transportista, verificar el estado aparente de los bultos y firmar y anotar en el albarán de entrega (en el formato presentado por el transportista) las observaciones y reservas aparentes en ese momento (por ejemplo, por la falta de bultos o por daños o manipulación aparentes en los Productos o embalaje). De ser el albarán en formato papel, el Cliente deberá solicitar una copia del albarán al transportista.{% endblocktrans %}</p>
 
-            <p class="mb-4">En caso de que, al abrir los bultos con los productos, el Cliente viera que éstos se encuentran dañados a causa del transporte, que son erróneos o que faltan productos, deberá comunicarlo por escrito a ESPORTS VIVAC en un plazo de cinco (5) días naturales desde la entrega, para que ESPORTS VIVAC proceda oportunamente.</p>
+            <p class="mb-4">{% blocktrans %}En caso de que, al abrir los bultos con los productos, el Cliente viera que éstos se encuentran dañados a causa del transporte, que son erróneos o que faltan productos, deberá comunicarlo por escrito a ESPORTS VIVAC en un plazo de cinco (5) días naturales desde la entrega, para que ESPORTS VIVAC proceda oportunamente.{% endblocktrans %}</p>
 
-            <p class="mb-4">Todos los pedidos de compra de los productos están sujetos a disponibilidad de los mismos. En caso de falta de disponibilidad del producto contratado, ESPORTS VIVAC informará de ello al Cliente y podrá cancelar su solicitud de compra, reembolsando el importe pagado al mismo en un plazo máximo de treinta (30) días.</p>
+            <p class="mb-4">{% blocktrans %}Todos los pedidos de compra de los productos están sujetos a disponibilidad de los mismos. En caso de falta de disponibilidad del producto contratado, ESPORTS VIVAC informará de ello al Cliente y podrá cancelar su solicitud de compra, reembolsando el importe pagado al mismo en un plazo máximo de treinta (30) días.{% endblocktrans %}</p>
     
 
         </div>
-        <div class="space-y-3 text-sm">
-            <h2 class="font-semibold">Recogida de productos</h2>
-
-            <div>En conformidad con el Real Decreto 110/2015, de 20 de febrero, sobre residuos de aparatos eléctricos y electrónicos (AEE), al comprar un artículo de estas características en nuestra web, ESPORTS VIVAC se hace cargo del reciclaje de tu antiguo dispositivo.
-            </div>
-
-            <div>Para ello, puedes solicitar una recogida gratuita en tu domicilio <a class="underline text-green-600 font-semibold" target="_blank" href="{% url 'contacto' %}">aquí</a> indicando: nombre y apellido, correo electrónico, dirección de recogida y teléfono de contacto. Asegúrate de indicar que se trata de un servicio de recogida de material reciclado.</div>
-
-        </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="font-semibold">Devolución</h2>
+            <h2 class="font-semibold">{% trans 'Devolución' %}</h2>
 
-            <p class="mb-4">Sin perjuicio del derecho de desistimiento previsto anteriormente, tendrás 30 días desde que recibas el pedido para realizar una devolución (o cambio de talla). Para procesarla deberás acceder al apartado Mi cuenta &gt; Mis pedidos &gt; Seleccionar pedido &gt; Incidencia o Devolucion, indicar el motivo de la misma, seleccionar los productos a devolver y confirmar el proceso. Posteriormente recibirás un albarán por email que deberás imprimir e introducir dentro de la caja. Si tienes problemas con algún paso, puede ponerte en contacto con Atención al Cliente (vivac@esportsvivac.com)</p>
+            <p class="mb-4">{% blocktrans %}Sin perjuicio del derecho de desistimiento previsto anteriormente, tendrás 30 días desde que recibas el pedido para realizar una devolución (o cambio de talla). Para procesarla deberás acceder al apartado Mi cuenta &gt; Mis pedidos &gt; Seleccionar pedido &gt; Incidencia o Devolucion, indicar el motivo de la misma, seleccionar los productos a devolver y confirmar el proceso. Posteriormente recibirás un albarán por email que deberás imprimir e introducir dentro de la caja. Si tienes problemas con algún paso, puede ponerte en contacto con Atención al Cliente (vivac@esportsvivac.com){% endblocktrans %}</p>
 
-            <p class="mb-4">En caso de realizar la devolución desde las Islas Canarias u otras partes del mundo no UE, también se deberá indicar la declaración de aduanas (CN22 y/o CN23) en el exterior del paquete. El incumplimiento de este paso puede dar como resultado el rechazo de la mercancía por parte de aduanas y su posterior devolución al remitente.</p>
+            <p class="mb-4">{% blocktrans %}En caso de realizar la devolución desde las Islas Canarias u otras partes del mundo no UE, también se deberá indicar la declaración de aduanas (CN22 y/o CN23) en el exterior del paquete. El incumplimiento de este paso puede dar como resultado el rechazo de la mercancía por parte de aduanas y su posterior devolución al remitente.{% endblocktrans %}</p>
 
-            <p class="mb-4">Antes de devolver un pedido, por favor, asegúrate de ponerte en contacto con las autoridades fiscales de tu país para confirmar si te devolverán las tasas de importación.</p>
+            <p class="mb-4">{% blocktrans %}Antes de devolver un pedido, por favor, asegúrate de ponerte en contacto con las autoridades fiscales de tu país para confirmar si te devolverán las tasas de importación.{% endblocktrans %}</p>
 
-            <p class="mb-4">Para la devolución, podrás utilizar la misma caja o sobre en el que se ha enviado el producto, o en su defecto en algún formato similar que garantice el perfecto estado del producto durante el envío.</p>
+            <p class="mb-4">{% blocktrans %}Para la devolución, podrás utilizar la misma caja o sobre en el que se ha enviado el producto, o en su defecto en algún formato similar que garantice el perfecto estado del producto durante el envío.{% endblocktrans %}</p>
 
-            <p class="mb-4">El derecho de devolución está supeditado a las siguientes condiciones:</p>
+            <p class="mb-4">{% blocktrans %}El derecho de devolución está supeditado a las siguientes condiciones:{% endblocktrans %}</p>
 
             <ul class="list-disc list-inside mb-4">
-                <li>Los productos deben estar en el mismo estado que los recibiste, sin uso, en su caja, embalaje, con sus etiquetas originales y sin daños.</li>
-                <li>Los artículos con fecha de caducidad específica (como los productos de nutrición) están exentos de la política de devoluciones de 30 días.</li>
-                <li>La opción de devolución de productos no resulta de aplicación para tarjetas regalo.</li>
+                <li>{% blocktrans %}Los productos deben estar en el mismo estado que los recibiste, sin uso, en su caja, embalaje, con sus etiquetas originales y sin daños.{% endblocktrans %}</li>
+                <li>{% blocktrans %}Los artículos con fecha de caducidad específica (como los productos de nutrición) están exentos de la política de devoluciones de 30 días.{% endblocktrans %}</li>
+                <li>{% blocktrans %}La opción de devolución de productos no resulta de aplicación para tarjetas regalo.{% endblocktrans %}</li>
             </ul>
 
-            <p class="mb-4">Una vez recibido, ESPORTS VIVAC comprobará en su almacén la adecuación del artículo, reservándose el derecho a no realizar el reembolso en caso de detectar que el producto adquirido y el devuelto no coinciden o que la devolución no se ha realizado conforme a las presentes Condiciones generales de compra.</p>
+            <p class="mb-4">{% blocktrans %}Una vez recibido, ESPORTS VIVAC comprobará en su almacén la adecuación del artículo, reservándose el derecho a no realizar el reembolso en caso de detectar que el producto adquirido y el devuelto no coinciden o que la devolución no se ha realizado conforme a las presentes Condiciones generales de compra.{% endblocktrans %}</p>
 
-            <p class="mb-4">El coste de envio de la devolución irá a cargo del Cliente menos en aquellos casos en el que el producto sea defectuoso. En cuanto ESPORTS VIVAC reciba la devolución en sus almacenes, revisará que el producto esté correcto y tramitará el correspondiente abono. Este proceso puede tardar hasta 14 días naturales y, si todo es correcto, se procederá al abono del producto devuelto a través del sistema de pago utilizado en un plazo de cuarenta y ocho (48) horas desde la confirmación de llegada al almacén del pedido.</p>
+            <p class="mb-4">{% blocktrans %}El coste de envio de la devolución irá a cargo del Cliente menos en aquellos casos en el que el producto sea defectuoso. En cuanto ESPORTS VIVAC reciba la devolución en sus almacenes, revisará que el producto esté correcto y tramitará el correspondiente abono. Este proceso puede tardar hasta 14 días naturales y, si todo es correcto, se procederá al abono del producto devuelto a través del sistema de pago utilizado en un plazo de cuarenta y ocho (48) horas desde la confirmación de llegada al almacén del pedido.{% endblocktrans %}</p>
 
-            <p class="mb-4">El plazo de aplicación de la devolución del importe será de hasta siete (7) días naturales para las tarjetas de débito y de hasta treinta (30) días naturales para las tarjetas de crédito. En caso de haber realizado el pago por transferencia bancaria será necesario que se facilite un número de cuenta donde abonar el importe a devolver y podrá tardar dos (2) días hábiles en verse reflejado en el banco destinatario.</p>
+            <p class="mb-4">{% blocktrans %}El plazo de aplicación de la devolución del importe será de hasta siete (7) días naturales para las tarjetas de débito y de hasta treinta (30) días naturales para las tarjetas de crédito. En caso de haber realizado el pago por transferencia bancaria será necesario que se facilite un número de cuenta donde abonar el importe a devolver y podrá tardar dos (2) días hábiles en verse reflejado en el banco destinatario.{% endblocktrans %}</p>
 
-            <p class="mb-4">Las devoluciones parciales de un pedido darán lugar al reembolso del precio del Producto devuelto, pero no de los gastos de envío.</p>
+            <p class="mb-4">{% blocktrans %}Las devoluciones parciales de un pedido darán lugar al reembolso del precio del Producto devuelto, pero no de los gastos de envío.{% endblocktrans %}</p>
             
-            <p class="mb-4">En el caso de la devolución de productos defectuosos, el Cliente tendrá derecho al reembolso del precio, de los gastos de envío y de los gastos de transporte de devolución, de los productos defectuosos o de los productos entregados si no se corresponden con el pedido realizado por el Cliente, de conformidad con la legislación aplicable.</p>
+            <p class="mb-4">{% blocktrans %}En el caso de la devolución de productos defectuosos, el Cliente tendrá derecho al reembolso del precio, de los gastos de envío y de los gastos de transporte de devolución, de los productos defectuosos o de los productos entregados si no se corresponden con el pedido realizado por el Cliente, de conformidad con la legislación aplicable.{% endblocktrans %}</p>
     
 
         </div>
         <div class="space-y-3 text-sm">
-            <h2 class="font-semibold">Quejas y reclamaciones</h2>
+            <h2 class="font-semibold">{% trans 'Quejas y reclamaciones' %}</h2>
 
-            <div>El Cliente deberá contactar con ESPORTS VIVAC, a través de los medios indicados al inicio de las Condiciones Generales de Compra, para manifestar sus quejas y reclamaciones, comprometiéndose ESPORTS VIVAC a atenderlas lo antes posible y, en cualquier caso, en el plazo de un mes desde que son presentadas.</div>
+            <div>{% blocktrans %}El Cliente deberá contactar con ESPORTS VIVAC, a través de los medios indicados al inicio de las Condiciones Generales de Compra, para manifestar sus quejas y reclamaciones, comprometiéndose ESPORTS VIVAC a atenderlas lo antes posible y, en cualquier caso, en el plazo de un mes desde que son presentadas.{% endblocktrans %}</div>
     
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="font-semibold">Garantías</h2>
+            <h2 class="font-semibold">{% trans 'Garantías' %}</h2>
 
-            <p class="mb-4">La garantía de los productos vendidos a través del Sitio Web se ajustará a lo previsto en la legislación vigente y, por tanto, con carácter general, ESPORTS VIVAC responderá de las faltas de conformidad manifestadas por el Cliente en el plazo de tres (3) años desde la entrega de los productos.</p>
+            <p class="mb-4">{% blocktrans %}La garantía de los productos vendidos a través del Sitio Web se ajustará a lo previsto en la legislación vigente y, por tanto, con carácter general, ESPORTS VIVAC responderá de las faltas de conformidad manifestadas por el Cliente en el plazo de tres (3) años desde la entrega de los productos.{% endblocktrans %}</p>
 
-            <p class="mb-4">En concreto, si el producto vendido por ESPORTS VIVAC no fuera conforme, el Cliente podrá elegir entre la reparación o la sustitución del producto (salvo que una de estas opciones resulte imposible o desproporcionada) o, subsidiariamente, entre una rebaja en el precio o la resolución de la relación contractual de conformidad con la legislación vigente. En cualquier caso, el Cliente deberá informar a ESPORTS VIVAC de la falta de conformidad en el plazo máximo de dos (2) meses desde que tuvo conocimiento de ella. ESPORTS VIVAC asumirá los gastos de devolución de los productos en este tipo de supuestos.</p>
+            <p class="mb-4">{% blocktrans %}En concreto, si el producto vendido por ESPORTS VIVAC no fuera conforme, el Cliente podrá elegir entre la reparación o la sustitución del producto (salvo que una de estas opciones resulte imposible o desproporcionada) o, subsidiariamente, entre una rebaja en el precio o la resolución de la relación contractual de conformidad con la legislación vigente. En cualquier caso, el Cliente deberá informar a ESPORTS VIVAC de la falta de conformidad en el plazo máximo de dos (2) meses desde que tuvo conocimiento de ella. ESPORTS VIVAC asumirá los gastos de devolución de los productos en este tipo de supuestos.{% endblocktrans %}</p>
 
-            <p class="mb-4">No obstante, lo anterior, se entenderá que los productos son conformes y, por tanto, quedarán fuera de toda garantía cuando:</p>
+            <p class="mb-4">{% blocktrans %}No obstante, lo anterior, se entenderá que los productos son conformes y, por tanto, quedarán fuera de toda garantía cuando:{% endblocktrans %}</p>
 
             <ul class="list-disc pl-10">
-                <li>El daño o deterioro en los productos vendidos por ESPORTS VIVAC se produzca por causas ajenas al fabricante o a ESPORTS VIVAC o, en su caso, de quién actúe bajo su responsabilidad (fuerza mayor, accidente, etc.) o como consecuencia de una incorrecta configuración y/o instalación del producto por parte del Cliente; y</li>
-                <li>El daño o deterioro en los productos vendidos lo provoque o se origine por un componente que no lo haya suministrado el fabricante o ESPORTS VIVAC o sea consecuencia de alteraciones o reparaciones efectuadas por personas ajenas al fabricante o ESPORTS VIVAC o, en su caso, de quién actúe bajo su responsabilidad.</li>
+                <li>{% blocktrans %}El daño o deterioro en los productos vendidos por ESPORTS VIVAC se produzca por causas ajenas al fabricante o a ESPORTS VIVAC o, en su caso, de quién actúe bajo su responsabilidad (fuerza mayor, accidente, etc.) o como consecuencia de una incorrecta configuración y/o instalación del producto por parte del Cliente; y{% endblocktrans %}</li>
+                <li>{% blocktrans %}El daño o deterioro en los productos vendidos lo provoque o se origine por un componente que no lo haya suministrado el fabricante o ESPORTS VIVAC o sea consecuencia de alteraciones o reparaciones efectuadas por personas ajenas al fabricante o ESPORTS VIVAC o, en su caso, de quién actúe bajo su responsabilidad.{% endblocktrans %}</li>
             </ul>
     
         </div>
         <div class="space-y-3 text-sm">
-            <h2 class="font-semibold">Resolución de litigios en línea</h2>
+            <h2 class="font-semibold">{% trans 'Resolución de litigios en línea' %}</h2>
 
-            <p class="mb-4">De conformidad con el art. 14 del Reglamento 524/2013 del Parlamento Europeo y del Consejo, de 21 de mayo de 2013, sobre resolución de litigios en línea en materia de consumo, ESPORTS VIVAC informa a los Clientes que pueden someter sus reclamaciones a la plataforma de resolución de litigios disponible en el siguiente enlace: <a href="http://ec.europa.eu/consumers/odr" class="text-blue-500 underline" target="_blank">http://ec.europa.eu/consumers/odr</a></p>
+            <p class="mb-4">{% blocktrans %}De conformidad con el art. 14 del Reglamento 524/2013 del Parlamento Europeo y del Consejo, de 21 de mayo de 2013, sobre resolución de litigios en línea en materia de consumo, ESPORTS VIVAC informa a los Clientes que pueden someter sus reclamaciones a la plataforma de resolución de litigios disponible en el siguiente enlace:{% endblocktrans %} <a href="http://ec.europa.eu/consumers/odr" class="text-blue-500 underline" target="_blank">http://ec.europa.eu/consumers/odr</a></p>
 
     
         </div>
         <div class="space-y-3 text-sm">
-            <h2 class="font-semibold">Idioma</h2>
+            <h2 class="font-semibold">{% trans 'Idioma' %}</h2>
 
-            <p class="mb-4">Las Condiciones Generales de Compra están redactadas en español y catalán</p>
+            <p class="mb-4">{% trans 'Las Condiciones Generales de Compra están redactadas en español y catalán' %}</p>
     
         </div>
 
         <div class="space-y-3 text-sm">
-            <h2 class="font-semibold">Legislación aplicable y jurisdicción</h2>
+            <h2 class="font-semibold">{% trans 'Legislación aplicable y jurisdicción' %}</h2>
 
-            <p class="mb-4">Las Condiciones Generales de Compra se regirán e interpretarán de conformidad con la legislación española.</p>
+            <p class="mb-4">{% blocktrans %}Las Condiciones Generales de Compra se regirán e interpretarán de conformidad con la legislación española.{% endblocktrans %}</p>
 
-            <p class="mb-4">En el supuesto de que surja cualquier conflicto o discrepancia en la interpretación y/o aplicación de las Condiciones Generales, los Juzgados competentes serán los que disponga la normativa aplicable en materia de jurisdicción competente de consumidores y usuarios.</p>
+            <p class="mb-4">{% blocktrans %}En el supuesto de que surja cualquier conflicto o discrepancia en la interpretación y/o aplicación de las Condiciones Generales, los Juzgados competentes serán los que disponga la normativa aplicable en materia de jurisdicción competente de consumidores y usuarios.{% endblocktrans %}</p>
     
         </div>
 
