@@ -295,7 +295,7 @@ class Variant(models.Model):
 
     def get_descuento(self):
         if self.precio_retail:
-            return (self.precio_retail - self.precio)
+            return round((self.precio_retail - self.precio)/self.precio_retail*100)
         else:
             return 0
 

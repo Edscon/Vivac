@@ -4,6 +4,7 @@
 
 {% block content%}
 {% load replacement %}
+
 <style> 
     .New_reseña{
         transform: translate(-50%, -50%);
@@ -18,7 +19,6 @@
         z-index: 10;
         color: rgb(83, 83, 83);
     }
-    
     .mySwiper_products [class^="swiper-button-"]::after{
         font-size: 20px;
         font-weight: bold;
@@ -46,12 +46,9 @@
         <div>></div>
         <a class="cursor-pointer hover:underline" href="{% url 'marca' product.marca.slug %}">{{product.marca}}</a> 
     </div>
-    <div class="my-2 flex lg:hidden"></div>
 
-    <a href="{% url 'marca' product.marca.slug %}"><img class="lg:hidden block image_marca md:w-20 w-[125px] aspect-[3/1] object-contain absolute top-20 md:top-[125px] right-5 md:right-[320px] z-[3]" 
-        src={{product.marca.get_image}}>
-    </a>
-    <div class="flex flex-wrap relative">
+
+    <div class="flex flex-wrap relative mt-4 lg:mt-0">
 
         <div class="md:h-[600px] w-full md:w-[60%] flex relative ">
             <div class="hidden lg:block w-[11%] h-full overflow-auto space-y-4 mr-5">
@@ -95,12 +92,15 @@
                 </div>
             </div>
             <div class="lg:hidden block w-full relative md:mr-10 overflow-hidden">
-                {% include 'product/partials/swipperimg.html' %}
+                {% with prod=product %}
+                    {% include 'product/partials/swipperimg.html' %}
+                {% endwith %}
             </div>
 
-            <a id="ImgMarca" href="{% url 'marca' product.marca.slug %}"><img class="hidden lg:block image_marca w-20 lg:w-[125px] aspect-[3/1] object-contain absolute top-0 right-5 z-[3]" 
+            <a id="ImgMarca" href="{% url 'marca' product.marca.slug %}"><img class="image_marca w-[125px] aspect-[3/1] object-contain absolute top-0 right-5 z-[3]" 
                 src={{product.marca.get_image}}>
             </a>
+
         </div>
 
         <div id="information" class="information w-full md:w-[40%] ">
@@ -152,10 +152,10 @@
             {% if product.variants != 'None' %}
             <div class="mt-2">
                 <div class="font-semibold text-gray-800">Colores</div>
-    
+
                 <div class="flex w-full h-[100px] space-x-4 text-sm mt-2 overflow-auto">
                     {% for var in variant_colors %}
-                        {% if forloop.first %}
+                        {% if var.color.slug == slug_color %}
                             <a class="aspect-[1/1] rounded border-black border h-[90%]">
                                 <img src="{{var.image}}" class="object-contain rounded">
                             </a>

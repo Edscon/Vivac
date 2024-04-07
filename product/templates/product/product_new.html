@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+
+{% load replacement %}
+
+{% block title %}{{product.nombre}}{% endblock %}
+
+{% block content%}
+
+{% with prod=product %}
+    {% include 'product/main_prod.html' %}
+{% endwith %}

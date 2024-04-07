@@ -113,6 +113,7 @@ def product(request, slug):
         'color_first': colors[0],
         'size': size,
         'sizes': sizes,
+        'slug_color': variant_colors[0].color.slug,
         'size_special': size_special,
         'variant_url': False,
         'images_extra': images_extra,

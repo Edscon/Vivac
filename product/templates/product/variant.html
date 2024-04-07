@@ -4,6 +4,7 @@
 
 {% block content%}
 {% load replacement %}
+
 <style> 
     .New_reseña{
         transform: translate(-50%, -50%);
@@ -83,21 +84,21 @@
                     </div>
                 {% endfor %}
                 <div id="original_desc">
-                    {% if product.get_descuento > 0 %}
-                    <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{product.get_descuento}}%</p>
+                    {% if variants_first.get_descuento > 0 %}
+                    <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{variants_first.get_descuento}}%</p>
                     {% endif %}
                 </div>
                 
 
-                <div id="cursor_magnet" class="absolute w-[150px] h-[100px] bg-gray-100 border border-solid border-gray-200 opacity-50 cursor-zoom-in hidden">
-    
-                </div>
+                <div id="cursor_magnet" class="absolute w-[150px] h-[100px] bg-gray-100 border border-solid border-gray-200 opacity-50 cursor-zoom-in hidden"></div>
             </div>
             <div class="lg:hidden block w-full relative md:mr-10 overflow-hidden">
-                {% include 'product/partials/swipperimg.html' %}
+                {% with prod=variants_first %}
+                    {% include 'product/partials/swipperimg.html' %}
+                {% endwith %}
             </div>
 
-            <a id="ImgMarca" href="{% url 'marca' product.marca.slug %}"><img class="hidden lg:block image_marca w-20 lg:w-[125px] aspect-[3/1] object-contain absolute top-0 right-5 z-[3]" 
+            <a id="ImgMarca" href="{% url 'marca' product.marca.slug %}"><img class="image_marca w-[125px] aspect-[3/1] object-contain absolute top-0 right-5 z-[3]" 
                 src={{product.marca.get_image}}>
             </a>
         </div>
@@ -107,7 +108,7 @@
             <input id="info_precios" value="{{dic_sizes_precio}}" class="hidden"></input>
             {% for precio in dic_sizes_precio %}
             <div id="precio_producto-{{precio.3}}" class="hidden">
-                {% if product.get_descuento > 0 %}
+                {% if precio.4 > 0 %}
                 <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{precio.0|floatformat:2}} €</p>
                 <p class="-mt-2 text-[30px] text-green-600 font-bold">{{precio.1|floatformat:2}} €</p>
                 <p class="-mt-1 text-xs text-gray-500">Te ahorras {{precio.2|floatformat:2}} €</p>
@@ -117,12 +118,12 @@
             </div>
             {% endfor %}
             <div id="original_price">
-                {% if product.get_descuento > 0 %}
-                <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{product.precio_retail|floatformat:2}} €</p>
-                <p class="-mt-2 text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
-                <p class="-mt-1 text-xs text-gray-500">Te ahorras {{product.get_ahorro|floatformat:2}} €</p>
+                {% if variants_first.get_descuento > 0 %}
+                <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{variants_first.precio_retail|floatformat:2}} €</p>
+                <p class="-mt-2 text-[30px] text-green-600 font-bold">{{variants_first.get_display_precio|floatformat:2}} €</p>
+                <p class="-mt-1 text-xs text-gray-500">Te ahorras {{variants_first.get_ahorro|floatformat:2}} €</p>
                 {% else %}
-                <p class=" text-[30px] text-green-600 font-bold">{{product.get_display_precio|floatformat:2}} €</p>
+                <p class=" text-[30px] text-green-600 font-bold">{{variants_first.get_display_precio|floatformat:2}} €</p>
                 {% endif %}
             </div>
             

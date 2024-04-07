@@ -1,0 +1,165 @@
+<style> 
+    .New_reseña{
+        transform: translate(-50%, -50%);
+    }
+    
+    .mySwiper_product [class^="swiper-button-"]::after{
+        font-size: 20px;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        width: 15px;
+        z-index: 10;
+        color: rgb(83, 83, 83);
+    }
+    .mySwiper_products [class^="swiper-button-"]::after{
+        font-size: 20px;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        width: 15px;
+        z-index: 10;
+        color: rgb(83, 83, 83);
+    }
+    .swiper-pagination-bullet-active {
+        background-color: rgb(131, 131, 131) !important;
+    }
+</style>
+
+{% include 'product/partials/menu_tallas_mobile.html' %}
+
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2 mb-5 relative xl:px-0 px-4">
+
+    {% include 'core/partials/banner.html' %}
+
+    <div class="my-2 hidden lg:flex text-sm space-x-1 cursor-default">
+        <a class="cursor-pointer hover:underline" href="{% url 'shop' %}">Inicio</a> 
+        <div>></div>
+        <a class="cursor-pointer hover:underline" href="{% url 'shop' %}?category={{product.categoria|lower_}}">{{product.categoria}}</a> 
+        <div>></div>
+        <a class="cursor-pointer hover:underline" href="{% url 'marca' product.marca.slug %}">{{product.marca}}</a> 
+    </div>
+
+    <div class="flex flex-wrap relative mt-4 lg:mt-0">
+        <div class="md:h-[600px] w-full md:w-[60%] flex relative ">
+            <div class="hidden lg:block w-[11%] h-full overflow-auto space-y-4 mr-5">
+                <img 
+                    id = "ImageProd"
+                    onmouseover="Image_mouseover('{{prod.image}}')"
+                    class="w-[full] object-contain aspect-[1/1] rounded border cursor-pointer" 
+                    src="{{prod.image}}"
+                >
+                {% for image in images_extra %}
+                    <img 
+                    id ="ImageExtra"
+                    onmouseover="Image_mouseover('{{image.image.url}}')"
+                    class="w-[full] object-contain aspect-[1/1] rounded border cursor-pointer" 
+                    src="{{image.image.url}}"
+                    >
+                {% endfor %}
+            </div>
+            <div class="hidden lg:block w-[75%] relative">
+                <img 
+                    id = "ImageCenter"
+                    class="w-full object-contain h-full aspect-[1/1] object-top" 
+                    src="{{prod.image}}"
+                >
+                {% for precio in dic_sizes_precio %}
+                    <div id="precio_desc-{{precio.3}}" class="hidden">
+                        {% if precio.4 > 0 %}
+                        <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{precio.4}}%</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <div id="original_desc">
+                    {% if prod.get_descuento > 0 %}
+                    <p class="absolute top-0 left-0 bg-green-700 px-2 py-1 text-white text-sm">- {{prod.get_descuento}}%</p>
+                    {% endif %}
+                </div>
+                
+                <div id="cursor_magnet" class="absolute w-[150px] h-[100px] bg-gray-100 border border-solid border-gray-200 opacity-50 cursor-zoom-in hidden"></div>
+            </div>
+
+            <div class="lg:hidden block w-full relative md:mr-10 overflow-hidden">
+                {% include 'product/partials/swipperimg.html' %}
+            </div>
+
+            <a id="ImgMarca" href="{% url 'marca' product.marca.slug %}"><img class="image_marca w-[125px] aspect-[3/1] object-contain absolute top-0 right-5 z-[3]" 
+                src={{product.marca.get_image}}>
+            </a>
+        </div>
+
+        <div id="information" class="information w-full md:w-[40%] ">
+            <h1 class="text-xl md:text-2xl">{{product.nombre}}</h1>
+            <input id="info_precios" value="{{dic_sizes_precio}}" class="hidden"></input>
+            {% for precio in dic_sizes_precio %}
+            <div id="precio_producto-{{precio.3}}" class="hidden">
+                {% if precio.4 > 0 %}
+                <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{precio.0|floatformat:2}} €</p>
+                <p class="-mt-2 text-[30px] text-green-600 font-bold">{{precio.1|floatformat:2}} €</p>
+                <p class="-mt-1 text-xs text-gray-500">Te ahorras {{precio.2|floatformat:2}} €</p>
+                {% else %}
+                <p class=" text-[30px] text-green-600 font-bold">{{precio.1|floatformat:2}} €</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <div id="original_price">
+                {% if prod.get_descuento > 0 %}
+                <p class="mt-1 text-xs text-gray-500 line-through">PVR: {{prod.precio_retail|floatformat:2}} €</p>
+                <p class="-mt-2 text-[30px] text-green-600 font-bold">{{prod.get_display_precio|floatformat:2}} €</p>
+                <p class="-mt-1 text-xs text-gray-500">Te ahorras {{prod.get_ahorro|floatformat:2}} €</p>
+                {% else %}
+                <p class=" text-[30px] text-green-600 font-bold">{{prod.get_display_precio|floatformat:2}} €</p>
+                {% endif %}
+            </div>
+
+            <div class="relative mt-1">
+                {% if product.get_rating > 0 %}
+                    {% include 'product/partials/stars_review.html' %}
+                    <div class="cursor-pointer text-sm text-gray-500">
+                        <p class="absolute top-6 min-[361px]:top-0 md:top-6 xl:top-0 left-0 min-[361px]:left-28 md:left-0 xl:left-28 hover:text-black hover:underline underline-offset-4" onclick="GoOpinions()">
+                            {{product.reviews.all.count}} Opiniones
+                        </p>
+                        <p class="absolute top-6 min-[361px]:top-0 md:top-6 xl:top-0 left-[83px] min-[361px]:left-[195px] md:left-[83px] xl:left-[195px] underline-offset-4">
+                            |
+                        </p>  
+                        <p class="absolute top-6 min-[361px]:top-0 md:top-6 xl:top-0 left-[98px] min-[361px]:left-[210px] md:left-[98px] xl:left-[210px] hover:text-black hover:underline underline-offset-4" onclick="FirstOp()">
+                            Déjanos tu opinion
+                        </p> 
+                    </div>
+                    <hr class="w-full mt-7 min-[361px]:mt-3 md:mt-7 xl:mt-3">
+                    {% else %}
+                    <p class="cursor-pointer text-sm text-gray-500 mt-2 hover:text-black hover:underline underline-offset-4" onclick="FirstOp()">Sé el primero en opinar</p>
+                    <hr class="w-full mt-3">
+                {% endif %}
+                </div>
+
+                {% if product.variants != 'None' %}
+                <div class="mt-2">
+                    <div class="font-semibold text-gray-800">Colores</div>
+        
+                    <div class="flex w-full h-[100px] space-x-4 text-sm mt-2 overflow-auto">
+                        {% for var in variant_colors %}
+                            {% if var.color.slug == slug_color %}
+                                <a class="aspect-[1/1] rounded border-black border h-[90%]">
+                                    <img src="{{var.image}}" class="object-contain rounded">
+                                </a>
+                            {% else %}
+                            <a href="{% url 'variant_product' product.slug var.color.slug %}" class="aspect-[1/1] rounded border hover:border-gray-400 h-[90%]">
+                                <img src="{{var.image}}" class="object-contain rounded">
+                            </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+
+
+
+        </div>
+
+
+
+    </div>
+</div>
