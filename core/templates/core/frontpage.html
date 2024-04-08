@@ -73,7 +73,7 @@
         <div class="swiper-wrapper">
         {% for marca in marcas %}
         <!--  href="{% url 'marca' marca.slug %}"-->
-        <div class="swiper-slide"><a><img class="image_marca w-full aspect-[3/1] object-contain" 
+        <div class="swiper-slide cursor-pointer"><a href="{% url 'shop' %}?ma={{marca.slug}}"><img class="image_marca w-full aspect-[3/1] object-contain" 
             src={{marca.get_image}}></a></div>
         {% endfor %}
         </div>

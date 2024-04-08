@@ -171,7 +171,7 @@
                 <div class="my-4 swiper2 mySwiper2 block text-gray-600 w-full text-center cursor-pointer overflow-hidden">
                     <div class="swiper-wrapper">
                     {% for marca in brands %}
-                    <div class="swiper-slide"><a href="{% url 'marca' marca.slug %}"><img class="image_marca w-full aspect-[3/1] object-contain" 
+                    <div class="swiper-slide"><a href="{% url 'shop' %}?ma={{marca.slug}}"><img class="image_marca w-full aspect-[3/1] object-contain" 
                         src={{marca.get_image}}></a></div>
                     {% endfor %}
                     </div>
@@ -267,6 +267,7 @@
                             <div id="variants-{{product.id}}" class="swiper_shop mySwiper_shop w-full flex space-x-4 text-sm bg-white">
 
                                 <div class="swiper-wrapper wrapper_shop">
+                                    
                                     {% for var in variants %}
                                         {% if var.product == product %}
                                         

@@ -38,7 +38,7 @@
         <span>&gt;</span>
         <a class="cursor-pointer hover:underline" href="{% url 'shop' %}?category={{product.categoria|lower_}}">{{product.categoria}}</a> 
         <span>&gt;</span>
-        <a class="cursor-pointer hover:underline" href="{% url 'marca' product.marca.slug %}">{{product.marca}}</a> 
+        <a class="cursor-pointer hover:underline" href="{% url 'shop' %}?ma={{product.marca.slug}}">{{product.marca}}</a> 
     </div>
 
     <div class="flex flex-wrap relative mt-4 lg:mt-0">
@@ -85,7 +85,7 @@
                 {% include 'product/partials/swipperimg.html' %}
             </div>
 
-            <a id="ImgMarca" href="{% url 'marca' product.marca.slug %}"><img class="image_marca w-[125px] aspect-[3/1] object-contain absolute top-0 right-5 z-[3]" 
+            <a id="ImgMarca" href="{% url 'shop' %}?ma={{product.marca.slug}}"><img class="image_marca w-[125px] aspect-[3/1] object-contain absolute top-0 right-5 z-[3]" 
                 src={{product.marca.get_image}}>
             </a>
         </div>
