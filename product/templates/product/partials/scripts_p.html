@@ -293,9 +293,13 @@
                 div.style.animation = isCurrent ? 'in-out-menu 100ms 1' : 'out-in-menu 100ms 1';
             });
 
+            const rect = document.getElementById('opiniones').getBoundingClientRect();
+            const posicionDestino = window.scrollY + rect.top;
+            const espacioAdicional = window.innerWidth >= 1300 ? 50 : 200;
+
             window.scroll({
-                top: 700,
-                behavior: 'smooth',
+                top: posicionDestino - espacioAdicional,
+                behavior: 'smooth'
             });
         })
         button.addEventListener('mouseover', () =>{ 
@@ -341,7 +345,7 @@
 
             div.style.animation = "in-out-menu 100ms 1";
         });
-        
+
         const rect = document.getElementById('opiniones').getBoundingClientRect();
         const posicionDestino = window.scrollY + rect.top;
         const espacioAdicional = window.innerWidth >= 1300 ? 0 : 80;
