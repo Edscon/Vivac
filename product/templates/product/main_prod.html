@@ -35,9 +35,9 @@
 
     <div class="my-2 hidden lg:flex text-sm space-x-1 cursor-default">
         <a class="cursor-pointer hover:underline" href="{% url 'shop' %}">Inicio</a> 
-        <div>></div>
+        <span>&gt;</span>
         <a class="cursor-pointer hover:underline" href="{% url 'shop' %}?category={{product.categoria|lower_}}">{{product.categoria}}</a> 
-        <div>></div>
+        <span>&gt;</span>
         <a class="cursor-pointer hover:underline" href="{% url 'marca' product.marca.slug %}">{{product.marca}}</a> 
     </div>
 
@@ -287,7 +287,7 @@
                             {% endfor %}
                         </div>
                         <div class="w-2/10 relative bg-gray-100 cursor-pointer" id="OutShare">
-                            <svg class="h-6 w-6 absolute top-[13%]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg class="h-6 w-6 absolute top-[13%] text-gray-600 hover:text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
                             </svg> 
                         </div>
@@ -302,7 +302,7 @@
                 <div class="mx-auto my-auto">Descripción</div>
                 <div class="greens bg-green-600 h-[2.5px] w-full absolute bottom-0"></div>
             </button>
-            <button class="btn_s pt-6 pb-3 hover:text-black flex relative">
+            <button id="opiniones" class="btn_s pt-6 pb-3 hover:text-black flex relative">
                 <div class="mx-auto my-auto">Opiniones del artículo ({{product.reviews.all.count}})</div>
                 <div class="greens bg-green-600 h-[0px] w-full absolute bottom-0"></div>
             </button>

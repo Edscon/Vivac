@@ -750,6 +750,7 @@
         "Populars",
         "portabilitat",
         "posi's",
+        "posicion",
         "possibilitat",
         "potencials",
         "pràctica",
@@ -860,6 +861,7 @@
         "recopilades",
         "rectificació",
         "reculli",
+        "reddit",
         "reemborsament",
         "reemplaçar",
         "referides",
@@ -1070,6 +1072,8 @@
         "whitenoise",
         "xarxa",
         "xarxes",
-        "Xarxes"
+        "Xarxes",
+        "xpos",
+        "ypos"
     ]
 }
