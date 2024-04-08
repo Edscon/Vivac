@@ -1,0 +1,103 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+
+<style>
+    body {
+    position: relative
+    }
+</style>
+
+<html lang="es" class="max-[768px]:overflow-x-hidden">
+    <head class="h-0">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TWFJWBM7');
+        </script>
+
+        <script src="https://js.stripe.com/v3/"></script>
+        <!-- End Google Tag Manager -->
+        <title>{% block title %}{% endblock %} | Esports Vivac</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+        <script src="https://unpkg.com/htmx.org/dist/ext/multi-swap.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+        {% include 'core/partials/styles.html' %}
+    </head>
+    
+    <body id="body" class="max-[768px]:overflow-x-hidden">       
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWFJWBM7" 
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <div 
+            hx-get="{% url 'hx_addtocart' %}"
+            hx-trigger="update-menu-cart from:body"
+            hx-swap="innerHTML"
+            class="hidden"
+            id="minicart_mobile"
+            >
+            {% include 'cart/partials/addtocart.html' %}
+    
+        </div>
+
+        {% include 'core/partials/swipertop.html' %}
+        
+        {% include 'core/partials/menu_mobile.html' %}
+        {% include 'core/partials/login_mobile.html' %}
+
+
+        <nav class="navbar scroll-up fixed top-0 z-40 max-[1300px]:mt-8 bg-white w-full min-[1300px]:relative pb-4 shadow-[0_10px_15px_-10px_rgba(0,0,0,0.1)]">
+
+            <div class="max-w-screen-xl mx-auto px-6 mb-2 xl:px-0 flex items-center justify-between">
+
+                <div class="menu-resposive hidden max-[1300px]:block absolute text-gray-600 mt-5 left-5">
+                    <button type="button" title="menu-mobile-logo" class="prova1" onclick="menu_mobile()">        
+                        <svg class="h-6 w-6"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>              
+                    </button>
+                </div>
+                
+                
+                <div class="menu-left flex items-center space-x-6 min-w-max max-[1300px]:ml-10">
+                    <!---Imagen del logo-->
+                    <a href="{% url 'frontpage' %}"><img title="titulo" src="{% static 'img/logo.png' %}" class="h-20 max-[1300px]:h-[70px]"></a>
+                </div>
+    
+            </div>
+        </nav>
+        
+        <main class="max-[1300px]:mt-48 mt-4">
+            {% block content%}
+            {% endblock %}
+        </main>
+
+        {% include 'core/partials/footer.html' %}
+
+        {% include 'core/partials/cookie.html' %}
+
+        {% block scripts %}
+        {% endblock %}
+    </body>
+    {% include 'core/partials/scripts.html' %}
+</html>
