@@ -13,7 +13,7 @@
                     <div class="item-size">
                         <div class="font-semibold">{{item.variant.product.nombre}}</div>
                         <button class="" value="{{item.size}}" id="item-size-{{item.variant.id}}">Talla:  {{item.size|replace_1}}</button>
-                        <div class="text-green-600">Fecha entrega estimada: {{time}}</div>
+                        <div class="text-green-600">Fecha entrega estimada: {{time|date1}}</div>
                     </div>
                     <div class="flex lg:hidden bg-white my-auto">
                         <a 

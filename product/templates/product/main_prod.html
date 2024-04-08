@@ -85,7 +85,7 @@
                 {% include 'product/partials/swipperimg.html' %}
             </div>
 
-            <a id="ImgMarca" href="{% url 'shop' %}?ma={{product.marca.slug}}"><img class="image_marca w-[125px] aspect-[3/1] object-contain absolute top-0 right-5 z-[3]" 
+            <a class="p-6" id="ImgMarca" href="{% url 'shop' %}?ma={{product.marca.slug}}"><img class="w-[125px] aspect-[3/1] object-contain absolute top-0 right-5 z-[3] scale-75 hover:scale-100 duration-150" 
                 src={{product.marca.get_image}}>
             </a>
         </div>
