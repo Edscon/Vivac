@@ -1,5 +1,6 @@
 from django import template
 from datetime import datetime
+from googletrans import Translator
 
 register = template.Library()
 
@@ -32,3 +33,8 @@ def date1(value):
 @register.filter
 def lower_(value):
     return str(value).lower()
+
+translator = Translator()
+@register.filter
+def trans_ca(value):
+    return translator.translate(value, dest='ca').text

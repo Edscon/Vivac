@@ -310,7 +310,7 @@ class Review(models.Model):
     product = models.ForeignKey(
         Product, related_name='reviews', on_delete=models.CASCADE)
     rating = models.IntegerField(default=3)
-    titulo = models.TextField(default='')
+    titulo = models.TextField(default='', verbose_name=_('Título'))
     content = models.TextField()
     created_by = models.ForeignKey(
         User, related_name='reviews', on_delete=models.CASCADE)

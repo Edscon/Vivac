@@ -1,3 +1,5 @@
+{% load static %}
+{% load i18n %}
 <div class="menu-tallas-mobile invisible fixed z-[99999] top-0 left h-full">
 
     <div class="w-screen h-full bg-neutral-700 opacity-70 z-0" onclick="menu_tallas_mobile()"></div>
@@ -15,7 +17,7 @@
 
             <div class="mt-14 text-[15px] text-gray-800 overflow-auto h-full relative">
 
-                <span class="block px-6 py-3 bg-gray-100 flex text-[17px]"> Escoge una talla... </span>
+                <span class="block px-6 py-3 bg-gray-100 flex text-[17px]"> {% trans 'Escoge una talla...' %} </span>
 
                 <hr>
 
