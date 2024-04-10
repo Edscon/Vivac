@@ -1,3 +1,5 @@
+{% load i18n %}
+{% load replacement %}
 <div id="FormReseña" class="fixed w-screen h-screen top-0 left-0 z-40 hidden overflow-auto">
     <form id="form">
         {% csrf_token %}
@@ -10,7 +12,7 @@
                 </svg> 
             </a>
             <div class="mt-20 md:my-8 mx-4 bg-white">
-                <div class="font-semibold"">Opina sobre este producto</div>
+                <div class="font-semibold"">{% trans 'Opina sobre este producto' %}</div>
 
                 <div class="flex">
                     <div class="mx-auto flex">
@@ -21,7 +23,12 @@
                                 <img src="{{product.image}}" class="object-contain">
                             {% endif %}
                         </div>
-                        <div class="my-auto mx-2">{{product.nombre}}</div>
+                        <div class="my-auto mx-2">
+                            {% if request.LANGUAGE_CODE == 'es' %} {{ product.nombre }}
+                            {% elif request.LANGUAGE_CODE == 'ca' %} {{ product.nombre_ca }}
+                            {% else %} {{ product.nombre }}
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
                 <div class="flex w-full">
@@ -61,7 +68,7 @@
                         <svg class="h-3 w-3 text-gray-800 my-auto"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
-                        <p>Mínimo 10 caracteres</p>
+                        <p>{% trans 'Mínimo 10 caracteres' %}</p>
                     </div>
                 </div>
 
@@ -70,7 +77,7 @@
             <hr class="w-full mt-2">
             <div class="px-10 mb-6">
                 <button class="inline-block flex justify-center w-full py-2 text-white mt-3 rounded drop-shadow-md bg-green-600 hover:bg-black transition duration-500" id="FormSubmit">
-                    Enviar
+                    {% trans 'Enviar' %}
                 </button>
             </div>
         </div>
@@ -89,40 +96,40 @@
         let error3  = false
         let error4  = false
         if(data.rating === 0){
-            errors.push('Campo requerido')
+            errors.push('{% trans "Campo requerido" %}')
             error1 = true
         }if (data.titulo === ''){
-            errors.push('Campo requeridos')
+            errors.push('{% trans "Campo requerido" %}')
             error2 = true
         }if(data.content === ''){
-            errors.push('Campo requerido')
+            errors.push('{% trans "Campo requerido" %}')
             error3 = true
         }if(data.content.length < 10){
             errors.push('No cumple el mínimo requerido')
             error4 = true
         }
 
-        let svg = ` <svg class="h-3 w-3 text-red-500 my-auto"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        let svg = `<svg class="h-3 w-3 text-red-500 my-auto"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
                     </svg>`;
         
         if (error1){
-            el1.innerHTML = svg + '<div>Campo requerido</div>';
+            el1.innerHTML = svg + '<div>{% trans "Campo requerido" %}</div>';
         }else {
             el1.innerHTML = '';
         }
         
         if (error2){
-            el2.innerHTML = svg + '<div>Campo requerido</div>';
+            el2.innerHTML = svg + '<div>{% trans "Campo requerido" %}</div>';
         }else {
             el2.innerHTML = '';
         }
 
         let html = ''
         if (error3){
-            html = svg + '<div>Campo requerido</div>';
+            html = svg + '<div>{% trans "Campo requerido" %}</div>';
         }if(!error3 && error4){
-            html = svg + '<div>No cumple el mínimo requerido</div>';
+            html = svg + '<div>{% trans "No cumple el mínimo requerido" %}</div>';
         }if(html != ''){
             el3.innerHTML = html;
         }else{

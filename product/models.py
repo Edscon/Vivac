@@ -124,6 +124,7 @@ class Product(models.Model):
     nombre_ca = models.CharField(max_length=255)
     slug = models.SlugField()
     descripcion = RichTextField(blank=True, null=True)
+    descripcion_ca = RichTextField(blank=True, null=True)
     video = models.CharField(max_length=255, blank=True, null=True)
     precio_retail = models.FloatField(null=True)
     precio = models.FloatField()

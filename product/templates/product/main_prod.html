@@ -326,7 +326,10 @@
             <div id="div-1" class="texts flex flex-wrap relative min-h-[200px]">
                 {% if product.descripcion %}
                 <div id="desc" class="w-[100%] md:w-[60%] text-gray-900 overflow-hidden text-[13px] text-justify md:pr-4 maxh">
-                    {{product.descripcion |safe}}
+                    {% if request.LANGUAGE_CODE == 'es' %} {{product.descripcion |safe}}
+                    {% elif request.LANGUAGE_CODE == 'ca' %} {{product.descripcion_ca |safe}}
+                    {% else %} {{product.descripcion |safe}}
+                    {% endif %}
                     <div  class="flex flex-col justify-center items-center mt-4">
                         {% if product.video %}
                         <iframe class="aspect-[560/315] h-[180px] min-[400px]:h-[220.5px] lg:h-[315px]" src="{{product.video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -406,14 +409,14 @@
                         <svg class="h-6 w-6 text-red-600 absolute top-[10px] left-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
-                        <p class="text-red-600">¡Sé el primero en opinar sobre este producto!</p>
+                        <p class="text-red-600">{% trans '¡Sé el primero en opinar sobre este producto!' %}</p>
                     </div>
                     {% endif %}
                 </div> 
                 <div class="lg:w-[40%] pl-10 hidden lg:block xl:top-5 h-max sticky top-0">
                     
                     <a onclick="FirstOp()" class="inline-block relative border rounded flex justify-center w-full py-2 cursor-pointer hover:bg-gray-200 transition duration-500">
-                        Escribir Reseña
+                        {% trans 'Escribir Reseña' %}
                         <svg class="h-6 w-6 absolute left-2 scale-90"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
                     </a>
                     
@@ -426,13 +429,13 @@
 
         <div id="leer_mas_menos" onclick="leer_mas_menos()" class="flex justify-center w-[100%] lg:w-[60%] mt-2 text-sm cursor-pointer select-none">
             <div id="leer_mas" class="flex flex-col justify-center items-center text-gray-500">
-                <div>Leer más</div>
+                <div>{% trans 'Leer más' %}</div>
                 <svg class="h-4 w-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
             </div>      
             <div id="leer_menos" class="flex flex-col justify-center items-center text-gray-500 hidden">
-                <div>Leer menos</div>
+                <div>{% trans 'Leer menos' %}</div>
                 <svg class="h-4 w-4"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
                 </svg>
@@ -440,7 +443,7 @@
         </div>
         
         <div class="w-full flex items-center space-x-4 font-semibold text-black relative">
-            <a href="{% url 'shop' %}" class="pt-6 pb-3">Otros Productos de la Tienda</a>
+            <a href="{% url 'shop' %}" class="pt-6 pb-3">{% trans 'Otros Productos de la Tienda' %}</a>
         </div>
         <div class="w-full relative">
             <div class="xl:px-0 overflow-hidden mx-10">
@@ -462,7 +465,12 @@
                                     <div  id="card-{{product.id}}-h" class="bg-white"></div>
                                     <div class="md:px-5 bg-white mx-1">
                                         <div class="pt-3 flex items-center justify-between">
-                                            <p class="line-clamp-2 md:line-clamp-1 leading-[16px] h-[33px] md:h-[17px]">{{ product.nombre }}</p>
+                                            <p class="line-clamp-2 md:line-clamp-1 leading-[16px] h-[33px] md:h-[17px]">
+                                                {% if request.LANGUAGE_CODE == 'es' %} {{ product.nombre }}
+                                                {% elif request.LANGUAGE_CODE == 'ca' %} {{ product.nombre_ca }}
+                                                {% else %} {{ product.nombre }}
+                                                {% endif %}
+                                            </p>
                                         </div>
                                         {% if product.get_descuento > 0 %}
                                         <div class="flex space-x-2">

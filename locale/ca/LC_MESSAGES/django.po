@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-06 22:09+0200\n"
+"POT-Creation-Date: 2024-04-10 20:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,8 @@ msgstr "Quantitat"
 
 #: cart/templates/cart/partials/addtocart.html:43
 #: cart/templates/cart/partials/minicart.html:43
+#: product/templates/product/main_prod.html:113
+#: product/templates/product/main_prod.html:123
 msgid "Te ahorras"
 msgstr "T'estalvies"
 
@@ -370,16 +372,24 @@ msgstr "Contingut"
 
 #: core/templates/core/partials/contacto.html:49
 #: core/templates/core/partials/contacto.html:148
+#: product/templates/product/partials/review.html:71
 msgid "Mínimo 10 caracteres"
 msgstr "Mínim 10 caràcters"
 
 #: core/templates/core/partials/contacto.html:54
 #: core/templates/core/partials/login_mobile.html:34
 #: core/templates/core/partials/sign.html:13
+#: product/templates/product/partials/review.html:80
 msgid "Enviar"
 msgstr "Enviar"
 
 #: core/templates/core/partials/contacto.html:137
+#: product/templates/product/partials/review.html:99
+#: product/templates/product/partials/review.html:102
+#: product/templates/product/partials/review.html:105
+#: product/templates/product/partials/review.html:117
+#: product/templates/product/partials/review.html:123
+#: product/templates/product/partials/review.html:130
 msgid "Campo requerido"
 msgstr "Camp requerit"
 
@@ -2679,6 +2689,7 @@ msgid "Dominio"
 msgstr "Domini"
 
 #: core/templates/core/partials/footer/politica_de_cookies.html:84
+#: product/templates/product/main_prod.html:314
 msgid "Descripción"
 msgstr "Descripció"
 
@@ -4255,6 +4266,7 @@ msgstr "Nena"
 
 #: core/templates/core/partials/menus_shop.html:139
 #: core/templates/core/shop.html:120
+#: product/templates/product/main_prod.html:171
 msgid "Tallas"
 msgstr "Talles"
 
@@ -4439,7 +4451,7 @@ msgstr "Tornar a dalt"
 msgid "Tus selecciones:"
 msgstr "Les teves seleccions:"
 
-#: core/templates/core/shop.html:236 core/templates/core/shop.html:312
+#: core/templates/core/shop.html:236 core/templates/core/shop.html:313
 msgid "artículos"
 msgstr "articles"
 
@@ -4447,19 +4459,19 @@ msgstr "articles"
 msgid "Ordenar:"
 msgstr "Ordenar:"
 
-#: core/templates/core/shop.html:303
+#: core/templates/core/shop.html:304
 msgid "Disponible en varias tallas"
 msgstr "Disponible en diverses talles"
 
-#: core/templates/core/shop.html:322
+#: core/templates/core/shop.html:323
 msgid "No hay productos que concuerden con la selección."
 msgstr "No hi ha productes que coincideixin amb la selecció."
 
-#: core/templates/core/shop.html:332
+#: core/templates/core/shop.html:333
 msgid "Ver Todos los productos."
 msgstr "Veure Tots els productes."
 
-#: core/templates/core/shop.html:337
+#: core/templates/core/shop.html:338
 msgid "Ver todos los productos de la tienda."
 msgstr "Veure tots els productes de la botiga."
 
@@ -4514,6 +4526,119 @@ msgstr "Inicia sessió aquí"
 #: core/templates/core/signup.html:230
 msgid "Las contraseñas no coinciden."
 msgstr "Les contrasenyes no coincideixen."
+
+#: product/models.py:314
+msgid "Título"
+msgstr "Títol"
+
+#: product/templates/product/main_prod.html:39
+msgid "Inicio"
+msgstr "Inici"
+
+#: product/templates/product/main_prod.html:134
+msgid "Opiniones"
+msgstr "Opinions"
+
+#: product/templates/product/main_prod.html:140
+msgid "Déjanos tu opinion"
+msgstr "Deixa'ns la teva opinió"
+
+#: product/templates/product/main_prod.html:145
+msgid "Sé el primero en opinar"
+msgstr "Sigues el primer a opinar"
+
+#: product/templates/product/main_prod.html:152
+msgid "Colores"
+msgstr "Colors"
+
+#: product/templates/product/main_prod.html:193
+msgid "Escoge una talla ..."
+msgstr "Escull una talla..."
+
+#: product/templates/product/main_prod.html:199
+msgid "Selecciona una talla."
+msgstr "Selecciona una talla."
+
+#: product/templates/product/main_prod.html:202
+msgid "Producto en Stock. Entrega en 48h"
+msgstr "Producte en estoc. Entrega en 48h"
+
+#: product/templates/product/main_prod.html:217
+msgid "Añadir al carrito"
+msgstr "Afegir al carretó"
+
+#: product/templates/product/main_prod.html:258
+#: product/templates/product/main_prod.html:280
+msgid "Añadir a favoritos"
+msgstr "Afegir als favorits"
+
+#: product/templates/product/main_prod.html:271
+msgid "Añadido a favoritos"
+msgstr "Afegit als favorits"
+
+#: product/templates/product/main_prod.html:290
+msgid "Compartir"
+msgstr "Comparteix"
+
+#: product/templates/product/main_prod.html:318
+msgid "Opiniones del artículo"
+msgstr "Opinions de l'article"
+
+#: product/templates/product/main_prod.html:341
+msgid "¿Porque comprar en Esports Vivac?"
+msgstr "Per què comprar a Esports Vivac?"
+
+#: product/templates/product/main_prod.html:343
+msgid "30 Años de Experiencia"
+msgstr "30 Anys d'Experiència"
+
+#: product/templates/product/main_prod.html:344
+msgid "Amplia Variedad de Marcas y Productos"
+msgstr "Ampla Varitat de Marques i Productes"
+
+#: product/templates/product/main_prod.html:345
+msgid "Garantía de Devolución de 30 Días"
+msgstr "Garantia de Devolució de 30 Dies"
+
+#: product/templates/product/main_prod.html:346
+msgid "Atención al Cliente Excepcional"
+msgstr "Atenció al Client Excepcional"
+
+#: product/templates/product/main_prod.html:347
+msgid "Compromiso con la Calidad"
+msgstr "Compromís amb la Qualitat"
+
+#: product/templates/product/main_prod.html:412
+msgid "¡Sé el primero en opinar sobre este producto!"
+msgstr "Sigues el primer a opinar sobre aquest producte!"
+
+#: product/templates/product/main_prod.html:419
+msgid "Escribir Reseña"
+msgstr "Escriu una ressenya"
+
+#: product/templates/product/main_prod.html:432
+msgid "Leer más"
+msgstr "Llegeix més"
+
+#: product/templates/product/main_prod.html:438
+msgid "Leer menos"
+msgstr "Llegeix menys"
+
+#: product/templates/product/main_prod.html:446
+msgid "Otros Productos de la Tienda"
+msgstr "Altres productes de la botiga"
+
+#: product/templates/product/partials/menu_tallas_mobile.html:20
+msgid "Escoge una talla..."
+msgstr "Escull una talla..."
+
+#: product/templates/product/partials/review.html:15
+msgid "Opina sobre este producto"
+msgstr "Opina sobre aquest producte"
+
+#: product/templates/product/partials/review.html:132
+msgid "No cumple el mínimo requerido"
+msgstr "No compleix el mínim requerit"
 
 #: vivac/settings.py:206
 msgid "Español"
