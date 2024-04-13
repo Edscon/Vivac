@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-13 22:43+0200\n"
+"POT-Creation-Date: 2024-04-13 22:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -308,6 +308,8 @@ msgid "de esports vivac."
 msgstr "de esports vivac."
 
 #: cart/templates/cart/partials/checkout_prod.html:54
+#: cart/templates/cart/partials/scripts_c.html:106
+#: cart/templates/cart/partials/scripts_c.html:201
 #: core/templates/core/login.html:173 core/templates/core/signup.html:103
 #: core/templates/core/signup.html:215
 msgid "Campo requerido."
@@ -321,6 +323,41 @@ msgstr "Compra segura 100%% garantida"
 #: cart/templates/cart/partials/checkout_prod.html:120
 msgid "Mis productos"
 msgstr "Els meus productes"
+
+#: cart/templates/cart/partials/scripts_c.html:207
+msgid "El número de teléfono no es correcto."
+msgstr "El número de telèfon no és correcte."
+
+#: cart/templates/cart/partials/scripts_c.html:212
+msgid "Lo sentimos. El código postal no es correcto."
+msgstr "Ho sentim. El codi postal no és correcte."
+
+#: cart/templates/cart/partials/scripts_c.html:225
+#: core/templates/core/login.html:180 core/templates/core/signup.html:223
+msgid ""
+"Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, "
+"1 letra mayúscula, 1 letra minúscula, 1 número."
+msgstr ""
+"Aquesta contrasenya no compleix els requisits mínims. Mínim 8 caràcters, 1 "
+"lletra majúscula, 1 lletra minúscula, 1 número."
+
+#: cart/templates/cart/partials/scripts_c.html:232
+#: core/templates/core/signup.html:230
+msgid "Las contraseñas no coinciden."
+msgstr "Les contrasenyes no coincideixen."
+
+#: cart/templates/cart/partials/scripts_c.html:238
+#: core/templates/core/login.html:186 core/templates/core/signup.html:236
+msgid ""
+"Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio."
+"com."
+msgstr ""
+"Si us plau, introdueixi una adreça de correu electrònic vàlida. Per exemple, "
+"hola@domini.com"
+
+#: cart/templates/cart/partials/scripts_c.html:287
+msgid "El código postal no coincide con la provincia."
+msgstr "El codi postal no coincideix amb la província."
 
 #: core/templates/core/frontpage.html:6
 msgid "Tienda deportes online"
@@ -360,22 +397,6 @@ msgstr "Nou a Esports Vivac?"
 #: core/templates/core/partials/sign.html:34
 msgid "Regístrate aquí"
 msgstr "Registra't aquí"
-
-#: core/templates/core/login.html:180 core/templates/core/signup.html:223
-msgid ""
-"Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, "
-"1 letra mayúscula, 1 letra minúscula, 1 número."
-msgstr ""
-"Aquesta contrasenya no compleix els requisits mínims. Mínim 8 caràcters, 1 "
-"lletra majúscula, 1 lletra minúscula, 1 número."
-
-#: core/templates/core/login.html:186 core/templates/core/signup.html:236
-msgid ""
-"Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio."
-"com."
-msgstr ""
-"Si us plau, introdueixi una adreça de correu electrònic vàlida. Per exemple, "
-"hola@domini.com"
 
 #: core/templates/core/partials/alquiler_material.html:6
 #: core/templates/core/partials/alquiler_material.html:12
@@ -4707,10 +4728,6 @@ msgstr "Ja tens un compte a Esports Vivac?"
 #: core/templates/core/signup.html:115
 msgid "Inicia sesión aquí"
 msgstr "Inicia sessió aquí"
-
-#: core/templates/core/signup.html:230
-msgid "Las contraseñas no coinciden."
-msgstr "Les contrasenyes no coincideixen."
 
 #: product/models.py:314
 msgid "Título"
