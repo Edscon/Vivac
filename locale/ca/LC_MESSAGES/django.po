@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-13 17:21+0200\n"
+"POT-Creation-Date: 2024-04-13 22:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,16 +22,16 @@ msgstr ""
 msgid "Cesta de la compra"
 msgstr "Cistella de la compra"
 
-#: cart/templates/cart/cart.html:21
+#: cart/templates/cart/cart.html:21 cart/templates/cart/checkout.html:24
 #: cart/templates/cart/partials/minicart_icon_num.html:27
 msgid "Carrito"
 msgstr "Carretó"
 
-#: cart/templates/cart/cart.html:29
+#: cart/templates/cart/cart.html:29 cart/templates/cart/checkout.html:32
 msgid "Pago y envío"
 msgstr "Pagament i enviament"
 
-#: cart/templates/cart/cart.html:37
+#: cart/templates/cart/cart.html:37 cart/templates/cart/checkout.html:40
 msgid "Confirmación"
 msgstr "Confirmació"
 
@@ -65,11 +65,13 @@ msgstr "Preu"
 
 #: cart/templates/cart/cart.html:72
 #: cart/templates/cart/partials/addtocart.html:58
+#: cart/templates/cart/partials/checkout_prod.html:21
 #: cart/templates/cart/partials/minicart.html:60
 msgid "Subtotal"
 msgstr "Subtotal"
 
 #: cart/templates/cart/cart.html:85
+#: cart/templates/cart/partials/checkout_prod.html:45
 msgid "Precios con IVA incluido"
 msgstr "Preus amb IVA inclòs"
 
@@ -81,6 +83,164 @@ msgstr "IVA incl."
 msgid "Total compra"
 msgstr "Total compra"
 
+#: cart/templates/cart/checkout.html:6
+#: cart/templates/cart/partials/addtocart.html:70
+#: cart/templates/cart/partials/checkout_prod.html:68
+#: cart/templates/cart/partials/checkout_prod.html:82
+#: cart/templates/cart/partials/checkout_prod.html:96
+#: cart/templates/cart/partials/minicart.html:72
+msgid "Realizar pedido"
+msgstr "Realitzar la comanda"
+
+#: cart/templates/cart/checkout.html:55
+msgid ""
+"Error, la cantidad no coincide con el stock. No se ha podido continuar con "
+"el pedido."
+msgstr ""
+"Error, la quantitat no coincideix amb l'estoc. No s'ha pogut continuar amb "
+"la comanda."
+
+#: cart/templates/cart/checkout.html:59
+msgid "Cargar la página con las unidades actualizadas"
+msgstr "Carrega la pàgina amb les unitats actualitzades"
+
+#: cart/templates/cart/checkout.html:80
+msgid "Datos de contacto y envío"
+msgstr "Dades de contacte i enviament"
+
+#: cart/templates/cart/checkout.html:98 core/templates/core/login.html:56
+msgid "Iniciar sesión"
+msgstr "Iniciar sessió"
+
+#: cart/templates/cart/checkout.html:106 core/templates/core/login.html:75
+msgid "Iniciar sesión con Google"
+msgstr "Iniciar sessió amb Google"
+
+#: cart/templates/cart/checkout.html:113
+msgid "Crear cuenta"
+msgstr "Crear compta"
+
+#: cart/templates/cart/checkout.html:114
+msgid "Comprar sin crear cuenta"
+msgstr "Comprar sense crear compta"
+
+#: cart/templates/cart/checkout.html:126 cart/templates/cart/checkout.html:128
+#: cart/templates/cart/partials/formularionocuenta.html:8
+#: cart/templates/cart/partials/formularionocuenta.html:10
+#: core/templates/core/partials/contacto.html:25
+#: core/templates/core/partials/contacto.html:27
+#: core/templates/core/signup.html:35 core/templates/core/signup.html:37
+msgid "Nombre"
+msgstr "Nom"
+
+#: cart/templates/cart/checkout.html:135 cart/templates/cart/checkout.html:137
+#: cart/templates/cart/partials/formularionocuenta.html:17
+#: cart/templates/cart/partials/formularionocuenta.html:19
+#: core/templates/core/signup.html:42 core/templates/core/signup.html:44
+msgid "Apellidos"
+msgstr "Cognoms"
+
+#: cart/templates/cart/checkout.html:144 core/templates/core/login.html:20
+#: core/templates/core/partials/contacto.html:32
+#: core/templates/core/partials/footer/condiciones_generales_compra_web.html:27
+#: core/templates/core/partials/footer/condiciones_legales.html:21
+#: core/templates/core/partials/login_mobile.html:29
+#: core/templates/core/partials/sign.html:9 core/templates/core/signup.html:49
+msgid "Email"
+msgstr "Correu electrònic"
+
+#: cart/templates/cart/checkout.html:146
+#: cart/templates/cart/partials/formularionocuenta.html:26
+#: cart/templates/cart/partials/formularionocuenta.html:28
+#: core/templates/core/login.html:22
+#: core/templates/core/partials/contacto.html:34
+#: core/templates/core/signup.html:51
+msgid "Correo electrónico"
+msgstr "Correu electrònic"
+
+#: cart/templates/cart/checkout.html:153 cart/templates/cart/checkout.html:156
+#: core/templates/core/login.html:27 core/templates/core/login.html:29
+#: core/templates/core/partials/login_mobile.html:31
+#: core/templates/core/partials/sign.html:10 core/templates/core/signup.html:56
+#: core/templates/core/signup.html:58
+msgid "Contraseña"
+msgstr "Contrasenya"
+
+#: cart/templates/cart/checkout.html:171 cart/templates/cart/checkout.html:174
+#: core/templates/core/signup.html:72 core/templates/core/signup.html:74
+msgid "Confirma tu contraseña"
+msgstr "Confirma la teva contrasenya"
+
+#: cart/templates/cart/checkout.html:191 core/templates/core/login.html:46
+#: core/templates/core/signup.html:91
+msgid "Mínimo 8 caracteres, incluyendo número, mayúscula y minúscula."
+msgstr "Mínim 8 caràcters, incloent número, majúscula i minúscula."
+
+#: cart/templates/cart/checkout.html:200 cart/templates/cart/checkout.html:202
+#: cart/templates/cart/partials/formularionocuenta.html:35
+#: cart/templates/cart/partials/formularionocuenta.html:37
+#: core/templates/core/partials/footer/condiciones_generales_compra_web.html:28
+#: core/templates/core/partials/footer/condiciones_legales.html:22
+#: core/templates/core/partials/footer/ventajas.html:38
+msgid "Teléfono"
+msgstr "Telèfon"
+
+#: cart/templates/cart/checkout.html:209 cart/templates/cart/checkout.html:211
+#: cart/templates/cart/partials/formularionocuenta.html:46
+#: cart/templates/cart/partials/formularionocuenta.html:48
+msgid "Calle y Numero"
+msgstr "Carrer i Número"
+
+#: cart/templates/cart/checkout.html:218 cart/templates/cart/checkout.html:220
+#: cart/templates/cart/partials/formularionocuenta.html:55
+#: cart/templates/cart/partials/formularionocuenta.html:57
+msgid "Ciudad"
+msgstr "Ciutat"
+
+#: cart/templates/cart/checkout.html:227 cart/templates/cart/checkout.html:229
+#: cart/templates/cart/partials/formularionocuenta.html:64
+#: cart/templates/cart/partials/formularionocuenta.html:66
+msgid "Código Postal"
+msgstr "Codi Postal"
+
+#: cart/templates/cart/checkout.html:237 cart/templates/cart/checkout.html:239
+#: cart/templates/cart/checkout.html:241
+#: cart/templates/cart/partials/formularionocuenta.html:74
+#: cart/templates/cart/partials/formularionocuenta.html:76
+#: cart/templates/cart/partials/formularionocuenta.html:78
+msgid "Provincia"
+msgstr "Província"
+
+#: cart/templates/cart/checkout.html:300
+#: cart/templates/cart/partials/formularionocuenta.html:136
+msgid "Añadir detalles para el envió"
+msgstr "Afegir detalls per a l'enviament"
+
+#: cart/templates/cart/checkout.html:303 cart/templates/cart/checkout.html:306
+#: cart/templates/cart/partials/formularionocuenta.html:139
+#: cart/templates/cart/partials/formularionocuenta.html:142
+msgid "Detalles"
+msgstr "Detalls"
+
+#: cart/templates/cart/checkout.html:311
+msgid "Este email coincide con un usuario pero la contraseña no coincide."
+msgstr ""
+"Aquest correu electrònic coincideix amb un usuari però la contrasenya no "
+"coincideix."
+
+#: cart/templates/cart/checkout.html:313
+#: cart/templates/cart/partials/formularionocuenta.html:149
+msgid "Siguiente"
+msgstr "Següent"
+
+#: cart/templates/cart/checkout.html:338
+msgid "Método de envío"
+msgstr "Mètode d'enviament"
+
+#: cart/templates/cart/checkout.html:364
+msgid "Método de pago"
+msgstr "Mètode de pagament"
+
 #: cart/templates/cart/partials/addtocart.html:10
 #: cart/templates/cart/partials/minicart.html:10
 msgid "Añadido al carrito"
@@ -88,6 +248,7 @@ msgstr "Afegit al carretó"
 
 #: cart/templates/cart/partials/addtocart.html:33
 #: cart/templates/cart/partials/cart_item.html:21
+#: cart/templates/cart/partials/checkout_prod.html:143
 #: cart/templates/cart/partials/minicart.html:33
 msgid "Talla"
 msgstr "Talla"
@@ -105,11 +266,6 @@ msgstr "T'estalvies"
 msgid "Ver Carrito"
 msgstr "Veure Carretó"
 
-#: cart/templates/cart/partials/addtocart.html:70
-#: cart/templates/cart/partials/minicart.html:72
-msgid "Realizar pedido"
-msgstr "Realitzar la comanda"
-
 #: cart/templates/cart/partials/cart_item.html:22
 msgid "Fecha entrega estimada"
 msgstr "Data d'entrega estimada"
@@ -117,6 +273,54 @@ msgstr "Data d'entrega estimada"
 #: cart/templates/cart/partials/cart_item.html:96
 msgid "Eliminar"
 msgstr ""
+
+#: cart/templates/cart/partials/checkout_prod.html:16
+msgid "Resumen del pedido"
+msgstr "Resum de la comanda"
+
+#: cart/templates/cart/partials/checkout_prod.html:25
+#: core/templates/core/partials/footer.html:25
+msgid "Gastos de envío"
+msgstr "Despeses d'enviament"
+
+#: cart/templates/cart/partials/checkout_prod.html:35
+msgid "Total"
+msgstr "Total"
+
+#: cart/templates/cart/partials/checkout_prod.html:51
+msgid "Acepto las"
+msgstr "Accepto les"
+
+#: cart/templates/cart/partials/checkout_prod.html:51
+msgid "condiciones generales de compra"
+msgstr "condicions generals de compra"
+
+#: cart/templates/cart/partials/checkout_prod.html:51
+msgid "y la"
+msgstr "i la"
+
+#: cart/templates/cart/partials/checkout_prod.html:51
+msgid "política de privacidad"
+msgstr "política de privadesa"
+
+#: cart/templates/cart/partials/checkout_prod.html:51
+msgid "de esports vivac."
+msgstr "de esports vivac."
+
+#: cart/templates/cart/partials/checkout_prod.html:54
+#: core/templates/core/login.html:173 core/templates/core/signup.html:103
+#: core/templates/core/signup.html:215
+msgid "Campo requerido."
+msgstr "Camp requerit."
+
+#: cart/templates/cart/partials/checkout_prod.html:108
+#, python-format
+msgid "Compra segura 100%% garantizada"
+msgstr "Compra segura 100%% garantida"
+
+#: cart/templates/cart/partials/checkout_prod.html:120
+msgid "Mis productos"
+msgstr "Els meus productes"
 
 #: core/templates/core/frontpage.html:6
 msgid "Tienda deportes online"
@@ -141,39 +345,9 @@ msgstr ""
 msgid "Iniciar Sesión"
 msgstr "Iniciar sessió"
 
-#: core/templates/core/login.html:20
-#: core/templates/core/partials/contacto.html:32
-#: core/templates/core/partials/footer/condiciones_generales_compra_web.html:27
-#: core/templates/core/partials/footer/condiciones_legales.html:21
-#: core/templates/core/partials/login_mobile.html:29
-#: core/templates/core/partials/sign.html:9 core/templates/core/signup.html:49
-msgid "Email"
-msgstr "Correu electrònic"
-
-#: core/templates/core/login.html:22
-#: core/templates/core/partials/contacto.html:34
-#: core/templates/core/signup.html:51
-msgid "Correo electrónico"
-msgstr "Correu electrònic"
-
-#: core/templates/core/login.html:27 core/templates/core/login.html:29
-#: core/templates/core/partials/login_mobile.html:31
-#: core/templates/core/partials/sign.html:10 core/templates/core/signup.html:56
-#: core/templates/core/signup.html:58
-msgid "Contraseña"
-msgstr "Contrasenya"
-
-#: core/templates/core/login.html:46 core/templates/core/signup.html:91
-msgid "Mínimo 8 caracteres, incluyendo número, mayúscula y minúscula."
-msgstr "Mínim 8 caràcters, incloent número, majúscula i minúscula."
-
 #: core/templates/core/login.html:54
 msgid "Este email o contraseña no son correctos."
 msgstr ""
-
-#: core/templates/core/login.html:56
-msgid "Iniciar sesión"
-msgstr "Iniciar sessió"
 
 #: core/templates/core/login.html:60
 #: core/templates/core/partials/login_mobile.html:55
@@ -186,15 +360,6 @@ msgstr "Nou a Esports Vivac?"
 #: core/templates/core/partials/sign.html:34
 msgid "Regístrate aquí"
 msgstr "Registra't aquí"
-
-#: core/templates/core/login.html:75
-msgid "Inicia sesión con Google"
-msgstr "Iniciar sessió amb Google"
-
-#: core/templates/core/login.html:173 core/templates/core/signup.html:103
-#: core/templates/core/signup.html:215
-msgid "Campo requerido."
-msgstr "Camp requerit."
 
 #: core/templates/core/login.html:180 core/templates/core/signup.html:223
 msgid ""
@@ -403,12 +568,6 @@ msgstr "Contacta'ns"
 msgid "Formulario de Contacto"
 msgstr "Formulari de contacte"
 
-#: core/templates/core/partials/contacto.html:25
-#: core/templates/core/partials/contacto.html:27
-#: core/templates/core/signup.html:35 core/templates/core/signup.html:37
-msgid "Nombre"
-msgstr "Nom"
-
 #: core/templates/core/partials/contacto.html:39
 #: core/templates/core/partials/contacto.html:41
 msgid "Contenido"
@@ -491,10 +650,6 @@ msgstr "Ajuda"
 #: core/templates/core/partials/footer.html:24
 msgid "Seguimiento pedidos"
 msgstr "Seguiment comandes"
-
-#: core/templates/core/partials/footer.html:25
-msgid "Gastos de envío"
-msgstr "Despeses d'enviament"
 
 #: core/templates/core/partials/footer.html:26
 msgid "Cambio de talla"
@@ -1038,12 +1193,6 @@ msgstr "Domicili social"
 #: core/templates/core/partials/footer/condiciones_legales.html:19
 msgid "C/ Sant Roc, 16, 17867 Camprodon"
 msgstr "C/ Sant Roc, 16, 17867 Camprodon"
-
-#: core/templates/core/partials/footer/condiciones_generales_compra_web.html:28
-#: core/templates/core/partials/footer/condiciones_legales.html:22
-#: core/templates/core/partials/footer/ventajas.html:38
-msgid "Teléfono"
-msgstr "Telèfon"
 
 #: core/templates/core/partials/footer/condiciones_generales_compra_web.html:29
 #: core/templates/core/partials/footer/condiciones_legales.html:23
@@ -4535,14 +4684,6 @@ msgstr "Registra't utilitzant"
 msgid "O regístrate con tus datos"
 msgstr "O registra't amb les teves dades"
 
-#: core/templates/core/signup.html:42 core/templates/core/signup.html:44
-msgid "Apellidos"
-msgstr "Cognoms"
-
-#: core/templates/core/signup.html:72 core/templates/core/signup.html:74
-msgid "Confirma tu contraseña"
-msgstr "Confirma la teva contrasenya"
-
 #: core/templates/core/signup.html:100
 msgid ""
 "Acepto las condiciones generales de compra y la política de privacidad de "
@@ -4692,29 +4833,3 @@ msgstr "Catalan"
 #: vivac/settings.py:207
 msgid "Català"
 msgstr "Castellà"
-
-#~ msgid ""
-#~ "En conformidad con el Real Decreto 110/2015, de 20 de febrero, sobre "
-#~ "residuos de aparatos eléctricos y electrónicos (AEE), al comprar un "
-#~ "artículo de estas características en nuestra web, ESPORTS VIVAC se hace "
-#~ "cargo del reciclaje de tu antiguo dispositivo."
-#~ msgstr ""
-#~ "D'acord amb el Reial Decret 110/2015, de 20 de febrer, sobre residus "
-#~ "d'aparells elèctrics i electrònics (AEE), en comprar un article "
-#~ "d'aquestes característiques a la nostra web, ESPORTS VIVAC es fa càrrec "
-#~ "del reciclatge del teu antic dispositiu."
-
-#~ msgid "Para ello, puedes solicitar una recogida gratuita en tu domicilio"
-#~ msgstr "Per a això, pots sol·licitar una recollida gratuïta al teu domicili"
-
-#~ msgid "aquí"
-#~ msgstr "aquí"
-
-#~ msgid ""
-#~ "indicando: nombre y apellido, correo electrónico, dirección de recogida y "
-#~ "teléfono de contacto. Asegúrate de indicar que se trata de un servicio de "
-#~ "recogida de material reciclado."
-#~ msgstr ""
-#~ "indicant: nom i cognom, correu electrònic, adreça de recollida i telèfon "
-#~ "de contacte. Assegura't d'indicar que es tracta d'un servei de recollida "
-#~ "de material reciclat."

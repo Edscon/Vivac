@@ -1,5 +1,6 @@
 {% load replacement %}
 {% load static %}
+{% load i18n %}
 <style>
     p_main {
         background-color: rgb(243, 243, 243);
@@ -12,16 +13,16 @@
                 <svg class="h-6 w-6"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                 </svg>
-                <h3 class="">Resumen del pedido</h3>
+                <h3 class="">{% trans 'Resumen del pedido' %}</h3>
             </div>
         
             <div class="flex flex-col space-y-2 text-sm">
                 <div class="flex pr-1 pl-2">
-                    <div class="w-[25%]">Subtotal</div>
+                    <div class="w-[25%]">{% trans 'Subtotal' %}</div>
                     <div class="w-[75%] text-right">{{cart.get_total_cost|floatformat:2}} €</div>
                 </div>
                 <div class="flex pr-1 pl-2">
-                    <div  class="w-[25%]">Gastos de envío</div>
+                    <div  class="w-[25%]">{% trans 'Gastos de envío' %}</div>
                     {% if cart.get_total_cost >= 100 %}
                         <div id="gastos_envio" class="w-[75%] text-right">0,00 €</div>
                     {% else %}
@@ -31,7 +32,7 @@
                 </div>
                 <div class="bg-neutral-100 text-base font-bold text-black">
                     <div class="flex py-2 pl-2 pr-1">
-                        <div class="w-[25%]">Total</div>
+                        <div class="w-[25%]">{% trans 'Total' %}</div>
                         <input value={{cart.get_total_cost}} id="total_ch" class="hidden"></input>
                         {% if cart.get_total_cost >= 100 %}
                             <div id="total_ch_2" class="w-[75%] text-right">{{cart.get_total_cost|floatformat:2}} €</div>
@@ -41,16 +42,16 @@
                     </div>
                 </div>
             </div>
-            <div class="text-right text-xs">Precios con IVA incluido</div>
+            <div class="text-right text-xs">{% trans 'Precios con IVA incluido' %}</div>
     
             <div class="my-5 text-black">
                 <div class="flex mb-1">
                     <input id="default-checkbox" type="checkbox" class="w-6 h-6 rounded cursor-pointer" onclick="check_condiciones()">
                     <label for="default-checkbox" class="ml-2 text-sm cursor-pointer">
-                        Acepto las condiciones generales de compra y la política de privacidad de esports vivac.
+                        {% trans 'Acepto las' %} <a href="{% url 'condiciones_generales_compra_web' %}" target="_blank" class="underline">{% trans 'condiciones generales de compra' %}</a> {% trans 'y la' %} <a href="{% url 'politica_de_privacidad' %}" target="_blank" class="underline">{% trans 'política de privacidad' %}</a> {% trans 'de esports vivac.' %}
                     </label>
                 </div>
-                <div id="error_condiciones" class="text-xs text-red-500 hidden px-7">Campo requerido.</div>
+                <div id="error_condiciones" class="text-xs text-red-500 hidden px-7">{% trans 'Campo requerido.' %}</div>
             </div>
             
             <a  
@@ -64,7 +65,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                         </svg>
                     </div>
-                    <div class="">Realizar pedido</div>
+                    <div class="">{% trans 'Realizar pedido' %}</div>
                 </div>
             </a>
             <a  
@@ -78,7 +79,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                         </svg>
                     </div>
-                    <div class="">Realizar pedido</div>
+                    <div class="">{% trans 'Realizar pedido' %}</div>
                 </div>
             </a>
             <div class="hidden" id="payment_form_button">
@@ -92,7 +93,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                             </svg>
                         </div>
-                        <div  class="">Realizar pedido</div>
+                        <div  class="">{% trans 'Realizar pedido' %}</div>
                     </div>
                     <div class="spinner hidden" id="spinner"></div>
                     
@@ -104,7 +105,7 @@
                     <svg class="h-4 w-4 text-green-700"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                     </svg>
-                    <p class="text-xs text-gray-700">Compra segura 100% garantizada</p>
+                    <p class="text-xs text-gray-700">{% trans 'Compra segura 100% garantizada' %}</p>
                 </div>
             </div>
         </div>
@@ -116,7 +117,7 @@
                 <svg class="h-6 w-6"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                 </svg>
-                <h3 class="">Mis productos</h3>
+                <h3 class="">{% trans 'Mis productos' %}</h3>
             </div>
 
             <div>
@@ -134,9 +135,12 @@
                                         <span class="text-sm">
                                             <div class="line-clamp-2 leading-[16px] h-[33px]">
                                                 <span class="text-green-700">{{item.quantity}}x</span>
-                                                {{item.variant.product.nombre}}
+                                                {% if request.LANGUAGE_CODE == 'es' %} {{item.variant.product.nombre}}
+                                                {% elif request.LANGUAGE_CODE == 'ca' %} {{item.variant.product.nombre_ca}}
+                                                {% else %} {{item.variant.product.nombre}}
+                                                {% endif %}
                                             </div>
-                                            <span class="quantity mt-1 w-[60px] text-xs">Talla: {{item.size|replace_1}}</span>
+                                            <span class="quantity mt-1 w-[60px] text-xs">{% trans 'Talla' %}: {{item.size|replace_1}}</span>
 
                                         </span>
                                         <span class="mb-6 pt-1 text-black w-[85px] text-right text-[12px]">

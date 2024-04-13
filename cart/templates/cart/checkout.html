@@ -1,9 +1,12 @@
 {% extends 'core/base_checkout.html' %}
 
-{% block title %}Realizar pedido{% endblock %}
+{% load i18n %}
+{% load socialaccount %}
+
+{% block title %}{% trans 'Realizar pedido' %}{% endblock %}
 
 {% block content%}
-{% load socialaccount %}
+
 {% include 'cart/partials/style_c.html' %}
 
 <input value="{{envios}}" id="envios" class="hidden"></input>
@@ -18,7 +21,7 @@
                     1
                  </div>
             </div>
-            <div class="my-auto text-green-700"> Carrito </div>
+            <div class="my-auto text-green-700"> {% trans 'Carrito' %} </div>
         </div>
         <div class="bg-white px-2 z-[3] flex space-x-2">
             <div class="z-[3] rounded-full border border-gray-300 flex p-4 relative bg-green-700">
@@ -26,7 +29,7 @@
                     2
                  </div>
             </div>
-            <div class="my-auto text-green-700"> Pago y envío </div>
+            <div class="my-auto text-green-700"> {% trans 'Pago y envío' %} </div>
         </div>
         <div class="bg-white pl-2 pr-2 z-[3] flex space-x-2">
             <div class="z-[3] rounded-full border border-gray-300 flex p-4 relative bg-white">
@@ -34,7 +37,7 @@
                     3
                  </div>
             </div>
-            <div class="my-auto"> Confirmación </div>
+            <div class="my-auto"> {% trans 'Confirmación' %} </div>
         </div>
         <hr class="w-full absolute py-[0.5px] top-[50%] bg-gray-300 z-[0]">
     </div>
@@ -49,11 +52,11 @@
                 <svg class="h-7 w-7 text-red-500 min-w-[40px]"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
                 </svg>
-                <div>Error, la cantidad no coincide con el stock. No se ha podido continuar con el pedido.</div>
+                <div>{% trans 'Error, la cantidad no coincide con el stock. No se ha podido continuar con el pedido.' %}</div>
             </div>
             <div class="lg:w-[40%] w-[100%] my-auto" onclick="check_cart()">
                 <div class="w-full py-[5px] rounded bg-red-600 relative cursor-pointer flex border drop-shadow-md text-white hover:bg-red-800 transition duration-500">
-                    <div class="m-auto">Cargar la página con las unidades actualizadas</div>
+                    <div class="m-auto">{% trans 'Cargar la página con las unidades actualizadas' %}</div>
                 </div>
             </div>
         
@@ -74,7 +77,7 @@
                             <div>
                                 <svg class="h-6 w-6"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  <circle cx="12" cy="7" r="4" /></svg>
                             </div>
-                            <div>Datos de contacto y envío</div>
+                            <div>{% trans 'Datos de contacto y envío' %}</div>
                             
                         </div>
                     </div>
@@ -92,7 +95,7 @@
                                         <div>
                                             <svg class="h-6 w-6"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  <circle cx="12" cy="7" r="4" /></svg>
                                         </div>
-                                        <div class="">Iniciar sesión</div>
+                                        <div class="">{% trans 'Iniciar sesión' %}</div>
                                     </div>
                                 </a>
                                 <a  
@@ -100,15 +103,15 @@
                                     href="{% provider_login_url 'google' %}?next={{request.path}}"
                                     >
                                     <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" class="h-5 w-5 absolute top-[50%] left-[8px] -translate-y-[50%]"><path fill="#fbc02d" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12	s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20	s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/><path fill="#e53935" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039	l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/><path fill="#4caf50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36	c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/><path fill="#1565c0" d="M43.611,20.083L43.595,20L42,20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/></svg>
-                                    <p class="m-auto">Iniciar sesión con Google</p>
+                                    <p class="m-auto">{% trans 'Iniciar sesión con Google' %}</p>
                                 </a>
                             </div>
                         </div>
                         <hr class="border border-gray-300">
                         <div class="my-6 px-6 flex space-x-2">
                             <div>¿Es tu primera vez en Esports Vivac?</div>
-                            <div id="crearcuenta" class="font-semibold cursor-pointer" onclick="Formularioch()">Crear cuenta</div>
-                            <div id="nocuenta" class="font-semibold cursor-pointer hidden" onclick="Formularioch()">Comprar sin crear cuenta</div>
+                            <div id="crearcuenta" class="font-semibold cursor-pointer" onclick="Formularioch()">{% trans 'Crear cuenta' %}</div>
+                            <div id="nocuenta" class="font-semibold cursor-pointer hidden" onclick="Formularioch()">{% trans 'Comprar sin crear cuenta' %}</div>
                         </div>
                     </div>
             
@@ -119,30 +122,38 @@
                             <div class="space-y-6 w-full lg:w-[48%]">
                                 <div>
                                     <div class="border border-gray-400 hover:border-black relative">
-                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Nombre*</div>
-                                        <input id="first_name_sc" name="first_name" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Nombre" value="{{request.user.first_name}}"
+                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">
+                                            {% trans 'Nombre' %}*
+                                        </div>
+                                        <input id="first_name_sc" name="first_name" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="{% trans 'Nombre' %}" value="{{request.user.first_name}}"
                                         oninput="document.getElementById('first_name_nc').value = this.value">
                                     </div>
                                 </div>
                                 <div>
                                     <div class="border border-gray-400 hover:border-black relative">
-                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Apellidos*</div>
-                                        <input id="last_name_sc" name="last_name" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Apellidos" value="{{request.user.last_name}}"
+                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">
+                                            {% trans 'Apellidos' %}*
+                                        </div>
+                                        <input id="last_name_sc" name="last_name" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="{% trans 'Apellidos' %}" value="{{request.user.last_name}}"
                                         oninput="document.getElementById('last_name_nc').value = this.value">
                                     </div>
                                 </div>
                                 <div>
                                     <div class="border border-gray-400 hover:border-black relative">
-                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Email*</div>
-                                        <input id="email_sc" name="email_" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Correo electrónico" value="{{request.user.email}}"
+                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">
+                                            {% trans 'Email' %}*
+                                        </div>
+                                        <input id="email_sc" name="email_" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="{% trans 'Correo electrónico' %}" value="{{request.user.email}}"
                                         oninput="document.getElementById('email_nc').value = this.value">
                                     </div>
                                 </div>
                                 <div>
                                     <div class="border border-gray-400 hover:border-black relative">
-                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Contraseña*</div>
+                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">
+                                            {% trans 'Contraseña' %}*
+                                        </div>
                                         <input id="password-input" name="password1" type="password" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
-                                                placeholder="Contraseña" autocomplete="on">
+                                                placeholder="{% trans 'Contraseña' %}" autocomplete="on">
                                         <i id="eye" class="absolute bg-white top-[50%] right-0 -translate-y-[50%] -translate-x-[50%] cursor-pointer">
                                             <svg id="pw_open" class="h-5 w-5 mx-1 hidden"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -156,9 +167,11 @@
                                 </div>
                                 <div>
                                     <div class="border border-gray-400 hover:border-black relative">
-                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Confirma tu contraseña*</div>
+                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">
+                                            {% trans 'Confirma tu contraseña' %}*
+                                        </div>
                                         <input id="password-input2" name="password2" type="password" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
-                                                placeholder="Confirma tu contraseña" autocomplete="on">
+                                                placeholder="{% trans 'Confirma tu contraseña' %}*" autocomplete="on">
                                         <i id="eye2" class="absolute bg-white top-[50%] right-0 -translate-y-[50%] -translate-x-[50%] cursor-pointer">
                                             <svg id="pw_open2" class="h-5 w-5 mx-1 hidden"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -175,7 +188,7 @@
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                             </svg>
                                         </div>
-                                        <div>Mínimo 8 caracteres, incluyendo número, mayúscula y minúscula.</div>
+                                        <div>{% trans 'Mínimo 8 caracteres, incluyendo número, mayúscula y minúscula.' %}</div>
                                           
                                     </div>
                                 </div>
@@ -183,39 +196,49 @@
                             <div class="space-y-6 w-full lg:w-[48%]">
                                 <div>
                                     <div class="border border-gray-400 hover:border-black relative">
-                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Teléfono*</div>
-                                        <input id="phone_sc" name="phone" type="number" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Teléfono"
+                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">
+                                            {% trans 'Teléfono' %}*
+                                        </div>
+                                        <input id="phone_sc" name="phone" type="number" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="{% trans 'Teléfono' %}"
                                         oninput="document.getElementById('phone_nc').value = this.value">
                                     </div>
                                 </div>
                                 <div>
                                     <div class="border border-gray-400 hover:border-black relative">
-                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Calle y Numero*</div>
-                                        <input id="address_sc" name="address" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Calle y Numero"
+                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">
+                                            {% trans 'Calle y Numero' %}*
+                                        </div>
+                                        <input id="address_sc" name="address" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="{% trans 'Calle y Numero' %}"
                                         oninput="document.getElementById('address_nc').value = this.value">
                                     </div>
                                 </div>
                                 <div>
                                     <div class="border border-gray-400 hover:border-black relative">
-                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Ciudad*</div>
-                                        <input id="city_sc" name="city" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Ciudad"
+                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">
+                                            {% trans 'Ciudad' %}*
+                                        </div>
+                                        <input id="city_sc" name="city" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="{% trans 'Ciudad' %}"
                                         oninput="document.getElementById('city_nc').value = this.value">
                                     </div>
                                 </div>
                                 <div>
                                     <div class="border border-gray-400 hover:border-black relative">
-                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Código Postal*</div>
-                                        <input id="zipcode_sc" name="zipcode" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="Código Postal"
+                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">
+                                            {% trans 'Código Postal' %}*
+                                        </div>
+                                        <input id="zipcode_sc" name="zipcode" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" placeholder="{% trans 'Código Postal' %}"
                                         oninput="document.getElementById('zipcode_nc').value = this.value">
                                     </div>
                                 </div>
                                 
                                 <div>
                                     <div class="border border-gray-400 hover:border-black relative">
-                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Provincia*</div>
-                                        <select id="provincia_sc" name="provincia" class="w-full p-3 text-black" placeholder="Provincia" 
+                                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">
+                                            {% trans 'Provincia' %}*
+                                        </div>
+                                        <select id="provincia_sc" name="provincia" class="w-full p-3 text-black" placeholder="{% trans 'Provincia' %}" 
                                         onchange="document.getElementById('provincia_nc').value = this.value; gastos(this.value)">
-                                            <option disabled selected value="Null">Provincia</option>
+                                            <option disabled selected value="Null">{% trans 'Provincia' %}</option>
                                             <option disabled value="Null">----------</option>
                                             <option value="A Coruña">A Coruña</option>
                                             <option value="Álava">Álava</option>
@@ -274,18 +297,20 @@
                         </div>
 
                         <div class="px-6 text-sm">
-                            <div id="detalles_envio_sc" class="font-semibold mb-2 cursor-pointer">Añadir detalles para el envió</div>
+                            <div id="detalles_envio_sc" class="font-semibold mb-2 cursor-pointer">{% trans 'Añadir detalles para el envió' %}</div>
                             <div id="det_sc" class="border border-gray-400 hover:border-black relative hidden">
-                                <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Detalles*</div>
+                                <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">
+                                    {% trans 'Detalles' %}*
+                                </div>
                                 <textarea id="detalles_sc" name="detalles" rows="3" cols="110" style="resize: none;" type="text" class="w-full p-3 placeholder-gray-500 hover:placeholder-black" 
-                                        placeholder="Detalles" oninput="document.getElementById('detalles_nc').value = this.value"></textarea>
+                                        placeholder="{% trans 'Detalles' %}" oninput="document.getElementById('detalles_nc').value = this.value"></textarea>
                             </div>
                         </div>
 
                         <div class="px-6 mt-10 mb-6">
-                            <div id="error_user_password" class="text-red-500 text-sm mb-1 hidden">Este email coincide con un usuario pero la contraseña no coincide.</div>
+                            <div id="error_user_password" class="text-red-500 text-sm mb-1 hidden">{% trans 'Este email coincide con un usuario pero la contraseña no coincide.' %}</div>
                             <a onclick="buy2(event,0)" class="mr-4 w-[30%] inline-block py-3 text-white relative cursor-pointer border flex bg-black">
-                                <p class="m-auto">Siguiente</p>
+                                <p class="m-auto">{% trans 'Siguiente' %}</p>
                             </a>
                         </div>
                     </div>
@@ -310,7 +335,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
                                 </svg>
                             </div>
-                            <div>Método de envío</div> 
+                            <div>{% trans 'Método de envío' %}</div> 
                             <div class="p-6 hover:bg-gray-100 h-[30px]">
 
                             </div>
@@ -336,7 +361,7 @@
                         <div>
                             <svg class="h-6 w-6"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />  <line x1="1" y1="10" x2="23" y2="10" /></svg>
                         </div>
-                        <div>Método de pago</div> 
+                        <div>{% trans 'Método de pago' %}</div> 
                     </div>
 
                     <div id="rueda3" class="hidden absolute top-0 w-full h-full grid place-content-center rounded-xl">
