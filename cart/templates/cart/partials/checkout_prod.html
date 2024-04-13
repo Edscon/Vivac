@@ -26,7 +26,7 @@
                     {% if cart.get_total_cost >= 100 %}
                         <div id="gastos_envio" class="text-right">0,00 €</div>
                     {% else %}
-                        <div id="gastos_envio" class="text-right">5,00 €</div>
+                        <div id="gastos_envio" class="text-right">6,50 €</div>
                     {% endif %}
 
                 </div>
@@ -37,7 +37,7 @@
                         {% if cart.get_total_cost >= 100 %}
                             <div id="total_ch_2" class="w-[75%] text-right">{{cart.get_total_cost|floatformat:2}} €</div>
                         {% else %}
-                            <div id="total_ch_2" class="w-[75%] text-right">{{cart.get_total_cost|suma:5|floatformat:2}} €</div>
+                            <div id="total_ch_2" class="w-[75%] text-right">{{cart.get_total_cost|suma:6.5|floatformat:2}} €</div>
                         {% endif %}
                     </div>
                 </div>
