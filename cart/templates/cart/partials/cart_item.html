@@ -1,4 +1,5 @@
 {% load replacement %}
+{% load i18n %}
 {% if item %}
 <div id="cart-item-{{item.variant.id}}">
 
@@ -11,9 +12,14 @@
             <div class="w-full lg:flex justify-between">
                 <div class="flex justify-between relative">
                     <div class="item-size">
-                        <div class="font-semibold">{{item.variant.product.nombre}}</div>
-                        <button class="" value="{{item.size}}" id="item-size-{{item.variant.id}}">Talla:  {{item.size|replace_1}}</button>
-                        <div class="text-green-600">Fecha entrega estimada: {{time|date1}}</div>
+                        <div class="font-semibold">
+                            {% if request.LANGUAGE_CODE == 'es' %} {{item.variant.product.nombre}}
+                            {% elif request.LANGUAGE_CODE == 'ca' %} {{item.variant.product.nombre_ca}}
+                            {% else %} {{item.variant.product.nombre}}
+                            {% endif %}
+                        </div>
+                        <button class="" value="{{item.size}}" id="item-size-{{item.variant.id}}">{% trans 'Talla' %}:  {{item.size|replace_1}}</button>
+                        <div class="text-green-600">{% trans 'Fecha entrega estimada' %}: {{time|date1}}</div>
                     </div>
                     <div class="flex lg:hidden bg-white my-auto">
                         <a 
@@ -63,7 +69,7 @@
                             {% if item.variant.get_descuento != 0 %}
                             <div class="text-[10px] leading-[10px] text-gray-700 line-through">PVR: {{item.variant.precio_retail|multiply:item.quantity | floatformat:2}} €</div>
                             <div class="text-green-600 font-semibold">{{item.total_price|floatformat:2}} €</div>
-                            <div class="text-[10px] leading-[10px] text-gray-700">Te ahorras {{item.variant.get_descuento|multiply:item.quantity | floatformat:2}} €</div>
+                            <div class="text-[10px] leading-[10px] text-gray-700">{% trans 'Te ahorras' %} {{item.variant.get_descuento|multiply:item.quantity | floatformat:2}} €</div>
                             {% else %}
                             <div class="font-semibold">{{item.total_price|floatformat:2}} €</div>
                             {% endif %}
@@ -87,7 +93,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                             </svg>
                             </div>
-                            <div>Eliminar</div>
+                            <div>{% trans 'Eliminar' %}</div>
                         </div>
                     </div>
                 </div>

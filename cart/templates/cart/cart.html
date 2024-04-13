@@ -1,6 +1,8 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Cesta de la compra{% endblock %}
+{% load i18n %}
+
+{% block title %}{% trans 'Cesta de la compra' %}{% endblock %}
 
 {% block content%}
 
@@ -16,7 +18,7 @@
                     1
                  </div>
             </div>
-            <div class="my-auto text-green-700"> Carrito </div>
+            <div class="my-auto text-green-700"> {% trans 'Carrito' %} </div>
         </div>
         <div class="bg-white px-2 z-[3] flex space-x-2">
             <div class="z-[3] rounded-full border border-gray-300 flex p-4 relative bg-white">
@@ -24,7 +26,7 @@
                     2
                  </div>
             </div>
-            <div class="my-auto"> Pago y envío </div>
+            <div class="my-auto"> {% trans 'Pago y envío' %} </div>
         </div>
         <div class="bg-white pl-2 z-[3] flex space-x-2">
             <div class="z-[3] rounded-full border border-gray-300 flex p-4 relative bg-white">
@@ -32,7 +34,7 @@
                     3
                  </div>
             </div>
-            <div class="my-auto"> Confirmación </div>
+            <div class="my-auto"> {% trans 'Confirmación' %} </div>
         </div>
         <hr class="w-full absolute py-[0.5px] top-[50%] bg-gray-300 z-[0]">
     </div>
@@ -42,16 +44,16 @@
 <div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto xl:px-0 px-4 py-5 flex flex-wrap items-start">
 
     <div class="w-full flex justify-between lg:mb-8">
-        <a href="{% url 'frontpage' %}" class="w-full lg:w-1/5 py-3 bg-white border flex"><div class="mx-auto my-auto">← Continuar comprando</div></a>
-        <a  href="{% url 'checkout' %}" class="w-1/5 py-3 bg-green-700 border hidden lg:flex"><div class="mx-auto my-auto text-white">Checkout</div></a>
+        <a href="{% url 'frontpage' %}" class="w-full lg:w-1/5 py-3 bg-white border flex"><div class="mx-auto my-auto">← {% trans 'Continuar comprando' %}</div></a>
+        <a  href="{% url 'checkout' %}" class="w-1/5 py-3 bg-green-700 border hidden lg:flex"><div class="mx-auto my-auto text-white">{% trans 'Checkout' %}</div></a>
     </div>
 
     <div class="w-full ">
         <div class="w-full hidden lg:flex justify-between font-bold">
-            <div>Descripción del artículo</div>
+            <div>{% trans 'Descripción del artículo' %}</div>
             <div class="flex justify-between w-[200px]">
-                <div>Cantidad</div>
-                <div>Precio</div>
+                <div>{% trans 'Cantidad' %}</div>
+                <div>{% trans 'Precio' %}</div>
             </div>
         </div>
         
@@ -67,7 +69,7 @@
         <div class="w-full flex justify-between text-sm">
             <div></div>
             <div class="flex justify-between w-[200px]">
-                <div>Subtotal</div>
+                <div>{% trans 'Subtotal' %}</div>
                 <div
                     class="pr-1"
                     hx-get="{% url 'hx_cart_total' %}"
@@ -80,13 +82,13 @@
     </div>
 
     <div class="w-full flex justify-between text-base bg-gray-100 py-3 mt-4 pr-1">
-        <div class="text-sm pl-4 hidden lg:flex">Precios con IVA incluido</div>
-        <div class="text-sm pl-4 flex lg:hidden my-auto">IVA incl.</div>
+        <div class="text-sm pl-4 hidden lg:flex">{% trans 'Precios con IVA incluido' %}</div>
+        <div class="text-sm pl-4 flex lg:hidden my-auto">{% trans 'IVA incl.' %}</div>
         <div class="flex justify-between space-x-[30px] font-semibold select-none">
             <span class="flex relative">
                 
                 <div class="text-center flex">
-                    <div class="flex text-black font-semibold">Total compra</div>
+                    <div class="flex text-black font-semibold">{% trans 'Total compra' %}</div>
                 </div>
                 
             </span>
@@ -103,8 +105,8 @@
     </div>
 
     <div class="w-full flex justify-between my-4">
-        <a href="{% url 'frontpage' %}" class="w-1/5 py-3 bg-white border hidden lg:flex"><div class="mx-auto my-auto">← Continuar comprando</div></a>
-        <a  href="{% url 'checkout' %}" class="w-full lg:w-1/5 py-3 lg:py-3 bg-green-700 border flex"><div class="mx-auto my-auto text-white">Checkout</div></a>
+        <a href="{% url 'frontpage' %}" class="w-1/5 py-3 bg-white border hidden lg:flex"><div class="mx-auto my-auto">← {% trans 'Continuar comprando' %}</div></a>
+        <a  href="{% url 'checkout' %}" class="w-full lg:w-1/5 py-3 lg:py-3 bg-green-700 border flex"><div class="mx-auto my-auto text-white">{% trans 'Checkout' %}</div></a>
     </div>
 
 </div>

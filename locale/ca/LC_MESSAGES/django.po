@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-10 20:07+0200\n"
+"POT-Creation-Date: 2024-04-13 17:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,32 +18,87 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: cart/templates/cart/cart.html:5
+msgid "Cesta de la compra"
+msgstr "Cistella de la compra"
+
+#: cart/templates/cart/cart.html:21
+#: cart/templates/cart/partials/minicart_icon_num.html:27
+msgid "Carrito"
+msgstr "Carretó"
+
+#: cart/templates/cart/cart.html:29
+msgid "Pago y envío"
+msgstr "Pagament i enviament"
+
+#: cart/templates/cart/cart.html:37
+msgid "Confirmación"
+msgstr "Confirmació"
+
+#: cart/templates/cart/cart.html:47 cart/templates/cart/cart.html:108
+msgid "Continuar comprando"
+msgstr "Continuar comprant"
+
+#: cart/templates/cart/cart.html:48 cart/templates/cart/cart.html:109
+msgid "Checkout"
+msgstr "Checkout"
+
+#: cart/templates/cart/cart.html:53
+msgid "Descripción del artículo"
+msgstr "Descripció de l'article"
+
+#: cart/templates/cart/cart.html:55
+#: cart/templates/cart/partials/addtocart.html:34
+#: cart/templates/cart/partials/minicart.html:34
+msgid "Cantidad"
+msgstr "Quantitat"
+
+#: cart/templates/cart/cart.html:56
+#: core/templates/core/partials/alquiler_material.html:32
+#: core/templates/core/partials/alquiler_material.html:58
+#: core/templates/core/partials/alquiler_material.html:88
+#: core/templates/core/partials/alquiler_material.html:135
+#: core/templates/core/partials/menus_shop.html:95
+#: core/templates/core/shop.html:77
+msgid "Precio"
+msgstr "Preu"
+
+#: cart/templates/cart/cart.html:72
+#: cart/templates/cart/partials/addtocart.html:58
+#: cart/templates/cart/partials/minicart.html:60
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#: cart/templates/cart/cart.html:85
+msgid "Precios con IVA incluido"
+msgstr "Preus amb IVA inclòs"
+
+#: cart/templates/cart/cart.html:86
+msgid "IVA incl."
+msgstr "IVA incl."
+
+#: cart/templates/cart/cart.html:91
+msgid "Total compra"
+msgstr "Total compra"
+
 #: cart/templates/cart/partials/addtocart.html:10
 #: cart/templates/cart/partials/minicart.html:10
 msgid "Añadido al carrito"
 msgstr "Afegit al carretó"
 
 #: cart/templates/cart/partials/addtocart.html:33
+#: cart/templates/cart/partials/cart_item.html:21
 #: cart/templates/cart/partials/minicart.html:33
 msgid "Talla"
 msgstr "Talla"
 
-#: cart/templates/cart/partials/addtocart.html:34
-#: cart/templates/cart/partials/minicart.html:34
-msgid "Cantidad"
-msgstr "Quantitat"
-
 #: cart/templates/cart/partials/addtocart.html:43
+#: cart/templates/cart/partials/cart_item.html:72
 #: cart/templates/cart/partials/minicart.html:43
 #: product/templates/product/main_prod.html:113
 #: product/templates/product/main_prod.html:123
 msgid "Te ahorras"
 msgstr "T'estalvies"
-
-#: cart/templates/cart/partials/addtocart.html:58
-#: cart/templates/cart/partials/minicart.html:60
-msgid "Subtotal"
-msgstr "Subtotal"
 
 #: cart/templates/cart/partials/addtocart.html:63
 #: cart/templates/cart/partials/minicart.html:65
@@ -55,9 +110,13 @@ msgstr "Veure Carretó"
 msgid "Realizar pedido"
 msgstr "Realitzar la comanda"
 
-#: cart/templates/cart/partials/minicart_icon_num.html:27
-msgid "Carrito"
-msgstr "Carretó"
+#: cart/templates/cart/partials/cart_item.html:22
+msgid "Fecha entrega estimada"
+msgstr "Data d'entrega' estimada"
+
+#: cart/templates/cart/partials/cart_item.html:96
+msgid "Eliminar"
+msgstr ""
 
 #: core/templates/core/frontpage.html:6
 msgid "Tienda deportes online"
@@ -109,14 +168,10 @@ msgid "Mínimo 8 caracteres, incluyendo número, mayúscula y minúscula."
 msgstr "Mínim 8 caràcters, incloent número, majúscula i minúscula."
 
 #: core/templates/core/login.html:54
-#, fuzzy
-#| msgid "Este email coincide con un usuario ya creado."
 msgid "Este email o contraseña no son correctos."
-msgstr "Aquest correu electrònic coincideix amb un usuari ja creat."
+msgstr ""
 
 #: core/templates/core/login.html:56
-#, fuzzy
-#| msgid "Iniciar Sesión"
 msgid "Iniciar sesión"
 msgstr "Iniciar sessió"
 
@@ -133,10 +188,8 @@ msgid "Regístrate aquí"
 msgstr "Registra't aquí"
 
 #: core/templates/core/login.html:75
-#, fuzzy
-#| msgid "Iniciar sesión con"
 msgid "Inicia sesión con Google"
-msgstr "Iniciar sessió amb"
+msgstr "Iniciar sessió amb Google"
 
 #: core/templates/core/login.html:173 core/templates/core/signup.html:103
 #: core/templates/core/signup.html:215
@@ -203,15 +256,6 @@ msgstr "ADULT"
 #: core/templates/core/partials/alquiler_material.html:134
 msgid "Tipo de Alquiler"
 msgstr "Tipus de Lloguer"
-
-#: core/templates/core/partials/alquiler_material.html:32
-#: core/templates/core/partials/alquiler_material.html:58
-#: core/templates/core/partials/alquiler_material.html:88
-#: core/templates/core/partials/alquiler_material.html:135
-#: core/templates/core/partials/menus_shop.html:95
-#: core/templates/core/shop.html:77
-msgid "Precio"
-msgstr "Preu"
 
 #: core/templates/core/partials/alquiler_material.html:35
 #: core/templates/core/partials/alquiler_material.html:61
@@ -4564,6 +4608,7 @@ msgid "Producto en Stock. Entrega en 48h"
 msgstr "Producte en estoc. Entrega en 48h"
 
 #: product/templates/product/main_prod.html:217
+#: product/templates/product/main_prod.html:239
 msgid "Añadir al carrito"
 msgstr "Afegir al carretó"
 
