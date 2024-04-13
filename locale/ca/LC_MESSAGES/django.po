@@ -112,7 +112,7 @@ msgstr "Realitzar la comanda"
 
 #: cart/templates/cart/partials/cart_item.html:22
 msgid "Fecha entrega estimada"
-msgstr "Data d'entrega' estimada"
+msgstr "Data d'entrega estimada"
 
 #: cart/templates/cart/partials/cart_item.html:96
 msgid "Eliminar"
