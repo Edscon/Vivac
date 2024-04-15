@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-13 22:47+0200\n"
+"POT-Creation-Date: 2024-04-15 21:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,6 +36,7 @@ msgid "Confirmación"
 msgstr "Confirmació"
 
 #: cart/templates/cart/cart.html:47 cart/templates/cart/cart.html:108
+#: cart/templates/cart/success.html:207
 msgid "Continuar comprando"
 msgstr "Continuar comprant"
 
@@ -43,17 +44,18 @@ msgstr "Continuar comprant"
 msgid "Checkout"
 msgstr "Checkout"
 
-#: cart/templates/cart/cart.html:53
+#: cart/templates/cart/cart.html:53 cart/templates/cart/success.html:24
 msgid "Descripción del artículo"
 msgstr "Descripció de l'article"
 
 #: cart/templates/cart/cart.html:55
 #: cart/templates/cart/partials/addtocart.html:34
 #: cart/templates/cart/partials/minicart.html:34
+#: cart/templates/cart/success.html:26
 msgid "Cantidad"
 msgstr "Quantitat"
 
-#: cart/templates/cart/cart.html:56
+#: cart/templates/cart/cart.html:56 cart/templates/cart/success.html:27
 #: core/templates/core/partials/alquiler_material.html:32
 #: core/templates/core/partials/alquiler_material.html:58
 #: core/templates/core/partials/alquiler_material.html:88
@@ -67,19 +69,21 @@ msgstr "Preu"
 #: cart/templates/cart/partials/addtocart.html:58
 #: cart/templates/cart/partials/checkout_prod.html:21
 #: cart/templates/cart/partials/minicart.html:60
+#: cart/templates/cart/success.html:83
 msgid "Subtotal"
 msgstr "Subtotal"
 
 #: cart/templates/cart/cart.html:85
 #: cart/templates/cart/partials/checkout_prod.html:45
+#: cart/templates/cart/success.html:96
 msgid "Precios con IVA incluido"
 msgstr "Preus amb IVA inclòs"
 
-#: cart/templates/cart/cart.html:86
+#: cart/templates/cart/cart.html:86 cart/templates/cart/success.html:97
 msgid "IVA incl."
 msgstr "IVA incl."
 
-#: cart/templates/cart/cart.html:91
+#: cart/templates/cart/cart.html:91 cart/templates/cart/success.html:102
 msgid "Total compra"
 msgstr "Total compra"
 
@@ -105,6 +109,7 @@ msgid "Cargar la página con las unidades actualizadas"
 msgstr "Carrega la pàgina amb les unitats actualitzades"
 
 #: cart/templates/cart/checkout.html:80
+#: cart/templates/cart/partials/checkout/info_shipment.html:9
 msgid "Datos de contacto y envío"
 msgstr "Dades de contacte i enviament"
 
@@ -125,6 +130,7 @@ msgid "Comprar sin crear cuenta"
 msgstr "Comprar sense crear compta"
 
 #: cart/templates/cart/checkout.html:126 cart/templates/cart/checkout.html:128
+#: cart/templates/cart/partials/checkout/info_shipment.html:30
 #: cart/templates/cart/partials/formularionocuenta.html:8
 #: cart/templates/cart/partials/formularionocuenta.html:10
 #: core/templates/core/partials/contacto.html:25
@@ -140,7 +146,8 @@ msgstr "Nom"
 msgid "Apellidos"
 msgstr "Cognoms"
 
-#: cart/templates/cart/checkout.html:144 core/templates/core/login.html:20
+#: cart/templates/cart/checkout.html:144 cart/templates/cart/success.html:189
+#: core/templates/core/login.html:20
 #: core/templates/core/partials/contacto.html:32
 #: core/templates/core/partials/footer/condiciones_generales_compra_web.html:27
 #: core/templates/core/partials/footer/condiciones_legales.html:21
@@ -177,6 +184,7 @@ msgid "Mínimo 8 caracteres, incluyendo número, mayúscula y minúscula."
 msgstr "Mínim 8 caràcters, incloent número, majúscula i minúscula."
 
 #: cart/templates/cart/checkout.html:200 cart/templates/cart/checkout.html:202
+#: cart/templates/cart/partials/checkout/info_shipment.html:31
 #: cart/templates/cart/partials/formularionocuenta.html:35
 #: cart/templates/cart/partials/formularionocuenta.html:37
 #: core/templates/core/partials/footer/condiciones_generales_compra_web.html:28
@@ -192,8 +200,10 @@ msgid "Calle y Numero"
 msgstr "Carrer i Número"
 
 #: cart/templates/cart/checkout.html:218 cart/templates/cart/checkout.html:220
+#: cart/templates/cart/partials/checkout/info_shipment.html:33
 #: cart/templates/cart/partials/formularionocuenta.html:55
 #: cart/templates/cart/partials/formularionocuenta.html:57
+#: cart/templates/cart/success.html:184
 msgid "Ciudad"
 msgstr "Ciutat"
 
@@ -208,6 +218,7 @@ msgstr "Codi Postal"
 #: cart/templates/cart/partials/formularionocuenta.html:74
 #: cart/templates/cart/partials/formularionocuenta.html:76
 #: cart/templates/cart/partials/formularionocuenta.html:78
+#: cart/templates/cart/success.html:185
 msgid "Provincia"
 msgstr "Província"
 
@@ -274,6 +285,26 @@ msgstr "Data d'entrega estimada"
 msgid "Eliminar"
 msgstr ""
 
+#: cart/templates/cart/partials/checkout/info_shipment.html:23
+msgid "Cambiar"
+msgstr "Canviar"
+
+#: cart/templates/cart/partials/checkout/info_shipment.html:30
+msgid "Apellido"
+msgstr "Cognom"
+
+#: cart/templates/cart/partials/checkout/info_shipment.html:32
+msgid "Calle"
+msgstr "Carrer"
+
+#: cart/templates/cart/partials/checkout/info_shipment.html:33
+msgid "Zip"
+msgstr "Codi Postal"
+
+#: cart/templates/cart/partials/checkout/info_shipment.html:33
+msgid "España"
+msgstr "Espanya"
+
 #: cart/templates/cart/partials/checkout_prod.html:16
 msgid "Resumen del pedido"
 msgstr "Resum de la comanda"
@@ -308,8 +339,8 @@ msgid "de esports vivac."
 msgstr "de esports vivac."
 
 #: cart/templates/cart/partials/checkout_prod.html:54
-#: cart/templates/cart/partials/scripts_c.html:106
-#: cart/templates/cart/partials/scripts_c.html:201
+#: cart/templates/cart/partials/scripts_c.html:107
+#: cart/templates/cart/partials/scripts_c.html:202
 #: core/templates/core/login.html:173 core/templates/core/signup.html:103
 #: core/templates/core/signup.html:215
 msgid "Campo requerido."
@@ -324,15 +355,15 @@ msgstr "Compra segura 100%% garantida"
 msgid "Mis productos"
 msgstr "Els meus productes"
 
-#: cart/templates/cart/partials/scripts_c.html:207
+#: cart/templates/cart/partials/scripts_c.html:208
 msgid "El número de teléfono no es correcto."
 msgstr "El número de telèfon no és correcte."
 
-#: cart/templates/cart/partials/scripts_c.html:212
+#: cart/templates/cart/partials/scripts_c.html:213
 msgid "Lo sentimos. El código postal no es correcto."
 msgstr "Ho sentim. El codi postal no és correcte."
 
-#: cart/templates/cart/partials/scripts_c.html:225
+#: cart/templates/cart/partials/scripts_c.html:226
 #: core/templates/core/login.html:180 core/templates/core/signup.html:223
 msgid ""
 "Esta contraseña no cumple los requisitos mínimos. 8 caracteres como mínimo, "
@@ -341,12 +372,12 @@ msgstr ""
 "Aquesta contrasenya no compleix els requisits mínims. Mínim 8 caràcters, 1 "
 "lletra majúscula, 1 lletra minúscula, 1 número."
 
-#: cart/templates/cart/partials/scripts_c.html:232
+#: cart/templates/cart/partials/scripts_c.html:233
 #: core/templates/core/signup.html:230
 msgid "Las contraseñas no coinciden."
 msgstr "Les contrasenyes no coincideixen."
 
-#: cart/templates/cart/partials/scripts_c.html:238
+#: cart/templates/cart/partials/scripts_c.html:239
 #: core/templates/core/login.html:186 core/templates/core/signup.html:236
 msgid ""
 "Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio."
@@ -355,9 +386,131 @@ msgstr ""
 "Si us plau, introdueixi una adreça de correu electrònic vàlida. Per exemple, "
 "hola@domini.com"
 
-#: cart/templates/cart/partials/scripts_c.html:287
+#: cart/templates/cart/partials/scripts_c.html:288
 msgid "El código postal no coincide con la provincia."
 msgstr "El codi postal no coincideix amb la província."
+
+#: cart/templates/cart/success.html:7 cart/templates/cart/success.html:13
+msgid "Pedido completado con éxito"
+msgstr "Comanda completada amb èxit"
+
+#: cart/templates/cart/success.html:14
+msgid "Gracias por la compra!"
+msgstr "Gràcies per la compra!"
+
+#: cart/templates/cart/success.html:17
+msgid "Resumen del Pedido"
+msgstr "Resum de la Comanda"
+
+#: cart/templates/cart/success.html:18
+msgid "Fecha entrega estimada:"
+msgstr "Data d'entrega estimada:"
+
+#: cart/templates/cart/success.html:51
+msgid "Talla:"
+msgstr "Talla:"
+
+#: cart/templates/cart/success.html:90
+msgid "Envío"
+msgstr "Enviament"
+
+#: cart/templates/cart/success.html:121
+msgid "Preguntas Frecuentes"
+msgstr "Preguntes Freqüents"
+
+#: cart/templates/cart/success.html:125
+msgid "¿Cómo puedo rastrear mi pedido?"
+msgstr "Com puc rastrejar el meu pedido?"
+
+#: cart/templates/cart/success.html:132
+msgid ""
+"Recibirás un número de seguimiento con cada pedido, el cual te será enviado "
+"a través de un correo electrónico por parte del transportista en el momento "
+"en que el pedido salga de sus instalaciones.\n"
+"                        <br> Puedes rastrear el estado de tu pedido desde el "
+"siguiente enlace.&nbsp;"
+msgstr ""
+"Rebràs un número de seguiment amb cada comanda, el qual et serà enviat a "
+"través d'un correu electrònic per part del transportista en el moment en "
+"que la comanda surti de les seves instal·lacions.\n"
+"                        <br> Pots rastrejar l'estat de la teva comanda des "
+"del següent enllaç.&nbsp;"
+
+#: cart/templates/cart/success.html:133 cart/templates/cart/success.html:143
+#: cart/templates/cart/success.html:152 cart/templates/cart/success.html:162
+#: cart/templates/cart/success.html:171 cart/templates/cart/success.html:199
+msgid "link"
+msgstr "enllaç"
+
+#: cart/templates/cart/success.html:135
+msgid "¿Qué debo hacer si mi producto llega dañado o defectuoso?"
+msgstr "Què he de fer si el meu producte arriba danyat o defectuós?"
+
+#: cart/templates/cart/success.html:142 cart/templates/cart/success.html:161
+msgid ""
+"En caso de que tengas una cuenta con nosotros puedes hacerlo desde Mi Cuenta"
+msgstr ""
+"En cas que tinguis un compte amb nosaltres pots fer-ho des de El Meu Compte"
+
+#: cart/templates/cart/success.html:142 cart/templates/cart/success.html:161
+msgid "Ver los detalles del pedido"
+msgstr "Veure els detalls de la comanda"
+
+#: cart/templates/cart/success.html:142
+msgid "y abrir una incidencia."
+msgstr "i obrir una incidència."
+
+#: cart/templates/cart/success.html:143 cart/templates/cart/success.html:162
+msgid ""
+"En caso de que no tengas cuenta con nosotros puedes contactarnos a través "
+"del siguiente"
+msgstr ""
+"En cas que no tinguis compte amb nosaltres pots contactar-nos a través del "
+"següent"
+
+#: cart/templates/cart/success.html:145
+msgid "¿Puedo realizar cambios en mi pedido después de haberlo realizado?"
+msgstr "Puc fer canvis a la meva comanda després de realitzar-la?"
+
+#: cart/templates/cart/success.html:152
+msgid ""
+"Depende de varios factores y de si el transportista ya ha recogido tu "
+"paquete. Puedes contactarnos y explicarnos los cambios a través del siguiente"
+msgstr ""
+"Depèn de diversos factors i de si el transportista ja ha recollit el teu "
+"paquet. Pots contactar-nos i explicar-nos els canvis a través del següent"
+
+#: cart/templates/cart/success.html:154
+msgid "¿Cómo puedo devolver un producto?"
+msgstr "Com puc retornar un producte?"
+
+#: cart/templates/cart/success.html:161
+msgid "y abrir una devolución."
+msgstr "i obrir una devolució."
+
+#: cart/templates/cart/success.html:164
+msgid "¿Cómo puedo ponerme en contacto con el servicio al cliente?"
+msgstr "Com puc posar-me en contacte amb el servei d'atenció al client?"
+
+#: cart/templates/cart/success.html:171
+msgid "Puedes contactarnos a través del siguiente"
+msgstr "Pots contactar-nos a través del següent"
+
+#: cart/templates/cart/success.html:180
+msgid "Detalles del Pedido"
+msgstr "Detalls de la Comanda"
+
+#: cart/templates/cart/success.html:183
+msgid "Dirección"
+msgstr "Adreça"
+
+#: cart/templates/cart/success.html:195
+msgid "Detalles para el envio"
+msgstr "Detalls per a l'enviament"
+
+#: cart/templates/cart/success.html:199
+msgid "Si algo en el pedido no es correcto, puedes contactar con nosotros"
+msgstr "Si alguna cosa a la comanda no és correcta, pots contactar amb nosaltres"
 
 #: core/templates/core/frontpage.html:6
 msgid "Tienda deportes online"
@@ -624,6 +777,41 @@ msgid ""
 msgstr ""
 "Si us plau, introdueixi una adreça de correu electrònic vàlida. Per exemple, "
 "hola@domini.com"
+
+#: core/templates/core/partials/cookie.html:8
+msgid "Nos preocupamos por tu privacidad"
+msgstr "Ens preocupem per la teva privadesa"
+
+#: core/templates/core/partials/cookie.html:9
+msgid ""
+"Nuestro sitio web utiliza cookies propias y de terceros para mejorar tu "
+"experiencia de navegación. Al continuar navegando en nuestro sitio, aceptas "
+"el uso de cookies de acuerdo con nuestra"
+msgstr ""
+"El nostre lloc web utilitza cookies pròpies i de tercers per millorar la teva "
+"experiència de navegació. En continuar navegant pel nostre lloc, acceptes "
+"l'ús de cookies d'acord amb la nostra"
+
+#: core/templates/core/partials/cookie.html:9
+msgid "Política de Cookies"
+msgstr "Política de Cookies"
+
+#: core/templates/core/partials/cookie.html:9
+msgid ""
+"Para obtener más información sobre cómo utilizamos las cookies y cómo puedes "
+"desactivarlas, consulta nuestra"
+msgstr ""
+"Per obtenir més informació sobre com utilitzem les cookies i com les pots "
+"desactivar, consulta la nostra"
+
+#: core/templates/core/partials/cookie.html:9
+#: core/templates/core/partials/footer/politica_de_privacidad.html:247
+msgid "Política de Privacidad"
+msgstr "Política de Privadesa"
+
+#: core/templates/core/partials/cookie.html:14
+msgid "Aceptar cookies"
+msgstr "Aceptar cookies"
 
 #: core/templates/core/partials/footer.html:8
 msgid "Sobre Esports Vivac"
@@ -4173,10 +4361,6 @@ msgstr ""
 "necessitats legals, així com millores i canvis en la forma d'oferir i "
 "prestar els nostres serveis. Per això, li recomanem que visiti i accedeixi a "
 "la nostra"
-
-#: core/templates/core/partials/footer/politica_de_privacidad.html:247
-msgid "Política de Privacidad"
-msgstr "Política de Privadesa"
 
 #: core/templates/core/partials/footer/politica_de_privacidad.html:247
 msgid ""

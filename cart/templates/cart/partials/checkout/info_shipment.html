@@ -1,3 +1,4 @@
+{% load i18n %}
 <div id="datos_shipment" class="mb-6 rounded-xl border border-gray-600 relative hidden">
     <div  class="h-[70px] px-6 flex justify-between">
         <div class="my-auto w-[80%]">
@@ -5,7 +6,7 @@
                 <div>
                     <svg class="h-6 w-6"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  <circle cx="12" cy="7" r="4" /></svg>
                 </div>
-                <div>Datos de contacto y envío</div> 
+                <div>{% trans 'Datos de contacto y envío' %}</div> 
                 <svg class="h-5 w-5 my-auto" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0,0,256,256">
                     <g fill="#15803d" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(16,16)"><path d="M8,0c-4.418,0 -8,3.582 -8,8c0,4.418 3.582,8 8,8c4.418,0 8,-3.582 8,-8c0,-4.418 -3.582,-8 -8,-8zM7,12l-3.52,-3.52l1.414,-1.414l2.106,2.106l4.71,-4.71l1.414,1.414z"></path></g></g>
                 </svg>
@@ -19,17 +20,17 @@
                 <div class="flex px-1 md:px-0">
                     <svg class=" my-auto h-5 w-5 text-black"  width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" /></svg>
                 </div>
-                <div class="hidden md:flex">Cambiar</div> 
+                <div class="hidden md:flex">{% trans 'Cambiar' %}</div> 
             </div>
         </a>
 
         
     </div>
     <div id="info_shipment" class="text-xs w-full p-6 mx-10 pt-0">
-        <div class="text-base">Nombre, Apellido</div>
-        <div>Telefono</div>
-        <div>Calle</div>
-        <div>Zip, Ciudad, España</div>
+        <div class="text-base">{% trans 'Nombre' %}, {% trans 'Apellido' %}</div>
+        <div>{% trans 'Teléfono' %}</div>
+        <div>{% trans 'Calle' %}</div>
+        <div>{% trans 'Zip' %}, {% trans 'Ciudad' %}, {% trans 'España' %}</div>
     </div>
     
     <div id="rueda_info" class="hidden absolute top-0 w-full h-full grid place-content-center rounded-xl">

@@ -11,6 +11,11 @@
         });
     }
 
+    if(document.getElementById('iniciar_session')){
+        var Form = "Formulario2"
+    }else{Form = "Formulario"}
+    
+
     abrir_formulario();
 
     async function abrir_formulario() {
@@ -20,7 +25,7 @@
             document.getElementById("iniciar_session").classList.remove("hidden");
             await delay(800);
         }catch{}
-        document.getElementById("Formulario").classList.remove("hidden");
+        document.getElementById(Form).classList.remove("hidden");
         document.getElementById("rueda").classList.add("hidden");
 
     }

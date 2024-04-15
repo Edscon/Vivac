@@ -1,28 +1,30 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Pedido completado con éxito{% endblock %}
-
-{% block content%}
+{% load i18n %}
 {% load replacement %}
 {% load static %}
+
+{% block title %}{% trans 'Pedido completado con éxito' %}{% endblock %}
+
+{% block content%}
 <div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto xl:px-0 px-4 py-5">
 
     <div class="w-full mb-8">
-        <h1 class="mb-5 text-3xl">Pedido completado con éxito</h1>
-        <p class="mb-5">Gracias por la compra! {{customer.name}}</p>
+        <h1 class="mb-5 text-3xl">{% trans 'Pedido completado con éxito' %}</h1>
+        <p class="mb-5">{% trans 'Gracias por la compra!' %} {{customer.name}}</p>
         
         <div>
-            <div class="text-lg font-semibold underline mb-2">Resumen del Pedido</div>
-            <div class="text-green-600">Fecha entrega estimada: {{time| date1}}</div>
+            <div class="text-lg font-semibold underline mb-2">{% trans 'Resumen del Pedido' %}</div>
+            <div class="text-green-600">{% trans 'Fecha entrega estimada:' %} {{time| date1}}</div>
         </div>
     </div>
 
     <div class="w-[100%]">
         <div class="w-full hidden lg:flex justify-between font-bold">
-            <div>Descripción del artículo</div>
+            <div>{% trans 'Descripción del artículo' %}</div>
             <div class="flex justify-between w-[200px]">
-                <div>Cantidad</div>
-                <div>Precio</div>
+                <div>{% trans 'Cantidad' %}</div>
+                <div>{% trans 'Precio' %}</div>
             </div>
         </div>
         
@@ -40,8 +42,13 @@
                     <div class="w-full lg:flex justify-between">
                         <div class="flex justify-between relative">
                             <div class="item-size">
-                                <div class="font-semibold">{{item.variant.product.nombre}}</div>
-                                <button class="" value="{{item.size}}" id="item-size-{{item.variant.id}}">Talla:  {{item.size|replace_1}}</button>
+                                <div class="font-semibold">
+                                    {% if request.LANGUAGE_CODE == 'es' %} {{item.variant.product.nombre}}
+                                    {% elif request.LANGUAGE_CODE == 'ca' %} {{item.variant.product.nombre_ca}}
+                                    {% else %} {{item.variant.product.nombre}}
+                                    {% endif %}
+                                </div>
+                                <button class="" value="{{item.size}}" id="item-size-{{item.variant.id}}">{% trans 'Talla:' %}  {{item.size|replace_1}}</button>
                             </div>
                             
                         </div>
@@ -73,26 +80,26 @@
         <div class="w-full flex justify-between text-sm mt-3">
             <div></div>
             <div class="flex justify-between w-[200px]">
-                <div>Subtotal</div>
+                <div>{% trans 'Subtotal' %}</div>
                 <div class="pr-1">{{subtotal| floatformat:2}} €</div>
             </div>
         </div>
         <div class="w-full flex justify-between text-sm">
             <div></div>
             <div class="flex justify-between w-[200px]">
-                <div>Envio</div>
+                <div>{% trans 'Envío' %}</div>
                 <div class="pr-1">{{orden_compra.envio|multiply:1 | floatformat:2}} €</div>
             </div>
         </div>
 
         <div class="flex justify-between text-base bg-gray-100 py-3 mt-4 pr-1">
-            <div class="text-sm pl-4 hidden lg:flex">Precios con IVA incluido</div>
-            <div class="text-sm pl-4 flex lg:hidden my-auto">IVA incl.</div>
+            <div class="text-sm pl-4 hidden lg:flex">{% trans 'Precios con IVA incluido' %}</div>
+            <div class="text-sm pl-4 flex lg:hidden my-auto">{% trans 'IVA incl.' %}</div>
             <div class="flex justify-between space-x-[30px] font-semibold select-none">
                 <span class="flex relative">
                     
                     <div class="text-center flex">
-                        <div class="flex text-black font-semibold">Total compra</div>
+                        <div class="flex text-black font-semibold">{% trans 'Total compra' %}</div>
                     </div>
                     
                 </span>
@@ -111,57 +118,57 @@
                     <svg class="h-7 w-7 my-auto"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                       </svg>
-                    <p class="text-lg font-semibold underline my-auto">Preguntas Frecuentes</p>
+                    <p class="text-lg font-semibold underline my-auto">{% trans 'Preguntas Frecuentes' %}</p>
                 </div>
                 <div class="mt-2 ml-4">
                     <div onclick="open_preguntas(1)" class="min-h-10 border-b border-gray-400 flex justify-between cursor-pointer">
-                        <div class="my-auto">¿Cómo puedo rastrear mi pedido?</div>
+                        <div class="my-auto">{% trans '¿Cómo puedo rastrear mi pedido?' %}</div>
                         <div class="my-auto mr-2">
                             <svg id="svg_1" class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
                             </svg>
                         </div>
                     </div>
-                    <div id="respuesta-1" class="hidden my-2 text-sm">Recibirás un número de seguimiento con cada pedido, el cual te será enviado a través de un correo electrónico por parte del transportista en el momento en que el pedido salga de sus instalaciones.
-                        <br> Puedes rastrear el estado de tu pedido desde el siguiente enlace.&nbsp;<a class="underline text-green-600 font-semibold" target="_blank" href="https://www.nacex.es/irHome.do">link</a></div>
+                    <div id="respuesta-1" class="hidden my-2 text-sm">{% blocktrans %}Recibirás un número de seguimiento con cada pedido, el cual te será enviado a través de un correo electrónico por parte del transportista en el momento en que el pedido salga de sus instalaciones.
+                        <br> Puedes rastrear el estado de tu pedido desde el siguiente enlace.&nbsp;{% endblocktrans %}<a class="underline text-green-600 font-semibold" target="_blank" href="https://www.nacex.es/irHome.do">{% trans 'link' %}</a></div>
                     <div onclick="open_preguntas(2)" class="min-h-10 border-b border-gray-400 flex justify-between cursor-pointer">
-                        <div class="my-auto">¿Qué debo hacer si mi producto llega dañado o defectuoso?</div>
+                        <div class="my-auto">{% trans '¿Qué debo hacer si mi producto llega dañado o defectuoso?' %}</div>
                         <div class="my-auto mr-2">
                             <svg id="svg_2" class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
                             </svg>
                         </div>
                     </div>
-                    <div id="respuesta-2" class="hidden my-2 text-sm">En caso de que tengas una cuenta con nosotros puedes hacerlo desde Mi Cuenta / <a class="underline font-semibold" target="_blank" href="{% url 'my_vista_producto' orden_compra.id %}">Ver los detalles del pedido</a>  y abrir una incidencia.
-                        <br> En caso de que no tengas cuenta con nosotros puedes contactarnos a través del siguiente <a class="underline text-green-600 font-semibold" target="_blank" href="{% url 'contacto' %}">link</a></div>
+                    <div id="respuesta-2" class="hidden my-2 text-sm">{% trans 'En caso de que tengas una cuenta con nosotros puedes hacerlo desde Mi Cuenta' %} / <a class="underline font-semibold" target="_blank" href="{% url 'my_vista_producto' orden_compra.id %}">{% trans 'Ver los detalles del pedido' %}</a>  {% trans 'y abrir una incidencia.' %}
+                        <br> {% trans 'En caso de que no tengas cuenta con nosotros puedes contactarnos a través del siguiente' %} <a class="underline text-green-600 font-semibold" target="_blank" href="{% url 'contacto' %}">{% trans 'link' %}</a></div>
                     <div onclick="open_preguntas(3)" class="min-h-10 border-b border-gray-400 flex justify-between cursor-pointer">
-                        <div class="my-auto">¿Puedo realizar cambios en mi pedido después de haberlo realizado?</div>
+                        <div class="my-auto">{% trans '¿Puedo realizar cambios en mi pedido después de haberlo realizado?' %}</div>
                         <div class="my-auto mr-2">
                             <svg id="svg_3" class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
                             </svg>
                         </div>
                     </div>
-                    <div id="respuesta-3" class="hidden my-2 text-sm">Depende de varios factores y de si el transportista ya ha recogido tu paquete. Puedes contactarnos y explicarnos los cambios a través del siguiente <a class="underline text-green-600 font-semibold" target="_blank" href="{% url 'contacto' %}">link</a></div>
+                    <div id="respuesta-3" class="hidden my-2 text-sm">{% trans 'Depende de varios factores y de si el transportista ya ha recogido tu paquete. Puedes contactarnos y explicarnos los cambios a través del siguiente' %} <a class="underline text-green-600 font-semibold" target="_blank" href="{% url 'contacto' %}">{% trans 'link' %}</a></div>
                     <div onclick="open_preguntas(4)" class="min-h-10 border-b border-gray-400 flex justify-between cursor-pointer">
-                        <div class="my-auto">¿Cómo puedo devolver un producto?</div>
+                        <div class="my-auto">{% trans '¿Cómo puedo devolver un producto?' %}</div>
                         <div class="my-auto mr-2">
                             <svg id="svg_4" class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
                             </svg>
                         </div>
                     </div>
-                    <div id="respuesta-4" class="hidden my-2 text-sm">En caso de que tengas una cuenta con nosotros puedes hacerlo desde Mi Cuenta / <a class="underline font-semibold" target="_blank" href="{% url 'my_vista_producto' orden_compra.id %}">Ver los detalles del pedido</a>  y abrir una devolución.
-                        <br> En caso de que no tengas cuenta con nosotros puedes contactarnos a través del siguiente <a class="underline text-green-600 font-semibold" target="_blank" href="{% url 'contacto' %}">link</a></div>
+                    <div id="respuesta-4" class="hidden my-2 text-sm">{% trans 'En caso de que tengas una cuenta con nosotros puedes hacerlo desde Mi Cuenta' %} / <a class="underline font-semibold" target="_blank" href="{% url 'my_vista_producto' orden_compra.id %}">{% trans 'Ver los detalles del pedido' %}</a>  {% trans 'y abrir una devolución.' %}
+                        <br> {% trans 'En caso de que no tengas cuenta con nosotros puedes contactarnos a través del siguiente' %} <a class="underline text-green-600 font-semibold" target="_blank" href="{% url 'contacto' %}">{% trans 'link' %}</a></div>
                     <div onclick="open_preguntas(5)" class="min-h-10 border-b border-gray-400 flex justify-between cursor-pointer">
-                        <div class="my-auto">¿Cómo puedo ponerme en contacto con el servicio al cliente?</div>
+                        <div class="my-auto">{% trans '¿Cómo puedo ponerme en contacto con el servicio al cliente?' %}</div>
                         <div class="my-auto mr-2">
                             <svg id="svg_5" class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
                             </svg>
                         </div>
                     </div>
-                    <div id="respuesta-5" class="hidden my-2 text-sm">Puedes contactarnos a través del siguiente <a class="underline text-green-600 font-semibold" target="_blank" href="{% url 'contacto' %}">link</a></div>
+                    <div id="respuesta-5" class="hidden my-2 text-sm">{% trans 'Puedes contactarnos a través del siguiente' %} <a class="underline text-green-600 font-semibold" target="_blank" href="{% url 'contacto' %}">{% trans 'link' %}</a></div>
                 </div>
     
             </div>
@@ -170,26 +177,26 @@
     
         <div class="w-[1005] lg:w-[48%] space-y-5" >
             <div>
-                <div class="text-lg font-semibold underline mb-2">Detalles del Pedido</div>
+                <div class="text-lg font-semibold underline mb-2">{% trans 'Detalles del Pedido' %}</div>
                 <div class="gap-5 min-[400px]:flex overflow-hidden justify-between">
                     <div class="space-y-2 w-full min-[400px]:w-[50%]">
-                        <div><span class="font-semibold">Dirección:</span>&nbsp;{{orden_compra.address}}</div>
-                        <div><span class="font-semibold">Ciudad:</span>&nbsp;{{orden_compra.city}}, {{orden_compra.zipcode}}</div>
-                        <div><span class="font-semibold">Provincia:</span>&nbsp;{{orden_compra.provincia}}</div>
+                        <div><span class="font-semibold">{% trans 'Dirección' %}:</span>&nbsp;{{orden_compra.address}}</div>
+                        <div><span class="font-semibold">{% trans 'Ciudad' %}:</span>&nbsp;{{orden_compra.city}}, {{orden_compra.zipcode}}</div>
+                        <div><span class="font-semibold">{% trans 'Provincia' %}:</span>&nbsp;{{orden_compra.provincia}}</div>
                     </div>
                     <div class="space-y-2 w-full min-[400px]:w-[50%] max-[400px]:mt-2">
                         <div><span class="font-semibold">Tel:</span>&nbsp;{{orden_compra.phone}}</div>
-                        <div><span class="font-semibold">Email:</span>&nbsp;{{orden_compra.email}}</div>
+                        <div><span class="font-semibold">{% trans 'Email' %}:</span>&nbsp;{{orden_compra.email}}</div>
                     </div>
                     
                 </div>
                 {% if orden_compra.detalles_envio == '' %}
                 {% else %}
-                    <div class="mt-2"><span class="font-semibold">Detalles para el envio:</span>&nbsp;{{orden_compra.detalles_envio}}</div>
+                    <div class="mt-2"><span class="font-semibold">{% trans 'Detalles para el envio' %}:</span>&nbsp;{{orden_compra.detalles_envio}}</div>
                 {% endif %}
             </div>
     
-            <div class="text-sm text-gray-600">Si algo en el pedido no es correcto, puedes contactar con nosotros <a class="underline text-green-600 font-semibold" href="{% url 'contacto' %}">link</a></div>
+            <div class="text-sm text-gray-600">{% trans 'Si algo en el pedido no es correcto, puedes contactar con nosotros' %} <a class="underline text-green-600 font-semibold" href="{% url 'contacto' %}">{% trans 'link' %}</a></div>
             
         </div>
     </div>
@@ -197,7 +204,7 @@
 
 
     <div class="w-full flex justify-between my-4">
-        <a href="{% url 'frontpage' %}" class="w-1/5 py-3 bg-white border hidden lg:flex"><div class="mx-auto my-auto">← Continuar comprando</div></a>
+        <a href="{% url 'frontpage' %}" class="w-1/5 py-3 bg-white border hidden lg:flex"><div class="mx-auto my-auto">← {% trans 'Continuar comprando' %}</div></a>
     </div>
 
 </div>
