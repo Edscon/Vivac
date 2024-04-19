@@ -1,10 +1,12 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Mi cuenta{% endblock %}
-
-{% block content%}
 {% load replacement %}
 {% load static %}
+{% load i18n %}
+
+{% block title %}{% trans 'Mi cuenta' %}{% endblock %}
+
+{% block content%}
 
 {% include 'core/partials/menu_my_account.html' with page_name="Mi cuenta" %}
 <div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2 px-4 lg:px-0">
@@ -21,62 +23,62 @@
         <div class="menu_account w-[25%] text-sm hidden lg:block my-0 lg:mt-8">
             <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
                 <div class="w-[3px] bg-green-600"></div>
-                <div class="p-2 w-full">Mi cuenta</div>
+                <div class="p-2 w-full">{% trans 'Mi cuenta' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Mis pedidos</div>
+                <div class="p-2 w-full">{% trans 'Mis pedidos' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Mis datos</div>
+                <div class="p-2 w-full">{% trans 'Mis datos' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'my_favorites' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Mis favoritos</div>
+                <div class="p-2 w-full">{% trans 'Mis favoritos' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Mis opiniones de productos</div>
+                <div class="p-2 w-full">{% trans 'Mis opiniones de productos' %}</div>
             </a>
             <a class="flex border-b border-neutral-300">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
+                <div class="p-2 w-full">{% trans 'Condiciones generales de compra y privacidad' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'logout' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Cerrar Sesión</div>
+                <div class="p-2 w-full">{% trans 'Cerrar Sesión' %}</div>
             </a>
         </div>
         
         <div class="w-[100%] lg:w-[75%] lg:pl-8 text-black text-sm my-0 lg:mt-8">
-            <div class="mb-5 font-semibold text-lg">Mi cuenta</div>
-            <div class="mb-5">¡Hola, {{request.user.get_full_name}}!</div>
-            <div class="mb-5">Bienvenido/a a Esports Vivac. Desde el panel Mi cuenta podrás ver la actividad reciente de tu cuenta y actualizar tus datos.</div>
+            <div class="mb-5 font-semibold text-lg">{% trans 'Mi cuenta' %}</div>
+            <div class="mb-5">{% trans '¡Hola,' %} {{request.user.get_full_name}}!</div>
+            <div class="mb-5">{% trans 'Bienvenido/a a Esports Vivac. Desde el panel Mi cuenta podrás ver la actividad reciente de tu cuenta y actualizar tus datos.' %}</div>
             
             {% if request.user.orders.first %}
-            <div class="mb-5 mt-10 font-semibold">Tu último pedido</div>
+            <div class="mb-5 mt-10 font-semibold">{% trans 'Tu último pedido' %}</div>
             
             <div class="rounded-xl border border-gray-300 hidden md:block">
                 <div class="min-h-[80px] p-2 bg-neutral-200 flex text-[12px] font-semibold text-gray-700 rounded-t-xl">
                     <div class="w-[80%] flex justify-between ml-4">
                         <div class="h-full w-[120px]">
-                            <div>PEDIDO REALIZADO</div>
+                            <div>{% trans 'PEDIDO REALIZADO' %}</div>
                             <div class="text-sm font-normal">{{request.user.orders.first.created_at |date1}}</div>
                         </div>
                         <div class="h-full w-[80px]">
-                            <div>TOTAL</div>
+                            <div>{% trans 'TOTAL' %}</div>
                             <div class="text-sm font-normal">{{request.user.orders.first.paid_amount| floatformat:2}} €</div>
                         </div>
                         <div class="h-full w-[200px]">
-                            <div>ENVIAR A</div>
+                            <div>{% trans 'ENVIAR A' %}</div>
                             <div class="text-sm font-normal">{{request.user.orders.first.address}}, {{request.user.orders.first.city}} </div>
                         </div>
                     </div>
                     <div class="w-[50%] text-right mr-4">
-                        <div>PEDIDO ID.º {{request.user.orders.first.id}}</div>
+                        <div>{% trans 'PEDIDO' %} ID.º {{request.user.orders.first.id}}</div>
                         <div class="text-sm font-normal text-blue-500">
-                            <a href="{% url 'my_vista_producto' request.user.orders.first.id %}">Ver los detalles del pedido</a>
+                            <a href="{% url 'my_vista_producto' request.user.orders.first.id %}">{% trans 'Ver los detalles del pedido' %}</a>
                         </div>
                     </div>
                 </div>
@@ -95,8 +97,13 @@
                                 <div class="w-full lg:flex justify-between">
                                     <div class="flex justify-between relative">
                                         <div class="item-size">
-                                            <div class="font-semibold"><span class="text-green-700">{{item.quantity}}x</span>&nbsp{{item.variant.product.nombre}}</div>
-                                            <div>Talla: {{item.size|replace_1}}</div>
+                                            <div class="font-semibold"><span class="text-green-700">{{item.quantity}}x</span>
+                                                {% if request.LANGUAGE_CODE == 'es' %} {{item.variant.product.nombre}}
+                                                {% elif request.LANGUAGE_CODE == 'ca' %} {{item.variant.product.nombre_ca}}
+                                                {% else %} {{item.variant.product.nombre}}
+                                                {% endif %}
+                                            </div>
+                                            <div>{% trans 'Talla' %}: {{item.size|replace_1}}</div>
                                         </div>
                                         
                                     </div>
@@ -118,23 +125,23 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                                                 </svg>
                                             </div>
-                                            <div class="my-auto">Comprar de nuevo</div>
+                                            <div class="my-auto">{% trans 'Comprar de nuevo' %}</div>
                                         </div>
                                     </a>
                                     <a class="w-[100px] py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}">
-                                        <div class="m-auto">Ver tu artículo</div>
+                                        <div class="m-auto">{% trans 'Ver tu artículo' %}</div>
                                     </a>
                                 </div>
                             </div>
                             <div class="w-[30%] space-y-2 my-auto">
                                 <a class="w-full py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" 
                                 href="{% url 'my_devoluciones' item.variant.id request.user.orders.first.id %}">
-                                    <div class="m-auto">Devolución o incidencia</div>
+                                    <div class="m-auto">{% trans 'Devolución o incidencia' %}</div>
                                 </a> 
                                 <a class="w-full py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" 
-                                href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}">
-                                    <div class="m-auto hidden xl:block">Escribir una opinión sobre este producto</div>
-                                    <div class="m-auto xl:hidden block">Escribir una opinión</div>
+                                href="{% url 'my_review' item.variant.product.id %}">
+                                    <div class="m-auto hidden xl:block">{% trans 'Escribir una opinión sobre este producto' %}</div>
+                                    <div class="m-auto xl:hidden block">{% trans 'Escribir una opinión' %}</div>
                                 </a> 
                             </div>
                         </div>
@@ -146,17 +153,17 @@
                 <div class="min-h-[50px] p-2 bg-neutral-200 flex text-[12px] font-semibold text-gray-700 rounded-t-xl justify-between">
                     <div class="flex justify-between ml-4">
                         <div class="h-full">
-                            <div>PEDIDO REALIZADO</div>
+                            <div>{% trans 'PEDIDO REALIZADO' %}</div>
                             <div class="text-sm font-normal">{{request.user.orders.first.created_at |date1}}</div>
                         </div>
                     </div>
                     <div class="mr-4 h-full">
                         <div class="mr-4 flex flex-wrap h-full space-x-1">
-                            <div>PEDIDO ID.º</div>
+                            <div>{% trans 'PEDIDO' %} ID.º</div>
                             <div>{{order.id}}</div>
                         </div>
                         <div class="text-sm font-normal text-blue-500">
-                            <a href="{% url 'my_vista_producto' request.user.orders.first.id %}">Ver detalles</a>
+                            <a href="{% url 'my_vista_producto' request.user.orders.first.id %}">{% trans 'Ver detalles' %}</a>
                         </div>
                     </div>
                 </div>
@@ -175,8 +182,13 @@
                                     <div class="w-full lg:flex justify-between">
                                         <div class="flex justify-between relative">
                                             <div class="item-size">
-                                                <div class="font-semibold"><span class="text-green-700">{{item.quantity}}x</span>&nbsp{{item.variant.product.nombre}}</div>
-                                                <div>Talla: {{item.size|replace_1}}</div>
+                                                <div class="font-semibold"><span class="text-green-700">{{item.quantity}}x</span>
+                                                    {% if request.LANGUAGE_CODE == 'es' %} {{item.variant.product.nombre}}
+                                                    {% elif request.LANGUAGE_CODE == 'ca' %} {{item.variant.product.nombre_ca}}
+                                                    {% else %} {{item.variant.product.nombre}}
+                                                    {% endif %}
+                                                </div>
+                                                <div>{% trans 'Talla' %}: {{item.size|replace_1}}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -188,9 +200,9 @@
             </div>
 
             {% else %}
-            <div class="mb-2 mt-10 font-semibold">Todavía no tienes ningún pedido.</div>
-            <div class="mb-4">Empieza a descubrir todos nuestros productos.</div>
-            <a href="{% url 'shop' %}"><button class="min-w-[200px] w-[30%] py-3 bg-green-700 text-white text-base">Ir a la tienda</button></a>
+            <div class="mb-2 mt-10 font-semibold">{% trans 'Todavía no tienes ningún pedido.' %}</div>
+            <div class="mb-4">{% trans 'Empieza a descubrir todos nuestros productos.' %}</div>
+            <a href="{% url 'shop' %}"><button class="min-w-[200px] w-[30%] py-3 bg-green-700 text-white text-base">{% trans 'Ir a la tienda' %}</button></a>
             {% endif %}
         </div>
     </div>
@@ -198,31 +210,31 @@
     <div class="menu_account w-[100%] text-sm lg:hidden block my-0 mt-8">
         <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
             <div class="w-[3px] bg-green-600"></div>
-            <div class="p-2 w-full">Mi cuenta</div>
+            <div class="p-2 w-full">{% trans 'Mi cuenta' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Mis pedidos</div>
+            <div class="p-2 w-full">{% trans 'Mis pedidos' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Mis datos</div>
+            <div class="p-2 w-full">{% trans 'Mis datos' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'my_favorites' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Mis favoritos</div>
+            <div class="p-2 w-full">{% trans 'Mis favoritos' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Mis opiniones de productos</div>
+            <div class="p-2 w-full">{% trans 'Mis opiniones de productos' %}</div>
         </a>
         <a class="flex border-b border-neutral-300">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
+            <div class="p-2 w-full">{% trans 'Condiciones generales de compra y privacidad' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'logout' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Cerrar Sesión</div>
+            <div class="p-2 w-full">{% trans 'Cerrar Sesión' %}</div>
         </a>
     </div>
 

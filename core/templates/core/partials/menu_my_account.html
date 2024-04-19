@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="menu-my-account invisible fixed z-[99999] top-0 left-0">
 
     <div class="w-screen h-screen bg-neutral-700 opacity-70 z-0" onclick="menu_my_account()"></div>
@@ -18,77 +19,62 @@
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />  
                         <circle cx="12" cy="7" r="4" />
                     </svg> 
-                    <span class="ml-2">Cuenta</span> 
+                    <span class="ml-2">{% trans 'Cuenta' %}</span> 
                 </a>
                 
-                {% if page_name == 'Mi cuenta' %}
                 <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
+                    {% if page_name == 'Mi cuenta' %}
                     <div class="w-[3px] bg-green-600"></div>
-                    <div class="p-2 w-full">Mi cuenta</div>
-                </a>
-                {% else %}
-                <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
+                    {% else %}
                     <div class="mr-1 bg-neutral-400"></div>
-                    <div class="p-2 w-full">Mi cuenta</div>
+                    {% endif %}
+                    <div class="p-2 w-full">{% trans 'Mi cuenta' %}</div>
                 </a>
-                {% endif %}
 
-                {% if page_name == 'Mis pedidos' %}
                 <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
+                    {% if page_name == 'Mis pedidos' %}
                     <div class="w-[3px] bg-green-600"></div>
-                    <div class="p-2 w-full">Mis pedidos</div>
-                </a>
-                {% else %}
-                <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
+                    {% else %}
                     <div class="mr-1 bg-neutral-400"></div>
-                    <div class="p-2 w-full">Mis pedidos</div>
+                    {% endif %}
+                    <div class="p-2 w-full">{% trans 'Mis pedidos' %}</div>
                 </a>
-                {% endif %}
 
-                {% if page_name == 'Mis datos' %}
                 <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
+                    {% if page_name == 'Mis datos' %}
                     <div class="w-[3px] bg-green-600"></div>
-                    <div class="p-2 w-full">Mis datos</div>
-                </a>
-                {% else %}
-                <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
+                    {% else %}
                     <div class="mr-1 bg-neutral-400"></div>
-                    <div class="p-2 w-full">Mis datos</div>
+                    {% endif %}
+                    <div class="p-2 w-full">{% trans 'Mis datos' %}</div>
                 </a>
-                {% endif %}
 
-                {% if page_name == 'Mis favoritos' %}
-                <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
-                    <div class="w-[3px] bg-green-600"></div>
-                    <div class="p-2 w-full">Mis favoritos</div>
-                </a>
-                {% else %}
                 <a class="flex border-b border-neutral-300" href="{% url 'my_favorites' %}">
-                    <div class="mr-1 bg-neutral-400"></div>
-                    <div class="p-2 w-full">Mis favoritos</div>
-                </a>
-                {% endif %}
-
-                {% if page_name == 'Mis opiniones de productos' %}
-                <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
+                    {% if page_name == 'Mis favoritos' %}
                     <div class="w-[3px] bg-green-600"></div>
-                    <div class="p-2 w-full">Mis opiniones de productos</div>
-                </a>
-                {% else %}
-                <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
+                    {% else %}
                     <div class="mr-1 bg-neutral-400"></div>
-                    <div class="p-2 w-full">Mis opiniones de productos</div>
+                    {% endif %}
+                    <div class="p-2 w-full">{% trans 'Mis favoritos' %}</div>
                 </a>
-                {% endif %}
 
-                <a class="flex border-b border-neutral-300">
+                <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
+                    {% if page_name == 'Mis opiniones de productos' %}
+                    <div class="w-[3px] bg-green-600"></div>
+                    {% else %}
                     <div class="mr-1 bg-neutral-400"></div>
-                    <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
+                    {% endif %}
+                    <div class="p-2 w-full">{% trans 'Mis opiniones de productos' %}</div>
+                </a>
+
+                <a class="flex border-b border-neutral-300" href="{% url 'condiciones_generales_compra_web' %}">
+                    <div class="mr-1 bg-neutral-400"></div>
+                    <div class="p-2 w-full">{% trans 'Condiciones generales de compra y privacidad' %}</div>
                 </a>
 
                 <a class="flex border-b border-neutral-300 bg-neutral-200" href="{% url 'logout' %}">
                     <div class="mr-1 bg-neutral-400"></div>
-                    <div class="p-2 w-full">Cerrar sesión</div>
+                    <div class="p-2 w-full">{% trans 'Cerrar sesión' %}</div>
                 </a>
             </div>
         </div>
