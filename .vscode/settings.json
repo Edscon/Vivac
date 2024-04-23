@@ -350,6 +350,7 @@
         "Correu",
         "correus",
         "costat",
+        "crearcuenta",
         "creat",
         "crèdit",
         "d'accés",
@@ -548,6 +549,7 @@
         "enviat",
         "enviïs",
         "envio",
+        "envios",
         "erronis",
         "escau",
         "escoltat",
@@ -653,6 +655,7 @@
         "formin",
         "formulari",
         "Formulari",
+        "Formularioch",
         "formularionocuenta",
         "formularis",
         "fòrums",
@@ -978,6 +981,7 @@
         "nino",
         "nivell",
         "nocius",
+        "nocuenta",
         "només",
         "Normalment",
         "normatives",
@@ -1586,6 +1590,7 @@
         "xarxes",
         "Xarxes",
         "xpos",
-        "ypos"
+        "ypos",
+        "zipcode"
     ]
 }

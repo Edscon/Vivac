@@ -612,19 +612,20 @@
     }
 
 
-    function Formularioch(){
-        if(crearcuenta.classList.contains("hidden")){   
-            document.getElementById("crearcuenta").classList.remove("hidden");
-            document.getElementById("nocuenta").classList.add("hidden");
+    function Formularioch(string) {
+
+        if(string == 'nocuenta'){   
+            document.getElementById("crearcuenta").classList.remove("bg-black", "text-white");
+            document.getElementById("nocuenta").classList.add("bg-black", "text-white");
             document.getElementById("Formulario").classList.remove("hidden");
             document.getElementById("Formulario2").classList.add("hidden");
 
             document.getElementById('button_validate').classList.remove('hidden');
             document.getElementById('button_validate_2').classList.add('hidden');
         }
-        else{
-            document.getElementById("crearcuenta").classList.add("hidden");
-            document.getElementById("nocuenta").classList.remove("hidden");
+        else if(string == 'crearcuenta'){
+            document.getElementById("crearcuenta").classList.add("bg-black", "text-white");
+            document.getElementById("nocuenta").classList.remove("bg-black", "text-white");
             document.getElementById("Formulario").classList.add("hidden");
             document.getElementById("Formulario2").classList.remove("hidden");
 
