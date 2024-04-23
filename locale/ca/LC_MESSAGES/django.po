@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-23 19:20+0200\n"
+"POT-Creation-Date: 2024-04-23 19:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,8 +133,12 @@ msgstr "Comprar sense compta"
 #: cart/templates/cart/partials/checkout/info_shipment.html:30
 #: cart/templates/cart/partials/formularionocuenta.html:8
 #: cart/templates/cart/partials/formularionocuenta.html:10
+#: core/templates/core/edit_myaccount.html:15
+#: core/templates/core/my_data.html:64
 #: core/templates/core/partials/contacto.html:25
 #: core/templates/core/partials/contacto.html:27
+#: core/templates/core/partials/edit_data.html:25
+#: core/templates/core/partials/edit_data.html:26
 #: core/templates/core/signup.html:35 core/templates/core/signup.html:37
 msgid "Nombre"
 msgstr "Nom"
@@ -142,12 +146,17 @@ msgstr "Nom"
 #: cart/templates/cart/checkout.html:140 cart/templates/cart/checkout.html:142
 #: cart/templates/cart/partials/formularionocuenta.html:17
 #: cart/templates/cart/partials/formularionocuenta.html:19
+#: core/templates/core/edit_myaccount.html:19
+#: core/templates/core/my_data.html:68
+#: core/templates/core/partials/edit_data.html:31
+#: core/templates/core/partials/edit_data.html:32
 #: core/templates/core/signup.html:42 core/templates/core/signup.html:44
 msgid "Apellidos"
 msgstr "Cognoms"
 
 #: cart/templates/cart/checkout.html:149 cart/templates/cart/success.html:189
-#: core/templates/core/login.html:20
+#: core/templates/core/edit_myaccount.html:27 core/templates/core/login.html:20
+#: core/templates/core/my_data.html:72
 #: core/templates/core/partials/contacto.html:32
 #: core/templates/core/partials/footer/condiciones_generales_compra_web.html:27
 #: core/templates/core/partials/footer/condiciones_legales.html:21
@@ -179,7 +188,7 @@ msgid "Confirma tu contraseña"
 msgstr "Confirma la teva contrasenya"
 
 #: cart/templates/cart/checkout.html:196 core/templates/core/login.html:46
-#: core/templates/core/signup.html:91
+#: core/templates/core/my_data.html:140 core/templates/core/signup.html:91
 msgid "Mínimo 8 caracteres, incluyendo número, mayúscula y minúscula."
 msgstr "Mínim 8 caràcters, incloent número, majúscula i minúscula."
 
@@ -187,6 +196,9 @@ msgstr "Mínim 8 caràcters, incloent número, majúscula i minúscula."
 #: cart/templates/cart/partials/checkout/info_shipment.html:31
 #: cart/templates/cart/partials/formularionocuenta.html:35
 #: cart/templates/cart/partials/formularionocuenta.html:37
+#: core/templates/core/my_data.html:153
+#: core/templates/core/partials/edit_data.html:37
+#: core/templates/core/partials/edit_data.html:38
 #: core/templates/core/partials/footer/condiciones_generales_compra_web.html:28
 #: core/templates/core/partials/footer/condiciones_legales.html:22
 #: core/templates/core/partials/footer/ventajas.html:38
@@ -203,7 +215,9 @@ msgstr "Carrer i Número"
 #: cart/templates/cart/partials/checkout/info_shipment.html:33
 #: cart/templates/cart/partials/formularionocuenta.html:55
 #: cart/templates/cart/partials/formularionocuenta.html:57
-#: cart/templates/cart/success.html:184
+#: cart/templates/cart/success.html:184 core/templates/core/my_data.html:177
+#: core/templates/core/partials/edit_data.html:55
+#: core/templates/core/partials/edit_data.html:56
 msgid "Ciudad"
 msgstr "Ciutat"
 
@@ -218,7 +232,9 @@ msgstr "Codi Postal"
 #: cart/templates/cart/partials/formularionocuenta.html:74
 #: cart/templates/cart/partials/formularionocuenta.html:76
 #: cart/templates/cart/partials/formularionocuenta.html:78
-#: cart/templates/cart/success.html:185
+#: cart/templates/cart/success.html:185 core/templates/core/my_data.html:185
+#: core/templates/core/partials/edit_data.html:61
+#: core/templates/core/partials/edit_data.html:62
 msgid "Provincia"
 msgstr "Província"
 
@@ -290,6 +306,7 @@ msgid "Eliminar"
 msgstr ""
 
 #: cart/templates/cart/partials/checkout/info_shipment.html:23
+#: core/templates/core/my_data.html:200
 msgid "Cambiar"
 msgstr "Canviar"
 
@@ -298,6 +315,9 @@ msgid "Apellido"
 msgstr "Cognom"
 
 #: cart/templates/cart/partials/checkout/info_shipment.html:32
+#: core/templates/core/my_data.html:161
+#: core/templates/core/partials/edit_data.html:43
+#: core/templates/core/partials/edit_data.html:44
 msgid "Calle"
 msgstr "Carrer"
 
@@ -518,6 +538,20 @@ msgid "Si algo en el pedido no es correcto, puedes contactar con nosotros"
 msgstr ""
 "Si alguna cosa a la comanda no és correcta, pots contactar amb nosaltres"
 
+#: core/templates/core/edit_myaccount.html:5
+#: core/templates/core/edit_myaccount.html:9
+msgid "Editar cuenta"
+msgstr "Editar la compta"
+
+#: core/templates/core/edit_myaccount.html:23
+msgid "Usuario"
+msgstr "Usuari"
+
+#: core/templates/core/edit_myaccount.html:32
+#: core/templates/core/my_data.html:146
+msgid "Confirmar"
+msgstr "Confirmar"
+
 #: core/templates/core/frontpage.html:6
 msgid "Tienda deportes online"
 msgstr "Botiga d'esports en línia"
@@ -532,7 +566,7 @@ msgstr "Els teus favorits"
 
 #: core/templates/core/login.html:6
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: core/templates/core/login.html:14
 #: core/templates/core/partials/login_mobile.html:25
@@ -559,14 +593,16 @@ msgstr "Registra't aquí"
 
 #: core/templates/core/my_account.html:7 core/templates/core/my_account.html:26
 #: core/templates/core/my_account.html:55
-#: core/templates/core/my_account.html:213
-#: core/templates/core/my_orders.html:26 core/templates/core/my_orders.html:212
+#: core/templates/core/my_account.html:213 core/templates/core/my_data.html:27
+#: core/templates/core/my_data.html:209 core/templates/core/my_orders.html:26
+#: core/templates/core/my_orders.html:212
 #: core/templates/core/partials/menu_my_account.html:31
 msgid "Mi cuenta"
 msgstr "La meva compta"
 
 #: core/templates/core/my_account.html:30
-#: core/templates/core/my_account.html:217 core/templates/core/my_orders.html:7
+#: core/templates/core/my_account.html:217 core/templates/core/my_data.html:31
+#: core/templates/core/my_data.html:213 core/templates/core/my_orders.html:7
 #: core/templates/core/my_orders.html:30 core/templates/core/my_orders.html:216
 #: core/templates/core/partials/menu_mobile.html:144
 #: core/templates/core/partials/menu_my_account.html:40
@@ -575,7 +611,8 @@ msgid "Mis pedidos"
 msgstr "Les meves comandes"
 
 #: core/templates/core/my_account.html:34
-#: core/templates/core/my_account.html:221
+#: core/templates/core/my_account.html:221 core/templates/core/my_data.html:7
+#: core/templates/core/my_data.html:35 core/templates/core/my_data.html:217
 #: core/templates/core/my_orders.html:34 core/templates/core/my_orders.html:220
 #: core/templates/core/partials/menu_mobile.html:145
 #: core/templates/core/partials/menu_my_account.html:49
@@ -584,8 +621,9 @@ msgid "Mis datos"
 msgstr "Les meves dades"
 
 #: core/templates/core/my_account.html:38
-#: core/templates/core/my_account.html:225
-#: core/templates/core/my_orders.html:38 core/templates/core/my_orders.html:224
+#: core/templates/core/my_account.html:225 core/templates/core/my_data.html:39
+#: core/templates/core/my_data.html:221 core/templates/core/my_orders.html:38
+#: core/templates/core/my_orders.html:224
 #: core/templates/core/partials/menu_mobile.html:146
 #: core/templates/core/partials/menu_my_account.html:58
 #: core/templates/core/partials/navbar_right.html:19
@@ -593,8 +631,9 @@ msgid "Mis favoritos"
 msgstr "Els meus favorits"
 
 #: core/templates/core/my_account.html:42
-#: core/templates/core/my_account.html:229
-#: core/templates/core/my_orders.html:42 core/templates/core/my_orders.html:228
+#: core/templates/core/my_account.html:229 core/templates/core/my_data.html:43
+#: core/templates/core/my_data.html:225 core/templates/core/my_orders.html:42
+#: core/templates/core/my_orders.html:228
 #: core/templates/core/partials/menu_mobile.html:147
 #: core/templates/core/partials/menu_my_account.html:67
 #: core/templates/core/partials/navbar_right.html:20
@@ -602,15 +641,17 @@ msgid "Mis opiniones de productos"
 msgstr "Les meves opinions sobre productes"
 
 #: core/templates/core/my_account.html:46
-#: core/templates/core/my_account.html:233
-#: core/templates/core/my_orders.html:46 core/templates/core/my_orders.html:232
+#: core/templates/core/my_account.html:233 core/templates/core/my_data.html:47
+#: core/templates/core/my_data.html:229 core/templates/core/my_orders.html:46
+#: core/templates/core/my_orders.html:232
 #: core/templates/core/partials/menu_my_account.html:72
 msgid "Condiciones generales de compra y privacidad"
 msgstr "Condicions generals de compra i privacitat"
 
 #: core/templates/core/my_account.html:50
-#: core/templates/core/my_account.html:237
-#: core/templates/core/my_orders.html:50 core/templates/core/my_orders.html:236
+#: core/templates/core/my_account.html:237 core/templates/core/my_data.html:51
+#: core/templates/core/my_data.html:233 core/templates/core/my_orders.html:50
+#: core/templates/core/my_orders.html:236
 #: core/templates/core/partials/menu_mobile.html:148
 #: core/templates/core/partials/navbar_right.html:21
 msgid "Cerrar Sesión"
@@ -696,6 +737,41 @@ msgstr "Comença a descobrir tots els nostres productes."
 #: core/templates/core/my_orders.html:204
 msgid "Ir a la tienda"
 msgstr "Anar a la botiga"
+
+#: core/templates/core/my_data.html:56
+msgid "Mis Datos"
+msgstr "Les meves Dades"
+
+#: core/templates/core/my_data.html:61
+#: core/templates/core/partials/edit_data.html:20
+msgid "Datos personales"
+msgstr "Dades personals"
+
+#: core/templates/core/my_data.html:77
+msgid "Cambiar contraseña"
+msgstr "Canviar Contrasenya"
+
+#: core/templates/core/my_data.html:89 core/templates/core/my_data.html:91
+msgid "Contraseña antigua"
+msgstr "Contrasenya antiga"
+
+#: core/templates/core/my_data.html:105 core/templates/core/my_data.html:107
+msgid "Nueva Contraseña"
+msgstr "Contrasenya"
+
+#: core/templates/core/my_data.html:121 core/templates/core/my_data.html:123
+msgid "Confirma tu nueva contraseña"
+msgstr "Confirma la teva nova contrasenya"
+
+#: core/templates/core/my_data.html:144
+msgid "La contraseña antigua no coincide."
+msgstr "La contrasenya antiga no coincideix."
+
+#: core/templates/core/my_data.html:169
+#: core/templates/core/partials/edit_data.html:49
+#: core/templates/core/partials/edit_data.html:50
+msgid "Código postal"
+msgstr "Codi postal"
 
 #: core/templates/core/partials/alquiler_material.html:6
 #: core/templates/core/partials/alquiler_material.html:12
@@ -958,6 +1034,10 @@ msgstr "Política de Privadesa"
 #: core/templates/core/partials/cookie.html:14
 msgid "Aceptar cookies"
 msgstr "Aceptar cookies"
+
+#: core/templates/core/partials/edit_data.html:68
+msgid "Guardar"
+msgstr "Guardar"
 
 #: core/templates/core/partials/footer.html:8
 msgid "Sobre Esports Vivac"

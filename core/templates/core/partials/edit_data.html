@@ -1,5 +1,6 @@
 {% load socialaccount %}
 {% load static %}
+{% load i18n %}
 <div class="edit_data invisible fixed z-[99999] top-0 left-0">
 
     <div class="w-screen h-screen bg-neutral-700 opacity-70 z-0" onclick="data_edit()"></div>
@@ -16,55 +17,55 @@
             <div class="flex mt-10"></div>
 
             <div class="mt-2 text-gray-800 overflow-hidden h-full relative text-base sm:text-sm">
-                <p class="text-base text-gray-800 p-4 border-b-[0.5px] border-black">Datos personales</p>
+                <p class="text-base text-gray-800 p-4 border-b-[0.5px] border-black">{% trans 'Datos personales' %}</p>
 
                 <form method="post" action="." autocomplete="off" class="p-2 px-5 data_edit_form">
                     {% csrf_token %}
                     <div class="mt-4 space-y-1 relative">
-                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Nombre*</div>
-                        <input type="text" value="{{request.user.first_name}}" autocomplete="nope" name="name" placeholder="Nombre*" 
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">{% trans 'Nombre' %}*</div>
+                        <input type="text" value="{{request.user.first_name}}" autocomplete="nope" name="name" placeholder="{% trans 'Nombre' %}*" 
                         class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
                     </div>
 
                     <div class="mt-4 space-y-1 relative">
-                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Apellidos*</div>
-                        <input type="text" value="{{request.user.last_name}}" autocomplete="nope" name="apellidos" placeholder="Apellidos*" 
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">{% trans 'Apellidos' %}*</div>
+                        <input type="text" value="{{request.user.last_name}}" autocomplete="nope" name="apellidos" placeholder="{% trans 'Apellidos' %}*" 
                         class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
                     </div>
 
                     <div class="mt-4 space-y-1 relative">
-                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Telefono*</div>
-                        <input type="text" value="{{request.user.accounts.phone}}" autocomplete="nope" name="phone" placeholder="Telefono*" 
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">{% trans 'Teléfono' %}*</div>
+                        <input type="text" value="{{request.user.accounts.phone}}" autocomplete="nope" name="phone" placeholder="{% trans 'Teléfono' %}*" 
                         class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
                     </div>
 
                     <div class="mt-4 space-y-1 relative">
-                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Calle*</div>
-                        <input type="text" value="{{request.user.accounts.address}}" autocomplete="nope" name="address" placeholder="Calle*" 
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">{% trans 'Calle' %}*</div>
+                        <input type="text" value="{{request.user.accounts.address}}" autocomplete="nope" name="address" placeholder="{% trans 'Calle' %}*" 
                         class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
                     </div>
 
                     <div class="mt-4 space-y-1 relative">
-                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Código postal*</div>
-                        <input type="text" value="{{request.user.accounts.zipcode}}" autocomplete="nope" name="zipcode" placeholder="Código postal*" 
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">{% trans 'Código postal' %}*</div>
+                        <input type="text" value="{{request.user.accounts.zipcode}}" autocomplete="nope" name="zipcode" placeholder="{% trans 'Código postal' %}*" 
                         class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
                     </div>
 
                     <div class="mt-4 space-y-1 relative">
-                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Ciudad*</div>
-                        <input type="text" value="{{request.user.accounts.city}}" autocomplete="nope" name="city" placeholder="Ciudad*" 
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">{% trans 'Ciudad' %}*</div>
+                        <input type="text" value="{{request.user.accounts.city}}" autocomplete="nope" name="city" placeholder="{% trans 'Ciudad' %}*" 
                         class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
                     </div>
 
                     <div class="mt-4 space-y-1 relative">
-                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">Provincia*</div>
-                        <input type="text" value="{{request.user.accounts.provincia}}" autocomplete="nope" name="provincia" placeholder="Provincia*" 
+                        <div class="text-[10px] px-1 absolute bg-white text-neutral-600 -top-[6px] left-2 hover:text-black">{% trans 'Provincia' %}*</div>
+                        <input type="text" value="{{request.user.accounts.provincia}}" autocomplete="nope" name="provincia" placeholder="{% trans 'Provincia' %}*" 
                         class="input w-full px-3 py-3 bg-white border border-neutral-300 hover:border-black focus:border-black">
                     </div>
 
 
                     <button id="submit" class="w-full mt-6 py-2 px-2 rounded border text-white bg-green-700 hover:bg-green-800">
-                        Guardar
+                        {% trans 'Guardar' %}
                     </button>
                     
                 </form>
