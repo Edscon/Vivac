@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-23 18:48+0200\n"
+"POT-Creation-Date: 2024-04-23 19:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,16 +22,16 @@ msgstr ""
 msgid "Cesta de la compra"
 msgstr "Cistella de la compra"
 
-#: cart/templates/cart/cart.html:21 cart/templates/cart/checkout.html:24
+#: cart/templates/cart/cart.html:21 cart/templates/cart/checkout.html:23
 #: cart/templates/cart/partials/minicart_icon_num.html:27
 msgid "Carrito"
 msgstr "Carretó"
 
-#: cart/templates/cart/cart.html:29 cart/templates/cart/checkout.html:32
+#: cart/templates/cart/cart.html:29 cart/templates/cart/checkout.html:31
 msgid "Pago y envío"
 msgstr "Pagament i enviament"
 
-#: cart/templates/cart/cart.html:37 cart/templates/cart/checkout.html:40
+#: cart/templates/cart/cart.html:37 cart/templates/cart/checkout.html:39
 msgid "Confirmación"
 msgstr "Confirmació"
 
@@ -96,7 +96,7 @@ msgstr "Total compra"
 msgid "Realizar pedido"
 msgstr "Realitzar la comanda"
 
-#: cart/templates/cart/checkout.html:55
+#: cart/templates/cart/checkout.html:54
 msgid ""
 "Error, la cantidad no coincide con el stock. No se ha podido continuar con "
 "el pedido."
@@ -104,32 +104,32 @@ msgstr ""
 "Error, la quantitat no coincideix amb l'estoc. No s'ha pogut continuar amb "
 "la comanda."
 
-#: cart/templates/cart/checkout.html:59
+#: cart/templates/cart/checkout.html:58
 msgid "Cargar la página con las unidades actualizadas"
 msgstr "Carrega la pàgina amb les unitats actualitzades"
 
-#: cart/templates/cart/checkout.html:80
+#: cart/templates/cart/checkout.html:79
 #: cart/templates/cart/partials/checkout/info_shipment.html:9
 msgid "Datos de contacto y envío"
 msgstr "Dades de contacte i enviament"
 
-#: cart/templates/cart/checkout.html:98 core/templates/core/login.html:56
+#: cart/templates/cart/checkout.html:97 core/templates/core/login.html:56
 msgid "Iniciar sesión"
 msgstr "Iniciar sessió"
 
-#: cart/templates/cart/checkout.html:106 core/templates/core/login.html:75
+#: cart/templates/cart/checkout.html:105 core/templates/core/login.html:75
 msgid "Iniciar sesión con Google"
 msgstr "Iniciar sessió amb Google"
 
-#: cart/templates/cart/checkout.html:115
+#: cart/templates/cart/checkout.html:114
 msgid "Crear cuenta"
 msgstr "Crear compta"
 
-#: cart/templates/cart/checkout.html:118
+#: cart/templates/cart/checkout.html:117
 msgid "Comprar sin cuenta"
 msgstr "Comprar sense compta"
 
-#: cart/templates/cart/checkout.html:132 cart/templates/cart/checkout.html:134
+#: cart/templates/cart/checkout.html:131 cart/templates/cart/checkout.html:133
 #: cart/templates/cart/partials/checkout/info_shipment.html:30
 #: cart/templates/cart/partials/formularionocuenta.html:8
 #: cart/templates/cart/partials/formularionocuenta.html:10
@@ -139,14 +139,14 @@ msgstr "Comprar sense compta"
 msgid "Nombre"
 msgstr "Nom"
 
-#: cart/templates/cart/checkout.html:141 cart/templates/cart/checkout.html:143
+#: cart/templates/cart/checkout.html:140 cart/templates/cart/checkout.html:142
 #: cart/templates/cart/partials/formularionocuenta.html:17
 #: cart/templates/cart/partials/formularionocuenta.html:19
 #: core/templates/core/signup.html:42 core/templates/core/signup.html:44
 msgid "Apellidos"
 msgstr "Cognoms"
 
-#: cart/templates/cart/checkout.html:150 cart/templates/cart/success.html:189
+#: cart/templates/cart/checkout.html:149 cart/templates/cart/success.html:189
 #: core/templates/core/login.html:20
 #: core/templates/core/partials/contacto.html:32
 #: core/templates/core/partials/footer/condiciones_generales_compra_web.html:27
@@ -156,7 +156,7 @@ msgstr "Cognoms"
 msgid "Email"
 msgstr "Correu electrònic"
 
-#: cart/templates/cart/checkout.html:152
+#: cart/templates/cart/checkout.html:151
 #: cart/templates/cart/partials/formularionocuenta.html:26
 #: cart/templates/cart/partials/formularionocuenta.html:28
 #: core/templates/core/login.html:22
@@ -165,7 +165,7 @@ msgstr "Correu electrònic"
 msgid "Correo electrónico"
 msgstr "Correu electrònic"
 
-#: cart/templates/cart/checkout.html:159 cart/templates/cart/checkout.html:162
+#: cart/templates/cart/checkout.html:158 cart/templates/cart/checkout.html:161
 #: core/templates/core/login.html:27 core/templates/core/login.html:29
 #: core/templates/core/partials/login_mobile.html:31
 #: core/templates/core/partials/sign.html:10 core/templates/core/signup.html:56
@@ -173,17 +173,17 @@ msgstr "Correu electrònic"
 msgid "Contraseña"
 msgstr "Contrasenya"
 
-#: cart/templates/cart/checkout.html:177 cart/templates/cart/checkout.html:180
+#: cart/templates/cart/checkout.html:176 cart/templates/cart/checkout.html:179
 #: core/templates/core/signup.html:72 core/templates/core/signup.html:74
 msgid "Confirma tu contraseña"
 msgstr "Confirma la teva contrasenya"
 
-#: cart/templates/cart/checkout.html:197 core/templates/core/login.html:46
+#: cart/templates/cart/checkout.html:196 core/templates/core/login.html:46
 #: core/templates/core/signup.html:91
 msgid "Mínimo 8 caracteres, incluyendo número, mayúscula y minúscula."
 msgstr "Mínim 8 caràcters, incloent número, majúscula i minúscula."
 
-#: cart/templates/cart/checkout.html:206 cart/templates/cart/checkout.html:208
+#: cart/templates/cart/checkout.html:205 cart/templates/cart/checkout.html:207
 #: cart/templates/cart/partials/checkout/info_shipment.html:31
 #: cart/templates/cart/partials/formularionocuenta.html:35
 #: cart/templates/cart/partials/formularionocuenta.html:37
@@ -193,13 +193,13 @@ msgstr "Mínim 8 caràcters, incloent número, majúscula i minúscula."
 msgid "Teléfono"
 msgstr "Telèfon"
 
-#: cart/templates/cart/checkout.html:215 cart/templates/cart/checkout.html:217
+#: cart/templates/cart/checkout.html:214 cart/templates/cart/checkout.html:216
 #: cart/templates/cart/partials/formularionocuenta.html:46
 #: cart/templates/cart/partials/formularionocuenta.html:48
 msgid "Calle y Numero"
 msgstr "Carrer i Número"
 
-#: cart/templates/cart/checkout.html:224 cart/templates/cart/checkout.html:226
+#: cart/templates/cart/checkout.html:223 cart/templates/cart/checkout.html:225
 #: cart/templates/cart/partials/checkout/info_shipment.html:33
 #: cart/templates/cart/partials/formularionocuenta.html:55
 #: cart/templates/cart/partials/formularionocuenta.html:57
@@ -207,14 +207,14 @@ msgstr "Carrer i Número"
 msgid "Ciudad"
 msgstr "Ciutat"
 
-#: cart/templates/cart/checkout.html:233 cart/templates/cart/checkout.html:235
+#: cart/templates/cart/checkout.html:232 cart/templates/cart/checkout.html:234
 #: cart/templates/cart/partials/formularionocuenta.html:64
 #: cart/templates/cart/partials/formularionocuenta.html:66
 msgid "Código Postal"
 msgstr "Codi Postal"
 
-#: cart/templates/cart/checkout.html:243 cart/templates/cart/checkout.html:245
-#: cart/templates/cart/checkout.html:247
+#: cart/templates/cart/checkout.html:242 cart/templates/cart/checkout.html:244
+#: cart/templates/cart/checkout.html:246
 #: cart/templates/cart/partials/formularionocuenta.html:74
 #: cart/templates/cart/partials/formularionocuenta.html:76
 #: cart/templates/cart/partials/formularionocuenta.html:78
@@ -222,33 +222,33 @@ msgstr "Codi Postal"
 msgid "Provincia"
 msgstr "Província"
 
-#: cart/templates/cart/checkout.html:306
+#: cart/templates/cart/checkout.html:305
 #: cart/templates/cart/partials/formularionocuenta.html:136
 msgid "Añadir detalles para el envió"
 msgstr "Afegir detalls per a l'enviament"
 
-#: cart/templates/cart/checkout.html:309 cart/templates/cart/checkout.html:312
+#: cart/templates/cart/checkout.html:308 cart/templates/cart/checkout.html:311
 #: cart/templates/cart/partials/formularionocuenta.html:139
 #: cart/templates/cart/partials/formularionocuenta.html:142
 msgid "Detalles"
 msgstr "Detalls"
 
-#: cart/templates/cart/checkout.html:317
+#: cart/templates/cart/checkout.html:316
 msgid "Este email coincide con un usuario pero la contraseña no coincide."
 msgstr ""
 "Aquest correu electrònic coincideix amb un usuari però la contrasenya no "
 "coincideix."
 
-#: cart/templates/cart/checkout.html:319
+#: cart/templates/cart/checkout.html:318
 #: cart/templates/cart/partials/formularionocuenta.html:149
 msgid "Siguiente"
 msgstr "Següent"
 
-#: cart/templates/cart/checkout.html:344
+#: cart/templates/cart/checkout.html:343
 msgid "Método de envío"
 msgstr "Mètode d'enviament"
 
-#: cart/templates/cart/checkout.html:370
+#: cart/templates/cart/checkout.html:369
 msgid "Método de pago"
 msgstr "Mètode de pagament"
 
@@ -263,6 +263,8 @@ msgstr "Afegit al carretó"
 #: cart/templates/cart/partials/minicart.html:33
 #: core/templates/core/my_account.html:106
 #: core/templates/core/my_account.html:191
+#: core/templates/core/my_orders.html:104
+#: core/templates/core/my_orders.html:189
 msgid "Talla"
 msgstr "Talla"
 
@@ -455,7 +457,7 @@ msgstr ""
 "En cas que tinguis un compte amb nosaltres pots fer-ho des de El Meu Compte"
 
 #: cart/templates/cart/success.html:142 cart/templates/cart/success.html:161
-#: core/templates/core/my_account.html:81
+#: core/templates/core/my_account.html:81 core/templates/core/my_orders.html:79
 msgid "Ver los detalles del pedido"
 msgstr "Veure els detalls de la comanda"
 
@@ -558,12 +560,14 @@ msgstr "Registra't aquí"
 #: core/templates/core/my_account.html:7 core/templates/core/my_account.html:26
 #: core/templates/core/my_account.html:55
 #: core/templates/core/my_account.html:213
+#: core/templates/core/my_orders.html:26 core/templates/core/my_orders.html:212
 #: core/templates/core/partials/menu_my_account.html:31
 msgid "Mi cuenta"
 msgstr "La meva compta"
 
 #: core/templates/core/my_account.html:30
-#: core/templates/core/my_account.html:217
+#: core/templates/core/my_account.html:217 core/templates/core/my_orders.html:7
+#: core/templates/core/my_orders.html:30 core/templates/core/my_orders.html:216
 #: core/templates/core/partials/menu_mobile.html:144
 #: core/templates/core/partials/menu_my_account.html:40
 #: core/templates/core/partials/navbar_right.html:17
@@ -572,6 +576,7 @@ msgstr "Les meves comandes"
 
 #: core/templates/core/my_account.html:34
 #: core/templates/core/my_account.html:221
+#: core/templates/core/my_orders.html:34 core/templates/core/my_orders.html:220
 #: core/templates/core/partials/menu_mobile.html:145
 #: core/templates/core/partials/menu_my_account.html:49
 #: core/templates/core/partials/navbar_right.html:18
@@ -580,6 +585,7 @@ msgstr "Les meves dades"
 
 #: core/templates/core/my_account.html:38
 #: core/templates/core/my_account.html:225
+#: core/templates/core/my_orders.html:38 core/templates/core/my_orders.html:224
 #: core/templates/core/partials/menu_mobile.html:146
 #: core/templates/core/partials/menu_my_account.html:58
 #: core/templates/core/partials/navbar_right.html:19
@@ -588,6 +594,7 @@ msgstr "Els meus favorits"
 
 #: core/templates/core/my_account.html:42
 #: core/templates/core/my_account.html:229
+#: core/templates/core/my_orders.html:42 core/templates/core/my_orders.html:228
 #: core/templates/core/partials/menu_mobile.html:147
 #: core/templates/core/partials/menu_my_account.html:67
 #: core/templates/core/partials/navbar_right.html:20
@@ -596,12 +603,14 @@ msgstr "Les meves opinions sobre productes"
 
 #: core/templates/core/my_account.html:46
 #: core/templates/core/my_account.html:233
+#: core/templates/core/my_orders.html:46 core/templates/core/my_orders.html:232
 #: core/templates/core/partials/menu_my_account.html:72
 msgid "Condiciones generales de compra y privacidad"
 msgstr "Condicions generals de compra i privacitat"
 
 #: core/templates/core/my_account.html:50
 #: core/templates/core/my_account.html:237
+#: core/templates/core/my_orders.html:50 core/templates/core/my_orders.html:236
 #: core/templates/core/partials/menu_mobile.html:148
 #: core/templates/core/partials/navbar_right.html:21
 msgid "Cerrar Sesión"
@@ -625,55 +634,66 @@ msgstr "La teva última comanda"
 
 #: core/templates/core/my_account.html:66
 #: core/templates/core/my_account.html:156
+#: core/templates/core/my_orders.html:64 core/templates/core/my_orders.html:154
 msgid "PEDIDO REALIZADO"
 msgstr "COMANDA REALITZADA"
 
-#: core/templates/core/my_account.html:70
+#: core/templates/core/my_account.html:70 core/templates/core/my_orders.html:68
 msgid "TOTAL"
 msgstr "TOTAL"
 
-#: core/templates/core/my_account.html:74
+#: core/templates/core/my_account.html:74 core/templates/core/my_orders.html:72
 msgid "ENVIAR A"
 msgstr "ENVIAR A"
 
 #: core/templates/core/my_account.html:79
 #: core/templates/core/my_account.html:162
+#: core/templates/core/my_orders.html:77 core/templates/core/my_orders.html:160
 msgid "PEDIDO"
 msgstr "COMANDA"
 
 #: core/templates/core/my_account.html:128
+#: core/templates/core/my_orders.html:126
 msgid "Comprar de nuevo"
 msgstr "Compra de nou"
 
 #: core/templates/core/my_account.html:132
+#: core/templates/core/my_orders.html:130
 msgid "Ver tu artículo"
 msgstr "Veure l'article"
 
 #: core/templates/core/my_account.html:139
+#: core/templates/core/my_orders.html:137
 msgid "Devolución o incidencia"
 msgstr "Devolució o incidència"
 
 #: core/templates/core/my_account.html:143
+#: core/templates/core/my_orders.html:141
 msgid "Escribir una opinión sobre este producto"
 msgstr "Escriure una opinió sobre aquest producte"
 
 #: core/templates/core/my_account.html:144
+#: core/templates/core/my_orders.html:142
 msgid "Escribir una opinión"
 msgstr "Escriure una opinió"
 
 #: core/templates/core/my_account.html:166
+#: core/templates/core/my_orders.html:164
 msgid "Ver detalles"
 msgstr "Veure detalls"
 
 #: core/templates/core/my_account.html:203
+#: core/templates/core/my_orders.html:202
 msgid "Todavía no tienes ningún pedido."
 msgstr "Encara no tens cap comanda."
 
 #: core/templates/core/my_account.html:204
+#: core/templates/core/my_orders.html:203
 msgid "Empieza a descubrir todos nuestros productos."
 msgstr "Comença a descobrir tots els nostres productes."
 
 #: core/templates/core/my_account.html:205
+#: core/templates/core/my_orders.html:204
 msgid "Ir a la tienda"
 msgstr "Anar a la botiga"
 
