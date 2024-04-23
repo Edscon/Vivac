@@ -23,36 +23,36 @@
         <div class="menu_account w-[25%] text-sm hidden lg:block my-0 lg:mt-8">
             <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Mi cuenta</div>
+                <div class="p-2 w-full">{% trans 'Mi cuenta' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Mis pedidos</div>
+                <div class="p-2 w-full">{% trans 'Mis pedidos' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Mis datos</div>
+                <div class="p-2 w-full">{% trans 'Mis datos' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'my_favorites' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Mis favoritos</div>
+                <div class="p-2 w-full">{% trans 'Mis favoritos' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
                 <div class="w-[3px] bg-green-600"></div>
-                <div class="p-2 w-full">Mis opiniones de productos</div>
+                <div class="p-2 w-full">{% trans 'Mis opiniones de productos' %}</div>
             </a>
-            <a class="flex border-b border-neutral-300">
+            <a class="flex border-b border-neutral-300" href="{% url 'condiciones_generales_compra_web' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
+                <div class="p-2 w-full">{% trans 'Condiciones generales de compra y privacidad' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'logout' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Cerrar Sesión</div>
+                <div class="p-2 w-full">{% trans 'Cerrar Sesión' %}</div>
             </a>
         </div>
         
         <div class="w-[100%] lg:w-[75%] lg:pl-8 text-black text-sm my-0 lg:mt-8 relative">
-            <div class="mb-5 font-semibold text-lg">Mis Reseñas</div>
+            <div class="mb-5 font-semibold text-lg">{% trans 'Mis Reseñas' %}</div>
 
             {% if request.user.reviews.all %}
             
@@ -99,9 +99,9 @@
             </div>
             
             {% else %}
-            <div class="mb-2 mt-10 font-semibold">Todavía no tienes ninguna review.</div>
-            <div class="mb-4">Empieza a descubrir todos nuestros productos.</div>
-            <a href="{% url 'shop' %}"><button class="min-w-[200px] w-[30%] py-3 bg-green-700 text-white text-base">Ir a la tienda</button></a>
+            <div class="mb-2 mt-10 font-semibold">{% trans 'Todavía no tienes ninguna review.' %}</div>
+            <div class="mb-4">{% trans 'Empieza a descubrir todos nuestros productos.' %}</div>
+            <a href="{% url 'shop' %}"><button class="min-w-[200px] w-[30%] py-3 bg-green-700 text-white text-base">{% trans 'Ir a la tienda' %}</button></a>
             
             
             {% endif %}
@@ -111,31 +111,31 @@
     <div class="menu_account w-[100%] text-sm lg:hidden block my-0 lg:mt-8">
         <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Mi cuenta</div>
+            <div class="p-2 w-full">{% trans 'Mi cuenta' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Mis pedidos</div>
+            <div class="p-2 w-full">{% trans 'Mis pedidos' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Mis datos</div>
+            <div class="p-2 w-full">{% trans 'Mis datos' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'my_favorites' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Mis favoritos</div>
+            <div class="p-2 w-full">{% trans 'Mis favoritos' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
             <div class="w-[3px] bg-green-600"></div>
-            <div class="p-2 w-full">Mis opiniones de productos</div>
+            <div class="p-2 w-full">{% trans 'Mis opiniones de productos' %}</div>
         </a>
-        <a class="flex border-b border-neutral-300">
+        <a class="flex border-b border-neutral-300" href="{% url 'condiciones_generales_compra_web' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
+            <div class="p-2 w-full">{% trans 'Condiciones generales de compra y privacidad' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'logout' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Cerrar Sesión</div>
+            <div class="p-2 w-full">{% trans 'Cerrar Sesión' %}</div>
         </a>
     </div>
 </div>

@@ -41,7 +41,7 @@
                 <div class="mr-1 bg-neutral-400"></div>
                 <div class="p-2 w-full">{% trans 'Mis opiniones de productos' %}</div>
             </a>
-            <a class="flex border-b border-neutral-300">
+            <a class="flex border-b border-neutral-300" href="{% url 'condiciones_generales_compra_web' %}">
                 <div class="mr-1 bg-neutral-400"></div>
                 <div class="p-2 w-full">{% trans 'Condiciones generales de compra y privacidad' %}</div>
             </a>
@@ -52,7 +52,7 @@
         </div>
         
         <div class="w-[100%] lg:w-[75%] lg:pl-8 text-black text-sm my-0 lg:mt-8">
-            <div class="mb-5 font-semibold text-lg">Mis pedidos</div>
+            <div class="mb-5 font-semibold text-lg">{% trans 'Mis pedidos' %}</div>
             
             {% if request.user.orders.first %}
             
@@ -227,7 +227,7 @@
             <div class="mr-1 bg-neutral-400"></div>
             <div class="p-2 w-full">{% trans 'Mis opiniones de productos' %}</div>
         </a>
-        <a class="flex border-b border-neutral-300">
+        <a class="flex border-b border-neutral-300" href="{% url 'condiciones_generales_compra_web' %}">
             <div class="mr-1 bg-neutral-400"></div>
             <div class="p-2 w-full">{% trans 'Condiciones generales de compra y privacidad' %}</div>
         </a>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-23 19:51+0200\n"
+"POT-Creation-Date: 2024-04-23 19:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -600,6 +600,8 @@ msgstr "Registra't aquí"
 #: core/templates/core/my_favorites.html:26
 #: core/templates/core/my_favorites.html:169
 #: core/templates/core/my_orders.html:26 core/templates/core/my_orders.html:212
+#: core/templates/core/my_reviews.html:26
+#: core/templates/core/my_reviews.html:114
 #: core/templates/core/partials/menu_my_account.html:31
 msgid "Mi cuenta"
 msgstr "La meva compta"
@@ -611,6 +613,8 @@ msgstr "La meva compta"
 #: core/templates/core/my_favorites.html:173
 #: core/templates/core/my_orders.html:7 core/templates/core/my_orders.html:30
 #: core/templates/core/my_orders.html:216
+#: core/templates/core/my_reviews.html:30
+#: core/templates/core/my_reviews.html:118
 #: core/templates/core/partials/menu_mobile.html:144
 #: core/templates/core/partials/menu_my_account.html:40
 #: core/templates/core/partials/navbar_right.html:17
@@ -623,6 +627,8 @@ msgstr "Les meves comandes"
 #: core/templates/core/my_favorites.html:34
 #: core/templates/core/my_favorites.html:177
 #: core/templates/core/my_orders.html:34 core/templates/core/my_orders.html:220
+#: core/templates/core/my_reviews.html:34
+#: core/templates/core/my_reviews.html:122
 #: core/templates/core/partials/menu_mobile.html:145
 #: core/templates/core/partials/menu_my_account.html:49
 #: core/templates/core/partials/navbar_right.html:18
@@ -635,6 +641,8 @@ msgstr "Les meves dades"
 #: core/templates/core/my_favorites.html:38
 #: core/templates/core/my_favorites.html:181
 #: core/templates/core/my_orders.html:38 core/templates/core/my_orders.html:224
+#: core/templates/core/my_reviews.html:38
+#: core/templates/core/my_reviews.html:126
 #: core/templates/core/partials/menu_mobile.html:146
 #: core/templates/core/partials/menu_my_account.html:58
 #: core/templates/core/partials/navbar_right.html:19
@@ -647,6 +655,8 @@ msgstr "Els meus favorits"
 #: core/templates/core/my_favorites.html:42
 #: core/templates/core/my_favorites.html:185
 #: core/templates/core/my_orders.html:42 core/templates/core/my_orders.html:228
+#: core/templates/core/my_reviews.html:42
+#: core/templates/core/my_reviews.html:130
 #: core/templates/core/partials/menu_mobile.html:147
 #: core/templates/core/partials/menu_my_account.html:67
 #: core/templates/core/partials/navbar_right.html:20
@@ -659,6 +669,8 @@ msgstr "Les meves opinions sobre productes"
 #: core/templates/core/my_favorites.html:46
 #: core/templates/core/my_favorites.html:189
 #: core/templates/core/my_orders.html:46 core/templates/core/my_orders.html:232
+#: core/templates/core/my_reviews.html:46
+#: core/templates/core/my_reviews.html:134
 #: core/templates/core/partials/menu_my_account.html:72
 msgid "Condiciones generales de compra y privacidad"
 msgstr "Condicions generals de compra i privacitat"
@@ -669,6 +681,8 @@ msgstr "Condicions generals de compra i privacitat"
 #: core/templates/core/my_favorites.html:50
 #: core/templates/core/my_favorites.html:193
 #: core/templates/core/my_orders.html:50 core/templates/core/my_orders.html:236
+#: core/templates/core/my_reviews.html:50
+#: core/templates/core/my_reviews.html:138
 #: core/templates/core/partials/menu_mobile.html:148
 #: core/templates/core/partials/navbar_right.html:21
 msgid "Cerrar Sesión"
@@ -748,12 +762,14 @@ msgstr "Encara no tens cap comanda."
 #: core/templates/core/my_account.html:204
 #: core/templates/core/my_favorites.html:159
 #: core/templates/core/my_orders.html:203
+#: core/templates/core/my_reviews.html:103
 msgid "Empieza a descubrir todos nuestros productos."
 msgstr "Comença a descobrir tots els nostres productes."
 
 #: core/templates/core/my_account.html:205
 #: core/templates/core/my_favorites.html:160
 #: core/templates/core/my_orders.html:204
+#: core/templates/core/my_reviews.html:104
 msgid "Ir a la tienda"
 msgstr "Anar a la botiga"
 
@@ -792,6 +808,11 @@ msgstr "La contrasenya antiga no coincideix."
 msgid "Código postal"
 msgstr "Codi postal"
 
+#: core/templates/core/my_favorites.html:55
+#: core/templates/core/partials/navbar_right.html:50
+msgid "Mis Favoritos"
+msgstr "Els meus Favorits"
+
 #: core/templates/core/my_favorites.html:105
 #: product/templates/product/main_prod.html:217
 #: product/templates/product/main_prod.html:239
@@ -815,6 +836,18 @@ msgstr "Treure"
 #| msgid "Todavía no tienes ningún pedido."
 msgid "Todavía no tienes ningún favorito."
 msgstr "Encara no tens cap favorit."
+
+#: core/templates/core/my_reviews.html:7
+msgid "Mis reseñas"
+msgstr "Les meves ressenyes"
+
+#: core/templates/core/my_reviews.html:55
+msgid "Mis Reseñas"
+msgstr "Les meves ressenyes"
+
+#: core/templates/core/my_reviews.html:102
+msgid "Todavía no tienes ninguna review."
+msgstr "Encara no tens cap ressenya."
 
 #: core/templates/core/partials/alquiler_material.html:6
 #: core/templates/core/partials/alquiler_material.html:12
@@ -4924,10 +4957,6 @@ msgstr "Talles"
 #: core/templates/core/shop.html:137
 msgid "Marcas"
 msgstr "Marques"
-
-#: core/templates/core/partials/navbar_right.html:50
-msgid "Mis Favoritos"
-msgstr "Els meus Favorits"
 
 #: core/templates/core/partials/swipertop.html:10
 #: core/templates/core/partials/swipertop.html:42
