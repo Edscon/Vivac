@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-23 19:40+0200\n"
+"POT-Creation-Date: 2024-04-23 19:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -279,6 +279,7 @@ msgstr "Afegit al carretó"
 #: cart/templates/cart/partials/minicart.html:33
 #: core/templates/core/my_account.html:106
 #: core/templates/core/my_account.html:191
+#: core/templates/core/my_favorites.html:83
 #: core/templates/core/my_orders.html:104
 #: core/templates/core/my_orders.html:189
 msgid "Talla"
@@ -287,6 +288,7 @@ msgstr "Talla"
 #: cart/templates/cart/partials/addtocart.html:43
 #: cart/templates/cart/partials/cart_item.html:72
 #: cart/templates/cart/partials/minicart.html:43
+#: core/templates/core/my_favorites.html:144
 #: product/templates/product/main_prod.html:113
 #: product/templates/product/main_prod.html:123
 msgid "Te ahorras"
@@ -594,16 +596,21 @@ msgstr "Registra't aquí"
 #: core/templates/core/my_account.html:7 core/templates/core/my_account.html:26
 #: core/templates/core/my_account.html:55
 #: core/templates/core/my_account.html:213 core/templates/core/my_data.html:27
-#: core/templates/core/my_data.html:209 core/templates/core/my_orders.html:26
-#: core/templates/core/my_orders.html:212
+#: core/templates/core/my_data.html:209
+#: core/templates/core/my_favorites.html:26
+#: core/templates/core/my_favorites.html:169
+#: core/templates/core/my_orders.html:26 core/templates/core/my_orders.html:212
 #: core/templates/core/partials/menu_my_account.html:31
 msgid "Mi cuenta"
 msgstr "La meva compta"
 
 #: core/templates/core/my_account.html:30
 #: core/templates/core/my_account.html:217 core/templates/core/my_data.html:31
-#: core/templates/core/my_data.html:213 core/templates/core/my_orders.html:7
-#: core/templates/core/my_orders.html:30 core/templates/core/my_orders.html:216
+#: core/templates/core/my_data.html:213
+#: core/templates/core/my_favorites.html:30
+#: core/templates/core/my_favorites.html:173
+#: core/templates/core/my_orders.html:7 core/templates/core/my_orders.html:30
+#: core/templates/core/my_orders.html:216
 #: core/templates/core/partials/menu_mobile.html:144
 #: core/templates/core/partials/menu_my_account.html:40
 #: core/templates/core/partials/navbar_right.html:17
@@ -613,6 +620,8 @@ msgstr "Les meves comandes"
 #: core/templates/core/my_account.html:34
 #: core/templates/core/my_account.html:221 core/templates/core/my_data.html:7
 #: core/templates/core/my_data.html:35 core/templates/core/my_data.html:217
+#: core/templates/core/my_favorites.html:34
+#: core/templates/core/my_favorites.html:177
 #: core/templates/core/my_orders.html:34 core/templates/core/my_orders.html:220
 #: core/templates/core/partials/menu_mobile.html:145
 #: core/templates/core/partials/menu_my_account.html:49
@@ -622,8 +631,10 @@ msgstr "Les meves dades"
 
 #: core/templates/core/my_account.html:38
 #: core/templates/core/my_account.html:225 core/templates/core/my_data.html:39
-#: core/templates/core/my_data.html:221 core/templates/core/my_orders.html:38
-#: core/templates/core/my_orders.html:224
+#: core/templates/core/my_data.html:221 core/templates/core/my_favorites.html:7
+#: core/templates/core/my_favorites.html:38
+#: core/templates/core/my_favorites.html:181
+#: core/templates/core/my_orders.html:38 core/templates/core/my_orders.html:224
 #: core/templates/core/partials/menu_mobile.html:146
 #: core/templates/core/partials/menu_my_account.html:58
 #: core/templates/core/partials/navbar_right.html:19
@@ -632,8 +643,10 @@ msgstr "Els meus favorits"
 
 #: core/templates/core/my_account.html:42
 #: core/templates/core/my_account.html:229 core/templates/core/my_data.html:43
-#: core/templates/core/my_data.html:225 core/templates/core/my_orders.html:42
-#: core/templates/core/my_orders.html:228
+#: core/templates/core/my_data.html:225
+#: core/templates/core/my_favorites.html:42
+#: core/templates/core/my_favorites.html:185
+#: core/templates/core/my_orders.html:42 core/templates/core/my_orders.html:228
 #: core/templates/core/partials/menu_mobile.html:147
 #: core/templates/core/partials/menu_my_account.html:67
 #: core/templates/core/partials/navbar_right.html:20
@@ -642,16 +655,20 @@ msgstr "Les meves opinions sobre productes"
 
 #: core/templates/core/my_account.html:46
 #: core/templates/core/my_account.html:233 core/templates/core/my_data.html:47
-#: core/templates/core/my_data.html:229 core/templates/core/my_orders.html:46
-#: core/templates/core/my_orders.html:232
+#: core/templates/core/my_data.html:229
+#: core/templates/core/my_favorites.html:46
+#: core/templates/core/my_favorites.html:189
+#: core/templates/core/my_orders.html:46 core/templates/core/my_orders.html:232
 #: core/templates/core/partials/menu_my_account.html:72
 msgid "Condiciones generales de compra y privacidad"
 msgstr "Condicions generals de compra i privacitat"
 
 #: core/templates/core/my_account.html:50
 #: core/templates/core/my_account.html:237 core/templates/core/my_data.html:51
-#: core/templates/core/my_data.html:233 core/templates/core/my_orders.html:50
-#: core/templates/core/my_orders.html:236
+#: core/templates/core/my_data.html:233
+#: core/templates/core/my_favorites.html:50
+#: core/templates/core/my_favorites.html:193
+#: core/templates/core/my_orders.html:50 core/templates/core/my_orders.html:236
 #: core/templates/core/partials/menu_mobile.html:148
 #: core/templates/core/partials/navbar_right.html:21
 msgid "Cerrar Sesión"
@@ -729,11 +746,13 @@ msgid "Todavía no tienes ningún pedido."
 msgstr "Encara no tens cap comanda."
 
 #: core/templates/core/my_account.html:204
+#: core/templates/core/my_favorites.html:159
 #: core/templates/core/my_orders.html:203
 msgid "Empieza a descubrir todos nuestros productos."
 msgstr "Comença a descobrir tots els nostres productes."
 
 #: core/templates/core/my_account.html:205
+#: core/templates/core/my_favorites.html:160
 #: core/templates/core/my_orders.html:204
 msgid "Ir a la tienda"
 msgstr "Anar a la botiga"
@@ -772,6 +791,30 @@ msgstr "La contrasenya antiga no coincideix."
 #: core/templates/core/partials/edit_data.html:50
 msgid "Código postal"
 msgstr "Codi postal"
+
+#: core/templates/core/my_favorites.html:105
+#: product/templates/product/main_prod.html:217
+#: product/templates/product/main_prod.html:239
+msgid "Añadir al carrito"
+msgstr "Afegir al carretó"
+
+#: core/templates/core/my_favorites.html:109
+msgid "Ver el artículo"
+msgstr "Veure l'article"
+
+#: core/templates/core/my_favorites.html:121
+msgid "Quitar el artículo"
+msgstr "Treure l'article"
+
+#: core/templates/core/my_favorites.html:122
+msgid "Quitar"
+msgstr "Treure"
+
+#: core/templates/core/my_favorites.html:158
+#, fuzzy
+#| msgid "Todavía no tienes ningún pedido."
+msgid "Todavía no tienes ningún favorito."
+msgstr "Encara no tens cap favorit."
 
 #: core/templates/core/partials/alquiler_material.html:6
 #: core/templates/core/partials/alquiler_material.html:12
@@ -5157,11 +5200,6 @@ msgstr "Selecciona una talla."
 #: product/templates/product/main_prod.html:202
 msgid "Producto en Stock. Entrega en 48h"
 msgstr "Producte en estoc. Entrega en 48h"
-
-#: product/templates/product/main_prod.html:217
-#: product/templates/product/main_prod.html:239
-msgid "Añadir al carrito"
-msgstr "Afegir al carretó"
 
 #: product/templates/product/main_prod.html:258
 #: product/templates/product/main_prod.html:280

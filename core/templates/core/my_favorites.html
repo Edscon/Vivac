@@ -1,10 +1,12 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Mis favoritos{% endblock %}
-
-{% block content%}
 {% load replacement %}
 {% load static %}
+{% load i18n %}
+
+{% block title %}{% trans 'Mis favoritos' %}{% endblock %}
+
+{% block content%}
 
 {% include 'core/partials/menu_my_account.html' with page_name="Mis favoritos" %}
 <div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2 px-4 lg:px-0">
@@ -21,31 +23,31 @@
         <div class="menu_account w-[25%] text-sm hidden lg:block my-0 lg:mt-8">
             <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Mi cuenta</div>
+                <div class="p-2 w-full">{% trans 'Mi cuenta' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Mis pedidos</div>
+                <div class="p-2 w-full">{% trans 'Mis pedidos' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Mis datos</div>
+                <div class="p-2 w-full">{% trans 'Mis datos' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'my_favorites' %}">
                 <div class="w-[3px] bg-green-600"></div>
-                <div class="p-2 w-full">Mis favoritos</div>
+                <div class="p-2 w-full">{% trans 'Mis favoritos' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Mis opiniones de productos</div>
+                <div class="p-2 w-full">{% trans 'Mis opiniones de productos' %}</div>
             </a>
             <a class="flex border-b border-neutral-300">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
+                <div class="p-2 w-full">{% trans 'Condiciones generales de compra y privacidad' %}</div>
             </a>
             <a class="flex border-b border-neutral-300" href="{% url 'logout' %}">
                 <div class="mr-1 bg-neutral-400"></div>
-                <div class="p-2 w-full">Cerrar Sesión</div>
+                <div class="p-2 w-full">{% trans 'Cerrar Sesión' %}</div>
             </a>
         </div>
         
@@ -72,8 +74,13 @@
                                         <div class="w-full lg:flex justify-between">
                                             <div class="flex justify-between relative">
                                                 <div class="item-size">
-                                                    <div class="font-semibold">{{item.product.nombre}}</div>
-                                                    <div>Talla: {{item.size|replace_1}}</div>
+                                                    <div class="font-semibold">
+                                                        {% if request.LANGUAGE_CODE == 'es' %} {{item.product.nombre}}
+                                                        {% elif request.LANGUAGE_CODE == 'ca' %} {{item.product.nombre_ca}}
+                                                        {% else %} {{item.product.nombre}}
+                                                        {% endif %}
+                                                    </div>
+                                                    <div>{% trans 'Talla' %}: {{item.size|replace_1}}</div>
                                                 </div>
                                                 
                                             </div>
@@ -95,11 +102,11 @@
                                                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                                                         </svg> 
                                                     </div>
-                                                    <div class="my-auto">Añadir al carrito</div>
+                                                    <div class="my-auto">{% trans 'Añadir al carrito' %}</div>
                                                 </div>
                                             </a>
                                             <a class="w-[100px] py-[5px] rounded bg-white relative cursor-pointer border drop-shadow-md hidden md:flex" href="{% url 'variant_product' item.product.slug item.color.slug %}">
-                                                <div class="m-auto">Ver el artículo</div>
+                                                <div class="m-auto">{% trans 'Ver el artículo' %}</div>
                                             </a>
                                             <div class="flex justify-between max-[640px]:w-full">
                                                 <form method="post" action="{% url 'update_favorito' item.product.id item.color.code 'quitar' %}"
@@ -111,8 +118,8 @@
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                                                             </svg>
                                                         </div>
-                                                        <div class="my-auto hidden sm:block">Quitar el artículo</div>
-                                                        <div class="my-auto sm:hidden block">Quitar</div>
+                                                        <div class="my-auto hidden sm:block">{% trans 'Quitar el artículo' %}</div>
+                                                        <div class="my-auto sm:hidden block">{% trans 'Quitar' %}</div>
                                                     </div>
                                                 </form>
                                                 <div class="hidden min-[320px]:flex sm:hidden mr-4">
@@ -134,7 +141,7 @@
                                             {% if item.get_descuento != 0 %}
                                             <div class="text-[10px] leading-[10px] text-gray-700 line-through">PVR: {{item.precio_retail| floatformat:2}} €</div>
                                             <div class="text-green-600 font-semibold">{{item.precio|floatformat:2}} €</div>
-                                            <div class="text-[10px] leading-[10px] text-gray-700">Te ahorras {{item.get_descuento| floatformat:2}} €</div>
+                                            <div class="text-[10px] leading-[10px] text-gray-700">{% trans 'Te ahorras' %} {{item.get_descuento| floatformat:2}} €</div>
                                             {% else %}
                                             <div class="font-semibold">{{item.precio|floatformat:2}} €</div>
                                             {% endif %}
@@ -148,9 +155,9 @@
             </div>
             
             {% else %}
-            <div class="mb-2 mt-10 font-semibold">Todavía no tienes ningún favorito.</div>
-            <div class="mb-4">Empieza a descubrir todos nuestros productos.</div>
-            <a href="{% url 'shop' %}"><button class="min-w-[200px] w-[30%] py-3 bg-green-700 text-white text-base">Ir a la tienda</button></a>
+            <div class="mb-2 mt-10 font-semibold">{% trans 'Todavía no tienes ningún favorito.' %}</div>
+            <div class="mb-4">{% trans 'Empieza a descubrir todos nuestros productos.' %}</div>
+            <a href="{% url 'shop' %}"><button class="min-w-[200px] w-[30%] py-3 bg-green-700 text-white text-base">{% trans 'Ir a la tienda' %}</button></a>
             
             {% endif %}
 
@@ -159,31 +166,31 @@
     <div class="menu_account w-[100%] text-sm lg:hidden block my-0 mt-8">
         <a class="flex border-b border-neutral-300" href="{% url 'my_account' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Mi cuenta</div>
+            <div class="p-2 w-full">{% trans 'Mi cuenta' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'my_orders' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Mis pedidos</div>
+            <div class="p-2 w-full">{% trans 'Mis pedidos' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'my_data' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Mis datos</div>
+            <div class="p-2 w-full">{% trans 'Mis datos' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'my_favorites' %}">
             <div class="w-[3px] bg-green-600"></div>
-            <div class="p-2 w-full">Mis favoritos</div>
+            <div class="p-2 w-full">{% trans 'Mis favoritos' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'my_reviews' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Mis opiniones de productos</div>
+            <div class="p-2 w-full">{% trans 'Mis opiniones de productos' %}</div>
         </a>
         <a class="flex border-b border-neutral-300">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Condiciones generales de compra y privacidad</div>
+            <div class="p-2 w-full">{% trans 'Condiciones generales de compra y privacidad' %}</div>
         </a>
         <a class="flex border-b border-neutral-300" href="{% url 'logout' %}">
             <div class="mr-1 bg-neutral-400"></div>
-            <div class="p-2 w-full">Cerrar Sesión</div>
+            <div class="p-2 w-full">{% trans 'Cerrar Sesión' %}</div>
         </a>
     </div>
 </div>
