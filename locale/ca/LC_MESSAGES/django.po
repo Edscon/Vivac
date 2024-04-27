@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-27 13:28+0200\n"
+"POT-Creation-Date: 2024-04-27 13:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -140,6 +140,8 @@ msgstr "Comprar sense compta"
 #: core/templates/core/partials/contacto.html:27
 #: core/templates/core/partials/edit_data.html:25
 #: core/templates/core/partials/edit_data.html:26
+#: core/templates/core/partials/my_devoluciones.html:141
+#: core/templates/core/partials/my_devoluciones.html:144
 #: core/templates/core/signup.html:35 core/templates/core/signup.html:37
 msgid "Nombre"
 msgstr "Nom"
@@ -162,6 +164,7 @@ msgstr "Cognoms"
 #: core/templates/core/partials/footer/condiciones_generales_compra_web.html:27
 #: core/templates/core/partials/footer/condiciones_legales.html:21
 #: core/templates/core/partials/login_mobile.html:29
+#: core/templates/core/partials/my_devoluciones.html:150
 #: core/templates/core/partials/sign.html:9 core/templates/core/signup.html:49
 msgid "Email"
 msgstr "Correu electrònic"
@@ -171,6 +174,7 @@ msgstr "Correu electrònic"
 #: cart/templates/cart/partials/formularionocuenta.html:28
 #: core/templates/core/login.html:22
 #: core/templates/core/partials/contacto.html:34
+#: core/templates/core/partials/my_devoluciones.html:153
 #: core/templates/core/signup.html:51
 msgid "Correo electrónico"
 msgstr "Correu electrònic"
@@ -283,6 +287,8 @@ msgstr "Afegit al carretó"
 #: core/templates/core/my_favorites.html:83
 #: core/templates/core/my_orders.html:104
 #: core/templates/core/my_orders.html:189
+#: core/templates/core/partials/my_devoluciones.html:62
+#: core/templates/core/partials/my_devoluciones.html:119
 #: core/templates/core/partials/my_vista_producto.html:129
 msgid "Talla"
 msgstr "Talla"
@@ -370,8 +376,9 @@ msgstr "de esports vivac."
 #: cart/templates/cart/partials/checkout_prod.html:54
 #: cart/templates/cart/partials/scripts_c.html:112
 #: cart/templates/cart/partials/scripts_c.html:207
-#: core/templates/core/login.html:173 core/templates/core/signup.html:103
-#: core/templates/core/signup.html:215
+#: core/templates/core/login.html:173
+#: core/templates/core/partials/my_devoluciones.html:284
+#: core/templates/core/signup.html:103 core/templates/core/signup.html:215
 msgid "Campo requerido."
 msgstr "Camp requerit."
 
@@ -407,7 +414,9 @@ msgid "Las contraseñas no coinciden."
 msgstr "Les contrasenyes no coincideixen."
 
 #: cart/templates/cart/partials/scripts_c.html:244
-#: core/templates/core/login.html:186 core/templates/core/signup.html:236
+#: core/templates/core/login.html:186
+#: core/templates/core/partials/my_devoluciones.html:290
+#: core/templates/core/signup.html:236
 msgid ""
 "Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio."
 "com."
@@ -725,6 +734,7 @@ msgstr "La teva última comanda"
 #: core/templates/core/my_account.html:66
 #: core/templates/core/my_account.html:156
 #: core/templates/core/my_orders.html:64 core/templates/core/my_orders.html:154
+#: core/templates/core/partials/my_devoluciones.html:83
 msgid "PEDIDO REALIZADO"
 msgstr "COMANDA REALITZADA"
 
@@ -779,8 +789,9 @@ msgstr "Escriure una opinió"
 
 #: core/templates/core/my_account.html:166
 #: core/templates/core/my_orders.html:164
+#: core/templates/core/partials/my_devoluciones.html:93
 msgid "Ver detalles"
-msgstr "Veure detalls"
+msgstr "Veure els detalls"
 
 #: core/templates/core/my_account.html:203
 #: core/templates/core/my_orders.html:202
@@ -1068,17 +1079,20 @@ msgstr "Formulari de contacte"
 
 #: core/templates/core/partials/contacto.html:39
 #: core/templates/core/partials/contacto.html:41
+#: core/templates/core/partials/my_devoluciones.html:159
 msgid "Contenido"
 msgstr "Contingut"
 
 #: core/templates/core/partials/contacto.html:49
 #: core/templates/core/partials/contacto.html:148
+#: core/templates/core/partials/my_devoluciones.html:169
 #: product/templates/product/partials/review.html:71
 msgid "Mínimo 10 caracteres"
 msgstr "Mínim 10 caràcters"
 
 #: core/templates/core/partials/contacto.html:54
 #: core/templates/core/partials/login_mobile.html:34
+#: core/templates/core/partials/my_devoluciones.html:188
 #: core/templates/core/partials/sign.html:13
 #: product/templates/product/partials/review.html:80
 msgid "Enviar"
@@ -4984,6 +4998,40 @@ msgstr "Talles"
 msgid "Marcas"
 msgstr "Marques"
 
+#: core/templates/core/partials/my_devoluciones.html:7
+msgid "Incidencias"
+msgstr "Incidències"
+
+#: core/templates/core/partials/my_devoluciones.html:33
+
+msgid "Incidencias o Devoluciones"
+msgstr "Incidències o Devolucions"
+
+#: core/templates/core/partials/my_devoluciones.html:76
+msgid "Tienes problemas con otro producto del pedido?"
+msgstr "Tens problemes amb un altre producte de la comanda?"
+
+#: core/templates/core/partials/my_devoluciones.html:89
+#: core/templates/core/partials/my_vista_producto.html:62
+msgid "PEDIDO ID.º"
+msgstr "COMANDA ID.º"
+
+#: core/templates/core/partials/my_devoluciones.html:136
+msgid "Formulario de incidencias o devoluciones"
+msgstr "Formulari d'incidències o devolucions"
+
+#: core/templates/core/partials/my_devoluciones.html:162
+msgid "Motivo de la incidencia o devolución"
+msgstr "Motiu de la incidència o devolució"
+
+#: core/templates/core/partials/my_devoluciones.html:180
+msgid "Añadir archivos"
+msgstr "Afegir arxius"
+
+#: core/templates/core/partials/my_devoluciones.html:295
+msgid "Mínimo 10 caracteres."
+msgstr "Mínim 10 caràcters"
+
 #: core/templates/core/partials/my_vista_producto.html:56
 msgid "Detalles del pedido"
 msgstr "Detalls de la comanda"
@@ -4991,10 +5039,6 @@ msgstr "Detalls de la comanda"
 #: core/templates/core/partials/my_vista_producto.html:60
 msgid "Comprado el"
 msgstr "Comprat el"
-
-#: core/templates/core/partials/my_vista_producto.html:62
-msgid "PEDIDO ID.º"
-msgstr "COMANDA ID.º"
 
 #: core/templates/core/partials/my_vista_producto.html:66
 msgid "Información de usuario"

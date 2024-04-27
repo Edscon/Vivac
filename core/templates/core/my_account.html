@@ -160,7 +160,7 @@
                     <div class="mr-4 h-full">
                         <div class="mr-4 flex flex-wrap h-full space-x-1">
                             <div>{% trans 'PEDIDO' %} ID.º</div>
-                            <div>{{order.id}}</div>
+                            <div>{{request.user.orders.first.id}}</div>
                         </div>
                         <div class="text-sm font-normal text-blue-500">
                             <a href="{% url 'my_vista_producto' request.user.orders.first.id %}">{% trans 'Ver detalles' %}</a>
