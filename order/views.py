@@ -125,7 +125,7 @@ def success(request):
             provincia = customer.address['state'],
             phone = customer.phone,
             paid_amount = payment_intent.amount/100,
-            envio = int(payment_intent.metadata.envio.split('|@|')[0]),
+            envio = float(payment_intent.metadata.envio.split('|@|')[0]),
             detalles_envio = payment_intent.metadata.envio.split('|@|')[1],
         )
 
@@ -139,6 +139,9 @@ def success(request):
             variants = variants | variants2
         
         for variant in variants:
+            var = Variant.objects.filter(id=variant.id)
+            if(variant.unidades >= item_quant[variant.id]):
+                var.update(unidades = variant.unidades - item_quant[variant.id])
             OrderItem.objects.create(
                 order = order,
                 variant = variant,

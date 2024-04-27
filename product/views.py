@@ -228,7 +228,6 @@ def variant_product(request, slug, slug_color):
         'review_user': review_user,
         'dic_sizes_precio': dic_sizes_precio
     }
-
     return render(request, 'product/variant.html', context)
 
 
