@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-23 19:57+0200\n"
+"POT-Creation-Date: 2024-04-27 13:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,6 +70,7 @@ msgstr "Preu"
 #: cart/templates/cart/partials/checkout_prod.html:21
 #: cart/templates/cart/partials/minicart.html:60
 #: cart/templates/cart/success.html:83
+#: core/templates/core/partials/my_vista_producto.html:78
 msgid "Subtotal"
 msgstr "Subtotal"
 
@@ -282,6 +283,7 @@ msgstr "Afegit al carretó"
 #: core/templates/core/my_favorites.html:83
 #: core/templates/core/my_orders.html:104
 #: core/templates/core/my_orders.html:189
+#: core/templates/core/partials/my_vista_producto.html:129
 msgid "Talla"
 msgstr "Talla"
 
@@ -332,6 +334,7 @@ msgid "España"
 msgstr "Espanya"
 
 #: cart/templates/cart/partials/checkout_prod.html:16
+#: core/templates/core/partials/my_vista_producto.html:76
 msgid "Resumen del pedido"
 msgstr "Resum de la comanda"
 
@@ -603,6 +606,8 @@ msgstr "Registra't aquí"
 #: core/templates/core/my_reviews.html:26
 #: core/templates/core/my_reviews.html:114
 #: core/templates/core/partials/menu_my_account.html:31
+#: core/templates/core/partials/my_vista_producto.html:27
+#: core/templates/core/partials/my_vista_producto.html:233
 msgid "Mi cuenta"
 msgstr "La meva compta"
 
@@ -612,11 +617,14 @@ msgstr "La meva compta"
 #: core/templates/core/my_favorites.html:30
 #: core/templates/core/my_favorites.html:173
 #: core/templates/core/my_orders.html:7 core/templates/core/my_orders.html:30
-#: core/templates/core/my_orders.html:216
+#: core/templates/core/my_orders.html:55 core/templates/core/my_orders.html:216
 #: core/templates/core/my_reviews.html:30
 #: core/templates/core/my_reviews.html:118
 #: core/templates/core/partials/menu_mobile.html:144
 #: core/templates/core/partials/menu_my_account.html:40
+#: core/templates/core/partials/my_vista_producto.html:8
+#: core/templates/core/partials/my_vista_producto.html:31
+#: core/templates/core/partials/my_vista_producto.html:237
 #: core/templates/core/partials/navbar_right.html:17
 msgid "Mis pedidos"
 msgstr "Les meves comandes"
@@ -631,6 +639,8 @@ msgstr "Les meves comandes"
 #: core/templates/core/my_reviews.html:122
 #: core/templates/core/partials/menu_mobile.html:145
 #: core/templates/core/partials/menu_my_account.html:49
+#: core/templates/core/partials/my_vista_producto.html:35
+#: core/templates/core/partials/my_vista_producto.html:241
 #: core/templates/core/partials/navbar_right.html:18
 msgid "Mis datos"
 msgstr "Les meves dades"
@@ -645,6 +655,8 @@ msgstr "Les meves dades"
 #: core/templates/core/my_reviews.html:126
 #: core/templates/core/partials/menu_mobile.html:146
 #: core/templates/core/partials/menu_my_account.html:58
+#: core/templates/core/partials/my_vista_producto.html:39
+#: core/templates/core/partials/my_vista_producto.html:245
 #: core/templates/core/partials/navbar_right.html:19
 msgid "Mis favoritos"
 msgstr "Els meus favorits"
@@ -659,6 +671,8 @@ msgstr "Els meus favorits"
 #: core/templates/core/my_reviews.html:130
 #: core/templates/core/partials/menu_mobile.html:147
 #: core/templates/core/partials/menu_my_account.html:67
+#: core/templates/core/partials/my_vista_producto.html:43
+#: core/templates/core/partials/my_vista_producto.html:249
 #: core/templates/core/partials/navbar_right.html:20
 msgid "Mis opiniones de productos"
 msgstr "Les meves opinions sobre productes"
@@ -672,6 +686,8 @@ msgstr "Les meves opinions sobre productes"
 #: core/templates/core/my_reviews.html:46
 #: core/templates/core/my_reviews.html:134
 #: core/templates/core/partials/menu_my_account.html:72
+#: core/templates/core/partials/my_vista_producto.html:47
+#: core/templates/core/partials/my_vista_producto.html:253
 msgid "Condiciones generales de compra y privacidad"
 msgstr "Condicions generals de compra i privacitat"
 
@@ -684,6 +700,8 @@ msgstr "Condicions generals de compra i privacitat"
 #: core/templates/core/my_reviews.html:50
 #: core/templates/core/my_reviews.html:138
 #: core/templates/core/partials/menu_mobile.html:148
+#: core/templates/core/partials/my_vista_producto.html:51
+#: core/templates/core/partials/my_vista_producto.html:257
 #: core/templates/core/partials/navbar_right.html:21
 msgid "Cerrar Sesión"
 msgstr "Tancar sessió"
@@ -726,26 +744,36 @@ msgstr "COMANDA"
 
 #: core/templates/core/my_account.html:128
 #: core/templates/core/my_orders.html:126
+#: core/templates/core/partials/my_vista_producto.html:151
+#: core/templates/core/partials/my_vista_producto.html:191
 msgid "Comprar de nuevo"
 msgstr "Compra de nou"
 
 #: core/templates/core/my_account.html:132
 #: core/templates/core/my_orders.html:130
+#: core/templates/core/partials/my_vista_producto.html:155
+#: core/templates/core/partials/my_vista_producto.html:195
 msgid "Ver tu artículo"
 msgstr "Veure l'article"
 
 #: core/templates/core/my_account.html:139
 #: core/templates/core/my_orders.html:137
+#: core/templates/core/partials/my_vista_producto.html:162
+#: core/templates/core/partials/my_vista_producto.html:200
 msgid "Devolución o incidencia"
 msgstr "Devolució o incidència"
 
 #: core/templates/core/my_account.html:143
 #: core/templates/core/my_orders.html:141
+#: core/templates/core/partials/my_vista_producto.html:166
+#: core/templates/core/partials/my_vista_producto.html:204
 msgid "Escribir una opinión sobre este producto"
 msgstr "Escriure una opinió sobre aquest producte"
 
 #: core/templates/core/my_account.html:144
 #: core/templates/core/my_orders.html:142
+#: core/templates/core/partials/my_vista_producto.html:167
+#: core/templates/core/partials/my_vista_producto.html:205
 msgid "Escribir una opinión"
 msgstr "Escriure una opinió"
 
@@ -832,8 +860,6 @@ msgid "Quitar"
 msgstr "Treure"
 
 #: core/templates/core/my_favorites.html:158
-#, fuzzy
-#| msgid "Todavía no tienes ningún pedido."
 msgid "Todavía no tienes ningún favorito."
 msgstr "Encara no tens cap favorit."
 
@@ -4957,6 +4983,50 @@ msgstr "Talles"
 #: core/templates/core/shop.html:137
 msgid "Marcas"
 msgstr "Marques"
+
+#: core/templates/core/partials/my_vista_producto.html:56
+msgid "Detalles del pedido"
+msgstr "Detalls de la comanda"
+
+#: core/templates/core/partials/my_vista_producto.html:60
+msgid "Comprado el"
+msgstr "Comprat el"
+
+#: core/templates/core/partials/my_vista_producto.html:62
+msgid "PEDIDO ID.º"
+msgstr "COMANDA ID.º"
+
+#: core/templates/core/partials/my_vista_producto.html:66
+msgid "Información de usuario"
+msgstr "Informació d'usuari"
+
+#: core/templates/core/partials/my_vista_producto.html:71
+msgid "Dirección de envío"
+msgstr "Adreça d'enviament"
+
+#: core/templates/core/partials/my_vista_producto.html:82
+msgid "Envio"
+msgstr "Enviament"
+
+#: core/templates/core/partials/my_vista_producto.html:86
+msgid "Importe total"
+msgstr "Import total"
+
+#: core/templates/core/partials/my_vista_producto.html:100
+msgid "Llegará el"
+msgstr "Arribará el"
+
+#: core/templates/core/partials/my_vista_producto.html:102
+msgid "Entregado el"
+msgstr "Entregat en"
+
+#: core/templates/core/partials/my_vista_producto.html:219
+msgid "No tienes permiso para ver esta orden."
+msgstr "No tens permis per veure aquesta comanda."
+
+#: core/templates/core/partials/my_vista_producto.html:222
+msgid "Volver"
+msgstr "Tornar"
 
 #: core/templates/core/partials/swipertop.html:10
 #: core/templates/core/partials/swipertop.html:42
