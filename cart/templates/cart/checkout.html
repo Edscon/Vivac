@@ -111,10 +111,10 @@
                             <div class="flex w-full"><div class="mx-auto">¿Es tu primera vez en Esports Vivac?</div></div>
                             <div class="w-full sm::w-[50%] lg:w-[60%] xl:w-[50%] flex mx-auto">
                                 <div id="crearcuenta" onclick="Formularioch('crearcuenta')" class="cursor-pointer w-[50%] h-10 rounded-l-3xl border border-black bg-black flex text-white">
-                                    <div class="m-auto">{% trans 'Crear cuenta' %}</div>
+                                    <div class="m-auto max-[389px]:text-xs">{% trans 'Crear cuenta' %}</div>
                                 </div>
                                 <div id="nocuenta" onclick="Formularioch('nocuenta')" class="cursor-pointer w-[50%] h-10 rounded-r-3xl border border-black flex">
-                                    <div class="m-auto">{% trans 'Comprar sin cuenta' %}</div>
+                                    <div class="m-auto max-[389px]:text-xs">{% trans 'Comprar sin cuenta' %}</div>
                                 </div>
                             </div>
                         </div>
@@ -314,7 +314,7 @@
 
                         <div class="px-6 mt-10 mb-6">
                             <div id="error_user_password" class="text-red-500 text-sm mb-1 hidden">{% trans 'Este email coincide con un usuario pero la contraseña no coincide.' %}</div>
-                            <a onclick="buy2(event,0)" class="mr-4 w-[30%] inline-block py-3 text-white relative cursor-pointer border flex bg-black">
+                            <a onclick="buy2(event,0)" class="mr-4 min-w-[150px] w-[30%] inline-block py-3 text-white relative cursor-pointer border flex bg-black">
                                 <p class="m-auto">{% trans 'Siguiente' %}</p>
                             </a>
                         </div>
