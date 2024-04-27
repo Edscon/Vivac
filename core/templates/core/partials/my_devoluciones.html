@@ -32,7 +32,7 @@
 
     <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold px-4 lg:px-0">{% trans 'Incidencias o Devoluciones' %}</div>
     
-    
+    {% if request.user == order.user %}
     <div class="xl:flex">
         <div class="w-[100%] xl:w-[50%]">
             <div class="h-[95%] w-[100%] xl:w-[95%] xl:my-8 z-[0]" id="map">
@@ -194,6 +194,21 @@
             </div>
         </div>
     </div>
+    {% else %}
+    <div class="text-sm relative border flex px-14 w-full py-3 bg-red-100 mt-4">
+        <div class="absolute left-0 top-0 h-full w-[4px] bg-red-600"></div>
+        <svg class="h-5 w-5 text-red-600 absolute top-[13px] left-5"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <div class="text-red-600 flex flex-wrap space-x-1">
+            <p>{% trans 'No tienes permiso para ver esta orden.' %}</p>
+            
+            <div class="flex flex-wrap space-x-4">
+                <a href="/" class="text-red-500 hover:text-red-700 underline">{% trans 'Volver' %}</a>
+            </div>
+        </div>
+    </div>
+    {%endif%}
     
 </div>
 {% endblock %}
