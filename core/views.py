@@ -649,6 +649,7 @@ def alquiler_material(request):
 
     return render(request, 'core/partials/alquiler_material.html', {'alquiler': alquiler})
 
+@login_required
 def my_devoluciones(request, id, order_id):
 
     variant = Variant.objects.get(pk=id)

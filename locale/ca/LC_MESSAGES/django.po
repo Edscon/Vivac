@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-27 13:45+0200\n"
+"POT-Creation-Date: 2024-04-27 13:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -615,6 +615,8 @@ msgstr "Registra't aquí"
 #: core/templates/core/my_reviews.html:26
 #: core/templates/core/my_reviews.html:114
 #: core/templates/core/partials/menu_my_account.html:31
+#: core/templates/core/partials/my_review.html:26
+#: core/templates/core/partials/my_review.html:139
 #: core/templates/core/partials/my_vista_producto.html:27
 #: core/templates/core/partials/my_vista_producto.html:233
 msgid "Mi cuenta"
@@ -631,6 +633,8 @@ msgstr "La meva compta"
 #: core/templates/core/my_reviews.html:118
 #: core/templates/core/partials/menu_mobile.html:144
 #: core/templates/core/partials/menu_my_account.html:40
+#: core/templates/core/partials/my_review.html:30
+#: core/templates/core/partials/my_review.html:143
 #: core/templates/core/partials/my_vista_producto.html:8
 #: core/templates/core/partials/my_vista_producto.html:31
 #: core/templates/core/partials/my_vista_producto.html:237
@@ -648,6 +652,8 @@ msgstr "Les meves comandes"
 #: core/templates/core/my_reviews.html:122
 #: core/templates/core/partials/menu_mobile.html:145
 #: core/templates/core/partials/menu_my_account.html:49
+#: core/templates/core/partials/my_review.html:34
+#: core/templates/core/partials/my_review.html:147
 #: core/templates/core/partials/my_vista_producto.html:35
 #: core/templates/core/partials/my_vista_producto.html:241
 #: core/templates/core/partials/navbar_right.html:18
@@ -664,6 +670,8 @@ msgstr "Les meves dades"
 #: core/templates/core/my_reviews.html:126
 #: core/templates/core/partials/menu_mobile.html:146
 #: core/templates/core/partials/menu_my_account.html:58
+#: core/templates/core/partials/my_review.html:38
+#: core/templates/core/partials/my_review.html:151
 #: core/templates/core/partials/my_vista_producto.html:39
 #: core/templates/core/partials/my_vista_producto.html:245
 #: core/templates/core/partials/navbar_right.html:19
@@ -680,6 +688,8 @@ msgstr "Els meus favorits"
 #: core/templates/core/my_reviews.html:130
 #: core/templates/core/partials/menu_mobile.html:147
 #: core/templates/core/partials/menu_my_account.html:67
+#: core/templates/core/partials/my_review.html:42
+#: core/templates/core/partials/my_review.html:155
 #: core/templates/core/partials/my_vista_producto.html:43
 #: core/templates/core/partials/my_vista_producto.html:249
 #: core/templates/core/partials/navbar_right.html:20
@@ -695,6 +705,8 @@ msgstr "Les meves opinions sobre productes"
 #: core/templates/core/my_reviews.html:46
 #: core/templates/core/my_reviews.html:134
 #: core/templates/core/partials/menu_my_account.html:72
+#: core/templates/core/partials/my_review.html:46
+#: core/templates/core/partials/my_review.html:159
 #: core/templates/core/partials/my_vista_producto.html:47
 #: core/templates/core/partials/my_vista_producto.html:253
 msgid "Condiciones generales de compra y privacidad"
@@ -709,6 +721,8 @@ msgstr "Condicions generals de compra i privacitat"
 #: core/templates/core/my_reviews.html:50
 #: core/templates/core/my_reviews.html:138
 #: core/templates/core/partials/menu_mobile.html:148
+#: core/templates/core/partials/my_review.html:50
+#: core/templates/core/partials/my_review.html:163
 #: core/templates/core/partials/my_vista_producto.html:51
 #: core/templates/core/partials/my_vista_producto.html:257
 #: core/templates/core/partials/navbar_right.html:21
@@ -1086,6 +1100,7 @@ msgstr "Contingut"
 #: core/templates/core/partials/contacto.html:49
 #: core/templates/core/partials/contacto.html:148
 #: core/templates/core/partials/my_devoluciones.html:169
+#: core/templates/core/partials/my_review.html:119
 #: product/templates/product/partials/review.html:71
 msgid "Mínimo 10 caracteres"
 msgstr "Mínim 10 caràcters"
@@ -1093,12 +1108,19 @@ msgstr "Mínim 10 caràcters"
 #: core/templates/core/partials/contacto.html:54
 #: core/templates/core/partials/login_mobile.html:34
 #: core/templates/core/partials/my_devoluciones.html:188
+#: core/templates/core/partials/my_review.html:125
 #: core/templates/core/partials/sign.html:13
 #: product/templates/product/partials/review.html:80
 msgid "Enviar"
 msgstr "Enviar"
 
 #: core/templates/core/partials/contacto.html:137
+#: core/templates/core/partials/my_review.html:180
+#: core/templates/core/partials/my_review.html:183
+#: core/templates/core/partials/my_review.html:186
+#: core/templates/core/partials/my_review.html:196
+#: core/templates/core/partials/my_review.html:202
+#: core/templates/core/partials/my_review.html:209
 #: product/templates/product/partials/review.html:99
 #: product/templates/product/partials/review.html:102
 #: product/templates/product/partials/review.html:105
@@ -3433,6 +3455,7 @@ msgid "Dominio"
 msgstr "Domini"
 
 #: core/templates/core/partials/footer/politica_de_cookies.html:84
+#: core/templates/core/partials/my_review.html:113
 #: product/templates/product/main_prod.html:314
 msgid "Descripción"
 msgstr "Descripció"
@@ -5003,7 +5026,6 @@ msgid "Incidencias"
 msgstr "Incidències"
 
 #: core/templates/core/partials/my_devoluciones.html:33
-
 msgid "Incidencias o Devoluciones"
 msgstr "Incidències o Devolucions"
 
@@ -5031,6 +5053,29 @@ msgstr "Afegir arxius"
 #: core/templates/core/partials/my_devoluciones.html:295
 msgid "Mínimo 10 caracteres."
 msgstr "Mínim 10 caràcters"
+
+#: core/templates/core/partials/my_review.html:7
+msgid "Mi reseña"
+msgstr "La meva ressenya"
+
+#: core/templates/core/partials/my_review.html:56
+#: product/templates/product/partials/review.html:15
+msgid "Opina sobre este producto"
+msgstr "Opina sobre aquest producte"
+
+#: core/templates/core/partials/my_review.html:75
+msgid "Puntúa y valora el artículo"
+msgstr "Puntúa i valora l'artícle"
+
+#: core/templates/core/partials/my_review.html:111 product/models.py:314
+msgid "Título"
+msgstr "Títol"
+
+#: core/templates/core/partials/my_review.html:189
+#: core/templates/core/partials/my_review.html:211
+#: product/templates/product/partials/review.html:132
+msgid "No cumple el mínimo requerido"
+msgstr "No compleix el mínim requerit"
 
 #: core/templates/core/partials/my_vista_producto.html:56
 msgid "Detalles del pedido"
@@ -5308,10 +5353,6 @@ msgstr "Ja tens un compte a Esports Vivac?"
 msgid "Inicia sesión aquí"
 msgstr "Inicia sessió aquí"
 
-#: product/models.py:314
-msgid "Título"
-msgstr "Títol"
-
 #: product/templates/product/main_prod.html:39
 msgid "Inicio"
 msgstr "Inici"
@@ -5408,14 +5449,6 @@ msgstr "Altres productes de la botiga"
 #: product/templates/product/partials/menu_tallas_mobile.html:20
 msgid "Escoge una talla..."
 msgstr "Escull una talla..."
-
-#: product/templates/product/partials/review.html:15
-msgid "Opina sobre este producto"
-msgstr "Opina sobre aquest producte"
-
-#: product/templates/product/partials/review.html:132
-msgid "No cumple el mínimo requerido"
-msgstr "No compleix el mínim requerit"
 
 #: vivac/settings.py:206
 msgid "Español"
