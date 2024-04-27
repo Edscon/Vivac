@@ -34,7 +34,7 @@ def product(request, slug):
     variants = Variant.objects.filter(product=product)
     colors =  unique(list(variants.values('color')),'color')
     
-    size = unique(list(Variant.objects.filter(product=product, color=colors[0]).values('size')),'size')
+    size = unique(list(Variant.objects.filter(product=product, color=colors[0], unidades__gt = 0).values('size')),'size')
     sizes = list(product.sizes_shoes.split(", "))
     
     size_special = []
@@ -139,7 +139,7 @@ def variant_product(request, slug, slug_color):
     variants = Variant.objects.filter(product=product)
     colors =  unique(list(variants.values('color')),'color')
 
-    size = unique(list(Variant.objects.filter(product=product, color=color).values('size')),'size')
+    size = unique(list(Variant.objects.filter(product=product, color=color, unidades__gt = 0).values('size')),'size')
     sizes = list(product.sizes_shoes.split(", "))
 
     size_special = []
