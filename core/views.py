@@ -742,15 +742,3 @@ def politica_de_cookies(request):
 def condiciones_generales_compra_web(request):
 
     return render(request, 'core/partials/footer/condiciones_generales_compra_web.html',)
-
-
-'''
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ redirect_to }}">
-        {% get_language_info_list for LANGUAGES as languages %}
-        {% for language in languages %}
-            <button type="submit" name="language" value="{{ language.code }}" class="language-button">
-                {{ language.name_local }}
-            </button>
-        {% endfor %}
-    '''

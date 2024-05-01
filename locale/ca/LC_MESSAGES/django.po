@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-27 13:59+0200\n"
+"POT-Creation-Date: 2024-05-01 19:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,6 +45,7 @@ msgid "Checkout"
 msgstr "Checkout"
 
 #: cart/templates/cart/cart.html:53 cart/templates/cart/success.html:24
+#: core/templates/core/emails/pedidoform.html:23
 msgid "Descripción del artículo"
 msgstr "Descripció de l'article"
 
@@ -52,10 +53,12 @@ msgstr "Descripció de l'article"
 #: cart/templates/cart/partials/addtocart.html:34
 #: cart/templates/cart/partials/minicart.html:34
 #: cart/templates/cart/success.html:26
+#: core/templates/core/emails/pedidoform.html:24
 msgid "Cantidad"
 msgstr "Quantitat"
 
 #: cart/templates/cart/cart.html:56 cart/templates/cart/success.html:27
+#: core/templates/core/emails/pedidoform.html:25
 #: core/templates/core/partials/alquiler_material.html:32
 #: core/templates/core/partials/alquiler_material.html:58
 #: core/templates/core/partials/alquiler_material.html:88
@@ -70,6 +73,7 @@ msgstr "Preu"
 #: cart/templates/cart/partials/checkout_prod.html:21
 #: cart/templates/cart/partials/minicart.html:60
 #: cart/templates/cart/success.html:83
+#: core/templates/core/emails/pedidoform.html:54
 #: core/templates/core/partials/my_vista_producto.html:78
 msgid "Subtotal"
 msgstr "Subtotal"
@@ -77,6 +81,7 @@ msgstr "Subtotal"
 #: cart/templates/cart/cart.html:85
 #: cart/templates/cart/partials/checkout_prod.html:45
 #: cart/templates/cart/success.html:96
+#: core/templates/core/emails/pedidoform.html:63
 msgid "Precios con IVA incluido"
 msgstr "Preus amb IVA inclòs"
 
@@ -85,6 +90,7 @@ msgid "IVA incl."
 msgstr "IVA incl."
 
 #: cart/templates/cart/cart.html:91 cart/templates/cart/success.html:102
+#: core/templates/core/emails/pedidoform.html:64
 msgid "Total compra"
 msgstr "Total compra"
 
@@ -377,7 +383,7 @@ msgstr "de esports vivac."
 #: cart/templates/cart/partials/scripts_c.html:112
 #: cart/templates/cart/partials/scripts_c.html:207
 #: core/templates/core/login.html:173
-#: core/templates/core/partials/my_devoluciones.html:284
+#: core/templates/core/partials/my_devoluciones.html:299
 #: core/templates/core/signup.html:103 core/templates/core/signup.html:215
 msgid "Campo requerido."
 msgstr "Camp requerit."
@@ -415,7 +421,7 @@ msgstr "Les contrasenyes no coincideixen."
 
 #: cart/templates/cart/partials/scripts_c.html:244
 #: core/templates/core/login.html:186
-#: core/templates/core/partials/my_devoluciones.html:290
+#: core/templates/core/partials/my_devoluciones.html:305
 #: core/templates/core/signup.html:236
 msgid ""
 "Por favor, escriba una dirección de correo válida. Por ejemplo hola@dominio."
@@ -429,10 +435,12 @@ msgid "El código postal no coincide con la provincia."
 msgstr "El codi postal no coincideix amb la província."
 
 #: cart/templates/cart/success.html:7 cart/templates/cart/success.html:13
+#: core/templates/core/emails/pedidoform.html:5
 msgid "Pedido completado con éxito"
 msgstr "Comanda completada amb èxit"
 
 #: cart/templates/cart/success.html:14
+#: core/templates/core/emails/pedidoform.html:15
 msgid "Gracias por la compra!"
 msgstr "Gràcies per la compra!"
 
@@ -441,10 +449,12 @@ msgid "Resumen del Pedido"
 msgstr "Resum de la Comanda"
 
 #: cart/templates/cart/success.html:18
+#: core/templates/core/emails/pedidoform.html:17
 msgid "Fecha entrega estimada:"
 msgstr "Data d'entrega estimada:"
 
 #: cart/templates/cart/success.html:51
+#: core/templates/core/emails/pedidoform.html:38
 msgid "Talla:"
 msgstr "Talla:"
 
@@ -464,19 +474,20 @@ msgstr "Com puc rastrejar el meu pedido?"
 msgid ""
 "Recibirás un número de seguimiento con cada pedido, el cual te será enviado "
 "a través de un correo electrónico por parte del transportista en el momento "
-"en que el pedido salga de sus instalaciones.\n"
+"en que el pedido salga de nuestras instalaciones.\n"
 "                        <br> Puedes rastrear el estado de tu pedido desde el "
 "siguiente enlace.&nbsp;"
 msgstr ""
 "Rebràs un número de seguiment amb cada comanda, el qual et serà enviat a "
 "través d'un correu electrònic per part del transportista en el moment en que "
-"la comanda surti de les seves instal·lacions.\n"
+"la comanda surti de les nostres instal·lacions.\n"
 "                        <br> Pots rastrejar l'estat de la teva comanda des "
 "del següent enllaç.&nbsp;"
 
 #: cart/templates/cart/success.html:133 cart/templates/cart/success.html:143
 #: cart/templates/cart/success.html:152 cart/templates/cart/success.html:162
 #: cart/templates/cart/success.html:171 cart/templates/cart/success.html:199
+#: core/templates/core/emails/pedidoform.html:84
 msgid "link"
 msgstr "enllaç"
 
@@ -536,6 +547,7 @@ msgid "Puedes contactarnos a través del siguiente"
 msgstr "Pots contactar-nos a través del següent"
 
 #: cart/templates/cart/success.html:180
+#: core/templates/core/emails/pedidoform.html:70
 msgid "Detalles del Pedido"
 msgstr "Detalls de la Comanda"
 
@@ -548,9 +560,14 @@ msgid "Detalles para el envio"
 msgstr "Detalls per a l'enviament"
 
 #: cart/templates/cart/success.html:199
+#: core/templates/core/emails/pedidoform.html:84
 msgid "Si algo en el pedido no es correcto, puedes contactar con nosotros"
 msgstr ""
 "Si alguna cosa a la comanda no és correcta, pots contactar amb nosaltres"
+
+#: core/templates/404.html:6
+msgid "Error"
+msgstr "Error"
 
 #: core/templates/core/edit_myaccount.html:5
 #: core/templates/core/edit_myaccount.html:9
@@ -565,6 +582,124 @@ msgstr "Usuari"
 #: core/templates/core/my_data.html:146
 msgid "Confirmar"
 msgstr "Confirmar"
+
+#: core/templates/core/emails/pedidoform.html:11
+msgid "TU PEDIDO"
+msgstr "LA TEVA COMANDA"
+
+#: core/templates/core/emails/pedidoform.html:11
+msgid "EN ESPORTS VIVAC HA SIDO CONFIRMADO"
+msgstr "EN ESPORTS VIVAC HA ESTAT CONFIRMADA"
+
+#: core/templates/core/emails/pedidoform.html:16
+msgid ""
+"Gracias por tu pedido, esperamos que hayas disfrutado tu experiencia de "
+"compra con nosotros."
+msgstr ""
+"Gràcies pel la teva comanda, esperem que hagis gaudit de la teva experiència "
+"de compra amb nosaltres."
+
+#: core/templates/core/emails/pedidoform.html:46
+msgid "PVR:"
+msgstr "PVR:"
+
+#: core/templates/core/emails/pedidoform.html:59
+#: core/templates/core/partials/my_vista_producto.html:82
+msgid "Envio"
+msgstr "Enviament"
+
+#: core/templates/core/emails/pedidoform.html:72
+msgid "Dirección:"
+msgstr "Adreça:"
+
+#: core/templates/core/emails/pedidoform.html:73
+msgid "Ciudad:"
+msgstr "Ciutat:"
+
+#: core/templates/core/emails/pedidoform.html:74
+msgid "Provincia:"
+msgstr "Província:"
+
+#: core/templates/core/emails/pedidoform.html:75
+msgid "Tel:"
+msgstr "Tel."
+
+#: core/templates/core/emails/pedidoform.html:76
+msgid "Email:"
+msgstr "Correu electrònic:"
+
+#: core/templates/core/emails/pedidoform.html:79
+msgid "Detalles para el envio:"
+msgstr "Detalls per a l'enviament:"
+
+#: core/templates/core/emails/pedidoform.html:87
+msgid "Siguiente paso"
+msgstr "Següent pas"
+
+#: core/templates/core/emails/pedidoform.html:88
+msgid ""
+"Recibirás un correo electrónico de la empresa de transporte, que te "
+"notificará que tu pedido ha sido despachado de nuestras instalaciones."
+msgstr ""
+"Rebràs un correu electrònic de l'empresa de transport, que et notificarà que "
+"la teva comanda ha estat enviat des de les nostres instal·lacions."
+
+#: core/templates/core/emails/pedidoform.html:89
+msgid ""
+"Además, incluirá un código de seguimiento que te permitirá monitorear el "
+"estado en tiempo real de tu pedido."
+msgstr ""
+"A més, inclourà un codi de seguiment que et permetrà veure l'estat en temps "
+"real de la teva comanda."
+
+#: core/templates/core/emails/pedidoform.html:96
+msgid "Este es un email automático por favor, no contestes a este email."
+msgstr ""
+"Aquest és un correu electrònic automàtic, si us plau, no contestis a aquest "
+"correu electrònic."
+
+#: core/templates/core/emails/pedidoform.html:105
+msgid ""
+"Esports Vivac es una tienda de deportes online especializada en primeras "
+"marcas."
+msgstr ""
+"Esports Vivac és una botiga d'esports en línia especialitzada en primeres "
+"marques."
+
+#: core/templates/core/emails/pedidoform.html:107
+msgid "© 2023-2023 Vivac Camprodon, S.L. - Todos los derechos reservados"
+msgstr "© 2023-2023 Vivac Camprodon, S.L. - Tots els drets reservats"
+
+#: core/templates/core/emails/pedidoform.html:109
+#: core/templates/core/partials/footer.html:339
+msgid "Condiciones legales"
+msgstr "Condicions legals"
+
+#: core/templates/core/emails/pedidoform.html:111
+#: core/templates/core/partials/footer.html:341
+msgid "Política de privacidad"
+msgstr "Política de privadesa"
+
+#: core/templates/core/emails/pedidoform.html:113
+#: core/templates/core/partials/footer.html:343
+msgid "Política de cookies"
+msgstr "Política de cookies"
+
+#: core/templates/core/emails/pedidoform.html:115
+#: core/templates/core/partials/footer.html:345
+msgid "Condiciones generales de compra"
+msgstr "Condicions generals de compra"
+
+#: core/templates/core/emails/pedidoform.html:117
+#: core/templates/core/partials/footer.html:347
+#: core/templates/core/partials/footer/condiciones_generales_compra_web.html:29
+#: core/templates/core/partials/footer/condiciones_legales.html:23
+msgid ""
+"C.I.F. B17829516. Inscrita en el Registro Mercantil Gerona. tomo 2214. folio "
+"138. Hoja 36928. Inscripción 1."
+msgstr ""
+"C.I.F. B17829516. Inscrita en el Registre Mercantil de Girona. tom 2214. "
+"full 138. fulla 36928. Inscripció 1."
 
 #: core/templates/core/frontpage.html:6
 msgid "Tienda deportes online"
@@ -1271,32 +1406,6 @@ msgid ""
 "span> "
 msgstr ""
 " <span>© 2023-2023 Vivac Camprodon, S.L. - Tots els drets reservats</span> "
-
-#: core/templates/core/partials/footer.html:339
-msgid "Condiciones legales"
-msgstr "Condicions legals"
-
-#: core/templates/core/partials/footer.html:341
-msgid "Política de privacidad"
-msgstr "Política de privadesa"
-
-#: core/templates/core/partials/footer.html:343
-msgid "Política de cookies"
-msgstr "Política de cookies"
-
-#: core/templates/core/partials/footer.html:345
-msgid "Condiciones generales de compra"
-msgstr "Condicions generals de compra"
-
-#: core/templates/core/partials/footer.html:347
-#: core/templates/core/partials/footer/condiciones_generales_compra_web.html:29
-#: core/templates/core/partials/footer/condiciones_legales.html:23
-msgid ""
-"C.I.F. B17829516. Inscrita en el Registro Mercantil Gerona. tomo 2214. folio "
-"138. Hoja 36928. Inscripción 1."
-msgstr ""
-"C.I.F. B17829516. Inscrita en el Registre Mercantil de Girona. tom 2214. "
-"full 138. fulla 36928. Inscripció 1."
 
 #: core/templates/core/partials/footer/ayuda.html:12
 msgid "Centro de soporte"
@@ -5050,7 +5159,17 @@ msgstr "Motiu de la incidència o devolució"
 msgid "Añadir archivos"
 msgstr "Afegir arxius"
 
-#: core/templates/core/partials/my_devoluciones.html:295
+#: core/templates/core/partials/my_devoluciones.html:204
+#: core/templates/core/partials/my_vista_producto.html:219
+msgid "No tienes permiso para ver esta orden."
+msgstr "No tens permis per veure aquesta comanda."
+
+#: core/templates/core/partials/my_devoluciones.html:207
+#: core/templates/core/partials/my_vista_producto.html:222
+msgid "Volver"
+msgstr "Tornar"
+
+#: core/templates/core/partials/my_devoluciones.html:310
 msgid "Mínimo 10 caracteres."
 msgstr "Mínim 10 caràcters"
 
@@ -5093,10 +5212,6 @@ msgstr "Informació d'usuari"
 msgid "Dirección de envío"
 msgstr "Adreça d'enviament"
 
-#: core/templates/core/partials/my_vista_producto.html:82
-msgid "Envio"
-msgstr "Enviament"
-
 #: core/templates/core/partials/my_vista_producto.html:86
 msgid "Importe total"
 msgstr "Import total"
@@ -5108,14 +5223,6 @@ msgstr "Arribará el"
 #: core/templates/core/partials/my_vista_producto.html:102
 msgid "Entregado el"
 msgstr "Entregat en"
-
-#: core/templates/core/partials/my_vista_producto.html:219
-msgid "No tienes permiso para ver esta orden."
-msgstr "No tens permis per veure aquesta comanda."
-
-#: core/templates/core/partials/my_vista_producto.html:222
-msgid "Volver"
-msgstr "Tornar"
 
 #: core/templates/core/partials/swipertop.html:10
 #: core/templates/core/partials/swipertop.html:42
@@ -5353,6 +5460,14 @@ msgstr "Ja tens un compte a Esports Vivac?"
 msgid "Inicia sesión aquí"
 msgstr "Inicia sessió aquí"
 
+#: order/views.py:232
+msgid "TU PEDIDO #"
+msgstr "LA TEVA COMANDA #"
+
+#: order/views.py:232
+msgid " EN ESPORTS VIVAC HA SIDO CONFIRMADO"
+msgstr " EN ESPORTS VIVAC HA ESTAT CONFIRMADA"
+
 #: product/templates/product/main_prod.html:39
 msgid "Inicio"
 msgstr "Inici"
@@ -5426,23 +5541,23 @@ msgstr "Atenció al Client Excepcional"
 msgid "Compromiso con la Calidad"
 msgstr "Compromís amb la Qualitat"
 
-#: product/templates/product/main_prod.html:412
+#: product/templates/product/main_prod.html:406
 msgid "¡Sé el primero en opinar sobre este producto!"
 msgstr "Sigues el primer a opinar sobre aquest producte!"
 
-#: product/templates/product/main_prod.html:419
+#: product/templates/product/main_prod.html:413
 msgid "Escribir Reseña"
 msgstr "Escriu una ressenya"
 
-#: product/templates/product/main_prod.html:432
+#: product/templates/product/main_prod.html:426
 msgid "Leer más"
 msgstr "Llegeix més"
 
-#: product/templates/product/main_prod.html:438
+#: product/templates/product/main_prod.html:432
 msgid "Leer menos"
 msgstr "Llegeix menys"
 
-#: product/templates/product/main_prod.html:446
+#: product/templates/product/main_prod.html:440
 msgid "Otros Productos de la Tienda"
 msgstr "Altres productes de la botiga"
 

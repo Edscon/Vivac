@@ -4,6 +4,7 @@ import time
 import os
 import requests
 
+from django.utils.translation import gettext as _
 from django.contrib.auth import login
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.models import User
@@ -212,11 +213,9 @@ def message_WhatsApp(customer, order, amount):
 
 
 def send_email_order(order, customer):
-    
+    print(order[0].order.email)
     name = customer.name
     email = order[0].order.email
-    email = 'eduard.soler.11@gmail.com'
-    
     content = 'Esports Vivac'
 
     from_email = settings.EMAIL_HOST_USER
@@ -230,7 +229,7 @@ def send_email_order(order, customer):
     html = render_to_string('core/emails/pedidoform.html', {'customer': customer, 'order_items': order, 'order': order[0].order, 'subtotal': subtotal, 'time': time})
         
     email_message = EmailMultiAlternatives(
-        f'TU PEDIDO #{order[0].order.id} EN ESPORTS VIVAC HA SIDO CONFIRMADO',
+        _('TU PEDIDO #') + str(order[0].order.id) + _(' EN ESPORTS VIVAC HA SIDO CONFIRMADO'),
         content,
         from_email,
         [email],
