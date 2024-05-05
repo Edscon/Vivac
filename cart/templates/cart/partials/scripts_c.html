@@ -525,6 +525,9 @@
                     receipt_email: emailAddress,
                     
                 },
+            }).then(function(result) {
+                showMessage("Un error con la tarjeta a ocurrido, no se ha continuado con el pago");
+                console.log('OK');
             });
 
             const { error2 } = await stripe.confirmSepaDebitPayment(clientSecret, {
@@ -593,8 +596,9 @@
 
         setTimeout(function () {
             messageContainer.classList.add("hidden");
+            
             messageContainer.textContent = "";
-        }, 4000);
+        }, 40000);
     }
 
     // Show a spinner on payment submission
