@@ -168,6 +168,9 @@ DATABASES = {
         'PASSWORD': os.getenv('DJANGO_DB_PSW_LOCAL'),
         'HOST': os.getenv('HOSTNAME'),
         'PORT': os.getenv('DJANGO_DB_PORT'),
+        'OPTIONS':{
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
     }
 }'''
 
