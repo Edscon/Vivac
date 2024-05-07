@@ -53,6 +53,34 @@ STRIPE_API_KEY_PUBLISHABLE = os.getenv('STRIPE_API_KEY_PUBLISHABLE')
 STRIPE_API_KEY_HIDDEN = os.getenv('STRIPE_API_KEY_HIDDEN')
 STRIPE_WEBHOOK_SECRET_TEST = os.getenv('STRIPE_WEBHOOK_SECRET_TEST')
 
+# Database
+# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
+'''
+SITE_ID = 2
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}'''
+
+SITE_ID = 3
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DJANGO_DB_NAME'),
+        'USER': os.getenv('DJANGO_DB_USER_LOCAL'),
+        'PASSWORD': os.getenv('DJANGO_DB_PSW_LOCAL'),
+        'HOST': os.getenv('HOSTNAME'),
+        'PORT': os.getenv('DJANGO_DB_PORT'),
+        'OPTIONS':{
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    }
+}
+
+
 # CKEditor Settings
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
@@ -70,8 +98,6 @@ CKEDITOR_CONFIGS = {
 }
 
 # Application definition
-
-SITE_ID = 2
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -148,31 +174,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 WSGI_APPLICATION = 'vivac.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-'''DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DJANGO_DB_NAME'),
-        'USER': os.getenv('DJANGO_DB_USER_LOCAL'),
-        'PASSWORD': os.getenv('DJANGO_DB_PSW_LOCAL'),
-        'HOST': os.getenv('HOSTNAME'),
-        'PORT': os.getenv('DJANGO_DB_PORT'),
-        'OPTIONS':{
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
-    }
-}'''
 
 
 # Password validation
