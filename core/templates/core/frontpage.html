@@ -51,21 +51,21 @@
 
     {% if request.LANGUAGE_CODE == 'ca' %} 
         <a href="{% url 'shop' %}" class="mt-4 max-width-3xl max-auto grid place-content-center xl:h-[500px] hidden lg:block">
-            <img src="{% static 'img/bannerhome_dk_ca.png' %}" class="object-cover" >
+            <img src="{% static 'img/bannerhome_dk_ca.jpg' %}" class="object-cover" >
         </a>
     {% else %}
         <a href="{% url 'shop' %}" class="mt-4 max-width-3xl max-auto grid place-content-center xl:h-[500px] hidden lg:block">
-            <img src="{% static 'img/bannerhome_dk.png' %}" class="object-cover" >
+            <img src="{% static 'img/bannerhome_dk.jpg' %}" class="object-cover" >
         </a>
     {% endif %}
 
     {% if request.LANGUAGE_CODE == 'ca' %} 
         <a href="{% url 'shop' %}" class="mt-4 max-width-3xl max-auto grid place-content-center xl:h-[500px] lg:hidden block">
-            <img src="{% static 'img/bannerhome_mb_ca.png' %}" class="object-cover" >
+            <img src="{% static 'img/bannerhome_mb_ca.jpg' %}" class="object-cover" >
         </a>
     {% else %}
         <a href="{% url 'shop' %}" class="mt-4 max-width-3xl max-auto grid place-content-center xl:h-[500px] lg:hidden block">
-            <img src="{% static 'img/bannerhome_mb.png' %}" class="object-cover" >
+            <img src="{% static 'img/bannerhome_mb.jpg' %}" class="object-cover" >
         </a>
     {% endif %}
 
