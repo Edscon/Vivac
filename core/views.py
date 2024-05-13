@@ -64,27 +64,20 @@ def login_p(request):
 
 def frontpage(request):
 
-    from django.utils import translation
-    #user_language = settings.LANGUAGE_CODE
-    #translation.activate(user_language)
-    #request.COOKIES[settings.LANGUAGE_COOKIE_NAME] = user_language
     if 'django_language' in request.session:
         del request.session['django_language']
 
     products = Product.objects.all()[0:8]
     categories = Category.objects.all()[0:4]
     marcas = Marca.objects.all()
+    form = SignUpForm()
 
     if request.method == 'POST':
         form = SignUpForm(request.POST)
-
         if form.is_valid():
             user = form.save()
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('/')
-    else:
-        form = SignUpForm()
-
     
     lista = []
     if(request.user.is_authenticated):
