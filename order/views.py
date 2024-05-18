@@ -173,12 +173,16 @@ def success(request):
     
     time = date_by_adding_business_days(orden_compra.created_at, 1)
 
+    if status == "succeeded": status = 'Exitoso'
+    else: status = 'Pendiente'
+
     context = {
         'customer': customer,
         'order': order,
         'orden_compra': orden_compra,
         'subtotal': subtotal,
-        'time': time
+        'time': time,
+        'status': status,
     } 
 
     return render(request, 'cart/success.html', context)
@@ -286,7 +290,6 @@ def stripe_webhook(request):
     if event.type == 'payment_intent.succeeded':
         payment_method_id = event['data']['object']['payment_method']
         payment_method = stripe.PaymentMethod.retrieve(payment_method_id)
-        print(payment_method['type'])
         if payment_method['type'] == 'sepa_debit':
 
             order = get_object_or_404(Order, payment_intent=event.data.object.id)

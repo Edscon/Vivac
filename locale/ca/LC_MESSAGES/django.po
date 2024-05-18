@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-01 19:08+0200\n"
+"POT-Creation-Date: 2024-05-18 20:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgid "Confirmación"
 msgstr "Confirmació"
 
 #: cart/templates/cart/cart.html:47 cart/templates/cart/cart.html:108
-#: cart/templates/cart/success.html:207
+#: cart/templates/cart/success.html:238
 msgid "Continuar comprando"
 msgstr "Continuar comprant"
 
@@ -44,7 +44,7 @@ msgstr "Continuar comprant"
 msgid "Checkout"
 msgstr "Checkout"
 
-#: cart/templates/cart/cart.html:53 cart/templates/cart/success.html:24
+#: cart/templates/cart/cart.html:53 cart/templates/cart/success.html:55
 #: core/templates/core/emails/pedidoform.html:23
 msgid "Descripción del artículo"
 msgstr "Descripció de l'article"
@@ -52,12 +52,12 @@ msgstr "Descripció de l'article"
 #: cart/templates/cart/cart.html:55
 #: cart/templates/cart/partials/addtocart.html:34
 #: cart/templates/cart/partials/minicart.html:34
-#: cart/templates/cart/success.html:26
+#: cart/templates/cart/success.html:57
 #: core/templates/core/emails/pedidoform.html:24
 msgid "Cantidad"
 msgstr "Quantitat"
 
-#: cart/templates/cart/cart.html:56 cart/templates/cart/success.html:27
+#: cart/templates/cart/cart.html:56 cart/templates/cart/success.html:58
 #: core/templates/core/emails/pedidoform.html:25
 #: core/templates/core/partials/alquiler_material.html:32
 #: core/templates/core/partials/alquiler_material.html:58
@@ -72,7 +72,7 @@ msgstr "Preu"
 #: cart/templates/cart/partials/addtocart.html:58
 #: cart/templates/cart/partials/checkout_prod.html:21
 #: cart/templates/cart/partials/minicart.html:60
-#: cart/templates/cart/success.html:83
+#: cart/templates/cart/success.html:114
 #: core/templates/core/emails/pedidoform.html:54
 #: core/templates/core/partials/my_vista_producto.html:78
 msgid "Subtotal"
@@ -80,16 +80,16 @@ msgstr "Subtotal"
 
 #: cart/templates/cart/cart.html:85
 #: cart/templates/cart/partials/checkout_prod.html:45
-#: cart/templates/cart/success.html:96
+#: cart/templates/cart/success.html:127
 #: core/templates/core/emails/pedidoform.html:63
 msgid "Precios con IVA incluido"
 msgstr "Preus amb IVA inclòs"
 
-#: cart/templates/cart/cart.html:86 cart/templates/cart/success.html:97
+#: cart/templates/cart/cart.html:86 cart/templates/cart/success.html:128
 msgid "IVA incl."
 msgstr "IVA incl."
 
-#: cart/templates/cart/cart.html:91 cart/templates/cart/success.html:102
+#: cart/templates/cart/cart.html:91 cart/templates/cart/success.html:133
 #: core/templates/core/emails/pedidoform.html:64
 msgid "Total compra"
 msgstr "Total compra"
@@ -163,7 +163,7 @@ msgstr "Nom"
 msgid "Apellidos"
 msgstr "Cognoms"
 
-#: cart/templates/cart/checkout.html:149 cart/templates/cart/success.html:189
+#: cart/templates/cart/checkout.html:149 cart/templates/cart/success.html:220
 #: core/templates/core/edit_myaccount.html:27 core/templates/core/login.html:20
 #: core/templates/core/my_data.html:72
 #: core/templates/core/partials/contacto.html:32
@@ -226,7 +226,7 @@ msgstr "Carrer i Número"
 #: cart/templates/cart/partials/checkout/info_shipment.html:33
 #: cart/templates/cart/partials/formularionocuenta.html:55
 #: cart/templates/cart/partials/formularionocuenta.html:57
-#: cart/templates/cart/success.html:184 core/templates/core/my_data.html:177
+#: cart/templates/cart/success.html:215 core/templates/core/my_data.html:177
 #: core/templates/core/partials/edit_data.html:55
 #: core/templates/core/partials/edit_data.html:56
 msgid "Ciudad"
@@ -243,7 +243,7 @@ msgstr "Codi Postal"
 #: cart/templates/cart/partials/formularionocuenta.html:74
 #: cart/templates/cart/partials/formularionocuenta.html:76
 #: cart/templates/cart/partials/formularionocuenta.html:78
-#: cart/templates/cart/success.html:185 core/templates/core/my_data.html:185
+#: cart/templates/cart/success.html:216 core/templates/core/my_data.html:185
 #: core/templates/core/partials/edit_data.html:61
 #: core/templates/core/partials/edit_data.html:62
 msgid "Provincia"
@@ -444,33 +444,49 @@ msgstr "Comanda completada amb èxit"
 msgid "Gracias por la compra!"
 msgstr "Gràcies per la compra!"
 
-#: cart/templates/cart/success.html:17
+#: cart/templates/cart/success.html:19 cart/templates/cart/success.html:33
+msgid "Estado del pedido:"
+msgstr "Estat de la comanda:"
+
+#: cart/templates/cart/success.html:21
+msgid "Exitoso"
+msgstr "Exitós"
+
+#: cart/templates/cart/success.html:35
+msgid "Pendiente"
+msgstr "Pendent"
+
+#: cart/templates/cart/success.html:45
+msgid "Una vez confirmado el pago recibirás un correo con la confirmación."
+msgstr "Un cop confirmat el pagament rebrás un correu electrònic amb la confimació"
+
+#: cart/templates/cart/success.html:48
 msgid "Resumen del Pedido"
 msgstr "Resum de la Comanda"
 
-#: cart/templates/cart/success.html:18
+#: cart/templates/cart/success.html:49
 #: core/templates/core/emails/pedidoform.html:17
 msgid "Fecha entrega estimada:"
 msgstr "Data d'entrega estimada:"
 
-#: cart/templates/cart/success.html:51
+#: cart/templates/cart/success.html:82
 #: core/templates/core/emails/pedidoform.html:38
 msgid "Talla:"
 msgstr "Talla:"
 
-#: cart/templates/cart/success.html:90
+#: cart/templates/cart/success.html:121
 msgid "Envío"
 msgstr "Enviament"
 
-#: cart/templates/cart/success.html:121
+#: cart/templates/cart/success.html:152
 msgid "Preguntas Frecuentes"
 msgstr "Preguntes Freqüents"
 
-#: cart/templates/cart/success.html:125
+#: cart/templates/cart/success.html:156
 msgid "¿Cómo puedo rastrear mi pedido?"
 msgstr "Com puc rastrejar el meu pedido?"
 
-#: cart/templates/cart/success.html:132
+#: cart/templates/cart/success.html:163
 msgid ""
 "Recibirás un número de seguimiento con cada pedido, el cual te será enviado "
 "a través de un correo electrónico por parte del transportista en el momento "
@@ -484,33 +500,33 @@ msgstr ""
 "                        <br> Pots rastrejar l'estat de la teva comanda des "
 "del següent enllaç.&nbsp;"
 
-#: cart/templates/cart/success.html:133 cart/templates/cart/success.html:143
-#: cart/templates/cart/success.html:152 cart/templates/cart/success.html:162
-#: cart/templates/cart/success.html:171 cart/templates/cart/success.html:199
+#: cart/templates/cart/success.html:164 cart/templates/cart/success.html:174
+#: cart/templates/cart/success.html:183 cart/templates/cart/success.html:193
+#: cart/templates/cart/success.html:202 cart/templates/cart/success.html:230
 #: core/templates/core/emails/pedidoform.html:84
 msgid "link"
 msgstr "enllaç"
 
-#: cart/templates/cart/success.html:135
+#: cart/templates/cart/success.html:166
 msgid "¿Qué debo hacer si mi producto llega dañado o defectuoso?"
 msgstr "Què he de fer si el meu producte arriba danyat o defectuós?"
 
-#: cart/templates/cart/success.html:142 cart/templates/cart/success.html:161
+#: cart/templates/cart/success.html:173 cart/templates/cart/success.html:192
 msgid ""
 "En caso de que tengas una cuenta con nosotros puedes hacerlo desde Mi Cuenta"
 msgstr ""
 "En cas que tinguis un compte amb nosaltres pots fer-ho des de El Meu Compte"
 
-#: cart/templates/cart/success.html:142 cart/templates/cart/success.html:161
+#: cart/templates/cart/success.html:173 cart/templates/cart/success.html:192
 #: core/templates/core/my_account.html:81 core/templates/core/my_orders.html:79
 msgid "Ver los detalles del pedido"
 msgstr "Veure els detalls de la comanda"
 
-#: cart/templates/cart/success.html:142
+#: cart/templates/cart/success.html:173
 msgid "y abrir una incidencia."
 msgstr "i obrir una incidència."
 
-#: cart/templates/cart/success.html:143 cart/templates/cart/success.html:162
+#: cart/templates/cart/success.html:174 cart/templates/cart/success.html:193
 msgid ""
 "En caso de que no tengas cuenta con nosotros puedes contactarnos a través "
 "del siguiente"
@@ -518,11 +534,11 @@ msgstr ""
 "En cas que no tinguis compte amb nosaltres pots contactar-nos a través del "
 "següent"
 
-#: cart/templates/cart/success.html:145
+#: cart/templates/cart/success.html:176
 msgid "¿Puedo realizar cambios en mi pedido después de haberlo realizado?"
 msgstr "Puc fer canvis a la meva comanda després de realitzar-la?"
 
-#: cart/templates/cart/success.html:152
+#: cart/templates/cart/success.html:183
 msgid ""
 "Depende de varios factores y de si el transportista ya ha recogido tu "
 "paquete. Puedes contactarnos y explicarnos los cambios a través del siguiente"
@@ -530,36 +546,36 @@ msgstr ""
 "Depèn de diversos factors i de si el transportista ja ha recollit el teu "
 "paquet. Pots contactar-nos i explicar-nos els canvis a través del següent"
 
-#: cart/templates/cart/success.html:154
+#: cart/templates/cart/success.html:185
 msgid "¿Cómo puedo devolver un producto?"
 msgstr "Com puc retornar un producte?"
 
-#: cart/templates/cart/success.html:161
+#: cart/templates/cart/success.html:192
 msgid "y abrir una devolución."
 msgstr "i obrir una devolució."
 
-#: cart/templates/cart/success.html:164
+#: cart/templates/cart/success.html:195
 msgid "¿Cómo puedo ponerme en contacto con el servicio al cliente?"
 msgstr "Com puc posar-me en contacte amb el servei d'atenció al client?"
 
-#: cart/templates/cart/success.html:171
+#: cart/templates/cart/success.html:202
 msgid "Puedes contactarnos a través del siguiente"
 msgstr "Pots contactar-nos a través del següent"
 
-#: cart/templates/cart/success.html:180
+#: cart/templates/cart/success.html:211
 #: core/templates/core/emails/pedidoform.html:70
 msgid "Detalles del Pedido"
 msgstr "Detalls de la Comanda"
 
-#: cart/templates/cart/success.html:183
+#: cart/templates/cart/success.html:214
 msgid "Dirección"
 msgstr "Adreça"
 
-#: cart/templates/cart/success.html:195
+#: cart/templates/cart/success.html:226
 msgid "Detalles para el envio"
 msgstr "Detalls per a l'enviament"
 
-#: cart/templates/cart/success.html:199
+#: cart/templates/cart/success.html:230
 #: core/templates/core/emails/pedidoform.html:84
 msgid "Si algo en el pedido no es correcto, puedes contactar con nosotros"
 msgstr ""
@@ -5460,11 +5476,11 @@ msgstr "Ja tens un compte a Esports Vivac?"
 msgid "Inicia sesión aquí"
 msgstr "Inicia sessió aquí"
 
-#: order/views.py:232
+#: order/views.py:241
 msgid "TU PEDIDO #"
 msgstr "LA TEVA COMANDA #"
 
-#: order/views.py:232
+#: order/views.py:241
 msgid " EN ESPORTS VIVAC HA SIDO CONFIRMADO"
 msgstr " EN ESPORTS VIVAC HA ESTAT CONFIRMADA"
 
@@ -5565,10 +5581,10 @@ msgstr "Altres productes de la botiga"
 msgid "Escoge una talla..."
 msgstr "Escull una talla..."
 
-#: vivac/settings.py:206
+#: vivac/settings.py:211
 msgid "Español"
 msgstr "Catalan"
 
-#: vivac/settings.py:207
+#: vivac/settings.py:212
 msgid "Català"
 msgstr "Castellà"
