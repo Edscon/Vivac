@@ -525,16 +525,11 @@
                     
                 },
             }).then(function(result) {
-<<<<<<< HEAD
-                showMessage("Un error con la tarjeta a ocurrido, no se ha continuado con el pago");
-                console.log('OK');
-=======
                 const jsonObject = JSON.parse(JSON.stringify(result));
                 const error_code = jsonObject.error.code;
                 const decline_code = jsonObject.error.decline_code;
                 showMessage(error_message_stripe(error_code,decline_code))
                 setLoading(false);
->>>>>>> adab9b4fcfca58f99bc0175a717eb8147bce34dd
             });
             
             const { error2 } = await stripe.confirmSepaDebitPayment(clientSecret, {
@@ -607,15 +602,9 @@
 
         setTimeout(function () {
             messageContainer.classList.add("hidden");
-<<<<<<< HEAD
-            
-            messageContainer.textContent = "";
-        }, 40000);
-=======
             parent_messageContainer.classList.add("hidden");
             messageContainer.textContent = "";
         }, 90000);
->>>>>>> adab9b4fcfca58f99bc0175a717eb8147bce34dd
     }
 
     // Show a spinner on payment submission
