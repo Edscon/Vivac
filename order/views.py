@@ -114,9 +114,12 @@ def success(request):
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         else: user = None
 
+        if status != "succeeded": status = "pending"
+
         order = Order.objects.create(
             user = user,
             customer = customer.id,
+            payment_intent = payment_intent.id,
             first_name= customer.name.split(' ')[0],
             last_name = customer.name.split(' ')[1],
             email = customer.email,
@@ -128,6 +131,7 @@ def success(request):
             paid_amount = payment_intent.amount/100,
             envio = float(payment_intent.metadata.envio.split('|@|')[0]),
             detalles_envio = payment_intent.metadata.envio.split('|@|')[1],
+            estado_pago = status
         )
 
     
@@ -155,8 +159,9 @@ def success(request):
             )
         orden_compra = Order.objects.filter(customer = customer.id)[0]
         order =OrderItem.objects.filter(order=orden_compra )
-        message_WhatsApp(customer, order,"%.2f" % round(payment_intent.amount/100, 2))
-        send_email_order(order, customer)
+        if status == "succeeded":
+            message_WhatsApp(customer, order,"%.2f" % round(payment_intent.amount/100, 2))
+            send_email_order(order, customer)
         cart.clear()
 
     orden_compra = Order.objects.filter(customer = customer.id)[0]
@@ -279,15 +284,34 @@ def stripe_webhook(request):
 
     # Handle the event
     if event.type == 'payment_intent.succeeded':
-        payment_intent = event.data.object # contains a stripe.PaymentIntent
-        # Then define and call a method to handle the successful payment intent.
-        # handle_payment_intent_succeeded(payment_intent)
+        payment_method_id = event['data']['object']['payment_method']
+        payment_method = stripe.PaymentMethod.retrieve(payment_method_id)
+        print(payment_method['type'])
+        if payment_method['type'] == 'sepa_debit':
+
+            order = get_object_or_404(Order, payment_intent=event.data.object.id)
+            order.estado_pago = "succeeded"
+            order.save()
+
+            orden_compra = order
+            order = OrderItem.objects.filter(order=orden_compra )
+
+            customer = stripe.Customer.retrieve(orden_compra.customer) 
+            message_WhatsApp(customer, order,"%.2f" % round(orden_compra.paid_amount, 2))
+            send_email_order(order, customer)
+            #Mirar si hay alguna Orden con payment pending que tenga el mismo payment_intend que esta
+            #Modificar Order para cambiar a succeeded
     elif event.type == 'payment_method.attached':
         payment_method = event.data.object # contains a stripe.PaymentMethod
         # Then define and call a method to handle the successful attachment of a PaymentMethod.
         # handle_payment_method_attached(payment_method)
     elif event.type == 'payment_intent.created':
         payment_created = event.data.object
+    elif event.type == 'payment_intent.processing':
+        payment_method_id = event['data']['object']['payment_method']
+        payment_method = stripe.PaymentMethod.retrieve(payment_method_id)
+        print(payment_method['type'])
+
     else:
         print('Otro: {}'.format(event.type))
 

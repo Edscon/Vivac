@@ -17,8 +17,17 @@ class Order(models.Model):
         (SHIPPED, 'Shipped')
     )
 
+    PAYMENT_CHOICES = (
+        ('pending', 'Pending'),
+        ('succeeded', 'Succeeded'),
+    )
+
+    estado_pago = models.CharField(max_length=20, choices=PAYMENT_CHOICES, default='succeeded')
+
     user = models.ForeignKey(User, related_name='orders',blank=True, null=True , on_delete=models.CASCADE)
     customer = models.CharField(max_length=255, blank=True, null=True)
+    payment_intent = models.CharField(max_length=255, blank=True, null=True)
+
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
@@ -28,7 +37,6 @@ class Order(models.Model):
     provincia = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
     detalles_envio = models.TextField( blank=True, null=True)
-
 
     created_at = models.DateTimeField(auto_now_add=True)
 
