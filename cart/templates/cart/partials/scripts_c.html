@@ -466,7 +466,6 @@
         })
         .then(response => response.json())
         .then(json =>{
-            console.log(JSON.stringify(json))
             if(JSON.stringify(json) == '{"error":{}}'){
                 update_account(e)
             }else{
@@ -526,10 +525,18 @@
                     
                 },
             }).then(function(result) {
+<<<<<<< HEAD
                 showMessage("Un error con la tarjeta a ocurrido, no se ha continuado con el pago");
                 console.log('OK');
+=======
+                const jsonObject = JSON.parse(JSON.stringify(result));
+                const error_code = jsonObject.error.code;
+                const decline_code = jsonObject.error.decline_code;
+                showMessage(error_message_stripe(error_code,decline_code))
+                setLoading(false);
+>>>>>>> adab9b4fcfca58f99bc0175a717eb8147bce34dd
             });
-
+            
             const { error2 } = await stripe.confirmSepaDebitPayment(clientSecret, {
                 payment_method: {
                     sepa_debit: ibanElement,
@@ -539,7 +546,7 @@
                     },
                 },
             }).then(function(result) {
-                showMessage("An unexpected error occurred.");
+                console.log(error2)
             });
             
             // This point will only be reached if there is an immediate error when
@@ -590,15 +597,25 @@
 
     function showMessage(messageText) {
         const messageContainer = document.querySelector("#payment-message");
+        const parent_messageContainer = document.querySelector("#top_payment-message");
 
         messageContainer.classList.remove("hidden");
+        parent_messageContainer.classList.remove("hidden");
         messageContainer.textContent = messageText;
+
+        parent_messageContainer.scrollIntoView({ behavior: "smooth", block: "center"});
 
         setTimeout(function () {
             messageContainer.classList.add("hidden");
+<<<<<<< HEAD
             
             messageContainer.textContent = "";
         }, 40000);
+=======
+            parent_messageContainer.classList.add("hidden");
+            messageContainer.textContent = "";
+        }, 90000);
+>>>>>>> adab9b4fcfca58f99bc0175a717eb8147bce34dd
     }
 
     // Show a spinner on payment submission
@@ -752,5 +769,107 @@
         })
     }
 
+    /*Message Error Stripe*/
+    function error_message_stripe(error_code, decline_code) {
+        if (decline_code == null) {decline_code = error_code}
+        switch (decline_code) {
+            case "authentication_required":
+                return "La tarjeta se rechazó porque la transacción requiere una autenticación.";
+            case "approve_with_id":
+                return "No se puede autorizar el pago..";
+            case "call_issuer":
+                return "La tarjeta se rechazó por un motivo desconocido.";
+            case "card_not_supported":
+                return "La tarjeta no admite este tipo de compras.";
+            case "card_velocity_exceeded":
+                return "Velocidad de la tarjeta excedida.";
+            case "currency_not_supported":
+                return "Moneda no soportada.";
+            case "do_not_honor":
+                return "La tarjeta se rechazó por un motivo desconocido.";
+            case "do_not_try_again":
+                return "La tarjeta se rechazó por un motivo desconocido.";
+            case "duplicate_transaction":
+                return "Hace muy poco se realizó otra transacción por el mismo importe con los mismos datos de tarjeta de crédito.";
+            case "expired_card":
+                return "Tarjeta expirada.";
+            case "fraudulent":
+                return "La tarjeta se rechazó por un motivo desconocido.";
+            case "generic_decline":
+                return "La tarjeta se rechazó por un motivo desconocido.";
+            case "incorrect_number":
+                return "Número de la tarjeta incorrecto.";
+            case "incorrect_cvc":
+                return "CVC incorrecto.";
+            case "incorrect_pin":
+                return "PIN incorrecto.";
+            case "incorrect_zip":
+                return "Código postal incorrecto.";
+            case "insufficient_funds":
+                return "No hay fondos suficientes en la tarjeta para hacer la compra.";
+            case "invalid_account":
+                return "La tarjeta o la cuenta a la que está conectada la tarjeta no es válida.";
+            case "invalid_amount":
+                return "El importe del pago no es válido o excede el importe permitido.";
+            case "invalid_cvc":
+                return "CVC incorrecto.";
+            case "invalid_expiry_month":
+                return "Mes de vencimiento inválido.";
+            case "invalid_expiry_year":
+                return "Año de vencimiento inválido.";
+            case "invalid_number":
+                return "Número de tarjeta inválido.";
+            case "invalid_pin":
+                return "PIN ingresado no es correcto.";
+            case "issuer_not_available":
+                return "No se pudo establecer contacto con el emisor de la tarjeta, así que no se pudo autorizar el pago.";
+            case "lost_card":
+                return "La tarjeta se rechazó por un motivo desconocido.";
+            case "merchant_blacklist":
+                return "La tarjeta se rechazó por un motivo desconocido.";
+            case "new_account_information_available":
+                return "La tarjeta o la cuenta a la que está conectada la tarjeta no es válida.";
+            case "no_action_taken":
+                return "La tarjeta se rechazó por un motivo desconocido.";
+            case "not_permitted":
+                return "El pago no está permitido.";
+            case "offline_pin_required":
+                return "La tarjeta se rechazó porque se necesita un PIN.";
+            case "online_or_offline_pin_required":
+                return "Se requiere PIN online u offline.";
+            case "pickup_card":
+                return "La tarjeta se rechazó por un motivo desconocido.";
+            case "pin_try_exceeded":
+                return "Se superó el número permitido de intentos de ingreso del PIN.";
+            case "processing_error":
+                return "Se produjo un error al procesar la tarjeta.";
+            case "reenter_transaction":
+                return "El emisor no pudo procesar el pago por un motivo desconocido.";
+            case "restricted_card":
+                return "El emisor no pudo procesar el pago por un motivo desconocido.";
+            case "revocation_of_all_authorizations":
+                return "Revocación de todas las autorizaciones.";
+            case "revocation_of_authorization":
+                return "El emisor no pudo procesar el pago por un motivo desconocido.";
+            case "security_violation":
+                return "El emisor no pudo procesar el pago por un motivo desconocido.";
+            case "service_not_allowed":
+                return "Servicio no permitido.";
+            case "stolen_card":
+                return "El emisor no pudo procesar el pago por un motivo desconocido.";
+            case "stop_payment_order":
+                return "El emisor no pudo procesar el pago por un motivo desconocido.";
+            case "testmode_decline":
+                return "Se utilizó el número de una tarjeta de prueba de Stripe.";
+            case "transaction_not_allowed":
+                return "La tarjeta se rechazó por un motivo desconocido.";
+            case "try_again_later":
+                return "La tarjeta se rechazó por un motivo desconocido.";
+            case "withdrawal_count_limit_exceeded":
+                return "Se ha superado el límite del saldo o del crédito disponible en su tarjeta.";
+            default:
+                return "La tarjeta se rechazó por un motivo desconocido.";
+        }
+    }
 
 </script>
