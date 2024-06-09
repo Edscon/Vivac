@@ -190,11 +190,13 @@
         document.getElementById("ImageCenter").src = var_size;
     }
 
-    var final_size = ''
-    var final_size_sp = ''
+    var final_size = '';
+    var final_size_sp = '';
 
     function SelectSize(size, mobile=false) {
-        size_sp = size.replace('/', '|')
+        if(final_size == undefined) final_size = '';
+        if(final_size_sp == undefined) final_size_sp = '';
+        var size_sp = size.replace('/', '|');
 
         if (mobile) {
             menu_tallas_l.style.animation ="tallas-close 500ms 1"
@@ -204,9 +206,8 @@
 
         }
         EscogeTalla.value = size;
-
         document.getElementById("noTallas").classList.add("hidden");
-        if(final_size != ''){
+        if(final_size != '') {
             document.getElementById('TallasId-'+ final_size ).classList.remove("border-black")
             document.getElementById('TallasId-'+ final_size + '-Mobile' ).classList.remove("border-black")
         }
@@ -356,10 +357,10 @@
         });
     }
 
-    const original_price = document.getElementById('original_price')
-    const original_desc = document.getElementById('original_desc')
-
     function precio_variant(f_size){
+        const original_price = document.getElementById('original_price')
+        const original_desc = document.getElementById('original_desc')
+
         var list_size = document.getElementById('info_precios').value.replace('[[','').replace(']]','')
         var list_size = list_size.split('], [')
         for (i in list_size){

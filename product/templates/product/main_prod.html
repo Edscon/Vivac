@@ -504,6 +504,8 @@
 </div>
 
 {% block scripts %}
+
+{% include 'product/partials/scripts_p.html' %}
 <script>
     var swiper_products = new Swiper(".mySwiper_products", {
         breakpoints: {
@@ -519,6 +521,5 @@
         },
     });
 </script>
-    {% include 'product/partials/scripts_p.html' %}
 {% endblock %}
 
