@@ -1,15 +1,56 @@
 {% extends 'core/base.html' %}
 
+{% load static %}
+{% load i18n %}
+
 {% block title %}Quienes somos{% endblock %}
 
 {% block content%}
 
-{% load static %}
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 px-4 lg:px-0">
+    <h1 class="text-3xl font-semibold text-gray-900 mb-8">{% trans '¡Hola! Somos Esports Vivac' %}</h1>
 
-<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 -mt-2">
+    <!-- Imagen principal -->
+    <img src="{% static 'img/imagen_camprodon.jpg' %}" alt="Panorámica de Camprodon" class="w-full h-52 md:h-72 object-cover object-[center_28%] rounded mb-8">
 
-    <h1 class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold px-4 lg:px-0">Quienes somos</h1>
-    
+    <div class="space-y-8">
+        <p class="text-gray-700">
+            {% trans '¡Bienvenidos a nuestra casa en la red! Llevamos más de 30 años equipando a aventureros como tú desde nuestro rinconcito en Camprodon.' %}
+        </p>
+
+        <h2 class="text-lg font-semibold text-gray-900 mt-10">{% trans 'Nuestra pasión: la naturaleza y tú' %}</h2>
+        <p class="text-gray-700">
+            {% trans 'En Vivac Outdoor no solo vendemos "zapatos" y "ropa". Compartimos tu pasión por la naturaleza y el deporte. Nuestro equipo está formado por locos de la montaña como tú, siempre dispuestos a echarte una mano o a compartir la historia de nuestra última aventura.' %}
+        </p>
+
+        <h2 class="text-lg font-semibold text-gray-900 mt-10">{% trans 'Dos tiendas' %}</h2>
+        <p class="text-gray-700">
+            {% trans 'Con los años, hemos crecido para darte un servicio aún mejor:' %}
+        </p>
+        <ul class="list-disc pl-5 mt-4 space-y-2 text-gray-700">
+            <li><strong>Vivac Outdoor:</strong> {% trans 'Aquí encontrarás todo lo que necesitas para conquistar montañas, ya sea esquiando, pedaleando o a pie. ¡Ah! Y si no quieres cargar con todo el equipo, tenemos un servicio de alquiler que te va a encantar.' %}</li>
+            <li><strong>Vivac Multi-Esport:</strong> {% trans 'Junto al puente románico de Camprodon, aquí vestimos a deportistas de todas las edades y hasta te equipamos para el fútbol y otros deportes.' %}</li>
+        </ul>
+
+        <h2 class="text-lg font-semibold text-gray-900 mt-10">{% trans 'Nuestra nueva aventura: ¡nos lanzamos al mundo online!' %}</h2>
+        <p class="text-gray-700">
+            {% trans 'Después de 30 años, hemos decidido que ya era hora de poder llegar a ti estés donde estés. ¿Por qué? Porque queremos que todos puedan disfrutar de nuestros productos, aunque no puedas acercarte físicamente a vernos.' %}
+        </p>
+
+        <h2 class="text-lg font-semibold text-gray-900 mt-10">{% trans 'Nuestro compromiso contigo' %}</h2>
+        <p class="text-gray-700">
+            {% trans 'En Esports Vivac, te prometemos:' %}
+        </p>
+        <ul class="list-disc pl-5 mt-4 space-y-2 text-gray-700">
+            <li>{% trans 'Productos de primera que no te dejarán tirado en la montaña' %}</li>
+            <li>{% trans 'Un trato de amigo, ya sea en la tienda o a través de la pantalla' %}</li>
+            <li>{% trans 'Precios que no te harán escalar paredes' %}</li>
+        </ul>
+
+        <p class="text-gray-700 mt-8">
+            {% trans '¿Te animas a formar parte de la familia Vivac? Ya sea pasándote por Camprodon o navegando por nuestra nueva tienda online, estamos aquí para acompañarte en todas tus aventuras. ¡Nos vemos en la cima!' %}
+        </p>
+    </div>
 </div>
 {% endblock %}
 

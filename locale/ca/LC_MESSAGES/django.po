@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-18 20:01+0200\n"
+"POT-Creation-Date: 2024-06-30 21:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -458,7 +458,8 @@ msgstr "Pendent"
 
 #: cart/templates/cart/success.html:45
 msgid "Una vez confirmado el pago recibirás un correo con la confirmación."
-msgstr "Un cop confirmat el pagament rebrás un correu electrònic amb la confimació"
+msgstr ""
+"Un cop confirmat el pagament rebrás un correu electrònic amb la confimació"
 
 #: cart/templates/cart/success.html:48
 msgid "Resumen del Pedido"
@@ -4875,6 +4876,104 @@ msgstr ""
 "Política de Privadesa, o desitja exercir algun dret o acció relacionada amb "
 "les seves dades personals, si us plau posi's en contacte amb nosaltres a la "
 "següent adreça de correu electrònic:"
+
+#: core/templates/core/partials/footer/quienes-somos.html:11
+msgid "¡Hola! Somos Esports Vivac"
+msgstr "Hola! Som Esports Vivac"
+
+#: core/templates/core/partials/footer/quienes-somos.html:18
+msgid ""
+"¡Bienvenidos a nuestra casa en la red! Llevamos más de 30 años equipando a "
+"aventureros como tú desde nuestro rinconcito en Camprodon."
+msgstr ""
+"Benvinguts a casa nostra a la xarxa! Portem més de 30 anys equipant "
+"aventurers com tu des del nostre raconet a Camprodon."
+
+#: core/templates/core/partials/footer/quienes-somos.html:21
+msgid "Nuestra pasión: la naturaleza y tú"
+msgstr "La nostra passió: la natura i tú"
+
+#: core/templates/core/partials/footer/quienes-somos.html:23
+msgid ""
+"En Vivac Outdoor no solo vendemos \"zapatos\" y \"ropa\". Compartimos tu "
+"pasión por la naturaleza y el deporte. Nuestro equipo está formado por locos "
+"de la montaña como tú, siempre dispuestos a echarte una mano o a compartir "
+"la historia de nuestra última aventura."
+msgstr ""
+"A Vivac Outdoor no només venem \"sabates\" i \"roba\". Compartim la teva "
+"passió per la natura i l'esport. El nostre equip està format per bojos de la "
+"muntanya com tu, sempre disposats a donar-te un cop de mà o a compartir la "
+"història de la nostra darrera aventura."
+
+#: core/templates/core/partials/footer/quienes-somos.html:26
+msgid "Dos tiendas"
+msgstr "Dues botigues"
+
+#: core/templates/core/partials/footer/quienes-somos.html:28
+msgid "Con los años, hemos crecido para darte un servicio aún mejor:"
+msgstr "Amb els anys, hem crescut per oferir-te un servei encara millor:"
+
+#: core/templates/core/partials/footer/quienes-somos.html:31
+msgid ""
+"Aquí encontrarás todo lo que necesitas para conquistar montañas, ya sea "
+"esquiando, pedaleando o a pie. ¡Ah! Y si no quieres cargar con todo el "
+"equipo, tenemos un servicio de alquiler que te va a encantar."
+msgstr ""
+"Aquí trobaràs tot el que necessites per conquerir muntanyes, ja sigui "
+"esquiant, pedalant o a peu. Ah! I si no vols carregar amb tot l'equip, tenim "
+"un servei de lloguer que t'encantarà."
+
+#: core/templates/core/partials/footer/quienes-somos.html:32
+msgid ""
+"Junto al puente románico de Camprodon, aquí vestimos a deportistas de todas "
+"las edades y hasta te equipamos para el fútbol y otros deportes."
+msgstr ""
+"Al costat del pont romànic de Camprodon, aquí vestim esportistes de totes "
+"les edats i fins i tot t'equipem per al futbol i altres esports."
+
+#: core/templates/core/partials/footer/quienes-somos.html:35
+msgid "Nuestra nueva aventura: ¡nos lanzamos al mundo online!"
+msgstr "La nostra nova aventura: ens llancem al món en línia!"
+
+#: core/templates/core/partials/footer/quienes-somos.html:37
+msgid ""
+"Después de 30 años, hemos decidido que ya era hora de poder llegar a ti "
+"estés donde estés. ¿Por qué? Porque queremos que todos puedan disfrutar de "
+"nuestros productos, aunque no puedas acercarte físicamente a vernos."
+msgstr ""
+"Després de 30 anys, hem decidit que ja era hora de poder arribar a tu "
+"estiguis on estiguis. Per què? Perquè volem que tothom pugui gaudir dels "
+"nostres productes, encara que no puguis apropar-te físicament a veure'ns."
+
+#: core/templates/core/partials/footer/quienes-somos.html:40
+msgid "Nuestro compromiso contigo"
+msgstr "El nostre compromís amb tu"
+
+#: core/templates/core/partials/footer/quienes-somos.html:42
+msgid "En Esports Vivac, te prometemos:"
+msgstr "A Esports Vivac, et prometem:"
+
+#: core/templates/core/partials/footer/quienes-somos.html:45
+msgid "Productos de primera que no te dejarán tirado en la montaña"
+msgstr "Productes de primera que no et deixaran tirat a la muntanya"
+
+#: core/templates/core/partials/footer/quienes-somos.html:46
+msgid "Un trato de amigo, ya sea en la tienda o a través de la pantalla"
+msgstr "Un tracte d'amic, ja sigui a la botiga o a través de la pantalla"
+
+#: core/templates/core/partials/footer/quienes-somos.html:47
+msgid "Precios que no te harán escalar paredes"
+msgstr "Preus que no et faran escalar parets"
+
+#: core/templates/core/partials/footer/quienes-somos.html:51
+msgid ""
+"¿Te animas a formar parte de la familia Vivac? Ya sea pasándote por "
+"Camprodon o navegando por nuestra nueva tienda online, estamos aquí para "
+"acompañarte en todas tus aventuras. ¡Nos vemos en la cima!"
+msgstr ""
+"T'animes a formar part de la família Vivac? Ja sigui passant per Camprodon o "
+"navegant per la nostra nova botiga en línia, som aquí per acompanyar-te en "
+"totes les teves aventures. Ens veiem al cim!"
 
 #: core/templates/core/partials/footer/ventajas.html:6
 msgid "Ventajas Esports Vivac"
