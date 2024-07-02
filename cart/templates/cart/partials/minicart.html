@@ -17,7 +17,7 @@
         {% if item %}
         <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-full">
             <span class="flex pr-6 mb-2">
-                    <img class="w-1/4" src="{{item.variant.image}}">
+                    <img alt="imagen producto" class="w-1/4" src="{{item.variant.image}}">
                     <span class="w-3/4  my-auto">
                         <span class="flex justify-between space-x-4">
                             
