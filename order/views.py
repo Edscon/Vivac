@@ -24,6 +24,7 @@ from product.models import Product, Variant, Image
 
 # This is your test secret API key.
 stripe.api_key = settings.STRIPE_API_KEY_HIDDEN
+stripe_payment_method = settings.STRIPE_PAYMENT_METHOD
 
 from flask import Flask, render_template, jsonify, request
 
@@ -39,6 +40,7 @@ def calculate_order_amount(cart):
 
 @csrf_exempt
 def create_payment(request):
+
     try:
         cart = Cart(request)
         data = json.loads(request.body)
@@ -81,7 +83,7 @@ def create_payment(request):
             automatic_payment_methods={
                 'enabled': True,
             },
-            payment_method_configuration= settings.STRIPE_payment_method,
+            payment_method_configuration= stripe_payment_method,
             metadata={"envio": str(data['data']['envio']) + "|@|" + str(data['data']['detalles_envio'])},
         )
         

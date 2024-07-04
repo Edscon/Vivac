@@ -150,7 +150,7 @@ def create_user_data(data):
 @csrf_exempt
 def create_user_(request):
     data = json.loads(request.body)
-    print(data)
+
     data['user_bool'] = ''
     '''
     Si request.user.authenticated ->(1) Check if Acount, if not account -> Crear Acount -> Put all information in Account -> return
@@ -185,7 +185,7 @@ def create_user_(request):
 @csrf_exempt
 def login_user(request):
     data = json.loads(request.body)
-    print(data)
+
     if(User.objects.filter(email = data['email'] ).count() > 0):
         user = User.objects.get(email = data['email'])
         if (user.check_password(data['password'])):
@@ -613,7 +613,7 @@ def contacto(request):
 
     if request.method == 'POST':
         data = json.loads(request.body)
-        print(data)
+
         name = data['name']
         email = data['email']
         content = data['content'] 
