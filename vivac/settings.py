@@ -112,6 +112,7 @@ INSTALLED_APPS = [
     'product',
     'cart',
     'order',
+    'dashboard',
 
     'ckeditor',
     'django.contrib.sites',
