@@ -81,7 +81,7 @@ def create_payment(request):
             automatic_payment_methods={
                 'enabled': True,
             },
-            payment_method_configuration= 'pmc_1NwVxXEUHJ3WTNbaat4t1kxi',
+            payment_method_configuration= settings.STRIPE_payment_method,
             metadata={"envio": str(data['data']['envio']) + "|@|" + str(data['data']['detalles_envio'])},
         )
         

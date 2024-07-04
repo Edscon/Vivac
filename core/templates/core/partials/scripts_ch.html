@@ -1,0 +1,683 @@
+<script>
+    function disableScroll() {
+    // Get the current page scroll position
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+
+        // if any scroll is attempted, set this to the previous value
+        window.onscroll = function() {
+            window.scrollTo(scrollLeft, scrollTop);
+        };
+    }
+
+    function enableScroll() {
+        window.onscroll = function() {};
+    }
+
+    /*MENU LOGIN MOBILE*/
+    const menu_login = document.querySelector('.menu-login-mobile');
+    const menu_login_l = document.querySelector('.menu-login-mobile-l');
+
+    function menu_login_mobile(Res=0){
+        if(Res == 1){
+            menu_login.classList.remove('min-[1300px]:hidden');
+        }
+        if(screen.width <= 1300 || Res != 0){
+            if (menu_login.classList.contains('invisible')){
+                disableScroll();
+                menu_login.classList.remove('invisible');
+                menu_login.classList.add('visible');
+    
+    
+                menu_login_l.style.animation ="login-open 300ms 1"
+    
+            }else{
+                menu_login_l.style.animation ="login-close 300ms 1"
+                
+                menu_login.classList.remove('visible');
+                menu_login.classList.add('invisible');
+                enableScroll();
+            }
+        }
+    }
+
+    /*TOP*/
+    var swiper = new Swiper(".mySwiper", {
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });
+
+    let lastScroll = 0;
+    const nav = document.querySelector('.navbar');
+    const nav2 = document.querySelector('.buscador');
+    const Top = document.getElementById('Top');
+    n_scroll_up = 0
+    n_scroll_up_until = 10
+
+    const BotA = document.getElementById('BotArriba');
+
+    
+    window.addEventListener('scroll',() => {
+        
+        currentScroll = window.pageYOffset
+
+        /*BotArriba*/
+        if(BotA != null){
+            if(currentScroll > 500){
+                BotA.classList.add('opacity-100');
+                BotA.classList.remove('opacity-0');
+            }else{
+                BotA.classList.add('opacity-0');
+                BotA.classList.remove('opacity-100');
+            }
+        }
+        /*---------*/
+
+        if ((currentScroll < lastScroll && nav.classList.contains('scroll-down') && (n_scroll_up == n_scroll_up_until)) || (currentScroll < 150))  {
+            nav.classList.add('scroll-up');
+            nav.classList.remove('scroll-down');
+            nav.classList.add('max-[1300px]:mt-8');
+            nav.classList.remove('max-[1300px]:mt-0');
+        }
+
+        if (currentScroll > lastScroll && nav.classList.contains('scroll-up') && (currentScroll > 150) ) {
+            nav.classList.remove('scroll-up');
+            nav.classList.add('scroll-down');
+            nav.classList.remove('max-[1300px]:mt-8');
+            nav.classList.add('max-[1300px]:mt-0');
+        }
+
+        if ((currentScroll < lastScroll && nav2.classList.contains('scroll-down-busca') && (n_scroll_up == n_scroll_up_until)) || (currentScroll < 150)) {
+            nav2.classList.add('scroll-up-busca');
+            nav2.classList.remove('scroll-down-busca');
+        }
+
+        if (currentScroll > lastScroll && nav2.classList.contains('scroll-up-busca') && (currentScroll > 150)) {
+            nav2.classList.remove('scroll-up-busca');
+            nav2.classList.add('scroll-down-busca');
+        }
+
+        if(lastScroll > currentScroll && (currentScroll > 150)){
+            n_scroll_up = n_scroll_up + 1;
+        }else{
+            n_scroll_up = 0;
+        }
+        if(n_scroll_up == n_scroll_up_until + 1){n_scroll_up = 0;}
+
+        lastScroll = currentScroll;
+
+    })
+
+    const div = document.querySelector('.menu-mobile');
+    const div2 = document.querySelector('.menu-mobile-l');
+
+    function menu_mobile(){
+
+        if (div.classList.contains('invisible')){
+            div.classList.remove('invisible');
+            div.classList.add('visible');
+
+            div2.style.animation ="sidebar-open 500ms 1"
+
+        }else{
+            div2.style.animation ="sidebar-close 500ms 1"
+            
+            div.classList.remove('visible');
+            div.classList.add('invisible');
+        }
+    }
+
+    const div3 = document.querySelector('.menu-my-account');
+    const div4 = document.querySelector('.menu-my-account-l');
+
+    function menu_my_account(){
+
+        if (div3.classList.contains('invisible')){
+            div3.classList.remove('invisible');
+            div3.classList.add('visible');
+
+            div4.style.animation ="sidebar-open 500ms 1"
+
+        }else{
+            div4.style.animation ="sidebar-close 500ms 1"
+            
+            div3.classList.remove('visible');
+            div3.classList.add('invisible');
+        }
+    }
+
+   /*MARCAS*/
+   var swiper2 = new Swiper(".mySwiper2", {
+        breakpoints: {
+        1024: { slidesPerView: 8},
+        640: { slidesPerView: 5},
+        },
+        slidesPerView: 3,
+        spaceBetween: 20,
+        freeMode: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });
+
+    /*SHOP ARRIBA*/
+
+    function relocate_page(){
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+    }
+
+   /*SHOP queryString = `category=${param1}&price=${param2}`             ?category={{ category.slug }}*/
+
+   const url = window.location.href.split('?')[0];
+   const url2 = window.location.href.split('?')[1];
+   const urlParams = new URLSearchParams(window.location.search);
+   let param0 = urlParams.get('query');
+   let param1 = urlParams.get('category');
+   let param2 = urlParams.get('price');
+   let param3 = urlParams.get('sx');
+   let param4 = urlParams.get('sz');
+   let param5 = urlParams.get('ma');
+   let param6 = urlParams.get('or');
+
+   function initial_stage(param, Button){
+        if(param){
+            var list_x = []
+            for(j in param.split(':')){
+                list_x.push(param.split(':')[j]);
+                    for(i in Button){
+                        if(list_x[j] == Button[i].value){
+                            Button[i].classList.remove('hover:border-neutral-800')
+                            Button[i].classList.add('bg-neutral-200')
+                            Button[i].classList.add('border-neutral-800')
+                            Button[i].checked = true;
+                        }
+                    }
+            }
+            for(x in list_x){
+                for(i in Button){
+                    if(x == Button[i].value){
+                        Button[i].classList.remove('hover:border-neutral-800')
+                        Button[i].classList.add('bg-neutral-200')
+                        Button[i].classList.add('border-neutral-800')
+                        Button[i].checked = true;
+                    }
+                }
+            }
+        }
+   }
+
+   function send_get_views(param, str){
+        if(url2){
+            if(param){
+                var list = [];
+                let j = 0;
+                for(i in url2.split('&')){
+                    if(url2.split('&')[i].split('=')[0] != str){
+                        list[j] = url2.split('&')[i]
+                        j += 1;
+                    }
+                }
+                if(list.length > 0){
+                    window.location.href = url + '?'+ list.join('&') + `&${str}=${param}`;
+                }else{window.location.href = url + '?' + `${str}=${param}`;}
+            }else window.location.href = window.location.href + `&${str}=${param}`;
+        }else {
+            window.location.href = url + '?' + `${str}=${param}`;
+        }
+   }
+
+   const rangeInput = document.querySelectorAll('.range-input input');
+   const rangePrices = document.getElementById('range-prices');
+   const rangePrices_1 = document.getElementById('range-prices_1');
+   let priceGap = 0;
+
+   rangeInput.forEach(input =>{
+        if(param2){
+            rangeInput[0].value = param2.split(',')[0]
+            rangeInput[1].value = param2.split(',')[1]
+            if(rangeInput[1].value - rangeInput[0].value < priceGap) {
+                if(input.id === 'range_min'){
+                    rangeInput[0].value = rangeInput[1].value - priceGap;
+                }else{
+                    rangeInput[1].value = rangeInput[0].value + priceGap;
+                }
+            }
+            rangePrices.innerHTML = `<div class="">${rangeInput[0].value},00€ - ${rangeInput[1].value},00€</div>`;
+            rangePrices_1.innerHTML = `<div class="">${rangeInput[0].value},00€ - ${rangeInput[1].value},00€</div>`;
+        }
+
+        input.addEventListener('input', e =>{
+            if(input == rangeInput[0] || input == rangeInput[1]){
+                let minVal = parseInt(rangeInput[0].value);
+                maxVal = parseInt(rangeInput[1].value);
+            
+                if(maxVal - minVal < priceGap) {
+                    if(e.target.id === 'range_min'){
+                        rangeInput[0].value = maxVal - priceGap;
+                    }else{
+                        rangeInput[1].value = minVal + priceGap;
+                    }
+                }
+                minVal = rangeInput[0].value;
+                maxVal = rangeInput[1].value;
+
+                rangePrices.innerHTML = `<div class="">${minVal},00€ - ${maxVal},00€</div>`;
+            }else{
+                let minVal = parseInt(rangeInput[2].value);
+                maxVal = parseInt(rangeInput[3].value);
+            
+                if(maxVal - minVal < priceGap) {
+                    if(e.target.id === 'range_min'){
+                        rangeInput[2].value = maxVal - priceGap;
+                    }else{
+                        rangeInput[3].value = minVal + priceGap;
+                    }
+                }
+                minVal = rangeInput[2].value;
+                maxVal = rangeInput[3].value;
+
+                rangePrices_1.innerHTML = `<div class="">${minVal},00€ - ${maxVal},00€</div>`;
+            }
+            
+        });
+        
+        input.addEventListener('mouseup', () =>{
+            if(input == rangeInput[0] || input == rangeInput[1]){
+                let min_price = parseInt(rangeInput[0].value);
+                let max_price = parseInt(rangeInput[1].value);
+                param2 = `${min_price},${max_price}`;
+            }else{
+                let min_price = parseInt(rangeInput[2].value);
+                let max_price = parseInt(rangeInput[3].value);
+                param2 = `${min_price},${max_price}`;
+            }
+
+            send_get_views(param2, 'price')
+        });
+
+        input.addEventListener('touchend', () =>{
+            if(input == rangeInput[0] || input == rangeInput[1]){
+                let min_price = parseInt(rangeInput[0].value);
+                let max_price = parseInt(rangeInput[1].value);
+                param2 = `${min_price},${max_price}`;
+            }else{
+                let min_price = parseInt(rangeInput[2].value);
+                let max_price = parseInt(rangeInput[3].value);
+                param2 = `${min_price},${max_price}`;
+            }
+
+            send_get_views(param2, 'price')
+        });
+   });
+   
+   function button_event(param, button_value , string){
+       if(param){
+            var list_x = []
+            for(j in param.split(':')){
+                list_x.push(param.split(':')[j]);
+            }
+            
+            if (!list_x.includes(button_value)){
+                param = param + ':' + button_value
+                if(string == 'or'){param = button_value}
+            }else{
+                param = param.split(':');
+                param = param.filter(item => item != button_value).join(':');
+            }
+            is_param = true;
+        }else{
+            param = button_value
+            is_param = false;
+        }
+        send_get(param, is_param, string);
+    }
+    
+    function send_get(param, is_param, string){
+         if(url2){
+             if(is_param){
+                 temp = url2.split('&')
+                 for(i in temp){
+                     if(temp[i].substr(0, 3) == `${string}=`){
+                         if(param){
+                             temp[i] = `${string}=${param}`
+                         }else{
+                             temp[i] = 'ERROR';
+                         }
+                     }
+                 }
+                 temp = temp.filter(item => item != 'ERROR').join('&');
+                 if(temp){window.location.href = url + '?' + temp}
+                 else{window.location.href = url}
+             }else{
+                 window.location.href = window.location.href + '&' + `${string}=${param}`;
+             }
+         }else{
+             window.location.href = url + '?' + `${string}=${param}`;
+         }
+    }
+
+   const Sex_button = document.querySelectorAll('.sexo button');
+   initial_stage(param3, Sex_button);
+
+   Sex_button.forEach(button => {
+        button.addEventListener('click', () =>{
+            
+            button_event(param3, button.value , 'sx')
+
+        });
+   });
+
+   const SizeBut = document.querySelectorAll('.size button');
+   initial_stage(param4, SizeBut);
+
+   SizeBut.forEach(button => {
+        button.addEventListener('click', () => {
+            
+            button_event(param4, button.value , 'sz')
+
+        });
+   });
+
+   const MarcaBut = document.querySelectorAll('.marca input');
+   initial_stage(param5, MarcaBut);
+
+   MarcaBut.forEach(input => {
+        input.addEventListener('click', () => {
+            
+            button_event(param5, input.value , 'ma')
+
+        });
+   });
+
+   const Ordering = document.querySelectorAll('.order button');
+   initial_stage(param6, Ordering);
+
+   Ordering.forEach(button => {
+        button.addEventListener('click', () => {
+            
+            button_event(param6, button.value , 'or')
+
+        });
+   });
+   
+   <!-------------------------Selecciones------------------------->
+
+   const Sel_price = document.querySelectorAll('.select_price button');
+   Sel_price.forEach(button => 
+        {button.addEventListener('click', () =>{
+            temp = url2.split('&')
+            for (i in temp) {
+                if(temp[i].split('=')[0] == 'price'){
+                    url4 = url2.replace('&' + temp[i],'')
+                    url4 = url4.replace(temp[i] + '&','')
+                    url4 = url4.replace(temp[i],'')
+                    if(url4){
+                        window.location.href = url + '?' + url4
+                    }else{
+                        window.location.href = url
+                    }
+                }
+            }
+        });
+    });
+
+   const Sel_sx = document.querySelectorAll('.select_sx button');
+   Sel_sx.forEach(button => {button.addEventListener('click', () =>{
+            button_event(param3, button.value , 'sx')});});
+
+   const Sel_sz = document.querySelectorAll('.select_sz button');
+   Sel_sz.forEach(button => {button.addEventListener('click', () => {
+            button_event(param4, button.value , 'sz')});});
+
+   const Sel_ma = document.querySelectorAll('.select_ma button');
+   Sel_ma.forEach(button => {button.addEventListener('click', () => {
+            button_event(param5, button.value , 'ma')});});
+
+    function hover_card(product_id){
+        const card_text = document.getElementById(`card-${product_id}-text`);
+        const card_h = document.getElementById(`card-${product_id}-h`);
+        const swiper_prev = document.querySelector(`.mySwiper_shop .swiper-prev-${product_id}`)
+        const swiper_next = document.querySelector(`.mySwiper_shop .swiper-next-${product_id}`)
+
+        const is_swiper = document.getElementById(`variants-${product_id}`);
+
+        if(is_swiper.clientHeight > 0){
+
+            card_h.classList.remove('md:h-0') 
+            card_h.classList.add('md:h-[60px]') 
+            card_h.style.animation = 'in-out-shop 300ms 1';
+    
+            card_text.classList.add('md:border-t')
+            card_text.classList.add('md:shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
+    
+            swiper_prev.classList.remove('hidden')
+            swiper_next.classList.remove('hidden')
+        }
+
+
+    }
+    function hover_card_leave(product_id){
+        const card_text = document.getElementById(`card-${product_id}-text`);
+        const card_h = document.getElementById(`card-${product_id}-h`);
+        const swiper_prev = document.querySelector(`.mySwiper_shop .swiper-prev-${product_id}`)
+        const swiper_next = document.querySelector(`.mySwiper_shop .swiper-next-${product_id}`)
+
+        const is_swiper = document.getElementById(`variants-${product_id}`);
+
+        if(is_swiper.clientHeight > 0){
+
+            card_h.classList.remove('md:h-[60px]')
+            card_h.classList.add('md:h-0')
+            card_h.style.animation = 'out-in-shop 300ms 1';
+    
+            card_text.classList.remove('md:border-t')
+            card_text.classList.remove('md:shadow-[0px_-8px_10px_rgba(0,0,0,0.1)]')
+    
+            swiper_prev.classList.add('hidden')
+            swiper_next.classList.add('hidden')
+        }
+
+    }
+
+    /*MENUS SHOP*/
+    const menu_categorys = document.querySelector('.menu-categorys-mobile');
+    const menu_categorys_l = document.querySelector('.menu-categorys-mobile-l');
+
+    function menu_categorys_mobile(){
+        if (menu_categorys.classList.contains('invisible')){
+            menu_categorys.classList.remove('invisible');
+            menu_categorys.classList.add('visible');
+
+            menu_categorys_l.style.animation ="tallas-open 300ms 1"
+
+        }else{
+            menu_categorys_l.style.animation ="tallas-close 300ms 1"
+            
+            menu_categorys.classList.remove('visible');
+            menu_categorys.classList.add('invisible');
+        }
+    }
+    const menu_orden = document.querySelector('.menu-orden-mobile');
+    const menu_orden_l = document.querySelector('.menu-orden-mobile-l');
+
+    function menu_orden_mobile(){
+        if (menu_orden.classList.contains('invisible')){
+            menu_orden.classList.remove('invisible');
+            menu_orden.classList.add('visible');
+
+            menu_orden_l.style.animation ="tallas-open 300ms 1"
+
+        }else{
+            menu_orden_l.style.animation ="tallas-close 300ms 1"
+            
+            menu_orden.classList.remove('visible');
+            menu_orden.classList.add('invisible');
+        }
+    }
+    const menu_filtro = document.querySelector('.menu-filtro-mobile');
+    const menu_filtro_l = document.querySelector('.menu-filtro-mobile-l');
+
+    function menu_filtro_mobile(){
+        if (menu_filtro.classList.contains('invisible')){
+            menu_filtro.classList.remove('invisible');
+            menu_filtro.classList.add('visible');
+
+            menu_filtro_l.style.animation ="tallas-open 300ms 1"
+
+        }else{
+            menu_filtro_l.style.animation ="tallas-close 300ms 1"
+            
+            menu_filtro.classList.remove('visible');
+            menu_filtro.classList.add('invisible');
+        }
+    };
+
+    /*--------------- Mi cuenta --------------------*/
+    
+
+    const MenuAcount = document.querySelectorAll('.menu_account .flex');
+
+    MenuAcount.forEach(div => {
+        if(!div.children[0].classList.contains('bg-green-600')){
+            div.addEventListener('mouseover', () =>{
+                div.children[0].classList.remove('w-[0px]');
+                div.children[0].classList.add('w-[3px]');
+                div.children[0].style.animation = "in-out 100ms 1"
+            });
+            div.addEventListener('mouseout', () =>{
+                div.children[0].classList.remove('w-[3px]');
+                div.children[0].classList.add('w-[0px]');
+                div.children[0].style.animation = "out-in 50ms 1"
+            });
+        }
+    
+    });
+
+    //----------------------------------------------------------------
+
+    let timeoutId;
+
+    function delay(ms) {
+        return new Promise((resolve, reject) => {
+            timeoutId = setTimeout(() => {
+            resolve();
+            timeoutId = null; // Clear the timeout when it's done
+            }, ms);
+        });
+    }
+
+    function cancelDelay() {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            timeoutId = null;
+        }
+    }
+
+    let startTime;
+    let time_start = 0;
+    let timeDiff;
+    let time_done = 0;
+
+    htmx.on("htmx:beforeRequest", function(evt) {
+        if(time_start == 0){
+            startTime = performance.now();
+            time_start = 1
+        }
+        // Record the start time before the htmx request
+    });
+
+    htmx.on("htmx:afterSwap", function(evt) {
+        if (evt.target.classList.contains("hx_minicart")) {
+            // Calculate the time difference after the response
+            const endTime = performance.now();
+            timeDiff = endTime - startTime;
+
+            time_start = 0
+            time_done = 1
+            // Your code to handle the response goes here
+        }
+    });
+
+    // Minicart:
+
+    async function EnviarCheckOut() {
+    
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+
+        while(time_done == 0){
+            await delay(100);
+        }
+        await delay(timeDiff + 200); // Delay htmx + 200 ms
+
+        document.getElementById('minicart').classList.replace("minicart", "minicart-0");
+        document.getElementById('minicart_mobile').classList.replace("hidden", "md:hidden");
+        document.getElementById('añadir_carrito').classList.remove("hidden");
+
+        await delay(5000); // Delay for 5 seconds
+
+        document.getElementById('minicart').classList.replace("minicart-0", "minicart");
+        document.getElementById('minicart_mobile').classList.replace("md:hidden", "hidden");
+        document.getElementById('añadir_carrito').classList.add("hidden");
+        
+    }
+
+    body = document.getElementById('body');
+    
+    body.onclick = function(){
+        if (timeoutId && !document.getElementById('minicart').classList.contains("minicart")) {
+            cancelDelay();
+            document.getElementById('minicart').classList.replace("minicart-0", "minicart");
+            document.getElementById('minicart_mobile').classList.replace("md:hidden", "hidden");
+            document.getElementById('añadir_carrito').classList.add("hidden");
+        }
+    }
+
+    minicart_mobile.addEventListener('touchstart', () => {
+        cancelDelay();
+        document.getElementById('minicart').classList.replace("minicart", "minicart-0");
+        document.getElementById('minicart_mobile').classList.replace("hidden", "md:hidden");
+    });
+
+    minicart_mobile.addEventListener('touchend', async () => {
+        await delay(5000);
+        document.getElementById('minicart').classList.replace("minicart-0", "minicart");
+        document.getElementById('minicart_mobile').classList.replace("md:hidden", "hidden");
+        document.getElementById('añadir_carrito').classList.add("hidden");
+    });
+
+
+    /*Edit Data*/
+    const edit_data = document.querySelector('.edit_data');
+    const edit_data_l = document.querySelector('.edit_data-l');
+    
+    function data_edit(){
+        
+        if (edit_data.classList.contains('invisible')){
+            disableScroll();
+            edit_data.classList.remove('invisible');
+            edit_data.classList.add('visible');
+
+            edit_data_l.style.animation ="login-open 300ms 1"
+
+        }else{
+            edit_data_l.style.animation ="login-close 300ms 1"
+            
+            edit_data.classList.remove('visible');
+            edit_data.classList.add('invisible');
+            enableScroll();
+        }
+        
+    }
+
+</script>
