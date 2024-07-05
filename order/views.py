@@ -197,7 +197,7 @@ def message_WhatsApp(customer, order, amount):
     
     text_items = ''
     for item in order:
-        url = f'https://edscon.pythonanywhere.com/shop/{item.nombre.lower().replace(" ", "-")}'
+        url = f'https://www.esportsvivac.com/shop/{item.nombre.lower().replace(" ", "-")}'
         text_items = text_items + f'*🤜{item.nombre}*\n      Talla: {item.size}\n      Quantitat: {item.quantity}\n{url}\n\n'
 
     info = ClueInfo.objects.all()[0]

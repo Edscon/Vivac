@@ -662,7 +662,7 @@ def my_devoluciones(request, id, order_id):
         variants_list = variants_list.split(',')
         
         variants = Variant.objects.filter(id__in=variants_list)
-        current_site = 'https://edscon.pythonanywhere.com'
+        current_site = 'https://www.esportsvivac.com'
         
         html = render_to_string('core/emails/devolucionesform.html', {'name': name, 'email': email, 'content': content, 'variants': variants, 'order': order, 'url': current_site})
         
