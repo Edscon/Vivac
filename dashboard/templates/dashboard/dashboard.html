@@ -12,9 +12,14 @@
 
     <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold px-4 lg:px-0">{% trans 'Dashboard' %}</div>
 
+
+    <div class="h-[300px]"></div>
+
+    <div class="mb-10 font-semibold">Ordenes</div>
+
     {% for order in request.user.orders.all %}
-        <div class="rounded-xl border border-gray-300 hidden md:block mb-6">
-            <div class="min-h-[80px] p-2 bg-neutral-200 flex text-[12px] font-semibold text-gray-700 rounded-t-xl">
+        <div onclick="open_order('{{order.id}}')" class="font-semibold border flex w-full text-sm cursor-pointer">
+            <div class="w-[95%] min-h-[80px] p-2 flex text-[12px] font-semibold text-gray-700">
                 <div class="w-[80%] flex justify-between ml-4">
                     <div class="h-full w-[140px]">
                         <div>{% trans 'PEDIDO REALIZADO' %}</div>
@@ -36,18 +41,33 @@
                     </div>
                 </div>
             </div>
-            <hr class="border-white lg:border-gray-300">
-            <div class="">
-                    {% for item in order.items.all %}
-                        {% if forloop.counter0 > 0 %}
-                        <hr class="w-full border-gray-300">
-                        {% endif %}
+            <div class="w-[5%] flex space-x-2">
+                <div class="m-auto">
+                    <svg id="svg_icon-{{order.id}}" class="h-4 w-4 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div id="order-{{order.id}}" class="Inputs space-y-6 text-md select-none data_edit_form hidden mb-2">
+            <div class="space-y-4">{{order.estado_pago}} {{order.user}} {{order.customer}} {{order.payment_intent}} {{order.first_name}} {{order.last_name}} {{order.email}} 
+                {{order.address}} {{order.zipcode}}
+                {{order.city}} {{order.provincia}} {{order.phone}} {{order.detalles_envio}} {{order.created_at}} {{order.paid}} {{order.paid_amount}} {{order.envio}} {{order.status}}
+            </div>
+
+            <div class="flex">
+            <div class="w-[50%]">f</div>
+            <div class="w-[50%]">
+                {% for item in order.items.all %}
+                    {% if forloop.counter0 > 0 %}
+                    <hr class="w-full border-gray-300">
+                    {% endif %}
                     <div class="flex w-full">
                         <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-[140px] rounded-b-xl">
                             <img class="hover:shadow-lg rounded-b-xl" src="{{item.variant.image}}">
                         </a>
-                    
-                        <div class="w-[50%] pl-2 text-sm my-auto">
+                        
+                        <div class="pl-2 text-sm my-auto">
                             <div class="w-full lg:flex justify-between">
                                 <div class="flex justify-between relative">
                                     <div class="item-size">
@@ -62,50 +82,32 @@
                                     
                                 </div>
                             </div>
-                            <div class="flex space-x-2 mt-2">
-                                <a 
-                                    id="añadir_carrito-{{i}}"
-                                    title="Buy_prod"
-                                        
-                                    class="w-[180px] py-[5px] rounded bg-green-700 text-white hover:bg-black relative transition duration-500 cursor-pointer flex drop-shadow-md"
-                                    hx-get = "{% url 'add_to_cart' item.variant.product.id item.variant.color.code item.size %}"
-                                    hx-target = "#menu-cart-button"
-                                    hx-swap = "innerHTML"
-                                    onclick="EnviarCheckOut()"
-                                    >
-                                    <div class="text-sm flex mx-auto space-x-2">
-                                        <div class="my-auto">
-                                            <svg class="h-4 w-4 text-white"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-                                            </svg>
-                                        </div>
-                                        <div class="my-auto">{% trans 'Comprar de nuevo' %}</div>
-                                    </div>
-                                </a>
-                                <a class="w-[100px] py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}">
-                                    <div class="m-auto">{% trans 'Ver tu artículo' %}</div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="w-[30%] space-y-2 my-auto">
-                            <a class="w-full py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" 
-                            href="{% url 'my_devoluciones' item.variant.id order.id %}">
-                                <div class="m-auto">{% trans 'Devolución o incidencia' %}</div>
-                            </a>  
-                            <a class="w-full py-[5px] rounded bg-white relative cursor-pointer flex border drop-shadow-md" 
-                            href="{% url 'my_review' item.variant.product.id %}">
-                                <div class="m-auto hidden xl:block">{% trans 'Escribir una opinión sobre este producto' %}</div>
-                                <div class="m-auto xl:hidden block">{% trans 'Escribir una opinión' %}</div>
-                            </a> 
                         </div>
                     </div>
-                    {% endfor %}
+                {% endfor %}
+            </div>
             </div>
         </div>
-        {% endfor %}    
+    {% endfor %}
+        
 </div>
 
 {% endblock %}
 
 {% block scripts %}
+<script>
+
+    function open_order(id){
+        const svg_icon = document.getElementById(`svg_icon-${id}`)
+        const order = document.getElementById(`order-${id}`)
+        if(order.classList.contains('hidden')){
+            order.classList.remove('hidden')
+            svg_icon.classList.add('rotate-180')
+        }else{
+            order.classList.add('hidden')
+            svg_icon.classList.remove('rotate-180')
+        }
+        
+    }
+</script>
 {% endblock %}
