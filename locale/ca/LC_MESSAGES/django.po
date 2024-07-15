@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 17:43+0200\n"
+"POT-Creation-Date: 2024-07-15 18:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -725,12 +725,16 @@ msgid "Tienda deportes online"
 msgstr "Botiga d'esports en línia"
 
 #: core/templates/core/frontpage.html:104
-msgid "Productos populares"
-msgstr "Productes populars"
+msgid "Novedades"
+msgstr "Novetats"
 
 #: core/templates/core/frontpage.html:154
 msgid "Tus favoritos"
 msgstr "Els teus favorits"
+
+#: core/templates/core/frontpage.html:203
+msgid "Productos populares"
+msgstr "Productes populars"
 
 #: core/templates/core/login.html:6
 msgid "Login"
@@ -5647,26 +5651,32 @@ msgid "Opiniones del artículo"
 msgstr "Opinions de l'article"
 
 #: product/templates/product/main_prod.html:341
+#: product/templates/product/main_prod.html:440
 msgid "¿Porque comprar en Esports Vivac?"
 msgstr "Per què comprar a Esports Vivac?"
 
 #: product/templates/product/main_prod.html:343
+#: product/templates/product/main_prod.html:442
 msgid "30 Años de Experiencia"
 msgstr "30 Anys d'Experiència"
 
 #: product/templates/product/main_prod.html:344
+#: product/templates/product/main_prod.html:443
 msgid "Amplia Variedad de Marcas y Productos"
 msgstr "Ampla Varitat de Marques i Productes"
 
 #: product/templates/product/main_prod.html:345
+#: product/templates/product/main_prod.html:444
 msgid "Garantía de Devolución de 30 Días"
 msgstr "Garantia de Devolució de 30 Dies"
 
 #: product/templates/product/main_prod.html:346
+#: product/templates/product/main_prod.html:445
 msgid "Atención al Cliente Excepcional"
 msgstr "Atenció al Client Excepcional"
 
 #: product/templates/product/main_prod.html:347
+#: product/templates/product/main_prod.html:446
 msgid "Compromiso con la Calidad"
 msgstr "Compromís amb la Qualitat"
 
@@ -5686,8 +5696,16 @@ msgstr "Llegeix més"
 msgid "Leer menos"
 msgstr "Llegeix menys"
 
-#: product/templates/product/main_prod.html:440
-msgid "Otros Productos de la Tienda"
+#: product/templates/product/main_prod.html:451
+#, fuzzy
+#| msgid "Otros Productos de la Tienda"
+msgid "Otros Productos de "
+msgstr "Altres productes de la botiga"
+
+#: product/templates/product/main_prod.html:505
+#, fuzzy
+#| msgid "Otros Productos de la Tienda"
+msgid "Otros Productos de la tienda"
 msgstr "Altres productes de la botiga"
 
 #: product/templates/product/partials/menu_tallas_mobile.html:20
