@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-30 21:31+0200\n"
+"POT-Creation-Date: 2024-07-15 17:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -296,6 +296,7 @@ msgstr "Afegit al carretó"
 #: core/templates/core/partials/my_devoluciones.html:62
 #: core/templates/core/partials/my_devoluciones.html:119
 #: core/templates/core/partials/my_vista_producto.html:129
+#: dashboard/templates/dashboard/dashboard.html:80
 msgid "Talla"
 msgstr "Talla"
 
@@ -449,8 +450,8 @@ msgid "Estado del pedido:"
 msgstr "Estat de la comanda:"
 
 #: cart/templates/cart/success.html:21
-msgid "Exitoso"
-msgstr "Exitós"
+msgid "Completado"
+msgstr "Completat"
 
 #: cart/templates/cart/success.html:35
 msgid "Pendiente"
@@ -520,6 +521,7 @@ msgstr ""
 
 #: cart/templates/cart/success.html:173 cart/templates/cart/success.html:192
 #: core/templates/core/my_account.html:81 core/templates/core/my_orders.html:79
+#: dashboard/templates/dashboard/dashboard.html:40
 msgid "Ver los detalles del pedido"
 msgstr "Veure els detalls de la comanda"
 
@@ -901,20 +903,24 @@ msgstr "La teva última comanda"
 #: core/templates/core/my_account.html:156
 #: core/templates/core/my_orders.html:64 core/templates/core/my_orders.html:154
 #: core/templates/core/partials/my_devoluciones.html:83
+#: dashboard/templates/dashboard/dashboard.html:25
 msgid "PEDIDO REALIZADO"
 msgstr "COMANDA REALITZADA"
 
 #: core/templates/core/my_account.html:70 core/templates/core/my_orders.html:68
+#: dashboard/templates/dashboard/dashboard.html:29
 msgid "TOTAL"
 msgstr "TOTAL"
 
 #: core/templates/core/my_account.html:74 core/templates/core/my_orders.html:72
+#: dashboard/templates/dashboard/dashboard.html:33
 msgid "ENVIAR A"
 msgstr "ENVIAR A"
 
 #: core/templates/core/my_account.html:79
 #: core/templates/core/my_account.html:162
 #: core/templates/core/my_orders.html:77 core/templates/core/my_orders.html:160
+#: dashboard/templates/dashboard/dashboard.html:38
 msgid "PEDIDO"
 msgstr "COMANDA"
 
@@ -5575,11 +5581,19 @@ msgstr "Ja tens un compte a Esports Vivac?"
 msgid "Inicia sesión aquí"
 msgstr "Inicia sessió aquí"
 
-#: order/views.py:241
+#: dashboard/templates/dashboard/dashboard.html:7
+msgid "Administración"
+msgstr "Administració"
+
+#: dashboard/templates/dashboard/dashboard.html:13
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: order/views.py:243
 msgid "TU PEDIDO #"
 msgstr "LA TEVA COMANDA #"
 
-#: order/views.py:241
+#: order/views.py:243
 msgid " EN ESPORTS VIVAC HA SIDO CONFIRMADO"
 msgstr " EN ESPORTS VIVAC HA ESTAT CONFIRMADA"
 
@@ -5680,10 +5694,10 @@ msgstr "Altres productes de la botiga"
 msgid "Escoge una talla..."
 msgstr "Escull una talla..."
 
-#: vivac/settings.py:211
+#: vivac/settings.py:218
 msgid "Español"
 msgstr "Catalan"
 
-#: vivac/settings.py:212
+#: vivac/settings.py:219
 msgid "Català"
 msgstr "Castellà"

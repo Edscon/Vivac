@@ -175,7 +175,7 @@ def success(request):
     
     time = date_by_adding_business_days(orden_compra.created_at, 1)
 
-    if status == "succeeded": status = 'Exitoso'
+    if status == "succeeded": status = 'Completado'
     else: status = 'Pendiente'
 
     context = {

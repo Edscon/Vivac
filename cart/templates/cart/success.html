@@ -13,12 +13,12 @@
         <h1 class="mb-5 text-3xl">{% trans 'Pedido completado con éxito' %}</h1>
         <p class="mb-5">{% trans 'Gracias por la compra!' %} {{customer.name}}</p>
 
-        {% if status == 'Exitoso' %}
+        {% if status == 'Completado' %}
         <div class="mb-5">
             <div class="flex space-x-2">
                 <p class="my-auto">{% trans 'Estado del pedido:' %} </p>
                 <div class="my-auto px-1 bg-[#D7F7C2] flex rounded text-[#228403] font-semibold space-x-2">
-                    <div class="my-auto">{% trans 'Exitoso' %}</div>
+                    <div class="my-auto">{% trans 'Completado' %}</div>
                     <div class="my-auto">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
