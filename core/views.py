@@ -68,6 +68,7 @@ def frontpage(request):
         del request.session['django_language']
 
     products = Product.objects.all()[0:8]
+    products_populars = Product.objects.order_by('popular_rating')[0:8]
     categories = Category.objects.all()[0:4]
     marcas = Marca.objects.all()
     form = SignUpForm()
@@ -94,6 +95,7 @@ def frontpage(request):
     
     context = {
         'products': products,
+        'products_populars': products_populars,
         'categories': categories,
         'marcas': marcas,
         'favorites': favorites,
