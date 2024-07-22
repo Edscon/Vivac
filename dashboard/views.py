@@ -37,7 +37,6 @@ def complete_form(request):
             
             # Configurar las opciones del navegador
             options = Options()
-
             # Inicializar el controlador de Chrome con el servicio y las opciones
             driver = webdriver.Chrome(service=service, options=options)
 
@@ -71,7 +70,9 @@ def complete_form(request):
 
             while True:
                 time.sleep(300)
-            # No rellenar el formulario, solo dejar el navegador abierto
+
+            #COMPLETAR LA FORM PARA CADA CASO DE LA ORDEN
+
             return JsonResponse({'status': 'success', 'message': 'Chrome abierto y navegando a la URL especificada'})
         except WebDriverException as e:
             logger.error("Error al abrir Chrome: %s", e)

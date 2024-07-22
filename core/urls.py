@@ -52,5 +52,4 @@ urlpatterns = [
 
     path('set-cookie-accepted', set_cookie_accepted, name='set_cookie_accepted'),
     path('get-cookie-accepted', get_cookie_accepted, name='get_cookie_accepted'),
-
 ]
