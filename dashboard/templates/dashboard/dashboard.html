@@ -17,7 +17,7 @@
 
     <div class="mb-10 font-semibold">Ordenes</div>
 
-    {% for order in request.user.orders.all %}
+    {% for order in orders %}
         <div onclick="open_order('{{order.id}}')" class="font-semibold border flex w-full text-sm cursor-pointer">
             <div class="w-[95%] min-h-[80px] p-2 flex text-[12px] font-semibold text-gray-700">
                 <div class="w-[80%] flex justify-between ml-4">
@@ -49,14 +49,66 @@
                 </div>
             </div>
         </div>
-        <div id="order-{{order.id}}" class="Inputs space-y-6 text-md select-none data_edit_form hidden mb-2">
-            <div class="space-y-4">{{order.estado_pago}} {{order.user}} {{order.customer}} {{order.payment_intent}} {{order.first_name}} {{order.last_name}} {{order.email}} 
-                {{order.address}} {{order.zipcode}}
-                {{order.city}} {{order.provincia}} {{order.phone}} {{order.detalles_envio}} {{order.created_at}} {{order.paid}} {{order.paid_amount}} {{order.envio}} {{order.status}}
-            </div>
+        <div id="order-{{order.id}}" class="Inputs space-y-6 text-md hidden mb-2">
 
             <div class="flex">
-            <div class="w-[50%]">f</div>
+            <div class="w-[50%] my-4" style="padding-left: 20px; padding-right: 20px;">
+
+                {% if order.estado_pago == 'succeeded' %}
+                <div class="">
+                    <div class="flex space-x-2">
+                        <p class="my-auto">{% trans 'Pago del pedido:' %} </p>
+                        <div class="my-auto px-1 bg-[#D7F7C2] flex rounded text-[#228403] font-semibold space-x-2">
+                            <div class="my-auto">{% trans 'Completado' %}</div>
+                            <div class="my-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                  </svg>                          
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="">
+                    <div class="flex space-x-2">
+                        <p class="my-auto">{% trans 'Estado del pedido:' %} </p>
+                        <div class="my-auto px-1 bg-[#EBEEF1] flex rounded text-[#676E7D] font-semibold space-x-2">
+                            <div class="my-auto">{% trans 'Pendiente' %}</div>
+                            <div class="my-auto"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                </svg>
+                                                          
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div>{% trans 'Precio:' %} {{order.paid_amount|resta:order.envio|floatformat:2}}€</div>
+                <div>{% trans 'Envio:' %} {{order.envio|floatformat:2}}€</div>
+
+                <div style="margin-top: 30px;">
+                    <div style="font-weight: 600; margin-bottom: 5px;">{% trans 'Detalles del Pedido' %}</div>
+                    
+                    <div>{% trans 'Nombre:' %} {{order.first_name}} {{order.last_name}}</div>
+                    <div>{% trans 'Dirección:' %} {{order.address}}</div>
+                    <div>{% trans 'Ciudad:' %} {{order.city}}, {{order.zipcode}}</div>
+                    <div>{% trans 'Provincia:' %} {{order.provincia}}</div>
+                    <div>{% trans 'Tel:' %} {{order.phone}}</div>
+                    <div>{% trans 'Email:' %} {{order.email}}</div>
+                    {% if order.detalles_envio == '' %}
+                    {% else %}
+                        <div>{% trans 'Detalles para el envio:' %} {{order.detalles_envio}}</div>
+                    {% endif %}
+                </div>
+                
+                <div onclick="nacex('{{order.id}}')" class="p-1 border cursor-pointer">Preparar Pedido en Nacex</div>
+
+            </div>
+
+
+            
             <div class="w-[50%]">
                 {% for item in order.items.all %}
                     {% if forloop.counter0 > 0 %}
@@ -109,5 +161,34 @@
         }
         
     }
+
+    function nacex(id) {
+            console.log(id);
+
+            data = {
+                'csrf_token': '{{ csrf_token }}',
+                'name': 'Soler',
+                'email': 'Soler',
+                'content': 'Soler',
+            }
+            
+            fetch('/dashboard/complete_form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' 
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify(data),
+            }).then(response => response.json())
+            .then(json =>{
+                console.log(json)
+            })
+            .catch(function(error) {
+                console.log('Errors', error)
+            })
+        }
+
+
 </script>
 {% endblock %}
