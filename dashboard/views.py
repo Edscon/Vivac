@@ -1,12 +1,15 @@
+
 from django.shortcuts import render
 from django.contrib.auth.decorators import user_passes_test
 from django.http import JsonResponse
+'''
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
+'''
 import logging
 import time
 from django.conf import settings
@@ -32,6 +35,7 @@ logger = logging.getLogger(__name__)
 
 @user_passes_test(superuser_required, login_url='/admin/login/')
 def complete_form(request):
+    '''
     if request.method == 'POST':
         try:           
             service = Service(executable_path=ChromeDriverManager().install())
@@ -81,4 +85,5 @@ def complete_form(request):
         except Exception as e:
             logger.error("Error inesperado: %s", e)
             return JsonResponse({'status': 'failed', 'message': str(e)}, status=500)
+    '''
     return JsonResponse({'status': 'failed', 'message': 'Método no permitido'}, status=405)
