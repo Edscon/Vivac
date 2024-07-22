@@ -30,6 +30,7 @@ def dashboard(request):
 
 logger = logging.getLogger(__name__)
 
+@user_passes_test(superuser_required, login_url='/admin/login/')
 def complete_form(request):
     if request.method == 'POST':
         try:           
