@@ -15,7 +15,7 @@
 
     <div class="h-[300px]"></div>
 
-    <div class="mb-10 font-semibold">Ordenes</div>
+    <div class="mb-10 font-semibold">{% trans 'Ordenes' %}</div>
 
     {% for order in orders %}
         <div onclick="open_order('{{order.id}}')" class="font-semibold border flex w-full text-sm cursor-pointer">
@@ -29,7 +29,7 @@
                         <div>{% trans 'TOTAL' %}</div>
                         <div class="text-sm font-normal">{{order.paid_amount| floatformat:2}} €</div>
                     </div>
-                    <div class="h-full w-[200px]">
+                    <div class="h-full w-[200px] hidden md:block">
                         <div>{% trans 'ENVIAR A' %}</div>
                         <div class="text-sm font-normal">{{order.address}}, {{order.city}} </div>
                     </div>
@@ -37,7 +37,8 @@
                 <div class="w-[50%] text-right mr-4">
                     <div>{% trans 'PEDIDO' %} ID.º {{order.id}}</div>
                     <div class="text-sm font-normal text-blue-500">
-                        <a href="{% url 'my_vista_producto' order.id %}">{% trans 'Ver los detalles del pedido' %}</a>
+                        <a class="hidden md:block" href="{% url 'my_vista_producto' order.id %}">{% trans 'Ver los detalles del pedido' %}</a>
+                        <a class="md:hidden" href="{% url 'my_vista_producto' order.id %}">{% trans 'Detalles' %}</a>
                     </div>
                 </div>
             </div>
@@ -49,98 +50,138 @@
                 </div>
             </div>
         </div>
-        <div id="order-{{order.id}}" class="Inputs space-y-6 text-md hidden mb-2">
+        <div id="order-{{order.id}}" class="Inputs space-y-6 text-md hidden mb-2 ">
 
-            <div class="flex">
-            <div class="w-[50%] my-4" style="padding-left: 20px; padding-right: 20px;">
 
-                {% if order.estado_pago == 'succeeded' %}
-                <div class="">
-                    <div class="flex space-x-2">
-                        <p class="my-auto">{% trans 'Pago del pedido:' %} </p>
-                        <div class="my-auto px-1 bg-[#D7F7C2] flex rounded text-[#228403] font-semibold space-x-2">
-                            <div class="my-auto">{% trans 'Completado' %}</div>
-                            <div class="my-auto">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                                  </svg>                          
-                            </div>
-                        </div>
+            <div class="w-[100%] lg:pl-4 text-black text-sm my-0 mt-8">
+                <div class="min-[450px]:flex min-[450px]:space-x-4 mb-4">
+                    <div class="font-semibold text-lg">{% trans 'Detalles del pedido' %}</div>
+    
+                    <!--onclick="nacex('{{order.id}}')"-->
+                    <div class="text-base mt-4 min-[450px]:mt-0">
+                        <a href="https://www.nacex.es/irRecogida.do" target="_blank" class="p-2 border cursor-pointer">{% trans 'Preparar Pedido en Nacex' %}</a>
                     </div>
                 </div>
-                {% else %}
-                <div class="">
-                    <div class="flex space-x-2">
-                        <p class="my-auto">{% trans 'Estado del pedido:' %} </p>
-                        <div class="my-auto px-1 bg-[#EBEEF1] flex rounded text-[#676E7D] font-semibold space-x-2">
-                            <div class="my-auto">{% trans 'Pendiente' %}</div>
-                            <div class="my-auto"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-                                </svg>
-                                                          
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endif %}
 
-                <div>{% trans 'Precio:' %} {{order.paid_amount|resta:order.envio|floatformat:2}}€</div>
-                <div>{% trans 'Envio:' %} {{order.envio|floatformat:2}}€</div>
-
-                <div style="margin-top: 30px;">
-                    <div style="font-weight: 600; margin-bottom: 5px;">{% trans 'Detalles del Pedido' %}</div>
                     
-                    <div>{% trans 'Nombre:' %} {{order.first_name}} {{order.last_name}}</div>
-                    <div>{% trans 'Dirección:' %} {{order.address}}</div>
-                    <div>{% trans 'Ciudad:' %} {{order.city}}, {{order.zipcode}}</div>
-                    <div>{% trans 'Provincia:' %} {{order.provincia}}</div>
-                    <div>{% trans 'Tel:' %} {{order.phone}}</div>
-                    <div>{% trans 'Email:' %} {{order.email}}</div>
-                    {% if order.detalles_envio == '' %}
-                    {% else %}
-                        <div>{% trans 'Detalles para el envio:' %} {{order.detalles_envio}}</div>
-                    {% endif %}
-                </div>
-                
-                <!--onclick="nacex('{{order.id}}')"-->
-                <div class="mt-5"><a href="https://www.nacex.es/irRecogida.do" target="_blank" class="p-2 border cursor-pointer">Preparar Pedido en Nacex</a></div>
-                
+                <div class="flex flex-wrap lg:space-x-4">
+                    <div class="border border-gray-300 rounded-xl mb-2 py-4 px-8 w-[100%] lg:w-[60%]">
+                        <div class="flex space-x-4 mb-2">
+                            <div>{% trans 'Comprado el' %} {{order.created_at|date1}}</div>
+                            <div>|</div> 
+                            <div>{% trans 'PEDIDO ID.º' %} {{order.id}}</div> 
+                        </div>
+                        <div class="mb-2">
 
-            </div>
-
-
-            
-            <div class="w-[50%]">
-                {% for item in order.items.all %}
-                    {% if forloop.counter0 > 0 %}
-                    <hr class="w-full border-gray-300">
-                    {% endif %}
-                    <div class="flex w-full">
-                        <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="w-[140px] rounded-b-xl">
-                            <img class="hover:shadow-lg rounded-b-xl" src="{{item.variant.image}}">
-                        </a>
-                        
-                        <div class="pl-2 text-sm my-auto">
-                            <div class="w-full lg:flex justify-between">
-                                <div class="flex justify-between relative">
-                                    <div class="item-size">
-                                        <div class="font-semibold"><span class="text-green-700">{{item.quantity}}x</span>
-                                            {% if request.LANGUAGE_CODE == 'es' %} {{item.variant.product.nombre}}
-                                            {% elif request.LANGUAGE_CODE == 'ca' %} {{item.variant.product.nombre_ca}}
-                                            {% else %} {{item.variant.product.nombre}}
-                                            {% endif %}
+                            {% if order.estado_pago == 'succeeded' %}
+                            <div class="">
+                                <div class="flex space-x-2">
+                                    <p class="my-auto">{% trans 'Pago del pedido:' %} </p>
+                                    <div class="my-auto px-1 bg-[#D7F7C2] flex rounded text-[#228403] font-semibold space-x-2">
+                                        <div class="my-auto">{% trans 'Completado' %}</div>
+                                        <div class="my-auto">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                                            </svg>                          
                                         </div>
-                                        <div>{% trans 'Talla' %}: {{item.size|replace_1}}</div>
                                     </div>
-                                    
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="">
+                                <div class="flex space-x-2">
+                                    <p class="my-auto">{% trans 'Pago del pedido:' %} </p>
+                                    <div class="my-auto px-1 bg-[#EBEEF1] flex rounded text-[#676E7D] font-semibold space-x-2">
+                                        <div class="my-auto">{% trans 'Pendiente' %}</div>
+                                        <div class="my-auto"> 
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                                            </svg>
+                                                                    
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                        <div class="flex flex-wrap gap-2 min-[680px]:justify-between">
+                            <div class="">
+                                <div class="font-semibold">{% trans 'Información de usuario' %}</div>
+                                <div>{{order.first_name}} {{order.last_name}}</div>
+                                <div>{{order.email}}</div>
+                                <div>{{order.phone}}</div>
+                            </div>
+                            <div class="">
+                                <div class="font-semibold">{% trans 'Dirección de envío' %}</div>
+                                <div>{{order.address}}, {{order.city}}, {{order.zipcode}}</div>
+                                <div>{{order.provincia}}</div>
+                            </div>
+                            <div class="min-w-[200px]">
+                                <div class="font-semibold">{% trans 'Resumen del pedido' %}</div>
+                                <div class="flex justify-between">
+                                    <div>{% trans 'Subtotal' %}:</div>
+                                    <div class="text-right">{{order.paid_amount|resta:order.envio|floatformat:2}}€</div>
+                                </div>
+                                <div class="flex justify-between">
+                                    <div>{% trans 'Envio' %}:</div>
+                                    <div class="text-right">{{order.envio|floatformat:2}}€</div>
+                                </div>
+                                <div class="flex justify-between font-semibold">
+                                    <div>{% trans 'Importe total' %}:</div>
+                                    <div class="text-right">{{order.paid_amount|floatformat:2}}€</div>
                                 </div>
                             </div>
                         </div>
+                        
+                        
                     </div>
-                {% endfor %}
+                    
+                    <div class="w-[100%] lg:w-[38%]">
+                        <div class="rounded-xl border border-gray-300">
+                            <div class="py-5 p-2 bg-neutral-200 flex font-semibold text-black rounded-t-xl">
+                                <div class="flex ml-4 space-x-2">
+                                    <div>{% trans 'Productos' %} </div>
+                                </div>
+                            </div>
+                            <hr class="border-white lg:border-gray-300">
+                            <div class="">
+                                    {% for item in order.items.all %}
+                                        {% if forloop.counter0 > 0 %}
+                                        <hr class="w-full border-gray-300">
+                                        {% endif %}
+                                    <div class="flex w-full">
+                                        <a href="{% url 'variant_product' item.variant.product.slug item.variant.color.slug %}" class="min-w-[100px] w-[100px] md:w-[140px] rounded-b-xl">
+                                            <img class="rounded-b-xl" src="{{item.variant.image}}">
+                                        </a>
+                                        <div class="w-[calc(100%-100px)] md:w-[calc(100%-140px)] flex">
+                                            <div class="w-[100%] pl-2 text-sm my-auto">
+                                                <div class="w-full lg:flex justify-between">
+                                                    <div class="flex justify-between relative">
+                                                        <div class="item-size">
+                                                            <div class="font-semibold"><span class="text-green-700">{{item.quantity}}x</span>
+                                                                {% if request.LANGUAGE_CODE == 'es' %} {{item.variant.product.nombre}}
+                                                                {% elif request.LANGUAGE_CODE == 'ca' %} {{item.variant.product.nombre_ca}}
+                                                                {% else %} {{item.variant.product.nombre}}
+                                                                {% endif %}
+                                                            </div>
+                                                            <div>{% trans 'Talla' %}: {{item.size|replace_1}}</div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            </div>
+            
         </div>
     {% endfor %}
         

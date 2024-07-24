@@ -32,7 +32,7 @@
 
     <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold px-4 lg:px-0">{% trans 'Incidencias o Devoluciones' %}</div>
     
-    {% if request.user == order.user %}
+    {% if request.user == order.user or request.user.is_superuser %}
     <div class="xl:flex">
         <div class="w-[100%] xl:w-[50%]">
             <div class="h-[95%] w-[100%] xl:w-[95%] xl:my-8 z-[0]" id="map">

@@ -54,7 +54,7 @@
         
         <div class="w-[100%] lg:w-[75%] lg:pl-8 text-black text-sm my-0 lg:mt-8">
             <div class="mb-2 font-semibold text-lg">{% trans 'Detalles del pedido' %}</div>
-            {% if request.user == order.user %}
+            {% if request.user == order.user or request.user.is_superuser %}
                 <div class="border border-gray-300 rounded-xl mb-2 py-4 px-8">
                     <div class="flex space-x-4 mb-2">
                         <div>{% trans 'Comprado el' %} {{order.created_at|date1}}</div>
@@ -64,8 +64,8 @@
                     <div class="flex flex-wrap gap-2 min-[680px]:justify-between">
                         <div class="">
                             <div class="font-semibold">{% trans 'Información de usuario' %}</div>
-                            <div>{{order.user.first_name}} {{order.user.last_name}}</div>
-                            <div>{{order.user.email}}</div>
+                            <div>{{order.first_name}} {{order.last_name}}</div>
+                            <div>{{order.email}}</div>
                         </div>
                         <div class="">
                             <div class="font-semibold">{% trans 'Dirección de envío' %}</div>

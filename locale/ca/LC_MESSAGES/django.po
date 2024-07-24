@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 18:13+0200\n"
+"POT-Creation-Date: 2024-07-24 22:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -296,7 +296,7 @@ msgstr "Afegit al carretó"
 #: core/templates/core/partials/my_devoluciones.html:62
 #: core/templates/core/partials/my_devoluciones.html:119
 #: core/templates/core/partials/my_vista_producto.html:129
-#: dashboard/templates/dashboard/dashboard.html:80
+#: dashboard/templates/dashboard/dashboard.html:134
 msgid "Talla"
 msgstr "Talla"
 
@@ -446,14 +446,17 @@ msgid "Gracias por la compra!"
 msgstr "Gràcies per la compra!"
 
 #: cart/templates/cart/success.html:19 cart/templates/cart/success.html:33
+#: dashboard/templates/dashboard/dashboard.html:74
 msgid "Estado del pedido:"
 msgstr "Estat de la comanda:"
 
 #: cart/templates/cart/success.html:21
+#: dashboard/templates/dashboard/dashboard.html:62
 msgid "Completado"
 msgstr "Completat"
 
 #: cart/templates/cart/success.html:35
+#: dashboard/templates/dashboard/dashboard.html:76
 msgid "Pendiente"
 msgstr "Pendent"
 
@@ -567,6 +570,7 @@ msgstr "Pots contactar-nos a través del següent"
 
 #: cart/templates/cart/success.html:211
 #: core/templates/core/emails/pedidoform.html:70
+#: dashboard/templates/dashboard/dashboard.html:92
 msgid "Detalles del Pedido"
 msgstr "Detalls de la Comanda"
 
@@ -587,6 +591,14 @@ msgstr ""
 #: core/templates/404.html:6
 msgid "Error"
 msgstr "Error"
+
+#: core/templates/404.html:13
+msgid "¡Ups! La página que estás buscando no existe."
+msgstr "¡Ups! La pàgina que estàs buscant no existeix."
+
+#: core/templates/404.html:14
+msgid "Volver a la página principal"
+msgstr "Tornar a la pàgina principal"
 
 #: core/templates/core/edit_myaccount.html:5
 #: core/templates/core/edit_myaccount.html:9
@@ -628,26 +640,32 @@ msgid "Envio"
 msgstr "Enviament"
 
 #: core/templates/core/emails/pedidoform.html:72
+#: dashboard/templates/dashboard/dashboard.html:95
 msgid "Dirección:"
 msgstr "Adreça:"
 
 #: core/templates/core/emails/pedidoform.html:73
+#: dashboard/templates/dashboard/dashboard.html:96
 msgid "Ciudad:"
 msgstr "Ciutat:"
 
 #: core/templates/core/emails/pedidoform.html:74
+#: dashboard/templates/dashboard/dashboard.html:97
 msgid "Provincia:"
 msgstr "Província:"
 
 #: core/templates/core/emails/pedidoform.html:75
+#: dashboard/templates/dashboard/dashboard.html:98
 msgid "Tel:"
 msgstr "Tel."
 
 #: core/templates/core/emails/pedidoform.html:76
+#: dashboard/templates/dashboard/dashboard.html:99
 msgid "Email:"
 msgstr "Correu electrònic:"
 
 #: core/templates/core/emails/pedidoform.html:79
+#: dashboard/templates/dashboard/dashboard.html:102
 msgid "Detalles para el envio:"
 msgstr "Detalls per a l'enviament:"
 
@@ -5593,6 +5611,30 @@ msgstr "Administració"
 msgid "Dashboard"
 msgstr "Dashboard"
 
+#: dashboard/templates/dashboard/dashboard.html:18
+msgid "Ordenes"
+msgstr "Comandes"
+
+#: dashboard/templates/dashboard/dashboard.html:60
+msgid "Pago del pedido:"
+msgstr "Pagament de la comanda:"
+
+#: dashboard/templates/dashboard/dashboard.html:88
+msgid "Precio:"
+msgstr "Preu:"
+
+#: dashboard/templates/dashboard/dashboard.html:89
+msgid "Envio:"
+msgstr "Enviament:"
+
+#: dashboard/templates/dashboard/dashboard.html:94
+msgid "Nombre:"
+msgstr "Nom:"
+
+#: dashboard/templates/dashboard/dashboard.html:107
+msgid "Preparar Pedido en Nacex"
+msgstr "Preparar comanda en Nacex"
+
 #: order/views.py:243
 msgid "TU PEDIDO #"
 msgstr "LA TEVA COMANDA #"
@@ -5712,10 +5754,10 @@ msgstr "Altres productes de la botiga"
 msgid "Escoge una talla..."
 msgstr "Escull una talla..."
 
-#: vivac/settings.py:218
+#: vivac/settings.py:221
 msgid "Español"
 msgstr "Catalan"
 
-#: vivac/settings.py:219
+#: vivac/settings.py:222
 msgid "Català"
 msgstr "Castellà"
