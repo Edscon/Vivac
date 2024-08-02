@@ -217,6 +217,13 @@
         document.getElementById('añadir_carrito-'+ final_size_sp).classList.add("hidden")
         document.getElementById('añadir_carrito-'+ size_sp).classList.remove("hidden")
 
+        // Unidades
+        if(size != final_size){
+            document.getElementById('Unidades-'+ size).classList.remove("hidden")
+            if(final_size != ''){document.getElementById('Unidades-'+ final_size).classList.add("hidden")}
+        }
+        
+
         final_size_sp = size_sp
         final_size = size
 
