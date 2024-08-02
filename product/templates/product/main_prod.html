@@ -207,7 +207,7 @@
                     <div>{% trans 'Producto en Stock. Entrega en 48h' %}</div>
                     <div>
                         {% for variant in variants %}
-                            {% if color_first == variant.color %}
+                            {% if main_color == variant.color %}
                                 <div id="Unidades-{{variant.size}}" class="hidden text-sm font-semibold text-black">
                                     {% trans 'Quedan' %} {{variant.unidades}} {% trans 'unidades' %}
                                 </div>
