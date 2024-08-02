@@ -4,8 +4,14 @@
 
 {% block content%}
 
-{% with prod=variants_first main_color=color %}
-    {% include 'product/main_prod.html' %}
-{% endwith %}
 
+{% if estado_product == 'Publicado' %}
+    {% with prod=variants_first main_color=color %}
+        {% include 'product/main_prod.html' %}
+    {% endwith %}
+{% else %}
+    <script type="text/javascript">
+        window.location.href = "{% url 'error_404' %}";
+    </script>
+{% endif %}
 {% endblock %}

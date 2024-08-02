@@ -94,6 +94,10 @@ class Category(models.Model):
 
 class Product(models.Model):
 
+    ESTADO_CHOICES = [
+        ('Publicado' , 'Publicado'),
+        ('Oculto', 'Oculto'),
+    ]
     VARIANTS = (
         ('None', 'None'),
         ('Size', 'Size'),
@@ -113,6 +117,7 @@ class Product(models.Model):
         ('nina', 'nina'),
     )
 
+    estado_producto = models.CharField(max_length=30, choices=ESTADO_CHOICES, default='Publicado')
     categoria = models.ForeignKey(
         Category, related_name='products', on_delete=models.CASCADE)
     marca = models.ForeignKey(

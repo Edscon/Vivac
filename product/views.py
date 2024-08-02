@@ -25,8 +25,8 @@ def product(request, slug):
     
     product = get_object_or_404(Product, slug=slug)
    
-    products_list_category = Product.objects.filter(categoria=product.categoria).order_by('popular_rating')[0:8]
-    products_list = Product.objects.exclude(categoria=product.categoria).order_by('popular_rating')[0:8]
+    products_list_category = Product.objects.filter(estado_producto='Publicado', categoria=product.categoria).order_by('popular_rating')[0:8]
+    products_list = Product.objects.exclude(categoria=product.categoria, estado_producto='Oculto').order_by('popular_rating')[0:8]
 
     images_extra = ExtraImage.objects.filter(product=product, color=Variant.objects.filter(product=product).first().color)
     if images_extra.count() == 0: images_extra = ExtraImage.objects.filter(product=product)
@@ -122,7 +122,8 @@ def product(request, slug):
         'RedSocials': RedSocials,
         'review_user': review_user,
         'favorite': favorite,
-        'dic_sizes_precio': dic_sizes_precio
+        'dic_sizes_precio': dic_sizes_precio,
+        'estado_product': product.estado_producto
     }
     return render(request, 'product/product.html', context)
 
@@ -132,8 +133,8 @@ def variant_product(request, slug, slug_color):
 
     product = get_object_or_404(Product, slug=slug)
     
-    products_list_category = Product.objects.filter(categoria=product.categoria).order_by('popular_rating')[0:8]
-    products_list = Product.objects.exclude(categoria=product.categoria).order_by('popular_rating')[0:8]
+    products_list_category = Product.objects.filter(estado_producto='Publicado', categoria=product.categoria).order_by('popular_rating')[0:8]
+    products_list = Product.objects.exclude(categoria=product.categoria, estado_producto='Oculto').order_by('popular_rating')[0:8]
 
     color = get_object_or_404(Color, slug=slug_color)
     images_extra = ExtraImage.objects.filter(product=product, color=color)
@@ -230,7 +231,8 @@ def variant_product(request, slug, slug_color):
         'RedSocials': RedSocials,
         'favorite': favorite,
         'review_user': review_user,
-        'dic_sizes_precio': dic_sizes_precio
+        'dic_sizes_precio': dic_sizes_precio,
+        'estado_product': product.estado_producto
     }
     return render(request, 'product/variant.html', context)
 

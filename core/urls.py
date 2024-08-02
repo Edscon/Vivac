@@ -2,11 +2,13 @@ from django.contrib.auth import views
 from django.urls import path
 
 
-from core.views import frontpage, shop, signup, my_account, my_orders, my_data, my_favorites, my_reviews, my_review, edit_my_account, create_user_, update_account, check_cart, quienes_somos, update_favorito, login_p, login_user, tiendas, contacto, alquiler_material, my_devoluciones, my_vista_producto, change_psw, ventajas, ayuda, condiciones_legales, politica_de_privacidad, politica_de_cookies, condiciones_generales_compra_web, set_cookie_accepted, get_cookie_accepted
+from core.views import frontpage, shop, signup, my_account, my_orders, my_data, my_favorites, my_reviews, my_review, edit_my_account, create_user_, update_account, check_cart, quienes_somos, update_favorito, login_p, login_user, tiendas, contacto, alquiler_material, my_devoluciones, my_vista_producto, change_psw, ventajas, ayuda, condiciones_legales, politica_de_privacidad, politica_de_cookies, condiciones_generales_compra_web, set_cookie_accepted, get_cookie_accepted, error_404
 from product.views import product, marca, marcas, variant_product
 
 
 urlpatterns = [
+    path('error_404/', error_404, name='error_404'),
+
     path('', frontpage, name='frontpage'),
     path('signup/', signup, name='signup'),
     

@@ -67,7 +67,7 @@ def frontpage(request):
     if 'django_language' in request.session:
         del request.session['django_language']
 
-    products = Product.objects.all()[0:8]
+    products = Product.objects.filter(estado_producto='Publicado')[0:8]
     products_populars = Product.objects.order_by('popular_rating')[0:8]
     categories = Category.objects.all()[0:4]
     marcas = Marca.objects.all()
@@ -87,7 +87,7 @@ def frontpage(request):
                 for i in Account.objects.filter(user = request.user).values('favorites')[0]['favorites'].split(','):
                     id_col = i.replace('(', '').replace(')', '').split('/')
                     try:
-                        lista.append(Variant.objects.filter(product = Product.objects.filter(id=int(id_col[0]))[0], color = Color.objects.filter(code = id_col[1])[0])[0].id)
+                        lista.append(Variant.objects.filter(product = Product.objects.filter(estado_producto='Publicado',id=int(id_col[0]))[0], color = Color.objects.filter(code = id_col[1])[0])[0].id)
                     except:
                         i = 0
         
@@ -264,7 +264,7 @@ def my_favorites(request):
                 for i in Account.objects.filter(user = request.user).values('favorites')[0]['favorites'].split(','):
                     id_col = i.replace('(', '').replace(')', '').split('/')
                     try:
-                        lista.append(Variant.objects.filter(product = Product.objects.filter(id=int(id_col[0]))[0], color = Color.objects.filter(code = id_col[1])[0])[0].id)
+                        lista.append(Variant.objects.filter(product = Product.objects.filter(estado_producto='Publicado', id=int(id_col[0]))[0], color = Color.objects.filter(code = id_col[1])[0])[0].id)
                     except:
                         i = 0
         
@@ -344,7 +344,9 @@ def edit_my_account(request):
 
 
 def shop(request):
-    products = Product.objects.all()
+    
+    products = Product.objects.filter(estado_producto='Publicado')
+    
     categories = Category.objects.all()
 
     active_category = request.GET.get('category', '')
@@ -423,9 +425,9 @@ def shop(request):
     '''BRANDS'''
     if(len(products) == 0):
         if active_category:
-            brands = Product.objects.filter(categoria__slug=active_category).values('marca')
+            brands = Product.objects.filter(estado_producto='Publicado', categoria__slug=active_category).values('marca')
         else:
-            brands = Product.objects.all().values('marca')
+            brands = Product.objects.filter(estado_producto='Publicado').values('marca')
     else: brands = products.values('marca')
 
     temp = []
@@ -737,3 +739,7 @@ def politica_de_cookies(request):
 def condiciones_generales_compra_web(request):
 
     return render(request, 'core/partials/footer/condiciones_generales_compra_web.html',)
+
+def error_404(request):
+
+    return render(request, '404.html',)
