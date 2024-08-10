@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 22:31+0200\n"
+"POT-Creation-Date: 2024-08-10 14:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,6 +75,7 @@ msgstr "Preu"
 #: cart/templates/cart/success.html:114
 #: core/templates/core/emails/pedidoform.html:54
 #: core/templates/core/partials/my_vista_producto.html:78
+#: dashboard/templates/dashboard/dashboard.html:123
 msgid "Subtotal"
 msgstr "Subtotal"
 
@@ -257,6 +258,7 @@ msgstr "Afegir detalls per a l'enviament"
 #: cart/templates/cart/checkout.html:308 cart/templates/cart/checkout.html:311
 #: cart/templates/cart/partials/formularionocuenta.html:139
 #: cart/templates/cart/partials/formularionocuenta.html:142
+#: dashboard/templates/dashboard/dashboard.html:41
 msgid "Detalles"
 msgstr "Detalls"
 
@@ -296,7 +298,7 @@ msgstr "Afegit al carretó"
 #: core/templates/core/partials/my_devoluciones.html:62
 #: core/templates/core/partials/my_devoluciones.html:119
 #: core/templates/core/partials/my_vista_producto.html:129
-#: dashboard/templates/dashboard/dashboard.html:134
+#: dashboard/templates/dashboard/dashboard.html:168
 msgid "Talla"
 msgstr "Talla"
 
@@ -305,7 +307,7 @@ msgstr "Talla"
 #: cart/templates/cart/partials/minicart.html:43
 #: core/templates/core/my_favorites.html:144
 #: product/templates/product/main_prod.html:113
-#: product/templates/product/main_prod.html:123
+#: product/templates/product/main_prod.html:125
 msgid "Te ahorras"
 msgstr "T'estalvies"
 
@@ -348,6 +350,7 @@ msgstr "Espanya"
 
 #: cart/templates/cart/partials/checkout_prod.html:16
 #: core/templates/core/partials/my_vista_producto.html:76
+#: dashboard/templates/dashboard/dashboard.html:121
 msgid "Resumen del pedido"
 msgstr "Resum de la comanda"
 
@@ -446,17 +449,16 @@ msgid "Gracias por la compra!"
 msgstr "Gràcies per la compra!"
 
 #: cart/templates/cart/success.html:19 cart/templates/cart/success.html:33
-#: dashboard/templates/dashboard/dashboard.html:74
 msgid "Estado del pedido:"
 msgstr "Estat de la comanda:"
 
 #: cart/templates/cart/success.html:21
-#: dashboard/templates/dashboard/dashboard.html:62
+#: dashboard/templates/dashboard/dashboard.html:81
 msgid "Completado"
 msgstr "Completat"
 
 #: cart/templates/cart/success.html:35
-#: dashboard/templates/dashboard/dashboard.html:76
+#: dashboard/templates/dashboard/dashboard.html:95
 msgid "Pendiente"
 msgstr "Pendent"
 
@@ -570,7 +572,6 @@ msgstr "Pots contactar-nos a través del següent"
 
 #: cart/templates/cart/success.html:211
 #: core/templates/core/emails/pedidoform.html:70
-#: dashboard/templates/dashboard/dashboard.html:92
 msgid "Detalles del Pedido"
 msgstr "Detalls de la Comanda"
 
@@ -636,36 +637,31 @@ msgstr "PVR:"
 
 #: core/templates/core/emails/pedidoform.html:59
 #: core/templates/core/partials/my_vista_producto.html:82
+#: dashboard/templates/dashboard/dashboard.html:127
 msgid "Envio"
 msgstr "Enviament"
 
 #: core/templates/core/emails/pedidoform.html:72
-#: dashboard/templates/dashboard/dashboard.html:95
 msgid "Dirección:"
 msgstr "Adreça:"
 
 #: core/templates/core/emails/pedidoform.html:73
-#: dashboard/templates/dashboard/dashboard.html:96
 msgid "Ciudad:"
 msgstr "Ciutat:"
 
 #: core/templates/core/emails/pedidoform.html:74
-#: dashboard/templates/dashboard/dashboard.html:97
 msgid "Provincia:"
 msgstr "Província:"
 
 #: core/templates/core/emails/pedidoform.html:75
-#: dashboard/templates/dashboard/dashboard.html:98
 msgid "Tel:"
 msgstr "Tel."
 
 #: core/templates/core/emails/pedidoform.html:76
-#: dashboard/templates/dashboard/dashboard.html:99
 msgid "Email:"
 msgstr "Correu electrònic:"
 
 #: core/templates/core/emails/pedidoform.html:79
-#: dashboard/templates/dashboard/dashboard.html:102
 msgid "Detalles para el envio:"
 msgstr "Detalls per a l'enviament:"
 
@@ -1047,8 +1043,8 @@ msgid "Mis Favoritos"
 msgstr "Els meus Favorits"
 
 #: core/templates/core/my_favorites.html:105
-#: product/templates/product/main_prod.html:217
-#: product/templates/product/main_prod.html:239
+#: product/templates/product/main_prod.html:232
+#: product/templates/product/main_prod.html:254
 msgid "Añadir al carrito"
 msgstr "Afegir al carretó"
 
@@ -3610,7 +3606,7 @@ msgstr "Domini"
 
 #: core/templates/core/partials/footer/politica_de_cookies.html:84
 #: core/templates/core/partials/my_review.html:113
-#: product/templates/product/main_prod.html:314
+#: product/templates/product/main_prod.html:329
 msgid "Descripción"
 msgstr "Descripció"
 
@@ -5264,7 +5260,7 @@ msgstr "Nena"
 
 #: core/templates/core/partials/menus_shop.html:139
 #: core/templates/core/shop.html:120
-#: product/templates/product/main_prod.html:171
+#: product/templates/product/main_prod.html:175
 msgid "Tallas"
 msgstr "Talles"
 
@@ -5287,6 +5283,7 @@ msgstr "Tens problemes amb un altre producte de la comanda?"
 
 #: core/templates/core/partials/my_devoluciones.html:89
 #: core/templates/core/partials/my_vista_producto.html:62
+#: dashboard/templates/dashboard/dashboard.html:72
 msgid "PEDIDO ID.º"
 msgstr "COMANDA ID.º"
 
@@ -5329,7 +5326,7 @@ msgstr "Opina sobre aquest producte"
 msgid "Puntúa y valora el artículo"
 msgstr "Puntúa i valora l'artícle"
 
-#: core/templates/core/partials/my_review.html:111 product/models.py:314
+#: core/templates/core/partials/my_review.html:111 product/models.py:319
 msgid "Título"
 msgstr "Títol"
 
@@ -5340,22 +5337,27 @@ msgid "No cumple el mínimo requerido"
 msgstr "No compleix el mínim requerit"
 
 #: core/templates/core/partials/my_vista_producto.html:56
+#: dashboard/templates/dashboard/dashboard.html:58
 msgid "Detalles del pedido"
 msgstr "Detalls de la comanda"
 
 #: core/templates/core/partials/my_vista_producto.html:60
+#: dashboard/templates/dashboard/dashboard.html:70
 msgid "Comprado el"
 msgstr "Comprat el"
 
 #: core/templates/core/partials/my_vista_producto.html:66
+#: dashboard/templates/dashboard/dashboard.html:110
 msgid "Información de usuario"
 msgstr "Informació d'usuari"
 
 #: core/templates/core/partials/my_vista_producto.html:71
+#: dashboard/templates/dashboard/dashboard.html:116
 msgid "Dirección de envío"
 msgstr "Adreça d'enviament"
 
 #: core/templates/core/partials/my_vista_producto.html:86
+#: dashboard/templates/dashboard/dashboard.html:131
 msgid "Importe total"
 msgstr "Import total"
 
@@ -5615,25 +5617,18 @@ msgstr "Dashboard"
 msgid "Ordenes"
 msgstr "Comandes"
 
-#: dashboard/templates/dashboard/dashboard.html:60
+#: dashboard/templates/dashboard/dashboard.html:62
+msgid "Preparar Pedido en Nacex"
+msgstr "Preparar comanda en Nacex"
+
+#: dashboard/templates/dashboard/dashboard.html:79
+#: dashboard/templates/dashboard/dashboard.html:93
 msgid "Pago del pedido:"
 msgstr "Pagament de la comanda:"
 
-#: dashboard/templates/dashboard/dashboard.html:88
-msgid "Precio:"
-msgstr "Preu:"
-
-#: dashboard/templates/dashboard/dashboard.html:89
-msgid "Envio:"
-msgstr "Enviament:"
-
-#: dashboard/templates/dashboard/dashboard.html:94
-msgid "Nombre:"
-msgstr "Nom:"
-
-#: dashboard/templates/dashboard/dashboard.html:107
-msgid "Preparar Pedido en Nacex"
-msgstr "Preparar comanda en Nacex"
+#: dashboard/templates/dashboard/dashboard.html:144
+msgid "Productos"
+msgstr "Productes"
 
 #: order/views.py:243
 msgid "TU PEDIDO #"
@@ -5647,106 +5642,110 @@ msgstr " EN ESPORTS VIVAC HA ESTAT CONFIRMADA"
 msgid "Inicio"
 msgstr "Inici"
 
-#: product/templates/product/main_prod.html:134
+#: product/templates/product/main_prod.html:138
 msgid "Opiniones"
 msgstr "Opinions"
 
-#: product/templates/product/main_prod.html:140
+#: product/templates/product/main_prod.html:144
 msgid "Déjanos tu opinion"
 msgstr "Deixa'ns la teva opinió"
 
-#: product/templates/product/main_prod.html:145
+#: product/templates/product/main_prod.html:149
 msgid "Sé el primero en opinar"
 msgstr "Sigues el primer a opinar"
 
-#: product/templates/product/main_prod.html:152
+#: product/templates/product/main_prod.html:156
 msgid "Colores"
 msgstr "Colors"
 
-#: product/templates/product/main_prod.html:193
+#: product/templates/product/main_prod.html:197
 msgid "Escoge una talla ..."
 msgstr "Escull una talla..."
 
-#: product/templates/product/main_prod.html:199
+#: product/templates/product/main_prod.html:203
 msgid "Selecciona una talla."
 msgstr "Selecciona una talla."
 
-#: product/templates/product/main_prod.html:202
+#: product/templates/product/main_prod.html:207
 msgid "Producto en Stock. Entrega en 48h"
 msgstr "Producte en estoc. Entrega en 48h"
 
-#: product/templates/product/main_prod.html:258
-#: product/templates/product/main_prod.html:280
+#: product/templates/product/main_prod.html:212
+msgid "Quedan"
+msgstr ""
+
+#: product/templates/product/main_prod.html:212
+msgid "unidades"
+msgstr "unitats"
+
+#: product/templates/product/main_prod.html:273
+#: product/templates/product/main_prod.html:295
 msgid "Añadir a favoritos"
 msgstr "Afegir als favorits"
 
-#: product/templates/product/main_prod.html:271
+#: product/templates/product/main_prod.html:286
 msgid "Añadido a favoritos"
 msgstr "Afegit als favorits"
 
-#: product/templates/product/main_prod.html:290
+#: product/templates/product/main_prod.html:305
 msgid "Compartir"
 msgstr "Comparteix"
 
-#: product/templates/product/main_prod.html:318
+#: product/templates/product/main_prod.html:333
 msgid "Opiniones del artículo"
 msgstr "Opinions de l'article"
 
-#: product/templates/product/main_prod.html:341
-#: product/templates/product/main_prod.html:440
+#: product/templates/product/main_prod.html:356
+#: product/templates/product/main_prod.html:455
 msgid "¿Porque comprar en Esports Vivac?"
 msgstr "Per què comprar a Esports Vivac?"
 
-#: product/templates/product/main_prod.html:343
-#: product/templates/product/main_prod.html:442
+#: product/templates/product/main_prod.html:358
+#: product/templates/product/main_prod.html:457
 msgid "30 Años de Experiencia"
 msgstr "30 Anys d'Experiència"
 
-#: product/templates/product/main_prod.html:344
-#: product/templates/product/main_prod.html:443
+#: product/templates/product/main_prod.html:359
+#: product/templates/product/main_prod.html:458
 msgid "Amplia Variedad de Marcas y Productos"
 msgstr "Ampla Varitat de Marques i Productes"
 
-#: product/templates/product/main_prod.html:345
-#: product/templates/product/main_prod.html:444
+#: product/templates/product/main_prod.html:360
+#: product/templates/product/main_prod.html:459
 msgid "Garantía de Devolución de 30 Días"
 msgstr "Garantia de Devolució de 30 Dies"
 
-#: product/templates/product/main_prod.html:346
-#: product/templates/product/main_prod.html:445
+#: product/templates/product/main_prod.html:361
+#: product/templates/product/main_prod.html:460
 msgid "Atención al Cliente Excepcional"
 msgstr "Atenció al Client Excepcional"
 
-#: product/templates/product/main_prod.html:347
-#: product/templates/product/main_prod.html:446
+#: product/templates/product/main_prod.html:362
+#: product/templates/product/main_prod.html:461
 msgid "Compromiso con la Calidad"
 msgstr "Compromís amb la Qualitat"
 
-#: product/templates/product/main_prod.html:406
+#: product/templates/product/main_prod.html:421
 msgid "¡Sé el primero en opinar sobre este producto!"
 msgstr "Sigues el primer a opinar sobre aquest producte!"
 
-#: product/templates/product/main_prod.html:413
+#: product/templates/product/main_prod.html:428
 msgid "Escribir Reseña"
 msgstr "Escriu una ressenya"
 
-#: product/templates/product/main_prod.html:426
+#: product/templates/product/main_prod.html:441
 msgid "Leer más"
 msgstr "Llegeix més"
 
-#: product/templates/product/main_prod.html:432
+#: product/templates/product/main_prod.html:447
 msgid "Leer menos"
 msgstr "Llegeix menys"
 
-#: product/templates/product/main_prod.html:451
-#, fuzzy
-#| msgid "Otros Productos de la Tienda"
+#: product/templates/product/main_prod.html:466
 msgid "Otros Productos de "
-msgstr "Altres productes de la botiga"
+msgstr "Altres productes de "
 
-#: product/templates/product/main_prod.html:505
-#, fuzzy
-#| msgid "Otros Productos de la Tienda"
+#: product/templates/product/main_prod.html:520
 msgid "Otros Productos de la tienda"
 msgstr "Altres productes de la botiga"
 
@@ -5761,3 +5760,12 @@ msgstr "Catalan"
 #: vivac/settings.py:222
 msgid "Català"
 msgstr "Castellà"
+
+#~ msgid "Precio:"
+#~ msgstr "Preu:"
+
+#~ msgid "Envio:"
+#~ msgstr "Enviament:"
+
+#~ msgid "Nombre:"
+#~ msgstr "Nom:"

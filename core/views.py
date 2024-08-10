@@ -537,14 +537,11 @@ def shop(request):
                 temp.append(size_num[j])
     
     size_num = temp
-
     temp = []
-    for j in ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL']:
+    for j in ['XXS', 'XS', 'S', 'M', 'M/L', 'L', 'XL', 'XXL', '3XL']:
         for i in size_let:
             if i == j and j not in temp: temp.append(j)
     size_let = temp
-
-
 
     variants = Variant.objects.filter(product__in=products)
     original = variants
