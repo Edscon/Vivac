@@ -70,7 +70,7 @@ def frontpage(request):
     products = Product.objects.filter(estado_producto='Publicado')[0:8]
     products_populars = Product.objects.order_by('popular_rating')[0:8]
     categories = Category.objects.all()[0:4]
-    marcas = Marca.objects.all()
+    marcas = Marca.objects.filter(orden__gt=0)
     form = SignUpForm()
 
     if request.method == 'POST':
@@ -538,7 +538,7 @@ def shop(request):
     
     size_num = temp
     temp = []
-    for j in ['XXS', 'XS', 'S', 'M', 'M/L', 'L', 'XL', 'XXL', '3XL']:
+    for j in ['XXS', 'XS', 'S', 'M', 'M/L', 'L', 'L/XL' 'XL', 'XXL', '3XL', 'U']:
         for i in size_let:
             if i == j and j not in temp: temp.append(j)
     size_let = temp
