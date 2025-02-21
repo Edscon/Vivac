@@ -1,0 +1,207 @@
+{% load i18n %}
+{% load static %}
+
+<div class="max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto max-[1300px]:-mt-6 px-4 lg:px-0">
+
+    <div class="mt-5 xl:mx-0 md:flex mb-1 text-lg font-semibold">{% trans 'Alquiler Material' %}</div>
+
+    {% blocktrans %}
+    <div>Te ofrecemos un servicio de alquiler de material adaptado a tus necesidades para tus aventuras en la nieve. Desde esquís de pista hasta esquís de montaña, raquetas de nieve y más, tenemos todo lo que necesitas para disfrutar plenamente de una gran experiencia. </div>
+    {% endblocktrans %}
+
+    <div class="mt-10 text-sm md:text-base">
+        <div class="flex mb-5">
+            <div class="my-auto flex"><img class="h-24" src="{% static 'img/casc_verd.png' %}"></div>
+            <div class="my-auto font-semibold">
+                <div class="text-lg">{% trans 'Precios alquiler 1 día' %}</div>
+                <div class="">{% trans 'Precios por persona IVA incluido' %}</div>
+            </div>
+        </div>
+        <div class="flex flex-wrap">
+            <div class="w-[100%] lg:w-[49%] mr-2">
+                <div class="w-full text-center mb-2 font-semibold">{% trans 'ADULTO' %}</div>
+                <div class="font-semibold">
+                    <div class="flex h-[50px] bg-black text-white">
+                        <div class="w-1/2 text-center my-auto">{% trans 'Tipo de Alquiler' %}</div>
+                        <div class="w-1/2 text-center my-auto">{% trans 'Precio' %}</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Esquí Completo' %}</div></div>
+                        <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.esquí_completo_adulto | floatformat:2}} €</div></div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Snowblade Completo' %}</div></div>
+                        <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.snowblade_completo | floatformat:2}} €</div></div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Snowboard Completo' %}</div></div>
+                        <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.snowboard_completo_adulto | floatformat:2}} €</div></div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Esquí Alta Gama Completo' %}</div></div>
+                        <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.esquí_gama_alta_completo_adulto | floatformat:2}} €</div></div>
+                    </div>
+                    <div class="mt-2 font-normal">*{% trans 'El casco no está incluido y tiene un costo adicional de' %} {{alquiler.casco | floatformat:2}} € {% trans 'para adultos' %}.</div>
+                </div>
+            </div>
+            <div class="w-[100%] lg:w-[49%] ml-2">
+                <div class="w-full text-center mb-2 font-semibold mt-10 lg:mt-0">{% trans 'JUNIOR' %}</div>
+                <div class="font-semibold">
+                    <div class="flex h-[50px] bg-black text-white">
+                        <div class="w-1/2 text-center my-auto">{% trans 'Tipo de Alquiler' %}</div>
+                        <div class="w-1/2 text-center my-auto">{% trans 'Precio' %}</div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Esquí Completo' %}</div></div>
+                        <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.esquí_completo_junior | floatformat:2}} €</div></div>
+                    </div>
+                    <div class="flex leading-10">
+                        <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Snowboard Completo' %}</div></div>
+                        <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.snowboard_completo_junior | floatformat:2}} €</div></div>
+                    </div>
+                    <div class="mt-2 font-normal">*{% trans 'El casco no está incluido y tiene un costo adicional de' %} {{alquiler.casco | floatformat:2}} € {% trans 'para juniors' %}.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-wrap text-sm md:text-base">
+        <div class="w-[100%] lg:w-[50%]">
+            <div class="mt-10">
+                <div class="flex mb-5">
+                    <div class="my-auto flex"><img class="h-24" src="{% static 'img/raqueta_verd.png' %}"></div>
+                    <div class="my-auto font-semibold">
+                        <div class="text-lg">{% trans 'Precios alquiler 1 día Otro Material' %}</div>
+                        <div class="">{% trans 'Precios por persona IVA incluido' %}</div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="w-[100%] mr-2">
+                        <div class="font-semibold">
+                            <div class="flex h-[50px] bg-black text-white">
+                                <div class="w-1/2 text-center my-auto">{% trans 'Tipo de Alquiler' %}</div>
+                                <div class="w-1/2 text-center my-auto">{% trans 'Precio' %}</div>
+                            </div>
+                            <div class="flex leading-10">
+                                <div class="border w-1/2 pl-[10%] flex">
+                                    <div class="my-auto leading-6">{% trans 'Esquí de Montaña Completo' %}</div>
+                                </div>
+                                <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.esquí_montaña_completo | floatformat:2}} €</div></div>
+                            </div>
+                            <div class="flex leading-10">
+                                <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Raquetas' %}</div></div>
+                                <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.raquetas | floatformat:2}} €</div></div>
+                            </div>
+                            <div class="flex leading-10">
+                                <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Raquetas + Palos' %}</div></div>
+                                <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.raquetas_y_palos | floatformat:2}} €</div></div>
+                            </div>
+                            <div class="flex leading-10">
+                                <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Grampones' %}</div></div>
+                                <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.grampones | floatformat:2}} €</div></div>
+                            </div>
+                            <div class="flex leading-10">
+                                <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Piolet' %}</div></div>
+                                <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.piolet | floatformat:2}} €</div></div>
+                            </div>
+                            <div class="flex leading-10">
+                                <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Grampones + Piolet' %}</div></div>
+                                <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.grampones_y_piolet | floatformat:2}} €</div></div>
+                            </div>
+                            <div class="mt-2 font-normal">*{% trans 'Los palos tienen un costo adicional de' %} {{alquiler.palos | floatformat:2}} € {% trans 'en todos los casos, excepto en el pack completo de esquí de montaña' %}.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10">
+                <div class="flex mb-5">
+                    <div class="my-auto flex"><img class="h-24" src="{% static 'img/bota_verd.png' %}"></div>
+                    <div class="my-auto font-semibold">
+                        <div class="text-lg">{% trans 'Precios alquiler esquí de temporada' %}</div>
+                        <div class="">{% trans 'Precios por persona IVA incluido' %}</div>
+                        <div class="">{% trans 'El pack incluye esquís, botas y palos' %}</div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="w-[100%] mr-2">
+                        <div class="font-semibold">
+                            <div class="flex h-[50px] bg-black text-white">
+                                <div class="w-1/2 text-center my-auto">{% trans 'Tipo de Alquiler' %}</div>
+                                <div class="w-1/2 text-center my-auto">{% trans 'Precio' %}</div>
+                            </div>
+                            <div class="flex leading-10">
+                                <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Adulto' %}</div></div>
+                                <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.esquí_temporada_adulto | floatformat:2}} €</div></div>
+                            </div>
+                            <div class="flex leading-10">
+                                <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Junior' %} 70/90cm</div></div>
+                                <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.esquí_temporada_junior_70_90cm | floatformat:2}} €</div></div>
+                            </div>
+                            <div class="flex leading-10">
+                                <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Junior' %} 100/110cm</div></div>
+                                <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.esquí_temporada_junior_100_110cm| floatformat:2}} €</div></div>
+                            </div>
+                            <div class="flex leading-10">
+                                <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Junior' %} 120/130cm</div></div>
+                                <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.esquí_temporada_junior_120_130cm | floatformat:2}} €</div></div>
+                            </div>
+                            <div class="flex leading-10">
+                                <div class="border w-1/2 pl-[10%] flex"><div class="my-auto leading-6">{% trans 'Junior' %} 140/150cm</div></div>
+                                <div class="border w-1/2 text-center flex"><div class="m-auto">{{alquiler.esquí_temporada_junior_140_150cm | floatformat:2}} €</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-[100%] lg:w-[50%] mt-10 lg:mt-8 lg:pl-4">
+            <div class="text-center font-semibold">{% trans 'Tiempo en Vallter 2000' %}</div>
+
+            <script>
+                (function(d, s, id) {
+                    if (d.getElementById(id)) {
+                        if (window.__TOMORROW__) {
+                            window.__TOMORROW__.renderWidget();
+                        }
+                        return;
+                    }
+                    const fjs = d.getElementsByTagName(s)[0];
+                    const js = d.createElement(s);
+                    js.id = id;
+                    js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+        
+                    fjs.parentNode.insertBefore(js, fjs);
+                })(document, 'script', 'tomorrow-sdk');
+                </script>
+        
+                <div class="tomorrow"
+                   data-location-id="2181165"
+                   data-language="ES"
+                   data-unit-system="METRIC"
+                   data-skin="light"
+                   data-widget-type="upcoming"
+                   style="padding-bottom:22px;position:relative;"
+                >
+                  <a
+                    href="https://www.tomorrow.io/weather-api/"
+                    rel="nofollow noopener noreferrer"
+                    target="_blank"
+                    style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
+                  >
+                    <img
+                      alt="Powered by the Tomorrow.io Weather API"
+                      src="https://weather-website-client.tomorrow.io/img/powered-by.svg"
+                      width="250"
+                      height="18"
+                    />
+                  </a>
+                </div>
+        </div>
+    </div>
+    
+    
+    
+</div>
+
+<script>
+    
+</script>   
