@@ -41,22 +41,22 @@
         
         <script src="https://cdn.tailwindcss.com"></script>
 
-        <script src="https://unpkg.com/htmx.org@1.7.0"></script>
-        <script src="https://unpkg.com/htmx.org/dist/ext/multi-swap.js"></script>
+        <script src="https://unpkg.com/htmx.org@1.7.0" defer></script>
+        <script src="https://unpkg.com/htmx.org/dist/ext/multi-swap.js" defer></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+        <script src="https://code.jquery.com/jquery-1.12.4.js" defer></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script>  
 
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        <link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
         crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        onload="this.onload=null;this.rel='stylesheet'"
         crossorigin=""></script>
 
-        <meta name="description" content="¡Bienvenidos a Vivac Outdoor! Equipamos a aventureros desde Camprodon. Descubre nuestras tiendas y nuestra tienda en línea. Productos de primera calidad, trato amigable y precios competitivos. ¡Únete a la familia Vivac!">
-        <meta property="og:description" content="¡Bienvenidos a Vivac Outdoor! Equipamos a aventureros desde Camprodon. Descubre nuestras tiendas y nuestra tienda en línea. Productos de primera calidad, trato amigable y precios competitivos. ¡Únete a la familia Vivac!">
+        <script src="https://js.stripe.com/v3/" defer></script>
 
         <link rel="icon" type="image/x-icon" href="{% static 'img/favicon/favicon.ico' %}">
         <link rel="icon" type="image/png" sizes="512x512" href="{% static 'img/favicon/android-chrome-512x512.png' %}">
@@ -64,7 +64,9 @@
         <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon/favicon-32x32.png' %}">
         <link rel="icon" type="image/png" sizes="192x192" href="{% static 'img/favicon/android-chrome-192x192.png' %}">
         <link rel="apple-touch-icon" href="{% static 'img/favicon/apple-touch-icon.png' %}">
-
+        
+        <meta name="description" content="¡Bienvenidos a Vivac Outdoor! Equipamos a aventureros desde Camprodon. Descubre nuestras tiendas y nuestra tienda en línea. Productos de primera calidad, trato amigable y precios competitivos. ¡Únete a la familia Vivac!">
+        <meta property="og:description" content="¡Bienvenidos a Vivac Outdoor! Equipamos a aventureros desde Camprodon. Descubre nuestras tiendas y nuestra tienda en línea. Productos de primera calidad, trato amigable y precios competitivos. ¡Únete a la familia Vivac!">
         {% include 'core/partials/styles.html' %}
     </head>
     
